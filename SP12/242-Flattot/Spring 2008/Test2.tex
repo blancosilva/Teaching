@@ -1,0 +1,121 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 2, Tuesday 1 April}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work \textbf{\LARGE{clearly}}, \textbf{\LARGE{make sentences}}. No work means no credit. The points are:\\
+ex1: 15, ex2: 15, ex3: 15, ex4: 15, ex5: 10, ex6: 15, ex7: 20.
+\vspace*{1cm}
+
+
+\begin{exo}
+We give the differential equation:
+\[ \frac{dx}{dt}=x^2-5x+4 .\]
+\begin{enumerate}
+\item What are the critical points ? Use a phase diagram to determine whether each critical point is stable or unstable.
+\vspace*{4cm}
+\item Solve this differential equation with $x_0=2$.
+\end{enumerate}
+\end{exo}
+%2.2.9
+
+\newpage
+
+\begin{exo}
+We give an initial value problem and its exact solution $y(x)$:
+\[ y'=-3x^2y, \quad y(0)=3, \quad y(x)=3e^{-x^3}. \]
+Apply Euler's method to approximate the solution on the interval $[0,1]$ with step size $h=0.25$. Write the formula you use for the computation. Then compare the four-decimal-place values of the approximate solution with the values of the exact solution using the following array. Does this step size look good ?
+\vspace*{6cm}
+{\renewcommand{\arraystretch}{1.5}
+\[ \begin{array}{|r|c|c|c|c|c|}
+      \hline \mbox{x} & 0 & 0.25 & 0.5 & 0.75 & 1 \\
+      \hline \mbox{approx solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline \mbox{exact solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline
+    \end{array} \]}
+\end{exo}
+%2.4.7
+
+\vspace*{2cm}
+
+\begin{exo}
+Solve the differential equation:
+\[ y^{(3)}-14y''+49y'-36y=0,\]
+using the fact that the function $x\mapsto e^{9x}$ is solution of this differential equation.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=1, \ y'(0)=0, \ y''(0)=6.\]
+\end{exo}
+
+\newpage
+\vspace*{4cm}
+
+\begin{exo}
+Give the form of a particular solution in each case, but do not determine the values of the coefficients:
+\begin{enumerate}
+\item $y^{(13)}+2y'=(x^5+x^2+1)$,
+\item $y^{(3)}-y''-y'+y=(x^3-2x)e^x$,
+\item $y^{(3)}-y''-y'+y=5e^x(x^2+5x-8)\cos(27x)$.
+\end{enumerate}
+\end{exo}
+
+\vspace*{7cm}
+
+\begin{exo}
+Find a linear homogeneous constant-coefficient equation with the general solution:
+\[ y(x)= Ae^{-x}+B\cos(3x)+ C\sin(3x)+x(D\cos(3x)+E\sin(3x)) .\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the differential equation :
+\[ y''+9y=2\sec(3x).\]
+To find a particular solution you will use the method of variation of parameters.\\
+We recall that $\ds{\sec x=\frac{1}{\cos x}}$ and that $\ds{\int \tan(3x)dx=-\frac{1}{3}\ln |\cos (3x)|}$.
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the initial value problem:
+\[ y''+2y'-8y=8x-6+12e^{2x}, \quad y(0)=-1,\ y'(0)=7.\]
+\end{exo}
+
+\end{document}

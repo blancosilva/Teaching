@@ -1,0 +1,181 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+\usepackage{enumerate}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Final Exam, Saturday 3 May}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all \textbf{work clearly}, \textbf{make sentences}. No work means no credit. The points are:\\
+ex1: 10, ex2: 10, ex3: 15, ex4: 10, ex5: 10, ex6: 15, ex7: 10, ex8: 10, ex9: 15, ex10: 10, ex11: 20, ex15: (Total=150 pts).
+\vspace*{0.5cm}
+
+\begin{exo}[10 points]
+Solve the initial value problem:
+\[ y'=2xy+3x^2\exp{x^2}, \quad y(0)=5 .\]
+\end{exo}
+
+\newpage
+
+\begin{exo}[10 points]
+Find a general solution of the differential equation
+\[ 2xy^2+x^2y'=y^2 .\]
+\end{exo}
+
+\vspace*{8cm}
+
+\begin{exo}[15 points]
+We consider the following differential equation:
+\[ xy'=6y+12x^4y^{2/3},\ x>0. \]
+\begin{enumerate}
+\item What kind of equation is it?
+\vspace*{1cm}
+\item What substitution do we have to do?
+\vspace*{1cm}
+\item What differential equation do we obtain after the substitution?
+\vspace*{2cm}
+\item Solve this last differential equation and then find the expression of $y$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}[10 points]
+We consider the following differential equation:
+\[ x^2y-x^3y'=y^3 .\]
+\begin{enumerate}
+\item Write this differential equation as a homogeneous one.
+\vspace*{1.5cm}
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+
+\vspace*{6cm}
+
+\begin{exo}[10 points]
+Show that the differential equation
+\[ e^y+y\cos x+\left(xe^y+\sin x\right) y'=0,\]
+is exact and then solve it.
+\end{exo}
+
+\newpage
+
+\begin{exo}[15 points]
+We give the differential equation:
+\[ \frac{dx}{dt}=x^2-5x+4 .\]
+\begin{enumerate}[1)]
+\item What are the critical points ? Use a phase diagram to determine whether each critical point is stable or unstable.
+\vspace*{5cm}
+\item Solve this differential equation with $x(0)=2$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}[10 points]
+We give an initial value problem:
+\[ y'=20x, \quad y(0)=1. \]
+Write the algorithm of the Euler's method with a step size $h$, and apply it to find approximate values of the solution on the interval $[0,0.5]$ with step size $h=0.1$.
+%Find also the exact solution and compute the values of the exact solution to compare the approximate and exact solutions.\\
+%One recall that $(0.1)^2=(10^{-1})^2=10^{-2}=0.01$.
+\vspace*{6cm}
+{\renewcommand{\arraystretch}{1.5}
+\[ \begin{array}{|r|c|c|c|c|c|c|}
+      \hline \mbox{x} & 0 & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 \\
+      \hline \mbox{approx solution} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} \\
+      \hline
+    \end{array} \]}
+\end{exo}
+
+\begin{exo}[10 points]
+Solve the differential equation
+\[ y^{(3)}-6y''+9y'-54y=0,\]
+using the fact that the function $x\mapsto e^{6x}$ is solution of this differential equation.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=0, \ y'(0)=3, \ y''(0)=90.\]
+\end{exo}
+
+\newpage
+
+\begin{exo}[15 points]
+Find a particular solution of the differential equation
+\[ y''-3y'+2y=e^{-x}(12x+8) .\]
+Then solve completely this differential equation with the initial values $y(0)=3$ and $y'(0)=6$.
+\end{exo}
+
+\newpage
+
+\begin{exo}[10 points]
+Give the form of a particular solution in each case, but DO NOT determine the values of the coefficients:
+\begin{enumerate}[1)]
+\item $y^{(114)}+789y''=x^3+2$,
+\vspace*{3cm}
+\item $y^{(3)}+3y''-4y'-12y=(x^2-7x+1)e^{-2x}$,\\
+You will use that $-3$ is a root of the characteristic equation.
+\vspace*{5cm}
+\item $y^{(3)}+3y''-4y'-12y=e^{7x}(x-78)\sin(13x)$.\\
+The characteristic equation is the same as in the previous question !
+\end{enumerate}
+\end{exo}
+
+\vspace*{3cm}
+
+\begin{exo}[20 points]
+\begin{enumerate}[1)]
+\item Find the inverse Laplace transform of:
+\[  F_1(s)=\frac{7}{(s-8)^3},\quad   F_2(s)=\frac{3s-34}{s^2-8s+25}.\]
+\newpage
+\item Give the form of the decomposition into partial fractions, but DO NOT determine the coefficients, of:
+\[ g_1(x)=\frac{x^3+10121492}{(x-3)^2(x+4)^3x}, \quad g_2(x)=\frac{x^2+07201969}{(x-1)(x^2-3x+2)}, \quad g_3(x)=\frac{x+10241929}{x(x^2+x+1)^2} .\]
+Question with no point: can you recognize those dates !!
+\end{enumerate}
+\end{exo}
+
+\vspace*{5cm}
+
+\begin{exo}[15 points]
+Solve the initial value problem using the Laplace transform:
+\[ x''+x=\sin(2t), \qquad x(0)=1,\ x'(0)=0.\]
+\end{exo}
+
+%\begin{exo}
+%Solve the initial value problem using the Laplace transform:
+%\[ x''-6x'+8x=8, \qquad x(0)=x'(0)=0 .\]
+%\end{exo}
+
+\end{document}

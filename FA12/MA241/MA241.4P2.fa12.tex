@@ -1,0 +1,79 @@
+\documentclass[12pt]{amsart}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+
+\begin{document}
+\thispagestyle{empty}
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#4. Part II}\hfill{\large\bf
+  Fall 2012}\hrule
+
+\bigskip
+\noindent We are going to define two operations that can be performed on vector
+fields.  Each operation resembles differentiation, but one produces a
+vector field, whereas the other produces a scalar field.
+
+\begin{defn}
+If $\boldsymbol{F}=\langle P,Q,R \rangle$ is a vector field on
+$\mathbb{R}^3$ and the partial derivatives of $P$, $Q$ and $R$ all
+exists, then the {\em curl} of $\boldsymbol{F}$ is the vector field on
+$\mathbb{R}^3$ defined by
+\begin{equation*}
+\operatorname{curl} \boldsymbol{F} = \bigg( \frac{\partial R}{\partial y} -
+\frac{\partial Q}{\partial z} \bigg) \boldsymbol{i} + \bigg(
+\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \bigg)
+\boldsymbol{j} + \bigg( \frac{\partial Q}{\partial x} - \frac{\partial
+P}{\partial y} \bigg) \boldsymbol{k}.
+\end{equation*}
+The {\em divergence} of $\boldsymbol{F}$ is the function of three
+variables defined by
+\begin{equation*}
+\operatorname{div} \boldsymbol{F} = \frac{\partial P}{\partial x} +
+\frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}.
+\end{equation*}
+\end{defn}
+\hrule
+
+\problem[5 pts]{\em Assume that $f$ is a function of three variables
+that satisfies
+\begin{equation*}
+\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2
+f}{\partial y \partial x}, \quad
+\frac{\partial^2 f}{\partial x \partial z} = \frac{\partial^2
+f}{\partial z \partial x}, \quad
+\frac{\partial^2 f}{\partial z \partial y} = \frac{\partial^2
+f}{\partial y \partial z}.
+\end{equation*}
+Prove that in this case, $\operatorname{curl}(\nabla f) = \boldsymbol{0}$.}
+
+\vspace{4cm}
+\hrule
+\problem[5 pts]{\em Note that the previous problem implies that
+conservative vector fields will have zero curl.  Determine, using this
+trick, whether $\boldsymbol{F}=\langle y^2z^3, 2xyz^3, 3xy^2z^2 \rangle$
+is a conservative vector field or not.} 
+
+\vspace{7cm}
+\hrule
+\problem[15 pts]{\em For the vector field $\boldsymbol{F} = \cos(xz)
+\boldsymbol{j} - \sin(xy) \boldsymbol{k}$, compute:}
+\begin{enumerate}
+\item $\operatorname{curl} \boldsymbol{F}$
+\item $\operatorname{div} \boldsymbol{F}$
+\item $\operatorname{div} \operatorname{curl} \boldsymbol{F}$
+\end{enumerate}
+Use the back of this page for this problem
+\end{document}

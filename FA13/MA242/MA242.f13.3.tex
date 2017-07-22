@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{tikz,array}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 242}\hfill{\large\bf Third Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has five (5) pages, including this one and the table of
+  Laplace transforms at the end.
+\item Show sufficient work to justify all answers unless otherwise
+  stated in the problem.  Correct answers with inconsistent work may
+  not be given credit. 
+\item Credit for each problem is given at the right of each problem
+  number. 
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max} & {\large\bf Points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 35 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 40 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 242}\hfill{\large\bf Third Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+{\problem[20 pts] \em Use techniques based on the Laplace
+  transform to solve the initial value problem $y''+3y'+2y=x$ that
+  satisfies $y(0)=0, y'(0)=2$.} 
+\vspace{14cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[15pts] \em Find the Laplace transform of $f(x) = \sin 3x
+  \cos 3x.$}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 242}\hfill{\large\bf Third Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+{\problem[10pts] \em Find the Laplace transform of the function
+$f(x)=xe^{2x}\cos(3x)$.}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10pts] \em Find the Laplace transform of $f(x)=\sin(x)/x.$}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[20pts] \em Find the inverse Laplace transform of
+  $F(s)=(s^2+\beta^2)^{-2}$}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 242}\hfill{\large\bf Third Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+{\problem[25pts] \em Given the system of differential equations below,}
+\begin{equation*}
+\begin{cases}
+x'= 4x-3y\\ y'=6x-7y
+\end{cases}
+\end{equation*}
+and initial conditions $x(0)=0$, $y(0)=1$,
+\begin{enumerate}
+\item Use Euler's method to solve it numerically, with time step size
+$h=1$, for $N=3$ steps.
+\item Solve the system using the method of elimination.  
+\end{enumerate}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 242}\hfill{\large\bf Third Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+\begin{center}
+%\includegraphics[width=\linewidth]{table.pdf}
+\begin{tikzpicture}
+  \node[scale=0.97]{
+ \begin{tabular}{|m{1.2cm}|m{4.3cm}l||m{2.1cm}|m{4.3cm}l|}
+ \hline
+    $f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & &
+    $f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & \\[0.4cm] 
+    \hline \hline
+    $1$ & $\dfrac{1}{s}$\raisebox{0.6cm} & $s>0$ &
+    $cf(x)\pm g(x)$ & $cF(s) \pm G(s)$\raisebox{0.4cm} & $s>max(a,b)$ \\[0.4cm]
+    \hline
+    $x^p$ & $\dfrac{\Gamma(p+1)}{s^{p+1}}$\raisebox{0.6cm} & $s>0$ &
+    $x^n f(x)$ & $(-1)^n F^{(n)}$\raisebox{0.4cm} & $s>a$ \\[0.4cm]
+    \hline
+    $x^n$ & $\dfrac{n!}{s^{n+1}}$\raisebox{0.6cm} & $s>0$ & $e^{\alpha x}f(x)$ & $F(s-\alpha)$\raisebox{0.4cm} & $s>a+\alpha$ \\[0.4cm]
+    \hline
+    $e^{\alpha x}$ & $\dfrac{1}{s-\alpha}$\raisebox{0.6cm} & $s>\alpha$ & $\dfrac{f(x)}{x}$ & $\displaystyle{\int_s^\infty F(\sigma)\, d\sigma}$\raisebox{0.4cm} & $s>a$ \\[0.4cm]
+    \hline
+    $\sin \beta x$ & $\dfrac{\beta}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$  &
+    $f\star g$ & $F(s) G(s)$\raisebox{0.4cm} & $s>\max(a,b)$ \\[0.4cm]
+    \hline
+    $\cos \beta x$ & $\dfrac{s}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$ & $f'(x)$ & $s F(s) -f(0)$\raisebox{0.4cm} & $s>a$ \\[0.4cm]
+    \hline
+    \end{tabular} };
+    \end{tikzpicture}
+\end{center}
+ 
+\hrule
+
+\noindent You may use this as scratch paper.  Do not detach from the rest of the test
+
+
+\end{document}

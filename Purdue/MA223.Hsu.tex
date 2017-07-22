@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+
+\usepackage{epsfig}
+\usepackage{pgf,tikz}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MA223}\hfill{\large\bf Make-up Exam\#1.}\hfill{\large\bf
+  Spring 2007}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 10-Digit PUID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf Class Time:} & \hrulefill \cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item There are 9 problems.
+\item Write your answers in the boxes provided to receive full credit.
+\item You must show sufficient work to justify all answers. Correct
+  answers with inconsistent work may not be given credit.
+\item No books or notes allowed.
+\item You may use a nongraphing, nonprogrammable calculator.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline && \\ 
+    {\bf Question} & {\bf Max.} & {\bf Score} \\
+    \hline && \\
+    {1} & 10 & \\ 
+    \hline  && \\
+    {2} & 10 & \\
+    \hline  && \\
+    {3} & 18 & \\
+    \hline  && \\
+    {4} & 10 & \\
+    \hline  && \\
+    {5} & 8 & \\
+    \hline  && \\
+    {6} & 10 & \\
+    \hline  && \\
+    {7} & 10 & \\
+    \hline  && \\
+    {8} & 10 & \\
+    \hline  && \\
+    {9} & 14 & \\
+    \hline\hline  && \\
+    {Total} & 100 & \\
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1
+\noindent{\large\bf MA223}\hfill{\large\bf Make-up Exam\#1.}\hfill{\large\bf
+  Spring 2007}\hrule
+
+\bigskip
+{\problem[10 pts] \em Find the domain of $f(x) =
+  \displaystyle{\frac{\sqrt{1-x}}{x^2-x-2}}.$}
+\vspace{8cm}
+ \begin{flushright}
+   \begin{tikzpicture}
+     \draw(0cm,0cm) rectangle (6cm, 1.2cm);
+   \end{tikzpicture}
+ \end{flushright}
+
+{\problem[10 pts] \em Let $f(x) = \displaystyle{\frac{2x}{x^2+1}}$ and $g(x) =
+  \displaystyle{\frac{1}{x}}$. Find $( f \circ g )(x)$ and simplify.
+\vspace{8cm}
+ \begin{flushright}
+   \begin{tikzpicture}
+     \draw (1cm,0.6cm) node {$(f \circ g) (x) =$};
+     \draw(2.25cm,0cm) rectangle (8.25cm, 1.2cm);
+   \end{tikzpicture}
+ \end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MA261}\hfill{\large\bf Exam\#1.}\hfill{\large\bf
+  Spring 2007}\hrule
+
+\bigskip
+{\problem \em Find the following limits:}
+\begin{enumerate}
+\item {\bf (6 pts)} $\displaystyle{\lim_{x \to 1} \frac{x-1}{\sqrt{x} - 2}}$
+  \vspace{1cm}
+  \begin{flushright}
+    \begin{tikzpicture}
+      \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+    \end{tikzpicture}
+  \end{flushright}
+\item {\bf (6 pts)} $\displaystyle{\lim_{x \to -2} \frac{4-x^2}{2x+x^2}}$
+  \vspace{1cm}
+  \begin{flushright}
+    \begin{tikzpicture}
+      \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+    \end{tikzpicture}
+  \end{flushright}
+\item {\bf (6 pts)} $\displaystyle{\lim_{x \to \infty}
+    \frac{4x^4-3x^2+1}{2x^4+x^3+x-3}}$
+  \vspace{1cm}
+  \begin{flushright}
+    \begin{tikzpicture}
+      \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+    \end{tikzpicture}
+  \end{flushright}
+\end{enumerate}
+
+{\problem[10 pts] \em Determine all values of $x$ at which the
+  function is discontinuous}
+$$ f(x) = \frac{x^2}{x^2-3x} $$
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MA261}\hfill{\large\bf Exam\#1.}\hfill{\large\bf
+  Spring 2007}\hrule
+
+{\problem[8 pts] \em Consider the graph of $f(x)$.  Find the following values and write your answer directly in the box.}
+\begin{center}
+  \begin{tikzpicture}
+    \draw [white] (0cm, 0cm) rectangle (10cm, 5cm);
+    \draw [thick,->] (0cm,2.5cm) -- (10cm, 2.5cm) node[anchor=west]
+    {$x$};
+    \draw [thick,->] (5cm,0cm) -- (5cm, 5cm) node[anchor=south] {$y$};
+    \draw (3cm,0cm) -- (5cm,2.5cm);
+    \fill (5cm, 2.5cm) circle (0.15cm);
+    \draw (5cm, 3.5cm) node[anchor=east] {$1$} -- (7cm, 5cm);
+    \draw [black] (5cm, 3.5cm) [fill=white] circle (0.12cm);
+    \draw (7cm, 4cm) node {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+\begin{enumerate}
+\item {\bf (2 pts)} \newline
+  \begin{tikzpicture}
+    \draw (1cm, 1.6cm) node {range of $f(x) =$};
+    \draw (2.5cm, 1cm) rectangle (8.5cm, 2.2cm);
+    \draw (5.25cm, 0.5cm) node {(interval notation)};
+  \end{tikzpicture}
+\item {\bf (2 pts)} \newline
+  \begin{tikzpicture}
+    \draw (1cm, 0.6cm) node {$\displaystyle{\lim_{x \to 0^{+}} f(x) = }$};
+    \draw (2.25cm, 0cm) rectangle (8.25cm, 1.2cm);
+  \end{tikzpicture}
+\item {\bf (2 pts)} \newline
+  \begin{tikzpicture}
+    \draw (1cm, 0.6cm) node {$\displaystyle{\lim_{x \to 0^{-}} f(x) = }$};
+    \draw (2.25cm, 0cm) rectangle (8.25cm, 1.2cm);
+  \end{tikzpicture}
+\item {\bf (2 pts)} \newline
+  \begin{tikzpicture}
+    \draw (1cm, 0.6cm) node {$\displaystyle{\lim_{x \to 0} f(x) = }$};
+    \draw (2.25cm, 0cm) rectangle (8.25cm, 1.2cm);
+  \end{tikzpicture}
+\end{enumerate}
+
+{\problem[10 pts] \em Find the derivative of the function}
+$$ f(x) = 2x^3 - x \sqrt{x} + \frac{1}{\sqrt{x}}$$
+\vspace{3cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MA223}\hfill{\large\bf Make-up Exam\#1.}\hfill{\large\bf
+  Spring 2007}\hrule
+
+\bigskip
+{\problem[10 pts] \em Determine all values of $x$ at which the
+  function $g$ is not continuous}
+$$ g(x) = \left\{ \begin{array}{lcl}
+    x+3 & \mbox{ if } & x<-2 \\
+    -1 & \mbox{ if } & -1 \leq x \leq 0 \\
+    -x^2+2 & \mbox{ if } & x>0
+    \end{array} \right. $$
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+{\problem[10 pts] \em A house was purchased six years ago for \$
+  67,000.  This year, it was appraised at \$91,000.  Assume that the
+  value $V$ of the house after its purchase is a linear function of
+  time $t$ (in years).  Express $V$ in terms of $t$.
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MA223}\hfill{\large\bf Make-up Exam\#1.}\hfill{\large\bf
+  Spring 2007}\hrule
+
+{\problem \mbox{}.}
+\begin{enumerate}
+\item {\bf (10 pts)} Use the ``4-step process'' to find $f'(x)$.
+$$ f(x) = \frac{1}{3x-1} $$
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\item {\bf (4 pts)} Find the point(s) on the line where the tangent
+  line to the graph of $f(x)$ has a slope of $-2$.
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (6cm, 1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,229 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage{pgf,tikz}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\def\Lpnorm#1#2{\lVert {#1} \rVert_{#2}}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\title{$L_p$ Spaces. v2.0}
+\maketitle
+
+\begin{problem}
+  \textcolor{blue}{Let $\nu$ be a measure on the Borel sets f the
+    positive real line $[0,\infty)$ such that $\phi(t) = \nu[0,t)$ is
+    finite for every $t > 0$.  Now let $(X,\mathcal{F},\mu)$ be a
+    measure space and $f$ any non-negative measurable function on $X$.
+    Then}
+  \begin{equation*}
+    \textcolor{blue}{\int_X \phi\big( f(x) \big)\, d\mu = \int_0^\infty
+    \mu\{ x \in X : f(x) > t \}\, d\nu.}
+  \end{equation*} 
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Verify that for every measurable function $f$, and
+    $0<p<\infty$,}
+  \begin{equation*}
+    \textcolor{blue}{\int_X \abs{f}^p\, d\mu = \int_0^\infty p\,
+    t^{p-1} \mu\{ \abs{f} > t \}\, dt.}
+  \end{equation*}
+\end{problem}
+\begin{problem}[The Layer cake representation]
+  \textcolor{blue}{Verify that for every non-negative measurable
+  function $f$,}
+  \begin{equation*}
+    \textcolor{blue}{f(x) = \int_0^\infty \chi_{\{f > t\}}(x)\, dt.}
+  \end{equation*}
+\end{problem}
+\begin{problem}
+  Suppose $f$ and $g$ are two non-negative functions satisfying the
+  following inequality: There exists a constant $C$ such that for all
+  $\varepsilon >0$ and $\lambda >0$,
+  \begin{equation*}
+    \mu \{ x \in X: f(x) > 2\lambda,\, g(x) \leq \varepsilon \lambda \}
+    \leq C \varepsilon^2\, \mu \{ x \in X: f(x) > \lambda \}.
+  \end{equation*}
+  Prove that
+  \begin{equation*}
+    \int_X f(x)^p\, d\mu \leq C_p \int_X g(x)^p\, dx
+  \end{equation*}
+  for any $0<p<\infty$ for which both integrals are finite, where
+  $C_p$ is a constant depending on $C$ and $p$.
+\end{problem}
+
+
+
+\begin{problem}
+  When does equality hold in Minkowski's inequality?
+  \textcolor{gray}{The answer is different for $p=1$ and for
+    $1<p<\infty$. What about $p=\infty$?}
+\end{problem}
+\begin{problem}
+  Let $I = [0,\pi]$.  Show that $\int_I x^{-1/4} \sin x\, dx \leq
+  \pi^{3/4}$.
+\end{problem}
+\begin{problem}
+  Let $I=[0,\pi]$ and $f \in L_2(I)$.  Is it possible to have
+  simultaneously $\int_I \big( f(x) -\sin x\big)^2\, dx \leq 4/9$ and
+  $\int_I \big( f(x) - \cos x \big)^2\, dx \leq 1/9$?
+\end{problem}
+
+\begin{problem}
+  Let $I$ be a bounded interval on $\field{R}$.  By means of an
+  example, show that in general
+  \begin{equation*}
+    \bigcap_{0<p<q} L_p(I) \neq L_q(I),\quad 0<q\leq\infty.
+  \end{equation*}
+\end{problem}
+\begin{problem}
+  Suppose $f \in L_p(\mu)$, $g \in L_q(\mu)$, $h \in L_r(\mu)$,
+  $1<p,q,r<\infty$, $1/p + 1/q +1/r =1$.  Prove that $fgh \in L(\mu)$
+  and that $\Lpnorm{fgh}{1} \leq \Lpnorm{f}{p} \Lpnorm{g}{q}
+  \Lpnorm{h}{r}$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'06}]
+  Show that $L_\infty (0,1) \subset \displaystyle{\cap_{p \geq 1}}
+  L_p(0,1)$.  Is equality true?
+\end{problem}
+\begin{problem}
+  Show that if for some $0<p<\infty$ $f \in L_p(\mu) \cap
+  L_{\infty}(\mu)$, then for all $p < q < \infty$, $f \in L_q(\mu)$
+  and $\Lpnorm{f}{q} \leq \Lpnorm{f}{p}^{p/q}
+  \Lpnorm{f}{\infty}^{1-p/q}$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'06}]
+  Show that if $f \in L_p[0,1] \cap L_r[0,1]$, with $p<r$, then $f \in
+  L_s[0,1]$ for all $p \leq s \leq r$.
+\end{problem}
+\begin{tikzpicture}
+  \draw(0.5\linewidth,1cm) node[shade, text justified, text
+  width=0.8\linewidth,draw,rounded corners]{ \textbf{Hint:} The result
+    is also true for a general measure space.  Prove that
+    $\Lpnorm{f}{s} \leq \Lpnorm{f}{p}^{1-\eta} \Lpnorm{f}{r}^{\eta}$,
+    where $0 < \eta <1$ is given by $1/s = (1-\eta)/p + \eta/r$.};
+\end{tikzpicture}
+\begin{problem}
+  Prove that if $\mu(X) < \infty$ and $f \in L_p \cap L_\infty$ for
+  some $p<\infty$ so that $f \in L_q$ for all $q>p$, then
+  $\Lpnorm{f}{\infty} = \lim_q \Lpnorm{f}{q}$.
+\end{problem}
+\begin{problem}
+  Suppose $\mu(X)=1$, and $f \in L_p$ for some $p>0$, so that $f \in
+  L_q$ for $0<q<p$.  Prove the following statements:
+  \begin{enumerate}
+  \item $\log \Lpnorm{f}{q} \geq \int \log \abs{f}$.
+  \item $\int \frac{\abs{f}^q - 1}{q} \geq \log \Lpnorm{f}{q}$, and
+    $\int \frac{\abs{f}^q - 1}{q} \to \int \log \abs{f}$ as $q \to
+    \infty$.
+  \item $\lim_{q \to 0} \Lpnorm{f}{q} = \exp \big( \int \log \abs{f}
+  \big)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Prove that if $\lim_n \Lpnorm{f_n}{p} = 0$, $1 \leq p \leq \infty$,
+  then there exists a subsequence $\{ f_{n_k} \}$ and a non-negative
+  function $h \in L_p(\mu)$ such that $\abs{f_{n_k}} \leq h$~a.e., and
+  $\lim_k f_{n_k} = 0$~a.e.
+\end{problem}
+\begin{problem}
+  Prove the following statements: Suppose $1 \leq p < \infty$.  If
+  $\Lpnorm{f_n - f}{p} \to 0$, then $f_n \to f$ in measure, and hence
+  some subsequence converges to $f$~a.e.  On the other hand, if $f_n
+  \to f$ in measure and $\abs{f_n} \leq g \in L_p$ for all $n$, then
+  $\Lpnorm{f_n - f}{p} \to 0$.
+\end{problem}
+\begin{problem}
+  Prove that if $f, f_n \in L_p(\mu)$, $g,g_n \in L_q(\mu)$,
+  $\Lpnorm{f_n - f}{p} \to 0$, and $\Lpnorm{g_n - g}{q} \to 0$, $1\leq
+  p,q \leq \infty$, $1/p + 1/q =1$, then $\Lpnorm{f_n g_n - fg}{1} \to
+  0$.
+\end{problem}
+\begin{problem}
+  Suppose $f, f_n \in L_p(\mu)$, $n \in \field{N}$ satisfy $\lim_n f_n
+  = f$~a.e., and $\lim_n \Lpnorm{f_n}{p} = \Lpnorm{f}{p}$,
+  $0<p<\infty$.  Prove that $\lim_n \Lpnorm{f_n -f}{p} = 0$.
+  \textcolor{gray}{Is the conclusion still true if we replace
+    a.e.~convergence by convergence in measure?}
+\end{problem}
+\begin{problem}
+  Let $(X,\mathcal{F}, \mu)$ be a finite measure space, $0<r<p$ and
+  $\{ f_n \}$ a sequence of $L_p(\mu)$ functions such that
+  $\Lpnorm{f_n}{p} \leq k$ for all $n$, and $\lim_n f_n = f$~a.e.
+  Prove that $\lim_n \Lpnorm{f_n - f}{r} = 0$. \textcolor{gray}{Prove
+    that the conclusion my fail with $\mu(X) = \infty$.}
+\end{problem}
+
+
+\begin{problem}[\textcolor{red}{Spring'05}]
+  Let $(X, \mathcal{F}, \mu)$ be a measure space and let $1 \leq p <
+  \infty$. If $\{ f_n, f\} \in L_p(\mu)$ and $\int_X f_n\, g\, d\mu
+  \to \int_X fg\, d\mu$ for every $g \in L_{p'}(\mu)$, $1/p + 1/p'=1$,
+  show that
+  \begin{equation*}
+    \Lpnorm{f}{p} \leq \liminf_n \Lpnorm{f_n}{p}.
+  \end{equation*}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'05}]
+  Let $f_n \colon I \to \field{R}^+$ be non-decreasing on $I=[a,b]$
+  with $\Lpnorm{f}{\infty} \leq M < \infty$, $n \in \field{N}$.
+  Assume that $\{ f_n \}$ converges on a dense subset of $I$.  Show
+  that $\{ f_n \}$ converges at every point of $I$ except perhaps a
+  countable set.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'06}]
+  suppose that $f_n \in L_1[0,1]$, $n \in \field{N}$ is such that
+  $\lim_n f_n(x) = f(x)$~a.e.~$x$.
+  \begin{enumerate}
+  \item \label{pF06i} Suppose that $\lim_n \abs{f_n(x)}^{1/p} =
+    \abs{f(x)}^{1/p}$ \emph{uniformly} on $[0,1]$.  Prove that then
+    $\lim_n \abs{f_n}^{1/p} = \abs{f}^{1/p}$ in $L_p[0,1]$, i.e.~prove
+    that $\lim_n \big\lVert \abs{f_n}^{1/p} - \abs{f}^{1/p}
+    \big\rVert_{p} = 0$.
+  \item Prove that the conclusion in \ref{pF06i} still holds if
+    instead of the uniform convergence of $\abs{f_n}^{1/p}$, we assume
+    that $\lim_n f_n = f$ in $L_1[0,1]$, i.e.~$\lim_n \Lpnorm{f_n -
+      f}{1}=0$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'07}]
+  Let $(X, \mathcal{F}, \mu)$ be a finite measure space.  Let $f_n
+  \colon X \to [0,\infty)$ be a sequence of measurable functions and
+  suppose that $\Lpnorm{f_n}{p} \leq 1$, $1<p<\infty$, and that $f_n
+  \to f$~a.e. Prove:
+  \begin{enumerate}
+  \item $f \in L_p(\mu)$.
+  \item $\Lpnorm{f_n - f}{1} \to 0$ as $n \to \infty$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Show that each function $f \in L_p(\mu)$, $0<p<\infty$ satisfies the
+  following property: $\lim_\lambda \lambda^p \mu\{ \abs{f} > \lambda
+  \} = 0$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'05}]
+  Let $f$ be Lebesgue measurable on $[0,1]$ with the property that
+  $\Lpnorm{f}{2} =1$ and $\Lpnorm{f}{1} =1/2$. Prove that
+  \begin{equation*}
+    \frac{1}{4} (1-\lambda)^2 \leq m \big\{ x \in [0,1] : \abs{f(x)}
+    \geq \lambda/2 \big\},
+  \end{equation*}
+  for all $0 \leq \lambda \leq 1$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'05}]
+  Let $(X, \mathcal{F}, \mu)$ be a measure space, $f\colon X \to
+  \field{R}$ measurable, and let $1\leq p_1 < p_2 < \infty$. Assume
+  there exist constants $0 < c_1,c_2 < \infty$ such that
+  \begin{equation*}
+    \mu\{ x : \abs{f(x)} > y \} \leq \frac{c_j}{y^{p_j}}; j=1,2,
+  \end{equation*}
+  for every $y>0$.  Show that $f \in L_p(\mu)$, $p_1 < p < p_2$.
+\end{problem}
+\end{document}

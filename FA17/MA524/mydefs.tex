@@ -1,0 +1,96 @@
+%!TEX root = notes.tex
+
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{tikz}
+%\usepackage{pgf,pgflibraryarrows,pgflibraryshapes,tikz}
+%\usepackage{longtable}
+%\usepackage{makeidx}
+\usepackage{float,wrapfig}
+%\usepackage{appendix}
+%\usepackage{hyperref}
+%\makeindex
+\allowdisplaybreaks[4]
+
+% Points, objects
+\def\x{\boldsymbol{x}}
+\def\y{\boldsymbol{y}}
+\def\z{\boldsymbol{z}}
+\def\e{\boldsymbol{e}}
+\def\xstar{\boldsymbol{x}^{\star}}
+\def\field#1{\mathbb{#1}}
+\def\ball#1{\field{B}^{#1}} 
+\def\sphere#1{\field{S}^{#1}}
+\def\open#1{\overset{\mathrm{o}}{#1}}
+
+% Functions
+\def\supp{\operatorname{supp}} 
+\def\sign{\operatorname{sign}}
+\def\ceil#1{\lceil{#1}\rceil} 
+\def\floor#1{\lfloor{#1}\rfloor} 
+\def\BesselJ#1{\operatorname{\mathcal{J}_{#1}}}
+
+% Functionals, norms
+\def\abs#1{\lvert #1 \rvert} 
+\def\norm#1{\lVert #1 \rVert}
+\def\dist{\operatorname{d}}
+\def\sequence#1#2{({#1}_{#2})_{{#2}\in\field{N}}}
+\def\bigsequence#1#2{\big({#1}_{#2}\big)_{{#2}\in\field{N}}}
+\def\L2{L_2(\field{R}^2)} 
+\def\Lpnorm#1#2#3{\norm{#1}_{L_{#2}({#3})}}
+\def\lpnorm#1#2#3{\norm{#1}_{\ell_{#2}({#3})}}
+\def\seminorm#1#2{\abs{#1}_{#2}}
+\def\OpNorm#1#2#3{\norm{#1}_{{#2} \to {#3}}}
+\def\error#1#2#3{\boldsymbol{E}({#1},{#2})_{#3}} 
+
+%\def\LinearSpace#1{\operatorname{span}\left\{ {#1} \right\}}
+% \def\Wnorm#1#2#3#4{\norm{#1}_{W^{#2,#3}({#4})}}
+% \def\Hsnorm#1#2#3{{\norm{#1}_{W^{#2,2}({#3})}^\star}}
+% \def\Besovnorm#1#2#3#4#5{\norm{#1}_{B_{#2}^{#3}(L_{#4}({#5}))}}
+% \def\Lip#1#2#3{\mathrm{Lip}_{#1}\big({#2},{#3}\big)}
+% \def\Lipnorm#1#2#3{\abs{#1}_{\mathrm{Lip}({#2},{#3})}}
+%\def\CcurvC#1#2#3{\gamma_{{#1}{#2}{#3}}}
+%\def\FCcurvC#1#2#3{\widehat{\gamma}_{{#1}{#2}{#3}}}
+%\def\CcurvS#1#2#3{\boldsymbol{\Gamma}_{{#1}{#2}{#3}}}
+%\def\Ccurv{\CcurvC{\alpha}{\beta}{\theta}}
+%\def\Scurv{\CcurvS{\alpha}{\beta}{\theta}}
+%\def\BCcurv{\CcurvC{\alpha}{\boldsymbol{0}}{\boldsymbol{1}}}
+%\def\BScurv{\CcurvS{\alpha}{\boldsymbol{0}}{\boldsymbol{1}}}
+%\def\DerivBScurv#1#2#3{\tfrac{\partial^{#1} \BScurv}{\partial{#2}}{#3}}
+%\def\FCcurv{\FCcurvC{\alpha}{\beta}{\theta}}
+%\def\FBCcurv{\FCcurvC{\alpha}{\boldsymbol{0}}{\boldsymbol{1}}}
+%\def\SDcurvC#1#2#3{\Phi_{{#1}{#2}{#3}}}
+%\def\SDcurv{\SDcurvC{n}{\beta}{k}}
+%\def\DcurvC#1#2#3{\phi_{{#1}{#2}{#3}}}
+%\def\FDcurvC#1#2#3{\widehat{\phi}_{{#1}{#2}{#3}}}
+%\def\Dcurv{\DcurvC{n}{\boldsymbol{z}}{k}}
+%\def\FDcurv{\FDcurvC{n}{\boldsymbol{z}}{k}}
+%\def\CCT{\mathcal{T}}
+%\def\FFF#1{\boldsymbol{\mathcal{I}}_{#1}}
+%\def\comment#1{&&\big( \text{#1} \big)}
+%\def\forcemath#1{${#1}$}
+%\def\IntegralWindowV#1#2{\boldsymbol{\mathcal{V}}_{#1}\big( {#2} \big)}
+%\def\IntegralWindowW#1{\boldsymbol{\mu}_{#1}(W)}
+%\newcommand{\CrossOver}[2]{\genfrac{[}{]}{0pt}{1}{#1}{#2}}
+
+
+%\def\listofnotations{\input symbols.tex \clearpage}
+%\def\addnotation#1#2#3{\noindent{\parbox{1in}{\hfil{#1}}:}\quad{{{#2} \dotfill {#3}}}\\}
+
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\theoremstyle{plain} 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{corollaryP}{Corollary}[proposition]
+
+\theoremstyle{definition} 
+\newtheorem*{definition}{Definition}
+\newtheorem{problem}{Problem}[chapter]
+
+\theoremstyle{remark} 
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{example}{Example}[chapter]

@@ -1,0 +1,47 @@
+\documentclass[12pt]{amsart}
+
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+\noindent{\large\bf MATH 141}\hfill{\large\bf HW Oct 28}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf (due Nov 03)}\hrule
+
+\bigskip
+{\problem \em Use the definition of \textbf{definite integral} to express the integrals as limits.}
+\begin{enumerate}
+\item $\displaystyle{\int_1^2 2x\, dx}$
+\item $\displaystyle{\int_0^1 \frac{x}{x+1}\, dx}$
+\item $\displaystyle{\int_1^2 \sqrt{x}\, dx}$
+\item $\displaystyle{\int_{-\pi/2}^{\pi/2} (1+\cos x)\, dx}$
+\end{enumerate}
+{\problem \em Sketch the region whose signed area is represented by the following definite integral, and evaluate the integral using an appropriate formula from geometry.}
+\begin{enumerate}
+\item $\displaystyle{\int_0^3 x\, dx}$
+\item $\displaystyle{\int_0^2 \big( 1 - \tfrac{1}{2}x \big)\, dx}$
+\item $\displaystyle{\int_0^5 2\, dx}$
+\item $\displaystyle{\int_{-1}^{2} \lvert 2x-3 \rvert\, dx}$
+\end{enumerate}
+{\problem \em Use the properties of definite integrals and appropriate formulas from geometry to evaluate the following integrals.}
+\begin{enumerate}
+\item $\displaystyle{\int_{-1}^3 (4-5x)\, dx}$
+\item $\displaystyle{\int_{-2}^2 ( 1 - 3\lvert x \rvert)\, dx}$
+\item $\displaystyle{\int_0^1 \big( x + 2 \sqrt{1-x^2} \big)\, dx}$
+\item $\displaystyle{\int_{-3}^0 \big( 2 + \sqrt{9-x^2} \big)\, dx}$
+\end{enumerate}
+{\problem \em Find $\displaystyle{\int_{-1}^2 \big( f(x) + 2g(x) \big)\, dx}$ if $\displaystyle{\int_{-1}^2 f(x)\, dx = 5}$ and $\displaystyle{\int_{-1}^2 g(x)\, dx = -3}$.}
+{\problem \em Find $\displaystyle{\int_{1}^4 \big( 3f(x) - g(x) \big)\, dx}$ if $\displaystyle{\int_1^4 f(x)\, dx = 2}$ and $\displaystyle{\int_1^4 g(x)\, dx = 10}$.}
+{\problem \em Evaluate the following limits by expressing them as a definite integral over the interval $[a,b]$, and applying appropriate formulas from geometry.}
+\begin{enumerate}
+  \item $\displaystyle{\lim_{n \to \infty} \sum_{k=1}^n (3x_k^\ast +1) \Delta x}$; $a=0, b=1$.
+  \item $\displaystyle{\lim_{n \to \infty} \sum_{k=1}^n \sqrt{4-(x_k^\ast)^2}\, \Delta x}$; $a=-2, b=2$.
+\end{enumerate}
+\end{document}

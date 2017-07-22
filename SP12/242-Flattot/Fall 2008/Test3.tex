@@ -1,0 +1,102 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+\usepackage{enumerate}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theoremstyle{break}
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 3, Friday 21 April}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work \textbf{\LARGE{clearly}}, \textbf{\LARGE{make sentences}}. No work means no credit. The points are:\\
+ex1: 20, ex2: 20, ex3: 20, ex4: 10, ex5: 30.
+
+
+\begin{exo}[Particular solutions]
+\begin{enumerate}[1)]
+\item Method of variation of parameters in the case $n=2$:\\
+We consider the second-order linear differential equation 
+\[ y''+P(x)y'+Q(x)y=f(x) ,\]
+where $P$, $Q$ and $f$ are continuous. A general solution is given by:
+\[ y_c(x)=c_1 y_1(x)+c_2y_2(x) ,\]
+where $c_1$ and $c_2$ are constants.\\
+What will be the form of a particular solution ? To find this solution, what system of equations, with unknown $c_1'$ and $c_2'$, do we have to solve ?
+\vspace*{5cm}
+\item Find the form of a particular solution in each cases, but DO NOT determine the coefficients.
+\begin{enumerate}[(a)]
+\item $y^{(13)}-9y''=x^4-x+41$,
+\vspace*{2cm}
+\item $y^{(3)}+y''+9y=(x^2-1)e^x+3x$,
+\vspace*{4cm}
+\item $y''-2y'+17y=5e^x(5x-8)\sin(4x)$.
+\vspace*{5cm}
+\end{enumerate}
+\end{enumerate}
+\end{exo}
+
+
+\begin{exo}
+Find the inverse Laplace transform of the following functions:
+\[  a)\ F(s)=\frac{2s+4}{s^2+36}, \qquad b)\ G(s)=\frac{5s+7}{s^2-8s+25}. \]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Use the theorem of differentiation of Laplace transform to find the Laplace transform of
+\[ f(t)=te^{-3t}\sin(2t),\]
+and to find the inverse Laplace transform of 
+\[ F(s)=\ln\left(1+\frac{1}{s^2}\right) .\]
+\end{exo}
+
+\vspace*{9cm}
+
+\begin{exo}
+Solve the initial value problem using Laplace transform:
+\[ x''+x=0, \quad x(0)=0 \ \mbox{and}\ x'(0)=\pi.\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ x^{(3)}-x''+4x'-4x=15e^t, \qquad x(0)=0,\ x'(0)=6\ \mbox{and}\ x''(0)=16.\]
+You will use that 1 is a root of the characteristic equation.
+\end{exo}
+
+
+\end{document}

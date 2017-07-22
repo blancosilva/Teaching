@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 142}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+Fall 2016}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+\begin{tabular}{|ll|}
+\hline & \cr
+{\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+{\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+\hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and VIP ID in the space provided above.
+\item The test has five (5) pages, including this one.
+\item You must show sufficient work to justify all answers unless otherwise stated in the problem.  Correct answers with inconsistent work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node{
+\begin{tabular}{|c|c|c|}
+\hline
+&&\cr
+{\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+&&\cr
+\hline
+&&\cr
+{\Large 2} & \Large 25 & \cr
+&&\cr
+\hline
+&&\cr
+{\Large 3} & \Large 25 & \cr
+&&\cr
+\hline
+&&\cr
+{\Large 4} & \Large 20 & \cr
+&&\cr
+\hline
+&&\cr
+{\Large 5} & \Large 30 & \cr
+&&\cr
+\hline\hline
+&&\cr
+{\large\bf Total} & \Large 100 & \cr
+&&\cr
+\hline
+\end{tabular}};
+\draw (0.5\linewidth, 0) node{
+	\begin{tabular}{|c|c|}
+	\hline & \\
+	Function/Power series & convergence \\ & \\
+	\hline \hline & \\
+	$\displaystyle{\frac{1}{1-x} = \sum_{n=0}^\infty x^n}$ & $(-1, 1)$ \\ & \\
+	\hline & \\
+	$\displaystyle{e^x = \sum_{n=0}^\infty \frac{x^n}{n!}}$ & $(-\infty, \infty)$ \\ & \\
+	\hline & \\
+	$\displaystyle{\cos x = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}}$ & $(-\infty, \infty)$ \\ & \\
+	\hline & \\
+	$\displaystyle{\tan^{-1} x = \sum_{n=0}^\infty \frac{(-1)^n}{2n+1} x^{2n+1}}$ & $[-1, 1]$ \\ & \\
+	\hline & \\
+	$\displaystyle{\ln (1-x) = \dotsb }$ (see problem 4) & ??? \\ & \\
+	\hline
+	\end{tabular}	};
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 142}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+Fall 2016}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+
+\begin{problem}[15 pts]
+For what values of $x$ is the following power series convergent?
+\begin{equation*}
+\sum_{n=1}^\infty \frac{(x-\pi)^n}{n}
+\end{equation*}
+\vspace{8cm}
+\end{problem}
+\hrule
+
+\begin{problem}[10 pts]
+Find the radius and interval of convergence of the following power series.
+\begin{equation*}
+\sum_{n=1}^\infty \frac{(-\pi)^n x^n}{\sqrt{n}}
+\end{equation*}
+\end{problem}
+
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 142}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+Fall 2016}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+\begin{problem}[10 pts]
+Assume known that $\displaystyle{ \frac{1}{1-x} = \sum_{n=0}^\infty x^n \text{ for } \lvert x \rvert <1}$.
+
+\noindent Express the function $f(x)=1/(1-x)^2$ as a power series by differentiating the previous equation.  What is the radius of convergence?
+\vspace{8cm}
+\end{problem}
+\hrule
+
+\begin{problem}[15 pts]
+Find a power series representation for $f(x) = \ln(1-x)$ and its radius of convergence.
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 142}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+Fall 2016}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+
+\begin{problem}[10 pts]
+Find the Taylor series for $f(x) = e^x$ at $b=\pi$.
+
+\textbf{Hint: } The Taylor series of $f(x)$ is $\displaystyle{ \sum_{n=0}^\infty \frac{f^{(n)}(b)}{n!} (x-b)^n }.$
+\vspace{10cm}
+\end{problem}
+\hrule
+
+\begin{problem}[10 pts]
+Find the Maclaurin series for the function $f(x) = x^2 \sin x$
+
+\textbf{Hint: } The MacLaurin series is just a Taylor series centered at $b=0$... But you may not need this at all, if you know a faster way to compute the power series of $\sin x$
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 142}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+Fall 2016}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+\begin{problem}[15 pts]
+Find the first three nonzero terms in the Maclaurin series for $f(x)=e^x\cos x$.
+
+\textbf{Hint:} A relatively fast way to do this is to compute a Taylor or MacLaurin polynomial of $f(x)$ until you find those three non-zero coefficients.
+\vspace{7cm}
+\end{problem}
+\hrule
+
+\begin{problem}[15 pts]
+Evaluate $\int e^{-x^2}\, dx$ as an infinite series.  For this, proceed as indicated:
+\begin{enumerate}
+	\item Find a power series expansion of the function $f(x) = e^{-x^2}$.  You may do this by modification of the power series of $e^x$.  Simplify as much as possible, to help you with easier expressions in the next step.
+	\item In the interval of convergence of this power series, you are allowed to use the \emph{integration trick} to interchange integral with summation.  Apply this technique, amd simplify as much as you can. Once you have produced a power-series representation of this integral, you are done!
+	\end{enumerate}
+\end{problem}
+
+\end{document}

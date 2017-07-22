@@ -1,0 +1,199 @@
+\documentclass[12pt]{amsart}
+\usepackage{pgf,tikz}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\title{Measurable Functions}
+\maketitle
+
+\section{one-liners}
+\begin{problem}
+  \textcolor{blue}{Suppose $\{ f > \lambda \}$ is measurable for each
+    rational number $\lambda$. Is $f$ measurable?}
+\end{problem}
+\begin{problem}
+  \textcolor{gray}{Let $(X,\mathcal{F},\mu)$ be a measure space.
+    Suppose $f$ is a measurable real-valued function defined on
+    $\field{R}$, and put $g(x) = 0$ if $f(x)$ is rational, and $g(x) =
+    1$ if $f(x)$ is irrational.  Is $g$ measurable?}
+\end{problem}
+\begin{problem}
+  \textcolor{gray}{Let $(X, \mathcal{F}, \mu)$ be a measure space.
+    Suppose $f$ is measurable and $B \in \mathcal{B}_1$ is a Borel
+    subset of $\field{R}$. Does it then follow that $f^{-1}(B) \in
+    \mathcal{F}$?}
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Suppose $f$ is a measurable real-valued function
+    defined on $\field{R}$, and let $\phi$ be a real-valued
+    Borel-measurable function defined on $\field{R}$.  Show that the
+    composition $\phi \circ f$ is measurable.}
+\end{problem}
+\begin{problem}
+  Suppose $f$ is measurable and show that for each reals $r,s > 0$,
+  the truncations $f_{r,s}$ are measurable:
+  \begin{equation*}
+    f_{r,s} (x) = \begin{cases}
+      r &\text{if } f(x) > r, \\
+      f(x) &\text{if } -s \leq f(x) \leq r, \\
+      -s &\text{if } f(x) < -s.
+    \end{cases}
+  \end{equation*}
+\end{problem}
+\begin{problem}
+  Let $\{ f_n \}$ be a sequence of measurable functions defined on
+  $\field{R}$, and let $A = \{ x \in \field{R} : \lim_n f_n(x) \text{
+  exists} \}$.  Show that $A$ is measurable.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Let $m(X)<\infty$, let $\lambda_n > 0$, $n \in
+  \field{N}$, and suppose $\{ f_n \}$ is a sequence of extended
+  real-valued measurable functions defined on $X$ that satisfies
+  $\sum_{n=1}^\infty m\{ \abs{f_n} > \lambda_n \} < \infty$.  Prove
+  that $\limsup_n \abs{f_n}/\lambda_n \leq 1$~a.e.}
+\end{problem}
+\begin{problem}[\textbf{NEW!}]
+  Suppose that $f$ is Lebesgue measurable and $\phi$ is real-valued
+  continuous and has the following property: For any null set $N$,
+  $\phi^{-1}(N) \in \mathcal{L}$.  Show that $f \circ \phi$ is
+  Lebesgue measurable.
+\end{problem}
+
+\section{Advanced Problems}
+\begin{problem}
+  Show that if $f$ is an everywhere finite real-valued measurable
+  function, then it is the uniform limit of a sequence of elementary
+  functions\footnote{ An \emph{elementary function} is one which
+  assumes at most countably many values.} Also, unless $f$ is bounded,
+  it is not the uniform limit of a sequence of simple functions.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Suppose $(X, \field{F}, \mu)$ is a $\sigma$-finite
+  measure space and let $f$ be a measurable function defined on
+  $X$. Show that the function $\mu\{ \abs{f} > \lambda \}$, $\lambda
+  >0$, is non-increasing and right-continuous.  Furthermore, if $f$,
+  $f_1$ and $f_2$ are non-negative and measurable, and $\eta_1$,
+  $\eta_2$ are non-negative real numbers so that $f \leq \eta_1 f_1 +
+  \eta_2 f_2$ $\mu$-a.e., then for any $\lambda > 0$,}
+  \begin{equation*}
+    \textcolor{blue}{ \mu \{ f > (\eta_1 + \eta_2)\lambda \} \leq \mu
+    \{ f_1 > \lambda \} + \mu \{ f_2 > \lambda \}.}
+  \end{equation*}
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Show that if $\{ f_n \}$ is a sequence of
+    measurable functions such that $\{ \abs{ f_n} \}$ is nondecreasing
+    and $f = \lim_n f_n$, then $\lim_n \mu \{ \abs{f_n} > \lambda \} =
+    \mu \{ \abs{f} > \lambda \}$ for any $\lambda > 0$.}
+\end{problem}
+\begin{problem}
+  Let $f$ be a real-valued function defined on $[0,1]$ such that $f'$
+  exists for all $x \in (0,1)$.  Prove that $f'$ is measurable.
+\end{problem}
+\begin{problem}
+  Suppose $\{ A_n \}$ is a sequence of Lebesgue-measurable subsets of
+  $\field{R}$, and let $f_n = \chi_{A_n}$, $n \in \field{N}$.  Find a
+  necessary and sufficient condition for the sequence $\{ f_n \}$ to:
+  \begin{enumerate}
+  \item converge a.e.
+  \item converge uniformly.
+  \end{enumerate}
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Show that if $f$ is a real-valued measurable
+  function, then there exists a sequence $\{ \lambda_n \}$ of real
+  numbers and a sequence $\{ A_n \}$ of measurable sets such that $f =
+  \sum_{n=1} ^\infty \lambda_n \chi_{A_n}$ a.e.}
+\end{problem}
+\begin{problem}
+  By means of an example, show that the conclusion of Egorov's Theorem
+  does not necessarily hold if the $f_n$'s are not Lebesgue
+  measurable.
+\end{problem}
+\begin{problem}
+  Let $\{ f_m\}$ be a sequence of Lebesgue-measurable functions
+  defined on $I=[a,b]$ and suppose that $\lim_n f_n = f$ exists
+  a.e.~on $I$.  If $f \neq 0$ a.e.~and $f_n \neq 0$ a.e.~on $I$, prove
+  that given $\varepsilon > 0$, there exists $c>0$ and a sequence $\{
+  E_n \}$ of measurable subsets of $I$ such that $\abs{ f_n (x) } \geq
+  c$, $x \in E_n$ and $\abs{ I \setminus E_n } \leq \varepsilon$ for
+  $n \in \field{N}$.
+\end{problem}
+
+
+\section{Qual problems}
+\begin{problem}[\textcolor{red}{August'99}]
+  Suppose that $f$ is Lebesgue measurable and $0 \leq f(x) \leq 1$ on
+  $[0,1]$, and let $\lambda(y) = m\{ x \in [0,1] : f(x) > y \}$, $y
+  \geq 0$, where $m$ denotes Lebesgue measure. Show that $\lambda$ is
+  non-increasing and continuous from the right on $[0,\infty)$.
+\end{problem}
+\begin{problem}[\textcolor{gray!65!red}{January'00}]
+  \textcolor{gray}{Suppose $f_n$ are measurable functions on some
+    measure space $(\Omega, \mathcal{A}, \mu)$, $n \in \field{N}$,
+    and}
+  \begin{equation*}
+    \textcolor{gray}{ \sum_{n=1}^\infty \mu\{ x \in \Omega :
+    \abs{f_n(x)} > 1/n \} < \infty.}
+  \end{equation*}
+  \textcolor{gray}{Prove that $f_n \to 0$~a.e.}
+\end{problem}
+\begin{problem}[\textcolor{gray!65!red}{August'00}]
+  \textcolor{gray}{ Let $(X, \mathcal{F}, \mu)$ be a measure space and
+    suppose $\{ f_n \}$ is a sequence of measurable functions with the
+    property that for all $n \geq 1$,}
+  \begin{equation*}
+    \textcolor{gray}{ \mu \{ x \in X : \abs{f_n(x)} \geq \lambda \}
+    \leq Ce^{-\lambda^2/n} }
+  \end{equation*}
+  \textcolor{gray}{for all $\lambda > 0$. (Here $C$ is a constant
+    independent of $n$.)  Prove that}
+  \begin{equation*}
+    \textcolor{gray}{\limsup_n \frac{f_{2^n}}{\sqrt{2^n \log\big( \log
+    (2^n)\big)}} \leq 1,~\text{a.e.}}
+  \end{equation*}
+\end{problem}
+\begin{problem}[\textcolor{gray!65!red}{August'00}]
+  \textcolor{gray}{ Answer the following questions:
+    \begin{enumerate}
+    \item Let $(X, \mathcal{F}, \mu)$ be a finite measure space.  Let
+      $\{ f_n \}$ be a sequence of measurable functions.  Prove that
+      $f_n \to f$ in measure if and only if every subsequence $\{
+      f_{n_k} \}$ contains a further sequence $\{ f_{n_{k_j}} \}$ that
+      converges almost everywhere to $f$.
+    \item Let $(X, \mathcal{F}, \mu)$ be a finite measure space.  Let
+      $F \colon \field{R} \to \field{R}$ be continuous and $f_n \to f$
+      in measure.  Prove that $F(f_n) \to F(f)$ in measure.
+    \end{enumerate}}
+\end{problem}
+\begin{problem}[\textcolor{red}{August'03}]
+  Let $f$ be a bounded Lebesgue measurable function on $\field{R}$.
+  Put
+  \begin{equation*}
+    g(x) = \sup \big\{ a \in \field{R} : \abs{ \{ y : y \in (x,x+1)
+    \text{ and } f(y) > a \} } > 0 \big\},
+  \end{equation*}
+  where $\abs{\cdot}$ is the Lebesgue measure.  Prove $\liminf_{x\to
+    0} g(x) \geq g(0)$.
+\end{problem}
+\begin{problem}[\textcolor{red}{January'99, August'06}]
+  \textcolor{blue}{Let $f_n \colon \field{R} \to (-\infty, \infty]$,
+    $n \in \field{N}$, be a sequence of Lebesgue measurable
+    functions.}
+  \begin{enumerate}
+  \item \textcolor{blue}{Prove that $g(x) = \sup_n f_n(x)$ is Lebesgue
+      measurable.}
+  \item \textcolor{blue}{Prove that $h(x) = \limsup_n f_n(x)$ is
+      Lebesgue measurable.}
+  \end{enumerate}
+\end{problem}
+
+\end{document}

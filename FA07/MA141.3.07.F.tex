@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2007}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has six (6) pages, including this one.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2007}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+{\problem[20 pts] \em  Evaluate each integral:} 
+\begin{enumerate}
+\item $\displaystyle{\int \big( 5x + \frac{2}{3x^5} - \sqrt{2} e^x \big)\, dx}$
+\vspace{2cm}
+\item $\displaystyle{\int \big( 3\sin x - 2\sec^2 x \big)\, dx}$
+\vspace{2cm}
+\item $\displaystyle{\int ( 1 + \sin t)^{90} \cos t\, dt}$
+\vspace{2cm}
+\item $\displaystyle{\int \frac{5x^4}{(x^5+1)^2}\, dx}$
+\vspace{3cm}
+\end{enumerate}
+\hrule
+{\problem[10 pts] \em Suppose that a point moves along a curve $y=f(x)$ in the $xy$--plane in such a way that at each point $(x,y)$ on the curve the tangent line has slope $\sin x$.  Find an equation for the curve, given that it passes through the point $(0,-2)$.}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2007}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+{\problem[30 pts] \em Sketch the graph of the rational function $f(x) = \displaystyle{\frac{2x^2-8}{x^2-16}}$.}
+\begin{quotation}
+Indicate clearly:
+\begin{itemize}
+\item $x$- and $y$-intercepts.
+\item Vertical and horizontal asymptotes.
+\item Intervals of increase, decrease and different concavity.
+\item Location of relative extrema and inflection points. 
+\end{itemize}
+\end{quotation}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2007}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+{\problem[10 pts] \em Find the absolute extrema of $f(x) = 6x^{4/3} - 3x^{1/3}$ on the interval $[-1,1]$.}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-2.25cm,2.5cm) node {Absolute maximum at };
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+    \draw (-2.25cm,0.5cm) node {Absolute minimum at };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Let $f(x) = \cos x$. Verify that the hypotheses of Rolle's Theorem are satisfied on the interval $\big[\tfrac{\pi}{2}, 3\tfrac{\pi}{2}\big]$.}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2007}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+\noindent{\Large \textbf{Choose one of the following two story-problems:}}
+{\problem[20 pts] \em The function $s(t) = t^4 - 4t^2 + 4$ describes the position of a particle moving along a coordinate line, where $s$ is in feet and $t \geq 0$ is in seconds.}
+\begin{enumerate}
+\item Find the velocity and acceleration functions.
+\item When is the particle speeding up? Slowing down? (Justify your answers with sign charts).
+\end{enumerate}
+\vspace{9cm}
+\hrule
+{\problem[20 pts] \em A container with square base, vertical sides, and open top is to be made from 1000 ft$^2$ of material.  Find the dimensions of the container with greatest volume.}
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-2.7cm,0.5cm) node {Dimensions of container: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{document}

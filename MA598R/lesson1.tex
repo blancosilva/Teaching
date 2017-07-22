@@ -1,0 +1,195 @@
+\documentclass[12pt]{amsart}
+\usepackage{pgf,tikz}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\def\Lpnorm#1#2{\lVert {#1} \rVert_{#2}}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\title{Abstract and Lebesgue Measures. The Cantor Set.}
+\maketitle
+
+\begin{problem}
+  \textcolor{blue}{Prove that $(\limsup_n A_n) \cap (\limsup_n B_n)
+    \supseteq \limsup_n (A_n \cap B_n)$, and that $(\limsup_n A_n)
+    \cup (\limsup_n B_n) = \limsup_n (A_n \cup B_n)$.  What are the
+    corresponding statements for the $\liminf$?}
+\end{problem}
+\begin{problem}
+  Find $\sigma(\{ \emptyset \})$.  If $\emptyset \subseteq A \subseteq
+  X$, what is $\sigma(\{ A \})$? If $A_1, A_2$ are distinct subsets of
+  $X$, show that $\sigma(\{ A_1, A_2 \})$ consists of, at most,
+  sixteen sets.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Let $\mathcal{O}$ be an open set of $\field{R}^n$.
+    Show that there is a sequence of nonoverlapping closed
+    $n$-dimensional cubes $\{ I_k \}$ such that $\mathcal{O} = \cup_k
+    I_k$.}
+\end{problem}
+\begin{problem}
+  Prove that $\mathcal{B}_n \times \mathcal{B}_m = \mathcal{B}_{n+m}$.
+\end{problem}
+\begin{problem}
+  Let $(X, \mathcal{F}, \mu)$ be a measure space, and let $\{ E_n \}
+  \subseteq \mathcal{F}$.  Show that if $\mu(\cup_n E_n) < \infty$,
+  and $\mu( E_n ) \geq \eta >0$ for infinitely many $n$'s, then
+  $\mu(\limsup_n E_n) > 0$.  By means of an example show that the
+  condition $\mu( \cup_n E_n) < \infty$ cannot be removed.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Let $(X, \mathcal{F}, \mu)$ be a measure space,
+    and $\{ E_n \} \subseteq \mathcal{F}$.  Show that $\mu(\liminf_n
+    E_n) \leq \liminf_n \mu(E_n)$ and, provided that $\mu(\cup_n E_n)
+    < \infty$, $\limsup_n \mu(E_n) \leq \mu(\limsup_n E_n)$.}
+  \textcolor{gray}{By means of examples show that we may have strict
+    inequalities above.}
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Let $\mu$ be a measure on $(\field{R},
+    \mathcal{B}_1)$ with the property that $\mu(I) < \infty$ for every
+    finite interval $I$.  Let $y \in \field{R}$ and put
+    \begin{equation*}
+      F_y(x) = \begin{cases}
+        \mu\big( (y,x] \big) &\text{if } x>y, \\
+        0 &\text{if } x=y, \\
+        -\mu\big( (x,y] \big) &\text{if } x<y.
+      \end{cases}
+    \end{equation*}
+    Show that $F_y$ is a nondecreasing right-continuous function.}
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'05}]
+  Let $(X, \mathcal{F}, \mu)$ be a measure space with $\mu(X)=1$.  Fix
+  $1 \leq n \leq m$, and let $E_1, \dotsc, E_m$ be measurable sets
+  with the property that almost every $x \in X$ belongs to at least
+  $n$ of these sets.  Prove that at least one of these sets must have
+  $\mu$-measure greater than or equal to $n/m$.
+\end{problem}
+\begin{problem}
+  Suppose $A$, $B$ are not Lebesgue measurable.  Is the same true of
+  $A\cup B$?
+\end{problem}
+\begin{problem}
+  Assume that $\abs{N} = 0$ and show that $\{ x^3 : x \in N\}$ is a
+  null Lebesgue set.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'89}]
+  Suppose that $E$ is a Lebesgue measurable subset of $\field{R}$ such
+  that $m(E)<\infty$.  Define $f(x) = m\big( (E+x) \cap E \big)$.
+  Prove that $f$ is a continuous function on $\field{R}$ and that
+  $\lim f(x) = 0$ as $x \to \infty$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'92}]
+  Let $\{ I_n \}_{n \in \Gamma}$ be a collection of closed intervals
+  in $\field{R}$.  Show that $\cup_{n \in \Gamma} I_n \setminus
+  \sup_{n \in \Gamma} \operatorname{Int}{I}_n$ is countable.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'92}]
+  Let $A \subseteq [0,1]$ be a measurable set of positive measure.
+  Show that there exist $x \neq y \in A$ such that $x-y \in
+  \field{Q}$.
+\end{problem}
+\begin{problem}
+  Let $A = \{ x\ in [0,1] : x = 0.a_1a_2\dotsc;\, a_n \neq 7, \text{
+    all }n\}$.  Prove that $\abs{A} = 0$.  \textcolor{gray}{Generalize
+    this result to different configurations of $a_n$'s and to dyadic,
+    triadic expansions.}
+\end{problem}
+
+\begin{problem}[\textcolor{red}{Spring'03}]
+  Let $A$ and $B$ (not necessarily Lebesgue measurable) subsets of
+  $\field{R}$ and let $\abs{\cdot}_e$ stand for Lebesgue outer
+  measure.  Prove that if $\abs{A}_e =1$ and $\abs{B}_e=1$ and $\abs{A
+  \cup B}_e = 2$, then $\abs{ A \cap B }_e = 0$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'04}]
+  Let $0 < \varepsilon <1$.  Construct a closed subset $S_\varepsilon
+  \subset [0,1]$ which has empty interior but has Lebesgue measure
+  greater than $\varepsilon$.
+\end{problem}
+\begin{problem}
+  If $-1 \leq r \leq 1$, show there exists $x, y \in \mathfrak{C}$
+  such that $y - x = r$.
+\end{problem}
+\begin{problem}
+  Construct a Cantor-like subset of $[0,1]$ which consists entirely of
+  irrational numbers.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Prove that there is no Lebesgue measurable subset
+    $A$ of $\field{R}$ such that $a \abs{I} \leq \abs{A \cap I} \leq b
+    \abs{I}$ for all bounded open intervals $I \subset \field{R}$, and
+    $0 < a \leq b < 1$.}
+
+  \textcolor{gray}{Do that by proving the following two assertions:}
+  \begin{enumerate}
+  \item \textcolor{gray}{If $\abs{A \cap I} \leq b\abs{I}$ for all
+      open intervals $I \subset \field{R}$ and $b < 1$, then $\abs{A}
+      = 0$.}
+  \item \textcolor{gray}{If $a\abs{I} \leq \abs{A \cap I}$ for all
+      open intervals $I \subset \field{R}$ and $a >0$, then $\abs{A} =
+      \infty$.}
+  \end{enumerate}
+\end{problem}
+\begin{problem}
+  Prove that there exists a Lebesgue measurable set $E \subset
+  \field{R}$ such that $0 < \abs{E \cap I} < \abs{I}$, all bounded
+  intervals $I \subset \field{R}$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'04}]
+  Prove that
+  \begin{equation*}
+    m^\star (E_1) - m^\star(E_2) \leq 2 m^\star(E_1
+    \operatorname{\Delta} E_2) + 2 m^\star (E_1 \cap E_2),
+  \end{equation*}
+  where $m^\star$ is the Lebesgue outer measure on $\field{R}$, and
+  $E_1, E_2 \subset \field{R}$.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Assume $A$ is a Lebesgue measurable subset of
+    $\field{R}$ of finite measure and put $\phi(x) = \abs{A \cap
+      (-\infty, x]}$. Show that $\phi$ is continuous at each of $x \in
+    \field{R}$.}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'04}]
+  Let $A \subset \field{R}$ be a Lebesgue measurable set.  Show that
+  if $0 \leq b \leq m(A)$, then there is a Lebesgue measurable set $B
+  \subset A$ with $m(B) = b$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'07}]
+Answer the following questions:
+\begin{enumerate}
+\item Suppose that $f\colon [0,1] \to \field{R}$ is non-decreasing
+  with $f(0)=0$ and $f(1)=1$. For $a>0$, let $A$ be the set of all $x
+  \in (0,1)$ for which
+  \begin{equation*}
+    \limsup_{h \to 0} \frac{f(x+h) - f(x)}{h} > a.
+  \end{equation*}
+  Prove that $m^\star(A) < 1/a$, where $m^\star$ denotes the Lebesgue
+  outer measure.
+\item Prove that there is no Lebesgue measurable set $A$ in $[0,1]$
+  with the property that $m(A\cap I) = m(I)/4$ for every interval $I$.
+\end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'07}]
+  Let $\{ E_n \}_{n=1}^\infty$ be Lebesgue-measurable sets in $[0,1]$,
+  let $E= \displaystyle{\cup_{n=1}^\infty} E_n$ and suppose there
+  is an $\varepsilon > 0$ such that $\displaystyle{\sum_{n=1}^\infty}
+  m(E_n) \leq m(E) + \varepsilon$.
+\begin{enumerate}
+\item Show that for all measurable sets $A \subset [0,1]$,
+  \begin{equation*}
+    \sum_{n=1}^\infty m(A \cap E_n) \leq m(A \cap E) + \varepsilon.
+  \end{equation*}
+\item Let $A$ be the set of all $x \in [0,1]$ which are in at least
+  two of the $E_n$'s. Prove that $m(A) \leq \varepsilon$.
+\end{enumerate}
+\end{problem}
+
+\end{document}

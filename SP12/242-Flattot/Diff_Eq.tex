@@ -1,0 +1,84 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+\newtheorem{sujet}{}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\LARGE
+\begin{center}
+Particular solution of a linear differential equation
+\end{center}}
+\vspace{1cm}
+
+
+We want to find a particular solution of the differential equation:
+\[ (E)\quad a_n y^{(n)}+a_{n-1}y^{(n-1)}+ \hdots +a_1 y'+a_0y=f \;,\]
+when $f$ has a good form.\\
+We denote by $(EC)$ the characteristic equation associated with:
+\[ (EC)\quad a_n r^n+a_{n-1}r^{n-1}+ \hdots +a_1 r+a_0=0 \;.\]
+When $f$ is the sum of functions $f=f_1+f_2$, we search for two particular solutions $y_1$ and $y_2$ of
+\begin{eqnarray*}
+(E_1)\quad a_n y^{(n)}+a_{n-1}y^{(n-1)}+ \hdots +a_1 y'+a_0y=f_1 \;,\\
+(E_2)\quad a_n y^{(n)}+a_{n-1}y^{(n-1)}+ \hdots +a_1 y'+a_0y=f_2 \;,
+\end{eqnarray*}
+respectively. A particular solution of $(E)$ is $y_p=y_1+y_2$. We then consider the following three cases:\\[0.2cm] 
+\indent \textbf{Case I:} $f=P$ with $P$ a polynomial\\
+We search for a particular solution of the form:
+\[  y_p=\begin{cases}
+            Q  & \text{if $a_0\neq 0$}\\
+            xQ  & \text{if $a_0=0$, $a_1\neq0$}\\
+            \quad \vdots \\
+            x^n Q  & \text{if $a_{n-1}=\cdots=a_0=0$} \quad \emph{i.e.}\quad a_ny^{(n)}=P,
+           \end{cases} \] 
+where $Q$ is a polynomial with $d^{\circ} Q=d^{\circ} P$. \\[0.2cm]         
+\indent \textbf{Case II:} $f(x)=e^{\alpha x}P(x)$, $\alpha$ a non zero real\\
+We search for a particular solution of the form:
+\[ y_p(x) =\begin{cases}
+            Q(x) e^{\alpha x}   & \text{if $\alpha$ is not a root of $(EC)$}\\
+            xQ(x) e^{\alpha x}  & \text{if $\alpha$ is an unrepeated root of $(EC)$}\\
+            \quad \vdots \\
+            x^kQ(x) e^{\alpha x}  & \text{if $\alpha$ is a root of multiplicity $k$ of $(EC)$},
+           \end{cases} \] 
+where $Q$ is a polynomial with $d^{\circ} Q=d^{\circ} P$.\\
+This case includes the case $f(x)=e^{\alpha x}$.\\[0.2cm]           
+\indent \textbf{Case III:} $f(x)=e^{\alpha x}P(x)(K_1\cos(\beta x)+K_2\sin(\beta x))$, $\beta$ a non zero real, $\alpha$ could be zero\\
+We search for a particular solution of the form: 
+\[ y_p= \begin{cases}
+          e^{\alpha x}(Q_1(x)\cos(\beta x)+Q_2(x)\sin(\beta x))   & \text{if $\alpha+i\beta$ is not a root of $(EC)$}\\
+          e^{\alpha x}x(Q_1(x)\cos(\beta x)+Q_2(x)\sin(\beta x))  & \text{if $\alpha+i\beta$ is a single root of $(EC)$}\\
+           \quad \vdots \\
+           e^{\alpha x}x^k(Q_1(x)\cos(\beta x)+Q_2(x)\sin(\beta x))  & \text{if $\alpha+i\beta$ is root of multilplicity $k$ of $(EC)$},
+           \end{cases} \]
+where $Q_1$ and $Q_2$ are two polynomials with $d^{\circ} Q_1=d^{\circ} Q_2= d^{\circ} P$.\\
+The cases  where $f$ is either of the form $\cos(\beta x)$ or $\sin(\beta x)$ is also included above.\\
+
+
+
+\end{document}

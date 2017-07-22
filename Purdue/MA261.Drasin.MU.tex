@@ -1,0 +1,290 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,pgf,tikz,pgflibraryarrows}
+\renewcommand{\theenumi}{(\Alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\bf MA261}\hfill{\bf Make-up Exam\#1.}\hfill{\bf Spring 2007}\hfill{\bf Page 1/6}
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 10-Digit PUID:} &
+    \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf Recitation Instructor:} & \hrulefill \cr
+    & \cr
+    {\bf Recitation Time:} & \hrulefill \cr &
+    \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item The examination has 10 problems, each worth 10 points.
+\item Fill in the items at the top, and write your name in each page.
+\item Do any necessary work at the space provided or on the back of
+  the pages of this booklet.  Circle the correct answer.
+\item No notes, books or calculators may be used.
+\item Your recitation instructor will return your graded examination.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline &&\cr
+    {\large\bf
+      Page} &
+    {\large\bf
+      Max.~points}
+    & {\large\bf
+      Your points}
+    \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large
+      2}
+    &
+    \Large
+    30
+    &
+    \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large
+      3}
+    &
+    \Large
+    40
+    &
+    \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large
+      4}
+    &
+    \Large
+    30
+    &
+    \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf
+      Total}
+    &
+    \Large
+    100
+    &
+    \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1
+\noindent{\bf MA261}\hfill{\bf Make-up Exam\#1.}\hfill Name: \makebox[4cm]{\hrulefill} \hfill{\bf Spring 2007}\hfill{\bf Page 2/6}
+\bigskip
+{\problem[10 pts] \em A vector equation of the line containing the
+  point $(2,1,-3)$ and per\-pen\-di\-cular to the plane $3x-4y+2z=6$ is}
+\begin{enumerate}
+\item $(2+3t,1-4t,-3+2t)$
+\item $(3+2t, 4-t,2-3t)$
+\item $(2-3t, 1+4t, -3-2t)$
+\item $(3-2t, 4+t,-2-3t)$
+\end{enumerate}
+
+{\problem[10 pts] \em Let ${\boldsymbol u}$ be a unit vector.  Find
+  ${\boldsymbol u} \cdot {\boldsymbol v}$}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[white] (0cm,0cm) rectangle (\linewidth,4cm);
+    \draw (0.25\linewidth, 2cm) node[text width=0.5\linewidth]{
+      \begin{enumerate}
+      \item $-1/\sqrt{2}$
+      \item $-1$
+      \item $1/\sqrt{2}$
+      \item $1$
+      \item $\sqrt{2}$
+      \end{enumerate}
+    };
+    \begin{scope}[>=angle 45, xshift=0.75\linewidth, yshift=1cm]
+      \draw[gray, thin] (0cm,0cm) rectangle (3cm, 3cm);
+      \draw[gray, thin] (0cm,0cm) -- (3cm,3cm);
+      \draw[gray, thin] (0cm,3cm) -- (3cm,0cm);
+      \draw[very thick, ->,blue] (0cm,0cm) -- (3cm,0cm) node[midway,above]{${\boldsymbol u}$};
+      \draw[very thick, ->,red] (1.5cm,1.5cm) -- (3cm,0cm) node[midway,above]{${\boldsymbol v}$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+{\problem[10 pts] \em The graph of the equation $16x^2 + z^2 = y^2-1$
+  looks most like}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (\linewidth, 12.5cm);
+    \foreach \x in {0cm,2.5cm,5cm,7.5cm,10cm,12.5cm}
+    \draw[very thin, gray] (0cm,\x) -- (\linewidth,\x);
+    \foreach \y/\ytext in {1.25cm/(E), 3.75cm/(D), 6.25cm/(C),
+      8.75cm/(B), 11.25cm/(A)}
+    \draw (1cm,\y) node {\ytext};
+  \end{tikzpicture}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1 (2nd version)
+\noindent{\bf MA261}\hfill{\bf Make-up Exam\#1.}\hfill Name: \makebox[4cm]{\hrulefill} \hfill{\bf Spring 2007}\hfill{\bf Page 2/6}
+\bigskip
+{\problem[10 pts] \em A vector equation of the line containing the
+  point $(2,1,-3)$ and per\-pen\-di\-cular to the plane $3x-4y+2z=6$ is}
+\begin{enumerate}
+\item $(2+3t,1-4t,-3+2t)$
+\item $(3+2t, 4-t,2-3t)$
+\item $(2-3t, 1+4t, -3-2t)$
+\item $(3-2t, 4+t,-2-3t)$
+\end{enumerate}
+
+{\problem[10 pts] \em Let ${\boldsymbol u}$ be a unit vector.  Find
+  ${\boldsymbol u} \cdot {\boldsymbol v}$}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[white] (0cm,0cm) rectangle (\linewidth,4cm);
+    \draw (0.25\linewidth, 2cm) node[text width=0.5\linewidth]{
+      \begin{enumerate}
+      \item $-1/\sqrt{2}$
+      \item $-1$
+      \item $1/\sqrt{2}$
+      \item $1$
+      \item $\sqrt{2}$
+      \end{enumerate}
+    };
+    \begin{scope}[>=angle 45, xshift=0.75\linewidth, yshift=1cm]
+      \draw[gray, thin] (0cm,0cm) rectangle (3cm, 3cm);
+      \draw[gray, thin] (0cm,0cm) -- (3cm,3cm);
+      \draw[gray, thin] (0cm,3cm) -- (3cm,0cm);
+      \draw[very thick, ->,blue] (0cm,0cm) -- (3cm,0cm)
+      node[midway,above]{${\boldsymbol u}$};
+      \draw[very thick, ->,red] (1.5cm,1.5cm) -- (3cm,0cm)
+      node[midway,above]{${\boldsymbol v}$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+{\problem[10 pts] \em The graph of the equation $16x^2 + z^2 = y^2-1$
+  looks most like}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (\linewidth, 12.5cm);
+    \draw (0.1\linewidth,0.5cm) node{(A)};
+    \draw (0.3\linewidth,0.5cm) node{(B)};
+    \draw (0.5\linewidth,0.5cm) node{(C)};
+    \draw (0.7\linewidth,0.5cm) node{(D)};
+    \draw (0.9\linewidth,0.5cm) node{(E)};
+  \end{tikzpicture}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\bf MA261}\hfill{\bf Make-up Exam\#1.}\hfill Name: \makebox[4cm]{\hrulefill}\hfill{\bf Spring 2007}\hfill{\bf Page 3/6}
+
+\bigskip
+{\problem[10 pts] \em The solid described by the equation $\rho \leq
+  2$, $\pi/2 \leq \phi \leq \pi$, $0\leq \theta \leq \pi/2$ is}
+\begin{enumerate}
+\item The portion of the sphere $x^2+y^2+z^2 = 4$ to the right of the vertical plane $\{ y=0\}$.
+\item The portion of the ball $x^2+y^2+z^2 \leq 4$ in front of the vertical plane $\{ x=0\}$.
+\item The portion of the sphere $x^2+y^2+z^2 = 4$ below the first
+  quadrant of the $x$--$y$ plane.
+\item The portion of the sphere $x^2+y^2+z^2 = 4$ above the $x$--$y$
+  plane.
+\item The portion of the ball $x^2+y^2+z^2 \leq 4$ below the first
+  quadrant of the $x$--$y$ plane.
+\end{enumerate}
+
+{\problem[10 pts] \em The length of the curve ${\boldsymbol r}(t) =
+  (2t, 3\sin 2t, 3 \cos 2t)$ is}
+\begin{enumerate}
+\item $2\pi$
+\item $\sqrt{2}\pi$
+\item $2\pi\sqrt{10}$
+\item $2\pi\sqrt{3}$
+\item $\sqrt{13}\pi$
+\end{enumerate}
+
+{\problem[10 pts] \em A particle moves when $t \geq 0$ on a curve in
+  the $x$--$y$ plane with acceleration ${\boldsymbol a}(t) = (t,2)$ and
+  at $t=0$ having velocity $(-1,2)$ and position $(-4/3, -8)$.  When
+  the $y$--coordinate is $0$, the $x$--coordinate is}
+\begin{enumerate}
+\item $-2$  
+\item $0$  
+\item $8/3$  
+\item $-1/6$  
+\item $-1$  
+\end{enumerate}
+
+
+{\problem[10 pts] \em The equation of the tangent plane to the surface
+  $z=e^{x^2-y^2}$ when $x=-1$, $y=1$ is}
+\begin{enumerate}
+\item $z=1+2x+2y$  
+\item $z=1-2x-2y$  
+\item $z=-2x-2y$  
+\item $z=2x+2y$  
+\item $z=-1-2x+2y$  
+\end{enumerate}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\bf MA261}\hfill{\bf Make-up Exam\#1.}\hfill Name: \makebox[4cm]{\hrulefill}\hfill{\bf Spring 2007}\hfill{\bf Page 4/6}
+
+\bigskip
+
+{\problem[10 pts] \em Let $h(x,y) = e^{x/y^3}$, then
+  $\displaystyle{\frac{\partial^2 h}{\partial x \partial y} = }$}
+\begin{enumerate}
+\item $e^{x/y^3} \big( -3x/y^4 \big)$
+\item $e^{x/y^3} \big( -3x/y^7 + 3/y^4 \big)$
+\item $e^{x/y^3} y^{-3}$
+\item $e^{x/y^3} \big( -3/y^4 \big)$
+\item $-y^{-4} e^{x/y^3} \big( 3x/y^3 + 3 \big)$
+\end{enumerate}
+\vspace{2cm}
+
+{\problem[10 pts] \em The level curves $f(x,y)=c$ of the function
+  $f(x,y) = \displaystyle{ \frac{x}{x-y^2} }$ are}
+\begin{enumerate}
+\item parabolas.
+\item ellipses with main axis on the $y$--axis.
+\item circles with centers in the $y$--axis.
+\item circles with centers in the $x$--axis.
+\item hyperbolas.
+\end{enumerate}
+\vspace{2cm}
+
+{\problem[10 pts] \em The line $x=1+2t$, $y=4t$, $z=2-t$ intersects
+  the plane $4x-y+2z=2$ at the point}
+\begin{enumerate}
+\item $(5,-12,5)$
+\item $(7,-12,-1)$
+\item $(4,3,5)$
+\item $(3,4,1)$
+\item $(-1,-4,3)$
+\end{enumerate}
+
+\end{document}

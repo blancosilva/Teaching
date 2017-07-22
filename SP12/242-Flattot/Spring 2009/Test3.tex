@@ -1,0 +1,115 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+\usepackage{enumerate}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theoremstyle{break}
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 3, Thursday 16 April}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work \textbf{\LARGE{clearly}}, \textbf{\LARGE{make sentences}}. No work means no credit. The points are:\\
+ex1: 18, ex2: 17, ex3: 15, ex4: 16, ex5: 17,ex6: 17.
+\vspace*{1cm}
+
+
+\begin{exo}
+Give the form of a particular solution in each case, but DO NOT determine the values of the coefficients:
+\begin{enumerate}[i)]
+\item $y^{(13)}+2y'=(7x^5+x^2+1)$,
+\vspace*{3cm}
+\item $y^{(3)}-y''-y'+y=(x^3-3x+2)e^x+2x+1$,
+\vspace*{6cm}
+\item $y^{(3)}-y''-y'+y=e^x(x^2-8)\cos(13x)$.
+\end{enumerate}
+\end{exo}
+ 
+\newpage 
+ 
+\begin{exo}
+Find a particular solution of the differential equation
+\[ y''-3y'+2y=e^{-x}(12x+8) .\]
+Then solve completely this differential equation with the initial values $y(0)=3$ and $y'(0)=6$.
+\end{exo}
+
+\newpage
+
+\begin{exo}[Method of variation of parameters in the case $n=2$]
+\begin{enumerate}[1)]
+\item We consider the second-order linear differential equation 
+\[ y''+P(x)y'+Q(x)y=f(x) ,\]
+where $P$, $Q$ and $f$ are continuous. A complementary solution is given by:
+\[ y_c(x)=c_1 y_1(x)+c_2y_2(x) ,\]
+where $c_1$ and $c_2$ are constants.\\
+What will be the form of a particular solution ? To find this solution, what system of equations, with unknown $c_1'$ and $c_2'$, do we have to solve ?
+\vspace*{3cm}
+\item Apply this method to find a particular solution of the differential equation
+\[ y''+9y=2\sec 3x .\]
+Remark: you may use that $\int \tan 3x dx=-1/3 \ln|\cos 3x| +C $.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}[Laplace Transform of $\sin kt$ and $\cos kt$]
+\begin{enumerate}[1)] 
+\item $a)$ Consider the function $f(t)=\sin kt$. Write the differential equation satisfied by $f$ (you will need to differentiate two times). What are the initial conditions satisfied by this function $f$?\\[4cm]
+      $b)$ Deduce the Laplace transform of $\sin kt$ (don't use the table of Laplace transform !!).
+\vspace*{4cm}
+\item Use the Laplace transform of a derivate to deduce the Laplace transform of $\cos kt$.
+\end{enumerate}
+\end{exo}
+
+\vspace*{5cm}
+
+\begin{exo}
+Find the inverse Laplace transform of the following functions:
+\[ F_1(s)=\frac{5}{s^{5/2}}+\frac{4}{s-5}, \quad F_2(s)=\frac{7s-3}{s^2+4}, \quad F_3(s)=\frac{1}{s(s-2)}.\]
+Remark: you will use that $\Gamma(1/2)=\sqrt{\pi}$.
+\end{exo}
+
+\vspace*{5cm}
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ x''-x-6x=0, \quad x(0)=2, x'(0)=-1. \]
+(To find the inverse Laplace transform, you will use the partial fraction as seen with the logistic equation).
+\end{exo}
+
+
+
+\end{document}

@@ -1,0 +1,76 @@
+\documentclass{amsart}
+\usepackage{pgf,tikz}
+
+% Each of the following commands draw a piece of a function in a rectangle of size 1x2.  
+% Each command accepts only one input.  It must be an integer value that indicates the x-value of the starting position of the corresponding graph.
+% I should comment the details of each command... Maybe Monday
+
+\newcommand{\RightPeak}[1]{\draw[thick] (#1,0) parabola (1+#1,2);}
+\newcommand{\LeftPeak}[1]{\draw[thick] (#1,2) parabola bend (1+#1,0) (1+#1,0);}
+\newcommand{\SpringSineToLeft}[1]{\draw[thick] plot (\x+#1, {1-cos(100/ (\x^3+0.01)});}
+\newcommand{\SpringSineToRight}[1]{\draw[thick] plot (#1-\x+2, {1-cos(100/(\x^3+0.01)});}
+\newcommand{\FanSineToRight}[1]{\draw[thick] plot (#1-\x+2, {\x*(1-cos(100/(\x^3+0.01))});}
+\newcommand{\FanSineToLeft}[1]{\draw[thick] plot (\x+#1, {\x * cos(100/(\x^3+0.01))});}
+\newcommand{\RightPeakOO}[1]{%
+\draw[thick] (#1,0) parabola (1+#1,2); 
+\draw[black, thick, fill=white] (#1,0) circle (2pt); 
+\draw[black, thick, fill=white] (1+#1,2) circle (2pt);}
+\newcommand{\RightPeakOC}[1]{%
+\draw[thick] (#1,0) parabola (1+#1,2); 
+\draw[black, thick, fill=white] (#1,0) circle (2pt); 
+\draw[black, thick, fill=black] (1+#1,2) circle (2pt);}
+\newcommand{\RightPeakCO}[1]{%
+\draw[thick] (#1,0) parabola (1+#1,2); 
+\draw[black, thick, fill=black] (#1,0) circle (2pt); 
+\draw[black, thick, fill=white] (1+#1,2) circle (2pt);}
+\newcommand{\RightPeakCC}[1]{%
+\draw[thick] (#1,0) parabola (1+#1,2); 
+\draw[black, thick, fill=black] (#1,0) circle (2pt); 
+\draw[black, thick, fill=black] (1+#1,2) circle (2pt);}
+\newcommand{\LeftPeakOO}[1]{%
+\draw[thick] (#1,2) parabola bend (1+#1,0) (1+#1,0);
+\draw[black, thick, fill=white] (#1,2) circle (2pt); 
+\draw[black, thick, fill=white] (1+#1,0) circle (2pt);}
+\newcommand{\LeftPeakOC}[1]{%
+\draw[thick] (#1,2) parabola bend (1+#1,0) (1+#1,0);
+\draw[black, thick, fill=white] (#1,2) circle (2pt); 
+\draw[black, thick, fill=black] (1+#1,0) circle (2pt);}
+\newcommand{\LeftPeakCO}[1]{%
+\draw[thick] (#1,2) parabola bend (1+#1,0) (1+#1,0); 
+\draw[black, thick, fill=black] (#1,2) circle (2pt); 
+\draw[black, thick, fill=white] (1+#1,0) circle (2pt);}
+\newcommand{\LeftPeakCC}[1]{%
+\draw[thick] (#1,2) parabola bend (1+#1,0) (1+#1,0);
+\draw[black, thick, fill=black] (#1,2) circle (2pt); 
+\draw[black, thick, fill=black] (1+#1,0) circle (2pt);}
+\newcommand{\StraightOO}[1]{%
+\draw[thick] (#1, 1) -- (#1+1, 1);
+\draw[thick, black, fill=white] (#1, 1) circle (2pt);
+\draw[thick, black, fill=white] (#1+1, 1) circle (2pt);}
+\newcommand{\StraightOC}[1]{%
+\draw[thick] (#1, 1) -- (#1+1, 1);
+\draw[thick, black, fill=white] (#1, 1) circle (2pt);
+\draw[thick, black, fill=black] (#1+1, 1) circle (2pt);}
+\newcommand{\StraightCO}[1]{%
+\draw[thick] (#1, 1) -- (#1+1, 1);
+\draw[thick, black, fill=black] (#1, 1) circle (2pt);
+\draw[thick, black, fill=white] (#1+1, 1) circle (2pt);}
+\newcommand{\StraightCC}[1]{%
+\draw[thick] (#1, 1) -- (#1+1, 1);
+\draw[thick, black, fill=black] (#1, 1) circle (2pt);
+\draw[thick, black, fill=black] (#1+1, 1) circle (2pt);}
+
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[domain=0:2, samples=1000]
+\RightPeak{0}
+\LeftPeak{1}
+\SpringSineToRight{2}  % This guy takes double horizontal space.
+\FanSineToLeft{4}  % This guy also takes double horizontal space.
+\LeftPeakCO{6}
+\StraightCC{7}
+\RightPeakOO{8}
+\LeftPeakOC{9}
+\end{tikzpicture}
+\end{center}
+\end{document}

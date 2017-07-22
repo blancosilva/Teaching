@@ -1,0 +1,250 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Summer I 2014}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has five (5) pages, including this one.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+   \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Summer I 2014}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+{\problem[10 pts] \em Use the limit definition of the derivative to
+compute $f'(2)$ for $f(x)=x^2+x$}
+\begin{equation*}
+f'(x_0) = \lim_{h \to 0} \frac{ f(x_0+h)-f(x_0)}{h}
+\end{equation*}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {$f'(2) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Find an equation of the tangent line to the graph
+of $y=e^x \cos x$ at $x=0$.}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-2.25cm,0.5cm) node {tangent line:};
+    \draw (-1cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Use logarithmic differentiation to compute the
+derivative of the function below:}
+\begin{equation*}
+f(x) = \frac{x^{3/4} \sqrt{x^2+1}}{(3x+2)^5}
+\end{equation*}
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-4cm,0.5cm) node {$f'(x) =$};
+    \draw (-3cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Summer I 2014}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+\noindent Find the derivative of the following functions:
+{\problem[2 pts] $f(x)=4x$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[2 pts] $f(x)=4x^{20}$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[2 pts] $f(x)=4(x^2+3)^{20}$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[2 pts] $f(x)=2^x$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[2 pts] $f(x)=2^x x^{20}$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[5 pts] $f(x)=2^x (x^2+3)^{20}$}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[5 pts] $f(x)=2^x (x^2+3)^{20} \ln x$}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Summer I 2014}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+{\problem[2 pts] $f(x)=\sqrt{x}$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[4 pts] $f(x)=\displaystyle{\frac{1}{\sqrt{x}}}$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[6 pts] $f(x)=\displaystyle{\frac{\pi}{\sqrt{x}}}$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[8 pts] $f(x)=\displaystyle{\frac{\pi}{\sqrt{x}}} \tan x$}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] $f(x)=\displaystyle{\frac{\pi}{\sqrt{x}}} \tan
+\vspace{4cm}
+(\pi x)$}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Summer I 2014}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+{\problem[20 pts] \em Compute $\tfrac{dy}{dx}$ if
+$x^3+y^3=6xy$.  Find the tangent line to the curve at the
+point $(3,3)$.
+\vspace{18cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.8cm,2.1cm) node {$\displaystyle{\frac{dy}{dx}}=$};
+    \draw (0cm,1.6cm) rectangle (5cm,2.8cm);
+    \draw (-1.25cm,0.5cm) node {tangent line:};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\end{document}

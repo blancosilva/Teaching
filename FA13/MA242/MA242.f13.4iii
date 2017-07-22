@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{tikz,array}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 242}\hfill{\large\bf Third Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 1/1}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+
+\hrule
+\bigskip
+\noindent\textbf{[25 pts]} {This problem deals with a highly simplified model of a car of weight 3200 lb.  Assume that the suspension system acts like a single spring and its shock absorbers like a single dashpot, so that its vertical vibrations satisfy a free motion.} 
+\begin{enumerate}
+\item Find the stiffness coefficient $k$ of the spring if the car undergoes free vibrations at 78 cycles per minute when its showck absorbers are disconnected.
+\item With the shock absorbers connected, the car is set into vibration by driving it over a bump, and the resulting damped vibrations have a frequency of 80 cycles per minute.  After how long will the time-varying amplitude be 5\% of its initial value?
+\end{enumerate}
+
+
+\end{document}

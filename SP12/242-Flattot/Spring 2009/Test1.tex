@@ -1,0 +1,121 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 1, Tuesday 10 February}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly. No work means no credit. The points are:\\
+ex1: 10, ex2: 10, ex3: 15, ex4: 15, ex5: 20, ex6: 15, ex7: 15.
+\vspace*{0.5cm}
+
+\begin{exo}[10 points]
+A ball is thrown straight downward from the top of a tall building. The initial speed of the ball is $10$ m/s. It strikes the ground with a speed of $60$ m/s. How tall is the building ?\\
+You will take $g=10\; m/s^2$.
+\end{exo}
+%1.2.27
+
+\vspace*{9cm}
+
+\begin{exo}[10 points]
+Solve the differential equation :
+\[ 3x^5y^2+x^3y'=2y^2 .\]
+\end{exo}
+%1.review.19
+
+\newpage
+
+\begin{exo}[15 points]
+A pitcher of buttermilk initially at $25^{\circ}\mathrm{C}$ is to be cooled by setting it on the front of the porch, where the temperature is $0^{\circ}\mathrm{C}$. Suppose that the temperature of the buttermilk has dropped to $15^{\circ}\mathrm{C}$ after $20$ min. When will it be at $5^{\circ}\mathrm{C}$ ?\\
+You will use that $\ln(1/5)/\ln(3/5) \approx 3.15$.
+\end{exo}
+%1.4.43
+
+\vspace*{10cm}
+
+\begin{exo}[15 points]
+We are considering the following differential equation:
+\[ xy'=4y+x^4\cos x. \]
+Solve this equation with the initial value $y(\pi)=0$.
+\end{exo}
+%1.5.21
+
+\newpage
+
+\begin{exo}[20 points]
+We consider the following differential equation:
+\[ x^3y'=x^2y-y^3,\ x>0. \]
+\begin{enumerate}
+\item What kind of equation is it?
+\vspace*{1cm}
+\item What substitution do we have to do?
+\vspace*{1.5cm}
+\item What kind of differential equation do we obtain after the substitution?
+\vspace*{3cm}
+\item Solve this last differential equation and then find the expression of $y$.
+\end{enumerate}
+\end{exo}
+%1.review.14
+
+\vspace*{8cm}
+
+\begin{exo}[15 points]
+We consider the following differential equation:
+\[ e^y+y\cos x+\left(xe^y+\sin x\right) y'=0 .\]
+\begin{enumerate}
+\item Show that this equation is exact.
+\newpage
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+%1.review.23
+
+\vspace*{8cm}
+
+\begin{exo}[15 points]
+We consider the following differential equation:
+\[ -xy+x^2y'=y^2+x^2 .\]
+\begin{enumerate}
+\item Write this differential equation as a homogeneous one.
+\vspace*{1.5cm}
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+
+
+\end{document}

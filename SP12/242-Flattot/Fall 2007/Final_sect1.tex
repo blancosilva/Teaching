@@ -1,0 +1,126 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Final Exam, Monday 10 December}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all \textbf{work clearly}, \textbf{make sentences}. No work means no credit. The points are:\\
+Ex1: 10, Ex2: 10, Ex3: 15, Ex4: 10, Ex5: 15 and Problem: 40.
+\vspace*{0.5cm}
+
+\begin{exo}
+Solve the initial value problem:
+\[ y'=2xy+3x^2e^{x^2}, \quad y(0)=5 .\]
+\end{exo}
+%22 p56 
+
+\vspace*{8cm}
+
+\begin{exo}
+Find a general solution of the differential equation
+\[ y'=1+x^2+y^2+x^2y^2 .\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Show that the differential equation
+\[ \left(x^3+\frac{y}{x}\right)dx+(y^2+\ln x)dy=0,\]
+is exact and then solve it.
+\end{exo}
+
+\vspace*{13cm}
+
+\begin{exo}
+We give an initial value problem and its exact solution $y(x)$:
+\[ y'=4x^2+2y, \quad y(0)=2, \quad y(x)=-1-2x-2x^2+3e^{2x}. \]
+Apply Euler's method to approximate the solution first on the interval $[0,1]$ with step size $h=0.25$, and on the interval $[0,0.5]$ with the step size $h=0.1$. Write the formula you use for the computation. Then compare the four-decimal-place values of the approximate solution with the values of the exact solution using the following arrays. What do you think of this two different cases ?
+\newpage
+\centerline{step size $h=0.25$}
+{\renewcommand{\arraystretch}{1.5}
+\[ \begin{array}{|r|c|c|c|c|c|}
+      \hline \mbox{x} & 0 & 0.25 & 0.5 & 0.75 & 1 \\
+      \hline \mbox{approx solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline \mbox{exact solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline
+    \end{array} \]}
+\vspace*{0.5cm}\;\\
+\centerline{step size $h=0.1$}    
+{\renewcommand{\arraystretch}{1.5}
+\[ \begin{array}{|r|c|c|c|c|c|c|}
+      \hline \mbox{x} & 0 & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 \\
+      \hline \mbox{approx solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline \mbox{exact solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline
+    \end{array} \]}    
+\end{exo}
+
+\vspace*{1cm}
+
+\begin{exo}
+Solve the differential equation
+\[ y^{(3)}+y''-16y'+20y=0,\]
+using the fact that the function $x\mapsto e^{-5x}$ is solution of this differential equation.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=0, \ y'(0)=9, \ y''(0)=-13.\]
+\end{exo}
+
+\newpage
+
+\noindent \textbf{\large Problem}\\[0.2cm]
+We consider the initial value problem
+\begin{equation}\label{diff_eq}
+y''-3y'+2y=20x\cos(2x),
+\end{equation}
+with the initial values $y(0)=0$, $y'(0)=1$.\\
+We want to solve it by two different ways.\\[0.2cm]
+\textbf{ I : Laplace transform}\\
+\hspace*{0.2cm} $1)$ Use the theorem of differentiation of transforms to find the Laplace transform of $x\cos(2x)$.\\[4cm]
+\hspace*{0.2cm} $2)$ Let $\ds{K(s)=20\frac{s+2}{(s-1)(s^2+4)^2}}$. Show that
+\[ K(s)=\frac{12}{5}\frac{1}{s-1}+\frac{-12s+8}{(s^2+4)^2}+\frac{1}{5}\frac{-12s-12}{s^2+4}. \]
+\newpage
+\noindent \hspace*{0.2cm} $3)$ Then solve the initial value problem using Laplace transform.\\[12cm]
+\textbf{ II : Classical way}\\
+\hspace*{0.2cm} $1)$ Find the complementary solution of (\ref{diff_eq}).\\[3cm]
+\hspace*{0.2cm} $2)$ Use the sheet about the particular solution to find one for (\ref{diff_eq}).\\
+\vspace*{13cm} \;\\
+\hspace*{0.2cm} $3)$ Then solve the initial value problem.\\[6cm]
+\textbf{ III : Conclusion } What method do you prefer ?\\
+
+\end{document}

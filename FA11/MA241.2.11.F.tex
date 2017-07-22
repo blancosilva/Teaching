@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has five (5) pages, including this one.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+{\problem[15 pts] \em  Sketch the domain of $f(x,y)=\displaystyle{\frac{\sqrt{4-x^2}}{y^2+3}}$.}
+\vspace{11.5cm}
+%\begin{flushright}
+%  \begin{tikzpicture}
+%    \draw (-0.5cm,0.5cm) node {$D = $};
+%    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+%  \end{tikzpicture}
+%\end{flushright}
+\hrule
+{\problem[15 pts] \em Evaluate the limit, if it exists}
+\begin{equation*}
+\lim_{(x,y) \to (0,0)} (x^2+y^2) \ln \big( x^2 + y^2 \big)
+\end{equation*}
+\vspace{6.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    %\draw (-0.5cm,0.5cm) node {$\theta = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+{\problem[15 pts] \em The volume of a right circular cone of radius $r$ and height $h$ is $V = \tfrac{1}{3}\pi r^2h$.  Show that if the height remains constant while the radius changes, then the volume satisfies}
+\begin{equation*}
+\frac{\partial V}{\partial r} = \frac{2V}{r}.
+\end{equation*}
+\vspace{10.5cm}
+%\begin{flushright}
+%  \begin{tikzpicture}
+%    \draw (-0.5cm,0.5cm) node {$\ell = $};
+%    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+%  \end{tikzpicture}
+%\end{flushright}
+\hrule
+{\problem[10 pts] \em Use the method of Lagrange multipliers to find the
+dimensions of a rectangle with perimeter $p$ and maximum area.}
+\vspace{4.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,2.0cm) node {width: };
+    \draw (0cm, 1.3cm) rectangle (5cm,2.7cm);
+    \draw (-1cm,0.5cm) node {height: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+{\problem[15 pts] \em Recall the formula for the volume of a right circular cone of radius $r$ and height $h$.  Suppose that the height decreases from 20 to 19.95 inches, and the radius increases from 4 to 4.05 inches.  Compare the change in volume of the cone with an approximation of this change using a total differential.}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.6cm,0.5cm) node {$\Delta V = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-0.6cm,2.5cm) node {$dV = $};
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Find an equation for the tangent plane to the surface $z=xe^{-y}$ at the point $P=(1,0,1)$.}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.4cm,0.5cm) node {tangent plane: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#2.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+{\problem[20 pts] \em Find the absolute extrema of the function $f(x,y) = xy-x-3y$ on the triangular region $R$ with vertices $(0,0)$, $(0,4)$ and $(5,0)$.}
+\vspace{18.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.5cm,0.5cm) node {absolute min:};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-1.5cm,2.5cm) node {absolute max:};
+    \draw (0cm,1.7cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{document}

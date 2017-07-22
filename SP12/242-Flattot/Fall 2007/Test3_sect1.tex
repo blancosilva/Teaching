@@ -1,0 +1,102 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 3, Wednesday 28 November}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly, \textbf{MAKE SENTENCES}. No work means no credit. The points are:\\
+ex1: 25, ex2: 15, ex3: 25, ex4: 20 and the course questions are over 15 points.
+\vspace*{1cm}
+
+\textbf{\large Course Questions}
+\begin{enumerate}
+\item Method of variation of parameters in the case $n=2$:\\
+We consider the second-order linear differential equation 
+\[ y''+P(x)y'+Q(x)y=f(x) ,\]
+where $P$, $Q$ and $f$ are continuous. A general solution is given by:
+\[ y_c(x)=c_1 y_1(x)+c_2y_2(x) ,\]
+where $c_1$ and $c_2$ are constants.\\
+Of what form can we search a particular solution ? To find this, we need to impose a condition, what is this condition ?
+\vspace*{4cm}
+\item Give the definition of a function of exponential order as $t \rightarrow \infty$. Then state the theorem which gives the existence of the Laplace transform.
+\vspace*{4cm}
+\item State the theorem about the Laplace transform of derivates.
+\end{enumerate}
+
+\newpage
+
+\begin{exo}
+Find a particular solution of the following differential equation:
+\[ y''+y'-2y=9x^2e^x.\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Find the inverse Laplace transform of the functions:
+\[ F(s)=\frac{3s+5}{s^2+4} \quad \mbox{and} \quad G(s)=\frac{3}{s^2(s^2+9)}. \]
+\end{exo}
+
+\vspace*{10cm}
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ y''+y=\cos(3t), \quad y(0)=1, y'(0)=0. \]
+\end{exo}
+
+\newpage
+\vspace*{5cm}
+
+\begin{exo}
+\begin{enumerate}
+\item Use the partial fraction to find the inverse Laplace transform of 
+\[ F(s)=\frac{5-2s}{s^2+7s+10}. \]
+\item Write the partial fractions of the rational function (we do not ask the value of the coefficients):
+\[ G(s)=\frac{5s^5+4s^4+3s^3+2s^2+1}{(s-1)(s^3+2s^2+3s)^2}. \]
+\end{enumerate}
+\end{exo}
+
+
+%\begin{exo}
+%Solve the initial value problem using the Laplace transform:
+%\[ x''-6x'+8x=2, \qquad x(0)=x'(0)=0.\]
+%\end{exo}
+
+
+\end{document}

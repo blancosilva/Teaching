@@ -1,0 +1,179 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has five (5) pages, including this one.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+{\problem[15 pts] \em  Evaluate $\iint_R y \sin(xy)\, dA$, where
+  $R=[1,2] \times [0,\pi]$.}
+\vspace{8cm}
+\begin{flushright}
+ \begin{tikzpicture}
+   \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[15 pts] \em Find the volume of the solid $S$ that is bounded
+  by the elliptic paraboloid $x^2+2y^2+z=16$, the planes $x=2$ and
+  $y=2$, and the three coordinate planes.}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.5cm,0.5cm) node {$V = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+{\problem[15 pts] \em Evaluate the integral $\iint_D \sin(y^2)\, dA$
+  where $D$ is the triangle with vertices $(0,0)$, $(1,1)$ and
+  $(0,1)$.}
+\vspace{8cm}
+\begin{flushright}
+ \begin{tikzpicture}
+   \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Find the volume of the solid that lies under the
+  paraboloid $z=x^2+y^2$, above the $xy$--plane, and inside the
+  cylinder $x^2+y^2=2x$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {$V =$};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+{\problem[10 pts] \em Evaluate $\iiint_E \sqrt{x^2+z^2}\, dV$, where
+  $E$ is the region bounded by the paraboloid $y=x^2+z^2$ and the
+  plane $y=4$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[15 pts] \em Evaluate $\int_{-2}^2
+  \int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}} \int_{\sqrt{x^2+y^2}}^2
+  (x^2+y^2)\, dz\, dy\, dx$ by passing the description of the region
+  $E$ in terms of cylindrical coordinates (Trust me, it is
+  \textbf{way} easier than evaluating the integral above directly)}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Fall 2011}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+{\problem[20 pts] \em A transformation is defined by the equations
+  $x=u^2-v^2, y=2uv$.}
+\begin{enumerate}
+\item Find the image of the square $S=\big\{ (u,v) : 0 \leq u \leq 1,
+  0 \leq v \leq 1 \big\}$.
+\item Use the same change of variables to evaluate the integral
+  $\iint_R y\, dA$, where $R$ is the region bounded by the $x$--axis
+  and the parabolas $y^2=4-4x$ and $y^2=4+4x$, $y\geq 0$.
+\end{enumerate}
+\vspace{14.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.5cm,0.5cm) node {$\iint_R y\, dA =$};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-1.5cm,2.5cm) node {Image of $S$:};
+    \draw (0cm,1.7cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{document}

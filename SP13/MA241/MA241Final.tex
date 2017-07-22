@@ -1,0 +1,427 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 1/13}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has thirteen (13) pages, including this one.  You have 150
+minutes to complete it.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\item \textbf{A:} 243--270 pts. \textbf{B+:} 230--242 pts. \textbf{B:} 216--229 pts. \textbf{C+:} 203--215 pts. \textbf{C:} 189--202 pts.\\ \textbf{D+:} 175--188 pts. \textbf{D:} 160--174 pts. \textbf{F}: less than 160 pts.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max} & {\large\bf Points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max} & {\large\bf Points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 6} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 7} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 8} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 9} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max} & {\large\bf Points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 10} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 11} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 12} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 13} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 2/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em  Find the distance $d$ from the point $(3,7,-5)$ to the $z$--axis.} 
+\vspace{8.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.5cm,0.5cm) node {$d = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[15 pts] \em Find an exact expression for the angle $\theta$ between
+the vectors $\boldsymbol{v}=\langle 3, -1, 5\rangle$ and
+$\boldsymbol{w}=\langle -2, 4, 3\rangle$.} 
+\vspace{8.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.5cm,0.5cm) node {$\theta = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 3/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em Find the length $\ell$ of the curve $\boldsymbol{r}(t) =
+\boldsymbol{i} + t^2 \boldsymbol{j} + t^3 \boldsymbol{k}$ for $0 \leq t \leq
+1$.} 
+\vspace{9.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.5cm,0.5cm) node {$\ell = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em At what points does the helix $\boldsymbol{r}(t) = \langle \sin t, \cos t, t \rangle$ intersect the sphere $x^2+y^2+z^2=5$?}
+\vspace{7.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {points: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 4/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em Find a unit vector $\boldsymbol{v}$ that is orthogonal
+to both $\boldsymbol{i} + \boldsymbol{j}$ and $\boldsymbol{i} +
+\boldsymbol{k}$.} 
+\vspace{11cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.5cm,0.5cm) node {$\boldsymbol{v} = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Determine whether the points $A=(0,-5,5)$, $ B=
+(1,-2,4)$ and $C=(3,4,2)$ lie on a straight line.}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 5/13}\hrule
+
+\bigskip
+{\problem[20 pts] \em Find parametric equations for the line of intersections
+of the planes $x+y+z=1$ and $x+2y+2z=1$.  Find the angle $\theta$ between the
+two planes.}
+\vspace{18.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-2cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-0.5cm,2.5cm) node {$\theta = $};
+    \draw (0cm,1.7cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 6
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 6/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em  Sketch the domain of $f(x,y)=\displaystyle{\frac{\sqrt{4-x^2}}{y^2+3}}$.}
+\vspace{11.5cm}
+%\begin{flushright}
+%  \begin{tikzpicture}
+%    \draw (-0.5cm,0.5cm) node {$D = $};
+%    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+%  \end{tikzpicture}
+%\end{flushright}
+\hrule
+{\problem[15 pts] \em Evaluate the limit, if it exists}
+\begin{equation*}
+\lim_{(x,y) \to (0,0)} (x^2+y^2) \ln \big( x^2 + y^2 \big)
+\end{equation*}
+\vspace{6.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    %\draw (-0.5cm,0.5cm) node {$\theta = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 7
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 7/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em The volume of a right circular cone of radius $r$ and height $h$ is $V = \tfrac{1}{3}\pi r^2h$.  Show that if the height remains constant while the radius changes, then the volume satisfies}
+\begin{equation*}
+\frac{\partial V}{\partial r} = \frac{2V}{r}.
+\end{equation*}
+\vspace{10.5cm}
+%\begin{flushright}
+%  \begin{tikzpicture}
+%    \draw (-0.5cm,0.5cm) node {$\ell = $};
+%    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+%  \end{tikzpicture}
+%\end{flushright}
+\hrule
+{\problem[10 pts] \em Use the method of Lagrange multipliers to find the
+dimensions of a rectangle with perimeter $p$ and maximum area.}
+\vspace{4.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,2.0cm) node {width: };
+    \draw (0cm, 1.3cm) rectangle (5cm,2.7cm);
+    \draw (-1cm,0.5cm) node {height: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 8
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 8/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em Recall the formula for the volume of a right circular cone of radius $r$ and height $h$.  Suppose that the height decreases from 20 to 19.95 inches, and the radius increases from 4 to 4.05 inches.  Compare the change in volume of the cone with an approximation of this change using a total differential.}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.6cm,0.5cm) node {$\Delta V = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-0.6cm,2.5cm) node {$dV = $};
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Find an equation for the tangent plane to the surface $z=xe^{-y}$ at the point $P=(1,0,1)$.}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.4cm,0.5cm) node {tangent plane: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 9
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 9/13}\hrule
+
+\bigskip
+{\problem[20 pts] \em Find the absolute extrema of the function $f(x,y) = xy-x-3y$ on the triangular region $R$ with vertices $(0,0)$, $(0,4)$ and $(5,0)$.}
+\vspace{18.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.5cm,0.5cm) node {absolute min:};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-1.5cm,2.5cm) node {absolute max:};
+    \draw (0cm,1.7cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 10
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 10/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em  Evaluate $\iint_R y \sin(xy)\, dA$, where
+  $R=[1,2] \times [0,\pi]$.}
+\vspace{8cm}
+\begin{flushright}
+ \begin{tikzpicture}
+   \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[15 pts] \em Find the volume of the solid $S$ that is bounded
+  by the elliptic paraboloid $x^2+2y^2+z=16$, the planes $x=2$ and
+  $y=2$, and the three coordinate planes.}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.5cm,0.5cm) node {$V = $};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 11
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 11/13}\hrule
+
+\bigskip
+{\problem[15 pts] \em Evaluate the integral $\iint_D \sin(y^2)\, dA$
+  where $D$ is the triangle with vertices $(0,0)$, $(1,1)$ and
+  $(0,1)$.}
+\vspace{8cm}
+\begin{flushright}
+ \begin{tikzpicture}
+   \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Find the volume of the solid that lies under the
+  paraboloid $z=x^2+y^2$, above the $xy$--plane, and inside the
+  cylinder $x^2+y^2=2x$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {$V =$};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 12
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 12/13}\hrule
+
+\bigskip
+{\problem[10 pts] \em Evaluate $\iiint_E \sqrt{x^2+z^2}\, dV$, where
+  $E$ is the region bounded by the paraboloid $y=x^2+z^2$ and the
+  plane $y=4$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[15 pts] \em Evaluate $\int_{-2}^2
+  \int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}} \int_{\sqrt{x^2+y^2}}^2
+  (x^2+y^2)\, dz\, dy\, dx$ by passing the description of the region
+  $E$ in terms of cylindrical coordinates (Trust me, it is
+  \textbf{way} easier than evaluating the integral above directly)}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 13
+\noindent{\large\bf MATH 241}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2013}\hfill{\large\bf Page 13/13}\hrule
+
+\bigskip
+{\problem[20 pts] \em A transformation is defined by the equations
+  $x=u^2-v^2, y=2uv$.}
+\begin{enumerate}
+\item Find the image of the square $S=\big\{ (u,v) : 0 \leq u \leq 1,
+  0 \leq v \leq 1 \big\}$.
+\item Use the same change of variables to evaluate the integral
+  $\iint_R y\, dA$, where $R$ is the region bounded by the $x$--axis
+  and the parabolas $y^2=4-4x$ and $y^2=4+4x$, $y\geq 0$.
+\end{enumerate}
+\vspace{14.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.5cm,0.5cm) node {$\iint_R y\, dA =$};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (-1.5cm,2.5cm) node {Image of $S$:};
+    \draw (0cm,1.7cm) rectangle (5cm,3.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{document}

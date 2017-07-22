@@ -1,0 +1,101 @@
+\documentclass[12pt]{amsart}
+\usepackage{pgf,tikz}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\title{Riemann-Stieltjes Integration. Bounded Variation}
+\maketitle
+
+\begin{problem}
+  \textcolor{blue}{ Assume $\{ f_n\}$ is a sequence of real-valued
+    nondecreasing functions defined on $I=[a,b]$, and suppose $f(x) =
+    \lim_n f_n(x)$ exists for all $x \in I$.  Is $f$ necessarily
+    nondecreasing?}
+\end{problem}
+\begin{problem}
+  Assume $f$ is a bounded real-valued function defined on $I=[a,b]$
+  and let $\mathcal{F} = \{ g: g \text{ defined on }I, g \text{
+    non-increasing and }g(x) \geq f(x)\text{ for }x\in I\}$.  Show
+  that $f^\star (x) = \sup \{ f(y) : x\leq y \leq b\}$, for $x \in I$,
+  belongs to $\mathcal{F}$, and in fact it is the smallest element
+  there.  Moreover, if $f$ is continuous at $x$, so is $f^\star$.
+\end{problem}
+\begin{problem}
+  Show that a monotone function $f\colon [a,b] \to \field{R}$ has, at
+  most, countably many discontinuities, and that all are of the first
+  kind. Conversely, if $D$ is an at most countable subset of $[a,b]$,
+  construct a monotone function $f\colon [a,b] \to \field{R}$ such
+  that $D = \{ x\in [a,b] : f \text{ is discontinuous at }x \}$.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ A real-valued function $f$ defined on $I = [a,b]$
+    is said to be Lipschitz there if there is a constant $c$ such that
+    $\abs{ f(x) - f(y)} \leq c\abs{ x-y }$ for all $x,y \in I$.  Show
+    that if $f$ is Lipschitz on $I$, it is $BV$ there.}
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{ Let $f,g$ be $BV$ on $I=[a,b]$.  Show that $f,g$
+    are bounded on $I$, and that for any real number $\eta$, $f+\eta
+    g$ is $BV$ on $I$ and $V(f+\eta g; a, b) \leq V(f; a,b) +
+    \abs{\eta} V(g; a,b)$.}
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'01}]
+  Let $f,g \in BV$ on $I=[a,b]$.  Show that $fg \in BV(I)$, and that
+  if $\abs{g(x)} \geq \varepsilon > 0$ for $x \in I$, then also $f/g
+  \in BV(I)$.  Estimate $V(fg; a,b)$ and $V(f/g; a,b)$ in terms of
+  $V(f;a,b)$, $V(g;a,b)$ and $\varepsilon$.
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Let $f,g$ be real-valued functions defined on
+    $I=[a,b]$, and suppose that $f$ and $g$ differ at finitely many
+    values.  show that $f \in BV(I)$ if and only if $g \in BV(I)$, and
+    that $V(f;a,b) = V(g;a,b)$.}
+\end{problem}
+\begin{problem}
+  Characterize those real numbers $\alpha, \beta$ for which $f(x) =
+  x^\alpha \sin(x^{-\beta})$, $x\neq 0$, $f(0)=0$ is $BV$ on $[0,1]$.
+  Verify that the choice $\alpha=2$, $\beta=3/2$ gives an example of a
+  function which is $BV$ on $I$, differentiable there, and yet $f'$ is
+  unbounded.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'03}]
+  Let $\{ q_1, q_2, \dotsc \}$ be an enumeration of the set of
+  rational numbers $q$ with $0<q<1$. Define $f\colon [0,1] \to
+  \field{R}$ by
+  \begin{equation*}
+    f(x) = \begin{cases}
+      2^{-n} &\text{if } x=q_n, \\
+      0 &\text{otherwise}.
+    \end{cases} 
+  \end{equation*}
+  Show that $f$ has bounded variation.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'03}]
+  Give an example of a function $f\colon [0,1] \to \field{R}$ such
+  that $f=0$ almost everywhere and $f$ does not have bounded
+  variation, and justify your answer.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'04}]
+  Find all the functions $f\colon [0,1] \to \field{R}$ with bounded
+  variation satisfying
+  \begin{equation*}
+    f(x) + \big( T_0^x f\big)^{1/2} =1, \text{ for all }x \in [0,1],
+  \end{equation*}
+  and
+  \begin{equation*}
+    \int_0^1 f(x)\, dx = 1/3.
+  \end{equation*}
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'05}]
+  Suppose $f$ is of bounded variation on $[0,1]$.  Prove that so is
+  $e^f$.
+\end{problem}
+\end{document}

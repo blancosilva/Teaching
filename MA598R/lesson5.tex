@@ -1,0 +1,369 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage{pgf,tikz}
+\usepackage[english]{babel}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\def\Lpnorm#1#2{\lVert {#1} \rVert_{#2}}
+\def\redc#1{[\textcolor{red}{#1}]}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+\newtheorem*{hint}{Hint}
+
+\begin{document}
+\title{Integration. v2.0}
+\maketitle
+
+\section{One-liners}
+\begin{problem}
+  True of false: If $f$ is a non-negative function defined on
+  $\field{R}$ and $\int_{\field{R}} f\, dx < \infty$, then
+  $\lim_{\abs{x} \to \infty} f(x) = 0$.
+\end{problem}
+\begin{problem}
+  Let $f, f_n \in L(\field{R})$, $n \in \field{N}$ and suppose that
+  \begin{equation*}
+    \int_{\field{R}} \abs{f_n(x) - f(x)}\, dx \leq n^{-2}, \text{ for
+      all } n.
+  \end{equation*}
+  Prove that $f_n \to f$~a.e.
+\end{problem}
+\begin{problem}
+  Let $(X, \mathcal{F}, \mu)$ be a measure space and $f \in L(\mu)$.
+  Show that the set $\{ f \neq 0\}$ is $\sigma$-finite.
+\end{problem}
+\begin{problem}
+  Prove the following Chebychev-like inequality: If $I=[0,1]$ and $f
+  \in L(I)$ is non-negative and has integral $1$, then
+  \begin{equation*}
+    \int_{\{ f > \eta\} } f(x)\, dx \geq 1-\eta, \text{ all } 0< \eta <1.
+  \end{equation*}
+\end{problem}
+\begin{problem}
+  Prove the following variant of Fatou's Lemma: If $\{ f_n \}$ is a
+  sequence of non-negative measurable functions which converges to
+  $f$~a.e.~and $\int_X f_n\, d\mu \leq M < \infty$ for all $n$, then
+  $f$ is integrable and $\int_X f\, d\mu \leq M$.
+\end{problem}
+\begin{problem}
+  Let $(X, \mathcal{F}, \mu)$ be a measure space and $\{ f_n \}$ be a
+  non-increasing sequence of non-negative measurable functions which
+  converges to $f$.  Show that $\lim_n \int_X f_n\, d\mu = \int_X f,
+  d\mu$ provided that $f_1 \in L(\mu)$ and that the conclusion may
+  fail if $f_1 \not\in L(\mu)$.
+\end{problem}
+\begin{problem}
+  Let $(X, \mathcal{F}, \mu)$ be a finite measure space and $\{ f_n
+  \}$ a sequence of integrable functions that converges to a function
+  $f$ uniformly on $X$. Show that $f$ is also integrable and that
+  $\lim_n \int_X f_n\, d\mu = \int_X f\, d\mu$.  Is a similar result
+  true if $\mu(X) = \infty$?
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Let $(X, \mathcal{F}, \mu)$ be a measure space and
+    $\{ f_n \}$ a sequence of measurable functions that converges to
+    $f$~a.e.  If $f \in L(\mu)$, show that $\lim_n \int_X \abs{f_n}\,
+    d\mu = \int_X \abs{f}\, d\mu$ implies $\lim_n \int_X \abs{f_n -
+      f}\, d\mu = 0$} \textcolor{gray}{and that the conclusion may
+    fail if $f$ is not integrable.}
+\end{problem}
+
+\section{Advanced Problems}
+\begin{problem}
+  Let $f$ be a non-negative measurable function defined on
+  $\field{R}$.  Prove that if $\sum_{n=-\infty}^\infty f(x+n)$ is
+  integrable, then $f = 0$~a.e.
+\end{problem}
+\begin{problem}
+  Suppose $f$ is integrable on $\field{R}^n$ and for a fixed $h \in
+  \field{R}^n$ let $g(x) = f(x+h)$ be a translate of $f$.  Show that
+  $g$ is also integrable and that $\int_{\field{R}^n} g\, dx =
+  \int_{\field{R}^n} f\, dx$.
+\end{problem}
+\begin{problem}
+  Let $(X, \mathcal{F}, \mu)$ be a finite measure space, and $f$ a
+  non-negative real-valued function defined on $X$. Prove that a
+  necessary and sufficient condition that $\lim_n \int_X f^n\, d\mu$
+  should exist as a finite number is that $\mu \{ f > 1 \} = 0$.
+\end{problem}
+\begin{problem}
+  Let $r_1, r_2, \dotsc, r_n, \dotsc$ be an enumeration of the
+  rational numbers in $I = [0,1]$, and let $f(x) = \sum_{\{ n : x >
+    r_n \} } 2^{-n}$.  Compute $\int_I f(x)\, dx$.
+\end{problem}
+\begin{problem}
+  Prove that the sum $\sum_{n=0}^\infty \int_0^{\pi/2} \big(
+  1-\sqrt{\sin x} \big)^n \cos x\, dx$ converges to a finite limit,
+  and find its value.
+\end{problem}
+\begin{problem}\label{forJan03}
+  \textcolor{blue}{Let $(X,\mathcal{F},\mu)$ be a measure space and
+    $\{ f_n \}$ a sequence of measurable functions such that
+    $\sum_{n=1}^\infty \int_X \abs{f_n}\, d\mu < \infty$.  Show that
+    $\sum_{n=1}^\infty f_n$ converges absolutely~a.e.~and $\int_X
+    \big( \sum_{n=1}^\infty f_n \big)\, d\mu = \sum_{n=1}^\infty
+    \int_X f_n\, d\mu$.  In particular, also $\lim_n f_n = 0$~a.e.}
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Let $(X, \mathcal{F}, \mu)$ be a measure space and
+    assume $\{ f_n \}$ is a sequence of non-negative measurable
+    functions that converges to $f$~a.e.  If $\lim_n \int_X f_n\, d\mu
+    = \int_X f\, d\mu < \infty$, is it true that $\lim_n \int_E f_n\,
+    d\mu = \int_E f\, d\mu$ for every $E \subset \mathcal{F}$?}
+\end{problem}
+\begin{problem}
+  Let $\{ f_n \}$ be a sequence of non-negative integrable functions
+  such that $\lim_n \int_X f_n\, d\mu = 0$.  If $g \in L(\mu)$ has the
+  property that $g f_n \in L(\mu)$ for all $n$, does it follow that
+  $\lim_n \int_X gf_n\, d\mu = 0$?
+\end{problem}
+\begin{problem}
+  \textcolor{blue}{Let $f, g, f_n, g_n$ be integrable functions, $n \in
+    \field{N}$. If $\lim_n f_n = f$~a.e., $\abs{f_n} \leq g_n$ for all
+    $n$, and $\lim_n \int_X g_n\, d\mu = \int_X g\, d\mu$, is it also
+    true that $\lim_n \int_X f_n\, d\mu = \int_X f\, d\mu$?}
+\end{problem}
+\begin{problem}
+  Let $f$ be a real-valued measurable function defined on $[a,b]$ such
+  that $\int_a^b f^n\, dx = c$ for $n=2,3,4$.  Show that $f =
+  \chi_A$~a.e.~for some measurable set $A \subset [a,b]$.
+\end{problem}
+
+\begin{problem}
+  \textcolor{blue}{If $f \in L_1[0,1]$, then for all $\varepsilon >0$
+    there exists $\delta > 0$ such that $m(A) < \delta$ implies that
+    $\int_A \abs{f(x)}\, dx < \varepsilon$.}
+\end{problem}
+\begin{problem}
+  Show that if $f \in L(\mu)$, then $\lim_{\lambda\to \infty}
+  \int_{\{\abs{f} > \lambda\}} \abs{f}\, d\mu = 0$.
+\end{problem}
+\begin{problem}
+  Let $(X, \mathcal{F}, \mu)$ be a finite measure space, and $f$ a
+  measurable extended real-valued function defined on $X$.  Show that
+  $f \in L(\mu)$ if and only if $\sum_{k=1}^\infty \mu\{ \abs{f} \geq
+  k \} < \infty$.
+\end{problem}
+\begin{problem}[see Problem \ref{L1notae}]
+  Discuss the following statements (prove or give a counter-example):
+  \begin{enumerate}
+  \item Convergence a.e.~implies convergence in $L_1$.
+  \item Convergence in $L_1$ implies convergence a.e.
+  \item Convergence in $L_1$ implies convergence in measure.
+  \item Convergence in measure implies convergence a.e.
+  \item Convergence a.e.~implies convergence in measure.
+  \end{enumerate}
+\end{problem}
+
+\section{Qual Problems}
+\begin{problem}\redc{Jan'00}
+  Suppose $E \subset \field{R}$ has finite Lebesgue measure and
+  $\varphi \in L_1(\field{R})$.  Show that
+  \begin{equation*}
+    \lim_{t \to \infty} \int_E \varphi(x+t)\, dx = 0.
+  \end{equation*}
+\end{problem}
+\begin{problem}\redc{Aug'00}
+  Let $(X, \mathcal{F}. \mu)$ be a finite measure space. Let $f_n$ be
+  a sequence of measurable functions with $f_1 \in L_1(\mu)$ and with
+  the property that
+  \begin{equation*}
+    \mu\{ x \in X : \abs{f_n(x)} > \lambda \} \leq \mu \{ x \in X :
+    \abs{f_1(x)} > \lambda \}
+  \end{equation*}
+  for all $n$ and all $\lambda > 0$. Prove that
+  \begin{equation*}
+    \lim_n \frac{1}{n}\int_X \big( \max_{1 \leq k \leq n} \abs{f_k}
+    \big)\, d\mu = 0. 
+  \end{equation*}
+\end{problem}
+\begin{problem}\redc{Aug'00}
+  Let $f$ be a continuous function on $[-1,1]$. Find
+  \begin{equation*}
+    \lim_n n\int_{-1}^1 f(x) \big( 1 - n \abs{x} \big)\, dx.
+  \end{equation*}
+\end{problem}
+\begin{problem}\redc{Aug'01}
+  Let $(\Omega, \mathcal{A}, \mu)$ be a $\sigma$-finite measure space,
+  $f\colon \Omega \to \field{R}$ measurable.  Suppose there is a $c
+  \in \field{R}$ such that for all $X \subset \Omega$ of finite
+  measure, $\abs{\int_X f\, d\mu} \leq c$ holds.  Prove that $f \in
+  L_1(\Omega, \mathcal{A}, \mu)$.
+\end{problem}
+\begin{problem}\redc{Aug'01}
+  Let $g\colon [a,b] \to \field{R}$ be Lebesgue measurable, and
+  suppose $\int_a^b g\psi\, dx = 0$ for all continuous $\psi\colon
+  [a,b] \to \field{R}$.  Prove that $g = 0$~a.e.
+\end{problem}
+\begin{problem}\redc{Jan'02}
+  Let $f_n\colon X \to [0,\infty)$ be a sequence of measurable
+  functions on the measure space $(X, \mathcal{F}, \mu)$.  Suppose
+  there is a positive constant $M$ such that the functions $g_n(x) =
+  f_n(x) \chi_{\{ f_n \leq M\}}$ satisfy $\Lpnorm{g_n}{1} \leq
+  An^{-4/3}$ and for wich $\mu\{ x \in X : f_n(x) > M\} \leq
+  Bn^{-5/4}$, where $A$ and $B$ are positive constants independent of
+  $n$.  Prove that
+  \begin{equation*}
+    \sum_{n=1}^\infty f_n(x) < \infty\text{ a.e.}
+  \end{equation*}
+\end{problem}
+\begin{problem}\redc{Jan'02}
+  Let $\{ f_n \}$ be a sequence of non-negative functions in
+  $L_1[0,1]$ with the property that $\int_0^1 f_n(t)\, dt = 1$ and
+  $\int_{1/n}^1 f_n(t)\, dt \leq 1/n$ for all $n$.  Define $h(x) =
+  \sup_n f_n(x)$.  Prove that $ h \neq L_1[0,1]$.
+\end{problem}
+\begin{problem}\redc{Aug'02}
+  Let $f \in L_1[0,1]$ and let $F(x) = \int_0^x f(t)\, dt$.  If $E$ is
+  a measurable subset of $[0,1]$, show that
+  \begin{enumerate}
+  \item $F(E) = \{ F(x) : x \in E\}$ is measurable.
+  \item $m\{ F(E) \} \leq \displaystyle{\int_E \abs{f(t)}\, dt}$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[see problem \ref{forJan03}, \textcolor{red}{Jan'03}]
+  Assume that $f_n$ is Lebesgue measurable for $n \in \field{N}$, $f_n
+  \geq 0$, and $\sum_{n=1}^\infty \int f_n(x)\, dx < \infty$.  Show
+  that $f_n \to 0$~a.e.
+\end{problem}
+\begin{problem}
+  In each case find $\lim_n \int_0^\infty f_n(x)\, dx$ and justify
+  your answer.
+  \begin{enumerate}
+  \item $f_n(x) = x^{-1/2} \cos\big( \frac{x+1}{n} \big)
+    \chi_{[1,n-1]}$.
+  \item $f_n(x) = x^{-1/2} \sin \big( \frac{x+1}{n} \big)
+    \chi_{[n,2n]}$.
+  \item $f_n(x) = x^{-1/2} \sin\big( 1 + \frac{x}{n} \big)
+    \chi_{(0,1)}$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\redc{Jan'04}
+  Let $f \in L_1(\field{R})$ satisfy
+  \begin{gather}
+    f(x) = 0 \text{ if } \abs{x} > 1,\label{eq:F04cond1} \\
+    \int_{\field{R}} f(x) x^k\, dx = 0, k\in \field{N}.
+  \end{gather}
+  \begin{enumerate}
+  \item Prove that $f=0$~a.e.
+  \item Does your argument apply if \eqref{eq:F04cond1} is replaced
+    with the milder condition
+    \begin{equation}\label{eq:F04cond1'}
+        \abs{x^k f(x)} \to 0 \text{ as } \abs{x} \to \infty \text{ for
+        every } k \in \field{N}.
+    \end{equation}
+    Justify your answer.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\redc{Aug'04}
+  Show that the following limit exists
+  \begin{equation*}
+    \lim_n n\int_{1/n}^1 \frac{\cos (x+1/n) - \cos x}{x^{3/2}}\, dx.
+  \end{equation*}
+\end{problem}
+\begin{problem}\redc{Aug'04}
+  A Lebesgue integrable function $f \colon \field{R} \to \field{R}$
+  has the property that
+  \begin{equation*}
+    \int_E f(x)\, dx = 0
+  \end{equation*}
+  for all Lebesgue measurable sets $E \subset \field{R}$ with $m(E) =
+  \pi$.  Prove or disprove that $f = 0$~a.e.
+\end{problem}
+\begin{problem}\redc{Aug'05}
+  Let $f \colon \field{R} \to \field{R}$ be Lebesgue measurable and in
+  $L_1(\field{R})$. Suppose that
+  \begin{equation*}
+    \int_a^b f(x)\, dm(x) \geq 0 \text{ for all } a,b \in \field{R},
+    a\leq b.
+  \end{equation*}
+  Prove that $f \geq 0$~a.e.
+\end{problem}
+\begin{problem}\redc{Aug'05}
+  Prove that the following limit exists
+  \begin{equation*}
+    \lim_n \int_0^\infty \frac{e^{-x} \cos x}{nx^2+\tfrac{1}{n}}\, dx,
+  \end{equation*}
+  and find it, justifying all your steps.
+\end{problem}
+\begin{problem}\redc{Aug'05}
+  Let $f\colon [0,1] \to \field{R}$ be Lebesgue measurable with $f >
+  0$~a.e. Let $\{ E_n \}$ be a sequence of measurable sets in $[0,1]$
+  with the property that $\lim_n \int_{E_n} f(x)\, dx = 0$.  Prove
+  that $\lim_n m(E_n) = 0$.
+\end{problem}
+\begin{problem}\redc{Jan'06} \label{A-A}
+  Let $A \subset \field{R}^n$ be a Lebesgue measurable set with
+  positive and finite measure.  
+  \begin{enumerate}
+  \item\label{A-A.1} Let $\chi_A$ be the characteristic function of
+    $A$, and set $\phi(x) = \int_{\field{R}^n} \chi_A(y) \chi_A(x+y)\,
+    dy$. Prove that $\phi$ is continuous.
+  \item Use \ref{A-A.1} to show that the set $A-A$ contains a
+    neighborhood of the origin.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\redc{Jan'06} \label{L1notae}
+  Prove or give a counter-example to the following: Let $f_n \in
+  L_1[0,1]$, $n \in \field{N}$ and suppose that $f_n \to 0$ in
+  $L_1[0,1]$.  Then $f_n \to 0$~a.e.
+\end{problem}
+\begin{problem}\redc{Aug'06}
+  Suppose that $f_n$, $n \in \field{N}$ is a sequence of integrable
+  functions on $[0,1]$ such that \textit{(a)} $\lim_n f_n(x) =0$ for
+  all $x \in [0,1]$, and \textit{(b)} $\int_0^1 f_n(x)\, dx = 0$ for
+  all $n$.  Does it follow that $\lim_n \int_0^1 \abs{f_n(x)}\, dx
+  =0$?  Either give a proof or a counter-example.
+\end{problem}
+\begin{problem}\redc{Aug'06}
+  Find the following limits and prove your answers:
+  \begin{enumerate}
+  \item $\displaystyle{\lim_{t \to 0^+}} \int_0^1 \frac{e^{-t \ln
+        x} - 1}{t}\, dx$.
+  \item $\displaystyle{\lim_n \int_1^{n^2} \frac{n \cos (x/n^2)}{1+ n
+        \ln n}\, dx}$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'07}]
+  Let $(X, \mathcal{F}, \mu)$ be a measure space and let $\{ g_n \}$
+  be a sequence of nonnegative measurable functions with the property
+  that $g_n \in L_1(\mu)$ for every $n$, and $g_n \to g \in
+  L_1(\mu)$. Let $\{ f_n\}$ be another sequence of nonnegative
+  measurable functions on $(X, \mathcal{F}, \mu)$.
+  \begin{enumerate}
+  \item If $F_n \leq g_n$~a.e.~for every $n$, prove that
+    \begin{equation*}
+      \limsup_n \int_X f_n\, d\mu \leq \int_X \limsup_n f_n\, d\mu.
+    \end{equation*}
+  \item If $f_n \to f$~a.e.~and if $f_n \leq g_n$~a.e.~for all $n$,
+  then $\Lpnorm{f_n - f}{1} \to 0$ as $n \to \infty$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\redc{Jan'07}
+  Let $(X, \mathcal{F}, \mu)$ be a measure space and let $\{ g_n \}$
+  be a sequence of non-negative measurable functions with the property
+  that $g_n \in L_1(\mu)$ for every $n$, and $g_n \to g$ in
+  $L_1(\mu)$.  Let $\{ f_n \}$ be another sequence of non-negative
+  measurable functions on $(X, \mathcal{F}, \mu)$.
+  \begin{enumerate}
+  \item If $f_n \leq g_n$~a.e.~for every $n$, prove that
+    \begin{equation*}
+        \limsup_n \int_X f_n\, d\mu \leq \int_X \limsup_n f_n\, d\mu.
+    \end{equation*}
+    \begin{tikzpicture}
+      \draw(0.5\linewidth,1cm) node[shade, text justified, text
+      width=0.8\linewidth,draw,rounded corners]{ \textbf{Hint:} Start
+        by considering a subsequence $f_{n_r}$ such that $\lim_r
+        \int_X f_{n_r}\, d\mu = \limsup_n \int_X f_n\, d\mu$, and let
+        $g_{{n_r}_s}$ be a subsequence of $g_{n_r}$ such that
+        $g_{{n_r}_s} \to g$~a.e.};
+    \end{tikzpicture}
+  \item If $f_n \to f$~a.e.~and if $f_n \leq g_n$~a.e.~for all $n$,
+    then $\Lpnorm{f_n - f}{1} \to 0$ as $n \to \infty$.
+  \end{enumerate}
+\end{problem}
+\end{document}

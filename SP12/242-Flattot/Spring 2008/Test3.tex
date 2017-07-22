@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theoremstyle{break}
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 3, Thursday 17 April}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work \textbf{\LARGE{clearly}}, \textbf{\LARGE{make sentences}}. No work means no credit. The points are:\\
+ex1: 15, ex2: 35, ex3: 25, ex4: 25.
+\vspace*{1cm}
+
+
+\begin{exo}[Laplace Transform of $\sin kt$ and $\cos kt$]
+\begin{enumerate} \item $a)$ Consider the function $f(t)=\sin kt$. Write the differential equation satisfied by $f$ (you will need to differentiate two times). What are the initial conditions ?\\
+                        $b)$ Deduce the Laplace transform of $\sin kt$ (don't use the table of Laplace transform !!).
+                  \item Use the Laplace transform of a derivate to deduce the Laplace transform of $\cos kt$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Find the inverse Laplace transform of the following functions:
+\[\begin{array}{l}
+\ds{ a)\ F(s)=\frac{3s+5}{s^2+4}, \qquad b)\ G(s)=\frac{3}{s^2(s^2+9)} \quad \mbox{(without partial fractions)},}\\
+\ds{ c)\ H(s)=\frac{2s+9}{s^2-6s+36}, \qquad d)\ K(s)=\frac{2s-1}{s^2-s-12} \quad \mbox{(with partial fractions)}}.
+\end{array}\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ y''+y=\cos(3t), \quad y(0)=1, y'(0)=0. \]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ x^{(3)}+9x'=18, \qquad x(0)=x'(0)=0\ \mbox{and}\ x''(0)=9.\]
+\end{exo}
+
+
+\end{document}

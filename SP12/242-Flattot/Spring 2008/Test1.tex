@@ -1,0 +1,137 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 1, Tuesday 12 February}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly. No work means no credit. The points are:\\
+ex1: 10, ex2: 10, ex3: 15, ex4: 15, ex5: 20, ex6: 15, ex7: 15.
+\vspace*{1cm}
+
+\begin{exo}
+The skid marks made by an automobile indicated that its brakes were fully applied for a distance of 75 m before it came to a stop. The car in question is known to have a \emph{\textbf{constant deceleration}} of 20 $m/s^2$ under these conditions.
+\begin{enumerate}
+\item Find the expression of the motion of the automobile when the brakes started (take $v_0$ for initial velocity).
+\vspace*{4cm}
+\item How fast - in m/s - was the car traveling when the brakes were first applied ? \\
+(You will use that $\sqrt{40*75}=10\sqrt{30}$)
+\end{enumerate}
+\end{exo}
+%1.2.31
+
+\vspace*{5cm}
+
+\begin{exo}
+Solve the differential equation :
+\[ y'=e^x+2+2y^2+y^2 e^x .\]
+\textit{Hint:} Factor the right-hand side.
+\end{exo}
+
+
+\newpage
+
+\begin{exo}
+We are considering the following differential equation:
+\[ xy'=2y+x^3 \cos x. \]
+\begin{enumerate}
+\item On which intervals does there exist a unique solution?
+\vspace*{2cm}
+\item Solve the equation with the initial value $y(\pi)=2\pi^2$.
+\end{enumerate}
+\end{exo}
+%1.5.18
+
+\vspace*{8cm}
+
+\begin{exo}
+Just before midday, the body of an apparent homicide victim is found in a room that is kept at a constant temperature of $70^\circ$F. At noon, the temperature of the body is $80^\circ$F and at 1pm it is $75^\circ$F.\\
+Assume that the temperature of the body at the time of death was $100^\circ$F (in fact the natural temperature of a body is $98.6^\circ$F, but to simplify the computations we take $100^\circ$F instead of).
+\begin{enumerate}
+\item Using the Newton's law of cooling, determine the temperature of the body at a time $t$ (we take $t=0$ at noon). You will be carefull about the absolute value.
+\newpage
+\item What was the time of death (you can use that $\frac{\ln(3)}{\ln(2)}\approx 1.59$) ?
+\end{enumerate}
+\end{exo}
+%1.4.65
+
+\vspace*{5cm}
+
+\begin{exo}
+We considere the following differential equation:
+\[ x^2y'+2xy=5y^4. \]
+\begin{enumerate}
+\item What kind of equation is it?
+\vspace*{1cm}
+\item What substitution do we have to do?
+\vspace*{1cm}
+\item What kind of differential equation do we obtain after the substitution?
+\vspace*{1cm}
+\item Solve this last differential equation and then find the expression of $y$.
+\end{enumerate}
+\end{exo}
+%1.6.22
+
+\newpage
+
+\begin{exo}
+We consider the following differential equation:
+\[ e^y+y\cos x+\left(xe^y+\sin x\right) y'=0 .\]
+\begin{enumerate}
+\item Show that this equation is exact.
+\vspace*{3cm}
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+%1.6.23 review
+
+\vspace*{7cm}
+
+
+\begin{exo}
+We consider the following differential equation:
+\[ x^3y'=x^2 y-y^3 .\]
+\begin{enumerate}
+\item Write this differential equation as a homogeneous one.
+\vspace*{1.5cm}
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+%1.6.14
+
+\end{document}

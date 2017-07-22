@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Summer E 2015}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has six (6) pages, including this one.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 30 & \cr
+    &&\cr
+   \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Summer E 2015}\hfill{\large\bf Page 2/6}\hrule
+
+\bigskip
+{\problem[30 pts] \em Sketch on the next page the graph of the function $f(x) = \dfrac{x}{x-2}$.}
+
+Make sure to indicate clearly:
+\begin{itemize}
+\item Zeros of the function.
+\item Domain and Range
+\item Vertical and horizontal asymptotes.
+\item Extreme values and inflection points.
+\item Intervals of increase/decrease.
+\item Intervals of concavity.
+\end{itemize}
+
+Keep all the computations on this page
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Summer E 2015}\hfill{\large\bf Page 3/6}\hrule
+
+\newpage 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Summer E 2015}\hfill{\large\bf Page 4/6}\hrule
+
+\bigskip
+{\problem[10 pts] \em Use the first or second derivative test to compute the local maxima and minima of the function $f(x) = x^{1/5} - x^{-4/5}$}
+
+\vspace{10cm}
+\hrule
+{\problem[10] \em Find at least one critical point of the function $f(x) = 4x - \tan x$.  You \textbf{do not} have to indicate whether they are local maxima, local minima, or neither.}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Summer E 2015}\hfill{\large\bf Page 5/6}\hrule
+
+\bigskip
+{\problem[10 pts] \em Assume the function $f(x)$ satisfies the conditions of the Mean Value Theorem.  We know that $f(9)= 10$ and $4 \leq f'(x) \leq 5$ for $9 \leq x \leq 12$.  Estimate the maximum and minimum possible values for $f(12)$.}
+
+\vspace{10cm}
+\hrule
+{\problem[10pts] \em Find the global maximum and global minimum \textbf{values} of the function $f(x)=2x^3-6x^2-48x+5$ on the interval $[-3,5]$.}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 141}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Summer E 2015}\hfill{\large\bf Page 6/6}\hrule
+
+\bigskip
+{\problem \em Compute the following limits:}
+\begin{itemize}
+  \item[] (5pts) $\displaystyle{\lim_{x\to \infty} \frac{1}{5x+7}}$
+  \vspace{2cm}
+  \item[] (5pts) $\displaystyle{\lim_{x\to\infty} \frac{1-x-x^2}{5x^2-9}}$
+  \vspace{2cm}
+  \item[] (5pts) $\displaystyle{\lim_{x\to 0+} \ln x + \frac{3}{x}}$
+  \vspace{2cm}
+  \item[] (5pts) $\displaystyle{\lim_{x\to\infty} \frac{12 x^3}{5 e^x}}$
+  \vspace{2cm}
+  \item[] (5pts) $\displaystyle{\lim_{x\to \pi/2^{+}} \frac{1-\sin x}{\cos x}}$
+  \vspace{2cm}
+  \item[] (5pts) $\displaystyle{\lim_{x\to\infty} \Big(1-\frac{3}{x} \Big)^{x}}$
+\end{itemize}
+
+\end{document}

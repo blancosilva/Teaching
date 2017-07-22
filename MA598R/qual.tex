@@ -1,0 +1,102 @@
+\documentclass[12pt]{amsart}
+\usepackage{pgf,tikz}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\def\Lpnorm#1#2{\lVert {#1} \rVert_{#2}}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\title{Qualifying Practice Exam}
+\maketitle
+
+\begin{problem}[\textcolor{red}{Spring'04}]
+  Show that the sets
+  \begin{align*}
+    S_1 &= \Big\{ f \in L_2[0,1] : \int_0^1 (1-x^2) f(x)\, dx >0
+    \Big\}, \\
+    \intertext{and} S_2 &= \Big\{ f \in L_2[0,1] : \int_0^1 (1-2x^3)
+    f(\sin x)\, dx > 0 \Big\}
+  \end{align*}
+  are open in $L_2[0,1]$, and respectively $L_3[0,1]$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'05}]
+  Let $(X, \mathcal{F}, \mu)$ be a measure space and let $f_k\colon X
+  \to \field{R}$ be a sequence of measurable functions on it
+  satisfying:
+  \begin{align*}
+    \int_X \abs{f_k}^2\, d\mu &\leq M \text{ for all }k,\\
+    \int_X f_j f_k\, d\mu &=0 \text{ for all } j\neq k,
+  \end{align*}
+  where $M$ is a finite constant independent of $k$.  For each $n \in
+  \field{N}$ set $S_n = \sum_{k=1}^n f_k$.  Prove that
+  \begin{equation*}
+    \lim_n \frac{S_{n^2}}{n^\alpha} = 0~\text{a.e.}
+  \end{equation*}
+  for all $\alpha > 3/2$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'05}]
+  Let $f\colon [0,1] \to \field{R}$ be Lebesgue measurable with $f >
+  0$~a.e. Let $\{ E_n \}$ be a sequence of measurable sets in $[0,1]$
+  with the property that
+  \begin{equation*}
+    \lim_n \int_{E_n} f(x)\, dx = 0.
+  \end{equation*}
+  Prove that $\lim_n m(E_n) = 0$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'06}]
+  Let $A \subset \field{R}^n$ be a Lebesgue measurable set with
+  positive and finite measure.  Let $\xi_A$ be the characteristic
+  function of $A$.
+  \begin{enumerate}
+  \item \label{pS06i} Prove that the function $\phi(x) = \int_{\field{R}^n}
+  \xi_A(y)\, \xi_A (x+y)\, dy$ is continuous.
+  \item Use \ref{pS06i} to show that the set
+    \begin{equation*}
+      A - A = \{ x \in \field{R}^n : x=y_1 - y_2; y_1,y_2 \in A \}
+    \end{equation*}
+    contains a neighborhood of the origin.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'06}]
+  For $f$ a measurable, real vallued function on $\field{R}^+$, let
+  \begin{equation*}
+    T(f)(x) = \int_1^\infty \frac{f(u)}{1+x^2+u^{1/2}}\, du
+  \end{equation*}
+  whenever the function appearing in the integrand is integrable with
+  respect to $u$.  Let $1<q<2$ be fixed.
+  \begin{enumerate}
+  \item Prove that $T(f)(x)$ is defined for all $x \in \field{R}$ if
+    $f \in L_q(\field{R}^+)$.
+  \item Prove that there is a constant $C_q$, independent of $f$, $x$
+    and $y$, such that for all $x$ and $y$,
+    \begin{equation*}
+      \abs{T(f)(x) - T(f)(y)} \leq C_q \abs{x^2 - y^2}\, \Lpnorm{f}{q}.
+    \end{equation*}
+  \item Let $K \subset \field{R}$ be compact and let $C(K)$ be the set
+    of continuous functions $g$ on $K$ with norm
+    \begin{equation*}
+      \Lpnorm{g}{} = \sup_{x \in K} \abs{g(x)}.
+    \end{equation*}
+    Show that the set $S = \{ T(f)\big\rvert_{K} : \Lpnorm{f}{q} \leq
+    1 \}$ has compact closure in $C(K)$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'07}]
+  Let $f \in L_1(\field{R})$. Consider the function $F(x) =
+  \int_{\field{R}} e^{ixt} f(t)\, dt$.
+  \begin{enumerate}
+  \item Show that $F \in L_\infty(\field{R})$ and that $F$ is
+    continuous at every $x \in \field{R}$. Moreover, if $\abs{t}^k
+    f(t) \in L_\infty(\field{R})$ for all $k \geq 1$, show that $F$ is
+    infinitely differentiable, i.e.~$F \in C^\infty(\field{R})$.
+  \item Suppose $f$ is continuous as well as in $L_1(\field{R})$. Show
+    that $\lim_{\abs{x} \to \infty} F(X) = 0$.
+  \end{enumerate}
+\end{problem}
+\end{document}

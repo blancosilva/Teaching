@@ -1,0 +1,489 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 1/14}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has fourteen (14) pages, including this one.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit. Credit for each problem is given in
+  parentheses at the right of the problem number.
+\item No books, notes or calculators may be used on this test.
+\item \textbf{A:} 243--270 pts. \textbf{B+:} 230--242 pts. \textbf{B:} 216--229 pts. \textbf{C+:} 203--215 pts. \textbf{C:} 189--202 pts.\\ \textbf{D+:} 175--188 pts. \textbf{D:} 160--174 pts. \textbf{F}: less than 160 pts.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 1} & \Large --- & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 15 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 15 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 6} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 7} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 120 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 8} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 9} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 10} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 11} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 12} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 13} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 14} & \Large 25 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 180 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% First Midterm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 2/14}\hrule
+
+\bigskip
+{\problem[5 pts] \em Find $f(0)$ and $f(\pi/2)$ for}
+$f(x) = 
+\begin{cases}
+ \sqrt{x+1} & \text{if } x\geq 1,\\
+3 & \text{if } x<1.
+\end{cases}$
+\vspace{1cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {$f(\pi/2) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+    \draw (-1cm,2cm) node {$f(0) =$};
+    \draw (0cm,1.4cm) rectangle (5cm,2.6cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Find the domain of $f(x) = \sqrt{(x-1)(x-2)}$.}
+\vspace{6cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {domain $=$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[5 pts] \em Express the function $f(x) = \lvert x-1 \rvert$
+  in piecewise form without using absolute values.}     
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {$f(x) = {\Biggr\{}$};
+    \draw (0cm,-0.6cm) rectangle (5cm,1.8cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 3/14}\hrule
+
+\bigskip
+{\problem[5 pts] \em Let $f(x) = x^2 + 4$ and $g(x) = \sqrt{x}$. Find
+  $\big( g \circ f\big)(x)$.}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1.25cm,0.5cm) node {$ \big(g \circ f\big)(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\hrule
+{\problem[10 pts] \em Recall the ``$\varepsilon$--$\delta$'' definition of limit:
+\begin{center}
+\begin{tikzpicture}
+\draw (0.5\linewidth, 0cm) node[text justified, text width=0.5\linewidth, draw, rounded corners] {
+We write $\displaystyle{\lim_{x\to a}} f(x) = L$ if for all $\varepsilon
+> 0$ there exists $\delta >0$ such that $\lvert x - a \rvert < \delta$
+implies $\lvert f(x) - L \rvert < \varepsilon$.}; 
+\end{tikzpicture}
+\end{center}
+Use this definition to prove that $\displaystyle{\lim_{x \to 2} (-x-2) =
+  -4}$.}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 4/14}\hrule
+
+\bigskip
+{\problem[5 pts] \em Solve for $x$:}
+\begin{equation*}
+  \ln x + \ln (x-1) = 1
+\end{equation*}
+\vspace{3cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.75cm,0.5cm) node {$x =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+ 
+{\problem[10 pts] \em Compute the derivatives of the following functions.}
+\begin{enumerate}
+\item $f(x) = \pi \sqrt{x} (x^4 - 4 x^3 + 6 x^2 -4 x^1 + 1 - x^{-1})$
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.75cm,0.5cm) node {$f'(x) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\item $\displaystyle{g(t) = \frac{t^2-5}{t^{-1}}}$
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.75cm,0.5cm) node {$g'(t) =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{enumerate}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 5/14}\hrule
+
+\bigskip
+{\problem[15 pts] \em Compute the following limits:}
+\vspace{1cm}
+
+\noindent
+\begin{tikzpicture}
+\draw (4cm,14cm) node{
+(a) $\displaystyle{\lim_{x \to 2} \frac{x^2-2x-8}{x^2-4}} = \mbox{}$ };
+\draw (6cm,13.4cm) rectangle (11cm,14.6cm);
+\draw (4cm, 10cm) node{
+(b) $\displaystyle{\lim_{x \to -\infty} \frac{x^2-2x-8}{x^2-4}} =
+\mbox{}$}; 
+\draw (6.2cm, 9.4cm) rectangle (11.1cm, 10.6cm); 
+\draw (4cm, 6cm) node{
+(b) $\displaystyle{\lim_{x \to -2} \frac{x^2-2x-8}{x^2-4}} =
+\mbox{}$}; 
+\draw (6.1cm, 5.4cm) rectangle (11.1cm, 6.6cm); 
+\end{tikzpicture}
+
+\vspace{3cm}
+\hrule
+
+{\problem[10 pts] \em Find the value of the constant $k$ for which the
+  following function is continuous everywhere:} 
+\begin{equation*}
+f(x) = \begin{cases}
+2k^2x^3 &\text{if }x<2, \\
+x+32k-18 &\text{if }x \geq 2.
+\end{cases}
+\end{equation*}
+\vspace{5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {$k =$};
+    \draw (0cm,0cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 6
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 6/14}\hrule
+
+\bigskip
+{\problem[15 pts] \em Find equations of the tangent lines to the curve}
+\begin{equation*}
+  y = \frac{x-1}{x+1}
+\end{equation*}
+that are parallel to the line $x-\tfrac{9}{2} y=3$.
+\vspace{10cm}
+\hrule
+{\problem[10 pts] \em How many tangent lines to the curve $y=x/(x+1)$
+  pass through the point $(0,0)$.}      
+
+\noindent{\textbf{HINT:} \em You do not have to compute the equations of
+  the lines.}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Second Midterm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 7
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 7/14}\hrule
+
+\bigskip
+{\problem[10 pts] \em  Evaluate each limit:} 
+
+\bigskip
+\begin{tikzpicture}
+\draw (4cm,14cm) node{
+$\displaystyle{ \lim_{x\to 0} \frac{e^x-1}{\tan x} = \mbox{}}$ };
+\draw (5.5cm,13.4cm) rectangle (8.5cm,14.6cm);
+\end{tikzpicture}
+
+\vspace{4cm}
+\begin{tikzpicture}
+\draw (4cm,14cm) node{
+$\displaystyle{ \lim_{x\to 0} \frac{\tan(5x^2)}{x^2} = \mbox{}}$ };
+\draw (5.5cm,13.4cm) rectangle (8.5cm,14.6cm);
+\end{tikzpicture}
+\vspace{5cm}
+
+\hrule
+{\problem[10 pts] \em Find an equation of the normal line to the
+  curve $y=\ln(x e^{x^2})$ at the point $(1,1)$.} 
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 8
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 8/14}\hrule
+
+\bigskip
+{\problem[30 pts] \em Sketch the graph of the rational function $f(x)
+  = \displaystyle{\frac{2x^2-8}{x^2-16}}$.}
+\begin{quotation}
+Indicate clearly:
+\begin{itemize}
+\item Domain
+\item $x$- and $y$-intercepts.
+\item Vertical and horizontal asymptotes (any holes?).
+\item Intervals of increase, decrease and different concavity.
+\item Location of relative extrema and inflection points. 
+\end{itemize}
+\end{quotation}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 9
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 9/14}\hrule
+
+\bigskip
+{\problem[10 pts] \em Find the absolute extrema of $f(x) = 6x^{4/3} - 3x^{1/3}$ on the interval $[-1,1]$.}
+\vspace{6cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-2.25cm,2.5cm) node {Absolute maxima at };
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+    \draw (-2.25cm,0.5cm) node {Absolute minima at };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[10 pts] \em Use logarithmic differentiation to find the
+  derivative of the function 
+\begin{equation*}
+y=\frac{\sin^2 x \tan^4 x}{(x^2+1)^2}
+\end{equation*}
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-0.7cm,0.5cm) node {$\displaystyle{\frac{dy}{dx}}=$ };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 10
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 10/14}\hrule
+
+\bigskip
+{\problem[10 pts] \em An aircraft is climbing at $30^o$ angle to the horizontal.  How fast is the aircraft gaining altitude if its speed is 500 mi/h?}
+\vspace{6cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-4.25cm,0.5cm) node {The aircraft is gaining altitude at a speed of};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[20 pts] \em A container with square base, vertical sides, and open top is to be made from 300 ft$^2$ of material.  Find the dimensions of the container with greatest volume.}
+\vspace{11cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-2.7cm,0.5cm) node {Dimensions of container: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%3M%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Third Midterm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 11
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 11/14}\hrule
+
+\bigskip
+{\problem[25 pts] \em  Evaluate each integral:} 
+\begin{enumerate}
+\item $\displaystyle{\int_0^2 \big( 5x + \frac{2}{3x^5} - \sqrt{2} e^x \big)\, dx}$
+\vspace{2.5cm}
+\item $\displaystyle{\int \big( 3\sin x - 2\sec^2 x \big)\, dx}$
+\vspace{2.5cm}
+\item $\displaystyle{\int ( 1 + \sin t)^{90} \cos t\, dt}$
+\vspace{2.5cm}
+\item $\displaystyle{\int_0^1 \frac{5x^4}{(x^5+1)^2}\, dx}$
+\vspace{2.5cm}
+\item $\displaystyle{\int \frac{3x-2}{(x-1)(x+1)^2}\, dx}$
+\end{enumerate}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 12
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 12/14}\hrule
+
+\bigskip
+{\problem[20 pts] \em Express the following functions of $n$ in closed
+  form and then find the limit.}
+\begin{enumerate}
+\item  $\displaystyle{\lim_{n \to \infty} \frac{1^2+2^2+3^2+ \dotsb +
+      n^2}{n^3}}$
+\vspace{5cm}
+\item  $\displaystyle{\lim_{n \to \infty} \sum_{k=1}^n \frac{5k}{n^2}}$
+\vspace{5cm}
+\end{enumerate}
+{\problem[10 pts] \em Use the definition of \textbf{definite integral} to
+  express $\int_{-\pi/2}^{\pi/2} (1+ \cos x)\, dx$ as a limit.}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 13
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 13/14}\hrule
+
+\bigskip
+{\problem[10 pts] \em Use the Fundamental Theorem of Calculus to find
+  the derivative of the following functions.}
+\begin{enumerate}
+\item $\displaystyle{g(x) = \int_1^x \frac{1}{t^3+1}\, dt}$
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,2.5cm) node {$g'(x) =$};
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\item $\displaystyle{g(y) = \int_x^\pi \sqrt{1+ \sec t}\, dt}$
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,2.5cm) node {$g'(y) =$};
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\end{enumerate}
+\hrule
+{\problem[10 pts] \em Find the antiderivative $F$ of $f(x) =
+  4-3(1+x^2)^{-1}$ that satisfies $F(1) = 0$.} 
+\vspace{5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,2.5cm) node {$F(x) =$};
+    \draw (0cm,1.8cm) rectangle (5cm,3.2cm);
+ \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 14
+\noindent{\large\bf MATH 141}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2009}\hfill{\large\bf Page 14/14}\hrule
+
+\bigskip
+{\problem[25 pts] \em Sketch the region enclosed by the curves
+  $y=x^2$, $y=4x-x^2$, and find the corresponding area.}
+\vspace{20cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-1cm,0.5cm) node {Area: };
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{document}

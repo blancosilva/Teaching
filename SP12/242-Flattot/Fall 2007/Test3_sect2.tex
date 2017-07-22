@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 3, Wednesday 28 November}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly, \textbf{MAKE SENTENCES}. No work means no credit. The points are:\\
+ex1: 25, ex2: 15, ex3: 25, ex4: 20 and the course questions are over 15 points.
+\vspace*{1cm}
+
+\textbf{\large Course Questions}
+\begin{enumerate}
+\item Method of variation of parameters in the case $n=2$:\\
+We consider the second-order linear differential equation 
+\[ y''+P(x)y'+Q(x)y=f(x) ,\]
+where $P$, $Q$ and $f$ are continuous. A general solution is given by:
+\[ y_c(x)=c_1 y_1(x)+c_2y_2(x) ,\]
+where $c_1$ and $c_2$ are constants.\\
+Of what form can we search a particular solution ? To find this, we need to impose a condition, what is this condition ?
+\vspace*{4cm}
+\item Give the definition of the Laplace transform.
+\vspace*{4cm}
+\item State the theorem about the Laplace transform of integrals.
+\end{enumerate}
+
+\newpage
+
+\begin{exo}
+Find a particular solution of the following differential equation:
+\[ y''-4y=13x\cos(3x).\]
+You will use the fact that the family $(x^k\cos(3x),x^k\sin(3x))_k$ is linearly independent. This means, for example, that if $\alpha_1x\cos(3x)+\alpha_0\cos(3x)+\beta_1x\sin(3x)+\beta_0\sin(3x)=0$ then $\alpha_1=\alpha_0=\beta_1=\beta_0=0$.
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Find the inverse Laplace transform of the functions:
+\[ F(s)=\frac{3s-7}{s^2+9}, \quad \mbox{and} \quad H(s)=\frac{4}{s^2(s^2+16)}. \]
+\end{exo}
+
+\vspace*{10cm}
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ y''+y=\sin(2t), \quad y(0)=1, y'(0)=0. \]
+\end{exo}
+
+\newpage
+\vspace*{5cm}
+
+\begin{exo}
+\begin{enumerate}
+\item Use the partial fraction to find the inverse Laplace transform of 
+\[ F(s)=\frac{3s+2}{s^2-s-12}. \]
+\item Write the partial fractions of the rational function (we do not ask the value of the coefficients):
+\[ G(s)=\frac{9s^4-5s^2+s}{(s-7)(s+3)^2(s^2+5s+10)^2}. \]
+\end{enumerate}
+\end{exo}
+
+
+%\begin{exo}
+%Solve the initial value problem using the Laplace transform:
+%\[ x^{(3)}+x''-6x'=0, \qquad x(0)=0, x'(0)=x''(0)=1.\]
+%\end{exo}
+
+
+\end{document}

@@ -1,0 +1,160 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Final Exam, Saturday 3 May}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all \textbf{work clearly}, \textbf{make sentences}. No work means no credit. The points are:\\
+ex1: 7, ex2: 7, ex3: 11, ex4: 11, ex5: 10, ex6: 15, ex7: 10, ex8: 9, ex9: 15, ex10: 15, ex11: 15 (Total=125 pts).
+\vspace*{0.5cm}
+
+\begin{exo}
+Solve the initial value problem:
+\[ xy'+3y=3x^{-\frac{3}{2}}, \quad y(1)=0 .\]
+\end{exo}
+%22 p56 
+
+\vspace*{8cm}
+
+\begin{exo}
+Find a general solution of the differential equation
+\[ y'=1+x+y+xy .\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+We considere the following differential equation:
+\[ xy'=6y+12x^4y^{2/3}. \]
+\begin{enumerate}
+\item What kind of equation is it?
+\vspace*{1cm}
+\item What substitution do we have to do?
+\vspace*{1cm}
+\item What differential equation do we obtain after the substitution?
+\vspace*{2cm}
+\item Solve this last differential equation and then find the expression of $y$.
+\end{enumerate}
+\end{exo}
+
+\vspace*{6cm}
+
+\begin{exo}
+We consider the following differential equation:
+\[ y'=\frac{-3x^2+4y^2}{4xy} .\]
+\begin{enumerate}
+\item Write this differential equation as a homogeneous one.
+\vspace*{1.5cm}
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Show that the differential equation
+\[ \left(1+ye^{xy}\right)dx+(2y+xe^{xy})dy=0,\]
+is exact and then solve it.
+\end{exo}
+
+\vspace*{9cm}
+
+\begin{exo}
+We give the differential equation:
+\[ \frac{dx}{dt}=x^2+5x+6 .\]
+\begin{enumerate}
+\item What are the critical points ? Use a phase diagram to determine whether each critical point is stable or unstable.
+\vspace*{3cm}
+\item Solve this differential equation with $x(0)=-4$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the differential equation
+\[ y^{(3)}-6y''+9y'-54y=0,\]
+using the fact that the function $x\mapsto e^{6x}$ is solution of this differential equation.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=0, \ y'(0)=3, \ y''(0)=90.\]
+\end{exo}
+
+\vspace*{13cm}
+
+\begin{exo}
+Give the form of a particular solution in each case, but do not determine the values of the coefficients:
+\begin{enumerate}
+\item $y^{(114)}+59y'=x^4+x^3+x$,
+\item $y^{(3)}+y''-y'-y=(x^2-2)e^{-x}$,
+\item $y^{(3)}+y''-y'-y=5e^{4x}(x^2+5x-8)\cos(7x)$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the initial value problem without the Laplace transform:
+\[ y''-2y'+10y=9xe^{x}, \quad y(0)=2,\ y'(0)=0.\]
+\end{exo}
+
+\vspace*{13cm}
+
+\begin{exo}
+$1)$ Find the Laplace transform of the following functions:
+\[ f_1(t)=t\sin(2t), \quad f_2(t)=\frac{\sin t}{t}.\]
+We recall that $\lim_{x\to \infty} \arctan x=\pi/2$.\\
+$2)$ Find the inverse Laplace transform of:
+\[  F_1(s)=\frac{s+6}{s^2+4s+8},\quad   F_2(s)=\ln\left(\frac{s^2+1}{s^2+4}\right).\]
+\end{exo}
+
+\newpage
+\vspace*{4cm}
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ x^{(3)}-x''-8x'+12x=0, \qquad x(0)=-3,\ x'(0)=22\ \mbox{and}\ x''(0)=-25.\]
+\textit{Hint:} $2$ is a root of the characteristic equation.
+\end{exo}
+
+%\begin{exo}
+%Solve the initial value problem using the Laplace transform:
+%\[ x''-6x'+8x=8, \qquad x(0)=x'(0)=0 .\]
+%\end{exo}
+
+\end{document}

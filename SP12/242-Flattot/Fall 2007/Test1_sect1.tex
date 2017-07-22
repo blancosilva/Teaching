@@ -1,0 +1,109 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 1, Friday 21 September}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly. No work means no credit. The points are:\\
+ex1: 7, ex2: 9, ex3: 9, ex4: 10, ex5: 10 plus 5 point for the writing.
+\vspace*{1cm}
+
+\begin{exo}
+The skid marks made by an automobile indicated that its brakes were fully applied for a distance of 75 m before it came to a stop. The car in question is known to have a \emph{\textbf{constant deceleration}} of 20 $m/s^2$ under these conditions.
+\begin{enumerate}
+\item Find the expression of the motion of the automobile when the brakes start (take $v_0$ for initial velocity).
+\vspace*{4cm}
+\item How fast - in km/h - was the car traveling when the brakes were first applied ?
+\vspace*{5cm}
+\end{enumerate}
+\end{exo}
+%1.2.31
+
+\begin{exo}
+We are considering the following differential equation:
+\[ 3xy'+y=12x. \]
+\begin{enumerate}
+\item On which intervals does there exist a unique solution?
+\vspace*{2cm}
+\item Solve the equation with the initial value $y(1)=0$.
+\end{enumerate}
+\end{exo}
+%1.5.8
+
+\newpage
+\vspace*{6cm}
+
+\begin{exo}
+A cake is removed from an oven at $210^\circ$F and left to cool at room temperature, wich is $70^\circ$F. After 30 min the temperature of the cake is $140^\circ$F.
+\begin{enumerate}
+\item Using the Newton's law of cooling, determine the temperature of the cake at a time $t$ (we take $t=0$ when the cake is removed from the oven).
+\vspace*{7cm}
+\item When will the temperature of cake be $100^\circ$F (you can use that $\frac{\ln(14/3)}{\ln(2)}\approx 2.22$) ?
+\end{enumerate}
+\vspace*{3cm}
+\end{exo}
+%1.4.49
+
+\newpage
+
+\begin{exo}
+We consider the following differential equation:
+\[ (\cos x+\ln y)dx+\left(\frac{x}{y}+e^{y}\right)dy=0 .\]
+\begin{enumerate}
+\item Show that this equation is exact.
+\vspace*{4cm}
+\item Then solve this differential equation.
+\vspace*{7cm}
+\end{enumerate}
+\end{exo}
+%1.6.37
+
+\begin{exo}
+We consider the following differential equation:
+\[ x(x+y)y'+y(3x+y)=0 .\]
+\begin{enumerate}
+\item Write this differential equation as a homogeneous one.
+\vspace*{3cm}
+\newpage
+\item Then solve this differential equation (you can use a formula of type $\int \frac{f'}{f} =\hdots$)
+\end{enumerate}
+\end{exo}
+%1.6.15
+
+\end{document}

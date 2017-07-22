@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows, calc}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#4.}\hfill{\large\bf
+  Spring 2017}\hfill{\large\bf Page 1/5}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and VIP ID in the space provided above.
+\item The test has five (5) pages, including this one.
+\item The test is fifty (50) minutes long.
+\item Enter your answer in the boxes provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 40 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#4.}\hfill{\large\bf
+  Spring 2017}\hfill{\large\bf Page 2/5}\hrule
+
+\bigskip
+\begin{problem}[20 pts---10 pts each]
+Evaluate the following integrals:
+\begin{enumerate}
+\item $\displaystyle{\int_{\pi/3}^{2\pi/3} \int_0^{\cot x} 3\tan x\, dy\, dx =}$ \framebox{\textcolor{white}{$\Bigg($} \hspace{1cm}}
+\vspace{2cm}
+\item $\displaystyle{\int_0^{\pi/3} \int_0^{\pi/3} \int_0^{\pi/3} \cos(x+y+z)\, dx \, dy\, dz =}$ \framebox{\textcolor{white}{$\Bigg($} \hspace{9cm}}
+\vspace{4cm}
+\end{enumerate}
+\end{problem}
+\hrule
+\begin{problem}[20 pts]
+Evaluate $\displaystyle{\int_R (3x+4y^2)\, dA}$, where $R$ is the region in the upper half-plane bounded by the circles
+$x^2+y^2=1$ and $x^2+y^2=4$.  Sketch the region of integration.
+
+\vspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  \draw [white] (-0.5,-0.5) rectangle (6.5,6.5);
+  \draw [<->, ultra thick] (-0.5,3) -- (6.5,3);
+  \draw [<->, ultra thick] (3,-0.5) -- (3,6.5);
+  \draw[step=0.5,gray,ultra thin] (-0.25, -0.25) grid (6.25, 6.25);
+  \end{tikzpicture}
+\begin{flushright}
+
+\vspace{3cm}
+  \begin{tikzpicture}
+    \draw (-2cm, 0.5cm) node {$\displaystyle{\int_R (3x+4y^2)\, dA =}$};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{problem}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#4.}\hfill{\large\bf
+  Spring 2017}\hfill{\large\bf Page 3/5}\hrule
+
+\bigskip
+\begin{problem}[20 pts]
+Evaluate the integral $\int_D \sin(y^2)\, dA$ where $D$ is the triangle with vertices $(0,0)$, $(1,1)$ and $(0,1)$. Sketch the domain of integration. \newline \textbf{Hint: The order of integration really matters for this problem.}
+
+\vspace{0.5cm}
+\begin{tikzpicture}[scale=0.7]
+  \draw [white] (-0.5,-0.5) rectangle (6.5,6.5);
+  \draw [<->, ultra thick] (-0.5,0) -- (6.5,0);
+  \draw [<->, ultra thick] (0,-0.5) -- (0,6.5);
+  \draw[step=0.5,gray,ultra thin] (-0.25, -0.25) grid (6.25, 6.25);
+  \end{tikzpicture}
+\begin{flushright}
+
+\vspace{14cm}
+  \begin{tikzpicture}
+    \draw (-1.75cm, 0.5cm) node {$\displaystyle{\int_D \sin(y^2)\, dA =}$};
+    \draw (0cm,-0.2cm) rectangle (6cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#4.}\hfill{\large\bf
+  Spring 2017}\hfill{\large\bf Page 4/5}\hrule
+
+\bigskip
+\begin{problem}[20 pts---10 points each]
+Sketch the domain of integration, and convert the following integrals to polar coordinates.  \textbf{Do not evaluate.}
+\begin{enumerate}
+  \item $\displaystyle{\int_{-5}^5 \int_0^{\sqrt{25-x^2}} 4x^2y^3\, dy\, dx =}$ \framebox{\textcolor{white}{$\Bigg($} \hspace{9cm}}
+
+  \vspace{0.25cm}
+  \begin{tikzpicture}[scale=0.7]
+  \draw [white] (-0.5,-0.5) rectangle (6.5,6.5);
+  \draw [<->, ultra thick] (-0.5,3) -- (6.5,3);
+  \draw [<->, ultra thick] (3,-0.5) -- (3,6.5);
+  \draw[step=0.5,gray,ultra thin] (-0.25, -0.25) grid (6.25, 6.25);
+  \end{tikzpicture}
+
+  \vspace{3cm}
+\hrule   
+  \item $\displaystyle{\int_0^1 \int_0^y x\, dx\, dy =}$ \framebox{\textcolor{white}{$\Bigg($} \hspace{11cm}}
+
+  \vspace{0.25cm}
+  \begin{tikzpicture}[scale=0.7]
+  \draw [white] (-0.5,-0.5) rectangle (6.5,6.5);
+  \draw [<->, ultra thick] (-0.5,0) -- (6.5,0);
+  \draw [<->, ultra thick] (0,-0.5) -- (0,6.5);
+  \draw[step=0.5,gray,ultra thin] (-0.25, -0.25) grid (6.25, 6.25);
+  \end{tikzpicture}
+  \end{enumerate}
+\end{problem}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#4.}\hfill{\large\bf
+  Spring 2017}\hfill{\large\bf Page 5/5}\hrule
+
+\bigskip
+\begin{problem}[20 pts]
+Use a double or a triple integral (your choice!) to compute the volume under the graph of $f(x,y)=xy$ and above the region bounded by $x=y^2$ and $x=y$.
+\vspace{20cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (-3.25cm, 0.5cm) node {$\displaystyle{V = \iint_D f(x,y)\, dA = \iiint_R dV = }$};
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{problem}
+\end{document}

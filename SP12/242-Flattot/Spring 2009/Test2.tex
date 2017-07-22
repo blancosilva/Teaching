@@ -1,0 +1,105 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+\usepackage{enumerate}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 2, Tuesday 31 March}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work \textbf{\LARGE{clearly}}, \textbf{\LARGE{make sentences}}. No work means no credit. The points are:\\
+ex1: 20, ex2: 15, ex3: 15, ex4: 15, ex5: 15.
+%\vspace*{1cm}
+
+
+\begin{exo}
+We give the differential equation:
+\[ \frac{dx}{dt}=x^2-5x+4 .\]
+\begin{enumerate}
+\item What are the critical points ? Use a phase diagram to determine whether each critical point is stable or unstable.
+\vspace*{4cm}
+\item Solve this differential equation with $x_0=2$.
+\end{enumerate}
+\end{exo}
+%2.2.9
+
+\newpage
+
+\begin{exo}
+We give an initial value problem:
+\[ y'=10(x+y), \quad y(0)=1. \]
+Write the algorithm of the Euler's method with a step size $h$, and apply it to find approximate values of the solution on the interval $[0,0.5]$ with step size $h=0.1$. At last, give the order of this method.
+\vspace*{6cm}
+{\renewcommand{\arraystretch}{1.5}
+\[ \begin{array}{|r|c|c|c|c|c|c|}
+      \hline \mbox{x} & 0 & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 \\
+      \hline \mbox{approx solution} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} & \hspace*{1.5cm} \\
+      \hline
+    \end{array} \]}
+\end{exo}
+
+
+\begin{exo}
+Find a linear homogeneous constant-coefficient differential equation with, in each cases, the given general solution:
+\begin{enumerate}[a)]
+\item $y(x)=Ae^{-x}+Be^{2x}+Ce^x$,
+\vspace*{3cm}
+\item $y(x)=A+Bx+Cx^2+De^{17x}$,
+\vspace*{3cm}
+\item $y(x)= Ae^{3x}+B\cos(2x)+ C\sin(2x)+x(D\cos(2x)+E\sin(2x))$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the differential equation:
+\[ y^{(3)}-5y''-16y'+80y=0,\]
+using the fact that the function $x\mapsto e^{5x}$ is solution of this differential equation.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=9/4, \ y'(0)=-3, \ y''(0)=18.\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+We consider the initial value problem:
+\[ y''+y'-2y=(20x+4)e^{3x}, \quad y(0)=4,\ y'(0)=1.\]
+Using that a particular solution is given by $y_p(x)=(2x-1)e^{3x}$, solve this problem.
+\end{exo}
+
+\end{document}

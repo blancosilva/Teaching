@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 142}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2012}\hfill{\large\bf Page 1/6}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has six (6) pages, including this one.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 20 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 5} & \Large 20 & \cr
+    &&\cr
+	\hline
+    &&\cr
+    {\Large 6} & \Large 15 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 142}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2012}\hfill{\large\bf Page 2/6}\hrule
+
+\bigskip
+{\problem[5 pts] \em Evaluate the integral $\displaystyle{\int t^2 e^t\, dt}$}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[5 pts] \em Evaluate the integral $\displaystyle{\int (x-3) \sqrt{x^2-6x+5}\, dx}$}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[6 pts] \em Evaluate the integral $\displaystyle{\int \frac{1}{x^3 e^{1/x}}\, dx}$}
+\vspace{2cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[7 pts] \em Evaluate the integral $\displaystyle{\int \frac{x^3+1}{(x+1)^2(x^2+4)}\, dx}$}
+\vspace{5.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 142}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2012}\hfill{\large\bf Page 3/6}\hrule
+
+\bigskip
+{\problem[7 pts] \em Evaluate the following integral, or indicate if it is
+divergent: $\displaystyle{\int_0^\infty \frac{x \tan^{-1}x}{(1+x^2)^{3/2}}\,
+dx}$}
+\vspace{5.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[6 pts] \em Find the volume of the solid obtained by rotating the region bounded by $y=x^2$ and $y=2-x$ around the line $x=1$.}
+\vspace{4.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+ 
+{\problem [8 pts] Find the volume of the solid obtained by rotating the region bounded by $y=e^{-x}$, $y=1/e$, and $x=0$ around the line $y=0$.}
+\vspace{4.5cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 142}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2012}\hfill{\large\bf Page 4/6}\hrule
+
+\bigskip
+{\problem[7 pts] \em Find the general term of the sequence $\bigg\{ 3,2,\dfrac{5}{3}, \dfrac{3}{2}, \dfrac{7}{5}, \dfrac{4}{3}, \dotsc \bigg\}$, and compute its limit}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \draw (0cm,1.5cm) rectangle (5cm,2.9cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[5 pts] \em Compute the limit of the sequence $\bigg\{
+\dfrac{n^2+5n+2}{\sqrt{n^4+1}} \bigg\}_{n=1}^\infty$}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+
+{\problem[5 pts] \em Compute the limit of the sequence $\big\{ \tan (\pi - 1/n)
+\big\}_{n=1}^\infty$}
+\vspace{4cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 142}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2012}\hfill{\large\bf Page 5/6}\hrule
+  
+\bigskip
+
+{\problem[10 pts] \em Use the \textbf{root test} to determine whether
+  the series $\displaystyle{\sum_{n=1}^\infty \Big( \frac{3n+2}{2n-1}
+    \Big)^n}$ converges.  If the test is inconclusive, then say so.} 
+\vspace{9cm}
+\hrule{\problem[10 pts] \em Classify the series
+  $\displaystyle{\sum_{n=1}^\infty (-1)^n\, \frac{4n^2+1}{n^3+2}}$ as
+  absolutely convergent, convergent or divergent.} 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 6
+\noindent{\large\bf MATH 142}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Spring 2012}\hfill{\large\bf Page 6/6}\hrule
+{\problem[15 pts] \em Find the radius of convergence and interval of
+  convergence of the series}
+\begin{equation*}
+\sum_{n=0}^\infty \frac{(-3)^n x^n}{\sqrt{n+1}}
+\end{equation*}
+
+\end{document}

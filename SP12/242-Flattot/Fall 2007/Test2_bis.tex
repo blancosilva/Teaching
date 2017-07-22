@@ -1,0 +1,106 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 2, Friday 2 November}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly, make sentences. No work means no credit. The points are:\\
+ex1: 10, ex2: 20, ex3: 25, ex4: 15, ex5: 15 and the course questions are over 15 points.
+\vspace*{1cm}
+
+\textbf{\large Course Questions}
+\begin{enumerate}
+\item Write the logistic equation and precise what is the carrying capacity. What tool do you use to solve this kind of differential equation ?
+\vspace*{4cm}
+\item For what kind of differential equation do we speak about critical point ? Then give the definition of this point and precise what is an equilibrium solution.
+\vspace*{4cm}
+\item For a second-order linear differential equation with constant coefficients, give the characteristic equation and the form of solutions depending on the roots of this equation (give the three cases).
+\vspace*{3cm}
+\end{enumerate}
+
+\newpage
+
+\begin{exo}
+We give the differential equation:
+\[ \frac{dx}{dt}=3x-x^2 .\]
+Find the critical points of this equation and use a phase diagram to determine wether each critical point is stable or unstable.
+\end{exo}
+
+\vspace*{5cm}
+
+\begin{exo}
+We give an initial value problem and its exact solution $y(x)$:
+\[ y'=4x-2y, \quad y(0)=1, \quad y(x)=2e^{-2x}+2x-1. \]
+Apply Euler's method to approximate the solution on the interval $[0,1]$ with step size $h=0.25$. Write the formula you use for the computation. Then compare the four-decimal-place values of the approximate solution with the values of the exact solution using the following array. Does this step size look good ?
+\vspace*{6cm}
+{\renewcommand{\arraystretch}{1.5}
+\[ \begin{array}{|r|c|c|c|c|c|}
+      \hline \mbox{x} & 0 & 0.25 & 0.5 & 0.75 & 1 \\
+      \hline \mbox{approx solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline \mbox{exact solution} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} & \hspace*{2cm} \\
+      \hline
+    \end{array} \]}
+\end{exo}
+%2.4.4
+\vspace*{1cm}
+
+\begin{exo}
+Solve the differential equation:
+\[ y^{(3)}-9y''+24y'-16y=0.\]
+You will first find a small integral root of the characteristic equation by inspection.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=1, \ y'(0)=2, \ y''(0)=0.\]
+\end{exo}
+
+\vspace*{10cm}
+
+\begin{exo}
+Solve the initial value problem:
+\[ y''-4y'+5y=0, \quad y(0)=2, \ y'(0)=1.\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Find a linear homogeneous constant-coefficient equation with the general solution:
+\[ y(x)= Ae^{-2x}+B\cos(4x)+ C\sin(4x)+x(D\cos(4x)+E\sin(4x)) .\]
+\end{exo}
+
+
+\end{document}

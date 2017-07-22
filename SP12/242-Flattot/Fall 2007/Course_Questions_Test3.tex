@@ -1,0 +1,60 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Course Questions for Test 3}
+\end{center}}
+\vspace*{2.5cm}
+
+\begin{itemize}
+\item Method of variation of parameters in the case $n=2$:\\
+We consider the second-order linear differential equation 
+\[ y''+P(x)y'+Q(x)y=f(x) ,\]
+where $P$, $Q$ and $f$ are continuous. A general solution is given by:
+\[ y_c(x)=c_1 y_1(x)+c_2y_2(x) ,\]
+where $c_1$ and $c_2$ are constants.\\
+Of what form can we search a particular solution ? To find this, we need to impose a condition, what is this condition ?
+\item Give the definition of the Laplace transform.
+\item Give the definition of a function of exponential order as $t \rightarrow \infty$. Then state the theorem which gives the existence of the Laplace transform.
+\item State the theorem about the Laplace transform of derivates.
+\item State the theorem about the Laplace transform of integrals.
+\item State the theorem about translation on the $s$-Axis.
+\end{itemize}
+
+
+
+
+
+\end{document}

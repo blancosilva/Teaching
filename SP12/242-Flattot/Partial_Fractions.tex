@@ -1,0 +1,66 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-1.4cm}
+\addtolength{\evensidemargin}{-3.3cm}
+%\theoremstyle{definition}
+\newtheorem{sujet}{}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\LARGE
+\begin{center}
+Partial Fraction Decomposition over the Reals
+\end{center}}
+\vspace{1cm}
+
+
+We want to decompose a rational function
+\[ R(x)=\frac{P(x)}{Q(x)},\]
+where $P$ and $Q$ are two polynomials, into a sum of fractions which are ``easier'' to use. We will suppose that the degree of $P$ is less than the degree of $Q$.\\
+Over the reals numbers, there are two kinds of irreducible polynomials:
+\begin{itemize}
+\item polynomials of degree 1, such as $P=aX+b$ where $a$, $b$ are real numbers, and
+\item polynomials of degree 2 without real roots, such as $P=aX^2+bX+c$, where $a$, $b$ and $c$ are real numbers, and with $\Delta=b^2-4ac <0$.
+\end{itemize}
+By the fundamental theorem of algebra, we can write any polynomial as a product of these two types:
+\[ P=a(X-a_1)^{m_1}\hdots (X-a_r)^{m_r}(X^2+b_1X+c_1)^{n_1}\hdots (X^2+b_sX+c_s)^{n_s} ,\]
+where the power in each factor gives the multiplicity of each root.\\
+So we must look at the contribution of each portion as being of the form:
+\[ \begin{array}{l}
+        1)\quad \ds{\frac{1}{(X-a)^{m}}} \quad \mbox{or,} \\
+        2)\quad \ds{\frac{1}{(X^2+bX+c)^{n}}}.
+    \end{array} \]
+\indent \textbf{Case I:}\\
+The portion of the partial fraction decomposition of $R$ corresponding to the root $a$ of multiplicity $m$ is a sum of $m$ partial fractions of the form
+\[ \frac{A_1}{X-a}+\frac{A_2}{(X-a)^2}+\cdots +\frac{A_1}{(X-a)^m} ,\]
+where $A_1$, \ldots, $A_n$ are constants.\\[0.3cm]
+\indent \textbf{Case II:}\\
+The portion of the partial fraction decomposition of $R$ corresponding to the irreductible polynomials of degree 2 with multiplicity $n$ is a sum of $n$ partial fractions of the form
+\[ \frac{A_1X+B_1}{X^2+bX+c}+\frac{A_2X+B_2}{(X^2+bX+c)^{2}}+\cdots +\frac{A_nX+B_n}{(X^2+bX+c)^{n}} ,\]
+where $A_1$, \ldots, $A_n$, $B_1$, \ldots, $B_n$ are constants.
+
+\end{document}

@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 242}\hfill{\large\bf Fourth Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 1/3}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has three (3) pages, including this one.
+\item The test is 50 minutes long.
+\item Write your answers in the boxes provided.
+\item Show sufficient work to justify all answers unless otherwise
+  stated in the problem.  Correct answers with inconsistent work may
+  not be given credit. 
+\item Credit for each problem is given at the right of each problem
+  number. 
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max} & {\large\bf Points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 35 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 30 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 35 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 242}\hfill{\large\bf Fourth Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 2/3}\hrule
+
+\bigskip
+{\problem[30 pts] \em Interpret the following system as describing the interaction of two species with population densities $x$ and $y$.  Which variable describes the predator? Find the critical points of the model, and compute a functional relationship between the two variables.} 
+\begin{equation*}
+\begin{cases}
+x'=x(1-0.5y) \\ y'=y(-0.25+0.5x)
+\end{cases}
+\end{equation*}
+\vspace{7cm}
+\hrule
+
+{\problem[20 pts] \em A motorboat weighs $32,000~\text{lb}$ and its motor provides a thrust of $5000~\text{lb}$.  Assume that the water resistance is 100 pounds for each foot per second of the speed $v$ of the boat.  If the boat starts from rest, what is the maximum velocity that it can attain?}
+\vspace{9cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 242}\hfill{\large\bf Fourth Midterm.}\hfill{\large\bf
+  Fall 2012}\hfill{\large\bf Page 3/3}\hrule
+
+\bigskip
+{\problem[50pts] \em Suppose that a community contains 15,000 people who are susceptible to Michaud's syndrome, a contagious disease.  At time $t=0$ the number $P(t)$ of people who have developed Michaud's syndrome is 5000 and is increasing at the rate of 500 per day.  Assume that $P'(t)$ is proportional to the product of the numbers of those who have caught the disease and of those who have not.  Approximately how long will it take for another 5000 people to develop Michaud's syndrome?}
+\vspace{17cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+
+\end{document}

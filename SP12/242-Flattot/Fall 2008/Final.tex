@@ -1,0 +1,163 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Final Exam, Friday 12 December}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all \textbf{work clearly}, \textbf{make sentences}. No work means no credit. The points are:\\
+ex1: 10, ex2: 10, ex3: 10, ex4: 15, ex5: 15, ex6: 15, ex7: 15, ex8: 10, ex9: 20, ex10: 15, ex11: 15 (Total=150 pts).
+\vspace*{0.5cm}
+
+\begin{exo}
+\begin{enumerate}
+\item We give a differential equation $y'=f(x,y)$. Write the algorithm of the Euler method. Apply this algorithm to find the first two ($y_0$ and $y_1$) value of an approximate solution of the differential equation 
+\[ y'=3x+2y, \quad y(0)=1,\]
+and with step size $h=0.5$.
+\vspace*{6cm}
+\item Method of variation of parameters in the case $n=2$:\\
+We consider the second-order linear differential equation 
+\[ y''+P(x)y'+Q(x)y=f(x) ,\]
+where $P$, $Q$ and $f$ are continuous. A general solution is given by:
+\[ y_c(x)=c_1 y_1(x)+c_2y_2(x) ,\]
+where $c_1$ and $c_2$ are constants.\\
+What will be the form of a particular solution ? To find this solution, what system of equations, with unknown $c_1'$ and $c_2'$, do we have to solve ?
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Solve the initial value problem:
+\[ xy'=2y+x^3\cos x, \quad y(\pi)=1 .\]
+\end{exo}
+%18 p56 
+
+\vspace*{12cm}
+
+\begin{exo}
+Find a general solution of the differential equation
+\[ 3xy'=1+y^2 .\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+We consider the following differential equation:
+\[ xy'+6y=3xy^{4/3}. \]
+\begin{enumerate}
+\item What kind of equation is it?
+\vspace*{1cm}
+\item What substitution do we have to do?
+\vspace*{1cm}
+\item What differential equation do we obtain after the substitution?
+\vspace*{2cm}
+\item Solve this last differential equation and then find the expression of $y$.
+\end{enumerate}
+\end{exo}
+
+\vspace*{7cm}
+
+
+\begin{exo}
+Show that the differential equation
+\[ \left(1+ye^{xy}\right)dx+(2y+xe^{xy})dy=0,\]
+is exact and then solve it.
+\end{exo}
+
+\vspace*{7cm}
+
+\begin{exo}
+We give the differential equation:
+\[ \frac{dx}{dt}=6x-2x^2 .\]
+\begin{enumerate}
+\item What are the critical points ? Use a phase diagram to determine whether each critical point is stable or unstable.
+\vspace*{3cm}
+\item Solve this differential equation with $x(0)=1$.
+\end{enumerate}
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Give the form of a particular solution in each case, but do not determine the values of the coefficients:
+\begin{enumerate}
+\item $y^{(114)}+59y'=x^3+46x-13$,
+\vspace*{1cm}
+\item $y^{(3)}+y''-y'-y=(x^2+1)e^{-x}$,
+\vspace*{3cm}
+\item $y^{(3)}+y''-y'-y=5e^{4x}(13x^2+101x-964)\cos(7x)$.
+\end{enumerate}
+\end{exo}
+
+\vspace*{3cm}
+
+\begin{exo}
+Find the form of a solution of the following differential equation
+\[ y^{(3)}-5y''+8y'-4y=0 .\]
+\textit{Hint:} 1 is a root of the characteristic equation.
+\end{exo}
+
+\vspace*{5cm}
+
+\begin{exo}
+Solve the initial value problem without the Laplace transform:
+\[ y''-6y'+8y=24xe^{-2x}, \quad y(0)=5/12,\ y'(0)=13/6.\]
+\end{exo}
+
+\vspace*{13cm}
+
+\begin{exo}
+$1)$ Find the Laplace transform of the following functions:
+\[ f_1(t)=t\cos(2t), \quad f_2(t)=\frac{2\sin 3t}{t}.\]
+We recall that $\lim_{x\to \infty} \arctan x=\pi/2$ and that $\int\frac{1}{a^2+x^2}dx=1/a \arctan(x/a)$.\\
+$2)$ Find the inverse Laplace transform of:
+\[  F(s)=\frac{s+6}{s^2-10s+41}.\]
+\end{exo}
+
+\newpage
+\, \vspace*{3cm}
+
+\begin{exo}
+Solve the initial value problem using the Laplace transform:
+\[ y''-5y'+6y=-3e^{2x}, \qquad y(0)=-1,\ y'(0)=2.\]
+\end{exo}
+
+
+
+\end{document}

@@ -1,0 +1,109 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 1, Friday 21 September}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly. No work means no credit. The points are:\\
+ex1: 7, ex2: 15, ex3: 9, ex4: 9, ex5: 5 plus 5 point for the writing.
+\vspace*{1cm}
+
+\begin{exo}
+A spacecraft is in free fall towards the surface of the moon at a speed of 1000 $mi/h$. Its retrorockets, when fired, provide a \emph{\textbf{constant deceleration}} of 20,000 $mi/h^2$.
+\begin{enumerate}
+\item Find the expression of the motion of the spacecraft when the retrorockets start (ignore the moon's gravitational field). We take $y_0$ for the initial height.
+\vspace*{4cm}
+\item At what height above the lunar surface should the astronauts fire the retrorockets to insure a soft touchdown ($v=0$ at impact) ?
+\vspace*{5cm}
+\end{enumerate}
+\end{exo}
+%1.2.42
+
+\begin{exo}
+We considere the following differential equation:
+\[ y^2(xy'+y)(1+x^4)^{1/2}=x. \]
+\begin{enumerate}
+\item Write this differential equation as a Bernouilli's equation.
+\vspace*{2cm}
+\item What substitution do we have to do?
+\vspace*{2cm}
+\item What differential equation do we obtain after the substitution?
+\vspace*{4cm}
+\item Solve this last differential equation and then find the expression of $y$.
+\vspace*{6cm}
+\end{enumerate}
+\end{exo}
+%1.6.25
+
+\newpage
+
+\begin{exo}
+A pitcher of buttermilk initially at 25 \textsuperscript{o}C is to be cooled by setting it on the front porch, where the temperature is 5 \textsuperscript{o}C. Suppose that the temperature of the buttermilk has dropped to 15 \textsuperscript{o}C after 20 min. 
+\begin{enumerate}
+\item Using the Newton's law of cooling, determine the temperature of the buttermilk at a time $t$ ($t$ in minutes).
+\vspace*{7cm}
+\item When will the temperature of buttermilk be 10 \textsuperscript{o}C (you can use that $\ln 4=2\ln 2$)?
+\end{enumerate}
+\vspace*{3cm}
+\end{exo}
+%1.4.43
+
+
+\begin{exo}
+We consider the following differential equation:
+\[ (1+ye^{xy})dx+(2y+xe^{xy})dy=0 .\]
+\begin{enumerate}
+\item Show that this equation is exact.
+\vspace*{3cm}
+\item Then solve this differential equation.
+\end{enumerate}
+\end{exo}
+%1.6.36
+
+\newpage
+\vspace*{5cm}
+
+\begin{exo}
+Solve the differential equation:
+\[ 2y\frac{dy}{dx}=\frac{x}{\sqrt{x^2-16}}, \quad y(5)=2.\]
+(you can use a formula of type $\int f'f^n =\hdots$)
+\end{exo}
+%1.4.21
+
+\end{document}

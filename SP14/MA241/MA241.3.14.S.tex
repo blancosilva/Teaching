@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows, calc}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Spring 2014}\hfill{\large\bf Page 1/4}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf 4-digit code:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and the last 4 digits of your SSN in the space provided above.
+\item The test has three (3) pages, including this one.
+\item The test is fifty (50) minutes long.
+\item Enter your answer in the box(es) provided.
+\item You must show sufficient work to justify all answers unless
+  otherwise stated in the problem.  Correct answers with inconsistent
+  work may not be given credit.
+\item Credit for each problem is given in parentheses at the right of
+  the problem number.
+\item No books, notes or calculators may be used on this test.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Page} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 50 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 50 & \cr
+    &&\cr
+    \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Spring 2014}\hfill{\large\bf Page 2/4}\hrule
+
+\bigskip
+{\problem[25 pts] \em Calculate the double integral
+$\displaystyle{\iint_R \frac{1+x^2}{1+y^2}}\, dA$, for the rectangle
+$R=[0,1]\times[0,1]$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[25 pts] \em Use a double integral to compute the volume under
+the surface $z=xy$ and above the region bounded by $x=y^2$ and $x=y^3$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 241}\hfill{\large\bf Exam\#3.}\hfill{\large\bf
+  Spring 2014}\hfill{\large\bf Page 3/4}\hrule
+
+\bigskip
+{\problem[25 pts] \em Evaluate $\displaystyle{\iint_R (3x+4y^2)\, dA}$,
+where $R$ is the region in the upper half-plane bounded by the circles
+$x^2+y^2=1$ and $x^2+y^2=4$.}
+\vspace{8cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\hrule
+{\problem[25 pts] \em A rectangular box without a lid is to be made from $12\,
+\text{m}^2$ of cardboard.  We want to find the maximum volume of such a box.}
+
+\noindent{\small We model the box to have length $x$, width $y$ and height $z$.  That way, the
+volume can be expressed by the formula $V = xyz$.   We need to find the
+maximum value of the function $V(x,y,z) = x y z$, with a constraint on the
+variables: $xy + 2yz + 2zx = 12$.  Use Lagrange multipliers to solve this
+problem.}
+
+\vspace{7cm}
+\begin{flushright}
+  \begin{tikzpicture}
+    \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+  \end{tikzpicture}
+\end{flushright}
+\end{document}

@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts,amsmath,amssymb,amscd,amstext}
+\usepackage{theorem}
+
+\renewcommand{\thepage}{} % astuce pour supprimer les numéros de pages
+
+\addtolength{\textheight}{3 cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\oddsidemargin}{-2.1cm}
+\addtolength{\evensidemargin}{-2.1cm}
+%\theoremstyle{definition}
+
+\theorembodyfont{\rmfamily}
+\newtheorem{exo}{Exercise}
+
+\def\ch{\mathrm{ch}}
+\def\sh{\mathrm{sh}}
+\def\th{\mathrm{th}}
+
+\newcommand{\exoskip}{\addvspace{15pt plus 2pt minus 3pt}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inter}{\stackrel{\circ}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\E}{\mathrm{E}}
+
+\begin{document}
+{\large
+\begin{center}{\bf Math 242 Test 2, Friday 2 November}
+\end{center}}
+\vspace*{0.5cm}
+\large{\textbf{Name:} \hfill \textbf{Last 4 digits of SSN:}}\hspace{2cm}
+\vspace{1cm}
+
+\noindent Show all work clearly, \textbf{MAKE SENTENCES}. No work means no credit. The points are:\\
+ex1: 25, ex2: 25, ex3: 20, ex4: 15 and the course questions are over 15 points.
+\vspace*{1cm}
+
+\textbf{\large Course Questions}
+\begin{enumerate}
+\item Write the the algorithm of the Euler's method and precise what is the order of the cumulative error.
+\vspace*{4cm}
+\item Write the definition of the linearly dependence and independence of $n$ functions. What is the characterization with the Wronskian ?
+\vspace*{4cm}
+\item Write a general solution of a nonhomogeneous linear differential equation (use the sum of two functions).
+\vspace*{3cm}
+\end{enumerate}
+
+\newpage
+
+\begin{exo}
+We give the differential equation:
+\[ \frac{dx}{dt}=6x-2x^2 .\]
+\begin{enumerate}
+\item How do we call this differential equation ?
+\vspace*{1.5cm}
+\item What are the critical points ? Use a phase diagram to determine wether each critical point is stable or unstable.
+\vspace*{4cm}
+\item Solve this differential equation with $x_0=1$.
+\vspace*{8cm}
+\end{enumerate}
+\end{exo}
+
+
+
+\begin{exo}
+Solve the differential equation:
+\[ y^{(3)}+y''-y'+15y=0,\]
+using the fact that the function $x\mapsto e^{-3x}$ is solution of this differential equation.\\
+Then find the unique solution satisfying the initial conditions:
+\[ y(0)=0, \ y'(0)=1, \ y''(0)=3.\]
+\end{exo}
+
+\vspace*{10cm}
+
+\begin{exo}
+Solve the initial value problem:
+\[ y^{(3)}-4y''+4y'=0, \quad y(0)=0, \ y'(0)=1, \ y''(0)=2.\]
+\end{exo}
+
+\newpage
+
+\begin{exo}
+Find a linear homogeneous constant-coefficient equation with the general solution:
+\[ y(x)= (A+Bx+Cx^2)e^{x}+B\cos(3x)+ C\sin(3x) .\]
+\end{exo}
+
+
+\end{document}

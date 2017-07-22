@@ -1,0 +1,50 @@
+\documentclass{amsart}
+\usepackage{pgf,tikz}
+
+\begin{document}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[white] (0cm,0cm) rectangle (\linewidth, 5cm);
+      \draw[white] (0cm,0cm) -- (45:7cm)
+      node (A) [black, pos = 0.17] {${\boldsymbol{\tau}^i_Z}^{\leq 0}
+      X^{\cdot}$}
+      node (B) [black, pos = 0.4] {$\gamma_{Z_i} X^{\cdot}$}
+      node (D) [black, pos = 0.9] {\mbox{}};
+      \draw[white] (B) -- +(0:7cm)
+      node (G) [black, pos = 1] {\mbox{}};
+      \draw[white] (\linewidth, 0cm) -- +(160:13cm)
+      node (H) [black, pos = 1] {\mbox{}}
+      node (I) [black, pos = 0.3] {\mbox{}};
+      \draw[white] (A) -- +(20:9cm)
+      node (J) [black, pos = 0.75] {\mbox{}};
+      \node (C) at (intersection of A--D and I--H)
+      {$\tau^{>i}\gamma_{Z_i} X^{\cdot}$};
+      \node (F) at (intersection of B--G and I--H) {$\ell_{Z_i}
+      X^{\cdot}$};
+      \node (E) at (intersection of B--G and A--J) {$X^{\cdot}$};
+      \node (K) at (intersection of C--F and A--J)
+      {${\boldsymbol{\tau}^i_Z}^{>0} X^{\cdot}$};
+      \draw [->] (A) -- (B) node[above, midway, sloped, scale=0.75]
+      {$a$};
+      \draw [->] (B) -- (C);
+      \draw [->] (C) -- (D) node[above, midway, sloped, scale=0.75] {+};
+      \draw [->] (B) -- (E) node[above, midway, sloped, scale=0.75]
+      {$b$};
+      \draw [->] (E) -- (F);
+      \draw [->] (F) -- (G) node[above, midway, sloped, scale=0.75] {+};
+      \draw [->] (F) -- (I);
+      \draw [->] (E) -- (K);
+      \draw [->] (K) -- (J) node[above, midway, sloped, scale=0.75] {+};
+      \draw [->] (C) -- (K);
+      \draw [->] (K) -- (F);
+      \draw [->] (F) -- (I) node[above, midway, sloped, scale=0.75] {+};
+      \draw [->] (A) -- (E) node[below, midway, sloped, scale=0.75]
+      {$c$};
+    \end{tikzpicture}
+  \end{center}
+\end{figure}
+
+
+\end{document}

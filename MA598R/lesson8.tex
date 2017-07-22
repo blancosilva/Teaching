@@ -1,0 +1,76 @@
+\documentclass[12pt]{amsart}
+\usepackage{pgf,tikz}
+
+\renewcommand{\theenumi}{(\roman{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+\def\field#1{\mathbb{#1}}
+\def\abs#1{\lvert {#1} \rvert}
+\def\Lpnorm#1#2{\lVert {#1} \rVert_{#2}}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\title{Absolute Continuity}
+\maketitle
+
+\begin{problem}[\textcolor{red}{Spring'96}, \textcolor{red}{Spring'07}]
+  Let $f\colon [0,1] \to \field{R}$.
+  \begin{enumerate}
+  \item Let $V_f(0,x)$ be the total variation of $f$ on $[0,x]$. Prove
+    that if $f$ is absolutely continuous on $[0,1]$, so is $V_f(0,x)$.
+  \item Define what it means for $f$ to be absolutely continuous.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'05}]
+  Let $\{ f_n \} \in AC(I)$, $I = [a,b]$. Assume that $f_n \to f
+  (L_1)$ and $\{ f'_n\}$ is Cauchy ($L_1$).  Show that there exists $g
+  \in AC(I)$ such that $f(x) = g(x)$~a.e.~$x \in I$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'05}]
+  Let $f\colon I \to \field{R}$, $I = [a,b]$, and let $M \in
+  \field{N}$.  Show that the following two statements are equivalent.
+  \begin{enumerate}
+  \item $f \in AC(I)$.
+  \item For every $\varepsilon >0$ there exists $\delta =
+    \delta(\varepsilon) > 0$ such that for every collection of
+    intervals $\{ J_k = [a_n, b_n] \subset I \}$ with $\sum_n
+    \xi_{J_n}(x) \leq M$ and $\sum_n \abs{J_n} \leq \delta$, we have
+    $\sum_n \abs{ f(b_n) - f(a_n) } \leq \varepsilon$.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'05}]
+  Suppose $f$ is absolutely continuous on $[0,1]$.  Prove that so is
+  $e^f$.
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'06}]
+  Let
+  \begin{equation*}
+    f(x) = \begin{cases} 
+      x^p \sin (x^{-q}) &\text{if } 0 < x\leq 1\\
+      0 &\text{if }x=0.
+    \end{cases}
+  \end{equation*}
+  \begin{enumerate}
+  \item Show that if $0<q<p$, then $f$ is absolutely continuous.
+  \item However, if $0<p\leq q$, show that $f$ is not of bounded
+  variation.
+  \end{enumerate}
+\end{problem}
+\begin{problem}[\textcolor{red}{Spring'06}]
+  Let $f_n\colon [0,1] \to [-1,1]$, $n \in \field{N}$ be a sequence of
+  absolutely continuous functions.  Suppose that $f_n \to f$
+  uniformly.  Is $f$ absolutely continuous?
+\end{problem}
+\begin{problem}[\textcolor{red}{Fall'06}]
+  Suppose that $f_n(x)$ is a sequence of increasing (in $x$),
+  absolutely continuous functions on $[0,1]$ for which $f_n(0)=0$ for
+  all $n$. Let
+  \begin{equation*}
+    g(x) = \sum_{n=1}^\infty f_n(x).
+  \end{equation*}
+  Prove that if $g(1)<\infty$, then $g$ is absolutely continuous on
+  $[0,1]$.
+\end{problem}
+\end{document}
