@@ -24,18 +24,22 @@
 \def\open#1{\overset{\mathrm{o}}{#1}}
 
 % Functions
-\def\supp{\operatorname{supp}} 
+\def\supp{\operatorname{supp}}
 \def\sign{\operatorname{sign}}
 \def\ceil#1{\lceil{#1}\rceil} 
 \def\floor#1{\lfloor{#1}\rfloor} 
-\def\BesselJ#1{\operatorname{\mathcal{J}_{#1}}}
 
 % Functionals, norms
 \def\abs#1{\lvert #1 \rvert} 
 \def\norm#1{\lVert #1 \rVert}
 \def\dist{\operatorname{d}}
+\def\gradient#1{\mathop{\nabla\! {#1}}}
+\def\Hess#1{\mathop{\mathrm{Hess}{#1}}}
 \def\sequence#1#2{({#1}_{#2})_{{#2}\in\field{N}}}
 \def\bigsequence#1#2{\big({#1}_{#2}\big)_{{#2}\in\field{N}}}
+\def\bilinear#1{\mathcal{B}_{\boldsymbol{#1}}}
+\def\quadratic#1{\mathcal{Q}_{\boldsymbol{#1}}}
+\def\transpose#1{{#1}^\intercal}
 \def\L2{L_2(\field{R}^2)} 
 \def\Lpnorm#1#2#3{\norm{#1}_{L_{#2}({#3})}}
 \def\lpnorm#1#2#3{\norm{#1}_{\ell_{#2}({#3})}}
@@ -43,7 +47,8 @@
 \def\OpNorm#1#2#3{\norm{#1}_{{#2} \to {#3}}}
 \def\error#1#2#3{\boldsymbol{E}({#1},{#2})_{#3}} 
 
-%\def\LinearSpace#1{\operatorname{span}\left\{ {#1} \right\}}
+% \def\BesselJ#1{\mathop{\mathcal{J}_{#1}}}
+%\def\LinearSpace#1{\mathop{span}\left\{ {#1} \right\}}
 % \def\Wnorm#1#2#3#4{\norm{#1}_{W^{#2,#3}({#4})}}
 % \def\Hsnorm#1#2#3{{\norm{#1}_{W^{#2,2}({#3})}^\star}}
 % \def\Besovnorm#1#2#3#4#5{\norm{#1}_{B_{#2}^{#3}(L_{#4}({#5}))}}
