@@ -51,14 +51,6 @@ If $A$ is any subset of the domain $X$, then $f(A)$ is the subset of the codomai
 
 If $Y \subset \field{R}$, we say that the function $f$ is real-valued.  For a real-valued function $f\colon \field{R}^d \to \field{R}$, we may regard the corresponding ordered pairs $(\x, y) \in \field{R}^d\times\field{R}$ as points in a $(d+1)$--dimensional space.  We call this set the \emph{graph} of $f$.
 
-\begin{example}\label{example:Rosenbrock2}
-Given strictly positive parameters $a,b > 0$, we define the $(a,b)$--Rosenbrock function $\mathcal{R}_{a,b}\colon \field{R}^2 \to \field{R}$ as follows:
-\begin{equation*} 
-\mathcal{R}_{a,b}(x_1, x_2) = (a-x_1)^2 + b(x_2-x_1^2)^2.
-\end{equation*}
-The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(x_1,0) = (a-x_1)^2 + bx^4$ is a polynomial of degree 4, hence unbounded for $x_1 \in \field{R}$.
-\end{example}
-
 The \emph{inverse image} of a subset $B$ of the codomain $Y$ under a function $f$ is the subset of the domain $X$ defined by $f^{-1}(B) = \{ \x \in X : f(x) \in B\}$.
 
 For sets $X, Y, Z$, the \emph{function composition} of $f\colon X \to Y$ with $g\colon Y \to Z$ is the function $g\circ f\colon X \to Z$ defined by $\big( g \circ f \big)(\x) = g \big( f(\x) \big)$.
@@ -72,7 +64,54 @@ f(\x + \lambda \y) = f(\x) + \lambda f(\y) \text{ for }\x, \y \in \field{R}^d, \
 \end{equation*}
 
 With this definition, the function $f(x) = 3x$ is indeed a linear function, but $g(x)=3x+5$ is not!  
+It is not hard to see that the only linear constant function is $f(x) = 0$ (since $f(0)=f(x-x)=f(x)-f(x)=0$).  For a non-constant linear function $f(x)$, it is also easy to see that the image is the whole real line.
 \end{example}
+
+\begin{example}[Convex Functions]\label{example:convexFunction}
+A subset $C \subset \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \x + (1-\lambda) \y$ is also in $C$.   Given such a convex set, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
+\begin{equation*}
+f\big(\lambda \x + (1-\lambda)\y\big) \leq \lambda f(\x) + (1-\lambda) f(\y)
+\end{equation*}
+\begin{figure}[ht!]\label{figure:convexFunction}
+% \begin{center}
+\includegraphics[width=0.5\linewidth]{convexFunction.png}
+% \end{center}
+% \caption{In convex functions, the segment joining two points of the graph is always above the graph.}
+\end{figure}
+If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
+\end{example}
+
+\begin{example}[Rosenbrock Functions]\label{example:Rosenbrock2}
+Given strictly positive parameters $a,b > 0$, consider the $(a,b)$--Rosenbrock function $\mathcal{R}_{a,b}\colon \field{R}^2 \to \field{R}$ defined by:
+\begin{equation*} 
+\mathcal{R}_{a,b}(x_1, x_2) = (a-x_1)^2 + b(x_2-x_1^2)^2.
+\end{equation*}
+The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b}(\x) \geq 0$ for all $\x \in \field{R}^2$.  Zero is attained: $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(x_1,0) = (a-x_1)^2 + bx_1^4$ is a polynomial of degree 4, hence unbounded for $x_1 \in \field{R}$.
+Figure \ref{figure:Rosenbrock} illustrates a contour plot with several level lines of $\mathcal{R}_{1,1}$ on the domain $D = [-2,2] \times [-2,2]$
+\begin{figure}[ht!]\label{figure:Rosenbrock}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{rosenbrockContour} &
+\includegraphics[width=0.5\linewidth]{rosenbrockGraph}
+\end{tabular}
+% \caption{Details of the graph of $\mathcal{R}_{1,1}$}
+\end{figure}
+\end{example}
+
+
+
+This is a good spot to introduce the goal of these notes.  The main purpose of \emph{optimization} is the search for \emph{extrema} of real-valued functions.  Given a set $D \subset \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
+\begin{enumerate}
+	\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
+	\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
+	\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+	\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+\end{enumerate}
+
+Let's play around with some more examples of functions, before we proceed to techniques for finding extrema:
 
 \begin{example}[Bilinear Forms]\label{example:BilinearForm}
 Let $\boldsymbol{A} = \big[ a_{jk} \big]_{j,k=1}^d$ be a square matrix with real coefficients.  Considering elements in $\field{R}^d$ as horizontal matrices, and by means of matrix products, we construct functions $\bilinear{A} \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
@@ -120,7 +159,7 @@ is an inner product.  What is the matrix associated to its corresponding bilinea
 \end{problem}
 
 \begin{problem}\label{problem:linearFunction}
-Prove that, if $f$ is a linear function in the sense of Example \ref{example:linearFunction}, then there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ so that $f(\x)=\langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.
+Prove that, if $f$ is a linear function, then there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ so that $f(\x)=\langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.
 \end{problem}
 
 \begin{problem}\label{problem:affineFunction}
@@ -206,30 +245,59 @@ Equivalently, $f$ is continuous at $\x_0$ if $\lim_n f(\x_n) = f(\x_0)$ for any 
 
 We say that $f$ is continuous in $D \subset \field{R}^d$ if $f$ is continuous at all points $\x \in D$.
 
+The image of a continuous functions enjoys nice properties, which are key to the pursue of extrema.  Let's start with two basic Theorems.
+
 \begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
 The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
 \end{theorem}
-
-Given a set $D \subset \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
-\begin{enumerate}
-	\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
-	\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
-	\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-	\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-\end{enumerate}
 
 \begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
 A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
 \end{theorem}
 
+Theorem \ref{theorem:EVT} guarantees the existence of global \emph{extrema} (maxima/minima) for continuous real-valued functions over compact subsets.  What if we do not have compactness?
+
+\begin{example}[Coercive Functions]
+A continuous real-valued function $f\colon \field{R}^d \to \field{R}$ is said to be \emph{coercive} if the values of $f(\x)$ cannot remain bounded on any non-bounded set $A\subset \field{R}^d$: 
+\begin{equation*}
+\lim_{\norm{\x} \to \infty} = +\infty.
+\end{equation*}
+A coercive function always has a global minimum.  Indeed: since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, the set $K_r = \{ \x \in \field{R}^d : \norm{x} \leq r \}$ is compact.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
+\end{example}
+
+
+How about local extrema?   Continuity may not be enough:
+
 A real-valued function $f$ is said to be \emph{differentiable} at $\x_0$ if there exists a linear function $J\colon \field{R}^d \to \field{R}$ so that 
 \begin{equation*}
 \lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\x_0+h)-f(\x_0)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
 \end{equation*}
+
+For any differentiable real-valued function $f$ at a point $\x$ of its domain, the corresponding linear function in the definition above guarantees a tangent hyperplane to the graph of $f$ at $\x$.  It is the behavior of the interaction of the rest of the graph with this hyperplane what will give us clues to the nature of possible extrema.
+
+\begin{figure}[ht!]\label{figure:extrema}
+\begin{tabular}{cc}
+%  &
+% \includegraphics[width=0.45\linewidth]{x3.png}
+\begin{tikzpicture}
+\draw [white] (-2,-2) rectangle (2,2);
+\draw (0,0) node{\includegraphics[width=0.5\linewidth]{x2.png}};
+% \draw [smooth, samples=100, domain=-1.732:1.732, blue, ultra thick, variable=\t] plot({\t}, {\t*\t-1});
+% \draw[thick] (-2,-1) -- (2,-1);
+\draw[fill=blue] (0.1,-0.65) circle (2pt); 
+% \draw (0.1,-1.25) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
+\end{tikzpicture} &
+\begin{tikzpicture}
+\draw [white] (-2,-2) rectangle (2,2);
+\draw (0,0) node{\includegraphics[width=0.5\linewidth]{x3.png}};
+% \draw [smooth, samples=100, domain=-1:1.442, blue, ultra thick, variable=\t] plot({\t}, {\t*\t*\t-1});
+% \draw[thick] (-2,-1) -- (2,-1);
+\draw[fill=blue] (0.1,0.125) circle (2pt); 
+% \draw (0.1,-0.2) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
+\end{tikzpicture}
+\end{tabular}
+\caption{On the left: the function is locally \emph{above} the tangent hyperplane at $\big(\xstar, f(\xstar)\big)$.  We have a local minimum at that location.  On the right, the graph crosses the tangent hyperplane.  We have no extrema at that location.}
+\end{figure}
 
 \begin{example}\label{example:derivatives}
 Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x_0$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
@@ -246,8 +314,21 @@ Let $f\colon \field{R}^d \to \field{R}$ be a real-valued function.  To prove tha
 \end{equation*}
 \end{problem}
 
-\begin{example}[Hessian matrices]
-Let $f\colon D \to \field{R}$ be a \emph{twice differentiable} real-valued function (all second partial derivatives of $f$ exist and are continuous over the domain $D \subset \field{R}^d$), we define the \emph{Hessian} of $f$ at $\x \in D$ to be the following matrix of second partial derivatives:
+\begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}
+For any $a \in (0,1)$ and positive off integer $b$ satisfying $ab > 1 + \tfrac{3}{2}\pi$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
+\begin{equation*}
+\mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
+\end{equation*}
+This function is continuous everywhere, yet \emph{nowehere} differentiable!
+\begin{figure}[ht!]
+\includegraphics[width=0.5\linewidth]{weierstrass.png}
+\caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
+\end{figure}
+\end{example}
+
+It is possible to extend the notion to higher derivatives.  We would say, for instance, that a function is \emph{twice differentiable} if the derivative is differentiable.  For the case of such a real-valued function $f \colon \field{R}^d \to \field{R}$, this would mean in particular that all second partial derivatives exist, and are continuous over the domain of $f$.
+
+We define for these functions the \emph{Hessian} of $f$ at $\x \in D$ to be the following matrix of second partial derivatives:
 \begin{equation*}
 \Hess{f}(\x) = \begin{bmatrix}
 \frac{\strut\partial^2 f}{\strut\partial x_1^2}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_1 \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_1 \partial x_d}(\x) \\
@@ -259,7 +340,8 @@ Let $f\colon D \to \field{R}$ be a \emph{twice differentiable} real-valued funct
 \frac{\strut\partial^2 f}{\strut\partial x_d \partial x_1}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_d \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_d^2}(\x)
 \end{bmatrix}
 \end{equation*}
-\end{example}
+
+The following three results aid in our search for local extrema for twice-differentiable real-valued functions of one variable.
 
 \begin{theorem}[Rolle's Theorem]\label{theorem:Rolle}
 If $f\colon [a,b] \to \field{R}$ is a continuous function on a closed interval $[a,b]$, differentiable on $(a,b)$, and $f(a) = f(b)$, then there exists $c \in (a,b)$ so that $f'(c)=0$.
@@ -272,38 +354,72 @@ f'(c) = \frac{f(b)-f(a)}{b-a}
 \end{equation*}
 \end{theorem}
 
+\begin{theorem}[Extended Law of the Mean]
+If $f\colon D \to \field{R}$ is a twice differentiable function on a domain $D \subset \field{R}$ containing the closed interval $[a,b]$, then there exists $c \in (a,b)$ so that 
+\begin{equation*}
+f(b) = f(a) + f'(a)(b-a) + \tfrac{1}{2}f''(c)(b-a)^2
+\end{equation*}
+\end{theorem}
+
+This last result can be extended to a real-valued function $f \colon \field{R}^ \to \field{R}$ as follows:
+
 \begin{theorem}[Taylor]\label{theorem:Taylor}
-Given two points $\boldsymbol{a}, \boldsymbol{b} \in \field{R}^d$, let $f\colon G \to \field{R}$ be a real-valued function with continuous first and second derivatives on an open set $G \subset \field{R}^d$ containing the segment $[\boldsymbol{a}, \boldsymbol{b}] = \{ \boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) : t \in [0,1] \}$.  There exists $\boldsymbol{c} \in [\boldsymbol{a}, \boldsymbol{b}]$ so that 
+Given two points $\boldsymbol{a}, \boldsymbol{b} \in \field{R}^d$, let $f\colon G \to \field{R}$ be a twice-differentiable real-valued function on an open set $G \subset \field{R}^d$ containing the segment $[\boldsymbol{a}, \boldsymbol{b}] = \{ \boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) : t \in [0,1] \}$.  There exists $\boldsymbol{c} \in [\boldsymbol{a}, \boldsymbol{b}]$ so that 
 \begin{equation*}
 f(\x) = f(\boldsymbol{a}) + \langle \gradient{f}(\boldsymbol{a}), \x - \boldsymbol{a} \rangle + \frac{1}{2} \quadratic{\Hess{f}(c)} (\x-\boldsymbol{a})
 \end{equation*}
 \end{theorem}
 
-\begin{proof}
-Let's prove the first-dimensional case first:  Given $a,b \in \field{R}$, and a real-valued function $f\colon (a-\varepsilon, b+\varepsilon) \to \field{R}$ with continuous first and second derivatives in $(a-\varepsilon, b+\varepsilon)$ for some $\varepsilon>0$, we need to find the existence of a value $c \in [a,b]$ so that $f(x) = f(a) + f'(a)(x-a) + \tfrac{1}{2}f''(c)(x-a)^2$.
+% \begin{proof}
+% Let's prove the first-dimensional case first:  Given $a,b \in \field{R}$, and a real-valued function $f\colon (a-\varepsilon, b+\varepsilon) \to \field{R}$ with continuous first and second derivatives in $(a-\varepsilon, b+\varepsilon)$ for some $\varepsilon>0$, we need to find the existence of a value $c \in [a,b]$ so that $f(x) = f(a) + f'(a)(x-a) + \tfrac{1}{2}f''(c)(x-a)^2$.
 
-Consider the Taylor polynomial of degree $n$ of $f$ at $x=a$, 
-\begin{equation*}
-T_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k
-\end{equation*}
+% Consider the Taylor polynomial of degree $n$ of $f$ at $x=a$, 
+% \begin{equation*}
+% T_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k
+% \end{equation*}
 
-Consider the following piecewise functions $f_n(x)$:
-\begin{equation*}
-f_n(x) = \begin{cases} 
-\frac{f(x) - T_n(x)}{(x-a)^n} &\text{if }x\neq a \\
-0 &\text{if }x=a
-\end{cases}
-\end{equation*}
+% Consider the following piecewise functions $f_n(x)$:
+% \begin{equation*}
+% f_n(x) = \begin{cases} 
+% \frac{f(x) - T_n(x)}{(x-a)^n} &\text{if }x\neq a \\
+% 0 &\text{if }x=a
+% \end{cases}
+% \end{equation*}
 
-By using L'Hopital rule (up to two times where necessary), we can see that $\lim_{x \to a} f_n(x) = 0$. 
+% By using L'Hopital rule (up to two times where necessary), we can see that $\lim_{x \to a} f_n(x) = 0$. 
 
-Set $h(t) = f\big(\boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) \big)$ to be the restriction of $f$ over the segment $[\boldsymbol{a},\boldsymbol{b}]$.  Note this function $h$ still has continuous first and second derivatives:
-\begin{align*}
-	h'(t) = \gradient{f}
-\end{align*}
-\end{proof}
+% Set $h(t) = f\big(\boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) \big)$ to be the restriction of $f$ over the segment $[\boldsymbol{a},\boldsymbol{b}]$.  Note this function $h$ still has continuous first and second derivatives:
+% \begin{align*}
+% 	h'(t) = \gradient{f}
+% \end{align*}
+% \end{proof}
+
 % TODO: We need to describe/prove Taylor's Formula (the extended Law of the
 % Mean) and use it to figure out how to locate local minima
+
+\begin{example}[Rosenbrock functions, continued]
+In Example \ref{example:Rosenbrock2} we showed that the image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  We also found (by inspection) that the point $(a,a^2)$ is a global minimum for this function. A straightforward computation shows that it is actually a strict global minimum.  A different approach to obtain this result can be obtained using the previous technique:
+\begin{itemize}
+	\item Notice $\mathcal{R}_{a,b}$ is twice differentiable.  Its gradient and Hessian are given respectively by
+	\begin{equation*}
+	\gradient{\mathcal{R}_{a,b}}(\x) = \big( 2(x_1-a) +4bx(x_1^2-x_2) , b(x_2-x_1^2) \big) \\
+	\end{equation*}
+	\begin{equation*}
+	\Hess{\mathcal{R}_{a,b}}(\x) = \begin{bmatrix}
+	12bx_1^2-4bx_2+2 & -4bx_1 \\
+	-4bx_1 & 2b
+	\end{bmatrix}
+	\end{equation*}
+	\item The search for critical points $\gradient{\mathcal{R}_{a,b}} = \boldsymbol{0}$ gives only the point $(a,a^2)$.
+	\item The Hessian at that point is positive definite:
+	\begin{equation*}
+	\Hess{\mathcal{R}_{a,b}}(a,a^2) = \begin{bmatrix}
+	8ba^2+2 & -4ab \\
+	-4ab & 2b
+	\end{bmatrix}
+	\end{equation*}
+\end{itemize}
+\end{example}
 
 \section{Optimization}
 
