@@ -72,11 +72,12 @@ A subset $C \subset \field{R}^d$ is said to be \emph{convex} if for every $\x, \
 \begin{equation*}
 f\big(\lambda \x + (1-\lambda)\y\big) \leq \lambda f(\x) + (1-\lambda) f(\y)
 \end{equation*}
-\begin{figure}[ht!]\label{figure:convexFunction}
+\begin{figure}[ht!]
 % \begin{center}
 \includegraphics[width=0.5\linewidth]{convexFunction.png}
 % \end{center}
-% \caption{In convex functions, the segment joining two points of the graph is always above the graph.}
+\caption{In convex functions, the segment joining two points of the graph is always above the graph.}
+\label{figure:convexFunction}
 \end{figure}
 If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
 \end{example}
@@ -88,16 +89,15 @@ Given strictly positive parameters $a,b > 0$, consider the $(a,b)$--Rosenbrock f
 \end{equation*}
 The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b}(\x) \geq 0$ for all $\x \in \field{R}^2$.  Zero is attained: $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(x_1,0) = (a-x_1)^2 + bx_1^4$ is a polynomial of degree 4, hence unbounded for $x_1 \in \field{R}$.
 Figure \ref{figure:Rosenbrock} illustrates a contour plot with several level lines of $\mathcal{R}_{1,1}$ on the domain $D = [-2,2] \times [-1,3]$, as well as its graph
-\begin{figure}[ht!]\label{figure:Rosenbrock}
+\begin{figure}[ht!]
 \begin{tabular}{cc}
 \includegraphics[width=0.5\linewidth]{rosenbrockContour} &
 \includegraphics[width=0.5\linewidth]{rosenbrockGraph}
 \end{tabular}
-% \caption{Details of the graph of $\mathcal{R}_{1,1}$}
+\caption{Details of the graph of $\mathcal{R}_{1,1}$}
+\label{figure:Rosenbrock}
 \end{figure}
 \end{example}
-
-
 
 This is a good spot to introduce the goal of these notes.  The main purpose of \emph{optimization} is the search for \emph{extrema} of real-valued functions.  Given a set $D \subset \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
 \begin{enumerate}
@@ -275,29 +275,30 @@ A real-valued function $f$ is said to be \emph{differentiable} at $\x_0$ if ther
 
 For any differentiable real-valued function $f$ at a point $\x$ of its domain, the corresponding linear function in the definition above guarantees a tangent hyperplane to the graph of $f$ at $\x$.  It is the behavior of the interaction of the rest of the graph with this hyperplane what will give us clues to the nature of possible extrema.
 
-\begin{figure}[ht!]\label{figure:extrema}
-\begin{tabular}{cc}
-%  &
-% \includegraphics[width=0.45\linewidth]{x3.png}
-\begin{tikzpicture}
-\draw [white] (-2,-2) rectangle (2,2);
-\draw (0,0) node{\includegraphics[width=0.5\linewidth]{x2.png}};
-% \draw [smooth, samples=100, domain=-1.732:1.732, blue, ultra thick, variable=\t] plot({\t}, {\t*\t-1});
-% \draw[thick] (-2,-1) -- (2,-1);
-\draw[fill=blue] (0.1,-0.65) circle (2pt); 
-% \draw (0.1,-1.25) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
-\end{tikzpicture} &
-\begin{tikzpicture}
-\draw [white] (-2,-2) rectangle (2,2);
-\draw (0,0) node{\includegraphics[width=0.5\linewidth]{x3.png}};
-% \draw [smooth, samples=100, domain=-1:1.442, blue, ultra thick, variable=\t] plot({\t}, {\t*\t*\t-1});
-% \draw[thick] (-2,-1) -- (2,-1);
-\draw[fill=blue] (0.1,0.125) circle (2pt); 
-% \draw (0.1,-0.2) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
-\end{tikzpicture}
-\end{tabular}
-\caption{On the left: the function is locally \emph{above} the tangent hyperplane at $\big(\xstar, f(\xstar)\big)$.  We have a local minimum at that location.  On the right, the graph crosses the tangent hyperplane.  We have no extrema at that location.}
-\end{figure}
+% \begin{figure}[ht!]
+% \begin{tabular}{cc}
+% %  &
+% % \includegraphics[width=0.45\linewidth]{x3.png}
+% \begin{tikzpicture}
+% \draw [white] (-2,-2) rectangle (2,2);
+% \draw (0,0) node{\includegraphics[width=0.5\linewidth]{x2.png}};
+% % \draw [smooth, samples=100, domain=-1.732:1.732, blue, ultra thick, variable=\t] plot({\t}, {\t*\t-1});
+% % \draw[thick] (-2,-1) -- (2,-1);
+% \draw[fill=blue] (0.1,-0.65) circle (2pt); 
+% % \draw (0.1,-1.25) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
+% \end{tikzpicture} &
+% \begin{tikzpicture}
+% \draw [white] (-2,-2) rectangle (2,2);
+% \draw (0,0) node{\includegraphics[width=0.5\linewidth]{x3.png}};
+% % \draw [smooth, samples=100, domain=-1:1.442, blue, ultra thick, variable=\t] plot({\t}, {\t*\t*\t-1});
+% % \draw[thick] (-2,-1) -- (2,-1);
+% \draw[fill=blue] (0.1,0.125) circle (2pt); 
+% % \draw (0.1,-0.2) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
+% \end{tikzpicture}
+% \end{tabular}
+% \caption{On the left: the function is locally \emph{above} the tangent hyperplane at $\big(\xstar, f(\xstar)\big)$.  We have a local minimum at that location.  On the right, the graph crosses the tangent hyperplane.  We have no extrema at that location.}
+% \label{figure:extrema}
+% \end{figure}
 
 \begin{example}\label{example:derivatives}
 Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x_0$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
@@ -321,8 +322,9 @@ For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consi
 \end{equation*}
 This function is continuous everywhere, yet \emph{nowehere} differentiable!  For a proof, see e.g.~\cite{hardy1916weierstrass}
 \begin{figure}[ht!]
-\includegraphics[width=0.5\linewidth]{weierstrass.png}
+\includegraphics[width=0.6\linewidth]{weierstrass.png}
 \caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
+\label{figure:WeierstrassFunction}
 \end{figure}
 \end{example}
 
