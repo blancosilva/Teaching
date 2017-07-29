@@ -315,11 +315,11 @@ Let $f\colon \field{R}^d \to \field{R}$ be a real-valued function.  To prove tha
 \end{problem}
 
 \begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}
-For any $a \in (0,1)$ and positive off integer $b$ satisfying $ab > 1 + \tfrac{3}{2}\pi$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
+For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
 \begin{equation*}
 \mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
 \end{equation*}
-This function is continuous everywhere, yet \emph{nowehere} differentiable!
+This function is continuous everywhere, yet \emph{nowehere} differentiable!  For a proof, see e.g.~\cite{hardy1916weierstrass}
 \begin{figure}[ht!]
 \includegraphics[width=0.5\linewidth]{weierstrass.png}
 \caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
@@ -429,3 +429,5 @@ In Example \ref{example:Rosenbrock2} we showed that the image of $\mathcal{R}_{a
 %		 compute its Hessian, and prove that at (a,a^2), it is positive definite
 %		 Use this to conclude that f has a global minimum at (a,a^2)
 % Maybe extend this to higher dimensions?
+
+\section*{Notes}
