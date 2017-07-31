@@ -3,7 +3,8 @@
 
 \chapter{Background}
 
-Our starting point is, for any positive integer $d \in \field{N}$, the Cartesian products:
+Our starting point is, for any positive integer $d \in \field{N}$, the
+Cartesian products:
 \begin{equation*}
 \field{R}^d = \field{R} \times \overset{(d)}{\dotsm} \times \field{R} =\{ (x_1, \dotsc, x_d) : x_k \in \field{R} \text{ for } 1\leq k \leq d\}.
 \end{equation*}
@@ -73,13 +74,23 @@ A subset $C \subset \field{R}^d$ is said to be \emph{convex} if for every $\x, \
 f\big(\lambda \x + (1-\lambda)\y\big) \leq \lambda f(\x) + (1-\lambda) f(\y)
 \end{equation*}
 \begin{figure}[ht!]
-% \begin{center}
 \includegraphics[width=0.5\linewidth]{convexFunction.png}
-% \end{center}
 \caption{In convex functions, the segment joining two points of the graph is always above the graph.}
 \label{figure:convexFunction}
 \end{figure}
 If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
+\end{example}
+
+\begin{example}[Posynomials]\label{example:posynomial}
+Consider the set $\mathfrak{P}_d = \{ (x_1, \dotsc, x_d) \in \field{R}^d : x_k > 0 \text{ for } 1\leq k \leq d\}$. A function $f \colon \mathfrak{P}_d \to \field{R}$ is said to be a \emph{posynomial} if it can be written in the form of a linear combination with non-negative coefficients of products of powers of non-negative variables.  More formally: $f$ is a posynomial if there exists $n \in \field{N}$, $n$ positive constants $\{ c_j : 1 \leq j \leq n \}$ and $nd$ arbitrary real exponents $\{ \alpha_{jk} : 1\leq j \leq n, 1 \leq k \leq d \}$ so that 
+\begin{equation*}
+f(\x) = \sum_{j=1}^n c_j \prod_{k=1}^d t_k^{\alpha_jk}.
+\end{equation*}
+Notice that the domain o posynomials may not be extended in general anywhere else in $\field{R}^d$.  For example, notice the obvious restrictions for the function $f\colon \mathfrak{P}_2 \to \field{R}$ given by $f(x_1,x_2) = x_1\sqrt{x_2} + \frac{\pi}{x_1}$.
+\end{example}
+
+\begin{example}[Polynomials]\label{example:polynomial}
+\emph{Multi-variate Polynomials} have a similar structure.  There is no restriction on the sign of the coefficients $c_j$, but the exponents $\alpha_{jk}$ can only be chosen among non-negative integers.  The domain of polynomials is then easily extended to the whole space $\field{R}^d$.
 \end{example}
 
 \begin{example}[Rosenbrock Functions]\label{example:Rosenbrock2}
@@ -87,7 +98,7 @@ Given strictly positive parameters $a,b > 0$, consider the $(a,b)$--Rosenbrock f
 \begin{equation*} 
 \mathcal{R}_{a,b}(x_1, x_2) = (a-x_1)^2 + b(x_2-x_1^2)^2.
 \end{equation*}
-The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b}(\x) \geq 0$ for all $\x \in \field{R}^2$.  Zero is attained: $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(x_1,0) = (a-x_1)^2 + bx_1^4$ is a polynomial of degree 4, hence unbounded for $x_1 \in \field{R}$.
+It is easy to see that Rosenbrock functions are multi-variate polynomials (prove it!).  The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b}(\x) \geq 0$ for all $\x \in \field{R}^2$.  Zero is attained: $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(x_1,0) = (a-x_1)^2 + bx_1^4$ is a polynomial of degree 4, hence unbounded for $x_1 \in \field{R}$.
 Figure \ref{figure:Rosenbrock} illustrates a contour plot with several level lines of $\mathcal{R}_{1,1}$ on the domain $D = [-2,2] \times [-1,3]$, as well as its graph
 \begin{figure}[ht!]
 \begin{tabular}{cc}
@@ -155,7 +166,7 @@ Prove that $\langle \cdot, \cdot \rangle \colon \field{R}^d \times \field{R}^d \
 \begin{equation*}
 \langle \x, \y \rangle = \sum_{k=1}^d x_k y_k
 \end{equation*}
-is an inner product.  What is the matrix associated to its corresponding bilinear form?
+is an inner product.
 \end{problem}
 
 \begin{problem}\label{problem:linearFunction}
@@ -230,7 +241,7 @@ The complement of an open set is called \emph{closed}. In $\field{R}^d$, all sub
 We say $D$ is \emph{bounded} if there exists $M>0$ so that $D \subset B_d(\boldsymbol{0}, M)$.  A bounded and closed subset of $\field{R}^d$ is called \emph{compact}.
 
 \begin{theorem}[Bolzano-Weierstrass]\label{theorem:BolzanoWeierstrass}
-Every sequence in a compact subset $K \subset \field{R}^d$ contains a convergent subsequence.
+Every sequence in a compact set $K$ contain a convergent subsequence.
 \end{theorem}
 
 \begin{problem}\label{problem:BolzanoWeierstrass}
@@ -239,67 +250,31 @@ Prove Theorem \ref{theorem:BolzanoWeierstrass} for a closed interval $K=[a,b] \s
 
 \section{Analysis}
 
-A real-valued function $f$ is said to be \emph{continuous} at $\x_0$ if for any $\varepsilon>0$ there exists $\delta = \delta(\varepsilon)>0$ so that $\abs{f(\x) - f(\x_0)} < \varepsilon$ for all $x \in B_d(\x_0, \delta)$.
+A real-valued function $f$ is said to be \emph{continuous} at $\x_0$ if for
+any $\varepsilon>0$ there exists $\delta = \delta(\varepsilon)>0$ so that
+$\abs{f(\x) - f(\x_0)} < \varepsilon$ for all $x \in B_d(\x_0, \delta)$.
+Equivalently, $f$ is continuous at $\x_0$ if $\lim_n f(\x_n) = f(\x_0)$ for
+any sequence $\sequence{\x}{n}$ satisfying $\lim_n \x_n = \x_0$. We say that
+$f$ is continuous in $D \subset \field{R}^d$ if $f$ is continuous at all
+points $\x \in D$.
 
-Equivalently, $f$ is continuous at $\x_0$ if $\lim_n f(\x_n) = f(\x_0)$ for any sequence $\sequence{\x}{n}$ satisfying $\lim_n \x_n = \x_0$.  
+\begin{problem}\label{problem:CovexIsContinuous}
+Prove that convex functions $f \colon \field{R}^d \to \field{R}$ are continuous.
+\end{problem}
 
-We say that $f$ is continuous in $D \subset \field{R}^d$ if $f$ is continuous at all points $\x \in D$.
-
-The image of a continuous functions enjoys nice properties, which are key to the pursue of extrema.  Let's start with two basic Theorems.
-
-\begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
-The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
-\end{theorem}
-
-\begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
-A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
-\end{theorem}
-
-Theorem \ref{theorem:EVT} guarantees the existence of global \emph{extrema} (maxima/minima) for continuous real-valued functions over compact subsets.  What if we do not have compactness?
-
-\begin{example}[Coercive Functions]
-A continuous real-valued function $f\colon \field{R}^d \to \field{R}$ is said to be \emph{coercive} if the values of $f(\x)$ cannot remain bounded on any non-bounded set $A\subset \field{R}^d$: 
-\begin{equation*}
-\lim_{\norm{\x} \to \infty} = +\infty.
-\end{equation*}
-A coercive function always has a global minimum.  Indeed: since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, the set $K_r = \{ \x \in \field{R}^d : \norm{x} \leq r \}$ is compact.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
-\end{example}
-
-
-How about local extrema?   Continuity may not be enough:
+\begin{problem}\label{problem:CoerciveFunction}
+A continuous real-valued function $f\colon \field{R}^d \to \field{R}$ is said to be \emph{coercive} if the values of $f(\x)$ cannot remain bounded on any non-bounded set $A\subset \field{R}^d$: For all $M>0$ there exists $R=R(M)>0$ so that $f(x)\geq M$ if $\norm{x}\geq R$.  
+Prove that a coercive function always has a global minimum.  
+% Indeed: since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, the set $K_r = \{ \x \in \field{R}^d : \norm{x} \leq r \}$ is compact.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
+\end{problem}
 
 A real-valued function $f$ is said to be \emph{differentiable} at $\x_0$ if there exists a linear function $J\colon \field{R}^d \to \field{R}$ so that 
 \begin{equation*}
 \lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\x_0+h)-f(\x_0)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
 \end{equation*}
 
-For any differentiable real-valued function $f$ at a point $\x$ of its domain, the corresponding linear function in the definition above guarantees a tangent hyperplane to the graph of $f$ at $\x$.  It is the behavior of the interaction of the rest of the graph with this hyperplane what will give us clues to the nature of possible extrema.
-
-% \begin{figure}[ht!]
-% \begin{tabular}{cc}
-% %  &
-% % \includegraphics[width=0.45\linewidth]{x3.png}
-% \begin{tikzpicture}
-% \draw [white] (-2,-2) rectangle (2,2);
-% \draw (0,0) node{\includegraphics[width=0.5\linewidth]{x2.png}};
-% % \draw [smooth, samples=100, domain=-1.732:1.732, blue, ultra thick, variable=\t] plot({\t}, {\t*\t-1});
-% % \draw[thick] (-2,-1) -- (2,-1);
-% \draw[fill=blue] (0.1,-0.65) circle (2pt); 
-% % \draw (0.1,-1.25) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
-% \end{tikzpicture} &
-% \begin{tikzpicture}
-% \draw [white] (-2,-2) rectangle (2,2);
-% \draw (0,0) node{\includegraphics[width=0.5\linewidth]{x3.png}};
-% % \draw [smooth, samples=100, domain=-1:1.442, blue, ultra thick, variable=\t] plot({\t}, {\t*\t*\t-1});
-% % \draw[thick] (-2,-1) -- (2,-1);
-% \draw[fill=blue] (0.1,0.125) circle (2pt); 
-% % \draw (0.1,-0.2) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
-% \end{tikzpicture}
-% \end{tabular}
-% \caption{On the left: the function is locally \emph{above} the tangent hyperplane at $\big(\xstar, f(\xstar)\big)$.  We have a local minimum at that location.  On the right, the graph crosses the tangent hyperplane.  We have no extrema at that location.}
-% \label{figure:extrema}
-% \end{figure}
-
+For any differentiable real-valued function $f$ at a point $\x$ of its domain, the corresponding linear function in the definition above guarantees a tangent hyperplane to the graph of $f$ at $\x$.  
+ 
 \begin{example}\label{example:derivatives}
 Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x_0$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
 \begin{equation*}
@@ -342,95 +317,3 @@ We define for these functions the \emph{Hessian} of $f$ at $\x \in D$ to be the 
 \frac{\strut\partial^2 f}{\strut\partial x_d \partial x_1}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_d \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_d^2}(\x)
 \end{bmatrix}
 \end{equation*}
-
-The following three results aid in our search for local extrema for twice-differentiable real-valued functions of one variable.
-
-\begin{theorem}[Rolle's Theorem]\label{theorem:Rolle}
-If $f\colon [a,b] \to \field{R}$ is a continuous function on a closed interval $[a,b]$, differentiable on $(a,b)$, and $f(a) = f(b)$, then there exists $c \in (a,b)$ so that $f'(c)=0$.
-\end{theorem}
-
-\begin{theorem}[Mean Value Theorem]\label{theorem:MVT}
-If $f\colon [a,b] \to \field{R}$ is a continuous function on the closed interval $[a,b]$ and differentiable on $(a,b)$, then there exists $c \in (a,b)$ so that
-\begin{equation*}
-f'(c) = \frac{f(b)-f(a)}{b-a}
-\end{equation*}
-\end{theorem}
-
-\begin{theorem}[Extended Law of the Mean]
-If $f\colon D \to \field{R}$ is a twice differentiable function on a domain $D \subset \field{R}$ containing the closed interval $[a,b]$, then there exists $c \in (a,b)$ so that 
-\begin{equation*}
-f(b) = f(a) + f'(a)(b-a) + \tfrac{1}{2}f''(c)(b-a)^2
-\end{equation*}
-\end{theorem}
-
-This last result can be extended to a real-valued function $f \colon \field{R}^ \to \field{R}$ as follows:
-
-\begin{theorem}[Taylor]\label{theorem:Taylor}
-Given two points $\boldsymbol{a}, \boldsymbol{b} \in \field{R}^d$, let $f\colon G \to \field{R}$ be a twice-differentiable real-valued function on an open set $G \subset \field{R}^d$ containing the segment $[\boldsymbol{a}, \boldsymbol{b}] = \{ \boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) : t \in [0,1] \}$.  There exists $\boldsymbol{c} \in [\boldsymbol{a}, \boldsymbol{b}]$ so that 
-\begin{equation*}
-f(\x) = f(\boldsymbol{a}) + \langle \gradient{f}(\boldsymbol{a}), \x - \boldsymbol{a} \rangle + \frac{1}{2} \quadratic{\Hess{f}(c)} (\x-\boldsymbol{a})
-\end{equation*}
-\end{theorem}
-
-% \begin{proof}
-% Let's prove the first-dimensional case first:  Given $a,b \in \field{R}$, and a real-valued function $f\colon (a-\varepsilon, b+\varepsilon) \to \field{R}$ with continuous first and second derivatives in $(a-\varepsilon, b+\varepsilon)$ for some $\varepsilon>0$, we need to find the existence of a value $c \in [a,b]$ so that $f(x) = f(a) + f'(a)(x-a) + \tfrac{1}{2}f''(c)(x-a)^2$.
-
-% Consider the Taylor polynomial of degree $n$ of $f$ at $x=a$, 
-% \begin{equation*}
-% T_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k
-% \end{equation*}
-
-% Consider the following piecewise functions $f_n(x)$:
-% \begin{equation*}
-% f_n(x) = \begin{cases} 
-% \frac{f(x) - T_n(x)}{(x-a)^n} &\text{if }x\neq a \\
-% 0 &\text{if }x=a
-% \end{cases}
-% \end{equation*}
-
-% By using L'Hopital rule (up to two times where necessary), we can see that $\lim_{x \to a} f_n(x) = 0$. 
-
-% Set $h(t) = f\big(\boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) \big)$ to be the restriction of $f$ over the segment $[\boldsymbol{a},\boldsymbol{b}]$.  Note this function $h$ still has continuous first and second derivatives:
-% \begin{align*}
-% 	h'(t) = \gradient{f}
-% \end{align*}
-% \end{proof}
-
-% TODO: We need to describe/prove Taylor's Formula (the extended Law of the
-% Mean) and use it to figure out how to locate local minima
-
-\begin{example}[Rosenbrock functions, continued]
-In Example \ref{example:Rosenbrock2} we showed that the image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  We also found (by inspection) that the point $(a,a^2)$ is a global minimum for this function. A straightforward computation shows that it is actually a strict global minimum.  A different approach to obtain this result can be obtained using the previous technique:
-\begin{itemize}
-	\item Notice $\mathcal{R}_{a,b}$ is twice differentiable.  Its gradient and Hessian are given respectively by
-	\begin{equation*}
-	\gradient{\mathcal{R}_{a,b}}(\x) = \big( 2(x_1-a) +4bx(x_1^2-x_2) , b(x_2-x_1^2) \big) \\
-	\end{equation*}
-	\begin{equation*}
-	\Hess{\mathcal{R}_{a,b}}(\x) = \begin{bmatrix}
-	12bx_1^2-4bx_2+2 & -4bx_1 \\
-	-4bx_1 & 2b
-	\end{bmatrix}
-	\end{equation*}
-	\item The search for critical points $\gradient{\mathcal{R}_{a,b}} = \boldsymbol{0}$ gives only the point $(a,a^2)$.
-	\item The Hessian at that point is positive definite:
-	\begin{equation*}
-	\Hess{\mathcal{R}_{a,b}}(a,a^2) = \begin{bmatrix}
-	8ba^2+2 & -4ab \\
-	-4ab & 2b
-	\end{bmatrix}
-	\end{equation*}
-\end{itemize}
-\end{example}
-
-\section{Optimization}
-
-
-% TODO:  define the Rosenbrock function f(x,y)=(a-x)^2 + b(y-x^2)^2
-%        compute its gradient, and use it to find critical points (there is only one: (a,a^2) )
-%		 compute its Hessian, and prove that at (a,a^2), it is positive definite
-%		 Use this to conclude that f has a global minimum at (a,a^2)
-% Maybe extend this to higher dimensions?
-
-\section*{Notes}
-	
