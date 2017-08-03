@@ -13,38 +13,7 @@ The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to 
 A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
 \end{theorem}
 
-Theorem \ref{theorem:EVT} guarantees the existence of global extrema for continuous real-valued functions over compact subsets.  % What if we do not have compactness?
-
-
-
-% It is the behavior of the interaction of the rest of the graph with this hyperplane what will give us clues to the nature of possible extrema.
-
-% \begin{figure}[ht!]
-% \begin{tabular}{cc}
-% %  &
-% % \includegraphics[width=0.45\linewidth]{x3.png}
-% \begin{tikzpicture}
-% \draw [white] (-2,-2) rectangle (2,2);
-% \draw (0,0) node{\includegraphics[width=0.5\linewidth]{x2.png}};
-% % \draw [smooth, samples=100, domain=-1.732:1.732, blue, ultra thick, variable=\t] plot({\t}, {\t*\t-1});
-% % \draw[thick] (-2,-1) -- (2,-1);
-% \draw[fill=blue] (0.1,-0.65) circle (2pt); 
-% % \draw (0.1,-1.25) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
-% \end{tikzpicture} &
-% \begin{tikzpicture}
-% \draw [white] (-2,-2) rectangle (2,2);
-% \draw (0,0) node{\includegraphics[width=0.5\linewidth]{x3.png}};
-% % \draw [smooth, samples=100, domain=-1:1.442, blue, ultra thick, variable=\t] plot({\t}, {\t*\t*\t-1});
-% % \draw[thick] (-2,-1) -- (2,-1);
-% \draw[fill=blue] (0.1,0.125) circle (2pt); 
-% % \draw (0.1,-0.2) node[scale=0.7] {$\big( \xstar, f(\xstar) \big)$};
-% \end{tikzpicture}
-% \end{tabular}
-% \caption{On the left: the function is locally \emph{above} the tangent hyperplane at $\big(\xstar, f(\xstar)\big)$.  We have a local minimum at that location.  On the right, the graph crosses the tangent hyperplane.  We have no extrema at that location.}
-% \label{figure:extrema}
-% \end{figure}
-
-% The following three results aid in our search for local extrema for twice-differentiable real-valued functions of one variable.
+Theorem \ref{theorem:EVT} guarantees the existence of global extrema for continuous real-valued functions over compact subsets.  For unbounded domains, we saw in problem \ref{problem:CoerciveFunction} that a minimum is guaranteed for coercive functions.  The obvious follow-up question is: how do we find these extrema?  Having knowledge of the  increase/decrease behavior is key.  This strategy is developed in four steps:
 
 \begin{theorem}[Rolle's Theorem]\label{theorem:Rolle}
 If $f\colon [a,b] \to \field{R}$ is a continuous function on a closed interval $[a,b]$, differentiable on $(a,b)$, and $f(a) = f(b)$, then there exists $c \in (a,b)$ so that $f'(c)=0$.
@@ -57,16 +26,16 @@ f'(c) = \frac{f(b)-f(a)}{b-a}
 \end{equation*}
 \end{theorem}
 
-\begin{theorem}[Extended Law of the Mean]
+\begin{theorem}[Extended Law of the Mean]\label{theorem:ELM}
 If $f\colon D \to \field{R}$ is a twice differentiable function on a domain $D \subset \field{R}$ containing the closed interval $[a,b]$, then there exists $c \in (a,b)$ so that 
 \begin{equation*}
 f(b) = f(a) + f'(a)(b-a) + \tfrac{1}{2}f''(c)(b-a)^2
 \end{equation*}
 \end{theorem}
 
-This last result can be extended to a real-valued function $f \colon \field{R}^ \to \field{R}$ as follows:
+This last result can be extended to a real-valued function $f \colon \field{R}^d \to \field{R}$ as follows:
 
-\begin{theorem}[Taylor]\label{theorem:Taylor}
+\begin{theorem}[Extended Law of the Mean]\label{theorem:ELMd}
 Given two points $\boldsymbol{a}, \boldsymbol{b} \in \field{R}^d$, let $f\colon G \to \field{R}$ be a twice-differentiable real-valued function on an open set $G \subset \field{R}^d$ containing the segment $[\boldsymbol{a}, \boldsymbol{b}] = \{ \boldsymbol{a} + t (\boldsymbol{b} - \boldsymbol{a}) : t \in [0,1] \}$.  There exists $\boldsymbol{c} \in [\boldsymbol{a}, \boldsymbol{b}]$ so that 
 \begin{equation*}
 f(\x) = f(\boldsymbol{a}) + \langle \gradient{f}(\boldsymbol{a}), \x - \boldsymbol{a} \rangle + \frac{1}{2} \quadratic{\Hess{f}(c)} (\x-\boldsymbol{a})

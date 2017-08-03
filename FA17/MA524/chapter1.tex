@@ -86,7 +86,7 @@ Consider the set $\mathfrak{P}_d = \{ (x_1, \dotsc, x_d) \in \field{R}^d : x_k >
 \begin{equation*}
 f(\x) = \sum_{j=1}^n c_j \prod_{k=1}^d t_k^{\alpha_jk}.
 \end{equation*}
-Notice that the domain o posynomials may not be extended in general anywhere else in $\field{R}^d$.  For example, notice the obvious restrictions for the function $f\colon \mathfrak{P}_2 \to \field{R}$ given by $f(x_1,x_2) = x_1\sqrt{x_2} + \frac{\pi}{x_1}$.
+Notice that the domain of posynomials may not be extended in general anywhere else in $\field{R}^d$.  For example, notice the obvious restrictions for the function $f\colon \mathfrak{P}_2 \to \field{R}$ given by $f(x_1,x_2) = x_1\sqrt{x_2} + \frac{\pi}{x_1}$.
 \end{example}
 
 \begin{example}[Polynomials]\label{example:polynomial}
@@ -124,8 +124,20 @@ This is a good spot to introduce the goal of these notes.  The main purpose of \
 
 Let's play around with some more examples of functions, before we proceed to techniques for finding extrema:
 
+\begin{example}\label{example:MatrixMultiplication}
+Let $\boldsymbol{A} = \big[ a_{jk} \big]_{j,k=1}^d$ be a square matrix with real coefficients.  Considering elements in $\field{R}^d$ as horizontal matrices, and by means of matrix products, we construct functions $\mathcal{L}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ and $\mathcal{R}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ (left- and right-matrix multiplication) given by
+\begin{align*}
+\mathcal{L}_{\boldsymbol{A}}(\x) &= \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \\
+\mathcal{R}_{\boldsymbol{A}}(\x) &= \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_d \end{bmatrix}
+\end{align*}
+\end{example}
+
+\begin{problem}
+Prove that, if $\boldsymbol{A}$ is a symmetric matrix, then $\mathcal{L}_{\boldsymbol{A}}(\x) = \mathcal{R}_{\boldsymbol{A}}(\x)$ for all $\x \in \field{R}^d$.
+\end{problem}
+
 \begin{example}[Bilinear Forms]\label{example:BilinearForm}
-Let $\boldsymbol{A} = \big[ a_{jk} \big]_{j,k=1}^d$ be a square matrix with real coefficients.  Considering elements in $\field{R}^d$ as horizontal matrices, and by means of matrix products, we construct functions $\bilinear{A} \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
+Under the same conditions as in example \ref{example:MatrixMultiplication}, we construct functions $\bilinear{A} \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
 \begin{equation*}
 \bilinear{A}(\x, \y) = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_d \end{bmatrix}
 \end{equation*}
@@ -150,6 +162,34 @@ We say that the quadratic form (or the associated matrix) is:
 \item[indefinite] if there exist $\x, \y \in \field{R}^d$ so that $\quadratic{A}(\x) \quadratic{A}(\y) < 0$. 
 \end{description}
 \end{example}
+
+\begin{problem}
+Give examples of $2 \times 2$ symmetric matrices that are positive definite, positive semidefinite, negative definite, negative semidefinite, and indefinite.
+\end{problem}
+
+\begin{problem}[Principal Minors]\label{problem:PrincipalMinors}
+Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node{%
+$\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & \dotsb & a_{1n} \\
+a_{21} & a_{22} & a_{23} & \dotsb & a_{2n} \\
+a_{31} & a_{32} & a_{33} & \dotsb & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \dotsb & a_{nn} 
+\end{bmatrix}$};
+\draw[dashed] (-2, 0.73) -- (-1.35, 0.73) -- (-1.35, 1.2) node[above]{$\Delta_1$};
+\draw[dashed] (-2, 0.27) -- (-0.5, 0.27) -- (-0.5, 1.2) node[above]{$\Delta_2$};
+\draw[dashed] (-2, -0.15) -- (0.4, -0.15) -- (0.4, 1.2) node[above]{$\Delta_3$};
+\end{tikzpicture}
+\end{center}
+Prove that a symmetric matrix $\boldsymbol{A}$ is:
+\begin{enumerate}
+\item Positive definite if and only if $\Delta_\ell > 0$ for all $1\leq \ell \leq d$.
+\item Negative definite if and only if $(-1)^\ell \Delta_\ell>0$ for all $1\leq \ell \leq d$.
+\end{enumerate}
+\end{problem}
 
 \begin{example}[Inner products]\label{example:innerprod}
 We say that a symmetric bilinear form $\bilinear{A}$ is an \emph{inner product} if its associated quadratic form is positive definite.  By extension, we call an inner product any function $\mathcal{F} \colon \field{R}^d \times \field{R}^d \to \field{R}$ that satisfies the following four properties for all $\x, \y, \z \in \field{R}^d, \lambda \in \field{R}$:
@@ -179,6 +219,19 @@ We say that $\tau\colon \field{R}^d \to \field{R}^d$ is a translation if there e
 An \emph{affine function} $h\colon \field{R}^d \to \field{R}$ is a composition of a linear function $f\colon \field{R}^d \to \field{R}$ with a translation $\tau\colon \field{R} \to \field{R}$.
 
 Prove that for each affine function $h$ there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ and a unique $\lambda_0 \in \field{R}$ so that $h(\x) = \lambda_0 + \langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.  Use this result to prove that the graph of an affine function is a hyperplane in $\field{R}^{d+1}$.
+\end{problem}
+
+\begin{problem}[Eigenvalues]\label{problem:eigenvalues}
+Given a general square $d \times d$ matrix $\boldsymbol{A}$, prove the following statements:
+\begin{enumerate}
+	\item For any $\lambda \in \field{C}$, prove that the determinant of $\boldsymbol{A}- \lambda \boldsymbol{I}_d$ is a polynomial of (at most) degree $d$ in $\lambda$.  We denote it by $p_{\boldsymbol{A}}(\lambda)$ and call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.  We call its roots the \emph{eigenvalues} of $\boldsymbol{A}$.
+	\item The eigenvalues of a symmetric matrix are all real.
+	\item If $\lambda \in \field{R}$ is a root  of multiplicity $n$ of the characteristic polynomial of a (non-trivial) symmetric matrix, then there exist $n$ linearly independent vectors $\{ \x_1, \x_2, \dotsc, \x_n \}$ satisfying $\mathcal{L}_{\boldsymbol{A}} (\x_k) = \lambda \x_k$ ($1\leq k \leq n$).
+	\item If $\lambda_1 \neq \lambda_2$ are different roots of the characteristic polynomial of a symmetric matrix, and $\x_1, \x_2 \in \field{R}^d$ satisfy $\mathcal{L}_{\boldsymbol{A}}(\x_k) = \lambda_k \x_k$ ($k=1,2$), then $\langle \x_1, \x_2 \rangle = 0$.
+	\item A symmetric matrix is positive definite (resp.~negative definite) if and only if all its eigenvalues are positive (resp.~negative).
+	\item A symmetric matrix is positive semidefinite (resp.~negative semidefinite) if and only if all its eigenvalues are non-negative (resp.~non-positive)
+	\item A symmetric matrix is indefinite if there exist two eigenvalues $\lambda_1 \neq \lambda_2$ with different sign.
+\end{enumerate}
 \end{problem}
 
 \begin{example}[Norms]\label{example:norm}
@@ -241,7 +294,7 @@ The complement of an open set is called \emph{closed}. In $\field{R}^d$, all sub
 We say $D$ is \emph{bounded} if there exists $M>0$ so that $D \subset B_d(\boldsymbol{0}, M)$.  A bounded and closed subset of $\field{R}^d$ is called \emph{compact}.
 
 \begin{theorem}[Bolzano-Weierstrass]\label{theorem:BolzanoWeierstrass}
-Every sequence in a compact set $K$ contain a convergent subsequence.
+Every sequence in a compact set $K$ contains a convergent subsequence.
 \end{theorem}
 
 \begin{problem}\label{problem:BolzanoWeierstrass}
@@ -258,13 +311,13 @@ any sequence $\sequence{\x}{n}$ satisfying $\lim_n \x_n = \x_0$. We say that
 $f$ is continuous in $D \subset \field{R}^d$ if $f$ is continuous at all
 points $\x \in D$.
 
-\begin{problem}\label{problem:CovexIsContinuous}
+\begin{problem}\label{problem:ConvexIsContinuous}
 Prove that convex functions $f \colon \field{R}^d \to \field{R}$ are continuous.
 \end{problem}
 
 \begin{problem}\label{problem:CoerciveFunction}
 A continuous real-valued function $f\colon \field{R}^d \to \field{R}$ is said to be \emph{coercive} if the values of $f(\x)$ cannot remain bounded on any non-bounded set $A\subset \field{R}^d$: For all $M>0$ there exists $R=R(M)>0$ so that $f(x)\geq M$ if $\norm{x}\geq R$.  
-Prove that a coercive function always has a global minimum.  
+Prove that a coercive function always has a global minimum.
 % Indeed: since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, the set $K_r = \{ \x \in \field{R}^d : \norm{x} \leq r \}$ is compact.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
 \end{problem}
 
