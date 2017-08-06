@@ -1,19 +1,17 @@
-%!TEX root = notes.tex
-
-\chapter{Unconstrained Optimization via Calculus}
+% \chapter{Unconstrained Optimization via Calculus}
 
 
-The image of a continuous functions enjoys nice properties, which are key to the pursue of extrema.  Let's start with two basic Theorems.
+% The image of a continuous functions enjoys nice properties, which are key to the pursue of extrema.  Let's start with two basic Theorems.
 
-\begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
-The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
-\end{theorem}
+% \begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
+% The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
+% \end{theorem}
 
-\begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
-A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
-\end{theorem}
+% \begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
+% A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
+% \end{theorem}
 
-Theorem \ref{theorem:EVT} guarantees the existence of global extrema for continuous real-valued functions over compact subsets.  For unbounded domains, we saw in problem \ref{problem:CoerciveFunctions} that a minimum is guaranteed for coercive functions.  The obvious follow-up question is: how do we find these extrema?  Having knowledge of the  increase/decrease behavior is key.  This strategy is developed in four steps:
+% Theorem \ref{theorem:EVT} guarantees the existence of global extrema for continuous real-valued functions over compact subsets.  For unbounded domains, we saw in problem \ref{problem:CoerciveFunctions} that a minimum is guaranteed for coercive functions.  The obvious follow-up question is: how do we find these extrema?  Having knowledge of the  increase/decrease behavior is key.  This strategy is developed in four steps:
 
 \begin{theorem}[Rolle's Theorem]\label{theorem:Rolle}
 If $f\colon [a,b] \to \field{R}$ is a continuous function on a closed interval $[a,b]$, differentiable on $(a,b)$, and $f(a) = f(b)$, then there exists $c \in (a,b)$ so that $f'(c)=0$.
@@ -69,29 +67,29 @@ f(\x) = f(\boldsymbol{a}) + \langle \gradient{f}(\boldsymbol{a}), \x - \boldsymb
 % TODO: We need to describe/prove Taylor's Formula (the extended Law of the
 % Mean) and use it to figure out how to locate local minima
 
-\begin{example}[Rosenbrock functions, continued]
-In Example \ref{example:Rosenbrock2} we showed that the image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  We also found (by inspection) that the point $(a,a^2)$ is a global minimum for this function. A straightforward computation shows that it is actually a strict global minimum.  A different approach to obtain this result can be obtained using the previous technique:
-\begin{itemize}
-	\item Notice $\mathcal{R}_{a,b}$ is twice differentiable.  Its gradient and Hessian are given respectively by
-	\begin{equation*}
-	\gradient{\mathcal{R}_{a,b}}(\x) = \big( 2(x_1-a) +4bx(x_1^2-x_2) , b(x_2-x_1^2) \big) \\
-	\end{equation*}
-	\begin{equation*}
-	\Hess{\mathcal{R}_{a,b}}(\x) = \begin{bmatrix}
-	12bx_1^2-4bx_2+2 & -4bx_1 \\
-	-4bx_1 & 2b
-	\end{bmatrix}
-	\end{equation*}
-	\item The search for critical points $\gradient{\mathcal{R}_{a,b}} = \boldsymbol{0}$ gives only the point $(a,a^2)$.
-	\item The Hessian at that point is positive definite:
-	\begin{equation*}
-	\Hess{\mathcal{R}_{a,b}}(a,a^2) = \begin{bmatrix}
-	8ba^2+2 & -4ab \\
-	-4ab & 2b
-	\end{bmatrix}
-	\end{equation*}
-\end{itemize}
-\end{example}
+% \begin{example}[Rosenbrock functions, continued]
+% In Example \ref{example:Rosenbrock2} we showed that the image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  We also found (by inspection) that the point $(a,a^2)$ is a global minimum for this function. A straightforward computation shows that it is actually a strict global minimum.  A different approach to obtain this result can be obtained using the previous technique:
+% \begin{itemize}
+% 	\item Notice $\mathcal{R}_{a,b}$ is twice differentiable.  Its gradient and Hessian are given respectively by
+% 	\begin{equation*}
+% 	\gradient{\mathcal{R}_{a,b}}(\x) = \big( 2(x_1-a) +4bx(x_1^2-x_2) , b(x_2-x_1^2) \big) \\
+% 	\end{equation*}
+% 	\begin{equation*}
+% 	\Hess{\mathcal{R}_{a,b}}(\x) = \begin{bmatrix}
+% 	12bx_1^2-4bx_2+2 & -4bx_1 \\
+% 	-4bx_1 & 2b
+% 	\end{bmatrix}
+% 	\end{equation*}
+% 	\item The search for critical points $\gradient{\mathcal{R}_{a,b}} = \boldsymbol{0}$ gives only the point $(a,a^2)$.
+% 	\item The Hessian at that point is positive definite:
+% 	\begin{equation*}
+% 	\Hess{\mathcal{R}_{a,b}}(a,a^2) = \begin{bmatrix}
+% 	8ba^2+2 & -4ab \\
+% 	-4ab & 2b
+% 	\end{bmatrix}
+% 	\end{equation*}
+% \end{itemize}
+% \end{example}
 
 \section{Optimization}
 
