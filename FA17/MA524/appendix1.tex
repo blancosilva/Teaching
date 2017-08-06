@@ -3,58 +3,58 @@
 
 \chapter{Background}
 
-Our starting point is, for any positive integer $d \in \field{N}$, the
-Cartesian products:
-\begin{equation*}
-\field{R}^d = \field{R} \times \overset{(d)}{\dotsm} \times \field{R} =\{ (x_1, \dotsc, x_d) : x_k \in \field{R} \text{ for } 1\leq k \leq d\}.
-\end{equation*}
-These sets, endowed with the operations of addition and scalar multiplication, have the structure of a \emph{vector field}:
-\begin{description}
-	\item[Addition] For $\x = (x_1, \dotsc, x_d), \y = (y_1, \dotsc, y_d) \in \field{R}^d$, 
-	\begin{equation*}
-	\x + \y = (x_1+y_1, \dotsc, x_d+y_d) \in \field{R}^d.
-	\end{equation*}
-	\item[Scalar multiplication] For $\x \in \field{R}^d$ and $\lambda \in \field{R}$, 
-	\begin{equation*}
-	\lambda \cdot \x = \lambda \x = (\lambda x_1, \dotsc, \lambda x_d) \in \field{R}^d.
-	\end{equation*}
-\end{description}
-Given $\x, \y, \z \in \field{R}^d$, $\lambda, \mu \in \field{R}$,
-\begin{enumerate}
-	\item The addition is commutative: $\x + \y = \y + \x$.
-	\item Existence of identity elements for addition: Let $\boldsymbol{0} = (0, \dotsc, 0)$. $\x + \boldsymbol{0} = \x$. 
-	\item The addition is associative: $\x + (\y + \z) = (\x + \y) + \z$.
-	\item Existence of inverse elements for addition: If $\x = (x_1, \dotsc, x_d)$, the element $-\x = (-x_1, \dotsc, -x_d)$ satisfies $\x + (-\x) = \boldsymbol{0}$.  We write $\x - \y$ instead of $\x + (-\y)$.
-	\item Scalar multiplication is compatible with field multiplication: $\lambda (\mu \x) = (\lambda \mu) \x$.
-	\item Existence of identity for scalar multiplication: $1 \cdot \x = \x$.
-	\item Scalar multiplication is distributive with respect to addition: $\lambda (\x + \y) = \lambda \x + \lambda \y$.
-	\item Scalar multiplication is distributive with respect to field addition: $(\lambda + \mu)\x = \lambda \x + \mu\x$.
-\end{enumerate}
-A \emph{basis} of $\field{R}^d$ is any finite set $\{ \boldsymbol{b}_k : 1\leq k \leq d \}$ satisfying two properties:
-\begin{description}
-\item [Spanning property] For all $\x \in \field{R}^d$ there exist $d$ scalars $\{ \lambda_1, \dotsc, \lambda_d \}$ so that $\x = \sum_{k=1}^d \lambda_k \boldsymbol{b}_k$.
-\item [Linear independence] If $\{ \lambda_1, \dotsc, \lambda_d\}$ satisfy $\sum_{k=1}^d \lambda_k \boldsymbol{b}_k = \boldsymbol{0}$, then it must be $\lambda_k=0$ for all $1\leq k \leq d$.
-\end{description}
+% Our starting point is, for any positive integer $d \in \field{N}$, the
+% Cartesian products:
+% \begin{equation*}
+% \field{R}^d = \field{R} \times \overset{(d)}{\dotsm} \times \field{R} =\{ (x_1, \dotsc, x_d) : x_k \in \field{R} \text{ for } 1\leq k \leq d\}.
+% \end{equation*}
+% These sets, endowed with the operations of addition and scalar multiplication, have the structure of a \emph{vector field}:
+% \begin{description}
+% 	\item[Addition] For $\x = (x_1, \dotsc, x_d), \y = (y_1, \dotsc, y_d) \in \field{R}^d$, 
+% 	\begin{equation*}
+% 	\x + \y = (x_1+y_1, \dotsc, x_d+y_d) \in \field{R}^d.
+% 	\end{equation*}
+% 	\item[Scalar multiplication] For $\x \in \field{R}^d$ and $\lambda \in \field{R}$, 
+% 	\begin{equation*}
+% 	\lambda \cdot \x = \lambda \x = (\lambda x_1, \dotsc, \lambda x_d) \in \field{R}^d.
+% 	\end{equation*}
+% \end{description}
+% Given $\x, \y, \z \in \field{R}^d$, $\lambda, \mu \in \field{R}$,
+% \begin{enumerate}
+% 	\item The addition is commutative: $\x + \y = \y + \x$.
+% 	\item Existence of identity elements for addition: Let $\boldsymbol{0} = (0, \dotsc, 0)$. $\x + \boldsymbol{0} = \x$. 
+% 	\item The addition is associative: $\x + (\y + \z) = (\x + \y) + \z$.
+% 	\item Existence of inverse elements for addition: If $\x = (x_1, \dotsc, x_d)$, the element $-\x = (-x_1, \dotsc, -x_d)$ satisfies $\x + (-\x) = \boldsymbol{0}$.  We write $\x - \y$ instead of $\x + (-\y)$.
+% 	\item Scalar multiplication is compatible with field multiplication: $\lambda (\mu \x) = (\lambda \mu) \x$.
+% 	\item Existence of identity for scalar multiplication: $1 \cdot \x = \x$.
+% 	\item Scalar multiplication is distributive with respect to addition: $\lambda (\x + \y) = \lambda \x + \lambda \y$.
+% 	\item Scalar multiplication is distributive with respect to field addition: $(\lambda + \mu)\x = \lambda \x + \mu\x$.
+% \end{enumerate}
+% A \emph{basis} of $\field{R}^d$ is any finite set $\{ \boldsymbol{b}_k : 1\leq k \leq d \}$ satisfying two properties:
+% \begin{description}
+% \item [Spanning property] For all $\x \in \field{R}^d$ there exist $d$ scalars $\{ \lambda_1, \dotsc, \lambda_d \}$ so that $\x = \sum_{k=1}^d \lambda_k \boldsymbol{b}_k$.
+% \item [Linear independence] If $\{ \lambda_1, \dotsc, \lambda_d\}$ satisfy $\sum_{k=1}^d \lambda_k \boldsymbol{b}_k = \boldsymbol{0}$, then it must be $\lambda_k=0$ for all $1\leq k \leq d$.
+% \end{description}
 
-\begin{problem}\label{problem:basisRd}
-Define in $\field{R}^d$, for each $1\leq k \leq d$, the element $\e_k$ to be the ordered $d$-tuple with $k$-th entry equal to one, and zeros on all other entries.
-\begin{enumerate}
-	\item Prove that $\{ \e_k : 1\leq k \leq d\}$ is a basis for $\field{R}^d$.
-	\item Set $\boldsymbol{b}_k = \e_k - \e_{k+1}$ for $1\leq k < d$, $\boldsymbol{b}_d = \e_d$.  Is $\{ \boldsymbol{b}_k : 1\leq k \leq d\}$ a basis for $\field{R}^d$?
-\end{enumerate}
-\end{problem}
+% \begin{problem}\label{problem:basisRd}
+% Define in $\field{R}^d$, for each $1\leq k \leq d$, the element $\e_k$ to be the ordered $d$-tuple with $k$-th entry equal to one, and zeros on all other entries.
+% \begin{enumerate}
+% 	\item Prove that $\{ \e_k : 1\leq k \leq d\}$ is a basis for $\field{R}^d$.
+% 	\item Set $\boldsymbol{b}_k = \e_k - \e_{k+1}$ for $1\leq k < d$, $\boldsymbol{b}_d = \e_d$.  Is $\{ \boldsymbol{b}_k : 1\leq k \leq d\}$ a basis for $\field{R}^d$?
+% \end{enumerate}
+% \end{problem}
 
-\section{Functions}
+% \section{Functions}
 
-Given sets $X, Y$, we define a \emph{function} $f\colon X \to Y$ to be a subset of $X \times Y$ subject to the following condition: for every $\x \in X$ there is exactly one element $\y \in Y$ such that the ordered pair $(\x, \y)$ is contained in the subset defining $f$. The sets $X$ and $Y$ are called respectively the \emph{domain} and \emph{codomain} of $f$.  
+% Given sets $X, Y$, we define a \emph{function} $f\colon X \to Y$ to be a subset of $X \times Y$ subject to the following condition: for every $\x \in X$ there is exactly one element $\y \in Y$ such that the ordered pair $(\x, \y)$ is contained in the subset defining $f$. The sets $X$ and $Y$ are called respectively the \emph{domain} and \emph{codomain} of $f$.  
 
-If $A$ is any subset of the domain $X$, then $f(A)$ is the subset of the codomain $Y$ consisting of all images of elements of $A$. We say that $f(A)$ is the \emph{image} of $A$ under $f$. The set $f(X)$ is called the image of $f$.
+% If $A$ is any subset of the domain $X$, then $f(A)$ is the subset of the codomain $Y$ consisting of all images of elements of $A$. We say that $f(A)$ is the \emph{image} of $A$ under $f$. The set $f(X)$ is called the image of $f$.
 
-If $Y \subseteq \field{R}$, we say that the function $f$ is real-valued.  For a real-valued function $f\colon \field{R}^d \to \field{R}$, we may regard the corresponding ordered pairs $(\x, y) \in \field{R}^d\times\field{R}$ as points in a $(d+1)$--dimensional space.  We call this set the \emph{graph} of $f$.
+% If $Y \subseteq \field{R}$, we say that the function $f$ is real-valued.  For a real-valued function $f\colon \field{R}^d \to \field{R}$, we may regard the corresponding ordered pairs $(\x, y) \in \field{R}^d\times\field{R}$ as points in a $(d+1)$--dimensional space.  We call this set the \emph{graph} of $f$.
 
-The \emph{inverse image} of a subset $B$ of the codomain $Y$ under a function $f$ is the subset of the domain $X$ defined by $f^{-1}(B) = \{ \x \in X : f(x) \in B\}$.
+% The \emph{inverse image} of a subset $B$ of the codomain $Y$ under a function $f$ is the subset of the domain $X$ defined by $f^{-1}(B) = \{ \x \in X : f(x) \in B\}$.
 
-For sets $X, Y, Z$, the \emph{function composition} of $f\colon X \to Y$ with $g\colon Y \to Z$ is the function $g\circ f\colon X \to Z$ defined by $\big( g \circ f \big)(\x) = g \big( f(\x) \big)$.
+% For sets $X, Y, Z$, the \emph{function composition} of $f\colon X \to Y$ with $g\colon Y \to Z$ is the function $g\circ f\colon X \to Z$ defined by $\big( g \circ f \big)(\x) = g \big( f(\x) \big)$.
 
 \begin{example}[Linear Functions]\label{example:linearFunction}
 We say that a function $f \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is \emph{linear} if it preserves the operations in $\field{R}^{d_1}$: 
@@ -71,18 +71,18 @@ f(x) = f\big( \tfrac{y}{y_0} x_0 \big) = \tfrac{y}{y_0} f(x_0) = y.
 \end{equation*}
 \end{example}
 
-\begin{example}[Convex Functions]\label{example:convexFunction}
-A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \x + (1-\lambda) \y$ is also in $C$.   Given such a convex set, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
-\begin{equation*}
-f\big(\lambda \x + (1-\lambda)\y\big) \leq \lambda f(\x) + (1-\lambda) f(\y)
-\end{equation*}
-\begin{figure}[ht!]
-\includegraphics[width=0.5\linewidth]{convexFunction.png}
-\caption{In convex functions, the segment joining two points of the graph is always above the graph.}
-\label{figure:convexFunction}
-\end{figure}
-If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
-\end{example}
+% \begin{example}[Convex Functions]\label{example:convexFunction}
+% A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \x + (1-\lambda) \y$ is also in $C$.   Given such a convex set, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
+% \begin{equation*}
+% f\big(\lambda \x + (1-\lambda)\y\big) \leq \lambda f(\x) + (1-\lambda) f(\y)
+% \end{equation*}
+% \begin{figure}[ht!]
+% \includegraphics[width=0.5\linewidth]{convexFunction.png}
+% \caption{In convex functions, the segment joining two points of the graph is always above the graph.}
+% \label{figure:convexFunction}
+% \end{figure}
+% If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
+% \end{example}
 
 \begin{example}[Posynomials]\label{example:posynomial}
 Consider the set $\mathfrak{P}_d = \{ (x_1, \dotsc, x_d) \in \field{R}^d : x_k > 0 \text{ for } 1\leq k \leq d\}$. A function $f \colon \mathfrak{P}_d \to \field{R}$ is said to be a \emph{posynomial} if it can be written in the form of a linear combination with non-negative coefficients of products of powers of non-negative variables.  More formally: $f$ is a posynomial if there exists $n \in \field{N}$, $n$ positive constants $\{ c_j : 1 \leq j \leq n \}$ and $n \times d$ arbitrary real exponents $\{ \alpha_{jk} : 1\leq j \leq n, 1 \leq k \leq d \}$ so that 
@@ -92,37 +92,37 @@ f(\x) = \sum_{j=1}^n c_j \prod_{k=1}^d x_k^{\alpha_{jk}}.
 Notice that the domain of a given posynomial may not be extended in general anywhere else in $\field{R}^d$.  For example, notice the obvious restrictions for the function $f\colon \mathfrak{P}_2 \to \field{R}$ given by $f(x_1,x_2) = x_1\sqrt{x_2} + \frac{\pi}{x_1}$.
 \end{example}
 
-\begin{example}[Rosenbrock Functions]\label{example:Rosenbrock2}
-Given strictly positive parameters $a,b > 0$, consider the $(a,b)$--Rosenbrock function $\mathcal{R}_{a,b}\colon \field{R}^2 \to \field{R}$ defined by:
-\begin{equation*} 
-\mathcal{R}_{a,b}(x_1, x_2) = (a-x_1)^2 + b(x_2-x_1^2)^2.
-\end{equation*}
-It is easy to see that Rosenbrock functions are multi-variate polynomials (prove it!).  The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b}(\x) \geq 0$ for all $\x \in \field{R}^2$.  Zero is attained: $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(0,x_2) = a^2 + bx_2^2$ is a polynomial of degree 2, hence unbounded for $x_2 \in \field{R}$.
+% \begin{example}[Rosenbrock Functions]\label{example:Rosenbrock2}
+% Given strictly positive parameters $a,b > 0$, consider the $(a,b)$--Rosenbrock function $\mathcal{R}_{a,b}\colon \field{R}^2 \to \field{R}$ defined by:
+% \begin{equation*} 
+% \mathcal{R}_{a,b}(x_1, x_2) = (a-x_1)^2 + b(x_2-x_1^2)^2.
+% \end{equation*}
+% It is easy to see that Rosenbrock functions are multi-variate polynomials (prove it!).  The image of $\mathcal{R}_{a,b}$ is the interval $[0,\infty)$.  Indeed, note first that $\mathcal{R}_{a,b}(\x) \geq 0$ for all $\x \in \field{R}^2$.  Zero is attained: $\mathcal{R}_{a,b} (a,a^2) = 0$.  Note also that $\mathcal{R}_{a,b}(0,x_2) = a^2 + bx_2^2$ is a polynomial of degree 2, hence unbounded for $x_2 \in \field{R}$.
 
-Figure \ref{figure:Rosenbrock} illustrates a contour plot with several level lines of $\mathcal{R}_{1,1}$ on the domain $D = [-2,2] \times [-1,3]$, as well as its graph
-\begin{figure}[ht!]
-\begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{rosenbrockContour} &
-\includegraphics[width=0.5\linewidth]{rosenbrockGraph}
-\end{tabular}
-\caption{Details of the graph of $\mathcal{R}_{1,1}$}
-\label{figure:Rosenbrock}
-\end{figure}
-\end{example}
+% Figure \ref{figure:Rosenbrock} illustrates a contour plot with several level lines of $\mathcal{R}_{1,1}$ on the domain $D = [-2,2] \times [-1,3]$, as well as its graph
+% \begin{figure}[ht!]
+% \begin{tabular}{cc}
+% \includegraphics[width=0.5\linewidth]{rosenbrockContour} &
+% \includegraphics[width=0.5\linewidth]{rosenbrockGraph}
+% \end{tabular}
+% \caption{Details of the graph of $\mathcal{R}_{1,1}$}
+% \label{figure:Rosenbrock}
+% \end{figure}
+% \end{example}
 
-This is a good spot to introduce the goal of these notes.  The main purpose of \emph{optimization} is the search for \emph{extrema} of real-valued functions.  Given a set $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
-\begin{enumerate}
-	\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
-	\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
-	\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-	\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-\end{enumerate}
+% This is a good spot to introduce the goal of these notes.  The main purpose of \emph{optimization} is the search for \emph{extrema} of real-valued functions.  Given a set $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
+% \begin{enumerate}
+% 	\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
+% 	\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
+% 	\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+% 	\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+% 	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+% 	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+% 	\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+% 	\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+% \end{enumerate}
 
-Let's play around with some more examples of functions, before we proceed to techniques for finding extrema:
+% Let's play around with some more examples of functions, before we proceed to techniques for finding extrema:
 
 \begin{problem}[Linear Functions]\label{problem:LinearFunctions-d2d}
 Let $\boldsymbol{A} = \big[ a_{jk} \big]_{j,k=1}^d$ be a square matrix with real coefficients.  Considering elements in $\field{R}^d$ as horizontal matrices, and by means of matrix multiplication, we construct functions $\mathcal{L}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ and $\mathcal{R}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ given by

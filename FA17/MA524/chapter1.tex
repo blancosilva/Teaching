@@ -1,6 +1,6 @@
 %!TEX root = notes.tex
 
-\chapter{Optimization Review from Vector Calculus}
+\chapter{Review of Optimization from Vector Calculus}
 
 The starting point of these notes is the concept of \emph{optimization} as developed in MATH 241 (see e.g.~\cite[Chapter~14]{finney2001thomas})
 
@@ -20,20 +20,20 @@ The local minima of these functions are among the zeros of the equation $\gradie
 An interior point of the domain of a function $f(x,y)$ where both directional derivatives are zero, or where at least one of the directional derivatives do not exist, is a \emph{critical point} of $f$.
 \end{definition}
 
-In order to select the minima, we employed the \emph{Second Derivative Test for Local Extreme Values}
+In order to select \emph{some} minima, we employed the \emph{Second Derivative Test for Local Extreme Values}
 \begin{theorem}\label{theorem:2DTforLEV}
 Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partial derivatives are continuous throughout a disk centered at the point $(x_0,y_0)$, and that $\gradient{f}(x_0,y_0)=0$. Then $f(x_0,y_0)$ is a local minimum value if the two following conditions are satisfied:
 \begin{align}
 \frac{\partial^2 f}{\partial x^2}(x_0,y_0) &> 0 \\
 \det \underbrace{\begin{bmatrix} 
-\frac{\partial^2 f}{\partial x^2}(x_0,y_0) & \frac{\partial^2 f}{\partial x \partial y}(x_0,y_0) \\ & \\
-\frac{\partial^2 f}{\partial y \partial x}(x_0,y_0) & \frac{\partial^2 f}{\partial y^2}(x_0,y_0)
+\dfrac{\partial^2 f}{\partial x^2}(x_0,y_0) & \dfrac{\partial^2 f}{\partial x \partial y}(x_0,y_0) \\ & \\
+\dfrac{\partial^2 f}{\partial y \partial x}(x_0,y_0) & \dfrac{\partial^2 f}{\partial y^2}(x_0,y_0)
 \end{bmatrix}}_{\Hess{f}(x_0,y_0)} &> 0
 \end{align}
 \end{theorem}
 
 \begin{remark}
-The restriction to univariate functions is even simpler: Suppose $f''$ is continuous on an open interval that contains $x_0$.  If $f'(x_0)=0$ and $f''(x_0)>0$, then $f$ has a local minimum at $x_0$. 
+The restriction of this result to univariate functions is even simpler: Suppose $f''$ is continuous on an open interval that contains $x_0$.  If $f'(x_0)=0$ and $f''(x_0)>0$, then $f$ has a local minimum at $x_0$. 
 \end{remark}
 
 \begin{example}[Rosenbrock Functions]\label{example:Rosenbrock}
@@ -90,126 +90,35 @@ A continuous real-valued function always attains its minimum value on a \emph{co
 \end{theorem}
 
 \begin{example}
-A flat circular plate has the shape of the region $x^2+y^2 \leq 1$. The plate, including the boundary, is heated so that the temperature at the point $(x,y)$ is given $T(x,y) =x^2 +2 y^2 - x$.  Find the temperature at the coldest point of the plate.
+A flat circular plate has the shape of the region $x^2+y^2 \leq 1$. The plate, including the boundary, is heated so that the temperature at the point $(x,y)$ is given by $f(x,y) =100(x^2 +2 y^2 - x)$ in Celsius degrees.  Find the temperature at the coldest point of the plate.
 
-We start by searching for critical points.  The equation $\gradient{T}(x,y) = 0$ gives $x=\tfrac{1}{2}$, $y=0$. The point $\big(\tfrac{1}{2}, 0\big)$ is clearly inside of the plate.  This is our first candidate.
+We start by searching for critical points.  The equation $\gradient{f}(x,y) = 0$ gives $x=\tfrac{1}{2}$, $y=0$. The point $(\tfrac{1}{2}, 0)$ is clearly inside of the plate.  This is our first candidate.
 
-The border of the plate can be parameterized by $\varphi(t) = (\cos t, \sin t)$ for $t \in [0,2\pi)$.  The search for minima in the boundary of the plate can then be coded as an optimization problem for the function $f(t) = T \circ \varphi (t) = \cos^2 t + 2\sin^2 t - \cos t$ on the interval $[0,2]$.  Note that $f'(t) = 0$ at $t \in \{ 0, \tfrac{2}{3}\pi \}$ in $[0,2\pi]$.  We thus have two more candidates: 
+The border of the plate can be parameterized by $\varphi(t) = (\cos t, \sin t)$ for $t \in [0,2\pi)$.  The search for minima in the boundary of the plate can then be coded as an optimization problem for the function $h(t) = (f \circ \varphi) (t) = 100(\cos^2 t + 2\sin^2 t - \cos t)$ on the interval $[0,2]$.  Note that $h'(t) = 0$ at $t \in \{ 0, \tfrac{2}{3}\pi \}$ in $[0,2\pi]$.  We thus have two more candidates: 
 \begin{equation*}
-\varphi(0) = (1,0) \qquad \varphi\big(\tfrac{2}{3}\pi\big)= \big( -\tfrac{1}{2}, \tfrac{1}{2}\sqrt{3} \big)
+\varphi(0) = (1,0) \qquad \varphi(\tfrac{2}{3}\pi)= \big( -\tfrac{1}{2}, \tfrac{1}{2}\sqrt{3} \big)
 \end{equation*}
-Evaluation of the function at all candidates gives us the answer: $T\big( \tfrac{1}{2}, 0 \big) = -0.25$.
+Evaluation of the function at all candidates gives us the answer: 
+\begin{equation*}
+f( \tfrac{1}{2}, 0 ) = -25^\circ\mathrm{C}.
+\end{equation*}
 \end{example}
 
-On a second setting, we do not place any restriction on the domain of the function.  In this case, global minima will only be guaranteed with restrictions on the function:
-
-\begin{definition}[Coercive functions]\label{def:coerciveFunctions}
-A continuous real-valued function $f$ is said to be \emph{coercive} if for all $M>0$ there exists $R=R(M)>0$ so that $f(\x)\geq M$ if $x^2+y^2\geq R^2$.  In other words:
-\begin{equation*}
-\lim_{\norm{\x}\to \infty} f(\x) = +\infty
-\end{equation*}
-\end{definition}
+On a second setting, we remove the restriction of boundedness of the function.  In this case, global minima will only be guaranteed for very special functions.
 
 \begin{example}\label{example:CoerciveFunctions}
-Any polynomial $p_n(x) = a_n x^n + a_{n-1} x^{n-1} + \dotsb + a_0$ with even degree $n \geq 2$ and positive leading coefficient is trivially coercive.  Indeed; notice that we may write
+Any polynomial $p_n(x) = a_n x^n + a_{n-1} x^{n-1} + \dotsb + a_0$ with even degree $n \geq 2$ and positive leading coefficient satisfies 
+$\lim_{\abs{x}\to \infty} p_n(x) = +\infty$.  
+To see this, we may write
 \begin{equation*}
 a_n x^n + a_{n-1} x^{n-1} + \dotsb + a_0 = a_n x^n \big( 1 + \tfrac{a_{n-1}}{a_n x} + \dotsb + \tfrac{a_0}{a_n x^n} \big)
 \end{equation*}
-The behavior of each of the factors as the absolute value of $x$ goes to infinity leads to the statement.
+The behavior of each of the factors as the absolute value of $x$ goes to infinity leads to our claim.
 \begin{align*}
 \lim_{\abs{x} \to \infty} a_n x^n &= +\infty, \\
 \lim_{\abs{x} \to \infty} \big( 1 + \tfrac{a_{n-1}}{a_n x} + \dotsb + \tfrac{a_0}{a_n x^n} \big) &= 1.
 \end{align*}
-In two dimensions, we must be careful assessing coerciveness of polynomials. Notice for example $p_2(x,y) = x^2 - 2xy + y^2$.  Note how $p_2(x,x)=0$ for any $x \in \field{R}$, which proves $p_2$ is not coercive.
-
-To see that the polynomial $p_4(x, y) = x^4 + y^4 - 3xy$ is coercive, we start by factoring the leading terms:
-\begin{equation*}
-x^4 + y^4 - 3xy = (x^4 + y^4) \bigg( 1 - \frac{3xy}{x^4 + y^4} \bigg)
-\end{equation*}
-Assume $r>1$ is large, and that $x^2+y^2 = r^2$.  We have then
-\begin{align*}
-x^4 + y^4 &\geq \frac{r^4}{2} \qquad\text{(Why?)} \\
-% Do x=rcos(theta) y=rsin(theta) and note x^4+y^4=r^4(cos^(theta)+sin^4(theta))
- \abs{x y} &\leq \frac{r^2}{2} \qquad\text{(Why?)}
-% Same x,y, to see that xy = r^2cos(theta)sin(theta) = r^2 sin(2theta)/2
-\end{align*}
-therefore, 
-\begin{align*}
-\frac{3xy}{x^4 + y^4} &\leq \frac{3}{r^2} \\
-1 - \frac{3xy}{x^4 + y^4} &\geq 1 - \frac{3}{r^2} \\
-(x^4 + y^4) \bigg( 1 - \frac{3x y}{x^4 + y^4} \bigg) &\geq \frac{r^2(r^2-3)}{2}
-\end{align*} 
-We can then conclude that given $M>0$, if $x^2+y^2 \geq \tfrac{1}{2} \big( 3+\sqrt{9+8M} \big)$, then $f(x,y) \geq M$.
+It is clear that a polynomial of this kind must attain a minimum somewhere in its domain. The critical points will lead to them.
 \end{example}
 
 
-
-
-
-\section*{Exercises}
-\begin{problem}\label{problem:maxima}
-Develop similar statements as in Definition \ref{def:localminimum}, Theorems \ref{theorem:localminimum}, \ref{theorem:2DTforLEV} and \ref{theorem:MaxMinCompact}, but for \emph{local} and \emph{global maxima}.
-\end{problem}
-
-\begin{problem}[Domains]
-Find and sketch the domain of the following functions.
-\begin{enumerate}
-	\item $f(x,y) = \sqrt{y-x-2}$
-	\item $f(x,y) = \log \big( x^2+y^2-4 \big)$
-	\item $f(x,y) = \frac{(x-1)(y+2)}{(y-x)(y-x^3)}$
-	\item $f(x,y) = \log (xy+x-y-1)$
-\end{enumerate}
-\end{problem}
-
-\begin{problem}[Contour plots]
-Find and sketch the level lines $f(x,y)=c$ on the same set of coordinate axes for the given values of $c$.
-\begin{enumerate}
-	\item $f(x,y) = x+y-1$, $c \in \{ -3, -2, -1, 0, 1, 2, 3\}$.
-	\item $f(x,y) = x^2+y^2$, $c \in \{ 0, 1, 4, 9, 16, 25 \}$.
-	\item $f(x,y) = xy$, $c \in \{ -9, -4, -1, 0, 1, 4, 9 \}$
-\end{enumerate}
-\end{problem}
-
-\begin{problem}\label{problem:countours}
-Use a Computer Algebra System of your choice to produce contour plots of the given functions on the given domains.
-\begin{enumerate}
-	\item $f(x,y) = (\cos x)(\cos y) e^{-\sqrt{x^2+y^2}/4}$ on $[-2\pi, 2\pi]\times [-2\pi, 2\pi]$.
-	\item $g(x,y) = \dfrac{xy(x^2-y^2)}{x^2+y^2}$ on $[-1,1] \times [-1,1]$
-	\item $h(x,y) = y^2 - y^4 -x^2$ on $[-1,1]\times[-1,1]$
-	\item $k(x,y) = e^{-y}\cos x$ on $[-2\pi, 2\pi]\times[-2,0]$
-\end{enumerate}
-\begin{figure}[ht!]
-\begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{contourf.png} &
-\includegraphics[width=0.5\linewidth]{contourg.png} \\
-\includegraphics[width=0.5\linewidth]{contourh.png} &
-\includegraphics[width=0.5\linewidth]{contourk.png} 
-\end{tabular}
-\caption{Contour plots for problem \ref{problem:countours}}
-\end{figure}
-\end{problem}
-
-\begin{problem} % example 2, p.858 in Thomas' Calculus
-Find the points of the hyperbolic cylinder $x^2=z^2-1=0$ in $\field{R}^3$ that are closest to the origin.
-\end{problem}
-
-\begin{problem}\label{problem:CoerciveFunctions}
-Prove that a coercive function always has a global minimum.
-% Indeed: since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, the set $K_r = \{ \x \in \field{R}^d : \norm{x} \leq r \}$ is compact.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
-\end{problem}
-
-\begin{problem}
-Identify which of the following real-valued functions are coercive.  Explain the reason.
-\begin{enumerate}
-	\item $f(x,y) = \sqrt{x^2+y^2}$.
-	\item $f(x,y) = x^2 + 9y^2 - 6xy$.
-	\item Rosenbrock functions $\mathcal{R}_{a,b}$.
-\end{enumerate}
-\end{problem}
-
-\begin{problem}
-Find an example of a continuous, real-valued, non-coercive function $f\colon \field{R}^2 \to \field{R}$ that satisfies, for all $t \in \field{R}$,
-\begin{equation*}
-\lim_{x \to \infty} f(x, tx) = \lim_{y \to \infty} f(ty, y) = \infty
-\end{equation*}
-\end{problem}
