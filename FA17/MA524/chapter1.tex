@@ -65,7 +65,7 @@ Let's locate all local minima:
 	-4bx & 2b
 	\end{bmatrix}
 	\end{equation*}
-	\item The search for critical points $\gradient{\mathcal{R}_{a,b}} = \boldsymbol{0}$ gives only the point $(a,a^2)$. (Why?)
+	\item The search for critical points $\gradient{\mathcal{R}_{a,b}} = \boldsymbol{0}$ gives only the point $(a,a^2)$.
 	\item $\frac{\partial^2 \mathcal{R}_{a,b}}{\partial x^2}(a,a^2) = 8ba^2+2 > 0$.
 	\item The Hessian at that point has positive determinant:
 	\begin{equation*}
@@ -94,11 +94,11 @@ A flat circular plate has the shape of the region $x^2+y^2 \leq 1$. The plate, i
 
 We start by searching for critical points.  The equation $\gradient{f}(x,y) = 0$ gives $x=\tfrac{1}{2}$, $y=0$. The point $(\tfrac{1}{2}, 0)$ is clearly inside of the plate.  This is our first candidate.
 
-The border of the plate can be parameterized by $\varphi(t) = (\cos t, \sin t)$ for $t \in [0,2\pi)$.  The search for minima in the boundary of the plate can then be coded as an optimization problem for the function $h(t) = (f \circ \varphi) (t) = 100(\cos^2 t + 2\sin^2 t - \cos t)$ on the interval $[0,2]$.  Note that $h'(t) = 0$ at $t \in \{ 0, \tfrac{2}{3}\pi \}$ in $[0,2\pi]$.  We thus have two more candidates: 
+The border of the plate can be parameterized by $\varphi(t) = (\cos t, \sin t)$ for $t \in [0,2\pi)$.  The search for minima in the boundary of the plate can then be coded as an optimization problem for the function $h(t) = (f \circ \varphi) (t) = 100(\cos^2 t + 2\sin^2 t - \cos t)$ on the interval $[0,2\pi)$.  Note that $h'(t) = 0$ for $t \in \{ 0, \tfrac{2}{3}\pi \}$ in $[0,2\pi)$.  We thus have two more candidates: 
 \begin{equation*}
 \varphi(0) = (1,0) \qquad \varphi(\tfrac{2}{3}\pi)= \big( -\tfrac{1}{2}, \tfrac{1}{2}\sqrt{3} \big)
 \end{equation*}
-Evaluation of the function at all candidates gives us the answer: 
+Evaluation of the function at all candidates gives us the solution to this problem: 
 \begin{equation*}
 f( \tfrac{1}{2}, 0 ) = -25^\circ\mathrm{C}.
 \end{equation*}
@@ -121,4 +121,16 @@ The behavior of each of the factors as the absolute value of $x$ goes to infinit
 It is clear that a polynomial of this kind must attain a minimum somewhere in its domain. The critical points will lead to them.
 \end{example}
 
+\begin{example}
+Find the global minima of the function $f(x)= \log (x^4-2x^2+2)$ in $\field{R}$.  
+
+Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x^2-1)^2+1 \geq 1$ for all $x\ in \field{R}$.  Note also that we can write $f(x) = (g \circ h)(x)$ with $g(x) = \log(x)$ and $h(x)=x^4-2x^2+1$.  Since $g$ is one-to-one and increasing, we can focus on $h$ to obtain the requested solution.  For instance, $\lim_{\abs{x}\to\infty}f(x) = +\infty$, since $\lim_{\abs{x}\to\infty} h(x) = +\infty$. This guarantees the existence of global minima.  To look for it, $h$ again points to the possible locations by solving for its critical points: $h'(x)=0$.  We have then that $f$ attains its minima at $x=\pm 1$.
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{coercivelog.png}
+\end{center}
+\caption{Global minima in unbounded domains}
+\label{figure:coercivelog}
+\end{figure}
+\end{example}
 
