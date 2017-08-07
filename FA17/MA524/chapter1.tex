@@ -1,6 +1,6 @@
 %!TEX root = notes.tex
 
-\chapter{Review of Optimization from Vector Calculus}
+\chapter{Review of Optimization from Vector Calculus}\label{chapter:intro}
 
 The starting point of these notes is the concept of \emph{optimization} as developed in MATH 241 (see e.g.~\cite[Chapter~14]{finney2001thomas})
 
@@ -124,7 +124,7 @@ It is clear that a polynomial of this kind must attain a minimum somewhere in it
 \begin{example}
 Find the global minima of the function $f(x)= \log (x^4-2x^2+2)$ in $\field{R}$.  
 
-Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x^2-1)^2+1 \geq 1$ for all $x\ in \field{R}$.  Note also that we can write $f(x) = (g \circ h)(x)$ with $g(x) = \log(x)$ and $h(x)=x^4-2x^2+1$.  Since $g$ is one-to-one and increasing, we can focus on $h$ to obtain the requested solution.  For instance, $\lim_{\abs{x}\to\infty}f(x) = +\infty$, since $\lim_{\abs{x}\to\infty} h(x) = +\infty$. This guarantees the existence of global minima.  To look for it, $h$ again points to the possible locations by solving for its critical points: $h'(x)=0$.  We have then that $f$ attains its minima at $x=\pm 1$.
+Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x^2-1)^2+1 \geq 1$ for all $x\ \in \field{R}$.  Note also that we can write $f(x) = (g \circ h)(x)$ with $g(x) = \log(x)$ and $h(x)=x^4-2x^2+1$.  Since $g$ is one-to-one and increasing, we can focus on $h$ to obtain the requested solution.  For instance, $\lim_{\abs{x}\to\infty}f(x) = +\infty$, since $\lim_{\abs{x}\to\infty} h(x) = +\infty$. This guarantees the existence of global minima.  To look for it, $h$ again points to the possible locations by solving for its critical points: $h'(x)=0$.  We have then that $f$ attains its minima at $x=\pm 1$.
 \begin{figure}[ht!]
 \begin{center}
 \includegraphics[width=0.5\linewidth]{coercivelog.png}
@@ -134,3 +134,32 @@ Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x
 \end{figure}
 \end{example}
 
+\section{The Theory of Optimization}
+
+The purpose of these notes is the development of a theory to deal with optimization in a more general setting.
+\begin{itemize}
+	\item We start in an Euclidean $d$--dimensional space with the usual topology based on the distance 
+	\begin{equation*}
+	\norm{\x-\y} = \langle \x-\y, \x-\y \rangle^{1/2} = \sqrt{\sum_{k=1}^d (x_k-y_k)^2 }.
+	\end{equation*}
+	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema}:
+	\begin{definition}\label{def:extrema}
+	Given a set $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
+	\begin{enumerate}
+		\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
+		\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
+		\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+		\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+		\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+		\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+		\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+		\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+	\end{enumerate}
+	\end{definition}	
+\end{itemize}
+In this setting, the objective of \emph{optimization} is the following program:
+\begin{description}
+	\item[Existence of extrema] Establish results that guarantee the existence of extrema depending on the properties of $D$ and $f$.  We include the development of these ideas in chapter \ref{chapter:existence}.
+	\item[Characterization of extrema] Establish results that describe conditions for points $\x \in D$ to be extrema of $f$.  We develop these in chapter \ref{chapter:characterization}.
+	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes. This is the core of these notes.  The presentation of this topic is done in chapter \ref{chapter:nonlinearoptimization}.
+\end{description}

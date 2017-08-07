@@ -1,38 +1,8 @@
 %!TEX root = notes.tex
 
-\chapter{Optimization}
+\chapter{Existence of Extrema}\label{chapter:existence}
 
-The theory of optimization is based on the following directives: 
-\begin{itemize}
-	\item We start in an Euclidean $d$--dimensional space with the usual topology based on the distance 
-	\begin{equation*}
-	\norm{\x-\y} = \langle \x-\y, \x-\y \rangle^{1/2} = \sqrt{\sum_{k=1}^d (x_k-y_k)^2 }.
-	\end{equation*}
-	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema}:
-	\begin{definition}\label{def:extrema}
-	Given a set $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
-	\begin{enumerate}
-		\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
-		\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
-		\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-		\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-		\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-		\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-		\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-		\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-	\end{enumerate}
-	\end{definition}	
-\end{itemize}
-In this setting, the objective of \emph{optimization} is the following program:
-\begin{description}
-	\item[Existence of extrema] Develop results that guarantee the existence of extrema depending on the properties of $D$ and $f$.
-	\item[Characterization of extrema] Develop results that describe conditions for a point $\x \in D$ to be an extremum of $f$.
-	\item[Tracking extrema] Design algorithms that find extrema.
-\end{description}
-
-\section{Existence of Extrema}
-
-Let us start with continuous functions.  
+In this chapter we will study different properties of functions and domains that guarantee existence of extrema. We start with a reminder of the definition of a continuous function.
 \begin{definition}\label{def:continuous}
 We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\x_0 \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\x_0}<\delta$, it is $\abs{ f(\x) - f(\x_0) } < \varepsilon$.  
 \end{definition}
@@ -51,7 +21,7 @@ This function is trivially continuous at any point $(x,y)\neq(0,0)$.  However, i
 \end{equation*}
 \end{example}
 
-\subsection{Continuous functions on compact domains}
+\section{Continuous functions on compact domains}
 The existence of global maxima and minima is guaranteed for continuous functions over compact sets thanks to the following two basic results:
 
 \begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
@@ -62,8 +32,8 @@ The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to 
 A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
 \end{theorem}
 
-\subsection{Continuous functions on unbounded domains}
-Extra restrictions must be applied to the behavior of $f$ in this case. We consider first an obvious example based on the even-degree polynomials with positive leading coefficients that we discussed in Example \ref{example:CoerciveFunctions}.
+\section{Continuous functions on unbounded domains}
+Extra restrictions must be applied to the behavior of $f$ in this case, if we want to guarantee the existence of extrema. We consider first an obvious example based on Example \ref{example:CoerciveFunctions}.
 
 \begin{definition}[Coercive functions]\label{def:coerciveFunctions}
 A continuous real-valued function $f$ is said to be \emph{coercive} if for all $M>0$ there exists $R=R(M)>0$ so that $f(\x)\geq M$ if $\norm{\x}\geq R$.
@@ -108,7 +78,7 @@ Coercive functions always have a global minimum.
 Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, consider the closed ball $K_r = \{ \x \in \field{R}^2 : \norm{\x} \leq r \}$.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
 \end{proof}
 
-\subsection{Convex functions}
+\section{Convex functions}
 \begin{definition}[Convex Sets]\label{def:convexSets}
 A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \y + (1-\lambda) \x$ is also in $C$.
 \end{definition}
