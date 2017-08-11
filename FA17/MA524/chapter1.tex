@@ -8,7 +8,7 @@ The starting point of these notes is the concept of \emph{optimization} as devel
 Let $D\subseteq \field{R}^2$ be a region on the plane containing the point $(x_0, y_0)$.  We say that the real-valued function $f\colon D \to \field{R}$ has a \emph{local minimum} at $(x_0,y_0)$ if $f(x_0,y_0) \leq f(x,y)$ for all domain points $(x,y)$ in an open disk centered at $(x_0,y_0)$.  In that case, we also say that $f(x_0,y_0)$ is a \emph{local minimum value} of $f$ in $D$.
 \end{definition}
 
-Emphasis was made to find conditions on the function $f$ to guarantee existence and identification of minima:
+Emphasis was made to find conditions on the function $f$ to guarantee existence and characterization of minima:
 
 \begin{theorem}\label{theorem:localminimum}
 Let $D \subseteq \field{R}^2$ and let $f \colon D \to \field{R}$ be a function for which first partial derivatives $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$ exist in $D$.  If $(x_0,y_0) \in D$ is a local minimum of $f$, then $\gradient{f}(x_0,y_0)=0$.
@@ -20,9 +20,9 @@ The local minima of these functions are among the zeros of the equation $\gradie
 An interior point of the domain of a function $f(x,y)$ where both directional derivatives are zero, or where at least one of the directional derivatives do not exist, is a \emph{critical point} of $f$.
 \end{definition}
 
-In order to select \emph{some} minima, we employed the \emph{Second Derivative Test for Local Extreme Values}
+We employed the \emph{Second Derivative Test for Local Extreme Values} to characterize some minima:
 \begin{theorem}\label{theorem:2DTforLEV}
-Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partial derivatives are continuous throughout a disk centered at the point $(x_0,y_0)$, and that $\gradient{f}(x_0,y_0)=0$. Then $f(x_0,y_0)$ is a local minimum value if the two following conditions are satisfied:
+Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partial derivatives are continuous throughout a disk centered at the point $(x_0,y_0)$, and that $\gradient{f}(x_0,y_0)=0$. If the two following conditions are satisfied, then $f(x_0,y_0)$ is a local minimum value:
 \begin{align}
 \frac{\partial^2 f}{\partial x^2}(x_0,y_0) &> 0 \\
 \det \underbrace{\begin{bmatrix} 
@@ -134,6 +134,8 @@ Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x
 \end{figure}
 \end{example}
 
+
+
 \section{The Theory of Optimization}
 
 The purpose of these notes is the development of a theory to deal with optimization in a more general setting.
@@ -159,7 +161,8 @@ The purpose of these notes is the development of a theory to deal with optimizat
 \end{itemize}
 In this setting, the objective of \emph{optimization} is the following program:
 \begin{description}
-	\item[Existence of extrema] Establish results that guarantee the existence of extrema depending on the properties of $D$ and $f$.  We include the development of these ideas in chapter \ref{chapter:existence}.
-	\item[Characterization of extrema] Establish results that describe conditions for points $\x \in D$ to be extrema of $f$.  We develop these in chapter \ref{chapter:characterization}.
-	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes. This is the core of these notes.  The presentation of this topic is done in chapter \ref{chapter:nonlinearoptimization}.
+	\item[Existence of extrema] Establish results that guarantee the existence of extrema depending on the properties of $D$ and $f$. 
+	\item[Characterization of extrema] Establish results that describe conditions for points $\x \in D$ to be extrema of $f$.  
+	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes. This is the core of these notes.  
 \end{description}
+The development of existence and characterization results will be covered in chapter \ref{chapter:existenceCharacterization}.  The design of algorithms to track extrema will be covered in chapter \ref{chapter:nonlinearoptimization}.

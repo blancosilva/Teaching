@@ -1,8 +1,9 @@
 %!TEX root = notes.tex
 
-\chapter{Existence of Extrema}\label{chapter:existence}
+\chapter{Existence and Characterization of Extrema}\label{chapter:existenceCharacterization}
 
-In this chapter we will study different properties of functions and domains that guarantee existence of extrema. We start with a reminder of the definition of a continuous function.
+In this chapter we will study different properties of functions and domains that guarantee existence of extrema. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions.
+
 \begin{definition}\label{def:continuous}
 We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\x_0 \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\x_0}<\delta$, it is $\abs{ f(\x) - f(\x_0) } < \varepsilon$.  
 \end{definition}
@@ -18,6 +19,41 @@ f(x,y) = \begin{cases}
 This function is trivially continuous at any point $(x,y)\neq(0,0)$.  However, it fails to be continuous at the origin.  Notice how we obtain different values as we approach $(0,0)$ through different generic lines $y=mx$ with $m \in \field{R}$:
 \begin{equation*}
 \lim_{x\to 0} f(x,mx) = \lim_{x \to 0} \frac{2mx^2}{(1+m^2)x^2} = \frac{2m}{1+m^2}.
+\end{equation*}
+\end{example}
+
+\begin{definition}\label{def:differentiable}
+A real-valued function $f$ is said to be \emph{differentiable} at $\x_0$ if there exists a \emph{linear function} $J\colon \field{R}^d \to \field{R}$ so that 
+\begin{equation*}
+\lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\x_0+h)-f(\x_0)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+A function is said to be \emph{linear} if it satisfies $J(\x+\lambda\y) = J(\x) + \lambda J(\y)$ for all $\x, \y \in \field{R}^d$, $\lambda \in \field{R}$.  For each real-valued linear function $J \colon \field{R}^d \to \field{R}$ there exists $\boldsymbol{a} \in \field{R}^d$ so that $J(\x) = \langle \boldsymbol{a} , \x \rangle$ for all $\x \in \field{R}^d$.  For this reason, the graph of a linear function is a hyperplane in $\field{R}^d$.
+\end{remark}
+
+\begin{remark}
+For any differentiable real-valued function $f$ at a point $\x$ of its domain, the corresponding linear function in the definition above guarantees a tangent hyperplane to the graph of $f$ at $\x$.  
+\end{remark}
+ 
+\begin{example}\label{example:derivatives}
+Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x_0$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
+\begin{equation*}
+\frac{\abs{f(x_0+h)-f(x_0)-J(h)}}{\abs{h}} = \left\lvert \frac{f(x_0)-f(x_0)}{h} - a \right\lvert;
+\end{equation*}
+therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x_0+h) - f(x_0) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x_0)$
+\end{example}
+
+A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})::s
+\begin{theorem}
+If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d}$ of a real-valued function $f \colon \field{R}^d \to \field{R}$ are continuous on an open region $G \subseteq \field{R}^d$, then $f$ is differentiable at every point of $\field{R}$.
+\end{theorem}
+
+\begin{example}\label{example:gradient}
+Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\x_0 \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  From our Vector Calculus classes we found out that we may use
+\begin{equation*}
+\boldsymbol{a} = \gradient{f}(\x_0)= \bigg( \frac{\partial f}{\partial x_1}(\x_0), \dotsc, \frac{\partial f}{\partial x_d}(\x_0) \bigg).
 \end{equation*}
 \end{example}
 
@@ -88,6 +124,36 @@ Given a convex set $C \subseteq \field{R}^d$, we say that a real-valued function
 \begin{equation*}
 f\big(\lambda \y + (1-\lambda)\x \big) \leq \lambda f(\y) + (1-\lambda) f(\x)
 \end{equation*}
+If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
+\end{definition}
+Convex functions have many pleasant properties:
+\begin{theorem}\label{theorem:ConvexIsContinuous}
+Convex functions are continuous
+\end{theorem}
+
+\begin{theorem}
+Let $f\colon C \to \field{R}$ be a real-valued convex function defined on a convex set $C \subseteq \field{R}^d$.  If $\lambda_1, \dotsc, \lambda_n$ are nonnegative numbers satisfying $\lambda_1 + \dotsb + \lambda_n = 1$ and $\x_1, \dotsc, x_n$ are $n$ different points in $C$, then
+\begin{equation*}
+f\big( \lambda_1 \x_1 + \dotsb + \lambda_n x_n \big) \leq \lambda_1 f(\x_1) + \dotsb + \lambda_n f(\x_n).
+\end{equation*}
+\end{theorem}
+
+\begin{theorem}\label{theorem:convexAboveTangentHyperplane}
+If $f\colon C \to \field{R}$ is a function on a convex set $C \subseteq \field{R}^d$ with continuous first partial derivatives on $C$, then
+\begin{enumerate}
+	\item $f$ is convex if and only if for all $\x, \y \in C$,
+	\begin{equation*}
+	f(\x) + \langle \gradient{f}(\x), \y - \x \rangle \leq f(\y).
+	\end{equation*}
+	\item $f$ is strictly convex if for all $\x \neq \y \in C$,
+	\begin{equation*}
+	f(\x) + \langle \gradient{f}(\x), \y - \x \rangle < f(\y).
+	\end{equation*}
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+Theorem \ref{theorem:convexAboveTangentHyperplane} implies that the graph of any (strictly) convex function always lies over the tangent hyperplane at any point of the graph.
 \begin{figure}[ht!]
 \begin{tabular}{cc}
 \includegraphics[width=0.5\linewidth]{convexFunction1.png} &
@@ -96,5 +162,13 @@ f\big(\lambda \y + (1-\lambda)\x \big) \leq \lambda f(\y) + (1-\lambda) f(\x)
 \caption{Convex Functions.}
 \label{figure:convexFunction}
 \end{figure}
-If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
-\end{definition}
+\end{remark}
+
+Another useful characterization of convex functions.
+\begin{theorem}
+Suppose that $f\colon C \to \field{R}$ is a function with second partial derivatives on an open convex set $C \subseteq \field{R}^d$.  If the Hessian is positive semidefinite (resp.~positive definite) on $C$, then $f$ is convex (resp.~strictly convex).
+\end{theorem}
+
+% \begin{theorem}
+% Any local minimum of a convex function is also a global minimum.  Any local minimum of a strictly convex function is the unique strict global minimum.
+% \end{theorem}
