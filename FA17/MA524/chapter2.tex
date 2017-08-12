@@ -5,7 +5,7 @@
 In this chapter we will study different properties of functions and domains that guarantee existence of extrema. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions.
 
 \begin{definition}\label{def:continuous}
-We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\x_0 \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\x_0}<\delta$, it is $\abs{ f(\x) - f(\x_0) } < \varepsilon$.  
+We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\xstar \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\xstar}<\delta$, it is $\abs{ f(\x) - f(\xstar) } < \varepsilon$.  
 \end{definition}
 
 \begin{example}
@@ -23,9 +23,9 @@ This function is trivially continuous at any point $(x,y)\neq(0,0)$.  However, i
 \end{example}
 
 \begin{definition}\label{def:differentiable}
-A real-valued function $f$ is said to be \emph{differentiable} at $\x_0$ if there exists a \emph{linear function} $J\colon \field{R}^d \to \field{R}$ so that 
+A real-valued function $f$ is said to be \emph{differentiable} at $\xstar$ if there exists a \emph{linear function} $J\colon \field{R}^d \to \field{R}$ so that 
 \begin{equation*}
-\lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\x_0+h)-f(\x_0)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
+\lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\xstar+h)-f(\xstar)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
 \end{equation*}
 \end{definition}
 
@@ -38,11 +38,11 @@ For any differentiable real-valued function $f$ at a point $\x$ of its domain, t
 \end{remark}
  
 \begin{example}\label{example:derivatives}
-Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x_0$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
+Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x^\star$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
 \begin{equation*}
-\frac{\abs{f(x_0+h)-f(x_0)-J(h)}}{\abs{h}} = \left\lvert \frac{f(x_0)-f(x_0)}{h} - a \right\lvert;
+\frac{\abs{f(x^\star+h)-f(x^\star)-J(h)}}{\abs{h}} = \left\lvert \frac{f(x^\star+h)-f(x^\star)}{h} - a \right\lvert;
 \end{equation*}
-therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x_0+h) - f(x_0) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x_0)$
+therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x^\star+h) - f(x^\star) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x^\star)$
 \end{example}
 
 A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})
@@ -51,9 +51,9 @@ If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\part
 \end{theorem}
 
 \begin{example}\label{example:gradient}
-Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\x_0 \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  Under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
+Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\xstar \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  Under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
 \begin{equation*}
-\boldsymbol{a} = \gradient{f}(\x_0)= \bigg( \frac{\partial f}{\partial x_1}(\x_0), \dotsc, \frac{\partial f}{\partial x_d}(\x_0) \bigg).
+\boldsymbol{a} = \gradient{f}(\xstar)= \bigg( \frac{\partial f (\xstar)}{\partial x_1}, \dotsc, \frac{\partial f (\xstar)}{\partial x_d} \bigg).
 \end{equation*}
 \end{example}
 It is a simple task to prove that all differentiable functions are continuous.  Is it true that all continuous functions are differentiable?
@@ -70,6 +70,85 @@ This function is continuous everywhere, yet \emph{nowehere} differentiable!  For
 \label{figure:WeierstrassFunction}
 \end{figure}
 \end{example}
+
+A few more useful results about higher order derivatives.
+
+\begin{theorem}[Clairaut]\label{theorem:MixedDerivatives}
+If $f\colon \field{R}^d \to \field{R}$ and its partial derivatives of orders 1 and 2, $\frac{\partial f}{\partial x_k}$, $\frac{\partial^2 f}{\partial x_k \partial x_j}$, ($1\leq k,j \leq d$) are defined throughout an open region containing the point $\xstar$, and are all continuous at $\xstar$, then 
+\begin{equation*}
+\frac{\partial^2 f(\xstar)}{\partial x_k \partial x_j} = \frac{\partial^2 f(\xstar)}{\partial x_j \partial x_k}, \quad (1\leq k,j \leq d). 
+\end{equation*}
+\end{theorem}
+
+\begin{definition}[Hessian]\label{def:Hessian}
+Given a twice-differentiable function $f\colon \field{R}^d \to \field{R}$, we define the \emph{Hessian} of $f$ at $\x$ to be the following matrix of second partial derivatives:
+\begin{equation*}
+\Hess{f}(\x) = \begin{bmatrix}
+\frac{\strut\partial^2 f (\x)}{\strut\partial x_1^2} & \frac{\strut\partial^2 f (\x)}{\strut\partial x_1 \partial x_2} &\dotsb &\frac{\strut\partial^2 f (\x)}{\strut\partial x_1 \partial x_d} \\
+&&&\\
+\frac{\strut\partial^2 f (\x)}{\strut\partial x_2 \partial x_1} & \frac{\strut\partial^2 f (\x)}{\strut\partial x_2^2} &\dotsb &\frac{\strut\partial^2 f (\x)}{\strut\partial x_2 \partial x_d} \\
+&&& \\
+\vdots & \vdots &\ddots &\vdots \\
+&&& \\
+\frac{\strut\partial^2 f (\x)}{\strut\partial x_d \partial x_1} & \frac{\strut\partial^2 f (\x)}{\strut\partial x_d \partial x_2} &\dotsb &\frac{\strut\partial^2 f (\x)}{\strut\partial x_d^2}
+\end{bmatrix}
+\end{equation*}
+\end{definition}
+
+Functions that satisfy the conditions of Theorem \ref{theorem:MixedDerivatives} have symmetric Hessians.  We shall need some properties in regard to symmetric matrices.
+
+\begin{definition}
+Given a symmetric matrix $\boldsymbol{A}$, we define its \emph{quadratic form} as the function $\quadratic{A}\colon \field{R}^d \to \field{R}$ given by
+\begin{equation*}
+\quadratic{A}(\x) = \x \boldsymbol{A} \transpose{\x} = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{1d} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_d \end{bmatrix}
+\end{equation*}
+We say that a symmetric matrix) is:
+\begin{description}
+\item[positive definite] if $\quadratic{A}(\x) > 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
+\item[positive semidefinite] if $\quadratic{A}(\x)\geq 0$ for all $\x \in \field{R}^d$.
+\item[negative definite] if $\quadratic{A}(\x) < 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
+\item[negative semidefinite] if $\quadratic{A}(\x) \leq 0$ for all $\x \in \field{R}^d$.
+\item[indefinite] if there exist $\x, \y \in \field{R}^d$ so that $\quadratic{A}(\x) \quadratic{A}(\y) < 0$. 
+\end{description}
+\end{definition}
+
+To easily classify symmetric matrices, we may employ the following two techniques:
+
+\begin{theorem}\label{theorem:PrincipalMinors}
+Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node{%
+$\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & \dotsb & a_{1n} \\
+a_{21} & a_{22} & a_{23} & \dotsb & a_{2n} \\
+a_{31} & a_{32} & a_{33} & \dotsb & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \dotsb & a_{nn} 
+\end{bmatrix}$};
+\draw[dashed] (-2, 0.73) -- (-1.35, 0.73) -- (-1.35, 1.2) node[above]{$\Delta_1$};
+\draw[dashed] (-2, 0.27) -- (-0.5, 0.27) -- (-0.5, 1.2) node[above]{$\Delta_2$};
+\draw[dashed] (-2, -0.15) -- (0.4, -0.15) -- (0.4, 1.2) node[above]{$\Delta_3$};
+\end{tikzpicture}
+\end{center}
+A symmetric matrix $\boldsymbol{A}$ is:
+\begin{itemize}
+\item Positive definite if and only if $\Delta_\ell > 0$ for all $1\leq \ell \leq d$.
+\item Negative definite if and only if $(-1)^\ell \Delta_\ell>0$ for all $1\leq \ell \leq d$.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}\label{theorem:eigenvalues}
+Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the function $p_{\boldsymbol{A}} \colon \field{C} \to \field{C}$ given by $p_{\boldsymbol{A}}(\lambda) = \det\big(\boldsymbol{A} - \lambda \boldsymbol{I}_d \big)$.  This is a polynomial of (at most) degree $d$ in $\lambda$.  We call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.  The roots (in $\field{C}$) of the characteristic polynomial are called the \emph{eigenvalues} of $\boldsymbol{A}$.  Symmetric matrices enjoy the following properties:
+\begin{enumerate}
+	\item The eigenvalues of a symmetric matrix are all real.
+	\item If $\lambda \in \field{R}$ is a root  of multiplicity $n$ of the characteristic polynomial of a (non-trivial) symmetric matrix, then there exist $n$ linearly independent vectors $\{ \x_1, \x_2, \dotsc, \x_n \}$ satisfying $\boldsymbol{A} \x_k = \lambda \x_k$ ($1\leq k \leq n$).
+	\item If $\lambda_1 \neq \lambda_2$ are different roots of the characteristic polynomial of a symmetric matrix, and $\x_1, \x_2 \in \field{R}^d$ satisfy $\boldsymbol{A} \x_k = \lambda_k \x_k$ ($k=1,2$), then $\langle \x_1, \x_2 \rangle = 0$.
+	\item A symmetric matrix is positive definite (resp.~negative definite) if and only if all its eigenvalues are positive (resp.~negative).
+	\item A symmetric matrix is positive semidefinite (resp.~negative semidefinite) if and only if all its eigenvalues are non-negative (resp.~non-positive)
+	\item A symmetric matrix is indefinite if there exist two eigenvalues $\lambda_1 \neq \lambda_2$ with different sign.
+\end{enumerate}
+\end{theorem}
 
 \section{Existence}
 \subsection{Continuous functions on compact domains}
@@ -135,25 +214,11 @@ Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ fo
 Differentiability is key to guarantee characterization of extrema.  Critical points lead the way:
 
 \begin{theorem}[First order necessary optimality condition for minimization]
-Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient(f)(\xstar)=0$.
+Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$.
 \end{theorem}
 
-To be able to classify extrema in a properly differentiable function, it is necessary to see the behavior of the function with respect to the tangent hyperplane at our candidates.  Second derivatives make this process very easy.  Before we proceed to the key results, we should refresh some terminology:
+To be able to classify extrema in a properly differentiable function, it is necessary to see the behavior of the function with respect to the tangent hyperplane at each candidates.  Second derivatives make this process very easy.
 
-\begin{definition}[Hessian]\label{def:Hessian}
-Given a twice-differentiable function $f\colon D \subseteq \field{R}^d \to \field{R}$, we define the \emph{Hessian} of $f$ at $\x \in D$ to be the following matrix of second partial derivatives:
-\begin{equation*}
-\Hess{f}(\x) = \begin{bmatrix}
-\frac{\strut\partial^2 f}{\strut\partial x_1^2}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_1 \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_1 \partial x_d}(\x) \\
-&&&\\
-\frac{\strut\partial^2 f}{\strut\partial x_2 \partial x_1}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_2^2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_2 \partial x_d}(\x) \\
-&&& \\
-\vdots & \vdots &\ddots &\vdots \\
-&&& \\
-\frac{\strut\partial^2 f}{\strut\partial x_d \partial x_1}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_d \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_d^2}(\x)
-\end{bmatrix}
-\end{equation*}
-\end{definition}
 
 \begin{theorem}[Second order necessary optimality condition for minimization]
 Suppose that $f\colon \field{R}^d \to \field{R}$ is twice continuously differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.

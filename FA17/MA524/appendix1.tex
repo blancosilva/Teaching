@@ -146,49 +146,49 @@ We call functions constructed in this way \emph{bilinear forms}.
 Prove that, if the associated matrix is symmetric ($\boldsymbol{A} = \transpose{\boldsymbol{A}}$), then $\bilinear{A}(\x,\y) = \bilinear{A}(\y,\x)$ for all $\x, \y \in \field{R}^d$.
 \end{problem}
 
-\begin{example}[Quadratic Forms]\label{example:QuadraticForm}
-Each symmetric bilinear form has an associated \emph{quadratic form}: A function $\quadratic{A} \colon \field{R}^d \to \field{R}$ constructed as follows:
-\begin{equation*}
-\quadratic{A}(\x) = \bilinear{A}(\x,\x) = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{1d} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_d \end{bmatrix}
-\end{equation*}
-We say that the quadratic form (or the associated matrix) is:
-\begin{description}
-\item[positive definite] if $\quadratic{A}(\x) > 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
-\item[positive semidefinite] if $\quadratic{A}(\x)\geq 0$ for all $\x \in \field{R}^d$.
-\item[negative definite] if $\quadratic{A}(\x) < 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
-\item[negative semidefinite] if $\quadratic{A}(\x) \leq 0$ for all $\x \in \field{R}^d$.
-\item[indefinite] if there exist $\x, \y \in \field{R}^d$ so that $\quadratic{A}(\x) \quadratic{A}(\y) < 0$. 
-\end{description}
-\end{example}
+% \begin{example}[Quadratic Forms]\label{example:QuadraticForm}
+% Each symmetric bilinear form has an associated \emph{quadratic form}: A function $\quadratic{A} \colon \field{R}^d \to \field{R}$ constructed as follows:
+% \begin{equation*}
+% \quadratic{A}(\x) = \bilinear{A}(\x,\x) = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{1d} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_d \end{bmatrix}
+% \end{equation*}
+% We say that the quadratic form (or the associated matrix) is:
+% \begin{description}
+% \item[positive definite] if $\quadratic{A}(\x) > 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
+% \item[positive semidefinite] if $\quadratic{A}(\x)\geq 0$ for all $\x \in \field{R}^d$.
+% \item[negative definite] if $\quadratic{A}(\x) < 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
+% \item[negative semidefinite] if $\quadratic{A}(\x) \leq 0$ for all $\x \in \field{R}^d$.
+% \item[indefinite] if there exist $\x, \y \in \field{R}^d$ so that $\quadratic{A}(\x) \quadratic{A}(\y) < 0$. 
+% \end{description}
+% \end{example}
 
-\begin{problem}
-Give examples of $2 \times 2$ symmetric matrices that are positive definite, positive semidefinite, negative definite, negative semidefinite, and indefinite.
-\end{problem}
+% \begin{problem}
+% Give examples of $2 \times 2$ symmetric matrices that are positive definite, positive semidefinite, negative definite, negative semidefinite, and indefinite.
+% \end{problem}
 
-\begin{problem}
-Prove that a symmetric $2\times 2$ matrix $\boldsymbol{A} = \big[ \begin{smallmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{smallmatrix} \big]$ is positive definite if and only if $a_{11}>0$ and $\det(\boldsymbol{A})>0$.
-\end{problem}
+% \begin{problem}
+% Prove that a symmetric $2\times 2$ matrix $\boldsymbol{A} = \big[ \begin{smallmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{smallmatrix} \big]$ is positive definite if and only if $a_{11}>0$ and $\det(\boldsymbol{A})>0$.
+% \end{problem}
 
-\begin{problem}[Principal Minors]\label{problem:PrincipalMinors}
-Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
-\begin{center}
-\begin{tikzpicture}
-\draw (0,0) node{%
-$\begin{bmatrix}
-a_{11} & a_{12} & a_{13} & \dotsb & a_{1n} \\
-a_{21} & a_{22} & a_{23} & \dotsb & a_{2n} \\
-a_{31} & a_{32} & a_{33} & \dotsb & a_{3n} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & a_{n3} & \dotsb & a_{nn} 
-\end{bmatrix}$};
-\draw[dashed] (-2, 0.73) -- (-1.35, 0.73) -- (-1.35, 1.2) node[above]{$\Delta_1$};
-\draw[dashed] (-2, 0.27) -- (-0.5, 0.27) -- (-0.5, 1.2) node[above]{$\Delta_2$};
-\draw[dashed] (-2, -0.15) -- (0.4, -0.15) -- (0.4, 1.2) node[above]{$\Delta_3$};
-\end{tikzpicture}
-\end{center}
-Prove that a symmetric matrix $\boldsymbol{A}$ is positive definite if and only if $\Delta_\ell > 0$ for all $1\leq \ell \leq d$.
-%\item Negative definite if and only if $(-1)^\ell \Delta_\ell>0$ for all $1\leq \ell \leq d$.
-\end{problem}
+% \begin{problem}[Principal Minors]\label{problem:PrincipalMinors}
+% Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
+% \begin{center}
+% \begin{tikzpicture}
+% \draw (0,0) node{%
+% $\begin{bmatrix}
+% a_{11} & a_{12} & a_{13} & \dotsb & a_{1n} \\
+% a_{21} & a_{22} & a_{23} & \dotsb & a_{2n} \\
+% a_{31} & a_{32} & a_{33} & \dotsb & a_{3n} \\
+% \vdots & \vdots & \vdots & \ddots & \vdots \\
+% a_{n1} & a_{n2} & a_{n3} & \dotsb & a_{nn} 
+% \end{bmatrix}$};
+% \draw[dashed] (-2, 0.73) -- (-1.35, 0.73) -- (-1.35, 1.2) node[above]{$\Delta_1$};
+% \draw[dashed] (-2, 0.27) -- (-0.5, 0.27) -- (-0.5, 1.2) node[above]{$\Delta_2$};
+% \draw[dashed] (-2, -0.15) -- (0.4, -0.15) -- (0.4, 1.2) node[above]{$\Delta_3$};
+% \end{tikzpicture}
+% \end{center}
+% Prove that a symmetric matrix $\boldsymbol{A}$ is positive definite if and only if $\Delta_\ell > 0$ for all $1\leq \ell \leq d$.
+% %\item Negative definite if and only if $(-1)^\ell \Delta_\ell>0$ for all $1\leq \ell \leq d$.
+% \end{problem}
 
 \begin{example}[Inner products]\label{example:innerprod}
 We say that a symmetric bilinear form $\bilinear{A}$ is an \emph{inner product} if its associated quadratic form is positive definite.  By extension, we call an inner product any function $\mathcal{F} \colon \field{R}^d \times \field{R}^d \to \field{R}$ that satisfies the following four properties for all $\x, \y, \z \in \field{R}^d, \lambda \in \field{R}$:
@@ -401,18 +401,18 @@ Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the functi
 % \end{equation*}
 % \end{problem}
 
-\begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}
-For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
-\begin{equation*}
-\mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
-\end{equation*}
-This function is continuous everywhere, yet \emph{nowehere} differentiable!  For a proof, see e.g.~\cite{hardy1916weierstrass}
-\begin{figure}[ht!]
-\includegraphics[width=0.6\linewidth]{weierstrass.png}
-\caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
-\label{figure:WeierstrassFunction}
-\end{figure}
-\end{example}
+% \begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}
+% For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
+% \begin{equation*}
+% \mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
+% \end{equation*}
+% This function is continuous everywhere, yet \emph{nowehere} differentiable!  For a proof, see e.g.~\cite{hardy1916weierstrass}
+% \begin{figure}[ht!]
+% \includegraphics[width=0.6\linewidth]{weierstrass.png}
+% \caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
+% \label{figure:WeierstrassFunction}
+% \end{figure}
+% \end{example}
 
 % It is possible to extend the notion to higher derivatives.  We would say, for instance, that a function is \emph{twice differentiable} if the derivative is differentiable.  For the case of such a real-valued function $f \colon \field{R}^d \to \field{R}$, this would mean in particular that all second partial derivatives exist, and are continuous over the domain of $f$.
 

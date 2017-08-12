@@ -162,7 +162,7 @@ Look for the values of $x,y$ and $\lambda$ that satisfy the equations $\gradient
 \intertext{Equivalently, $\lambda \neq 0$ and $x,y$ satisfy}
 x &= \frac{3}{2\lambda}, & y &= \frac{2}{\lambda}, &1 &= \frac{9}{4\lambda^2}+\frac{4}{\lambda^2}
 \end{align*}
-These equations lead to $\lambda = \pm \frac{5}{2}$, and there are only two possible candidates for minimum. Evaluation of $f$ on those gives that the minimum is at $\big(-\frac{3}{5}, -\frac{4}{5} \big)$.
+These equations lead to $\lambda = \pm \frac{5}{2}$, and there are only two possible candidates for minimum. Evaluation of $f$ on those gives that the minimum is at the point $\big(-\frac{3}{5}, -\frac{4}{5} \big)$.
 \end{example}
 
 This method can be extended to more than two dimensions, and more than one constraint.  For instance:
@@ -203,12 +203,12 @@ The purpose of these notes is the development of a theory to deal with optimizat
 \begin{itemize}
 	\item We start in an Euclidean $d$--dimensional space with the usual topology based on the distance 
 	\begin{equation*}
-	\norm{\x-\y} = \langle \x-\y, \x-\y \rangle^{1/2} = \sqrt{\sum_{k=1}^d (x_k-y_k)^2 }.
+	\dist(\x,\y)=\norm{\x-\y} = \langle \x-\y, \x-\y \rangle^{1/2} = \sqrt{\sum_{k=1}^d (x_k-y_k)^2 }.
 	\end{equation*}
-	For instance, the \emph{open ball} of radius $r>0$ centered at a point $\x_0$ is the set $B_r(\x_0) = \{ \x \in \field{R}^d : \norm{\x-\x_0}< r \}.$
+	For instance, the \emph{open ball} of radius $r>0$ centered at a point $\xstar$ is the set $B_r(\xstar) = \{ \x \in \field{R}^d : \norm{\x-\xstar}< r \}.$
 	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema}:
 	\begin{definition}\label{def:extrema}
-	Given $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is a:
+	Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \mathbb{R}^d$, we say that a point $\xstar \in D$ is a:
 	\begin{description}
 		\item [global minimum] $f(\xstar) \leq f(\x)$ for all $\x \in D$.
 		\item [global maximum] $f(\xstar) \geq f(\x)$ for all $\x \in D$.
