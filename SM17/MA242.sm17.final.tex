@@ -31,7 +31,7 @@ Summer 2017}\hfill{\large\bf Page 1/10}\hrule
 \end{center}
 \begin{itemize}
   \item Write your name and your VIP ID in the space provided above.
-  \item The test has ten (10) pages, including this one and two pages of scratch paper at the end.
+  \item The test has ten (10) pages, including this one and two pages of scratch paper at the end.  One of those pages contains a \emph{Laplace table}.  Do \textbf{NOT} detach those pages.
   \item You have 150 minutes (2.5 hours) to complete the exam.
   \item Show sufficient work to justify all answers unless otherwise stated in the problem.  Correct answers with inconsistent work may not be given credit.
   \item Credit for each problem is given at the right of each problem number.
@@ -40,6 +40,8 @@ Summer 2017}\hfill{\large\bf Page 1/10}\hrule
 \hrule
 
 \begin{center}
+\begin{tikzpicture}
+\draw (0,0) node[scale=0.8]{%
 \begin{tabular}{|c|c|c|}
 \hline
 &&\cr
@@ -92,18 +94,19 @@ Summer 2017}\hfill{\large\bf Page 1/10}\hrule
 {\large\bf Total} & \Large 40 & \cr
 &&\cr
 \hline
-\end{tabular}
+\end{tabular}};
+\end{tikzpicture}
 \end{center}
 \hrule
 
-\bigskip
+\vspace{0.6cm}
 
 \begin{quotation}
 \noindent I, \makebox[8cm]{\hrulefill}, have chosen to take the final exam for Section 202 of Math 242 in the Summer'17 session.  The grade I earn on this final exam will be my grade for the course and once I begin this exam, I must complete it.  I am hereby declining my option to take the grade I currently have in the course, and I realize that my final course grade, as determined by this final exam alone, may be lower than my current grade.  I realize this decision is final.
 
-\medskip
+\vspace{1cm}
 
-Student Signature: \makebox[8cm]{\hrulefill}
+\noindent Student Signature: \makebox[8cm]{\hrulefill} Date: \makebox[3cm]{\hrulefill}
 
 
 \end{quotation}
@@ -120,13 +123,13 @@ y' = x(y^2+2y-8)
 \end{equation*}
 \begin{enumerate}
   \item Which of the following is its slope field?
-  \begin{flushright}
+  \begin{flushleft}
   \begin{tabular}{ccc}
   \includegraphics[width=0.33\linewidth]{fquiver1.png} &
   \includegraphics[width=0.33\linewidth]{fquiver2.png} &
   \includegraphics[width=0.33\linewidth]{fquiver3.png}
   \end{tabular}
-  \end{flushright}
+  \end{flushleft}
   \item Employ Euler's method with a time step $h=0.5$ to approximate numerically the solution to the \emph{initial value problem} $y'=x(y^2+2y-8)$ with initial condition $y(0)=0$.
   \begin{flushright}
   \begin{tikzpicture}
@@ -152,15 +155,15 @@ y' = x(y^2+2y-8)
   \vspace{5.5cm}
   \begin{flushright}
   \begin{tikzpicture}
-  \draw (-0.7cm, 0.5cm) node{$y(x)=$};
-  \draw (0cm,-0.2cm) rectangle (6cm,1.2cm);
+  \draw (-1cm, 0.5cm) node{Solution:};
+  \draw (0cm,-0.2cm) rectangle (8cm,1.2cm);
   \end{tikzpicture}
   \end{flushright}
-  \item Find an \emph{implicit solution} to the initial value problem $y'=x(y^2+2y-8), y(0)=2$
+  \item Find an \emph{explicit solution} to the initial value problem $y'=x(y^2+2y-8), y(0)=2$
   \begin{flushright}
   \begin{tikzpicture}
   \draw (-0.7cm, 0.5cm) node{$y(x)=$};
-  \draw (0cm,-0.2cm) rectangle (6cm,1.2cm);
+  \draw (0cm,-0.2cm) rectangle (8cm,1.2cm);
   \end{tikzpicture}
   \end{flushright}
 \end{enumerate}
@@ -174,7 +177,7 @@ Summer 2017}\hfill{\large\bf Page 3/10}\hrule
 
 \bigskip
 \begin{problem}[20 pts---10 pts each part]
-Solve the following linear differential equations.  \newline Do \textbf{NOT} employ any technique based on the Laplace Transform.
+Solve the following linear differential equations.  \newline Do \textbf{NOT} employ any Laplace Transform techniques.
 \begin{enumerate}
   \item $y'+ \dfrac{2}{x} y = x-1$
   \vspace{7cm}
@@ -215,7 +218,7 @@ Use techniques based on the Laplace transform to solve the initial value problem
 
 \begin{problem}[5 pts]
 Find the Laplace transform of $f(x) = 12x e^{-3x} \sin(5x)$
-\vspace{3cm}
+\vspace{5cm}
 
 \begin{flushright}
 \begin{tikzpicture}
@@ -229,7 +232,7 @@ Find the Laplace transform of $f(x) = 12x e^{-3x} \sin(5x)$
 
 \begin{problem}[5 pts]
 Find the inverse Laplace transform of $F(s) =\dfrac{s-3}{(s-3)^2+16}$ for $s>3$.
-\vspace{4cm}
+\vspace{2cm}
 \begin{flushright}
 \begin{tikzpicture}
 \draw (-0.75cm, 0.5cm) node{$f(x) =$};
@@ -267,7 +270,7 @@ Summer 2017}\hfill{\large\bf Page 6/10}\hrule
 
 \bigskip
 \begin{problem}[10 pts]
-Suppose that at time $t = 0$, 10 thousand people in a city with population $M = 100$ thousand people have heard a certain rumor. After 1 week the number $P(t)$ of those who have heard it has increased to 20 thousand. Assuming that $P(t)$ satisfies a logistic equation, when will 80\% of the city's population have heard the rumor?
+Suppose that at time $t = 0$, ten thousand people in a city with population $M = 100$ thousand people have heard a certain rumor. After one week the number $P(t)$ of those who have heard it has increased to twenty thousand. Assuming that $P(t)$ satisfies a logistic equation, when will 80\% of the city's population have heard the rumor?
 \vspace{19.5cm}
 \begin{flushright}
 \begin{tikzpicture}
@@ -283,8 +286,8 @@ Suppose that at time $t = 0$, 10 thousand people in a city with population $M = 
 Summer 2017}\hfill{\large\bf Page 7/10}\hrule
 
 \bigskip
-\begin{problem}[10 pts]
-Suppose that a mass in a mass-sprint-dashpot system with $m=25$, $c=10$, and $k=226$ is set in motion with $x(0)=20$ and $x'(0)=41$. 
+\begin{problem}[10 pts---5 pts each]
+Suppose that a mass in a mass-spring-dashpot system with $m=25$, $c=10$, and $k=226$ is set in motion with $x(0)=20$ and $x'(0)=41$. 
 \begin{enumerate}
   \item Find the position function $x(t)$ and produce a rough sketch of the solution.  Is this a critically damped, over-damped or under-damped motion?
   \vspace{4cm}
