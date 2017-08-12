@@ -45,20 +45,35 @@ Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real vari
 therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x_0+h) - f(x_0) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x_0)$
 \end{example}
 
-A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})::s
+A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})
 \begin{theorem}\label{theorem:partialgivesDerivative}
 If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d}$ of a real-valued function $f \colon \field{R}^d \to \field{R}$ are continuous on an open region $G \subseteq \field{R}^d$, then $f$ is differentiable at every point of $\field{R}$.
 \end{theorem}
 
 \begin{example}\label{example:gradient}
-Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\x_0 \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  From our Vector Calculus classes we found out that under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
+Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\x_0 \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  Under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
 \begin{equation*}
 \boldsymbol{a} = \gradient{f}(\x_0)= \bigg( \frac{\partial f}{\partial x_1}(\x_0), \dotsc, \frac{\partial f}{\partial x_d}(\x_0) \bigg).
 \end{equation*}
 \end{example}
+It is a simple task to prove that all differentiable functions are continuous.  Is it true that all continuous functions are differentiable?
 
-\section{Functions on compact domains}
-The existence of global maxima and minima is guaranteed for continuous functions over compact sets thanks to the following two basic results:
+\begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}
+For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
+\begin{equation*}
+\mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
+\end{equation*}
+This function is continuous everywhere, yet \emph{nowehere} differentiable!  For a proof, see e.g.~\cite{hardy1916weierstrass}
+\begin{figure}[ht!]
+\includegraphics[width=0.6\linewidth]{weierstrass.png}
+\caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
+\label{figure:WeierstrassFunction}
+\end{figure}
+\end{example}
+
+\section{Existence}
+\subsection{Continuous functions on compact domains}
+The existence of global extrema is guaranteed for continuous functions over compact sets thanks to the following two basic results:
 
 \begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
 The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
@@ -68,7 +83,7 @@ The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to 
 A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
 \end{theorem}
 
-\section{Functions on unbounded domains}
+\subsection{Continuous functions on unbounded domains}
 Extra restrictions must be applied to the behavior of $f$ in this case, if we want to guarantee the existence of extrema. We consider first an obvious example based on Example \ref{example:CoerciveFunctions}.
 
 \begin{definition}[Coercive functions]\label{def:coerciveFunctions}
@@ -114,7 +129,44 @@ Coercive functions always have a global minimum.
 Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, consider the closed ball $K_r = \{ \x \in \field{R}^2 : \norm{\x} \leq r \}$.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
 \end{proof}
 
-\section{Convex functions}
+\section{Characterization}
+\subsection{Differentiability and Characterization}
+
+Differentiability is key to guarantee characterization of extrema.  Critical points lead the way:
+
+\begin{theorem}[First order necessary optimality condition for minimization]
+Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient(f)(\xstar)=0$.
+\end{theorem}
+
+To be able to classify extrema in a properly differentiable function, it is necessary to see the behavior of the function with respect to the tangent hyperplane at our candidates.  Second derivatives make this process very easy.  Before we proceed to the key results, we should refresh some terminology:
+
+\begin{definition}[Hessian]\label{def:Hessian}
+Given a twice-differentiable function $f\colon D \subseteq \field{R}^d \to \field{R}$, we define the \emph{Hessian} of $f$ at $\x \in D$ to be the following matrix of second partial derivatives:
+\begin{equation*}
+\Hess{f}(\x) = \begin{bmatrix}
+\frac{\strut\partial^2 f}{\strut\partial x_1^2}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_1 \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_1 \partial x_d}(\x) \\
+&&&\\
+\frac{\strut\partial^2 f}{\strut\partial x_2 \partial x_1}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_2^2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_2 \partial x_d}(\x) \\
+&&& \\
+\vdots & \vdots &\ddots &\vdots \\
+&&& \\
+\frac{\strut\partial^2 f}{\strut\partial x_d \partial x_1}(\x) & \frac{\strut\partial^2 f}{\strut\partial x_d \partial x_2}(\x) &\dotsb &\frac{\strut\partial^2 f}{\strut\partial x_d^2}(\x)
+\end{bmatrix}
+\end{equation*}
+\end{definition}
+
+\begin{theorem}[Second order necessary optimality condition for minimization]
+Suppose that $f\colon \field{R}^d \to \field{R}$ is twice continuously differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
+\end{theorem}
+
+\begin{theorem}[Second order sufficient optimality condition for minimization]
+Suppose $f\colon \field{R}^d \to \field{R}$ is twice differentiable at $\xstar$.  If $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive definite}, then $\xstar$ is a strict local minimum.
+\end{theorem}
+
+
+
+
+\subsection{Convex functions and Characterization}
 \begin{definition}[Convex Sets]\label{def:convexSets}
 A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \y + (1-\lambda) \x$ is also in $C$.
 \end{definition}
