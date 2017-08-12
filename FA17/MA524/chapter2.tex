@@ -46,18 +46,18 @@ therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x_0+h) - f(x_0) \big)$
 \end{example}
 
 A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})::s
-\begin{theorem}
+\begin{theorem}\label{theorem:partialgivesDerivative}
 If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d}$ of a real-valued function $f \colon \field{R}^d \to \field{R}$ are continuous on an open region $G \subseteq \field{R}^d$, then $f$ is differentiable at every point of $\field{R}$.
 \end{theorem}
 
 \begin{example}\label{example:gradient}
-Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\x_0 \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  From our Vector Calculus classes we found out that we may use
+Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\x_0 \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  From our Vector Calculus classes we found out that under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
 \begin{equation*}
 \boldsymbol{a} = \gradient{f}(\x_0)= \bigg( \frac{\partial f}{\partial x_1}(\x_0), \dotsc, \frac{\partial f}{\partial x_d}(\x_0) \bigg).
 \end{equation*}
 \end{example}
 
-\section{Continuous functions on compact domains}
+\section{Functions on compact domains}
 The existence of global maxima and minima is guaranteed for continuous functions over compact sets thanks to the following two basic results:
 
 \begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
@@ -68,7 +68,7 @@ The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to 
 A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
 \end{theorem}
 
-\section{Continuous functions on unbounded domains}
+\section{Functions on unbounded domains}
 Extra restrictions must be applied to the behavior of $f$ in this case, if we want to guarantee the existence of extrema. We consider first an obvious example based on Example \ref{example:CoerciveFunctions}.
 
 \begin{definition}[Coercive functions]\label{def:coerciveFunctions}

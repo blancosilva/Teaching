@@ -81,7 +81,7 @@ There is only one local minimum at $(a,a^2)$.
 The second step was the notion of \emph{global (or absolute) minima}: points $(x_0,y_0)$ that satisfy $f(x_0,y_0) \leq f(x,y)$ for any point $(x,y)$ in the domain of $f$.  We always started with the easier setting, in which we placed restrictions on the domain of our functions:
 
 \begin{theorem}\label{theorem:MaxMinCompact}
-A continuous real-valued function always attains its minimum value on a \emph{compact} set $K$. To search for global minima, we perform the following steps:
+A continuous real-valued function always attains its minimum value on a \emph{compact} set $K$. If the function is also differentiable in the \emph{interior} of $K$, to search for global minima we perform the following steps:
 \begin{description}
 	\item[Interior Candidates] List the critical points of $f$ located in the interior of $K$.
 	\item[Boundary Candidates] List the points in the boundary of $K$ where $f$ may have minimum values.
@@ -134,9 +134,65 @@ Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x
 \end{figure}
 \end{example}
 
+We have other useful characterizations for extrema, when the domain can be expressed as solutions of equations:
 
+\begin{theorem}[Orthogonal Gradient]\label{theorem:OrthogonalGradient}
+Suppose $f(x,y)$ is differentiable in a region whose interior contains a smooth curve $C\colon \boldsymbol{r}(t) = \big( x(t), y(t) \big)$.  If $P_0$ is a point on $C$ where $f$ has a local extremum relative to its values on $C$, then $\gradient{f}$ is orthogonal to $C$ at $P_0$.
+\end{theorem}
 
-\section{The Theory of Optimization}
+This result leads to the \emph{Method of Lagrange Multipliers}
+
+\begin{theorem}[Lagrange Multipliers on one constraint]\label{theorem:LM1C}
+Suppose that $f(x,y)$ and $g(x,y)$ are differentiable and $\gradient{g} \neq 0$ when $g(x,y,z)=0$.  To find the local extrema of $f$ subject to the constraint $g(x,y)=0$ (if these exist), find the values of $x,y$ and $\lambda$ that simultaneously satisfy the equations
+\begin{equation*}
+\gradient{f} = \lambda \gradient{g}, \text{ and }g(x,y)=0
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+Find the minimum value of the expression $3x+4y$ for values of $x$ and $y$ on the circle $x^2+y^2=1$.
+
+We start by modeling this problem to adapt the technique of Lagrange multipliers:
+\begin{align*}
+f(x,y) &= \underbrace{3x+4y}_{\text{target}} & g(x,y)&=\underbrace{x^2+y^2-1}_{\text{constraint}}
+\end{align*}
+Look for the values of $x,y$ and $\lambda$ that satisfy the equations $\gradient{f} = \lambda\gradient{g}$, $g(x,y)=0$
+\begin{align*}
+3 &= 2\lambda x, & 4 &= 2\lambda y & 1 &= x^2+y^2 \\
+\intertext{Equivalently, $\lambda \neq 0$ and $x,y$ satisfy}
+x &= \frac{3}{2\lambda}, & y &= \frac{2}{\lambda}, &1 &= \frac{9}{4\lambda^2}+\frac{4}{\lambda^2}
+\end{align*}
+These equations lead to $\lambda = \pm \frac{5}{2}$, and there are only two possible candidates for minimum. Evaluation of $f$ on those gives that the minimum is at $\big(-\frac{3}{5}, -\frac{4}{5} \big)$.
+\end{example}
+
+This method can be extended to more than two dimensions, and more than one constraint.  For instance:
+\begin{theorem}[Lagrange Multipliers on two constraints]\label{theorem:LM2C}
+Suppose that $f(x,y,z)$, $g_1(x,y,z)$, $g_2(x,y,z)$ are differentiable with $\gradient{g_1}$ not parallel to $\gradient{g_2}$.  To find the local extrema of $f$ subject to the constraint $g_1(x,y,z)=g_2(x,y,z)=0$ (if these exist), find the values of $x,y, \lambda$ and $\mu$ that simultaneously satisfy the equations
+\begin{align*}
+\gradient{f} &= \lambda \gradient{g_1}+\mu\gradient{g_2}, &g_1(x,y,z)&=0, &g_2(x,y,z)&=0
+\end{align*}
+\end{theorem}
+
+\begin{example}
+The cylinder $x^2+y^2=1$ intersects the plane $x+y+z=1$ in an ellipse.  Find the points on the ellipse that lie closest to the origin.
+
+We again model this as a Lagrange multipliers problem:
+\begin{align*}
+f(x,y,z) &= \underbrace{x^2+y^2+z^2}_{\text{target}}, & g_1(x,y,z)&= \underbrace{x^2+y^2-1}_{\text{constraint}}, & g_2(x,y,z) &= \underbrace{x+y+z-1}_{\text{constraint}}.
+\end{align*}
+The gradient equation $\gradient{f} = \lambda \gradient{g_1} + \mu \gradient{g_2}$ gives
+\begin{align*}
+2x &= 2\lambda x + \mu, &2y &= 2\lambda y+\mu, &2z &= \mu
+\end{align*}
+These equations are satisfied simultaneously only in two scenarios:
+\begin{enumerate}
+	\item $\lambda=1$ and $z=0$
+	\item $\lambda \neq 1$ and $x=y=z/(1-\lambda)$
+\end{enumerate} 
+Resolving each case we find four candidates: $(1,0,0)$, $(0,1,0)$, $(\sqrt{2}/2, \sqrt{2}/2, 1- \sqrt{2})$, and $(-\sqrt{2}/2, -\sqrt{2}/2, 1+\sqrt{2})$.  The first two are our solution.
+\end{example}
+
+\section*{The Theory of Optimization}
 
 The purpose of these notes is the development of a theory to deal with optimization in a more general setting.
 \begin{itemize}
@@ -144,25 +200,26 @@ The purpose of these notes is the development of a theory to deal with optimizat
 	\begin{equation*}
 	\norm{\x-\y} = \langle \x-\y, \x-\y \rangle^{1/2} = \sqrt{\sum_{k=1}^d (x_k-y_k)^2 }.
 	\end{equation*}
+	For instance, the \emph{open ball} of radius $r>0$ centered at a point $\x_0$ is the set $B_r(\x_0) = \{ \x \in \field{R}^d : \norm{\x-\x_0}< r \}.$
 	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema}:
 	\begin{definition}\label{def:extrema}
-	Given a set $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is:
-	\begin{enumerate}
-		\item A \emph{global minimum} for $f$ on $D$ if $f(\xstar) \leq f(\x)$ for all $\x \in D$.
-		\item A \emph{global maximum} for $f$ on $D$ if $f(\xstar) \geq f(\x)$ for all $\x \in D$.
-		\item A \emph{strict global minimum} for $f$ on $D$ if $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-		\item A \emph{strict global maximum} for $f$ on $D$ if $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-		\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-		\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-		\item A \emph{local minimum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-		\item A \emph{local maximum} for $f$ on $D$ if there exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-	\end{enumerate}
+	Given $D \subseteq \mathbb{R}^d$, and a real-valued function $f\colon D \to \field{R}$, we say that a point $\xstar \in D$ is a:
+	\begin{description}
+		\item [global minimum] $f(\xstar) \leq f(\x)$ for all $\x \in D$.
+		\item [global maximum] $f(\xstar) \geq f(\x)$ for all $\x \in D$.
+		\item [strict global minimum] $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+		\item [strict global maximum] $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
+		\item [local minimum] There exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+		\item [local maximum] There exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
+		\item [strict local minimum] There exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+		\item [strict local maximum] There exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+	\end{description}
 	\end{definition}	
 \end{itemize}
 In this setting, the objective of \emph{optimization} is the following program:
 \begin{description}
 	\item[Existence of extrema] Establish results that guarantee the existence of extrema depending on the properties of $D$ and $f$. 
 	\item[Characterization of extrema] Establish results that describe conditions for points $\x \in D$ to be extrema of $f$.  
-	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes. This is the core of these notes.  
+	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes. This is the core of this course.
 \end{description}
 The development of existence and characterization results will be covered in chapter \ref{chapter:existenceCharacterization}.  The design of algorithms to track extrema will be covered in chapter \ref{chapter:nonlinearoptimization}.
