@@ -53,20 +53,20 @@
 
 % For sets $X, Y, Z$, the \emph{function composition} of $f\colon X \to Y$ with $g\colon Y \to Z$ is the function $g\circ f\colon X \to Z$ defined by $\big( g \circ f \big)(\x) = g \big( f(\x) \big)$.
 
-\begin{example}[Linear Functions]\label{example:linearFunction}
-We say that a function $f \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is \emph{linear} if it preserves the operations in $\field{R}^{d_1}$: 
-\begin{equation*}
-f(\x + \lambda \y) = f(\x) + \lambda f(\y) \text{ for }\x, \y \in \field{R}^d, \lambda \in \field{R}.
-\end{equation*}
+% \begin{example}[Linear Functions]\label{example:linearFunction}
+% We say that a function $f \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is \emph{linear} if it preserves the operations in $\field{R}^{d_1}$: 
+% \begin{equation*}
+% f(\x + \lambda \y) = f(\x) + \lambda f(\y) \text{ for }\x, \y \in \field{R}^d, \lambda \in \field{R}.
+% \end{equation*}
 
-With this definition, the functions $f\colon \field{R} \to \field{R}$ given by $f(x) = 3x$ is indeed a linear function, but $g\colon \field{R} \to \field{R}$ given by $g(x)=3x+5$ is not!  
-It is not hard to see that the only real-valued linear constant function $f\colon \field{R} \to \field{R}$ is $f(x) = 0$ (since $f(0)=f(x-x)=f(x)-f(x)=0$).  For a non-constant real-valued linear function $f\colon \field{R} \to \field{R}$, it is also easy to see that the image is the whole real line.  Indeed:
+% With this definition, the functions $f\colon \field{R} \to \field{R}$ given by $f(x) = 3x$ is indeed a linear function, but $g\colon \field{R} \to \field{R}$ given by $g(x)=3x+5$ is not!  
+% It is not hard to see that the only real-valued linear constant function $f\colon \field{R} \to \field{R}$ is $f(x) = 0$ (since $f(0)=f(x-x)=f(x)-f(x)=0$).  For a non-constant real-valued linear function $f\colon \field{R} \to \field{R}$, it is also easy to see that the image is the whole real line.  Indeed:
 
-There exists $x_0\neq 0$ so that $f(x_0)=y_0\neq 0$. For any $y \in \field{R}$, choose $x = y x_0/y_0$.  We have then
-\begin{equation*}
-f(x) = f\big( \tfrac{y}{y_0} x_0 \big) = \tfrac{y}{y_0} f(x_0) = y.
-\end{equation*}
-\end{example}
+% There exists $x_0\neq 0$ so that $f(x_0)=y_0\neq 0$. For any $y \in \field{R}$, choose $x = y x_0/y_0$.  We have then
+% \begin{equation*}
+% f(x) = f\big( \tfrac{y}{y_0} x_0 \big) = \tfrac{y}{y_0} f(x_0) = y.
+% \end{equation*}
+% \end{example}
 
 % \begin{example}[Convex Functions]\label{example:convexFunction}
 % A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \x + (1-\lambda) \y$ is also in $C$.   Given such a convex set, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
@@ -121,30 +121,30 @@ Notice that the domain of a given posynomial may not be extended in general anyw
 
 % Let's play around with some more examples of functions, before we proceed to techniques for finding extrema:
 
-\begin{problem}[Linear Functions]\label{problem:LinearFunctions-d2d}
-Let $\boldsymbol{A} = \big[ a_{jk} \big]_{j,k=1}^d$ be a square matrix with real coefficients.  Considering elements in $\field{R}^d$ as horizontal matrices, and by means of matrix multiplication, we construct functions $\mathcal{L}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ and $\mathcal{R}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ given by
-\begin{align*}
-\mathcal{L}_{\boldsymbol{A}}(\x) &= \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \\
-\mathcal{R}_{\boldsymbol{A}}(\x) &= \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_d \end{bmatrix}
-\end{align*}
-Prove that these two are linear functions.
-\end{problem}
+% \begin{problem}[Linear Functions]\label{problem:LinearFunctions-d2d}
+% Let $\boldsymbol{A} = \big[ a_{jk} \big]_{j,k=1}^d$ be a square matrix with real coefficients.  Considering elements in $\field{R}^d$ as horizontal matrices, and by means of matrix multiplication, we construct functions $\mathcal{L}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ and $\mathcal{R}_{\boldsymbol{A}} \colon \field{R}^d \to \field{R}^d$ given by
+% \begin{align*}
+% \mathcal{L}_{\boldsymbol{A}}(\x) &= \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \\
+% \mathcal{R}_{\boldsymbol{A}}(\x) &= \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_d \end{bmatrix}
+% \end{align*}
+% Prove that these two are linear functions.
+% \end{problem}
 
-\begin{problem}
-Prove that, if $\boldsymbol{A}$ is a symmetric matrix, then $\mathcal{L}_{\boldsymbol{A}}(\x) = \mathcal{R}_{\boldsymbol{A}}(\x)$ for all $\x \in \field{R}^d$.
-\end{problem}
+% \begin{problem}
+% Prove that, if $\boldsymbol{A}$ is a symmetric matrix, then $\mathcal{L}_{\boldsymbol{A}}(\x) = \mathcal{R}_{\boldsymbol{A}}(\x)$ for all $\x \in \field{R}^d$.
+% \end{problem}
 
-\begin{example}[Bilinear Forms]\label{example:BilinearForm}
-Under the same conditions as in problem \ref{problem:LinearFunctions-d2d}, we construct functions $\bilinear{A} \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
-\begin{equation*}
-\bilinear{A}(\x, \y) = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_d \end{bmatrix}
-\end{equation*}
-We call functions constructed in this way \emph{bilinear forms}.
-\end{example}
+% \begin{example}[Bilinear Forms]\label{example:BilinearForm}
+% Under the same conditions as in problem \ref{problem:LinearFunctions-d2d}, we construct functions $\bilinear{A} \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
+% \begin{equation*}
+% \bilinear{A}(\x, \y) = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{d1} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_d \end{bmatrix}
+% \end{equation*}
+% We call functions constructed in this way \emph{bilinear forms}.
+% \end{example}
 
-\begin{problem}\label{problem:BilinearForm}
-Prove that, if the associated matrix is symmetric ($\boldsymbol{A} = \transpose{\boldsymbol{A}}$), then $\bilinear{A}(\x,\y) = \bilinear{A}(\y,\x)$ for all $\x, \y \in \field{R}^d$.
-\end{problem}
+% \begin{problem}\label{problem:BilinearForm}
+% Prove that, if the associated matrix is symmetric ($\boldsymbol{A} = \transpose{\boldsymbol{A}}$), then $\bilinear{A}(\x,\y) = \bilinear{A}(\y,\x)$ for all $\x, \y \in \field{R}^d$.
+% \end{problem}
 
 % \begin{example}[Quadratic Forms]\label{example:QuadraticForm}
 % Each symmetric bilinear form has an associated \emph{quadratic form}: A function $\quadratic{A} \colon \field{R}^d \to \field{R}$ constructed as follows:
@@ -190,48 +190,48 @@ Prove that, if the associated matrix is symmetric ($\boldsymbol{A} = \transpose{
 % %\item Negative definite if and only if $(-1)^\ell \Delta_\ell>0$ for all $1\leq \ell \leq d$.
 % \end{problem}
 
-\begin{example}[Inner products]\label{example:innerprod}
-We say that a symmetric bilinear form $\bilinear{A}$ is an \emph{inner product} if its associated quadratic form is positive definite.  By extension, we call an inner product any function $\mathcal{F} \colon \field{R}^d \times \field{R}^d \to \field{R}$ that satisfies the following four properties for all $\x, \y, \z \in \field{R}^d, \lambda \in \field{R}$:
-\begin{enumerate}
-\item $\mathcal{F}(\x+\y, \z) = \mathcal{F}(\x, \z) + \mathcal{F}(\y, \z)$.
-\item $\mathcal{F}(\lambda \x, \y) = \lambda \mathcal{F}(\x, \y)$.
-\item $\mathcal{F}(\x, \y) = \mathcal{F}(\y, \x)$.
-\item $\mathcal{F}(\x, \x) \geq 0$, $\mathcal{F}(\x, \x) = 0$ if and only if $\x = \boldsymbol{0}$.
-\end{enumerate}
-\end{example}
+% \begin{example}[Inner products]\label{example:innerprod}
+% We say that a symmetric bilinear form $\bilinear{A}$ is an \emph{inner product} if its associated quadratic form is positive definite.  By extension, we call an inner product any function $\mathcal{F} \colon \field{R}^d \times \field{R}^d \to \field{R}$ that satisfies the following four properties for all $\x, \y, \z \in \field{R}^d, \lambda \in \field{R}$:
+% \begin{enumerate}
+% \item $\mathcal{F}(\x+\y, \z) = \mathcal{F}(\x, \z) + \mathcal{F}(\y, \z)$.
+% \item $\mathcal{F}(\lambda \x, \y) = \lambda \mathcal{F}(\x, \y)$.
+% \item $\mathcal{F}(\x, \y) = \mathcal{F}(\y, \x)$.
+% \item $\mathcal{F}(\x, \x) \geq 0$, $\mathcal{F}(\x, \x) = 0$ if and only if $\x = \boldsymbol{0}$.
+% \end{enumerate}
+% \end{example}
 
-\begin{problem}\label{problem:innerprodRd}
-Prove that $\langle \cdot, \cdot \rangle \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
-\begin{equation*}
-\langle \x, \y \rangle = \sum_{k=1}^d x_k y_k
-\end{equation*}
-is an inner product.
-\end{problem}
+% \begin{problem}\label{problem:innerprodRd}
+% Prove that $\langle \cdot, \cdot \rangle \colon \field{R}^d \times \field{R}^d \to \field{R}$ given by
+% \begin{equation*}
+% \langle \x, \y \rangle = \sum_{k=1}^d x_k y_k
+% \end{equation*}
+% is an inner product.
+% \end{problem}
 
-\begin{problem}\label{problem:real-valuedLinearFunction}
-Prove that, if $f\colon \field{R}^d \to \field{R}$ is a real-valued linear function, then there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ so that $f(\x)=\langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.
-\end{problem}
+% \begin{problem}\label{problem:real-valuedLinearFunction}
+% Prove that, if $f\colon \field{R}^d \to \field{R}$ is a real-valued linear function, then there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ so that $f(\x)=\langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.
+% \end{problem}
 
-\begin{problem}\label{problem:affineFunction}
-We say that $\tau\colon \field{R}^d \to \field{R}^d$ is a translation if there exist a fixed $\x_0 \in \field{R}^d$ so that $\tau(\x) = \x + \x_0$ for all $\x \in \field{R}^d$.
+% \begin{problem}\label{problem:affineFunction}
+% We say that $\tau\colon \field{R}^d \to \field{R}^d$ is a translation if there exist a fixed $\x_0 \in \field{R}^d$ so that $\tau(\x) = \x + \x_0$ for all $\x \in \field{R}^d$.
 
-An \emph{affine function} $h\colon \field{R}^d \to \field{R}$ is a composition of a real-valued linear function $f\colon \field{R}^d \to \field{R}$ with a translation $\tau\colon \field{R} \to \field{R}$.
+% An \emph{affine function} $h\colon \field{R}^d \to \field{R}$ is a composition of a real-valued linear function $f\colon \field{R}^d \to \field{R}$ with a translation $\tau\colon \field{R} \to \field{R}$.
 
-Prove that for each affine function $h$ there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ and a unique $\lambda_0 \in \field{R}$ so that $h(\x) = \lambda_0 + \langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.  Use this result to prove that the graph of an affine function is a hyperplane in $\field{R}^{d+1}$.
-\end{problem}
+% Prove that for each affine function $h$ there exist a unique $\boldsymbol{a}_0 \in \field{R}^d$ and a unique $\lambda_0 \in \field{R}$ so that $h(\x) = \lambda_0 + \langle \boldsymbol{a}_0, \x \rangle$ for all $\x \in \field{R}^d$.  Use this result to prove that the graph of an affine function is a hyperplane in $\field{R}^{d+1}$.
+% \end{problem}
 
-\begin{problem}[Eigenvalues]\label{problem:eigenvalues}
-Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the function $p_{\boldsymbol{A}} \colon \field{C} \to \field{C}$ given by $p_{\boldsymbol{A}}(\lambda) = \det\big(\boldsymbol{A} - \lambda \boldsymbol{I}_d \big)$.  The solutions (in $\field{C}$) of the equation $p_{\boldsymbol{A}}(\lambda)=0$ are called the \emph{eigenvalues} of $\boldsymbol{A}$.  Prove the following statements:
-\begin{enumerate}
-	\item $p_{\boldsymbol{A}}$ is a polynomial of (at most) degree $d$ in $\lambda$---we call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.
-	\item The eigenvalues of a symmetric matrix are all real.
-	\item If $\lambda \in \field{R}$ is a root  of multiplicity $n$ of the characteristic polynomial of a (non-trivial) symmetric matrix, then there exist $n$ linearly independent vectors $\{ \x_1, \x_2, \dotsc, \x_n \}$ satisfying $\mathcal{L}_{\boldsymbol{A}} (\x_k) = \lambda \x_k$ ($1\leq k \leq n$).
-	\item If $\lambda_1 \neq \lambda_2$ are different roots of the characteristic polynomial of a symmetric matrix, and $\x_1, \x_2 \in \field{R}^d$ satisfy $\mathcal{L}_{\boldsymbol{A}}(\x_k) = \lambda_k \x_k$ ($k=1,2$), then $\langle \x_1, \x_2 \rangle = 0$.
-	\item A symmetric matrix is positive definite (resp.~negative definite) if and only if all its eigenvalues are positive (resp.~negative).
-	\item A symmetric matrix is positive semidefinite (resp.~negative semidefinite) if and only if all its eigenvalues are non-negative (resp.~non-positive)
-	\item A symmetric matrix is indefinite if there exist two eigenvalues $\lambda_1 \neq \lambda_2$ with different sign.
-\end{enumerate}
-\end{problem}
+% \begin{problem}[Eigenvalues]\label{problem:eigenvalues}
+% Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the function $p_{\boldsymbol{A}} \colon \field{C} \to \field{C}$ given by $p_{\boldsymbol{A}}(\lambda) = \det\big(\boldsymbol{A} - \lambda \boldsymbol{I}_d \big)$.  The solutions (in $\field{C}$) of the equation $p_{\boldsymbol{A}}(\lambda)=0$ are called the \emph{eigenvalues} of $\boldsymbol{A}$.  Prove the following statements:
+% \begin{enumerate}
+% 	\item $p_{\boldsymbol{A}}$ is a polynomial of (at most) degree $d$ in $\lambda$---we call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.
+% 	\item The eigenvalues of a symmetric matrix are all real.
+% 	\item If $\lambda \in \field{R}$ is a root  of multiplicity $n$ of the characteristic polynomial of a (non-trivial) symmetric matrix, then there exist $n$ linearly independent vectors $\{ \x_1, \x_2, \dotsc, \x_n \}$ satisfying $\mathcal{L}_{\boldsymbol{A}} (\x_k) = \lambda \x_k$ ($1\leq k \leq n$).
+% 	\item If $\lambda_1 \neq \lambda_2$ are different roots of the characteristic polynomial of a symmetric matrix, and $\x_1, \x_2 \in \field{R}^d$ satisfy $\mathcal{L}_{\boldsymbol{A}}(\x_k) = \lambda_k \x_k$ ($k=1,2$), then $\langle \x_1, \x_2 \rangle = 0$.
+% 	\item A symmetric matrix is positive definite (resp.~negative definite) if and only if all its eigenvalues are positive (resp.~negative).
+% 	\item A symmetric matrix is positive semidefinite (resp.~negative semidefinite) if and only if all its eigenvalues are non-negative (resp.~non-positive)
+% 	\item A symmetric matrix is indefinite if there exist two eigenvalues $\lambda_1 \neq \lambda_2$ with different sign.
+% \end{enumerate}
+% \end{problem}
 
 % \begin{example}[Norms]\label{example:norm}
 % A \emph{norm} in $\field{R}^d$ is a function $\norm{\cdot} \colon \field{R}^d \to \field{R}$ that satisfies the following properties:

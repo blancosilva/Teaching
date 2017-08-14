@@ -71,7 +71,7 @@ This function is continuous everywhere, yet \emph{nowehere} differentiable!  For
 \end{figure}
 \end{example}
 
-A few more useful results about higher order derivatives.
+A few more useful results about higher order derivatives follow:
 
 \begin{theorem}[Clairaut]\label{theorem:MixedDerivatives}
 If $f\colon \field{R}^d \to \field{R}$ and its partial derivatives of orders 1 and 2, $\frac{\partial f}{\partial x_k}$, $\frac{\partial^2 f}{\partial x_k \partial x_j}$, ($1\leq k,j \leq d$) are defined throughout an open region containing the point $\xstar$, and are all continuous at $\xstar$, then 
@@ -98,11 +98,11 @@ Given a twice-differentiable function $f\colon \field{R}^d \to \field{R}$, we de
 Functions that satisfy the conditions of Theorem \ref{theorem:MixedDerivatives} have symmetric Hessians.  We shall need some properties in regard to symmetric matrices.
 
 \begin{definition}
-Given a symmetric matrix $\boldsymbol{A}$, we define its \emph{quadratic form} as the function $\quadratic{A}\colon \field{R}^d \to \field{R}$ given by
+Given a symmetric matrix $\boldsymbol{A}$, we define its associated \emph{quadratic form} as the function $\quadratic{A}\colon \field{R}^d \to \field{R}$ given by
 \begin{equation*}
 \quadratic{A}(\x) = \x \boldsymbol{A} \transpose{\x} = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{1d} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_d \end{bmatrix}
 \end{equation*}
-We say that a symmetric matrix) is:
+We say that a symmetric matrix is:
 \begin{description}
 \item[positive definite] if $\quadratic{A}(\x) > 0$ for all $\x \in \field{R}^d \setminus \{ \boldsymbol{0} \}$.
 \item[positive semidefinite] if $\quadratic{A}(\x)\geq 0$ for all $\x \in \field{R}^d$.
@@ -112,9 +112,23 @@ We say that a symmetric matrix) is:
 \end{description}
 \end{definition}
 
-To easily classify symmetric matrices, we may employ the following two techniques:
+\begin{example}
+Let $\boldsymbol{A}$ be the $3\times 3$--symmetric matrix
+\begin{equation*}
+\boldsymbol{A} = \begin{bmatrix} 2 & -1 & 2 \\ -1 & 3 & 0 \\ 2 & 0 & 5 \end{bmatrix}
+\end{equation*}
+The associated quadratic form is given by
+\begin{align*}
+\quadratic{A}(x,y,z) &= \begin{bmatrix} x & y & z \end{bmatrix} \begin{bmatrix} 2 & -1 & 2 \\ -1 & 3 & 0 \\ 2 & 0 & 5 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} \\
+&= \begin{bmatrix} x & y & z \end{bmatrix} \begin{bmatrix} 2x -y +2z \\ -x+3y \\ 2x+5z \end{bmatrix} \\
+&= x(2x-y+2z) + y(-x+3y) + z(2x+5z) \\
+&= 2x^2 +3y^2 + 5z^2 -2xy +4xz
+\end{align*}
+\end{example}
 
-\begin{theorem}\label{theorem:PrincipalMinors}
+To easily classify symmetric matrices, we usually employ any of the following two criteria:
+
+\begin{theorem}[Principal Minor Criteria]\label{theorem:PrincipalMinors}
 Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
 \begin{center}
 \begin{tikzpicture}
@@ -138,7 +152,7 @@ A symmetric matrix $\boldsymbol{A}$ is:
 \end{itemize}
 \end{theorem}
 
-\begin{theorem}\label{theorem:eigenvalues}
+\begin{theorem}[Eigenvalue Criteria]\label{theorem:eigenvalues}
 Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the function $p_{\boldsymbol{A}} \colon \field{C} \to \field{C}$ given by $p_{\boldsymbol{A}}(\lambda) = \det\big(\boldsymbol{A} - \lambda \boldsymbol{I}_d \big)$.  This is a polynomial of (at most) degree $d$ in $\lambda$.  We call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.  The roots (in $\field{C}$) of the characteristic polynomial are called the \emph{eigenvalues} of $\boldsymbol{A}$.  Symmetric matrices enjoy the following properties:
 \begin{enumerate}
 	\item The eigenvalues of a symmetric matrix are all real.
@@ -181,9 +195,9 @@ We saw in Example \ref{example:CoerciveFunctions} how even-degree polynomials wi
 
 We must be careful assessing coerciveness of polynomials in higher dimension. Consider for example $p_2(x,y) = x^2 - 2xy + y^2$.  Note how $p_2(x,x)=0$ for any $x \in \field{R}$, which proves $p_2$ is not coercive.
 
-To see that the polynomial $p_4(x, y) = x^4 + y^4 - 3xy$ is coercive, we start by factoring the leading terms:
+To see that the polynomial $p_4(x, y) = x^4 + y^4 - 4xy$ is coercive, we start by factoring the leading terms:
 \begin{equation*}
-x^4 + y^4 - 3xy = (x^4 + y^4) \bigg( 1 - \frac{3xy}{x^4 + y^4} \bigg)
+x^4 + y^4 - 4xy = \big( x^4 + y^4 \big) \bigg( 1 - \frac{4xy}{x^4 + y^4} \bigg)
 \end{equation*}
 Assume $r>1$ is large, and that $x^2+y^2 = r^2$.  We have then
 \begin{align*}
@@ -194,11 +208,11 @@ x^4 + y^4 &\geq \frac{r^4}{2} \qquad\text{(Why?)} \\
 \end{align*}
 therefore, 
 \begin{align*}
-\frac{3xy}{x^4 + y^4} &\leq \frac{3}{r^2} \\
-1 - \frac{3xy}{x^4 + y^4} &\geq 1 - \frac{3}{r^2} \\
-(x^4 + y^4) \bigg( 1 - \frac{3x y}{x^4 + y^4} \bigg) &\geq \frac{r^2(r^2-3)}{2}
+\frac{4xy}{x^4 + y^4} &\leq \frac{4}{r^2} \\
+1 - \frac{4xy}{x^4 + y^4} &\geq 1 - \frac{4}{r^2} \\
+\big( x^4 + y^4 \big) \bigg( 1 - \frac{4 x y}{x^4 + y^4} \bigg) &\geq \frac{r^2(r^2-4)}{2}
 \end{align*} 
-We can then conclude that given $M>0$, if $x^2+y^2 \geq \tfrac{1}{2} \big( 3+\sqrt{9+8M} \big)$, then $f(x,y) \geq M$.
+We can then conclude that given $M>0$, if $x^2+y^2 \geq  2+\sqrt{4+2M}$, then $p_4(x,y) \geq M$.  This proves $p_4$ is coercive.
 \end{example}
 
 \begin{theorem}\label{theorem:CoerciveFunctions}
@@ -213,23 +227,109 @@ Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ fo
 
 Differentiability is key to guarantee characterization of extrema.  Critical points lead the way:
 
-\begin{theorem}[First order necessary optimality condition for minimization]
+\begin{theorem}[First order necessary optimality condition for minimization]\label{theorem:criticalGivesMinima}
 Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$.
 \end{theorem}
 
-To be able to classify extrema in a properly differentiable function, it is necessary to see the behavior of the function with respect to the tangent hyperplane at each candidates.  Second derivatives make this process very easy.
+To be able to classify possible extrema $\xstar$ for a properly differentiable function, we take into account the behavior of the function around $f(\xstar)$ with respect to the tangent hyperplane at the point $\big(\xstar, f(\xstar)\big)$.  Second derivatives make this process very easy.
 
-
-\begin{theorem}[Second order necessary optimality condition for minimization]
-Suppose that $f\colon \field{R}^d \to \field{R}$ is twice continuously differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
+\begin{theorem}[Coerciveness necessary optimality condition for minimization]\label{theorem:coerciveNecessaryMinima}
+Suppose $f \colon \field{R}^d \to \field{R}$ is coercive and continuously differentiable at a point $\xstar$.  If $\xstar$ is a global minimum, then $\gradient{f}(\xstar)= \boldsymbol{0}$.
 \end{theorem}
 
-\begin{theorem}[Second order sufficient optimality condition for minimization]
-Suppose $f\colon \field{R}^d \to \field{R}$ is twice differentiable at $\xstar$.  If $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive definite}, then $\xstar$ is a strict local minimum.
+\begin{theorem}[Second order necessary optimality condition for minimization]\label{theorem:necessaryMinima}
+Suppose that $f\colon \field{R}^d \to \field{R}$ is twice continuously differentiable at $\xstar$.  
+\begin{itemize}
+\item If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
+\item If $\xstar$ is a strict local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive definite}.
+\end{itemize}
 \end{theorem}
 
+\begin{theorem}[Second order sufficient optimality conditions for minimization]\label{theorem:sufficientMinima}
+Suppose $f\colon D \subseteq \field{R}^d \to \field{R}$ is twice continuously differentiable at a point $\xstar$ in the interior of $D$ and $\gradient{f}(\xstar)=0$.  Then $\xstar$ is a:
+\begin{description}
+	\item[Local Minimum] if $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
+	\item[Strict Local Minimum] if $\Hess{f}(\xstar)$ is \emph{positive definite}.
+\end{description}
+If $D=\field{R}^d$ and $\xstar \in \field{R}^d$ satisfies $\gradient{f}(\xstar)=0$, then $\xstar$ is a:
+\begin{description}
+	\item[Global Minimum] if $\Hess{f}(\x)$ is \emph{positive semidefinite} for all $\x \in \field{R}^d$.
+	\item[Strict Global Minimum] if $\Hess{f}(\x)$ is \emph{positive definite} for all $\x \in \field{R}^d$.
+\end{description}
+\end{theorem}
 
+\begin{example}
+Find a global minimum in $\field{R}^3$ (if it exists) for the function 
+\begin{equation*}
+f(x,y,z)=e^{x-y} + e^{y-x} + e^{x^2}+z^2.
+\end{equation*}
+This function is twice continuously differentiable in $\field{R}^3$. Its continuity does not guarantee existence of a global minimum initially since the domain is not compact, but we may try our luck with its critical points.  Note $\gradient{f}(x,y,z) = \big[ e^{x-y} - e^{y-x} + 2xe^{x^2}, -e^{x-y}+e^{y-x}, 2x \big]$.  The only critical point is then $(0,0,0)$ (Why?). The corresponding Hessian is positive definite:
+\begin{align*}
+&&\Hess{f}(0,0,0) &= \begin{bmatrix} 4 & -2 & 0 \\ -2 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix}, &
+\Delta_1 &= 4 > 0, & \Delta_2 &= 4 >0, &\Delta_3 &= 8 > 0.
+\end{align*}
+By Theorem \ref{theorem:sufficientMinima}, $f(0,0,0)=3$ is a priori a strict local global minimum value.  To prove that this point is actually a strict global minimum, notice that 
+\begin{equation*}
+\Hess{f}(x,y)= \begin{bmatrix} 
+e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} & 0 \\
+-e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} & 0 \\
+0 & 0 & 2 
+\end{bmatrix}
+\end{equation*}
+The first principal minor is trivially positive: $\Delta_1 = e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2}$, since it is a sum of positive terms.  The second principal minor is also positive:
+\begin{align*}
+\Delta_2 &= \det \begin{bmatrix} e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} \\ -e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix} \\
+&= (e^{x-y}+e^{y-x})^2 + (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) - (e^{x-y}+e^{y-x})^2 \\
+&= (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) > 0 
+\end{align*}
+The third principal minor is positive too: $\Delta_3 = 2\Delta_2 > 0$.  We have just proved that $\Hess{f}(x,y)$ is positive definite for all $(x,y) \in \field{R}^3$, and thus $(0,0,0)$ is a strict global minimum.
+\end{example}
 
+\begin{example}
+Find global minima in $\field{R}^2$ (if they exist) for the function
+\begin{equation*}
+f(x,y) = e^{x-y} + e^{y-x}.
+\end{equation*}
+This function is also twice continuously differentiable, but no extrema is guaranteed.  Notice that all points $(x^\star, y^\star)$ satisfying $y^\star = x^\star$ are critical.  For such points, the corresponding Hessians and principal minors are given by
+\begin{align*}
+\Hess{f}(x,x) &= \begin{bmatrix} 2 & -2 \\ -2 & 2 \end{bmatrix}, & \Delta_1 &= 2 >0, & \Delta_2 &= 0;
+\end{align*}
+therefore, $\Hess{f}(x,x)$ is positive semidefinite for each critical point.  By Theorem \ref{theorem:sufficientMinima}, $f(x,x) = 2$ is a local minimum for all $x \in \field{R}$.  To prove they are global minima, notice that for each $(x,y) \in \field{R}^2$:
+\begin{align*}
+\Hess{f}(x,y) &= \begin{bmatrix} e^{x-y}+e^{y-x} & -e^{x-y}-e^{y-x} \\ -e^{x-y} - e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix}, \\
+\Delta_1 &= e^{x-y}+e^{y-x} > 0, \quad \Delta_2 =0.
+\end{align*}
+The Hessian is positive definite for all points, hence proving that any point in the line $y=x$ is a global minimum of $f$.
+\end{example}
+
+\begin{example}
+Find local and global minima in $\field{R}^2$ (if they exist) for the function 
+\begin{equation*}
+f(x,y) = x^3-12xy+8y^3.
+\end{equation*}
+This is a polynomial of degree 3, hence twice continuously differentiable.  It is easy to see that this function has no global minima: 
+\begin{equation*}
+\lim_{x\to -\infty} f(x,0) = \lim_{x\to -\infty} x^3 = -\infty.
+\end{equation*}
+Let's search instead for local minima.  From the equation $\gradient{f}(x,y)=\boldsymbol{0}$ we obtain two critical points: $(0,0)$ and $(2,1)$.  The corresponding Hessians and their eigenvalues are:
+\begin{align*}
+\Hess{f}(0,0) &= \begin{bmatrix} 0 & -12 \\ -12 & 0 \end{bmatrix}, &\lambda_1 &=-12<0, \quad \lambda_2 =12>0 ,\\
+\Hess{f}(2,1) &= \begin{bmatrix} 12 & -12 \\ -12 & 48 \end{bmatrix}, &\lambda_1 &= 30-6\sqrt{13}>0, \quad \lambda_2 = 30 + 6\sqrt{30}>0 .
+\end{align*}
+By Theorem \ref{theorem:sufficientMinima}, we have that $f(2,1)=-8$ is a local minimum, but $f(0,0)=0$ is not.
+\end{example}
+
+\begin{example}
+Find local and global minima in $\field{R}^2$ (if they exist) for the function
+\begin{equation*}
+f(x,y) = x^4-4xy+y^4
+\end{equation*}
+This is a polynomial of degree 4, hence twice continuously differentiable.  There are three critical points: $(0,0)$, $(-1,-1)$ and $(1,1)$.  The latter two are both strict local minima (by virtue of Theorem \ref{theorem:sufficientMinima}).
+\begin{align*}
+\Hess{f}(-1,-1) = \Hess{f}(1,1) &= \begin{bmatrix} 12 & -4 \\ -4 & 12 \end{bmatrix}, &\Delta_1 &= 12 > 0, & \Delta_2 &= 128 > 0.
+\end{align*}
+We proved in Example \ref{example:CoerciveFunctionsGeneral} that $f$ is coercive.  By Theorems \ref{theorem:CoerciveFunctions} and \ref{theorem:coerciveNecessaryMinima} we have that $f(-1,-1)=f(1,1)=-2$ must be strict global minimum values.
+\end{example}
 
 \subsection{Convex functions and Characterization}
 \begin{definition}[Convex Sets]\label{def:convexSets}
@@ -245,7 +345,7 @@ If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (
 \end{definition}
 Convex functions have many pleasant properties:
 \begin{theorem}\label{theorem:ConvexIsContinuous}
-Convex functions are continuous
+Convex functions are continuous.
 \end{theorem}
 
 \begin{theorem}
