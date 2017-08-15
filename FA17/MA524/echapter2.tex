@@ -1,5 +1,7 @@
 %!TEX root = notes.tex
 
+% Continuous and Differentiable functions.  Symmetric matrices
+
 \section*{Exercises}
 \begin{problem}[Basic]
 Consider the function
@@ -10,7 +12,7 @@ At what points $(x,y) \in \field{R}^2$ is this function continuous?
 \end{problem}
 
 \begin{problem}[Intermediate]
-Give an examples of $2 \times 2$ symmetric matrices of each kind below:
+Give an example of a $2 \times 2$ symmetric matrix of each kind below:
 \begin{enumerate}
 	\item positive definite, 
 	\item positive semidefinite, 
@@ -51,6 +53,8 @@ Write each of the quadratic forms below in the form $\x \boldsymbol{A} \transpos
 \end{enumerate}
 \end{problem}
 
+% Coercive Functions
+
 \begin{problem}[Intermediate]
 Identify which of the following real-valued functions are coercive.  Explain the reason.
 \begin{enumerate}
@@ -64,30 +68,58 @@ Identify which of the following real-valued functions are coercive.  Explain the
 \begin{problem}[Advanced]\cite[p.36, \#32]{peressini1988mathematics}
 Find an example of a continuous, real-valued, non-coercive function $f\colon \field{R}^2 \to \field{R}$ that satisfies, for all $t \in \field{R}$,
 \begin{equation*}
-\lim_{x \to \infty} f(x, tx) = \lim_{y \to \infty} f(ty, y) = \infty
+\lim_{x \to \infty} f(x, tx) = \lim_{y \to \infty} f(ty, y) = \infty.
 \end{equation*}
 \end{problem}
+
+% Convex functions
+
+\begin{problem}[Basic]\cite[p.77, \#1,2,7]{peressini1988mathematics}
+Determine whether the given functions are convex, concave, strictly convex or strictly concave on the specified domains:
+\begin{enumerate}
+	\item $f(x) = \log(x)$ on $(0,\infty)$.
+	\item $f(x) = e^{-x}$ on $\field{R}$.
+	\item $f(x) = \abs{x}$ on $[-1,1]$.
+	\item $f(x) = \abs{x^3}$ on $\field{R}$.
+	\item $f(x,y) = 5x^2+2xy+y^2-x+2x+3$ on $\field{R}^2$.
+	\item $f(x,y) = x^2/2+3y^2/2+\sqrt{3}xy$ on $\field{R}^2$.
+	\item $f(x,y) = 4e^{3x-y}+5e^{x^2+y^2}$ on $\field{R}^2$.
+	\item $f(x,y,z) = x^{1/2} + y^{1/3} + z^{1/5}$ on $C = \{ (x,y,z) : x>0, y>0, z>0 \}$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Intermediate]\cite[p.79 \#11]{peressini1988mathematics}
+Sketch the epigraph of the following functions
+\begin{enumerate}
+	\item $f(x) = e^x$.
+	\item $f(x,y)=x^2+y^2$.
+\end{enumerate}
+\end{problem}
+
+% Existence
 
 \begin{problem}[Intermediate]
 For the following optimization problems, state whether existence of a solution is guaranteed:
 \begin{enumerate}
-	\item $f(x) = \frac{1+x}{2x}$ over $[1,\infty)$
+	\item $f(x) = (1+x)/x$ over $[1,\infty)$
 	\item $f(x) = 1/x$ over $[1,2)$
-	\item The piecewise function $f(x)$ below over $[1,2]$
+	\item The following piecewise function over $[1,2]$
 	\begin{equation*}
 	f(x) = \begin{cases}
-	1/x, &x<2 \\
+	1/x, &1\leq x<2 \\
 	1,   &x=2
 	\end{cases}
 	\end{equation*}
 \end{enumerate}
 \end{problem}
 
+% Characterization
+
 \begin{problem}[Advanced]
 State and prove equivalent results to Theorems \ref{theorem:criticalGivesMinima}, \ref{theorem:necessaryMinima} and \ref{theorem:sufficientMinima} to describe necessary and sufficient conditions for the characterization of \emph{maxima}.
 \end{problem}
 
-\begin{problem}[Intermediate]\cite[p.32, \#7]{peressini1988mathematics}
+\begin{problem}[Basic]\cite[p.32, \#7]{peressini1988mathematics}
 Use the \emph{Principal Minor Criteria} (Theorem \ref{theorem:PrincipalMinors}) to determine---if possible---the nature of the critical points of the following functions:
 \begin{enumerate}
 	\item $f(x,y) = x^3+y^3-3x-12y+20$.
@@ -98,4 +130,36 @@ Use the \emph{Principal Minor Criteria} (Theorem \ref{theorem:PrincipalMinors}) 
 \end{enumerate}
 \end{problem}
 
+% \begin{problem}\cite[p.35 \#26]{peressini1988mathematics}
+% Show that the function 
+% \begin{equation*}
+% f(x,y,z) = e^{x^2+y^2+z^2}-x^4-y^6-z^6
+% \end{equation*} 
+% has a global minimum on $\field{R}^3$.
+% \end{problem}
+
+\begin{problem}[Intermediate]\cite[p.36 \#33]{peressini1988mathematics}
+Consider the function
+\begin{equation*}
+f(x,y) = x^3 + e^{3y} -3xe^y.
+\end{equation*}
+Show that $f$ has exactly one critical point, and that this point is a local minimum but not a global minimum.
+\end{problem}
+
+\begin{problem}[Basic]
+Let $f(x,y) = -\log(1-x-y)-\log x -\log y$.
+\begin{enumerate}
+	\item Find the domain $D$ of $f$.
+	\item Prove that $D$ is a convex set.
+	\item Prove that $f$ is strictly convex on $D$.
+	\item Find the strict global minimum.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Basic]\cite[p.81 \#27]{peressini1988mathematics}
+Find local and global minima in $\field{R}^3$ (if they exist) for the function 
+\begin{equation*}
+f(x,y) = e^{x+z-y}+e^{y-x-z}
+\end{equation*}
+\end{problem}
 

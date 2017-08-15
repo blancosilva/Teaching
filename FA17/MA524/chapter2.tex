@@ -2,8 +2,11 @@
 
 \chapter{Existence and Characterization of Extrema}\label{chapter:existenceCharacterization}
 
-In this chapter we will study different properties of functions and domains that guarantee existence of extrema. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions.
+In this chapter we will study different properties of functions and domains that guarantee existence of extrema. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions, and then we proceed to introduce other functions with advantageous properties for optimization purposes.
 
+\section{Relevant Functions}
+
+\subsection{Continuity and Differentiability}
 \begin{definition}\label{def:continuous}
 We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\xstar \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\xstar}<\delta$, it is $\abs{ f(\x) - f(\xstar) } < \varepsilon$.  
 \end{definition}
@@ -164,20 +167,8 @@ Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the functi
 \end{enumerate}
 \end{theorem}
 
-\section{Existence}
-\subsection{Continuous functions on compact domains}
-The existence of global extrema is guaranteed for continuous functions over compact sets thanks to the following two basic results:
-
-\begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
-The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
-\end{theorem}
-
-\begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
-A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
-\end{theorem}
-
-\subsection{Continuous functions on unbounded domains}
-Extra restrictions must be applied to the behavior of $f$ in this case, if we want to guarantee the existence of extrema. We consider first an obvious example based on Example \ref{example:CoerciveFunctions}.
+\subsection{Coercive Functions}
+Other set of functions that play an important role in optimization are the kind of functions we explored in Example \ref{example:CoerciveFunctions}.
 
 \begin{definition}[Coercive functions]\label{def:coerciveFunctions}
 A continuous real-valued function $f$ is said to be \emph{coercive} if for all $M>0$ there exists $R=R(M)>0$ so that $f(\x)\geq M$ if $\norm{\x}\geq R$.
@@ -215,126 +206,24 @@ therefore,
 We can then conclude that given $M>0$, if $x^2+y^2 \geq  2+\sqrt{4+2M}$, then $p_4(x,y) \geq M$.  This proves $p_4$ is coercive.
 \end{example}
 
-\begin{theorem}\label{theorem:CoerciveFunctions}
-Coercive functions always have a global minimum.
-\end{theorem}
-\begin{proof}
-Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, consider the closed ball $K_r = \{ \x \in \field{R}^2 : \norm{\x} \leq r \}$.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
-\end{proof}
+There is one more kind of functions we should explore.
 
-\section{Characterization}
-\subsection{Differentiability and Characterization}
-
-Differentiability is key to guarantee characterization of extrema.  Critical points lead the way:
-
-\begin{theorem}[First order necessary optimality condition for minimization]\label{theorem:criticalGivesMinima}
-Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$.
-\end{theorem}
-
-To be able to classify possible extrema $\xstar$ for a properly differentiable function, we take into account the behavior of the function around $f(\xstar)$ with respect to the tangent hyperplane at the point $\big(\xstar, f(\xstar)\big)$.  Second derivatives make this process very easy.
-
-\begin{theorem}[Coerciveness necessary optimality condition for minimization]\label{theorem:coerciveNecessaryMinima}
-Suppose $f \colon \field{R}^d \to \field{R}$ is coercive and continuously differentiable at a point $\xstar$.  If $\xstar$ is a global minimum, then $\gradient{f}(\xstar)= \boldsymbol{0}$.
-\end{theorem}
-
-\begin{theorem}[Second order necessary optimality condition for minimization]\label{theorem:necessaryMinima}
-Suppose that $f\colon \field{R}^d \to \field{R}$ is twice continuously differentiable at $\xstar$.  
-\begin{itemize}
-\item If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
-\item If $\xstar$ is a strict local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive definite}.
-\end{itemize}
-\end{theorem}
-
-\begin{theorem}[Second order sufficient optimality conditions for minimization]\label{theorem:sufficientMinima}
-Suppose $f\colon D \subseteq \field{R}^d \to \field{R}$ is twice continuously differentiable at a point $\xstar$ in the interior of $D$ and $\gradient{f}(\xstar)=0$.  Then $\xstar$ is a:
-\begin{description}
-	\item[Local Minimum] if $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
-	\item[Strict Local Minimum] if $\Hess{f}(\xstar)$ is \emph{positive definite}.
-\end{description}
-If $D=\field{R}^d$ and $\xstar \in \field{R}^d$ satisfies $\gradient{f}(\xstar)=0$, then $\xstar$ is a:
-\begin{description}
-	\item[Global Minimum] if $\Hess{f}(\x)$ is \emph{positive semidefinite} for all $\x \in \field{R}^d$.
-	\item[Strict Global Minimum] if $\Hess{f}(\x)$ is \emph{positive definite} for all $\x \in \field{R}^d$.
-\end{description}
-\end{theorem}
-
-\begin{example}
-Find a global minimum in $\field{R}^3$ (if it exists) for the function 
-\begin{equation*}
-f(x,y,z)=e^{x-y} + e^{y-x} + e^{x^2}+z^2.
-\end{equation*}
-This function is twice continuously differentiable in $\field{R}^3$. Its continuity does not guarantee existence of a global minimum initially since the domain is not compact, but we may try our luck with its critical points.  Note $\gradient{f}(x,y,z) = \big[ e^{x-y} - e^{y-x} + 2xe^{x^2}, -e^{x-y}+e^{y-x}, 2x \big]$.  The only critical point is then $(0,0,0)$ (Why?). The corresponding Hessian is positive definite:
-\begin{align*}
-&&\Hess{f}(0,0,0) &= \begin{bmatrix} 4 & -2 & 0 \\ -2 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix}, &
-\Delta_1 &= 4 > 0, & \Delta_2 &= 4 >0, &\Delta_3 &= 8 > 0.
-\end{align*}
-By Theorem \ref{theorem:sufficientMinima}, $f(0,0,0)=3$ is a priori a strict local global minimum value.  To prove that this point is actually a strict global minimum, notice that 
-\begin{equation*}
-\Hess{f}(x,y)= \begin{bmatrix} 
-e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} & 0 \\
--e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} & 0 \\
-0 & 0 & 2 
-\end{bmatrix}
-\end{equation*}
-The first principal minor is trivially positive: $\Delta_1 = e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2}$, since it is a sum of positive terms.  The second principal minor is also positive:
-\begin{align*}
-\Delta_2 &= \det \begin{bmatrix} e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} \\ -e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix} \\
-&= (e^{x-y}+e^{y-x})^2 + (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) - (e^{x-y}+e^{y-x})^2 \\
-&= (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) > 0 
-\end{align*}
-The third principal minor is positive too: $\Delta_3 = 2\Delta_2 > 0$.  We have just proved that $\Hess{f}(x,y)$ is positive definite for all $(x,y) \in \field{R}^3$, and thus $(0,0,0)$ is a strict global minimum.
-\end{example}
-
-\begin{example}
-Find global minima in $\field{R}^2$ (if they exist) for the function
-\begin{equation*}
-f(x,y) = e^{x-y} + e^{y-x}.
-\end{equation*}
-This function is also twice continuously differentiable, but no extrema is guaranteed.  Notice that all points $(x^\star, y^\star)$ satisfying $y^\star = x^\star$ are critical.  For such points, the corresponding Hessians and principal minors are given by
-\begin{align*}
-\Hess{f}(x,x) &= \begin{bmatrix} 2 & -2 \\ -2 & 2 \end{bmatrix}, & \Delta_1 &= 2 >0, & \Delta_2 &= 0;
-\end{align*}
-therefore, $\Hess{f}(x,x)$ is positive semidefinite for each critical point.  By Theorem \ref{theorem:sufficientMinima}, $f(x,x) = 2$ is a local minimum for all $x \in \field{R}$.  To prove they are global minima, notice that for each $(x,y) \in \field{R}^2$:
-\begin{align*}
-\Hess{f}(x,y) &= \begin{bmatrix} e^{x-y}+e^{y-x} & -e^{x-y}-e^{y-x} \\ -e^{x-y} - e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix}, \\
-\Delta_1 &= e^{x-y}+e^{y-x} > 0, \quad \Delta_2 =0.
-\end{align*}
-The Hessian is positive definite for all points, hence proving that any point in the line $y=x$ is a global minimum of $f$.
-\end{example}
-
-\begin{example}
-Find local and global minima in $\field{R}^2$ (if they exist) for the function 
-\begin{equation*}
-f(x,y) = x^3-12xy+8y^3.
-\end{equation*}
-This is a polynomial of degree 3, hence twice continuously differentiable.  It is easy to see that this function has no global minima: 
-\begin{equation*}
-\lim_{x\to -\infty} f(x,0) = \lim_{x\to -\infty} x^3 = -\infty.
-\end{equation*}
-Let's search instead for local minima.  From the equation $\gradient{f}(x,y)=\boldsymbol{0}$ we obtain two critical points: $(0,0)$ and $(2,1)$.  The corresponding Hessians and their eigenvalues are:
-\begin{align*}
-\Hess{f}(0,0) &= \begin{bmatrix} 0 & -12 \\ -12 & 0 \end{bmatrix}, &\lambda_1 &=-12<0, \quad \lambda_2 =12>0 ,\\
-\Hess{f}(2,1) &= \begin{bmatrix} 12 & -12 \\ -12 & 48 \end{bmatrix}, &\lambda_1 &= 30-6\sqrt{13}>0, \quad \lambda_2 = 30 + 6\sqrt{30}>0 .
-\end{align*}
-By Theorem \ref{theorem:sufficientMinima}, we have that $f(2,1)=-8$ is a local minimum, but $f(0,0)=0$ is not.
-\end{example}
-
-\begin{example}
-Find local and global minima in $\field{R}^2$ (if they exist) for the function
-\begin{equation*}
-f(x,y) = x^4-4xy+y^4
-\end{equation*}
-This is a polynomial of degree 4, hence twice continuously differentiable.  There are three critical points: $(0,0)$, $(-1,-1)$ and $(1,1)$.  The latter two are both strict local minima (by virtue of Theorem \ref{theorem:sufficientMinima}).
-\begin{align*}
-\Hess{f}(-1,-1) = \Hess{f}(1,1) &= \begin{bmatrix} 12 & -4 \\ -4 & 12 \end{bmatrix}, &\Delta_1 &= 12 > 0, & \Delta_2 &= 128 > 0.
-\end{align*}
-We proved in Example \ref{example:CoerciveFunctionsGeneral} that $f$ is coercive.  By Theorems \ref{theorem:CoerciveFunctions} and \ref{theorem:coerciveNecessaryMinima} we have that $f(-1,-1)=f(1,1)=-2$ must be strict global minimum values.
-\end{example}
-
-\subsection{Convex functions and Characterization}
+\subsection{Convex Functions}
 \begin{definition}[Convex Sets]\label{def:convexSets}
 A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \y + (1-\lambda) \x$ is also in $C$.
 \end{definition}
+
+The following result is an interesting characterization of convex sets that allows us to actually construct any convex set from a family of points.
+\begin{theorem}
+Let $C\subseteq \field{R}^d$ be a convex set and let $\{ \x_1, \x_2, \dotsc, \x_n \} \subset C$ be a family of points in $C$.  The convex combinations $\lambda_1 \x_1 + \lambda_2 \x_2 + \dotsb + \lambda_n \x_n$ are also in $C$, provided $\lambda_k\geq 0$ for all $1\leq k \leq n$ and $\lambda_1 + \lambda_2 + \dotsb + \lambda_n = 1$.
+\end{theorem}
+
+\begin{figure}[ht!]
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{convexSet1.png} &
+\includegraphics[width=0.5\linewidth]{convexSet2.png}
+\end{tabular}
+\end{figure}
 
 \begin{definition}[Convex Functions]\label{def:ConvexFunctions}
 Given a convex set $C \subseteq \field{R}^d$, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
@@ -343,6 +232,15 @@ f\big(\lambda \y + (1-\lambda)\x \big) \leq \lambda f(\y) + (1-\lambda) f(\x)
 \end{equation*}
 If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
 \end{definition}
+
+\begin{remark}
+There is an alternative definition of convex functions using the concept of \emph{epigraph} of a function.  Given a convex function $f\colon C \to \field{R}$ on a convex set $C$, the epigraph of $f$ is a set $\epi(f) \subset \field{R}^{d+1}$ defined by
+\begin{equation*}
+\epi(f) = \{ (\x,y) \in \field{R}^{d+1} : \x \in C, y \in \field{R}, f(\x) \leq y \}.
+\end{equation*}
+The function $f$ is convex if and only if its epigraph is a convex set.
+\end{remark}
+
 Convex functions have many pleasant properties:
 \begin{theorem}\label{theorem:ConvexIsContinuous}
 Convex functions are continuous.
@@ -381,11 +279,211 @@ Theorem \ref{theorem:convexAboveTangentHyperplane} implies that the graph of any
 \end{figure}
 \end{remark}
 
-Another useful characterization of convex functions.
-\begin{theorem}
+Two more useful characterization of convex functions.
+\begin{theorem}\label{theorem:Hess4Convex}
 Suppose that $f\colon C \to \field{R}$ is a function with second partial derivatives on an open convex set $C \subseteq \field{R}^d$.  If the Hessian is positive semidefinite (resp.~positive definite) on $C$, then $f$ is convex (resp.~strictly convex).
 \end{theorem}
 
-% \begin{theorem}
-% Any local minimum of a convex function is also a global minimum.  Any local minimum of a strictly convex function is the unique strict global minimum.
-% \end{theorem}
+\begin{theorem}\label{theorem:convexFunctionConvos}
+Let $C \subseteq \field{R}^d$ be a convex set.
+\begin{enumerate}
+	\item \label{theorem:convexFunctionConvo1} If $f_k \colon C \to \field{R}$ are convex functions for $1\leq k \leq n$, then so is the sum $f \colon C \to \field{R}$:
+	\begin{equation*}
+	f(\x) = \sum_{k=1}^n f_k(\x).
+	\end{equation*}  
+	If at least one of them is strictly convex, then so is $f$.
+	\item \label{theorem:convexFunctionConvo2} If $f \colon C \to \field{R}$ is convex (resp.~strictly convex) on $C$, then so is $\lambda f$ for any $\lambda > 0$.
+	\item \label{theorem:convexFunctionConvo3} If $f \colon C \to \field{R}$ is convex (resp.~strictly convex) on $C$, and $g\colon f(C) \to \field{R}$ is an increasing convex function (resp.~strictly increasing convex), then so is $g\circ f$.
+	\item \label{theorem:convexFunctionConvo4} If $f,g\colon C \to \field{R}$ are convex functions on $C$, then so is $\max\{ f,g \}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+Consider the function $f(x,y,z)$ defined on $\field{R}^3$ by
+\begin{equation*}
+f(x,y,z) = 2x^2+y^2+z^2+2yz.
+\end{equation*}
+Notice that for all $(x,y,z) \in \field{R}^3$,
+\begin{align*}
+\Hess{f}(x,y,z) &= \begin{bmatrix} 4 & 0 & 0 \\ 0 & 2 & 2 \\ 0 & 2 & 2 \end{bmatrix}, & \Delta_1 &= 4 > 0, &\Delta_2 &=8 > 0, &\Delta_3 &=0.
+\end{align*}
+By virtue of Theorem \ref{theorem:Hess4Convex}, we infer that the function $f$ is convex, but not strictly convex.
+\end{example}
+
+\begin{example}
+To prove that $f(x,y,z) = e^{x^2+y^2+z^2}$, rather than computing the Hessian and address if it is positive (semi)definite, it is easier to realize that we can write $f = g\circ h$ with 
+\begin{align*}
+&g \colon \field{R} \to \field{R} && h \colon \field{R}^3 \to \field{R} \\
+& g(x) = e^x && h(x,y,z)=x^2+y^2+z^2
+\end{align*}
+The function $g$ is trivially strictly increasing and convex (since $g'(x) = g''(x) = e^x > 0$ for all $x \in \field{R}$).  The function $h$ is strictly convex, since (by Theorem \ref{theorem:Hess4Convex})
+\begin{align*}
+\Hess{h}(x,y,z) &= \begin{bmatrix} 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix}, &\Delta_1 &=2 >0, &\Delta_2 &=4 >0, &\Delta_3 &=8 > 0.
+\end{align*}
+By virtue of \ref{theorem:convexFunctionConvo3} in Theorem \ref{theorem:convexFunctionConvos}, we infer that $f$ is strictly convex.
+\end{example}
+
+\begin{example}
+Set $C = \{ (x,y) \in \field{R}^2 : x>0, y>0 \}$.  Consider the function $f\colon C \to \field{R}$ given by
+\begin{equation*}
+f(x,y) = x^2 -4xy+5y^2 - \log (xy)
+\end{equation*}
+Notice we may write $f = g+h$ with $g,h \colon C \to \field{R}$ given respectively by $g(x,y) = x^2 -4xy+5y^2$ and $h(x,y) = -\log(xy)$.  Note also that both functions are strictly convex, since for all $(x,y) \in C$:
+\begin{align*}
+\Hess{g}(x,y) &= \begin{bmatrix} 2 & -4 \\ -4 & 10 \end{bmatrix}, &\Delta_1 &= 2 >0, & \Delta_2 &=4 >0, \\
+\Hess{h}(x,y) &= \begin{bmatrix} x^{-2} & 0 \\ 0 & y^{-2} \end{bmatrix}, &\Delta_1 &= x^{-2} >0, &\Delta_2 &=(xy)^{-2} >0. 
+\end{align*}
+By virtue of part \ref{theorem:convexFunctionConvo1} in Theorem \ref{theorem:convexFunctionConvos}, we infer that $f$ is strictly convex.
+\end{example}
+
+We are now ready to explore existence and characterization of extrema in a wide variety of situations.
+
+\section{Existence}
+\subsection{Continuous functions on compact domains}
+The existence of global extrema is guaranteed for continuous functions over compact sets thanks to the following two basic results:
+
+\begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
+The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
+\end{theorem}
+
+\begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
+A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
+\end{theorem}
+
+\subsection{Continuous functions on unbounded domains}
+Extra restrictions must be applied to the behavior of $f$ in this case, if we want to guarantee the existence of extrema. 
+
+\begin{theorem}\label{theorem:CoerciveFunctions}
+Coercive functions always have a global minimum.
+\end{theorem}
+\begin{proof}
+Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, consider the closed ball $K_r = \{ \x \in \field{R}^2 : \norm{\x} \leq r \}$.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
+\end{proof}
+
+\section{Characterization}
+
+Differentiability is key to guarantee characterization of extrema.  Critical points lead the way:
+
+\begin{theorem}[First order necessary optimality condition for minimization]\label{theorem:criticalGivesMinima}
+Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$.
+\end{theorem}
+
+To be able to classify possible extrema $\xstar$ for a properly differentiable function, we take into account the behavior of the function around $f(\xstar)$ with respect to the tangent hyperplane at the point $\big(\xstar, f(\xstar)\big)$.  Second derivatives make this process very easy.
+
+\begin{theorem}\label{theorem:coerciveMinima}
+Suppose $f \colon \field{R}^d \to \field{R}$ is coercive and continuously differentiable at a point $\xstar$.  If $\xstar$ is a global minimum, then $\gradient{f}(\xstar)= \boldsymbol{0}$.
+\end{theorem}
+
+\begin{theorem}[Second order necessary optimality condition for minimization]\label{theorem:necessaryMinima}
+Suppose that $f\colon \field{R}^d \to \field{R}$ is twice continuously differentiable at $\xstar$.  
+\begin{itemize}
+\item If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
+\item If $\xstar$ is a strict local minimum, then $\gradient{f}(\xstar)=0$ and $\Hess{f}(\xstar)$ is \emph{positive definite}.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Second order sufficient optimality conditions for minimization]\label{theorem:sufficientMinima}
+Suppose $f\colon D \subseteq \field{R}^d \to \field{R}$ is twice continuously differentiable at a point $\xstar$ in the interior of $D$ and $\gradient{f}(\xstar)=0$.  Then $\xstar$ is a:
+\begin{description}
+	\item[Local Minimum] if $\Hess{f}(\xstar)$ is \emph{positive semidefinite}.
+	\item[Strict Local Minimum] if $\Hess{f}(\xstar)$ is \emph{positive definite}.
+\end{description}
+If $D=\field{R}^d$ and $\xstar \in \field{R}^d$ satisfies $\gradient{f}(\xstar)=0$, then $\xstar$ is a:
+\begin{description}
+	\item[Global Minimum] if $\Hess{f}(\x)$ is \emph{positive semidefinite} for all $\x \in \field{R}^d$.
+	\item[Strict Global Minimum] if $\Hess{f}(\x)$ is \emph{positive definite} for all $\x \in \field{R}^d$.
+\end{description}
+\end{theorem}
+
+\begin{theorem}\label{theorem:ConvexMinima}
+Any local minimum of a convex function $f\colon C \to \field{R}$ on a convex set $C \subseteq \field{R}^d$ is also a global minimum.  If $f$ is a strict convex function, then any local minimum is the unique strict global minimum.
+\end{theorem}
+
+\begin{theorem}\label{theorem:ConvexCritical}
+Suppose $f\colon C \to \field{R}$ is a convex function with continuous first partial derivatives on a convex set $C \subseteq \field{R}^d$.  Then, any critical point of $f$ in $C$ is a global minimum of $f$.
+\end{theorem}
+
+\section*{Examples}
+
+\begin{example}
+Find a global minimum in $\field{R}^3$ (if it exists) for the function 
+\begin{equation*}
+f(x,y,z)=e^{x-y} + e^{y-x} + e^{x^2}+z^2.
+\end{equation*}
+This function has continuous partial derivatives of any order in $\field{R}^3$. Its continuity does not guarantee existence of a global minimum initially since the domain is not compact, but we may try our luck with its critical points.  Note $\gradient{f}(x,y,z) = \big[ e^{x-y} - e^{y-x} + 2xe^{x^2}, -e^{x-y}+e^{y-x}, 2x \big]$.  The only critical point is then $(0,0,0)$ (Why?). The Hessian at that point is positive definite:
+\begin{align*}
+&&\Hess{f}(0,0,0) &= \begin{bmatrix} 4 & -2 & 0 \\ -2 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix}, &
+\Delta_1 &= 4 > 0, & \Delta_2 &= 4 >0, &\Delta_3 &= 8 > 0.
+\end{align*}
+By Theorem \ref{theorem:sufficientMinima}, $f(0,0,0)=3$ is a priori a strict local global minimum value.  To prove that this point is actually a strict global minimum, notice that 
+\begin{equation*}
+\Hess{f}(x,y,z)= \begin{bmatrix} 
+e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} & 0 \\
+-e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} & 0 \\
+0 & 0 & 2 
+\end{bmatrix}
+\end{equation*}
+The first principal minor is trivially positive: $\Delta_1 = e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2}$, since it is a sum of positive terms.  The second principal minor is also positive:
+\begin{align*}
+\Delta_2 &= \det \begin{bmatrix} e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} \\ -e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix} \\
+&= (e^{x-y}+e^{y-x})^2 + (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) - (e^{x-y}+e^{y-x})^2 \\
+&= (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) > 0 
+\end{align*}
+The third principal minor is positive too: $\Delta_3 = 2\Delta_2 > 0$.  We have just proved that $\Hess{f}(x,y,z)$ is positive definite for all $(x,y,z) \in \field{R}^3$, and thus $(0,0,0)$ is a strict global minimum.
+\end{example}
+
+\begin{example}
+Find global minima in $\field{R}^2$ (if they exist) for the function
+\begin{equation*}
+f(x,y) = e^{x-y} + e^{y-x}.
+\end{equation*}
+This function also has continuous partial derivatives of any order, but no extrema is guaranteed a priori.  Notice that all points $(x, y)$ satisfying $y = x$ are critical.  For such points, the corresponding Hessians and principal minors are given by
+\begin{align*}
+\Hess{f}(x,x) &= \begin{bmatrix} 2 & -2 \\ -2 & 2 \end{bmatrix}, & \Delta_1 &= 2 >0, & \Delta_2 &= 0;
+\end{align*}
+therefore, $\Hess{f}(x,x)$ is positive semidefinite for each critical point.  By Theorem \ref{theorem:sufficientMinima}, $f(x,x) = 2$ is a local minimum for all $x \in \field{R}$.  To prove they are global minima, notice that for each $(x,y) \in \field{R}^2$:
+\begin{align*}
+\Hess{f}(x,y) &= \begin{bmatrix} e^{x-y}+e^{y-x} & -e^{x-y}-e^{y-x} \\ -e^{x-y} - e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix}, \\
+\Delta_1 &= e^{x-y}+e^{y-x} > 0, \quad \Delta_2 =0.
+\end{align*}
+The Hessian is positive semidefinite for all points, hence proving that any point in the line $y=x$ is a global minimum of $f$.
+\end{example}
+
+\begin{example}
+Find local and global minima in $\field{R}^2$ (if they exist) for the function 
+\begin{equation*}
+f(x,y) = x^3-12xy+8y^3.
+\end{equation*}
+This is a polynomial of degree 3, so we have continuous partial derivatives of any order.  It is easy to see that this function has no global minima: 
+\begin{equation*}
+\lim_{x\to -\infty} f(x,0) = \lim_{x\to -\infty} x^3 = -\infty.
+\end{equation*}
+Let's search instead for local minima.  From the equation $\gradient{f}(x,y)=\boldsymbol{0}$ we obtain two critical points: $(0,0)$ and $(2,1)$.  The corresponding Hessians and their eigenvalues are:
+\begin{align*}
+\Hess{f}(0,0) &= \begin{bmatrix} 0 & -12 \\ -12 & 0 \end{bmatrix}, &\lambda_1 &=-12<0, \quad \lambda_2 =12>0 ,\\
+\Hess{f}(2,1) &= \begin{bmatrix} 12 & -12 \\ -12 & 48 \end{bmatrix}, &\lambda_1 &= 30-6\sqrt{13}>0, \quad \lambda_2 = 30 + 6\sqrt{30}>0 .
+\end{align*}
+By Theorem \ref{theorem:sufficientMinima}, we have that $f(2,1)=-8$ is a local minimum, but $f(0,0)=0$ is not.
+\end{example}
+
+\begin{example}
+Find local and global minima in $\field{R}^2$ (if they exist) for the function
+\begin{equation*}
+f(x,y) = x^4-4xy+y^4.
+\end{equation*}
+This is a polynomial of degree 4, so we do have continuous partial derivatives of any order.  There are three critical points: $(0,0)$, $(-1,-1)$ and $(1,1)$.  The latter two are both strict local minima (by virtue of Theorem \ref{theorem:sufficientMinima}).
+\begin{align*}
+\Hess{f}(-1,-1) = \Hess{f}(1,1) &= \begin{bmatrix} 12 & -4 \\ -4 & 12 \end{bmatrix}, &\Delta_1 &= 12 > 0, & \Delta_2 &= 128 > 0.
+\end{align*}
+We proved in Example \ref{example:CoerciveFunctionsGeneral} that $f$ is coercive.  By Theorems \ref{theorem:CoerciveFunctions} and \ref{theorem:coerciveMinima} we have that $f(-1,-1)=f(1,1)=-2$ must be strict global minimum values.
+\end{example}
+
+\begin{example}
+Find local and global minima in $\field{R}^2$ (if they exist) for the function
+\begin{equation*}
+f(x,y) = 2x^2+y^2 + \frac{1}{2x^2+y^2}.
+\end{equation*}
+The simplest way is to realize that $f$ is a convex function on $\field{R}^2$.  We prove this by re-writing $f=g\circ h$ as a composition of $g(x) = x+1\x$ on $(0,\infty)$ with $h(x,y) = 2x^2+y^2$ on $\field{R}^2$.  Note that both functions are strictly convex (Why?).
+
+The only critical point of $g$ in $(0,\infty)$ lies at $x=1$.  By Theorem \ref{theorem:ConvexCritical}, $g(1)=2$ must be a strict global minimum value of $g$.  That being the case, any point $(x,y)$ satisfying $h(x,y)=1$ is a global minimum of $f$.  These are all the points on the ellipse $2x^2+y^2=1$. 
+\end{example}
