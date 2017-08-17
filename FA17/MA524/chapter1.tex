@@ -134,7 +134,7 @@ Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x
 \end{figure}
 \end{example}
 
-We have other useful characterizations for extrema, when the domain can be expressed as solutions of equations:
+We learned other useful characterizations for extrema, when the domain could be expressed as solutions of equations:
 
 \begin{theorem}[Orthogonal Gradient]\label{theorem:OrthogonalGradient}
 Suppose $f(x,y)$ is differentiable in a region whose interior contains a smooth curve $C\colon \boldsymbol{r}(t) = \big( x(t), y(t) \big)$.  If $P_0$ is a point on $C$ where $f$ has a local extremum relative to its values on $C$, then $\gradient{f}$ is orthogonal to $C$ at $P_0$.
@@ -221,10 +221,28 @@ The purpose of these notes is the development of a theory to deal with optimizat
 	\end{description}
 	\end{definition}	
 \end{itemize}
-In this setting, the objective of \emph{optimization} is the following program:
+In this setting, the objective of \emph{optimization} is the search for extrema in the following two scenarios:
+\begin{description}
+	\item [Unconstrained Optimization] if $D$ is an open set (usually the whole space $\field{R}^d$)
+	\item [Constrained Optimization] if $D$ can be described as a set of \emph{constraints}: $\x \in D$ if there exist $m,n \in \field{N}$ and functions $g_k\colon \field{R}^d \to \field{R}$ ($1\leq k \leq m$), $h_j\colon \field{R}^d \to \field{R}$ ($1\leq j \leq n$) so that
+	\begin{align*}
+	g_k(\x) &\leq  0 &(1\leq k \leq m) \\
+	h_j(\x) &= 0     &(1\leq j \leq n)
+	\end{align*}
+\end{description}
+For each of these problems, we follow a similar program:
 \begin{description}
 	\item[Existence of extrema] Establish results that guarantee the existence of extrema depending on the properties of $D$ and $f$. 
 	\item[Characterization of extrema] Establish results that describe conditions for points $\x \in D$ to be extrema of $f$.  
-	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes. This is the core of this course.
+	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes.
 \end{description}
-The development of existence and characterization results will be covered in chapter \ref{chapter:existenceCharacterization}.  The design of algorithms to track extrema will be covered in chapter \ref{chapter:nonlinearoptimization}.
+The development of existence and characterization results for unconstrained optimization will be covered in chapter \ref{chapter:existenceCharacterization}.  The design of algorithms to track extrema will be covered in chapter \ref{chapter:nonlinearoptimization}.
+
+
+
+
+
+
+
+
+
