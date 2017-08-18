@@ -42,7 +42,7 @@ x_1=x_0-\frac{f(x_0)}{f'(x_0)}
 \end{equation*}
 \item Repeat this process, to get the sequence 
 \begin{equation*}
-x_{n+1} = x_n- \frac{f(x_n)}{f'(x_n)}
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 \end{equation*}
 \end{enumerate}
 \begin{figure}[ht!]
@@ -67,6 +67,13 @@ $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline
 \caption{Convergence to $\sqrt{2}$ with 15-digit accuracy in 6 steps}
 \label{table:Newton-Raphson}
 \end{table}
+\end{example}
+
+\begin{example}
+Consider now the function $f(x) = x - \log x$ over $(0, \infty)$.  The Newton-Raphson method gives the following iterates for any $x_0 \in (0,\infty)$:
+\begin{align*}
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n \frac{\log x_n - 1}{x_n - 1}
+\end{align*}
 \end{example}
 
 Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ as follows.  
