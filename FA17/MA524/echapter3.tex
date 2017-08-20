@@ -3,7 +3,7 @@
 \section{Exercises}
 
 \begin{problem}[Basic]
-Find an example of a function $f\colon \field{R} \to \field{R}$ (different from the function in Example \ref{example:loop}) with a unique root at $x=0$ for which the Newton-Raphson sequence is a loop no matter the initial guess $x_0\neq 0$: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n \in \field{N}$.
+Find an example of a function $f\colon \field{R} \to \field{R}$ (different from the function in Example \ref{example:NewtonRaphsonloop}) with a unique root at $x=0$ for which the Newton-Raphson sequence is a loop no matter the initial guess $x_0\neq 0$: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n \in \field{N}$.
 \end{problem}
 
 \begin{problem}[Intermediate]
@@ -50,4 +50,13 @@ We wish to study the behavior of Newton-Raphson to find approximations to the cr
 	\item Prove that the Newton-Raphson method converges to the optimal solution for any initial guess $x_0 \in (2,3.05)$.
 	\item What is the behavior of the Newton-Raphson method if the initial guess is not in the interval $(2,3.05)$?
 \end{enumerate}
+\end{problem}
+
+\begin{problem}[CAS]
+Design a process in \texttt{desmos.com} to test the search for critical points given by the recursion formulas produced by Newton's method.
+\begin{figure}[ht!]
+\includegraphics[width=\linewidth]{desmos.png}
+\caption{Newton method in \texttt{desmos.com}}
+\label{figure:desmosNewton}
+\end{figure}
 \end{problem}

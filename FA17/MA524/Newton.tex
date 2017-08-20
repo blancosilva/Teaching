@@ -54,16 +54,16 @@ Notice the two factors in the right-hand side of that expression: $x_n$, and $2-
 \end{figure}
 \end{example}
 
-\begin{example}\label{example:loop}
+\begin{example}\label{example:NewtonRaphsonloop}
 Consider now $f(x) = \sign(x)\sqrt{\lvert x \rvert}$ over $\field{R}$, with root at $x=0$.  The Newton-Raphson method fails miserably with this function: for any $x_0 \neq 0$
 \begin{align*}
 x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} = x_0 - \frac{\sign(x_0)\lvert x_0 \rvert^{1/2}}{\tfrac{1}{2}\lvert x_0 \rvert^{-1/2}} = -x_0.
 \end{align*}
-This sequence turns into a loop: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n\in \field{N}$ (see Figure \ref{figure:loop}).
+This sequence turns into a loop: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n\in \field{N}$ (see Figure \ref{figure:NewtonRaphsonloop}).
 \begin{figure}[ht!]
 \includegraphics[width=0.65\linewidth]{loop.png}
 \caption{Newton-Raphson fails for some functions}
-\label{figure:loop}
+\label{figure:NewtonRaphsonloop}
 \end{figure}
 \end{example}
 
@@ -246,7 +246,7 @@ or equivalently,
 \end{equation*}
 \end{example}
 
-There are some theoretical results that aid in the search for a \emph{good} initial guess:
+There are some theoretical results that aid in the search for a \emph{good} initial guess.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence}\footnote{See Appendix \ref{appendix:convergence}} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
 
 \begin{theorem}[Quadratic Convergence Theorem]\label{theorem:QuadraticConvergence}
 Suppose $f\colon \field{R}^d \to \field{R}$ is a twice continuously differentiable real-valued function, and $\xstar$ is a critical point of $f$. Let $\mathcal{N}(\x) = \x - \big[ \Hess{f}(\x) \big]^{-1} \cdot \gradient{f}(\x)$. If there exists 

@@ -1,0 +1,37 @@
+%!TEX root = notes.tex
+
+\section{The Method of Steepest Descent}
+
+The method of Steepest Descent is based upon the following property of gradients that we learned in Vector Calculus:
+
+\begin{theorem}
+If $f \colon \field{R}^d \to \field{R}$ is continuously differentiable, then at any point $\x \in \field{R}^d$, the vector $-\gradient{f}(\x)$ points in the direction of most rapid decrease for $f$ at $\x$.  The rate of decrease of $f$ at $\x$ in this direction is precisely $-\norm{\gradient{f}(\x)}$.
+\end{theorem}
+
+\begin{remark}
+For this reason, the vector $\gradient{f}(\x)$ is called the \emph{direction of steepest descent} of $f$ at $\x$.
+\end{remark}
+
+In order to search for a local minimum for a twice continuously differentiable function $f\colon \field{R}^d \to \field{R}$, we start by choosing an initial guess $\x_0$.  
+\begin{enumerate}
+	\item Restrict the function $f$ over the line through $\x_0$ in the direction of $-\gradient{f}(\x_0)$:
+	\begin{equation*}
+	\varphi_0(t) = f\big( \x_0 - t \gradient{f}(\x_0) \big), \quad t\geq 0
+	\end{equation*}
+	\item Search for the value of $t_0 \geq 0$ that minimizes $\varphi_0$, and set 
+	\begin{equation*}
+	\x_1 = \x_0 - t_0\gradient{f}(\x_0)
+	\end{equation*}
+	\item Repeat this process to get the sequence
+	\begin{equation*}
+	\x_{n+1} = \x_n - t_n \gradient{f}(\x_n), \quad t_n = \argmin_{t\geq 0} \varphi_n(t) = \argmin_{t\geq 0} f\big(\x_n - t\gradient{f}(\x_n)\big)
+	\end{equation*}
+\end{enumerate}
+
+\begin{remark}
+Unlike with Newton's method, this algorithm guarantees that $f(\x_{n+1}) \leq f(x_n)$ for all $n \in \field{N}$.
+\end{remark}
+
+\begin{example}
+
+\end{example}
