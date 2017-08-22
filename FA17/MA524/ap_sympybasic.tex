@@ -1,0 +1,164 @@
+%!TEX root = notes.tex
+
+\chapter{Basic \sympy\ commands for Calculus}
+
+A typical \sympy\ session usually starts by loading the \emph{symbols} we need, some basic functions, and basic constructors.  After that, we proceed to the description of the functions we require.
+
+\begin{minted}[frame=single, fontsize=\footnotesize, linenos, mathescape]{python}
+# Symbols, including one for infinity, $\pi$ and $e$
+from sympy.abc import x,y,t,h
+from sympy import oo, pi, E
+# Symbols with conditions
+from sympy import var
+a,b = var('a,b', positive=True)
+
+# Basic functions we may need
+from sympy import sqrt, sin, cos, tan, exp, log
+
+# Some basic symbolic manipulations may be needed
+from sympy import solve, factor, expand, simplify, limit
+
+# To do vector calculus, we need these two as well
+from sympy import Matrix
+from sympy.tensor.array import derive_by_array
+
+# If in a jupyter notebook, we may want to render output as LaTeX
+from sympy import init_printing
+init_printing()
+
+# Description of f
+f = sin(x)/x
+
+# A generic Rosenbrock function
+# Note the symbols a, b act as parameters, while x and y act as variables
+R = (a-x)**2 + b*(y-x**2)**2
+\end{minted}
+
+We are going to use these functions to perform several common operations in Calculus.
+
+\section{Function operations}
+Observe how easily we can perform all of the following:
+\begin{description}
+	\item[Function evaluation] with the method 
+	\begin{verbatim}.subs({variable1: value1, variable2: value2, ...})\end{verbatim}
+	\item[Limits] with the function \texttt{limit(object, variable, value)}.
+	\item[Basic operations] with the usual operators for addition, subtraction, multiplication and division.
+	\item[Composition] again with the method \texttt{.subs()}.
+\end{description}
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> f.subs({x: pi}) # $f(\pi)$
+	0
+>>> f.subs({x: 0})  # $f(0)$ --- returns "not a number"
+	nan
+>>> limit(f, x, 0)  # Compute $\lim_{x\to 0}f(x)$ instead
+	1
+>>> (f.subs({x: x+h}) - f)/h  # A divided quotient...
+	(sin(h + x)/(h + x) - sin(x)/x)/h
+>>> limit( (f.subs({x: x+h}) - f)/h, h, 0) # ... and its limit as $h\to 0$
+	(x*cos(x) - sin(x))/x**2
+\end{minted}
+
+Notice how smart \sympy\ is in regard to the properties of symbols
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> sqrt(x**2) # Square root of the square of a variable without conditions
+	sqrt(x**2)
+>>> sqrt(a**2) # Square root of the square of a positive variable
+	a
+\end{minted}
+
+Directional limits are also possible
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> limit(1/x, x, 0, dir="+")
+	oo
+>>> limit(1/x, x, 0, dir="-")
+	-oo
+\end{minted}
+
+\section{Derivatives, Gradients, Hessians}
+For functions of one variable, to obtain the symbolic derivative of a function (of any order), we usually employ the method 
+\begin{verbatim} .diff(variable, order) \end{verbatim}
+For functions of several variables, we employ instead 
+\begin{verbatim}derive_by_array(function, list-of-variables) \end{verbatim}
+If necessary, we may arrange our outputs as matrices, so we can employ proper matrix operations with them.
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> f.diff(x) # $f'(x)$ without the need to mess with limits
+	cos(x)/x - sin(x)/x**2
+>>> f.diff(x, 2)  # $f''(x)$
+	(-sin(x) - 2*cos(x)/x + 2*sin(x)/x**2)/x
+>>> derive_by_array(R, [x,y]) # The gradient of R, $\gradient{R}$
+	[-2*a - 4*b*x*(-x**2 + y) + 2*x, b*(-2*x**2 + 2*y)]
+>>> gradient = _   # Store that in the variable 'gradient'
+>>> derive_by_array(gradient, [x,y]) # The Hessian of R, $\Hess{R}$
+	[[8*b*x**2 - 4*b*(-x**2 + y) + 2, -4*b*x], [-4*b*x, 2*b]]
+>>> hessian = Matrix(2,2, _) # Store that as a matrix, call it 'hessian'
+>>> hessian[0,0] # If we want to access the first entry of the matrix
+	8*b*x**2 - 4*b*(-x**2 + y) + 2
+>>> simplify(_) # Simplify that expression
+	12*b*x**2 - 4*b*y + 2
+>>> Delta1 = _  # Store that value as 'Delta1'
+>>> hessian.det()  # Compute the determinant of the Hessian
+	-16*b**2*x**2 + 2*b*(8*b*x**2 - 4*b*(-x**2 + y) + 2)
+>>> Delta2 = simplify(_) # Store that value as 'Delta2'
+\end{minted}
+
+It is then a simple task (in some cases) to search for critical points by solving symbolically $\gradient{f}=0$, and checking whether they are local maxima, local minima or saddle points.
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> solve(gradient, [x,y]) # Critical points of R
+	[(a, a**2)]
+>>> crit_points = _ # This is a list.  We call it 'crit_points' 
+>>> for point in crit_points:
+...     x0,y0 = point
+...     print(point)
+...     print("Delta1 = ", Delta1.subs({x:x0, y:y0}))
+...     print("Delta2 = ", Delta2.subs({x:x0, y:y0}))
+...
+	(a, a**2)
+	Delta1 =  8*a**2*b + 2
+	Delta2 =  4*b
+>>> 8*a**2*b + 2 > 0  # Is Delta1 > 0? (remember a,b>0)
+	True
+>>> 4*b > 0 # Is Delta2 > 0?
+	True
+\end{minted}
+The conclusion after this small session is that any Rosenbrock function $R(x,y) = (a-x)^2 + b(y-x^2)^2$ has a global minimum at the point $(a,a^2)$.
+
+A word of warning.  Symbolic differentiation and manipulation of expressions is may not work in certains cases.  For those, numerical approximation is more suited (and incidentally, \emph{that} is the reason you are taking this course).
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> solve(f.diff(x))
+NotImplementedError: multiple generators [x, tan(x/2)]
+No algorithms are implemented to solve equation 
+x**2*(-tan(x/2)**2 + 1)/(tan(x/2)**2 + 1) - 2*x*tan(x/2)/(tan(x/2)**2 + 1)
+\end{minted}
+
+\section{Integration}
+
+Symbolic integration for the computation of antiderivatives is also possible.  Definite integrals, while the symbolic setting allows it in many cases, it is preferably done in a numerical setting.
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> R.integrate(x) # $\int R(x,y)\, dx$
+	-a*x**2 + b*x**5/5 + x**3*(-2*b*y/3 + 1/3) + x*(a**2 + b*y**2)
+>>> R.integrate(y) # $\int R(x,y)\, dy$
+	-b*x**2*y**2 + b*y**3/3 + y*(a**2 - 2*a*x + b*x**4 + x**2)
+>>> R.integrate(x, (x, 0, 1)).integrate(y, (y, 0, 1)) # $\int_0^1 \int_0^1 R(x,y)\, dx\, dy$
+	a**2/4 - a/6 + 11*b/360 + 1/24
+>>> f.integrate(x) # $\int \frac{\sin(x)}{x}\, dx$
+	Si(x)
+>>> f.integrate(x, (x, 0, pi)) # $\int_0^\pi \frac{\sin(x)}{x}\, dx$
+	-2 + pi*Si(pi)
+>>> _.evalf() # How much is that, actually?
+	3.81803183741885
+\end{minted}
+
+\section{Sequences, series}
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> 
+\end{minted}
+
+\section{Power series, series expansions}
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> 
+\end{minted}

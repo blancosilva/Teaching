@@ -3,17 +3,23 @@
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
 \usepackage{tikz}
+\usepackage{endnotes}
+\usepackage[english]{babel}
+\usepackage{minted}
+\usepackage{enumitem}
 %\usepackage{makeidx}
 %\usepackage{float,wrapfig}
 %\usepackage{appendix}
 %\usepackage{hyperref}
 %\makeindex
-\usepackage{endnotes}
-\usepackage[english]{babel}
-\usepackage{minted}
-\allowdisplaybreaks[4]
 
+\allowdisplaybreaks[4]
+\setlist[itemize]{nosep}
 \numberwithin{figure}{chapter}
+
+% Misc
+\def\sympy{\texttt{sympy}}
+\def\scipy{\texttt{scipy}}
 
 % Points, objects
 \def\x{\boldsymbol{x}}
