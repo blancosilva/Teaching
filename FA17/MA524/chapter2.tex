@@ -1,10 +1,10 @@
-%!TEX root = notes.tex
+%!TEX root = main.tex
 
 \chapter[Unconstrained Optimization]{Existence and Characterization of Extrema for Unconstrained Optimization}\label{chapter:UnconstrainedExistenceCharacterization}
 
-In this chapter we will study different properties of functions and domains that guarantee existence of extrema. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions, and then we proceed to introduce other functions with advantageous properties for optimization purposes.
+In this chapter we will study different properties of functions and domains that guarantee existence of extrema for unconstrained optimization. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions, and then we proceed to introduce other functions with advantageous properties for optimization purposes.
 
-\section{Relevant Functions}
+\section{Functions}
 
 \subsection{Continuity and Differentiability}
 \begin{definition}\label{def:continuous}
@@ -370,7 +370,7 @@ Differentiability is key to guarantee characterization of extrema.  Critical poi
 Suppose $f\colon \field{R}^d \to \field{R}$ is differentiable at $\xstar$.  If $\xstar$ is a local minimum, then $\gradient{f}(\xstar)=0$.
 \end{theorem}
 
-To be able to classify possible extrema $\xstar$ for a properly differentiable function, we take into account the behavior of the function around $f(\xstar)$ with respect to the tangent hyperplane at the point $\big(\xstar, f(\xstar)\big)$.  Second derivatives make this process very easy.
+To be able to classify extrema of a properly differentiable function, we take into account the behavior of the function around $f(\x)$ with respect to the tangent hyperplane at the point $\big(\x, f(\x)\big)$.  Second derivatives make this process very easy.
 
 \begin{theorem}\label{theorem:coerciveMinima}
 Suppose $f \colon \field{R}^d \to \field{R}$ is coercive and continuously differentiable at a point $\xstar$.  If $\xstar$ is a global minimum, then $\gradient{f}(\xstar)= \boldsymbol{0}$.

@@ -1,4 +1,4 @@
-%!TEX root = notes.tex
+%!TEX root = main.tex
 
 \section{The Method of Steepest Descent}
 
@@ -23,9 +23,11 @@ In order to search for a local minimum for a twice continuously differentiable f
 	\x_1 = \x_0 - t_0\gradient{f}(\x_0)
 	\end{equation*}
 	\item Repeat this process to get the sequence
-	\begin{equation*}
-	\x_{n+1} = \x_n - t_n \gradient{f}(\x_n), \quad t_n = \argmin_{t\geq 0} \varphi_n(t) = \argmin_{t\geq 0} f\big(\x_n - t\gradient{f}(\x_n)\big)
-	\end{equation*}
+	\begin{gather}\label{equation:SteepestDescent}
+	\begin{split}
+	&\x_{n+1} = \x_n - t_n \gradient{f}(\x_n), \\ &t_n = \argmin_{t\geq 0} \varphi_n(t) = \argmin_{t\geq 0} f\big(\x_n - t\gradient{f}(\x_n)\big)
+	\end{split}
+	\end{gather}
 \end{enumerate}
 
 \begin{remark}
@@ -106,8 +108,8 @@ For the polynomial function $p_4(x,y) = x^4-4xy+y^4$ from Example \ref{example:N
 \end{figure}
 \end{example}
 
-\begin{example}
-Notice what happens when we try to implement the same process on the Rosenbrock function $\mathcal{R}(x,y) = (1-x)^2 + (y-x^2)^2$, with a wide selection of initial guesses:
+\begin{example}\label{example:SDR}
+Notice what happens when we try to implement the same process on the Rosenbrock function $\mathcal{R}_{1,1}(x,y) = (1-x)^2 + (y-x^2)^2$, with a wide selection of initial guesses:
 \begin{itemize}[nosep]
 	\item Starting at $(x_0, y_0)=(-1,-2)$, the method converges to the wrong location: \newline
 	\noindent
@@ -163,3 +165,23 @@ Notice what happens when we try to implement the same process on the Rosenbrock 
 \end{itemize}
 The reason for this behavior lies in the particularly tricky structure of the graph of the Rosenbrock function mainly, but also in the geometry of the Steepest Descent method.
 \end{example}
+
+\begin{theorem}
+Let $f \colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and $\{ \x_n \}_{n\in\field{N}}$ a Steepest Descent sequence for $f$.  For any $n \in \field{N}$, $\langle \x_{n+2} - \x_{n+1}, \x_{n+1} - \x_n \rangle = 0$.
+\end{theorem}
+\begin{proof}
+Consider for each $n \in \field{N}$ the function $\varphi_n(t) = f\big(\x_n -t \gradient{f}(\x_x)\big)$, with a global minimum at $t_n \geq 0$.  It must then be
+\begin{equation*}
+0 = \varphi_n'(t_n) = \langle \gradient{f}(\x_n), -\gradient{f}\big( \x_n - t_n \gradient{f}(\x_n)\big) \rangle = - \langle \gradient{f}(\x_{n+1}), \gradient{f}(\x_n) \rangle,
+\end{equation*}
+which proves that the gradient of consecutive terms of the Steepest Descent sequence for $f$ are perpendicular.  Now, by virtue of the recurrence formula \eqref{equation:SteepestDescent},
+\begin{align*}
+\langle \x_{n+2} - \x_{n+1}, &\x_{n+1} - \x_n \rangle = \langle t_{n+1}\gradient{f}(\x_{n+1}), t_n \gradient{f}(\x_n) \rangle \\
+&= t_{n+1}t_n \langle \gradient{f}(\x_{n+1}), \gradient{f}(\x_n) \rangle = 0, 
+\end{align*}
+which proves the statement.
+\end{proof}
+
+\begin{remark}
+As we saw in Example \ref{example:SDR} with the Rosenbrock function $\mathcal{R}_{1,1}$, the method of Steepest Descent pays a high penalty for moving in perpendicular increments.  
+\end{remark}

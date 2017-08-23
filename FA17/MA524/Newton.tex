@@ -1,4 +1,4 @@
-%!TEX root = notes.tex
+%!TEX root = main.tex
 
 \section{Newton's Method}
 \begin{example}[The Newton-Raphson method]
@@ -217,7 +217,7 @@ To avoid dealing with matrix inversion, we consider the following equivalent for
 \begin{equation}
 \gradient{\boldsymbol{g}}(\x_n) \cdot \big( \x_{n+1} - \x_n \big) = -\boldsymbol{g}(\x_n)
 \end{equation}
-This is a simple system of linear equations, and thus much faster to solve.  
+This is a simple system of linear equations, a much more reliable process, prone to less numerical error.
 
 The equivalent recurrence formula to search for critical points of a twice continuously differentiable real-valued function $f \colon \field{R}^d \to \field{R}$ is thus
 \begin{equation}
