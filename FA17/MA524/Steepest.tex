@@ -31,8 +31,18 @@ In order to search for a local minimum for a twice continuously differentiable f
 \end{enumerate}
 
 \begin{remark}
-Unlike Newton's method, this algorithm guarantees that $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.
+Sequences constructed following the formula in \eqref{equation:SteepestDescent} are said to be \emph{sequences of Steepest Descent} for $f$.
+
+Unlike Newton's method, this algorithm guarantees that these sequences are non-incresing: $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.  And even better: if there is convergence, their limit must a critical point of $f$.  These results are formalized in Theorems \ref{theorem:SteepestDescentDescends} and \ref{theorem:SteepestDescentConvergesToCritical}  below.
 \end{remark}
+
+\begin{theorem}\label{theorem:SteepestDescentDescends}
+Let $f\colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and let $\{ \x_n \}_{n\in\field{N}}$ be a Steepest Descent sequence for $f$.  If $\gradient{f}(\x_N) \neq 0$, then $f(\x_{N+1}) < f(\x_N)$.
+\end{theorem}
+
+\begin{theorem}\label{theorem:SteepestDescentConvergesToCritical}
+Let $f\colon \field{R}^d \to \field{R}$ be a real-valued function, let $\x_0 \in \field{R}^d$ be an initial guess.  Assume $S = \{ \x \in \field{R}^d :  f(\x) \leq f(\x_0) \}$ is a compact set and $f$ is continuously differentiable in $S$.  Under these conditions, the limit of any convergent subsequence of the associated Steepest Descent sequence $\{ \x_n \}_{n\in \field{N}}$ is a critical point of $f$.
+\end{theorem}
 
 \begin{example}
 For the polynomial function $p_4(x,y) = x^4-4xy+y^4$ from Example \ref{example:NewtonPoly4}, using the same initial guesses as in Example \ref{example:preNewton4poly4}, we find the following behavior:
