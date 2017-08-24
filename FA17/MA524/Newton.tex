@@ -23,8 +23,8 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 \label{figure:Newton-Raphson}
 \end{figure}
 Note the result of applying this process a few times:
-
-\begin{table}[ht!]
+\begin{center}
+% \begin{table}[ht!]
 \begin{tabular}{|c|c|r|} \hline 
 $n$ & $x_n$ & $f(x_n)$ \\ \hline \hline 
 $0$ & $3.000000000000000$ & $7.0000E+00$ \\ \hline 
@@ -36,9 +36,10 @@ $5$ & $1.414213562373112$ & $4.7518E-14$ \\ \hline
 $6$ & $1.414213562373095$ & $-4.4409E-16$ \\ \hline 
 $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline 
 \end{tabular}
-\caption{Newton-Raphson method: Convergence to $\sqrt{2}$ with 15-digit accuracy in 6 steps}
-\label{table:Newton-Raphson}
-\end{table}
+% \caption{Newton-Raphson method: Convergence to $\sqrt{2}$ with 15-digit accuracy in 6 steps}
+% \label{table:Newton-Raphson}
+% \end{table}
+\end{center}
 \end{example}
 
 \begin{example}\label{example:NewtonRaphsonChoice}
@@ -109,7 +110,8 @@ For an initial guess $(x_0, y_0)$, the sequence computed by the Newton method is
 Let's run this process with three different initial guesses:
 \begin{enumerate}
 	\item Starting at $(x_0, y_0) = (-1.0,1.0)$, the sequence converges to $(0,0)$.  %See Table \ref{table:00}.
-	\begin{table}[ht!]
+	\begin{center}
+	% \begin{table}[ht!]
 	\begin{tabular}{|c|c|c|} \hline 
 	$n$ & $x_n$ & $y_n$ \\ \hline \hline 
 	$0$ & $-1.00000000$ & $1.00000000$ \\ \hline 
@@ -120,11 +122,13 @@ Let's run this process with three different initial guesses:
 	$5$ & $-0.00000000$ & $0.00000000$ \\ \hline 
 	$6$ & $-0.00000000$ & $0.00000000$ \\ \hline 
 	\end{tabular}
-	\caption{Newton Method: Convergence to $(0,0)$ with 8-digit accuracy in 5 steps}
-	\label{table:N00}
-	\end{table}
+	% \caption{Newton Method: Convergence to $(0,0)$ with 8-digit accuracy in 5 steps}
+	% \label{table:N00}
+	% \end{table}
+	\end{center}
 	\item Starting at $(x_0,y_0) = (3.5, 2.1)$, the sequence converges to $(1,1)$.  %See Table \ref{table:11}.
-	\begin{table}[ht!]
+	\begin{center}
+	% \begin{table}[ht!]
 	\begin{tabular}{|c|c|c|} \hline 
 	$n$ & $x_n$ & $y_n$ \\ \hline \hline 
 	$0$ & $3.50000000$ & $2.10000000$ \\ \hline 
@@ -137,11 +141,13 @@ Let's run this process with three different initial guesses:
 	$7$ & $1.00000000$ & $1.00000000$ \\ \hline 
 	$8$ & $1.00000000$ & $1.00000000$ \\ \hline 
 	\end{tabular}
-	\caption{Newton Method: Convergence to $(1,1)$ with 8-digit accuracy in 7 steps}
-	\label{table:N11}
-	\end{table}
+	% \caption{Newton Method: Convergence to $(1,1)$ with 8-digit accuracy in 7 steps}
+	% \label{table:N11}
+	% \end{table}
+	\end{center}
 	\item Starting at $(x_0, y_0) = (-13.5, -7.3)$, the sequence converges to $(-1,-1)$.  %See Table \ref{table:-1-1}.
-	\begin{table}[ht!]
+	\begin{center}
+	% \begin{table}[ht!]
 	\begin{tabular}{|c|c|c|} \hline 
 	$n$ & $x_n$ & $y_n$ \\ \hline \hline 
 	$0$ & $-13.50000000$ & $-7.30000000$ \\ \hline 
@@ -151,8 +157,7 @@ Let's run this process with three different initial guesses:
 	$4$ & $-2.72553474$ & $-1.73750959$ \\ \hline 
 	$5$ & $-1.87830623$ & $-1.36573112$ \\ \hline 
 	$6$ & $-1.36121191$ & $-1.15374930$ \\ \hline 
-	\end{tabular}
-	\begin{tabular}{|c|c|c|} \hline 
+	\end{tabular}~\begin{tabular}{|c|c|c|} \hline
 	$n$ & $x_n$ & $y_n$ \\ \hline \hline 
 	$7$ & $-1.09518303$ & $-1.04341362$ \\ \hline 
 	$8$ & $-1.00932090$ & $-1.00463507$ \\ \hline 
@@ -162,9 +167,10 @@ Let's run this process with three different initial guesses:
 	$12$ & $-1.00000000$ & $-1.00000000$ \\ \hline 
 	$13$ & $-1.00000000$ & $-1.00000000$ \\ \hline 
 	\end{tabular}
-	\caption{Newton Method: Convergence to $(-1,-1)$ with 8-digit accuracy in 11 steps}
-	\label{table:N-1-1}
-	\end{table}
+	% \caption{Newton Method: Convergence to $(-1,-1)$ with 8-digit accuracy in 11 steps}
+	% \label{table:N-1-1}
+	% \end{table}
+	\end{center}
 \end{enumerate}
 \end{example}
 
@@ -273,7 +279,7 @@ Consider the function $f(x)=x-\log x$ on $(0,\infty)$, which has a global minimu
 \end{itemize}
 Theorem \ref{theorem:QuadraticConvergence} guarantees that any initial guess $\x_0 \in \big(\tfrac{8}{9}, \tfrac{10}{9}\big)$ will give us good results (see Figure \ref{figure:QuadraticConvergence})
 \begin{figure}[ht!]
-\includegraphics[width=0.8\linewidth]{quadraticConv.png}
+\includegraphics[width=0.7\linewidth]{quadraticConv.png}
 \caption{Quadratic Convergence of the Newton-Raphson method}
 \label{figure:QuadraticConvergence}
 \end{figure}

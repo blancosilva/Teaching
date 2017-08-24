@@ -33,7 +33,9 @@ In order to search for a local minimum for a twice continuously differentiable f
 \begin{remark}
 Sequences constructed following the formula in \eqref{equation:SteepestDescent} are said to be \emph{sequences of Steepest Descent} for $f$.
 
-Unlike Newton's method, this algorithm guarantees that these sequences are non-incresing: $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.  And even better: if there is convergence, their limit must a critical point of $f$.  These results are formalized in Theorems \ref{theorem:SteepestDescentDescends} and \ref{theorem:SteepestDescentConvergesToCritical}  below.
+Unlike Newton's method, this algorithm guarantees that these sequences are non-increasing: $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.  And even better: if there is convergence, their limit must a critical point of $f$.  These results are formalized in Theorems \ref{theorem:SteepestDescentDescends} and \ref{theorem:SteepestDescentConvergesToCritical}  below.
+
+Steepest descent sequences have another interesting property: on each step $n$, the direction of descent $x_{n+1} - x_n$ is perpendicular to the direction of the next step!  We state and prove this result in Theorem \ref{theorem:SteepestDescentPerpSteps}.
 \end{remark}
 
 \begin{theorem}\label{theorem:SteepestDescentDescends}
@@ -44,139 +46,7 @@ Let $f\colon \field{R}^d \to \field{R}$ be a continuously differentiable real-va
 Let $f\colon \field{R}^d \to \field{R}$ be a real-valued function, let $\x_0 \in \field{R}^d$ be an initial guess.  Assume $S = \{ \x \in \field{R}^d :  f(\x) \leq f(\x_0) \}$ is a compact set and $f$ is continuously differentiable in $S$.  Under these conditions, the limit of any convergent subsequence of the associated Steepest Descent sequence $\{ \x_n \}_{n\in \field{N}}$ is a critical point of $f$.
 \end{theorem}
 
-\begin{example}
-For the polynomial function $p_4(x,y) = x^4-4xy+y^4$ from Example \ref{example:NewtonPoly4}, using the same initial guesses as in Example \ref{example:preNewton4poly4}, we find the following behavior:
-\begin{itemize}
-	\item Starting at $(x_0, y_0) = (-1.0,1.0)$, the sequence also converges to $(0,0)$, but this time in one step.
-	\begin{table}[ht!]
-	\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$0$ & $-1.000000$ & $1.000000$ & $6.000000$ \\ \hline 
-	$1$ & $0.000000$ & $0.000000$ & $0.000000$ \\ \hline 
-	$2$ & \texttt{nan} & \texttt{nan} & \texttt{nan} \\ \hline 
-	\end{tabular}
-	\caption{Steepest Descent: Convergence to $(0,0)$ accurately in exactly one step.}
-	\label{table:SD00}
-	\end{table}
-	\item Starting at $(x_0,y_0) = (3.5, 2.1)$, the sequence also converges to $(1,1)$.
-	\begin{table}[ht!]
-	\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$0$ & $3.500000$ & $2.100000$ & $140.110600$ \\ \hline 
-	$1$ & $1.044472$ & $1.753064$ & $3.310777$ \\ \hline 
-	$2$ & $1.141931$ & $1.063276$ & $-1.878163$ \\ \hline 
-	$3$ & $1.008581$ & $1.044435$ & $-1.988879$ \\ \hline 
-	$4$ & $1.013966$ & $1.006319$ & $-1.998931$ \\ \hline 
-	$5$ & $1.000898$ & $1.004472$ & $-1.999891$ \\ \hline 
-	$6$ & $1.001437$ & $1.000651$ & $-1.999989$ \\ \hline 
-	$7$ & $1.000093$ & $1.000461$ & $-1.999999$ \\ \hline 
-	\end{tabular}~\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$8$ & $1.000149$ & $1.000067$ & $-2.000000$ \\ \hline 
-	$9$ & $1.000010$ & $1.000048$ & $-2.000000$ \\ \hline 
-	$10$ & $1.000015$ & $1.000007$ & $-2.000000$ \\ \hline 
-	$11$ & $1.000001$ & $1.000005$ & $-2.000000$ \\ \hline 
-	$12$ & $1.000002$ & $1.000001$ & $-2.000000$ \\ \hline 
-	$13$ & $1.000000$ & $1.000001$ & $-2.000000$ \\ \hline 
-	$14$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
-	$15$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
-	\end{tabular}
-	\caption{Steepest Descent: Convergence to $(1,1)$ with 6-digit accuracy in 13 steps.}
-	\label{table:SD11}
-	\end{table}
-	\item Starting at $(x_0, y_0) = (-13.5, -7.3)$, the sequence converges to $(1,1)$, unlike with Newton's Method.
-	\begin{table}[ht!]
-	\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$0$ & $-13.500000$ & $-7.300000$ & $35660.686600$ \\ \hline 
-	$1$ & $2.362722$ & $-4.871733$ & $640.498302$ \\ \hline 
-	$2$ & $1.434154$ & $1.194162$ & $-0.586492$ \\ \hline 
-	$3$ & $1.021502$ & $1.130993$ & $-1.896212$ \\ \hline 
-	$4$ & $1.038817$ & $1.017881$ & $-1.991558$ \\ \hline 
-	$5$ & $1.002305$ & $1.012291$ & $-1.999167$ \\ \hline 
-	$6$ & $1.003909$ & $1.001808$ & $-1.999917$ \\ \hline 
-	$7$ & $1.000236$ & $1.001246$ & $-1.999992$ \\ \hline 
-	\end{tabular}~\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$8$ & $1.000399$ & $1.000185$ & $-1.999999$ \\ \hline 
-	$9$ & $1.000024$ & $1.000127$ & $-2.000000$ \\ \hline 
-	$10$ & $1.000041$ & $1.000019$ & $-2.000000$ \\ \hline 
-	$11$ & $1.000002$ & $1.000013$ & $-2.000000$ \\ \hline 
-	$12$ & $1.000004$ & $1.000002$ & $-2.000000$ \\ \hline 
-	$13$ & $1.000000$ & $1.000001$ & $-2.000000$ \\ \hline 
-	$14$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
-	$15$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
-	\end{tabular}
-	\caption{Steepest Descent: Convergence to $(1,1)$ with 6-digit accuracy in 14 steps.}
-	\label{table:SD-1-1}
-	\end{table}
-\end{itemize}
-\begin{figure}[ht!]
-\includegraphics[width=0.6\linewidth]{convergenceSteepest.png}
-\caption{The Method of Steepest Descent}
-\label{figure:SteepestConvergence}
-\end{figure}
-\end{example}
-
-\begin{example}\label{example:SDR}
-Notice what happens when we try to implement the same process on the Rosenbrock function $\mathcal{R}_{1,1}(x,y) = (1-x)^2 + (y-x^2)^2$, with a wide selection of initial guesses:
-\begin{itemize}[nosep]
-	\item Starting at $(x_0, y_0)=(-1,-2)$, the method converges to the wrong location: \newline
-	\noindent
-	\begin{tikzpicture}
-	\draw (5.5,0) node{
-	\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$0$ & $-1.000000$ & $-2.000000$ & $13.000000$ \\ \hline 
-	$1$ & $0.378555$ & $-1.483042$ & $3.031194$ \\ \hline 
-	$2$ & $-0.029793$ & $-0.394111$ & $1.216499$ \\ \hline 
-	$3$ & $0.589858$ & $-0.161742$ & $0.427984$ \\ \hline 
-	$4$ & $0.589858$ & $-0.161742$ & $0.427984$ \\ \hline 
-	$5$ & $0.589858$ & $-0.161742$ & $0.427984$ \\ \hline 
-	$6$ & $0.589858$ & $-0.161742$ & $0.427984$ \\ \hline 
-	$7$ & $0.589858$ & $-0.161742$ & $0.427984$ \\ \hline 
-	\end{tabular}};
-	\draw (0,0) node {\includegraphics[width=0.35\linewidth]{SDR1.png}};
-	\end{tikzpicture}
-	\item Starting at $(x_0, y_0) = (0,0.5)$, the method converges very slowly to the actual minimum: \newline
-	\noindent
-	\begin{tikzpicture}
-	\draw (5.2,0) node{
-	\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$0$ & $0.000000$ & $0.500000$ & $1.250000$ \\ \hline 
-	$1$ & $0.629348$ & $0.185326$ & $0.181800$ \\ \hline 
-	$2$ & $1.000000$ & $0.926629$ & $0.005383$ \\ \hline 
-	$3$ & $0.974549$ & $0.939354$ & $0.000756$ \\ \hline 
-	$4$ & $1.000000$ & $0.990256$ & $0.000095$ \\ \hline 
-	$5$ & $0.996637$ & $0.991937$ & $0.000013$ \\ \hline 
-	$6$ & $1.000000$ & $0.998663$ & $0.000002$ \\ \hline 
-	$7$ & $0.999539$ & $0.998893$ & $0.000000$ \\ \hline 
-	\end{tabular}};
-	\draw (0,0) node {\includegraphics[width=0.35\linewidth]{SDR2.png}};
-	\end{tikzpicture}
-	\item Starting at $(x_0, y_0)=(-1.9, 2)$, the method gets stuck on the initial guess: \newline
-	\noindent
-	\begin{tikzpicture}
-	\draw (5.4,0) node{
-	\begin{tabular}{|r|r|r|r|} \hline 
-	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
-	$0$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$1$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$2$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$3$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$4$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$5$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$6$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	$7$ & $-1.900000$ & $2.000000$ & $11.002100$ \\ \hline 
-	\end{tabular}};
-	\draw (0,0) node {\includegraphics[width=0.35\linewidth]{SDR3.png}};
-	\end{tikzpicture}
-\end{itemize}
-The reason for this behavior lies in the particularly tricky structure of the graph of the Rosenbrock function mainly, but also in the geometry of the Steepest Descent method.
-\end{example}
-
-\begin{theorem}
+\begin{theorem}\label{theorem:SteepestDescentPerpSteps}
 Let $f \colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and $\{ \x_n \}_{n\in\field{N}}$ a Steepest Descent sequence for $f$.  For any $n \in \field{N}$, $\langle \x_{n+2} - \x_{n+1}, \x_{n+1} - \x_n \rangle = 0$.
 \end{theorem}
 \begin{proof}
@@ -192,6 +62,132 @@ which proves that the gradient of consecutive terms of the Steepest Descent sequ
 which proves the statement.
 \end{proof}
 
-\begin{remark}
-As we saw in Example \ref{example:SDR} with the Rosenbrock function $\mathcal{R}_{1,1}$, the method of Steepest Descent pays a high penalty for moving in perpendicular increments.  
-\end{remark}
+\begin{example}
+For the polynomial function $p_4(x,y) = x^4-4xy+y^4$ from Example \ref{example:NewtonPoly4}, using the same initial guesses as in Example \ref{example:preNewton4poly4}, we find the following behavior:
+\begin{itemize}
+	\item Starting at $(x_0, y_0) = (-1.0,1.0)$, the sequence also converges to $(0,0)$, but this time in one step.
+	% \begin{table}[ht!]
+	\begin{center}
+	\begin{tabular}{|r|r|r|r|} \hline 
+	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+	$0$ & $-1.000000$ & $1.000000$ & $6.000000$ \\ \hline 
+	$1$ & $0.000000$ & $0.000000$ & $0.000000$ \\ \hline 
+	$2$ & \texttt{nan} & \texttt{nan} & \texttt{nan} \\ \hline 
+	\end{tabular}
+	% \caption{Steepest Descent: Convergence to $(0,0)$ accurately in exactly one step.}
+	% \label{table:SD00}
+	% \end{table}
+	\end{center}
+	\item Starting at $(x_0,y_0) = (3.5, 2.1)$, the sequence converges to $(1,1)$.
+	% \begin{table}[ht!]
+	\begin{center}
+	\begin{tabular}{|r|r|r|r|} \hline 
+	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+	$0$ & $3.500000$ & $2.100000$ & $140.110600$ \\ \hline 
+	$1$ & $1.044472$ & $1.753064$ & $3.310777$ \\ \hline 
+	$2$ & $1.141931$ & $1.063276$ & $-1.878163$ \\ \hline 
+	$3$ & $1.008581$ & $1.044435$ & $-1.988879$ \\ \hline 
+	$4$ & $1.013966$ & $1.006319$ & $-1.998931$ \\ \hline 
+	$5$ & $1.000898$ & $1.004472$ & $-1.999891$ \\ \hline 
+	$6$ & $1.001437$ & $1.000651$ & $-1.999989$ \\ \hline 
+	$7$ & $1.000093$ & $1.000461$ & $-1.999999$ \\ \hline 
+	% \end{tabular}~\begin{tabular}{|r|r|r|r|} \hline 
+	% $n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+	$8$ & $1.000149$ & $1.000067$ & $-2.000000$ \\ \hline 
+	$9$ & $1.000010$ & $1.000048$ & $-2.000000$ \\ \hline 
+	$10$ & $1.000015$ & $1.000007$ & $-2.000000$ \\ \hline 
+	$11$ & $1.000001$ & $1.000005$ & $-2.000000$ \\ \hline 
+	$12$ & $1.000002$ & $1.000001$ & $-2.000000$ \\ \hline 
+	$13$ & $1.000000$ & $1.000001$ & $-2.000000$ \\ \hline 
+	$14$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
+	$15$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
+	\end{tabular}
+	% \caption{Steepest Descent: Convergence to $(1,1)$ with 6-digit accuracy in 13 steps.}
+	% \label{table:SD11}
+	% \end{table}
+	\end{center}
+	\item Starting at $(x_0, y_0) = (-13.5, -7.3)$, the sequence converges to $(1,1)$ as well.
+	% \begin{table}[ht!]
+	\begin{center}
+	\begin{tabular}{|r|r|r|r|} \hline 
+	$n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+	$0$ & $-13.500000$ & $-7.300000$ & $35660.686600$ \\ \hline 
+	$1$ & $2.362722$ & $-4.871733$ & $640.498302$ \\ \hline 
+	$2$ & $1.434154$ & $1.194162$ & $-0.586492$ \\ \hline 
+	$3$ & $1.021502$ & $1.130993$ & $-1.896212$ \\ \hline 
+	$4$ & $1.038817$ & $1.017881$ & $-1.991558$ \\ \hline 
+	$5$ & $1.002305$ & $1.012291$ & $-1.999167$ \\ \hline 
+	$6$ & $1.003909$ & $1.001808$ & $-1.999917$ \\ \hline 
+	$7$ & $1.000236$ & $1.001246$ & $-1.999992$ \\ \hline 
+	% \end{tabular}~\begin{tabular}{|r|r|r|r|} \hline 
+	% $n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+	$8$ & $1.000399$ & $1.000185$ & $-1.999999$ \\ \hline 
+	$9$ & $1.000024$ & $1.000127$ & $-2.000000$ \\ \hline 
+	$10$ & $1.000041$ & $1.000019$ & $-2.000000$ \\ \hline 
+	$11$ & $1.000002$ & $1.000013$ & $-2.000000$ \\ \hline 
+	$12$ & $1.000004$ & $1.000002$ & $-2.000000$ \\ \hline 
+	$13$ & $1.000000$ & $1.000001$ & $-2.000000$ \\ \hline 
+	$14$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
+	$15$ & $1.000000$ & $1.000000$ & $-2.000000$ \\ \hline 
+	\end{tabular}
+	% \caption{Steepest Descent: Convergence to $(1,1)$ with 6-digit accuracy in 14 steps.}
+	% \label{table:SD-1-1}
+	% \end{table}
+	\end{center}
+\end{itemize}
+\end{example}
+
+\begin{example}\label{example:SDR}
+Notice what happens when we try to implement the same process on the Rosenbrock function $\mathcal{R}_{1,1}(x,y) = (1-x)^2 + (y-x^2)^2$, with the initial guess $(x_0, y_0) = (-2,2)$.  The sequence does converge to the minimum $(1,1)$, albeit very slowly.
+\begin{center}
+\begin{tabular}{|r|r|r|r|} \hline 
+ $n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+$0$ & $-2.000000$ & $2.000000$ & $13.000000$ \\ \hline 
+$1$ & $-0.166290$ & $2.309522$ & $6.567163$ \\ \hline 
+$2$ & $0.256054$ & $-0.056128$ & $0.568264$ \\ \hline 
+$3$ & $0.613477$ & $0.007683$ & $0.285318$ \\ \hline 
+$4$ & $0.568566$ & $0.259241$ & $0.190235$ \\ \hline 
+$5$ & $0.715784$ & $0.285524$ & $0.132227$ \\ \hline 
+$6$ & $0.689755$ & $0.431319$ & $0.098227$ \\ \hline 
+$7$ & $0.779264$ & $0.447299$ & $0.074310$ \\ \hline 
+$8$ & $0.761554$ & $0.546496$ & $0.057977$ \\ \hline 
+$9$ & $0.823325$ & $0.557524$ & $0.045696$ \\ \hline 
+$10$ & $0.810322$ & $0.630358$ & $0.036667$ \\ \hline 
+$11$ & $0.855862$ & $0.638488$ & $0.029614$ \\ \hline 
+$12$ & $0.845883$ & $0.694385$ & $0.024199$ \\ \hline 
+$13$ & $0.880846$ & $0.700627$ & $0.019862$ \\ \hline 
+$14$ & $0.872964$ & $0.744776$ & $0.016437$ \\ \hline 
+$15$ & $0.900551$ & $0.749702$ & $0.013647$ \\ \hline 
+$16$ & $0.894200$ & $0.785276$ & $0.011399$ \\ \hline 
+\end{tabular}~\begin{tabular}{|r|r|r|r|} \hline
+ $n$ & $x_n$ & $y_n$ & $f(x_n,y_n)$ \\ \hline \hline 
+$17$ & $0.916394$ & $0.789239$ & $0.009544$ \\ \hline 
+$18$ & $0.911201$ & $0.818326$ & $0.008028$ \\ \hline 
+$19$ & $0.929317$ & $0.821560$ & $0.006766$ \\ \hline 
+$20$ & $0.925024$ & $0.845608$ & $0.005723$ \\ \hline 
+$21$ & $0.939976$ & $0.848277$ & $0.004847$ \\ \hline 
+$22$ & $0.936397$ & $0.868329$ & $0.004118$ \\ \hline 
+$23$ & $0.948845$ & $0.870551$ & $0.003502$ \\ \hline 
+$24$ & $0.945840$ & $0.887385$ & $0.002986$ \\ \hline 
+$25$ & $0.956276$ & $0.889248$ & $0.002548$ \\ \hline 
+$26$ & $0.953739$ & $0.903457$ & $0.002178$ \\ \hline 
+$27$ & $0.962537$ & $0.905028$ & $0.001864$ \\ \hline 
+$28$ & $0.960386$ & $0.917075$ & $0.001597$ \\ \hline 
+$29$ & $0.967837$ & $0.918405$ & $0.001369$ \\ \hline 
+$30$ & $0.966007$ & $0.928657$ & $0.001176$ \\ \hline 
+$31$ & $0.972342$ & $0.929788$ & $0.001010$ \\ \hline 
+$32$ & $0.970780$ & $0.938539$ & $0.000869$ \\ \hline 
+$33$ & $0.976182$ & $0.939503$ & $0.000748$ \\ \hline 
+\end{tabular}
+\end{center}
+\end{example}
+
+
+\begin{figure}[ht!]
+\begin{tabular}{cc}
+\includegraphics[width=0.62\linewidth]{convergenceSteepest.png} &
+\includegraphics[width=0.38\linewidth]{SDR3.png}
+\end{tabular}
+\caption{The Method of Steepest Descent}
+\label{figure:SteepestConvergence}
+\end{figure}

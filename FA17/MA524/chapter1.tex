@@ -4,6 +4,27 @@
 
 The starting point of these notes is the concept of \emph{optimization} as developed in MATH 241 (see e.g.~\cite[Chapter~14]{finney2001thomas})
 
+\begin{definition}\label{def:gradient}
+If $f(x,y)$ is differentiable in an open region containing the point $(x_0,y_0)$, we define the \emph{gradient vector} of $f(x,y)$ at $(x_0, y_0)$ as the vector 
+\begin{equation*}
+\gradient{f}(x_0, y_0) = \bigg[ \frac{\partial f(x_0, y_0)}{\partial x}, \frac{\partial f(x_0, y_0)}{\partial y} \bigg].
+\end{equation*}
+Given any vector $\boldsymbol{v} = [v_1, v_2]$ with $\norm{\boldsymbol{v}} = \big( v_1^2+v_2^2\big)^{1/2}=1$ (what we call a \emph{unit vector} or a \emph{direction}), we define the \emph{directional derivative} of $f$ in the direction $\boldsymbol{v}$ at $(x_0, y_0)$ by
+\begin{equation*}
+D_{\boldsymbol{v}}f(x_0, y_0) = \langle \gradient{f}(x_0, y_0), \boldsymbol{v} \rangle = v_1 \frac{\partial f(x_0,y_0)}{\partial x} + v_2 \frac{\partial f(x_0,y_0)}{\partial y}.
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+The gradient has many interesting properties.  Assume $f(x,y)$ is a differentiable function.
+\begin{description}
+\item[Fastest Increase] At any point $(x,y)$, the function $f$ increases most rapidly in the direction of the gradient vector $\boldsymbol{v} = \gradient{f}(x,y)$.  The derivative in that direction is $D_{\boldsymbol{v}}f(x,y) = \norm{\gradient{f}(x,y)}$.
+\item[Fastest Decrease] At any point $(x,y)$, the function $f$ decreases most rapidly in the direction $\boldsymbol{v} = -\gradient{f}(x,y)$.  The derivative in that direction is $D_{\boldsymbol{v}}f(x,y) = -\norm{\gradient{f}(x,y)}$.
+\item[Zero Change] Any direction $\boldsymbol{v}$ perpendicular to a non-zero gradient is a direction of \emph{zero change} in $f$ at $(x,y)$: $D_{\boldsymbol{v}}f(x,y) = 0$.
+\item[Tangents to Level Curves] At every point $(x,y)$ in the domain of $f$, the gradient $\gradient{f}(x,y)$ is perpendicular to the level curve through $(x,y)$. 
+\end{description}
+\end{remark}
+
 \begin{definition}\label{def:localminimum}
 Let $D\subseteq \field{R}^2$ be a region on the plane containing the point $(x_0, y_0)$.  We say that the real-valued function $f\colon D \to \field{R}$ has a \emph{local minimum} at $(x_0,y_0)$ if $f(x_0,y_0) \leq f(x,y)$ for all domain points $(x,y)$ in an open disk centered at $(x_0,y_0)$.  In that case, we also say that $f(x_0,y_0)$ is a \emph{local minimum value} of $f$ in $D$.
 \end{definition}
