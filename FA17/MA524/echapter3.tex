@@ -2,8 +2,87 @@
 
 \section{Exercises}
 
+\begin{problem}[Basic]\cite[p.249 \#1]{gautschi2011numerical}
+The following sequences all converge to zero. 
+\begin{align*}
+v_n &= n^{-10} &w_n &= 10^{-n} &x_n &=10^{-n^2} &y_n &=n^{10}3^{-n} &z_n &=10^{-3\cdot 2^n}
+\end{align*}
+Indicate the type of convergence (See Appendix \ref{appendix:convergence}).  
+\end{problem}
+
+\begin{problem}[Advanced]\cite[p.249 \#4]{gautschi2011numerical}
+Give an example of a positive sequence $\{ \varepsilon_n \}_{n\in\field{N}}$ converging to zero in such a way that $\lim_n \frac{\varepsilon_{n+1}}{\varepsilon_n^p} = 0$ for some $p>1$, but not converging to zero with any order $q > p$.
+\end{problem}
+
 \begin{problem}[Basic]
-Find an example of a function $f\colon \field{R} \to \field{R}$ (different from the function in Example \ref{example:NewtonRaphsonloop}) with a unique root at $x=0$ for which the Newton-Raphson sequence is a loop no matter the initial guess $x_0\neq 0$: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n \in \field{N}$.
+Find an example of a function $f\colon \field{R} \to \field{R}$ (different from the function in Example \ref{example:NewtonRaphsonloop}) with a unique root at $x=0$ for which the Newton-Raphson sequence is a loop no matter the initial guess $x_0\neq 0$: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n \in \field{N}$.  Bonus points is your function is trigonometric.
+\end{problem}
+
+\begin{problem}[Intermediate]\cite[p.251 \#14]{gautschi2011numerical}
+Consider the equation 
+\begin{equation*}
+x = \cos x.
+\end{equation*}
+\begin{enumerate}
+	\item Show graphically that there exists a unique positive root $x^\star$.  Indicate approximately where it is located.
+	\item Show that Newton's method applied to $f(x) = x-\cos x$ converges for any initial guess $x_0 \in \big[0,\frac{\pi}{2}\big]$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Intermediate]\cite[p.251 \#16]{gautschi2011numerical}
+Consider the equation 
+\begin{equation*}
+\tan x + \lambda x = 0, \quad (0 < \lambda < 1).
+\end{equation*}
+\begin{enumerate}
+	\item Show graphically, as simply as possible, that there is exactly one root $x^\star$ in the interval $\big[ \frac{1}{2}\pi, \pi\big]$.
+	\item Does Newton's method converge to the root $x^\star \in \big[ \frac{1}{2}\pi, \pi\big]$ if the initial approximation is taken to be $x_0 = \pi$?  Justify your answer.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Intermediate]\cite[p.252 \#17]{gautschi2011numerical}
+Consider the equation 
+\begin{equation*}
+f(x) = \log^2 x - x -1, (x > 0).
+\end{equation*} 
+\begin{enumerate}
+	\item Graphical considerations suggest that there is exactly one positive root $x^\star$, and that $0 <x^\star < 1$.  Prove this.
+	\item What is the largest positive $0<x_0\leq 1$ such that Newton's method started at $x_0$ converges to $x^\star$?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Advanced]\cite[p.252 \#18]{gautschi2011numerical}
+Consider Kepler's equation
+\begin{equation*}
+f(x) = x -a \sin x - b, \quad 0 <\abs{a}<1, \quad b \in \field{R}
+\end{equation*}
+where $a, b$ are parameters.
+\begin{enumerate}
+	\item Show that for each $a,b$ there is exactly one real root $x^\star = x^\star(a,b)$ that satisfies
+	\begin{equation*}
+	b-\abs{a} \leq x^\star(a,b) \leq b+\abs{a}
+	\end{equation*} 
+	\item Let $m \in \field{N}$ satisfy $m\pi < b < (m+1)\pi$.  Show that Newton's method with starting value
+	\begin{equation*}
+	x_0 = \begin{cases}
+	(m+1)\pi &\text{if }(-1)^ma >0 \\
+	m\pi &\text{otherwise}
+	\end{cases}
+	\end{equation*}
+	is guaranteed to converge (monotonically) to $x^\star(a,b)$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Basic]
+Consider the two equivalent equations
+\begin{align}
+x\log x -1 &= 0, \label{eq:GaustchiLog1} \\
+\log x - \frac{1}{x} &= 0. \label{eq:GaustchiLog2}
+\end{align}
+\begin{enumerate}
+	\item Show that there is exactly one positive root and find a rough interval containing it.
+	\item For both \eqref{eq:GaustchiLog1} and \eqref{eq:GaustchiLog2}, determine the largest interval on which Newton's method converges. \newline \textbf{Hint: } Investigate the convexity of the functions involved.
+\end{enumerate}
 \end{problem}
 
 \begin{problem}[CAS]
