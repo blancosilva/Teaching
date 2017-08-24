@@ -93,9 +93,14 @@ Find the extreme values of the function $f(x,y,z)=xy+z^2$ on the circle in which
 \end{problem}
 
 \begin{problem}[CAS]
-Write a script (in your favorite computer language or CAS) that finds the minimum of a real-valued function $f \colon \field{R} \to \field{R}$ over 
+Write a routine (in your favorite CAS) that uses \emh{symbolic computation} to find the minimum of a real-valued function $f \colon \field{R} \to \field{R}$ over 
 \begin{enumerate}
 	\item a closed interval $[a,b]$
-	\item An interval of the form $[a,\infty)$
+	\item An interval of the form $[a,\infty)$, or $(-\infty, b]$
 \end{enumerate}
+The routine should accept as input:
+\begin{itemize}
+	\item the expression of the function $f$,
+	\item the endpoints $a,b$.
+\end{itemize}
 \end{problem}
