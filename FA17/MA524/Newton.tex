@@ -1,6 +1,8 @@
 %!TEX root = main.tex
 
 \section{Newton's Method}
+
+\subsection{Newton-Raphson Method to search for roots of univariate functions}
 \begin{example}[The Newton-Raphson method]
 In order to find a good estimation of $\sqrt{2}$ with many decimal places, we allow a computer to find better and better approximations of the solution of the equation $f(x)=x^2-2$.  We start with an initial guess, say $x_0=3$.  We construct a sequence $\{ x_n \}_{n\in\field{N}}$ that converges to $\sqrt{2}$ as follows:
 \begin{enumerate}
@@ -18,7 +20,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 \end{equation*}
 \end{enumerate}
 \begin{figure}[ht!]
-\includegraphics[width=0.65\linewidth]{newton1.png}
+\includegraphics[width=0.6\linewidth]{newton1.png}
 \caption{Newton-Raphson iterative method}
 \label{figure:Newton-Raphson}
 \end{figure}
@@ -49,7 +51,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n \big( 2- x_n \big).
 \end{align*}
 Notice the two factors in the right-hand side of that expression: $x_n$, and $2-x_n$.  If the initial guess does not satisfy $0<x_0<2$, then the next iteration gives a non-positive value (see Figure \ref{figure:NewtonRaphsonChoice}).  The method will not work on those instances: convergence to a solution is not guaranteed.
 \begin{figure}[ht!]
-\includegraphics[width=0.65\linewidth]{badNewton.png}
+\includegraphics[width=0.6\linewidth]{badNewton.png}
 \caption{Initial guess must carefully be chosen in Newton-Raphson}
 \label{figure:NewtonRaphsonChoice}
 \end{figure}
@@ -67,6 +69,88 @@ This sequence turns into a loop: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n\in \fi
 \label{figure:NewtonRaphsonloop}
 \end{figure}
 \end{example}
+
+\subsection{Efficiency of Newton-Raphson's Method}
+To study the error in a Newton-Raphson iteration $\{ x_n \}_{n \in \field{N}}$ that converges to a root $x^\star$ of the function $f$, we observe that
+\begin{align}
+x_{n+1} - x^\star &= x_n - x^\star - \frac{f(x_n)}{f'(x_n)} \nonumber \\
+&= (x_n - x^\star) \bigg( 1 - \frac{f(x_n)-\overbrace{f(x^\star)}^0}{(x_n-x^\star)f'(x_n)} \bigg) \nonumber \\
+&= (x_n - x^\star) \bigg( 1 - \frac{1}{f'(x_n)} \frac{f(x_n) - f(x^\star)}{x_n - x^\star} \bigg) \label{eq:NRestimateStandBy}
+\end{align}
+Recall at this point the definition of \emph{divided differences} for any $n$--times differentiable function $g\colon \field{R} \to \field{R}$, and a family of values $t_0 < t_1 < \dotsb < t_n$: 
+\begin{align*}
+\Delta g[t_0,t_1] &= \frac{g(t_1)-g(t_0)}{t_1-t_0} \\
+\Delta g[t_0,t_0] &= \lim_{t\to t_0} \Delta g[t,t_0] = g'(t_0) \\
+\Delta g[t_0,t_1,\dotsc,t_n] &= \frac{\Delta g[t_1, t_2, \dotsc, t_n] - \Delta g[t_0, t_1, \dotsc, t_{n-1}]}{t_n-t_0} \\
+\Delta g[\underbrace{t_0, \dotsc, t_0}_{n+1 \text{ times}}] &= \frac{1}{n!} g^{(n)}(t_0) \qquad \text{(Why? \textbf{Hint:} Taylor's Polynomial)}
+\end{align*}
+We can then rewrite \eqref{eq:NRestimateStandBy} in terms of divided differences as follows:
+\begin{align*}
+x_{n+1} - x^\star &= (x_n - x^\star) \bigg( 1 - \frac{\Delta f[x_n, x^\star]}{\Delta f[x_n, x_n]}  \bigg) \\
+&= (x_n - x^\star) \frac{ \Delta f[x_n, x_n] - \Delta f[x_n, x^\star] }{\Delta f [x_n,x_n]} \\
+&= (x_n - x^\star) \frac{ \Delta f[x_n, x_n] - \Delta f[x_n, x^\star] }{x_n - x^\star} \frac{ x_n - x^\star }{\Delta f [x_n,x_n]} \\
+& =(x_n - x^\star)^2 \frac{\Delta f[x_n, x_n, x^\star]}{\Delta f[x_n, x_n]}
+\end{align*}
+Therefore, 
+\begin{equation*}
+\lim_n \frac{x_{n+1}-x^\star}{(x_n - x^\star)^2} = \lim_n \frac{\Delta f[x_n, x_n, x^\star]}{\Delta f[x_n, x_n]} 
+= \frac{f''(x^\star)}{2f'(x^\star)}.
+\end{equation*}
+If $f''(x^\star) \neq 0$, the Newton's iteration exhibits quadratic convergence.\footnote{See Appendix \ref{appendix:convergence}}
+
+\begin{remark} 
+We have just proven that, if a Newton-Raphson for a function $f$ gives a convergent sequence, the convergence is quadratic.  But, how can we guarantee convergence to a root of $f$?  The key is in \emph{how far can we start the sequence} given the structure of the graph of $f$.
+\end{remark}
+
+\begin{theorem}[Local Convergence for the Newton-Raphson Method]
+Let $x^\star$ be a simple root of the equation $f(x)=0$, and there exists $\varepsilon > 0$ so that 
+\begin{itemize}
+	\item $f$ is twice continuously differentiable in the interval $(x^\star-\varepsilon, x^\star + \varepsilon)$, and
+	\item there are no critical points of $f$ on that interval.
+\end{itemize}  
+Set
+\begin{equation*}
+M(\varepsilon) = \max \bigg\{ \bigg\lvert \frac{f''(s)}{2f'(t)} \bigg\rvert : x^\star -\varepsilon < s,t < x^\star + \varepsilon \bigg\}.
+\end{equation*}
+If $\varepsilon$ is small enough so that $\varepsilon M(\varepsilon) < 1$, then 
+\begin{enumerate}
+	\item \label{thm:LCNR1} There are no other roots of $f$ in $(x^\star -\varepsilon, x^\star+\varepsilon)$.
+	\item \label{thm:LCNR2} Any Newton-Raphson iterations starting at an initial guess $x_0 \neq x^\star$ in that interval will converge (quadratically) to $x^\star$
+\end{enumerate} 
+\end{theorem}
+\begin{proof}
+Start with Taylor's Theorem for $f$ around $x^\star$.  Given $x\neq x^\star$ satisfying $\abs{x-x^\star} < \varepsilon$, there exists $\xi$ between $x$ and $x^\star$ so that
+\begin{align*}
+f(x) &= f(x^\star) + (x-x^\star) f'(x^\star) + \tfrac{1}{2}(x-x^\star)^2 f''(\xi) \\
+&= (x-x^\star)f'(x^\star) \bigg( 1 + (x-x^\star) \frac{f''(\xi)}{2f'(x^\star)} \bigg)
+\end{align*}
+Note that the three factors on the last expression are never zero:
+\begin{align*}
+x-x^\star &\neq 0 &&\text{(since }x \neq x^\star\text{ by hypothesis)} \\
+f'(x^\star) &\neq 0 &&\text{(no critical points by hypothesis)} \\
+\bigg\lvert (x-x^\star) \frac{f''(\xi)}{2f'(x^\star)} \bigg\rvert &\leq \varepsilon M(\varepsilon) < 1 &&\text{(by hypothesis on }M(\varepsilon))
+\end{align*}
+This proves \ref{thm:LCNR1}.
+
+We want to prove now that all terms of a Newton-Raphson iteration stay in the inverval $(x^\star - \varepsilon, x^\star + \varepsilon)$. We do that by induction:
+\begin{itemize}
+	\item $\abs{x_0 - x^\star}<\varepsilon$ by hypothesis.
+	\item Assume $\abs{x_n-x^\star} < \varepsilon$.  In that case,
+	\begin{equation*}
+	\big\lvert x_{n+1} - x^\star \big\rvert = \big\lvert x_n - x^\star \big\rvert^2 \bigg\lvert \frac{\Delta f[x_n, x_n, x^\star]}{\Delta f[x_n, x_n]} \bigg\rvert
+	\end{equation*}	
+	but $\Delta f [x_n, x_n] = f'(x_n)$, and there exist $\xi_n$ between $x_n$ and $x^\star$ so that $\Delta f[x_n,x_n,x^\star] = \tfrac{1}{2}f''(\xi_n)$; therefore,
+	\begin{equation*}
+	\big\lvert x_{n+1} - x^\star \big\rvert = \big\lvert x_n - x^\star \big\rvert^2 \bigg\lvert \frac{f''(\xi)}{2f'(x_n)} \bigg\rvert \leq \varepsilon^2 M(\varepsilon) = \varepsilon \cdot \varepsilon M(\varepsilon) < \varepsilon.
+	\end{equation*}
+\end{itemize}
+The next step is to prove that there is convergence.  A similar computation to the previous, gives us
+\begin{equation*}
+\big\lvert x_n - x^\star \big\rvert \leq \varepsilon M(\varepsilon) \big\lvert x_{n-1} - x^\star \big\rvert \leq \big( \varepsilon M(\varepsilon) \big)^n \big\lvert x_0 - x^\star \big\rvert.
+\end{equation*}
+\end{proof}
+
+\subsection{Extension to higher dimensions}
 
 Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ as follows.  
 \begin{itemize}
@@ -174,6 +258,7 @@ Let's run this process with three different initial guesses:
 \end{enumerate}
 \end{example}
 
+\subsection{Optimization via Newton's Method}
 We can readily see how this process aids in the computation of critical points of twice continuously differentiable real-valued function $f\colon \field{R}^d \to \field{R}$:
 \begin{enumerate}
 	\item Set $\boldsymbol{g}(\x) = \gradient{f}(\x) = \big[ \frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d} \big]$
@@ -252,7 +337,7 @@ or equivalently,
 \end{equation*}
 \end{example}
 
-There are some theoretical results that aid in the search for a \emph{good} initial guess.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence}\footnote{See Appendix \ref{appendix:convergence}} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
+There are some theoretical results that aid in the search for a \emph{good} initial guess.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
 
 \begin{theorem}[Quadratic Convergence Theorem]\label{theorem:QuadraticConvergence}
 Suppose $f\colon \field{R}^d \to \field{R}$ is a twice continuously differentiable real-valued function, and $\xstar$ is a critical point of $f$. Let $\mathcal{N}(\x) = \x - \big[ \Hess{f}(\x) \big]^{-1} \cdot \gradient{f}(\x)$. If there exists 
