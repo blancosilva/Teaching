@@ -94,17 +94,43 @@ Design a process in \texttt{desmos.com} to test the search for critical points g
 \end{figure}
 \end{problem}
 
+\begin{problem}[CAS]
+The purpose of this problem is the design of \emph{Horner's method} to evaluate polynomials effectively.  Given a polynomial
+\begin{equation*}
+p(x) = \sum_{k=0}^n a_k x^k = a_0 + a_1 x + \dotsb + a_n x^n,
+\end{equation*}
+where $a_0, a_1, \dotsc, a_n$ are real numbers, and given $x_0 \in \field{R}$, we define the Horner's scheme $\{ b_0, b_1, \dotsc, b_n \}$ to evaluate $p(x_0)$ as follows:
+\begin{align*}
+b_n &= a_n \\
+b_{n-1} &= a_{n-1} + b_n x_0 \\
+b_{n-2} &= a_{n-2} + b_{n-1} x_0 \\
+&\vdots \\
+b_0 &= a_0 + b_1 x_0
+\end{align*}
+\begin{enumerate}
+	\item Prove that $b_0 = p(x_0)$
+	\item Use Horner's scheme to evaluate $p(x) = 2x^3 - 6x^2 +2x -1$ at $x=3$.  Illustrate all steps, and count the number of basic operations (addition, subtraction, multiplication, division) used.
+	\item Employ the usual method of evaluation of polynomials to evaluate $p(x) = 2x^3 - 6x^2 +2x -1$ at $x=3$.  Count the number of basic operations (note that a raising to the cube counts as two multiplications, e.g.)
+	\item In a computer language or CAS of your choice, write a routine to apply Horner's scheme to evaluate polynomials.  Your routine should gather the following inputs:
+	\begin{itemize}
+		\item A list of coefficients \texttt{[a0, a1, ..., an]} representing the polynomial $p(x)$.
+		\item A value $x_0$
+	\end{itemize}
+	The output of your routine should be $p(x_0)$.
+\end{enumerate}
+\end{problem}
+
 \begin{problem}[CAS]\label{problem:CASNewton}
 In a computer language or CAS of your choice, design a routine that gathers the following inputs:
 \begin{itemize}
-\item the expression of a generic real-valued function $f\colon \field{R}^d \to \field{R}$, 
+\item the definition of a generic real-valued function $f\colon \field{R}^d \to \field{R}$, 
 \item the gradient $\gradient{f}$ of that function,
 \item an initial guess $\x_0 \in \field{R}^d$, 
 \item a number $N$ of steps,
 \end{itemize}
 and produces the first $N+1$ terms of the Newton sequence to approximate a root of $f$.
 
-Modify the previous routine to receive as input, instead of a number of steps, a \emph{tolerance} \texttt{tol} indicating the accuracy of the solution.  For example, if we require a root of the equation $f(x)=0$ accurate to the first 16 correct decimal places, we use \texttt{tol = 10e-16}.
+Modify the previous routine to receive as input, instead of a number of steps, a \emph{tolerance} \texttt{tol} indicating the accuracy of the solution.  For example, if we require a root of the equation $f(x)=0$ accurate to the first 16 correct decimal places, we use \texttt{tol = 1e-16}.
 \end{problem}
 
 \begin{problem}[CAS]
