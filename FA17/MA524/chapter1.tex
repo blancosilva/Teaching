@@ -6,7 +6,7 @@ The starting point of these notes is the concept of \emph{optimization} as devel
 
 \begin{definition}\label{def:gradient}
 If $f(x,y)$ is differentiable in an open region containing the point $(x_0,y_0)$, we define the \emph{gradient vector} of $f(x,y)$ at $(x_0, y_0)$ as the vector 
-\index{gradient}\index{vector!unit}\index{direction}\index{derivative!directional}
+\index{Gradient}\index{Vector!unit}\index{Direction}\index{Derivative!directional}
 \begin{equation*}
 \gradient{f}(x_0, y_0) = \bigg[ \frac{\partial f(x_0, y_0)}{\partial x}, \frac{\partial f(x_0, y_0)}{\partial y} \bigg].
 \end{equation*}
@@ -22,11 +22,11 @@ The gradient has many interesting properties.  Assume $f(x,y)$ is a differentiab
 \item[Fastest Increase] At any point $(x,y)$, the function $f$ increases most rapidly in the direction of the gradient vector $\boldsymbol{v} = \gradient{f}(x,y)$.  The derivative in that direction is $D_{\boldsymbol{v}}f(x,y) = \norm{\gradient{f}(x,y)}$.
 \item[Fastest Decrease] At any point $(x,y)$, the function $f$ decreases most rapidly in the direction $\boldsymbol{v} = -\gradient{f}(x,y)$.  The derivative in that direction is $D_{\boldsymbol{v}}f(x,y) = -\norm{\gradient{f}(x,y)}$.
 \item[Zero Change] Any direction $\boldsymbol{v}$ perpendicular to a non-zero gradient is a direction of \emph{zero change} in $f$ at $(x,y)$: $D_{\boldsymbol{v}}f(x,y) = 0$.
-\item[Tangents to Level Curves] At every point $(x,y)$ in the domain of $f$, the gradient $\gradient{f}(x,y)$ is perpendicular to the level curve through $(x,y)$. \index{Level Curve}
+\item[Tangents to Level Curves] At every point $(x,y)$ in the domain of $f$, the gradient $\gradient{f}(x,y)$ is perpendicular to the level curve through $(x,y)$. 
 \end{description}
 \end{remark}
 
-\begin{definition}\label{def:localminimum}\index{Minimum!local}\index{Minimum!value}
+\begin{definition}\label{def:localminimum}
 Let $D\subseteq \field{R}^2$ be a region on the plane containing the point $(x_0, y_0)$.  We say that the real-valued function $f\colon D \to \field{R}$ has a \emph{local minimum} at $(x_0,y_0)$ if $f(x_0,y_0) \leq f(x,y)$ for all domain points $(x,y)$ in an open disk centered at $(x_0,y_0)$.  In that case, we also say that $f(x_0,y_0)$ is a \emph{local minimum value} of $f$ in $D$.
 \end{definition}
 
@@ -38,12 +38,12 @@ Let $D \subseteq \field{R}^2$ and let $f \colon D \to \field{R}$ be a function f
 
 The local minima of these functions are among the zeros of the equation $\gradient{f}(x,y)=0$, the so-called \emph{critical points} of $f$. More formally:
 
-\begin{definition}\label{def:criticalpoint}\index{Critical Point}
+\begin{definition}\label{def:criticalpoint}
 An interior point of the domain of a function $f(x,y)$ where both directional derivatives are zero, or where at least one of the directional derivatives do not exist, is a \emph{critical point} of $f$.
 \end{definition}
 
 We employed the \emph{Second Derivative Test for Local Extreme Values} to characterize some minima:
-\begin{theorem}\label{theorem:2DTforLEV}\index{Test!Second Derivative Test for Local Extreme Values}
+\begin{theorem}\label{theorem:2DTforLEV}
 Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partial derivatives are continuous throughout a disk centered at the point $(x_0,y_0)$, and that $\gradient{f}(x_0,y_0)=0$. If the two following conditions are satisfied, then $f(x_0,y_0)$ is a local minimum value:
 \begin{align}
 \frac{\partial^2 f (x_0,y_0)}{\partial x^2} &> 0 \\
@@ -58,7 +58,7 @@ Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partia
 The restriction of this result to univariate functions is even simpler: Suppose $f''$ is continuous on an open interval that contains $x_0$.  If $f'(x_0)=0$ and $f''(x_0)>0$, then $f$ has a local minimum at $x_0$. 
 \end{remark}
 
-\begin{example}[Rosenbrock Functions]\label{example:Rosenbrock}\index{Rosenbrock Function}
+\begin{example}[Rosenbrock Functions]\label{example:Rosenbrock}\index{Function!Rosenbrock}
 Given strictly positive parameters $a,b > 0$, consider the Rosenbrock function 
 \begin{equation*} 
 \mathcal{R}_{a,b}(x, y) = (a-x)^2 + b(y-x^2)^2.
@@ -233,28 +233,28 @@ The purpose of these notes is the development of a theory to deal with optimizat
 	\end{equation*}
 	For instance, the \emph{open ball} of radius $r>0$ centered at a point $\xstar$ is the set $B_r(\xstar) = \{ \x \in \field{R}^d : \norm{\x-\xstar}< r \}.$
 	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema} and \emph{extreme Values}:
-	\begin{definition}\label{def:extrema}
+	\begin{definition}\label{def:extrema}\index{Extreme Value}\index{Extremum}
 	Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \mathbb{R}^d$, we say that a point $\xstar \in D$ is a:
 	\begin{description}
-		\item [global minimum] $f(\xstar) \leq f(\x)$ for all $\x \in D$.
-		\item [global maximum] $f(\xstar) \geq f(\x)$ for all $\x \in D$.
-		\item [strict global minimum] $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-		\item [strict global maximum] $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$.
-		\item [local minimum] There exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-		\item [local maximum] There exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$.
-		\item [strict local minimum] There exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
-		\item [strict local maximum] There exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$.
+		\item [global minimum] $f(\xstar) \leq f(\x)$ for all $\x \in D$. \index{Minimum!global}
+		\item [global maximum] $f(\xstar) \geq f(\x)$ for all $\x \in D$. \index{Maximum!global}
+		\item [strict global minimum] $f(\xstar) < f(\x)$ for all $\x \in D \setminus \{ \xstar \}$. \index{Minimum!strict global}
+		\item [strict global maximum] $f(\xstar) > f(\x)$ for all $\x \in D \setminus \{ \xstar \}$. \index{Maximum!strict global}
+		\item [local minimum] There exists $\delta>0$ so that  $f(\xstar) \leq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$. \index{Minimum!local}
+		\item [local maximum] There exists $\delta>0$ so that  $f(\xstar) \geq f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$. \index{Maximum!local}
+		\item [strict local minimum] There exists $\delta>0$ so that  $f(\xstar) < f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$. \index{Minimum!strict local}
+		\item [strict local maximum] There exists $\delta>0$ so that  $f(\xstar) > f(\x)$ for all $\x \in B_\delta(\xstar)\cap D$, $\x \neq \xstar$. \index{Maximum!strict local}
 	\end{description}
 	\end{definition}	
 \end{itemize}
 In this setting, the objective of \emph{optimization} is the search for extrema in the following two scenarios:
 \begin{description}
-	\item [Unconstrained Optimization] if $D$ is an open set (usually the whole space $\field{R}^d$)
+	\item [Unconstrained Optimization] if $D$ is an open set (usually the whole space $\field{R}^d$). \index{Optimization!Unconstrained}
 	\item [Constrained Optimization] if $D$ can be described as a set of \emph{constraints}: $\x \in D$ if there exist $m,n \in \field{N}$ and functions $g_k\colon \field{R}^d \to \field{R}$ ($1\leq k \leq m$), $h_j\colon \field{R}^d \to \field{R}$ ($1\leq j \leq n$) so that
 	\begin{align*}
 	g_k(\x) &\leq  0 \quad (1\leq k \leq m) \\
 	h_j(\x) &= 0     \quad (1\leq j \leq n)
-	\end{align*}
+	\end{align*} \index{Optimization!Constrained}
 \end{description}
 For each of these problems, we follow a similar program:
 \begin{description}

@@ -7,7 +7,7 @@ In this chapter we will study different properties of functions and domains that
 \section{Functions}
 
 \subsection{Continuity and Differentiability}
-\begin{definition}\label{def:continuous}
+\begin{definition}\label{def:continuous}\index{Function!continuous}
 We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\xstar \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\xstar}<\delta$, it is $\abs{ f(\x) - f(\xstar) } < \varepsilon$.  
 \end{definition}
 
@@ -25,14 +25,14 @@ This function is trivially continuous at any point $(x,y)\neq(0,0)$.  However, i
 \end{equation*}
 \end{example}
 
-\begin{definition}\label{def:differentiable}
+\begin{definition}\label{def:differentiable}\index{Function!differentiable}
 A real-valued function $f$ is said to be \emph{differentiable} at $\xstar$ if there exists a \emph{linear function} $J\colon \field{R}^d \to \field{R}$ so that 
 \begin{equation*}
 \lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\xstar+h)-f(\xstar)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
 \end{equation*}
 \end{definition}
 
-\begin{remark}
+\begin{remark}\index{Function!linear}
 A function is said to be \emph{linear} if it satisfies $J(\x+\lambda\y) = J(\x) + \lambda J(\y)$ for all $\x, \y \in \field{R}^d$, $\lambda \in \field{R}$.  For each real-valued linear function $J \colon \field{R}^d \to \field{R}$ there exists $\boldsymbol{a} \in \field{R}^d$ so that $J(\x) = \langle \boldsymbol{a} , \x \rangle$ for all $\x \in \field{R}^d$.  For this reason, the graph of a linear function is a hyperplane in $\field{R}^d$.
 \end{remark}
 
@@ -61,7 +61,7 @@ Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at
 \end{example}
 It is a simple task to prove that all differentiable functions are continuous.  Is it true that all continuous functions are differentiable?
 
-\begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}
+\begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}\index{Function!Weierstrass}
 For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consider the Weierstrass function $\mathcal{W}_{a,b} \colon \field{R} \to \field{R}$ given by 
 \begin{equation*}
 \mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
@@ -76,14 +76,14 @@ This function is continuous everywhere, yet \emph{nowehere} differentiable!  For
 
 A few more useful results about higher order derivatives follow:
 
-\begin{theorem}[Clairaut]\label{theorem:MixedDerivatives}
+\begin{theorem}[Clairaut]\label{theorem:MixedDerivatives}\index{Theorem!Clairaut}
 If $f\colon \field{R}^d \to \field{R}$ and its partial derivatives of orders 1 and 2, $\frac{\partial f}{\partial x_k}$, $\frac{\partial^2 f}{\partial x_k \partial x_j}$, ($1\leq k,j \leq d$) are defined throughout an open region containing the point $\xstar$, and are all continuous at $\xstar$, then 
 \begin{equation*}
 \frac{\partial^2 f(\xstar)}{\partial x_k \partial x_j} = \frac{\partial^2 f(\xstar)}{\partial x_j \partial x_k}, \quad (1\leq k,j \leq d). 
 \end{equation*}
 \end{theorem}
 
-\begin{definition}[Hessian]\label{def:Hessian}
+\begin{definition}[Hessian]\label{def:Hessian}\index{Hessian}
 Given a twice-differentiable function $f\colon \field{R}^d \to \field{R}$, we define the \emph{Hessian} of $f$ at $\x$ to be the following matrix of second partial derivatives:
 \begin{equation*}
 \Hess{f}(\x) = \begin{bmatrix}
@@ -100,7 +100,7 @@ Given a twice-differentiable function $f\colon \field{R}^d \to \field{R}$, we de
 
 Functions that satisfy the conditions of Theorem \ref{theorem:MixedDerivatives} have symmetric Hessians.  We shall need some properties in regard to symmetric matrices.
 
-\begin{definition}
+\begin{definition}\index{Matrix!Symmetric}\index{Quadratic Form}\index{Matrix!Symmetric!Positive Definite}\index{Matrix!Symmetric!Positive Semidefinite}\index{Matrix!Symmetric!Negative Definite}\index{Matrix!Symmetric!Negative Semidefinite}\index{Matrix!Symmetric!Indefinite}
 Given a symmetric matrix $\boldsymbol{A}$, we define its associated \emph{quadratic form} as the function $\quadratic{A}\colon \field{R}^d \to \field{R}$ given by
 \begin{equation*}
 \quadratic{A}(\x) = \x \boldsymbol{A} \transpose{\x} = \begin{bmatrix} x_1 \dotsb x_d \end{bmatrix} \begin{bmatrix} a_{11} &\dotsb &a_{1d} \\ \vdots & \ddots & \vdots \\ a_{1d} &\dotsb &a_{dd} \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_d \end{bmatrix}
@@ -155,7 +155,7 @@ A symmetric matrix $\boldsymbol{A}$ is:
 \end{itemize}
 \end{theorem}
 
-\begin{theorem}[Eigenvalue Criteria]\label{theorem:eigenvalues}
+\begin{theorem}[Eigenvalue Criteria]\label{theorem:eigenvalues}\index{Characteristic Polynomial}\index{Eigenvalue}
 Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the function $p_{\boldsymbol{A}} \colon \field{C} \to \field{C}$ given by $p_{\boldsymbol{A}}(\lambda) = \det\big(\boldsymbol{A} - \lambda \boldsymbol{I}_d \big)$.  This is a polynomial of (at most) degree $d$ in $\lambda$.  We call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.  The roots (in $\field{C}$) of the characteristic polynomial are called the \emph{eigenvalues} of $\boldsymbol{A}$.  Symmetric matrices enjoy the following properties:
 \begin{enumerate}
 	\item The eigenvalues of a symmetric matrix are all real.
@@ -170,7 +170,7 @@ Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the functi
 \subsection{Coercive Functions}
 Other set of functions that play an important role in optimization are the kind of functions we explored in Example \ref{example:CoerciveFunctions}.
 
-\begin{definition}[Coercive functions]\label{def:coerciveFunctions}
+\begin{definition}[Coercive functions]\label{def:coerciveFunctions}\index{Function!coercive}
 A continuous real-valued function $f$ is said to be \emph{coercive} if for all $M>0$ there exists $R=R(M)>0$ so that $f(\x)\geq M$ if $\norm{\x}\geq R$.
 \end{definition}
 
@@ -209,7 +209,7 @@ We can then conclude that given $M>0$, if $x^2+y^2 \geq  2+\sqrt{4+2M}$, then $p
 There is one more kind of functions we should explore.
 
 \subsection{Convex Functions}
-\begin{definition}[Convex Sets]\label{def:convexSets}
+\begin{definition}[Convex Sets]\label{def:convexSets}\index{Convex!set}
 A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \y + (1-\lambda) \x$ is also in $C$.
 \end{definition}
 
@@ -227,7 +227,7 @@ Let $C\subseteq \field{R}^d$ be a convex set and let $\{ \x_1, \x_2, \dotsc, \x_
 \label{figure:convexSet}
 \end{figure}
 
-\begin{definition}[Convex Functions]\label{def:ConvexFunctions}
+\begin{definition}[Convex Functions]\label{def:ConvexFunctions}\index{Function!convex}\index{Convex!function}
 Given a convex set $C \subseteq \field{R}^d$, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
 \begin{equation*}
 f\big(\lambda \y + (1-\lambda)\x \big) \leq \lambda f(\y) + (1-\lambda) f(\x)
