@@ -22,11 +22,11 @@ The gradient has many interesting properties.  Assume $f(x,y)$ is a differentiab
 \item[Fastest Increase] At any point $(x,y)$, the function $f$ increases most rapidly in the direction of the gradient vector $\boldsymbol{v} = \gradient{f}(x,y)$.  The derivative in that direction is $D_{\boldsymbol{v}}f(x,y) = \norm{\gradient{f}(x,y)}$.
 \item[Fastest Decrease] At any point $(x,y)$, the function $f$ decreases most rapidly in the direction $\boldsymbol{v} = -\gradient{f}(x,y)$.  The derivative in that direction is $D_{\boldsymbol{v}}f(x,y) = -\norm{\gradient{f}(x,y)}$.
 \item[Zero Change] Any direction $\boldsymbol{v}$ perpendicular to a non-zero gradient is a direction of \emph{zero change} in $f$ at $(x,y)$: $D_{\boldsymbol{v}}f(x,y) = 0$.
-\item[Tangents to Level Curves] At every point $(x,y)$ in the domain of $f$, the gradient $\gradient{f}(x,y)$ is perpendicular to the level curve through $(x,y)$. 
+\item[Tangents to Level Curves] At every point $(x,y)$ in the domain of $f$, the gradient $\gradient{f}(x,y)$ is perpendicular to the level curve through $(x,y)$. \index{Level Curve}
 \end{description}
 \end{remark}
 
-\begin{definition}\label{def:localminimum}
+\begin{definition}\label{def:localminimum}\index{Minimum!local}\index{Minimum!value}
 Let $D\subseteq \field{R}^2$ be a region on the plane containing the point $(x_0, y_0)$.  We say that the real-valued function $f\colon D \to \field{R}$ has a \emph{local minimum} at $(x_0,y_0)$ if $f(x_0,y_0) \leq f(x,y)$ for all domain points $(x,y)$ in an open disk centered at $(x_0,y_0)$.  In that case, we also say that $f(x_0,y_0)$ is a \emph{local minimum value} of $f$ in $D$.
 \end{definition}
 
@@ -38,12 +38,12 @@ Let $D \subseteq \field{R}^2$ and let $f \colon D \to \field{R}$ be a function f
 
 The local minima of these functions are among the zeros of the equation $\gradient{f}(x,y)=0$, the so-called \emph{critical points} of $f$. More formally:
 
-\begin{definition}\label{def:criticalpoint}
+\begin{definition}\label{def:criticalpoint}\index{Critical Point}
 An interior point of the domain of a function $f(x,y)$ where both directional derivatives are zero, or where at least one of the directional derivatives do not exist, is a \emph{critical point} of $f$.
 \end{definition}
 
 We employed the \emph{Second Derivative Test for Local Extreme Values} to characterize some minima:
-\begin{theorem}\label{theorem:2DTforLEV}
+\begin{theorem}\label{theorem:2DTforLEV}\index{Test!Second Derivative Test for Local Extreme Values}
 Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partial derivatives are continuous throughout a disk centered at the point $(x_0,y_0)$, and that $\gradient{f}(x_0,y_0)=0$. If the two following conditions are satisfied, then $f(x_0,y_0)$ is a local minimum value:
 \begin{align}
 \frac{\partial^2 f (x_0,y_0)}{\partial x^2} &> 0 \\
@@ -58,7 +58,7 @@ Suppose that $f\colon \field{R}^2 \to \field{R}$ and its first and second partia
 The restriction of this result to univariate functions is even simpler: Suppose $f''$ is continuous on an open interval that contains $x_0$.  If $f'(x_0)=0$ and $f''(x_0)>0$, then $f$ has a local minimum at $x_0$. 
 \end{remark}
 
-\begin{example}[Rosenbrock Functions]\label{example:Rosenbrock}
+\begin{example}[Rosenbrock Functions]\label{example:Rosenbrock}\index{Rosenbrock Function}
 Given strictly positive parameters $a,b > 0$, consider the Rosenbrock function 
 \begin{equation*} 
 \mathcal{R}_{a,b}(x, y) = (a-x)^2 + b(y-x^2)^2.
@@ -162,13 +162,13 @@ Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x
 
 We learned other useful characterizations for extrema, when the domain could be expressed as solutions of equations:
 
-\begin{theorem}[Orthogonal Gradient]\label{theorem:OrthogonalGradient}
+\begin{theorem}[Orthogonal Gradient]\label{theorem:OrthogonalGradient}\index{Gradient!Orthogonal}
 Suppose $f(x,y)$ is differentiable in a region whose interior contains a smooth curve $C\colon \boldsymbol{r}(t) = \big( x(t), y(t) \big)$.  If $P_0$ is a point on $C$ where $f$ has a local extremum relative to its values on $C$, then $\gradient{f}$ is orthogonal to $C$ at $P_0$.
 \end{theorem}
 
 This result leads to the \emph{Method of Lagrange Multipliers}
 
-\begin{theorem}[Lagrange Multipliers on one constraint]\label{theorem:LM1C}
+\begin{theorem}[Lagrange Multipliers on one constraint]\label{theorem:LM1C}\index{Lagrange Multipliers}
 Suppose that $f(x,y)$ and $g(x,y)$ are differentiable and $\gradient{g} \neq 0$ when $g(x,y,z)=0$.  To find the local extrema of $f$ subject to the constraint $g(x,y)=0$ (if these exist), find the values of $x,y$ and $\lambda$ that simultaneously satisfy the equations
 \begin{equation*}
 \gradient{f} = \lambda \gradient{g}, \text{ and }g(x,y)=0
