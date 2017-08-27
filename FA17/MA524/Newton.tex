@@ -102,7 +102,7 @@ If $f''(x^\star) \neq 0$, the Newton's iteration exhibits quadratic convergence.
 We have just proven that, if a Newton-Raphson for a function $f$ gives a convergent sequence, the convergence is quadratic.  But, how can we guarantee convergence to a root of $f$?  The key is in \emph{how far can we start the sequence} given the structure of the graph of $f$.
 \end{remark}
 
-\begin{theorem}[Local Convergence for the Newton-Raphson Method]
+\begin{theorem}[Local Convergence for the Newton-Raphson Method]\label{theorem:LCNR}
 Let $x^\star$ be a simple root of the equation $f(x)=0$, and there exists $\varepsilon > 0$ so that 
 \begin{itemize}
 	\item $f$ is twice continuously differentiable in the interval $(x^\star-\varepsilon, x^\star + \varepsilon)$, and
@@ -149,6 +149,7 @@ The next step is to prove that there is convergence.  A similar computation to t
 \begin{equation*}
 \big\lvert x_n - x^\star \big\rvert \leq \varepsilon M(\varepsilon) \big\lvert x_{n-1} - x^\star \big\rvert \leq \big( \varepsilon M(\varepsilon) \big)^n \big\lvert x_0 - x^\star \big\rvert.
 \end{equation*}
+Since $\varepsilon M(\varepsilon) < 1$, $\lim_n \big( \varepsilon M(\varepsilon) \big)^n = 0$, and $\{ x_n \}_{n \in \field{N}}$ converges to $x^\star$.
 \end{proof}
 
 \subsection{Extension to higher dimensions}
@@ -338,8 +339,24 @@ or equivalently,
 \end{equation*}
 \end{example}
 
-There are some theoretical results that aid in the search for a \emph{good} initial guess.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
+% We may use Theorem \ref{theorem:LCNR} to aid in the search for an initial guess:
 
+% \begin{example}
+% Consider the function $f(x)=x-\log x$ on $(0,\infty)$, which has a global minimum at $x^\star=1$.  Its gradient is $f'(x)=1-\tfrac{1}{x}$, the function we studied in Example \ref{example:NewtonRaphsonChoice} in page \pageref{example:NewtonRaphsonChoice}.  We did establish then any initial guess $x_0$ should belong in the interval $(0,2)$.  We want to use Theorem \ref{theorem:LCNR} to improve the search, so we may guarantee convergence to the critical point.  
+% \begin{itemize}
+% \item The function for which we need to search the root, $g(x) = 1-\tfrac{1}{x}$ is continuously differentiable of any order in $(0,\infty)$, with $g^{(n)}(x) = (-1)^{n+1} x^{-(n+1)}$.
+% \item There are no critical points in $(0,\infty)$.
+% \item Notice that, for each $0 < \varepsilon < 1$ and any $s,t \in (1-\varepsilon, 1+\varepsilon)$,
+% \begin{equation*}
+% \bigg \lvert \frac{g''(s)}{2g'(t)} \bigg\rvert = \frac{t^2}{2s^3} < \frac{(1+\varepsilon)^2}{2(1-\varepsilon)^3} 
+% \end{equation*}
+% \end{itemize}
+% \item $\varepsilon M(\varepsilon) < 1$ for all $\varepsilon < \tfrac{1}{3}$ (Why?)
+% \end{example}
+
+There are some theoretical results that aid in the search for a \emph{good} initial guess in case of multivariate functions.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
+
+% A more flexible extension of \ref{theorem:LCNR} follows:
 \begin{theorem}[Quadratic Convergence Theorem]\label{theorem:QuadraticConvergence}
 Suppose $f\colon \field{R}^d \to \field{R}$ is a twice continuously differentiable real-valued function, and $\xstar$ is a critical point of $f$. Let $\mathcal{N}(\x) = \x - \big[ \Hess{f}(\x) \big]^{-1} \cdot \gradient{f}(\x)$. If there exists 
 \begin{enumerate}
@@ -352,21 +369,21 @@ In that case, for all $\x \in \field{R}^d$ satisfying $\norm{ \x - \xstar }\leq 
 \end{equation*}
 \end{theorem}
 
-\begin{example}
-Consider the function $f(x)=x-\log x$ on $(0,\infty)$, which has a global minimum at $x^\star=1$.  Its gradient is $f'(x)=1-\tfrac{1}{x}$, the function we studied in Example \ref{example:NewtonRaphsonChoice} in page \pageref{example:NewtonRaphsonChoice}.  We did establish then any initial guess $x_0$ should belong in the interval $(0,2)$.  We want to use Theorem \ref{theorem:QuadraticConvergence} to improve the search, so we may guarantee \emph{quadratic convergence} to the critical point.  
-\begin{itemize}
-	\item The Hessian is $f''(x)=x^{-2}$, and thus $\big\lVert \big[ \Hess{f}(x^\star) \big]^{-1} \big\rVert = 1$. 
-	\item Notice that for all $0<x<2$,
-	\begin{equation*}
-	\norm{\Hess{f}(x) - \Hess{f}(x^\star)} = \big\lvert \tfrac{1}{x^2}  - 1 \big\rvert =\frac{1+x}{x^2}\abs{x-1}
-	\end{equation*}
-	Choosing e.g.~$\beta=\tfrac{1}{2}$, we readily obtain that $\frac{10}{9} \leq \frac{1+x}{x^2}\leq 6$;
-	therefore, $\norm{\Hess{f}(x) - \Hess{f}(x^\star)} \leq 6 \abs{x-1}$, and we may choose $L=6$ for $\beta=\tfrac{1}{2}$.
-\end{itemize}
-Theorem \ref{theorem:QuadraticConvergence} guarantees that any initial guess $\x_0 \in \big(\tfrac{8}{9}, \tfrac{10}{9}\big)$ will give us good results (see Figure \ref{figure:QuadraticConvergence})
-\begin{figure}[ht!]
-\includegraphics[width=0.7\linewidth]{quadraticConv.png}
-\caption{Quadratic Convergence of the Newton-Raphson method}
-\label{figure:QuadraticConvergence}
-\end{figure}
-\end{example}
+% \begin{example}
+% Consider the function $f(x)=x-\log x$ on $(0,\infty)$, which has a global minimum at $x^\star=1$.  Its gradient is $f'(x)=1-\tfrac{1}{x}$, the function we studied in Example \ref{example:NewtonRaphsonChoice} in page \pageref{example:NewtonRaphsonChoice}.  We did establish then any initial guess $x_0$ should belong in the interval $(0,2)$.  We want to use Theorem \ref{theorem:QuadraticConvergence} to improve the search, so we may guarantee \emph{quadratic convergence} to the critical point.  
+% \begin{itemize}
+% 	\item The Hessian is $f''(x)=x^{-2}$, and thus $\big\lVert \big[ \Hess{f}(x^\star) \big]^{-1} \big\rVert = 1$. 
+% 	\item Notice that for all $0<x<2$,
+% 	\begin{equation*}
+% 	\norm{\Hess{f}(x) - \Hess{f}(x^\star)} = \big\lvert \tfrac{1}{x^2}  - 1 \big\rvert =\frac{1+x}{x^2}\abs{x-1}
+% 	\end{equation*}
+% 	Choosing e.g.~$\beta=\tfrac{1}{2}$, we readily obtain that $\frac{10}{9} \leq \frac{1+x}{x^2}\leq 6$;
+% 	therefore, $\norm{\Hess{f}(x) - \Hess{f}(x^\star)} \leq 6 \abs{x-1}$, and we may choose $L=6$ for $\beta=\tfrac{1}{2}$.
+% \end{itemize}
+% Theorem \ref{theorem:QuadraticConvergence} guarantees that any initial guess $\x_0 \in \big(\tfrac{8}{9}, \tfrac{10}{9}\big)$ will give us good results. % (see Figure \ref{figure:QuadraticConvergence})
+% % \begin{figure}[ht!]
+% % \includegraphics[width=0.7\linewidth]{quadraticConv.png}
+% % \caption{Quadratic Convergence of the Newton-Raphson method}
+% % \label{figure:QuadraticConvergence}
+% % \end{figure}
+% \end{example}
