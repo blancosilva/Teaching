@@ -124,7 +124,7 @@ It is then a simple task (in some cases) to search for critical points by solvin
 \end{minted}
 The conclusion after this small session is that any Rosenbrock function $R(x,y) = (a-x)^2 + b(y-x^2)^2$ has a global minimum at the point $(a,a^2)$.
 
-A word of warning.  Symbolic differentiation and manipulation of expressions is may not work in certains cases.  For those, numerical approximation is more suited (and incidentally, \emph{that} is the reason you are taking this course).
+A word of warning.  Symbolic differentiation and manipulation of expressions may not work in certain cases.  For those, numerical approximation is more suited (and incidentally, \emph{that} is the reason you are taking this course).
 
 \begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
 >>> solve(f.diff(x))
