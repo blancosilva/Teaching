@@ -111,7 +111,11 @@ A continuous real-valued function always attains its minimum value on a \emph{co
 \end{theorem}
 
 \begin{example}
-A flat circular plate has the shape of the region $x^2+y^2 \leq 1$. The plate, including the boundary, is heated so that the temperature at the point $(x,y)$ is given by $f(x,y) =100(x^2 +2 y^2 - x)$ in Celsius degrees.  Find the temperature at the coldest point of the plate.
+A flat circular plate has the shape of the region 
+\begin{equation*}
+x^2+y^2 \leq 1.
+\end{equation*} 
+The plate, including the boundary, is heated so that the temperature at the point $(x,y)$ is given by $f(x,y) =100(x^2 +2 y^2 - x)$ in Celsius degrees.  Find the temperature at the coldest point of the plate.
 
 We start by searching for critical points.  The equation $\gradient{f}(x,y) = 0$ gives $x=\tfrac{1}{2}$, $y=0$. The point $(\tfrac{1}{2}, 0)$ is clearly inside of the plate.  This is our first candidate.
 
@@ -227,7 +231,7 @@ The purpose of these notes is the development of a theory to deal with optimizat
 	\dist(\x,\y)=\norm{\x-\y} = \langle \x-\y, \x-\y \rangle^{1/2} = \sqrt{\sum_{k=1}^d (x_k-y_k)^2 }.
 	\end{equation*}
 	For instance, the \emph{open ball} of radius $r>0$ centered at a point $\xstar$ is the set $B_r(\xstar) = \{ \x \in \field{R}^d : \norm{\x-\xstar}< r \}.$
-	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema}:
+	\item Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \field{R}^d$, we define the concept of \emph{extrema} and \emph{extreme Values}:
 	\begin{definition}\label{def:extrema}
 	Given a real-valued function $f\colon D \to \field{R}$ on a domain $D \subseteq \mathbb{R}^d$, we say that a point $\xstar \in D$ is a:
 	\begin{description}
