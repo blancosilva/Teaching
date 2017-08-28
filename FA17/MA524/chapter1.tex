@@ -120,7 +120,8 @@ The plate, including the boundary, is heated so that the temperature at the poin
 
 We start by searching for critical points.  The equation $\gradient{f}(x,y) = 0$ gives $x=\tfrac{1}{2}$, $y=0$. The point $(\tfrac{1}{2}, 0)$ is clearly inside of the plate.  This is our first candidate.
 
-The border of the plate can be parameterized by $\varphi(t) = (\cos t, \sin t)$ for $t \in [0,2\pi)$.  The search for minima in the boundary of the plate can then be coded as an optimization problem for the function $h(t) = (f \circ \varphi) (t) = 100(\cos^2 t + 2\sin^2 t - \cos t)$ on the interval $[0,2\pi)$.  Note that $h'(t) = 0$ for $t \in \{ 0, \tfrac{2}{3}\pi \}$ in $[0,2\pi)$.  We thus have two more candidates: 
+The border of the plate can be parameterized by $\varphi(t) = (\cos t, \sin t)$ for $t \in [0,2\pi)$.  The search for minima in the boundary of the plate can then be coded as an optimization problem for the function $h(t) = (f \circ \varphi) (t) = 100(\cos^2 t + 2\sin^2 t - \cos t)$ on the interval $[0,2\pi)$.  Note that $h'(t) = 0$ for $t \in \{ 0, \tfrac{2}{3}\pi \}$ in $[0,2\pi)$.  We thus have two more candidates:
+%\marginnote{\footnotesize{$h(t) = 1+\sin^2 t -\cos t$ \\ $h'(t) = 2\sin t\cos t - \sin t = \sin t(2\cos t - 1)$}}
 \begin{equation*}
 \varphi(0) = (1,0) \qquad \varphi(\tfrac{2}{3}\pi)= \big( -\tfrac{1}{2}, \tfrac{1}{2}\sqrt{3} \big)
 \end{equation*}
@@ -169,7 +170,7 @@ Suppose $f(x,y)$ is differentiable in a region whose interior contains a smooth 
 This result leads to the \emph{Method of Lagrange Multipliers}
 
 \begin{theorem}[Lagrange Multipliers on one constraint]\label{theorem:LM1C}\index{Lagrange Multipliers}
-Suppose that $f(x,y)$ and $g(x,y)$ are differentiable and $\gradient{g} \neq 0$ when $g(x,y,z)=0$.  To find the local extrema of $f$ subject to the constraint $g(x,y)=0$ (if these exist), find the values of $x,y$ and $\lambda$ that simultaneously satisfy the equations
+Suppose that $f(x,y)$ and $g(x,y)$ are differentiable and $\gradient{g} \neq 0$ when $g(x,y)=0$.  To find the local extrema of $f$ subject to the constraint $g(x,y)=0$ (if these exist), find the values of $x,y$ and $\lambda$ that simultaneously satisfy the equations
 \begin{equation*}
 \gradient{f} = \lambda \gradient{g}, \text{ and }g(x,y)=0
 \end{equation*}
