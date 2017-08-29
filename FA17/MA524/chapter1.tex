@@ -67,8 +67,8 @@ It is easy to see that Rosenbrock functions are polynomials (prove it!).  The do
 
 \begin{figure}[ht!]
 \begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{rosenbrockContour} &
-\includegraphics[width=0.5\linewidth]{rosenbrockGraph}
+\includegraphics[width=0.5\linewidth]{images/rosenbrockContour} &
+\includegraphics[width=0.5\linewidth]{images/rosenbrockGraph}
 \end{tabular}
 \caption{Details of the graph of $\mathcal{R}_{1,1}$}
 \label{figure:Rosenbrock}
@@ -154,7 +154,7 @@ Find the global minima of the function $f(x)= \log (x^4-2x^2+2)$ in $\field{R}$.
 Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x^2-1)^2+1 \geq 1$ for all $x\ \in \field{R}$.  Note also that we can write $f(x) = (g \circ h)(x)$ with $g(x) = \log(x)$ and $h(x)=x^4-2x^2+1$.  Since $g$ is one-to-one and increasing, we can focus on $h$ to obtain the requested solution.  For instance, $\lim_{\abs{x}\to\infty}f(x) = +\infty$, since $\lim_{\abs{x}\to\infty} h(x) = +\infty$. This guarantees the existence of global minima.  To look for it, $h$ again points to the possible locations by solving for its critical points: $h'(x)=0$.  We have then that $f$ attains its minima at $x=\pm 1$.
 \begin{figure}[ht!]
 \begin{center}
-\includegraphics[width=0.5\linewidth]{coercivelog.png}
+\includegraphics[width=0.5\linewidth]{images/coercivelog.png}
 \end{center}
 \caption{Global minima in unbounded domains}
 \label{figure:coercivelog}

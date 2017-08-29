@@ -8,7 +8,7 @@ The method of Steepest Descent is based upon the following property of gradients
 If $f \colon \field{R}^d \to \field{R}$ is continuously differentiable, then at any point $\x \in \field{R}^d$, the vector $-\gradient{f}(\x)$ points in the direction of most rapid decrease for $f$ at $\x$.  The rate of decrease of $f$ at $\x$ in this direction is precisely $-\norm{\gradient{f}(\x)}$.
 \end{theorem}
 
-\begin{remark}
+\begin{remark}\index{Steepest descent!direction of}
 For this reason, the vector $\gradient{f}(\x)$ is called the \emph{direction of steepest descent} of $f$ at $\x$.
 \end{remark}
 
@@ -30,7 +30,7 @@ In order to search for a local minimum for a twice continuously differentiable f
 	\end{gather}
 \end{enumerate}
 
-\begin{remark}
+\begin{remark}\index{Steepest descent!sequence of}
 Sequences constructed following the formula in \eqref{equation:SteepestDescent} are said to be \emph{sequences of Steepest Descent} for $f$.
 
 Unlike Newton's method, this algorithm guarantees that these sequences are non-increasing: $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.  And even better: if there is convergence, their limit must a critical point of $f$.  These results are formalized in Theorems \ref{theorem:SteepestDescentDescends} and \ref{theorem:SteepestDescentConvergesToCritical}  below.
@@ -39,22 +39,22 @@ Steepest descent sequences have another interesting property: on each step $n$, 
 \end{remark}
 
 \begin{theorem}\label{theorem:SteepestDescentDescends}
-Let $f\colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and let $\{ \x_n \}_{n\in\field{N}}$ be a Steepest Descent sequence for $f$.  If $\gradient{f}(\x_N) \neq 0$, then $f(\x_{N+1}) < f(\x_N)$.
+Let $f\colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and let $\{ \x_n \}_{n\in\field{N}}$ be a sequence of steepest descent for $f$.  If $\gradient{f}(\x_N) \neq 0$, then $f(\x_{N+1}) < f(\x_N)$.
 \end{theorem}
 
 \begin{theorem}\label{theorem:SteepestDescentConvergesToCritical}
-Let $f\colon \field{R}^d \to \field{R}$ be a real-valued function, let $\x_0 \in \field{R}^d$ be an initial guess.  Assume $S = \{ \x \in \field{R}^d :  f(\x) \leq f(\x_0) \}$ is a compact set and $f$ is continuously differentiable in $S$.  Under these conditions, the limit of any convergent subsequence of the associated Steepest Descent sequence $\{ \x_n \}_{n\in \field{N}}$ is a critical point of $f$.
+Let $f\colon \field{R}^d \to \field{R}$ be a real-valued function, let $\x_0 \in \field{R}^d$ be an initial guess.  Assume $S = \{ \x \in \field{R}^d :  f(\x) \leq f(\x_0) \}$ is a compact set and $f$ is continuously differentiable in $S$.  Under these conditions, the limit of any convergent subsequence of the associated sequence of steepest descent $\{ \x_n \}_{n\in \field{N}}$ is a critical point of $f$.
 \end{theorem}
 
 \begin{theorem}\label{theorem:SteepestDescentPerpSteps}
-Let $f \colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and $\{ \x_n \}_{n\in\field{N}}$ a Steepest Descent sequence for $f$.  For any $n \in \field{N}$, $\langle \x_{n+2} - \x_{n+1}, \x_{n+1} - \x_n \rangle = 0$.
+Let $f \colon \field{R}^d \to \field{R}$ be a continuously differentiable real-valued function, and $\{ \x_n \}_{n\in\field{N}}$ a sequence of steepest descent for $f$.  For any $n \in \field{N}$, $\langle \x_{n+2} - \x_{n+1}, \x_{n+1} - \x_n \rangle = 0$.
 \end{theorem}
 \begin{proof}
 Consider for each $n \in \field{N}$ the function $\varphi_n(t) = f\big(\x_n -t \gradient{f}(\x_x)\big)$, with a global minimum at $t_n \geq 0$.  It must then be
 \begin{equation*}
 0 = \varphi_n'(t_n) = \langle \gradient{f}(\x_n), -\gradient{f}\big( \x_n - t_n \gradient{f}(\x_n)\big) \rangle = - \langle \gradient{f}(\x_{n+1}), \gradient{f}(\x_n) \rangle,
 \end{equation*}
-which proves that the gradient of consecutive terms of the Steepest Descent sequence for $f$ are perpendicular.  Now, by virtue of the recurrence formula \eqref{equation:SteepestDescent},
+which proves that the gradient of consecutive terms of the sequence of steepest descent for $f$ are perpendicular.  Now, by virtue of the recurrence formula \eqref{equation:SteepestDescent},
 \begin{align*}
 \langle \x_{n+2} - \x_{n+1}, &\x_{n+1} - \x_n \rangle = \langle t_{n+1}\gradient{f}(\x_{n+1}), t_n \gradient{f}(\x_n) \rangle \\
 &= t_{n+1}t_n \langle \gradient{f}(\x_{n+1}), \gradient{f}(\x_n) \rangle = 0, 
@@ -182,11 +182,10 @@ $33$ & $0.976182$ & $0.939503$ & $0.000748$ \\ \hline
 \end{center}
 \end{example}
 
-
 \begin{figure}[ht!]
 \begin{tabular}{cc}
-\includegraphics[width=0.62\linewidth]{convergenceSteepest.png} &
-\includegraphics[width=0.38\linewidth]{SDR3.png}
+\includegraphics[width=0.62\linewidth]{images/convergenceSteepest.png} &
+\includegraphics[width=0.38\linewidth]{images/SDR3.png}
 \end{tabular}
 \caption{The Method of Steepest Descent}
 \label{figure:SteepestConvergence}
