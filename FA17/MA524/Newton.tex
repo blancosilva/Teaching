@@ -1,22 +1,22 @@
 %!TEX root = main.tex
 
-\section{Newton's Method}
+\section{Newton-Raphson's Method}
 
 \subsection{Newton-Raphson Method to search for roots of univariate functions}
-\begin{example}[The Newton-Raphson method]
-In order to find a good estimation of $\sqrt{2}$ with many decimal places, we allow a computer to find better and better approximations of the solution of the equation $f(x)=x^2-2$.  We start with an initial guess, say $x_0=3$.  We construct a sequence $\{ x_n \}_{n\in\field{N}}$ that converges to $\sqrt{2}$ as follows:
+\begin{example}
+In order to find a good estimation of $\sqrt{2}$ with many decimal places, we allow a computer to find better and better approximations of the root  of the polynomial $p(x)=x^2-2$.  We start with an initial guess, say $x_0=3$.  We construct a sequence $\{ x_n \}_{n\in\field{N}}$ that converges to $\sqrt{2}$ as follows:
 \begin{enumerate}
-\item Find the tangent line to the graph of $f$ at $x_0$, 
+\item Find the tangent line to the graph of $p$ at $x_0$, 
 \begin{equation*}
-y-f(x_0)=f'(x_0)(x-x_0)
+y-p(x_0)=p'(x_0)(x-x_0)
 \end{equation*}
-\item Provided this line is not horizontal ($f'(x_0)\neq 0$), report the intersection of this line with the $x$--axis.  Call this intersection $x_1$
+\item Provided this line is not horizontal ($p'(x_0)\neq 0$), report the intersection of this line with the $x$--axis.  Call this intersection $x_1$
 \begin{equation*}
-x_1=x_0-\frac{f(x_0)}{f'(x_0)}
+x_1=x_0-\frac{p(x_0)}{p'(x_0)}
 \end{equation*}
 \item Repeat this process, to get the sequence 
 \begin{equation*}
-x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+x_{n+1} = x_n - \frac{p(x_n)}{p'(x_n)} = x_n - \frac{x_n^2-2}{2x_n}=\frac{x_n}{2}-\frac{1}{x_n}.
 \end{equation*}
 \end{enumerate}
 \begin{figure}[ht!]
@@ -28,7 +28,7 @@ Note the result of applying this process a few times:
 \begin{center}
 % \begin{table}[ht!]
 \begin{tabular}{|c|c|r|} \hline 
-$n$ & $x_n$ & $f(x_n)$ \\ \hline \hline 
+$n$ & $x_n$ & $p(x_n)$ \\ \hline \hline 
 $0$ & $3.000000000000000$ & $7.0000E+00$ \\ \hline 
 $1$ & $1.833333333333333$ & $1.3611E+00$ \\ \hline 
 $2$ & $1.462121212121212$ & $1.3780E-01$ \\ \hline 
@@ -44,6 +44,14 @@ $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline
 \end{center}
 \end{example}
 
+\begin{definition}\index{Newton-Raphson!iteration}\index{Newton-Raphson!method}\index{Newton-Raphson!}
+Given a differentiable real-valued function $f\colon \field{R} \to \field{R}$ and an initial guess $x_0 \in \field{R}$, we define the \emph{Newton-Raphson iteration} to be the sequence given by the following \emph{recursive formula}
+\begin{equation*}
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\end{equation*}
+The \emph{Newton-Raphson method} refers to employing this sequence to search and approximate roots of the equation $f(x) = 0$.
+\end{definition}
+
 \begin{example}\label{example:NewtonRaphsonChoice}
 Consider now the function $f(x) = 1-\tfrac{1}{x}$ over $(0, \infty)$, which has the obvious root $x=1$. The Newton-Raphson method gives the following iterates for any $x_0 \in (0,\infty)$:
 \begin{align*}
@@ -51,7 +59,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n \big( 2- x_n \big).
 \end{align*}
 Notice the two factors in the right-hand side of that expression: $x_n$, and $2-x_n$.  If the initial guess does not satisfy $0<x_0<2$, then the next iteration gives a non-positive value (see Figure \ref{figure:NewtonRaphsonChoice}).  The method will not work on those instances: convergence to a solution is not guaranteed.
 \begin{figure}[ht!]
-\includegraphics[width=0.6\linewidth]{badNewton.png}
+\includegraphics[width=0.55\linewidth]{badNewton.png}
 \caption{Initial guess must carefully be chosen in Newton-Raphson}
 \label{figure:NewtonRaphsonChoice}
 \end{figure}
@@ -64,7 +72,7 @@ x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} = x_0 - \frac{\sign(x_0)\lvert x_0 \rvert^{1/
 \end{align*}
 This sequence turns into a loop: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n\in \field{N}$ (see Figure \ref{figure:NewtonRaphsonloop}).
 \begin{figure}[ht!]
-\includegraphics[width=0.65\linewidth]{loop.png}
+\includegraphics[width=0.55\linewidth]{loop.png}
 \caption{Newton-Raphson fails for some functions}
 \label{figure:NewtonRaphsonloop}
 \end{figure}
@@ -77,7 +85,7 @@ x_{n+1} - x^\star &= x_n - x^\star - \frac{f(x_n)}{f'(x_n)} \nonumber \\
 &= (x_n - x^\star) \bigg( 1 - \frac{f(x_n)-\overbrace{f(x^\star)}^0}{(x_n-x^\star)f'(x_n)} \bigg) \nonumber \\
 &= (x_n - x^\star) \bigg( 1 - \frac{1}{f'(x_n)} \frac{f(x_n) - f(x^\star)}{x_n - x^\star} \bigg) \label{eq:NRestimateStandBy}
 \end{align}
-Recall at this point the definition of \emph{divided differences} for any $n$--times differentiable function $g\colon \field{R} \to \field{R}$, and a family of values $t_0 \leq t_1 \leq \dotsb \leq t_n$: 
+Recall at this point the definition of \emph{divided differences} for any $n$--times differentiable function $g\colon \field{R} \to \field{R}$, and a family of values $t_0 \leq t_1 \leq \dotsb \leq t_n$:\index{divided differences}
 \begin{align*}
 \Delta g[t_0,t_1] &= \frac{g(t_1)-g(t_0)}{t_1-t_0} \qquad\text{ (if }t_0 \neq t_1)\\
 \Delta g[t_0,t_0] &= g'(t_0) \\
@@ -96,13 +104,13 @@ Therefore,
 \lim_n \frac{x_{n+1}-x^\star}{(x_n - x^\star)^2} = \lim_n \frac{\Delta f[x_n, x_n, x^\star]}{\Delta f[x_n, x_n]} 
 = \frac{f''(x^\star)}{2f'(x^\star)}.
 \end{equation*}
-If $f''(x^\star) \neq 0$, the Newton's iteration exhibits quadratic convergence.\footnote{See Appendix \ref{appendix:convergence}}
+If $f''(x^\star) \neq 0$, the Newton-Raphson's iteration exhibits quadratic convergence.\footnote{See Appendix \ref{appendix:convergence}}
 
 \begin{remark} 
-We have just proven that, if a Newton-Raphson for a function $f$ gives a convergent sequence, the convergence is quadratic.  But, how can we guarantee convergence to a root of $f$?  The key is in \emph{how far can we start the sequence} given the structure of the graph of $f$.
+We have just proven that, if a Newton-Raphson iteration for a function $f$ gives a convergent sequence, the convergence is quadratic.  But, how can we guarantee convergence to a root of $f$?  The key is in \emph{how far can we start the sequence} given the structure of the graph of $f$.
 \end{remark}
 
-\begin{theorem}[Local Convergence for the Newton-Raphson Method]\label{theorem:LCNR}
+\begin{theorem}[Local Convergence for the Newton-Raphson Method]\label{theorem:LCNR}\index{Newton-Raphson!Local convergence for}
 Let $x^\star$ be a simple root of the equation $f(x)=0$, and there exists $\varepsilon > 0$ so that 
 \begin{itemize}
 	\item $f$ is twice continuously differentiable in the interval $(x^\star-\varepsilon, x^\star + \varepsilon)$, and
@@ -116,7 +124,7 @@ If $\varepsilon$ is small enough so that $\varepsilon M(\varepsilon) < 1$, then
 \marginnote{I have seen this Theorem in \cite{gautschi2011numerical} with the condition $2 \varepsilon M(\varepsilon) < 1$ instead, but I could not see why that 2 was necessary.  What am I missing?}
 \begin{enumerate}
 	\item \label{thm:LCNR1} There are no other roots of $f$ in $(x^\star -\varepsilon, x^\star+\varepsilon)$.
-	\item \label{thm:LCNR2} Any Newton-Raphson iterations starting at an initial guess $x_0 \neq x^\star$ in that interval will converge (quadratically) to $x^\star$
+	\item \label{thm:LCNR2} Any Newton-Raphson iteration starting at an initial guess $x_0 \neq x^\star$ in that interval will converge (quadratically) to $x^\star$
 \end{enumerate} 
 \end{theorem}
 \begin{proof}
@@ -154,7 +162,7 @@ Since $\varepsilon M(\varepsilon) < 1$, $\lim_n \big( \varepsilon M(\varepsilon)
 
 \subsection{Extension to higher dimensions}
 
-Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ as follows.  
+Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ as follows.
 \begin{itemize}
 	\item Any function $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ can be described in the form $\boldsymbol{g}(\x) = \big[ g_1(\x), g_2(\x), \dotsc, g_d(\x) \big]$ for $d$ real-valued functions $g_k\colon \field{R}^d \to \field{R}$ ($1\leq k \leq d$).
 	\item For such a function $\boldsymbol{g}$, we may express its gradient as a $d\times d$ matrix in the form
@@ -168,10 +176,13 @@ Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{
 	\end{equation*}
 \end{itemize}
 Start with a guess for the solution, $\x_0$, and on the $n$--th step of the algorithm compute the $(n+1)$--th term of the sequence by
-\begin{equation}\label{equation:NewtonMethod}
+\begin{equation}\label{equation:NewtonMethod}\index{Newton-Raphson!method}
 \x_{n+1} = \x_n - \big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n),
 \end{equation}
-where $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1}$ represents the inverse matrix of the gradient at $\x_n$.  This is equivalent to selecting in the tangent hyperplane to the graph of $\boldsymbol{g}$ at $\boldsymbol{g}(\x_n)$, the one line in the direction with the most rapid increase/decrease.  The computation of $\x_{n+1}$ is therefore the intersection of that line with the hyperplane $x_d=0$.  We refer to $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n)$ as the \emph{Newton direction} for $\boldsymbol{g}$ at $\x_n$.
+where $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1}$ represents the inverse matrix of the gradient at $\x_n$.  This is equivalent to selecting in the tangent hyperplane to the graph of $\boldsymbol{g}$ at $\boldsymbol{g}(\x_n)$, the one line in the direction with the most rapid increase/decrease.  The computation of $\x_{n+1}$ is therefore the intersection of that line with the hyperplane $x_d=0$.  We refer to $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n)$ as the \emph{Newton-Raphson direction} for $\boldsymbol{g}$ at $\x_n$.
+\index{Newton-Raphson!direction}
+\index{Newton-Raphson!method}
+\index{Newton-Raphson!iteration}
 
 \begin{example}\label{example:preNewton4poly4}
 Consider the function $\boldsymbol{g}\colon \field{R}^2 \to \field{R}^2$ given by
@@ -186,7 +197,7 @@ Note the determinant of this matrix is $\det \gradient{\boldsymbol{g}}(x,y) = 9x
 \begin{equation*}
 \big[ \gradient{\boldsymbol{g}}(x,y)\big]^{-1} = \frac{1}{9x^2y^2-1}\begin{bmatrix} 3y^2 & 1 \\ 1 & 3x^2 \end{bmatrix}
 \end{equation*}
-For an initial guess $(x_0, y_0)$, the sequence computed by the Newton method is then given by
+For an initial guess $(x_0, y_0)$, the sequence computed by this method is then given by
 \begin{align*}
 \begin{bmatrix} x_{n+1} \\ y_{n+1} \end{bmatrix} &= \begin{bmatrix} x_n \\ y_n \end{bmatrix} -\frac{1}{9 x_n^2 y_n^2-1}\begin{bmatrix} 3y_n^2 & 1 \\ 1 & 3x_n^2 \end{bmatrix} \begin{bmatrix} x_n^3-y_n \\ y_n^3-x_n \end{bmatrix} \\
 % &= \begin{bmatrix}
@@ -275,7 +286,7 @@ We can readily see how this process aids in the computation of critical points o
 Consider the polynomial $p_4(x,y) = x^4-4xy+y^4$. Notice $\gradient{p_4}(x,y) = \big[ x^3-y, y^3-x \big]$---this is function $\boldsymbol{g}$ in Example \ref{example:preNewton4poly4}.  The critical points we found were $(0,0)$, $(-1,-1)$ and $(1,1)$.  See Figure \ref{figure:NewtonConvergence}.
 \end{example}
 \begin{example}
-A similar process for the Rosenbrock function 
+A similar process for the Rosenbrock function\index{Function!Rosenbrock} 
 \begin{equation*}
 \mathcal{R}_{1,1}(x,y) = (1-x)^2 + (y-x^2)^2
 \end{equation*}
@@ -299,12 +310,12 @@ For instance, starting with the initial guess $(x_0, y_0) = (-2,2)$, the sequenc
 \includegraphics[width=0.45\linewidth]{convergenceNewton.png} &
 \includegraphics[width=0.55\linewidth]{convergenceNewtonRosenbrock.png} 
 \end{tabular}
-\caption{Newton method}
+\caption{Newton-Raphson method}
 \label{figure:NewtonConvergence}
 \end{figure}
 
 \begin{remark}
-Newton's Method to solve $\boldsymbol{g}=\boldsymbol{0}$, as given by the recurrence formula in equation \eqref{equation:NewtonMethod} in page \pageref{equation:NewtonMethod}, is very convenient to provide explicit descriptions of the different iterations.  However, it is hardly suitable for practical purposes, due to the computational issues involving matrix inversion.
+Newton-Raphson's Method to solve $\boldsymbol{g}=\boldsymbol{0}$, as given by the recurrence formula in equation \eqref{equation:NewtonMethod} in page \pageref{equation:NewtonMethod}, is very convenient to provide explicit descriptions of the different iterations.  However, it is hardly suitable for practical purposes, due to the computational issues involving matrix inversion.
 
 To avoid dealing with matrix inversion, we consider the following equivalent formula:
 \begin{equation}
