@@ -137,7 +137,7 @@ For the polynomial function $p_4(x,y) = x^4-4xy+y^4$ from Example \ref{example:N
 \end{itemize}
 \end{example}
 
-\begin{example}\label{example:SDR}
+\begin{example}\label{example:SDR}\index{Function!Rosenbrock}
 Notice what happens when we try to implement the same process on the Rosenbrock function $\mathcal{R}_{1,1}(x,y) = (1-x)^2 + (y-x^2)^2$, with the initial guess $(x_0, y_0) = (-2,2)$.  The sequence does converge to the minimum $(1,1)$, albeit very slowly.
 \begin{center}
 \begin{tabular}{|r|r|r|r|} \hline 
@@ -190,3 +190,32 @@ $33$ & $0.976182$ & $0.939503$ & $0.000748$ \\ \hline
 \caption{The Method of Steepest Descent}
 \label{figure:SteepestConvergence}
 \end{figure}
+
+\subsection{Efficiency of Steepest Descent Method}
+
+The analysis of efficiency of the method of Steepest descent is quite involved, but it boils down to studying the efficiency of Steepest descent for quadratic functions---since any function can be approximated using a Taylor's polynomial of degree two.  We will study that easier case in these notes.
+
+\begin{theorem}[Taylor's Formula]
+If $f\colon \field{R}^d \to \field{R}$ is a real-valued function of $d$ variables with continuous first and second partial derivatives on $\field{R}^d$, then for any choice $\x, \y \in \field{R}^d$, there exists a point $\boldsymbol{\xi} = \boldsymbol{\xi}(\x, \y)$ in the segment joining $\x$ and $\y$ so that
+\begin{equation*}
+f(\x) = f(\y) + \langle \gradient{f}(\y), \x - \y \rangle + \tfrac{1}{2} \quadratic{\Hess{f}(\boldsymbol{\xi})}(\x - \y)
+\end{equation*}
+\end{theorem}
+
+Assume we have a quadratic function $p\colon \field{R}^d \to \field{R}$ satisfying $p(\boldsymbol{0}) = 0$.  There exist a vector $D = \big[q_1, \dotsc, q_d\big]$ and a symmetric matrix $Q = \big[ q_{jk} \big]_{j,k=1}^d$ (with $q_{jk}=q_{kj}$ for all $1\leq j,k \leq d$) so that
+\begin{equation*}
+p(\x) = \langle D, \x \rangle + \tfrac{1}{2}\quadratic{Q}(\x) = \sum_{k=1}^d \big( \tfrac{1}{2}q_{kk}x_k^2 + q_k x_k\big) + \sum_{1\leq j<k \leq d} q_{jk} x_j x_k
+\end{equation*}
+The gradient of this function is thus $\gradient{p}(\x) = x \cdot Q + D$.  It has one unique critical point $\xstar = -D Q^{-1}$ (Why?).  At that point, it is 
+\begin{align*}
+p(\xstar) &= \tfrac{1}{2} \big( -D Q^{-1} \big)  Q \transpose{\big( -D Q^{-1} \big)} + D \transpose{\big( -D Q^{-1} \big)} \\
+&= \tfrac{1}{2} D Q^{-1} \transpose{D} - D Q^{-1} \transpose{D} = -\tfrac{1}{2} D Q^{-1} \transpose{D}.
+\end{align*}
+If $\x_n$ is a term in a sequence of steepest descent, then to compute $\x_{n+1}$ we proceed as follows:
+\begin{enumerate}
+	\item The direction of steepest descent at $\x_n$ is $\boldsymbol{v}_n = -\gradient{p}(\x_n) = -(x_n Q + D)$.
+	\item The restriction $\varphi\colon (0,\infty) \to \field{R}$ of the quadratic function $p$ over the line through $\x_n$ in the direction $\boldsymbol{v}_n$ is given by
+	\begin{equation*}
+	\varphi(t) = p\big( \x_n -t \gradient{p}(\x_n) \big) = p(\x_n) + t\norm{\boldsymbol{v}_n} + \tfrac{1}{2}t^2 \quadratic{Q}(\boldsymbol{v}_n)
+	\end{equation*}
+\end{enumerate}
