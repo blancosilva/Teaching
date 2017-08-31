@@ -30,6 +30,8 @@ The gradient has many interesting properties.  Assume $f(x,y)$ is a differentiab
 Let $D\subseteq \field{R}^2$ be a region on the plane containing the point $(x_0, y_0)$.  We say that the real-valued function $f\colon D \to \field{R}$ has a \emph{local minimum} at $(x_0,y_0)$ if $f(x_0,y_0) \leq f(x,y)$ for all domain points $(x,y)$ in an open disk centered at $(x_0,y_0)$.  In that case, we also say that $f(x_0,y_0)$ is a \emph{local minimum value} of $f$ in $D$.
 \end{definition}
 
+\separator 
+
 Emphasis was made to find conditions on the function $f$ to guarantee existence and characterization of minima:
 
 \begin{theorem}\label{theorem:localminimum}
@@ -41,6 +43,8 @@ The local minima of these functions are among the zeros of the equation $\gradie
 \begin{definition}\label{def:criticalpoint}
 An interior point of the domain of a function $f(x,y)$ where both directional derivatives are zero, or where at least one of the directional derivatives do not exist, is a \emph{critical point} of $f$.
 \end{definition}
+
+\separator 
 
 We employed the \emph{Second Derivative Test for Local Extreme Values} to characterize some minima:
 \begin{theorem}\label{theorem:2DTforLEV}
@@ -100,6 +104,8 @@ Let's locate all local minima:
 There is only one local minimum at $(a,a^2)$, which happens also to be a global minimum.
 \end{example}
 
+\separator
+
 The second step was the notion of \emph{global (or absolute) minima}: points $(x_0,y_0)$ that satisfy $f(x_0,y_0) \leq f(x,y)$ for any point $(x,y)$ in the domain of $f$.  We always started with the easier setting, in which we placed restrictions on the domain of our functions:
 
 \begin{theorem}\label{theorem:MaxMinCompact}
@@ -130,6 +136,8 @@ Evaluation of the function at all candidates gives us the solution to this probl
 f( \tfrac{1}{2}, 0 ) = -25^\circ\mathrm{C}.
 \end{equation*}
 \end{example}
+
+\separator
 
 On a second setting, we remove the restriction of boundedness of the function.  In this case, global minima will only be guaranteed for very special functions.
 
