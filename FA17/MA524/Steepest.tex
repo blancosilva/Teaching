@@ -271,9 +271,21 @@ This allows us to rewrite in the following convenient form
 \end{align*}
 
 We are ready to state the main result of this subsection:
-\begin{theorem}
+\begin{theorem}\label{theorem:KantorovichEstimate}
 Given a $d$-dimensional vector $D$, and a positive definite symmetric matrix $Q$ of size $d \times d$, consider the quadratic function $p(\x) = \tfrac{1}{2}\quadratic{Q}(\x) + \langle D , \x \rangle$.  Any sequence $\{ \x_n \}_{n \in \field{N}}$ of steepest descent converges to the global minimum $\xstar = -DQ^{-1}$.  The sequence of evaluations $\{ p(\x_n) \}_{n \in \field{N}}$ converges linearly to $p(\xstar) = -\tfrac{1}{2}\quadratic{(Q^{-1})}(D)$.  In particular, if $0 < \lambda_1 \leq \lambda_2 \leq \dotsb \leq \lambda_d$ are the eigenvalues of $Q$, then 
 \begin{equation*}
-\frac{p(\x_{n+1}) - p(\xstar)}{p(\x_n)- p(\xstar)} \leq \bigg( \frac{\lambda_d/\lambda_0 - 1}{\lambda_d/\lambda_0 + 1} \bigg)^2
+\frac{p(\x_{n+1}) - p(\xstar)}{p(\x_n)- p(\xstar)} \leq \bigg( \frac{\lambda_d -\lambda_0}{\lambda_d + \lambda_0} \bigg)^2
 \end{equation*}
 \end{theorem}
+\begin{proof}
+We start by offering the following lower bound estimate\footnote{This is left as and advanced exercise. It is not too tricky; if you are stuck, see e.g.~\cite[section 1.3.1]{bertsekas1999nonlinear} for a proof.} involving the associated directions of steepest descent $\v_n$ in terms of the largest and smallest eigenvalues of $Q$.  For all $n \in \field{N}$,
+\begin{equation}\label{equation:KantorovichEstimate}
+\frac{\norm{\v_n}^4}{\quadratic{Q}(\v_n) \quadratic{(Q^{-1})}(\v_n)} \geq \frac{4\lambda_0\lambda_d}{(\lambda_0 + \lambda_d)^2}
+\end{equation}
+We have then
+\begin{align*}
+\frac{p(\x_{n+1}) - p(\xstar)}{p(\x_n)- p(\xstar)} &= 1 - \frac{\norm{\v_n}^4}{ \quadratic{Q}(\v_n) \quadratic{(Q^{-1})}(\v_n) } \\
+&\leq 1 - \frac{4\lambda_0 \lambda_d}{(\lambda_0 + \lambda_d)^2} = \bigg( \frac{\lambda_d - \lambda_0}{\lambda_d + \lambda_0} \bigg)^2 \qedhere
+\end{align*}
+
+\end{proof}
