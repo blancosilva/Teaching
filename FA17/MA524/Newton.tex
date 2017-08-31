@@ -3,7 +3,7 @@
 \section{Newton-Raphson's Method}
 
 \subsection{Newton-Raphson Method to search for roots of univariate functions}
-\begin{example}
+
 In order to find a good estimation of $\sqrt{2}$ with many decimal places, we allow a computer to find better and better approximations of the root  of the polynomial $p(x)=x^2-2$.  We start with an initial guess, say $x_0=3$.  We construct a sequence $\{ x_n \}_{n\in\field{N}}$ that converges to $\sqrt{2}$ as follows:
 \begin{enumerate}
 \item Find the tangent line to the graph of $p$ at $x_0$, 
@@ -42,7 +42,6 @@ $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline
 % \label{table:Newton-Raphson}
 % \end{table}
 \end{center}
-\end{example}
 
 \begin{definition}\index{Newton-Raphson!iteration}\index{Newton-Raphson!method}\index{Newton-Raphson!}
 Given a differentiable real-valued function $f\colon \field{R} \to \field{R}$ and an initial guess $x_0 \in \field{R}$, we define the \emph{Newton-Raphson iteration} to be the sequence given by the following \emph{recursive formula}
@@ -349,6 +348,8 @@ or equivalently,
 \end{cases}
 \end{equation*}
 \end{example}
+
+\separator
 
 There are some theoretical results that aid in the search for a \emph{good} initial guess in case of multivariate functions.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
 
