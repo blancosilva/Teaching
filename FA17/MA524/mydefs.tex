@@ -1,6 +1,5 @@
 %!TEX root = main.tex
 
-
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
 \usepackage{tikz}
 % \usepackage{endnotes}
@@ -9,6 +8,7 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{marginnote}
+\usepackage{pgfornament}
 % \usepackage{makeidx}
 % \usepackage{float,wrapfig}
 % \usepackage{appendix}
@@ -18,11 +18,21 @@
 \setlist[itemize]{nosep, noitemsep}
 \numberwithin{figure}{chapter}
 
+\newcommand{\separator}{%
+  \nointerlineskip \vspace{.5\baselineskip}\hspace{\fill}
+  {\resizebox{0.5\linewidth}{1.2ex}
+    {\pgfornament[color = black]{88}
+    }}%
+    \hspace{\fill}
+    \par\nointerlineskip \vspace{.5\baselineskip}
+  }
+
 % Misc
 \def\sympy{\texttt{sympy}}
 \def\scipy{\texttt{scipy}}
 
 % Points, objects
+\def\v{\boldsymbol{v}}
 \def\x{\boldsymbol{x}}
 \def\y{\boldsymbol{y}}
 \def\z{\boldsymbol{z}}
