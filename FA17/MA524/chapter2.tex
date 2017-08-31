@@ -48,6 +48,8 @@ Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real vari
 therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x^\star+h) - f(x^\star) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x^\star)$
 \end{example}
 
+\separator 
+
 A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})
 \begin{theorem}\label{theorem:partialgivesDerivative}
 If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d}$ of a real-valued function $f \colon \field{R}^d \to \field{R}$ are continuous on an open region $G \subseteq \field{R}^d$, then $f$ is differentiable at every point of $\field{R}$.
@@ -59,6 +61,9 @@ Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at
 \boldsymbol{a} = \gradient{f}(\xstar)= \bigg( \frac{\partial f (\xstar)}{\partial x_1}, \dotsc, \frac{\partial f (\xstar)}{\partial x_d} \bigg).
 \end{equation*}
 \end{example}
+
+\separator 
+
 It is a simple task to prove that all differentiable functions are continuous.  Is it true that all continuous functions are differentiable?
 
 \begin{example}[Weierstrass Function]\label{example:WeierstrassFunction}\index{Function!Weierstrass}
@@ -73,6 +78,8 @@ This function is continuous everywhere, yet \emph{nowehere} differentiable!  For
 \label{figure:WeierstrassFunction}
 \end{figure}
 \end{example}
+
+\separator
 
 A few more useful results about higher order derivatives follow:
 
@@ -97,6 +104,8 @@ Given a twice-differentiable function $f\colon \field{R}^d \to \field{R}$, we de
 \end{bmatrix}
 \end{equation*}
 \end{definition}
+
+\separator
 
 Functions that satisfy the conditions of Theorem \ref{theorem:MixedDerivatives} have symmetric Hessians.  We shall need some properties in regard to symmetric matrices.
 
@@ -128,6 +137,8 @@ The associated quadratic form is given by
 &= 2x^2 +3y^2 + 5z^2 -2xy +4xz
 \end{align*}
 \end{example}
+
+\separator 
 
 To easily classify symmetric matrices, we usually employ any of the following two criteria:
 
@@ -206,12 +217,15 @@ therefore,
 We can then conclude that given $M>0$, if $x^2+y^2 \geq  2+\sqrt{4+2M}$, then $p_4(x,y) \geq M$.  This proves $p_4$ is coercive.
 \end{example}
 
+\subsection{Convex Functions}
+
 There is one more kind of functions we should explore.
 
-\subsection{Convex Functions}
 \begin{definition}[Convex Sets]\label{def:convexSets}\index{Convex!set}
 A subset $C \subseteq \field{R}^d$ is said to be \emph{convex} if for every $\x, \y \in C$, and every $\lambda \in [0,1]$, the point $\lambda \y + (1-\lambda) \x$ is also in $C$.
 \end{definition}
+
+\separator 
 
 The following result is an interesting characterization of convex sets that allows us to actually construct any convex set from a family of points.
 \begin{theorem}
@@ -242,6 +256,8 @@ There is an alternative definition of convex functions using the concept of \emp
 \end{equation*}
 The function $f$ is convex if and only if its epigraph is a convex set.
 \end{remark}
+
+\separator
 
 Convex functions have many pleasant properties:
 \begin{theorem}\label{theorem:ConvexIsContinuous}
