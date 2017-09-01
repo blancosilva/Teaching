@@ -4,7 +4,7 @@
 
 In this chapter we will study different properties of functions and domains that guarantee existence of extrema for unconstrained optimization. Once we have them, we explore characterization of those points.  We start with a reminder of the definition of continuous and differentiable functions, and then we proceed to introduce other functions with advantageous properties for optimization purposes.
 
-\section{Functions}
+\section{Anatomy of a function}
 
 \subsection{Continuity and Differentiability}
 \begin{definition}\label{def:continuous}\index{Function!continuous}
@@ -356,7 +356,7 @@ By virtue of part \ref{theorem:convexFunctionConvo1} in Theorem \ref{theorem:con
 
 We are now ready to explore existence and characterization of extrema in a wide variety of situations.
 
-\section{Existence}
+\section{Existence results}
 \subsection{Continuous functions on compact domains}
 The existence of global extrema is guaranteed for continuous functions over compact sets thanks to the following two basic results:
 
@@ -378,7 +378,7 @@ Coercive functions always have a global minimum.
 Since $f$ is coercive, there exists $r>0$ so that $f(\x) > f(\boldsymbol{0})$ for all $\x$ satisfying $\norm{\x}>r$.  On the other hand, consider the closed ball $K_r = \{ \x \in \field{R}^2 : \norm{\x} \leq r \}$.  The continuity of $f$ guarantees a global minimum $\xstar \in K_r$ with $f(\xstar) \leq f(\boldsymbol{0})$.  It is then $f(\xstar) \leq f(\x)$ for all $\x \in \field{R}^d$ trivially.
 \end{proof}
 
-\section{Characterization}
+\section{Characterization results}
 
 Differentiability is key to guarantee characterization of extrema.  Critical points lead the way:
 
