@@ -58,7 +58,7 @@ If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\part
 \begin{example}\label{example:gradient}
 Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\xstar \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  Under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
 \begin{equation*}
-\boldsymbol{a} = \gradient{f}(\xstar)= \bigg( \frac{\partial f (\xstar)}{\partial x_1}, \dotsc, \frac{\partial f (\xstar)}{\partial x_d} \bigg).
+\boldsymbol{a} = \gradient{f}(\xstar)= \bigg[ \frac{\partial f (\xstar)}{\partial x_1}, \dotsc, \frac{\partial f (\xstar)}{\partial x_d} \bigg].
 \end{equation*}
 \end{example}
 
@@ -71,7 +71,7 @@ For any positive real numbers $a, b$ satisfying $0<a<1<b$ and $ab \geq 1$, consi
 \begin{equation*}
 \mathcal{W}_{a,b}(x) = \sum_{n=0}^\infty a^n \cos(b^n \pi x)
 \end{equation*}
-This function is continuous everywhere, yet \emph{nowehere} differentiable!  For a proof, see e.g.~\cite{hardy1916weierstrass}
+This function is continuous everywhere, yet \emph{nowehere} differentiable! (see Figure~\ref{figure:WeierstrassFunction}). For a proof, see e.g.~\cite{hardy1916weierstrass}
 \begin{figure}[ht!]
 \includegraphics[width=0.6\linewidth]{images/weierstrass.png}
 \caption{Detail of the graph of $\mathcal{W}_{0.5, 7}$}
@@ -241,7 +241,7 @@ Let $C\subseteq \field{R}^d$ be a convex set and let $\{ \x_1, \x_2, \dotsc, \x_
 \label{figure:convexSet}
 \end{figure}
 
-\begin{definition}[Convex Functions]\label{def:ConvexFunctions}\index{Function!convex}\index{Convex!function}
+\begin{definition}[Convex Functions]\label{def:ConvexFunctions}\index{Function!convex}\index{Convex!function}\index{Function!strictly convex}
 Given a convex set $C \subseteq \field{R}^d$, we say that a real-valued function $f \colon C \to \field{R}$ is \emph{convex} if 
 \begin{equation*}
 f\big(\lambda \y + (1-\lambda)\x \big) \leq \lambda f(\y) + (1-\lambda) f(\x)
@@ -249,7 +249,7 @@ f\big(\lambda \y + (1-\lambda)\x \big) \leq \lambda f(\y) + (1-\lambda) f(\x)
 If instead we have $f\big(\lambda \x + (1-\lambda)f(\y)\big) < \lambda f(\x) + (1-\lambda) f(\y)$ for $0<\lambda<1$, we say that the function is \emph{strictly convex}.  A function $f$ is said to be \emph{concave} (resp.~\emph{strictly concave}) if $-f$ is convex (resp.~strictly convex).
 \end{definition}
 
-\begin{remark}
+\begin{remark}\index{Epigraph}
 There is an alternative definition of convex functions using the concept of \emph{epigraph} of a function.  Given a convex function $f\colon C \to \field{R}$ on a convex set $C$, the epigraph of $f$ is a set $\epi(f) \subset \field{R}^{d+1}$ defined by
 \begin{equation*}
 \epi(f) = \{ (\x,y) \in \field{R}^{d+1} : \x \in C, y \in \field{R}, f(\x) \leq y \}.
@@ -360,18 +360,18 @@ We are now ready to explore existence and characterization of extrema in a wide 
 \subsection{Continuous functions on compact domains}
 The existence of global extrema is guaranteed for continuous functions over compact sets thanks to the following two basic results:
 
-\begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}
+\begin{theorem}[Bounded Value Theorem]\label{theorem:BVT}\index{Theorem!Bounded Value Theorem}
 The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to \field{R}$ on a compact set $K$ is bounded: there exists $M>0$ so that $\abs{ f(\x) } \leq M$ for all $\x \in K$.
 \end{theorem}
 
-\begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}
+\begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}\index{Theorem!Extreme Value Theorem}
 A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
 \end{theorem}
 
 \subsection{Continuous functions on unbounded domains}
 Extra restrictions must be applied to the behavior of $f$ in this case, if we want to guarantee the existence of extrema. 
 
-\begin{theorem}\label{theorem:CoerciveFunctions}
+\begin{theorem}\label{theorem:CoerciveFunctions}\index{Function!coercive}
 Coercive functions always have a global minimum.
 \end{theorem}
 \begin{proof}
@@ -413,11 +413,11 @@ If $D=\field{R}^d$ and $\xstar \in \field{R}^d$ satisfies $\gradient{f}(\xstar)=
 \end{description}
 \end{theorem}
 
-\begin{theorem}\label{theorem:ConvexMinima}
-Any local minimum of a convex function $f\colon C \to \field{R}$ on a convex set $C \subseteq \field{R}^d$ is also a global minimum.  If $f$ is a strict convex function, then any local minimum is the unique strict global minimum.
+\begin{theorem}\label{theorem:ConvexMinima}\index{Function!convex}\index{Function!strictly convex}
+Any local minimum of a convex function $f\colon C \to \field{R}$ on a convex set $C \subseteq \field{R}^d$ is also a global minimum.  If $f$ is a strictly convex function, then any local minimum is the unique strict global minimum.
 \end{theorem}
 
-\begin{theorem}\label{theorem:ConvexCritical}
+\begin{theorem}\label{theorem:ConvexCritical}\index{Function!convex}
 Suppose $f\colon C \to \field{R}$ is a convex function with continuous first partial derivatives on a convex set $C \subseteq \field{R}^d$.  Then, any critical point of $f$ in $C$ is a global minimum of $f$.
 \end{theorem}
 
@@ -441,7 +441,7 @@ e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} & 0 \\
 0 & 0 & 2 
 \end{bmatrix}
 \end{equation*}
-The first principal minor is trivially positive: $\Delta_1 = e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2}$, since it is a sum of positive terms.  The second principal minor is also positive:
+The first principal minor is trivially positive: $\Delta_1 = e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2}$, since it is a sum of three positive terms and on non-negative term.  The second principal minor is also positive:
 \begin{align*}
 \Delta_2 &= \det \begin{bmatrix} e^{x-y}+e^{y-x}+4x^2e^{x^2}+2e^{x^2} & -e^{x-y}-e^{y-x} \\ -e^{x-y}-e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix} \\
 &= (e^{x-y}+e^{y-x})^2 + (e^{x-y}+e^{y-x})(4x^2e^{x^2}+2e^{x^2}) - (e^{x-y}+e^{y-x})^2 \\
