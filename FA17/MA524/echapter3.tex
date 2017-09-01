@@ -236,16 +236,15 @@ Prove the following statements:
 \end{problem}
 
 \begin{problem}[Advanced]
-We want to prove estimate \ref{equation:KantorovichEstimate} in the proof of Theorem \ref{theorem:KantorovichEstimate}.  It follows directly from the following equivalent statement, easier to prove.  Prove the following Theorem:
+We want to prove estimate \eqref{equation:KantorovichEstimate} in the proof of Theorem \ref{theorem:KantorovichEstimate} in page \pageref{equation:KantorovichEstimate}.  This follows directly from the equivalent statement below, which is easier to handle.  Prove the following result:
 \begin{center}
-\framebox{%
-\begin{minipage}{0.9\linewidth}
-\begin{theorem}[Kantorovich Estimate]
-Given a positive definite symmetric matrix $Q$ of size $d \times d$, consider the quadratic function $p(\x) = \tfrac{1}{2}\quadratic{Q}(\x)$.  Assume $0 < \lambda_0 \leq \lambda_1 \leq \dotsb \leq \lambda_d$ are the eigenvalues of $Q$.  For any sequence $\{ \x_n \}_{n \in \field{N}}$ of steepest descent for $f$, we have the following estimate involving the directions of steepest descent $\{ \v_n \}_{n \in \field{N}}$:
+\begin{tikzpicture}
+\draw (0,0) node[text justified, text width=0.85\linewidth, draw, rounded corners, inner sep=10]{
+\noindent\textbf{Kantorovich Estimate}. Given a positive definite symmetric matrix $Q$ of size $d \times d$, consider the quadratic function $p(\x) = \tfrac{1}{2}\quadratic{Q}(\x)$.  Assume $0 < \lambda_1 \leq \lambda_2 \leq \dotsb \leq \lambda_d$ are the eigenvalues of $Q$.  For any sequence $\{ \x_n \}_{n \in \field{N}}$ of steepest descent for $f$, we have the following estimate involving the directions of steepest descent $\{ \v_n \}_{n \in \field{N}}$:
 \begin{equation*}
-\frac{\norm{\v_n}^4}{\quadratic{Q}(\v_n) \quadratic{(Q^{-1})}(\v_n)} \geq \frac{4\lambda_0\lambda_d}{(\lambda_0 + \lambda_d)^2}
+\frac{\norm{\v_n}^4}{\quadratic{Q}(\v_n) \quadratic{(Q^{-1})}(\v_n)} \geq \frac{4\lambda_1\lambda_d}{(\lambda_1 + \lambda_d)^2}
 \end{equation*}
-\end{theorem}
-\end{minipage}}
+};
+\end{tikzpicture}
 \end{center}
 \end{problem}
