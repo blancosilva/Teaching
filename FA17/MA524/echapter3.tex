@@ -146,7 +146,7 @@ Use any of the routines that you wrote in Problem \ref{problem:CASNewton} to pro
 The objective of this problem is to use Newton's method to find an approximation to the golden ratio $\phi=\frac{1}{2}(1+\sqrt{5})$ accurate to the first 16 decimal places.  Find first an appropriate polynomial $p(x)$ with integer coefficients for which $\phi$ is a root.  Employ any of the routines that you wrote in Problem \ref{problem:CASNewton} with a good initial guess to guarantee the required result.
 \end{problem}
 
-\begin{problem}[Intermediate|CAS]
+\begin{problem}[Intermediate|CAS]\cite[lec3\_newton\_mthd, 3.1]{Freund2004nonlinear}
 Consider the function 
 \begin{equation*}
 f(x) = 9x -4\log(x-7).
@@ -169,7 +169,7 @@ We wish to study the behavior of Newton-Raphson to find approximations to the cr
 \end{enumerate}
 \end{problem}
 
-\begin{problem}[Intermediate|CAS]
+\begin{problem}[Intermediate|CAS]\cite[lec3\_newton\_mthd, 3.2]{Freund2004nonlinear}
 Consider the function 
 \begin{equation*}
 f(x) = 6x -4\log(x-2) -3\log(25-x).
@@ -249,15 +249,14 @@ We want to prove estimate \eqref{equation:KantorovichEstimate} in the proof of T
 \end{center}
 \end{problem}
 
-\begin{problem}
+\begin{problem}\cite[lec5\_steep\_desce, 8.3]{Freund2004nonlinear}
 Consider the quadratic polynomial 
 \begin{equation*}
 p(x,y) = \tfrac{1}{2} \quadratic{Q}(x,y) + \langle D, [x,y] \rangle + 13,
 \end{equation*}
 with
 \begin{align*}
-D &= [4, -15] \\
-Q &= \begin{bmatrix} 10 & -9 \\ -9 & 10 \end{bmatrix}
+D &= [4, -15], & Q &= \begin{bmatrix} 10 & -9 \\ -9 & 10 \end{bmatrix}
 \end{align*}
 \begin{enumerate}
 	\item Find the global minimum value of $p$, and its location.
@@ -273,15 +272,14 @@ Q &= \begin{bmatrix} 10 & -9 \\ -9 & 10 \end{bmatrix}
 \end{enumerate}
 \end{problem}
 
-\begin{problem}
+\begin{problem}\cite[lec5\_steep\_desce, 8.4]{Freund2004nonlinear}
 Consider the quadratic polynomial 
 \begin{equation*}
 p(x,y,z) = \tfrac{1}{2} \quadratic{Q}(x,y,z) + \langle D, [x,y,z] \rangle,
 \end{equation*}
 with
 \begin{align*}
-D &= [12, -47, -8] \\
-Q &= \begin{bmatrix} 10 & -18 & 2 \\ -18 & 40 & -1 \\ 2 & -1 & 3 \end{bmatrix}
+D &= [12, -47, -8], & Q &= \begin{bmatrix} 10 & -18 & 2 \\ -18 & 40 & -1 \\ 2 & -1 & 3 \end{bmatrix}
 \end{align*}
 \begin{enumerate}
 	\item Find the global minimum value of $p$, and its location.
