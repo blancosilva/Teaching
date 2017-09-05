@@ -1,8 +1,8 @@
 %!TEX root = main.tex
 
-\section{The Method of Steepest Descent}
+\section{The Method of Steepest Descent}\index{Steepest descent}\index{Gradient!descent|see {Steepest descent}}
 
-The method of Steepest Descent is based upon the following property of gradients that we learned in Vector Calculus:
+The method of \emph{Steepest Descent} (also known as the method of \emph{Gradient Descent}) is based upon the following property of gradients that we learned in Vector Calculus:
 
 \begin{theorem}
 If $f \colon \field{R}^d \to \field{R}$ is continuously differentiable, then at any point $\x \in \field{R}^d$, the vector $-\gradient{f}(\x)$ points in the direction of most rapid decrease for $f$ at $\x$.  The rate of decrease of $f$ at $\x$ in this direction is precisely $-\norm{\gradient{f}(\x)}$.
@@ -300,8 +300,7 @@ We have then
 \begin{example}\label{example:SDconvergenceRate}
 The global minimum value of the quadratic function $p(x,y) = 5x^2 + 5y^2 -xy -11x +11y +11$ is zero, and found at $(1,-1)$.  Notice that we may write this function in the form $p(x,y) = \tfrac{1}{2}\quadratic{Q}(x,y) + \langle D, [x,y] \rangle + 11$, where
 \begin{align*}
-D &= [ -11, 11], \\
-Q &= \begin{bmatrix} 10 & -1 \\ 10 & -1 \end{bmatrix}.
+D &= [ -11, 11], & Q &= \begin{bmatrix} 10 & -1 \\ 10 & -1 \end{bmatrix}.
 \end{align*}
 The symmetric matrix $Q$ has eigenvalues $\lambda_1 = 9 >0$, $\lambda_2 = 11 > 0$ and is therefore positive definite.  Theorem \ref{theorem:KantorovichEstimate} states that sequences of steepest descent exhibit linear convergence with a rate of convergence not larger than $\delta = \big( \tfrac{11-9}{11+9} \big)^2 = 0.01$.
 
