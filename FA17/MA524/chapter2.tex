@@ -7,8 +7,9 @@ In this chapter we will study different properties of functions and domains that
 \section{Anatomy of a function}
 
 \subsection{Continuity and Differentiability}
+
 \begin{definition}\label{def:continuous}\index{Function!continuous}
-We say that a real-valued function $f\colon D \to \field{R}$ is continuous at a point $\xstar \in D$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in D$ satisfying $\norm{\x-\xstar}<\delta$, it is $\abs{ f(\x) - f(\xstar) } < \varepsilon$.  
+We say that a function $\boldsymbol{f} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is continuous at a point $\xstar \in \field{R}^{d_1}$ if for all $\varepsilon > 0$ there exists $\delta > 0$ so that for all $\x \in \field{R}^{d_1}$ satisfying $\norm{\x-\xstar}_{d_1}<\delta$, it is $\norm{ f(\x) - f(\xstar) }_{d_2} < \varepsilon$.  
 \end{definition}
 
 \begin{example}
@@ -25,41 +26,87 @@ This function is trivially continuous at any point $(x,y)\neq(0,0)$.  However, i
 \end{equation*}
 \end{example}
 
-\begin{definition}\label{def:differentiable}\index{Function!differentiable}
-A real-valued function $f$ is said to be \emph{differentiable} at $\xstar$ if there exists a \emph{linear function} $J\colon \field{R}^d \to \field{R}$ so that 
+\begin{definition}\label{def:linearMap}\index{Linear map}
+A function $\boldsymbol{J} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is said to be a \emph{linear map} if it satisfies 
 \begin{equation*}
-\lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\abs{f(\xstar+h)-f(\xstar)-J(\boldsymbol{h})}}{\norm{\boldsymbol{h}}} = 0
-\end{equation*}
+\boldsymbol{J}(\x+\lambda\y) = \boldsymbol{J}(\x) + \lambda \boldsymbol{J}(\y) \text{ for all }\x, \y \in \field{R}^{d_1}, \lambda \in \field{R}.
+\end{equation*}  
 \end{definition}
 
-\begin{remark}\index{Function!linear}
-A function is said to be \emph{linear} if it satisfies $J(\x+\lambda\y) = J(\x) + \lambda J(\y)$ for all $\x, \y \in \field{R}^d$, $\lambda \in \field{R}$.  For each real-valued linear function $J \colon \field{R}^d \to \field{R}$ there exists $\boldsymbol{a} \in \field{R}^d$ so that $J(\x) = \langle \boldsymbol{a} , \x \rangle$ for all $\x \in \field{R}^d$.  For this reason, the graph of a linear function is a hyperplane in $\field{R}^d$.
+\begin{remark}
+For each real-valued linear map $J \colon \field{R}^d \to \field{R}$ there exists $\boldsymbol{a} \in \field{R}^d$ so that $J(\x) = \langle \boldsymbol{a} , \x \rangle$ for all $\x \in \field{R}^d$.  
+
+The graph of a real-valued linear function can be identified with a hyperplane in $\field{R}^{d+1}$ :
+\begin{align*}
+\operatorname{Graph} J &= \{ (\x,y) \in \field{R}^{d+1} : y = J(\x) \} \\
+&= \{ (x_1, x_2, \dotsc, x_d, y) \in \field{R}^{d+1} : a_1x_1 + a_2 x_2 + \dotsb + a_dx_d = y \} \\
+& = \ker \langle [a_1, a_2, \dotsc, a_d, -1], \cdot \rangle
+\end{align*}
 \end{remark}
 
 \begin{remark}
-For any differentiable real-valued function $f$ at a point $\x$ of its domain, the corresponding linear function in the definition above guarantees a tangent hyperplane to the graph of $f$ at $\x$.  
+For each linear map $J \colon \field{R}^{d_1} \to \field{R}^{d_2}$ there exists a matrix $\boldsymbol{A}$ of size $d_1 \times d_2$ so that $J(\x) = \boldsymbol{A} \cdot \transpose{\x}$.
+\begin{equation*}
+\begin{cases} 
+y_1 &= a_{11} x_1 + \dotsb + a_{1d_1} x_{d_1} \\ 
+y_2 &= a_{21} x_1 + \dotsb + a_{2d_1} x_{d_1} \\
+    &\vdots \\
+y_{d_2} &= a_{d_2 1} x_1 + \dotsb + a_{d_1 d_2} x_{d_1}
+\end{cases}
+\end{equation*}
 \end{remark}
+
+\begin{definition}\label{def:differentiable}\index{Function!differentiable}
+A function $\boldsymbol{f} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is said to be \emph{differentiable} at $\xstar$ if there exists a \emph{linear map} $\boldsymbol{J} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ so that 
+\begin{equation*}
+\lim_{\boldsymbol{h} \to \boldsymbol{0}} \frac{\norm{\boldsymbol{f}(\xstar+\boldsymbol{h})-\boldsymbol{f}(\xstar)-\boldsymbol{J}(\boldsymbol{h})}_{d_2}}{\norm{\boldsymbol{h}}_{d_1}} = 0
+\end{equation*}
+\end{definition}
+
  
 \begin{example}\label{example:derivatives}
-Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x^\star$, we need a linear function: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
+Consider a real-valued function $f\colon \field{R} \to \field{R}$ of a real variable. To prove differentiability at a point $x^\star$, we need a linear map: $J(h)=ah$ for some $a\in \field{R}$. Notice how in that case, 
 \begin{equation*}
 \frac{\abs{f(x^\star+h)-f(x^\star)-J(h)}}{\abs{h}} = \left\lvert \frac{f(x^\star+h)-f(x^\star)}{h} - a \right\lvert;
 \end{equation*}
-therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x^\star+h) - f(x^\star) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x^\star)$
+therefore, we could pick $a = \lim_{h\to 0} h^{-1}\big( f(x^\star+h) - f(x^\star) \big)$---this is the definition of derivative we learned in Calculus: $a=f'(x^\star)$.
 \end{example}
+
+\begin{remark}\index{Matrix!Jacobian}\index{Jacobian}\index{Derivative!partial}\index{Derivative!directional}
+If a function $\boldsymbol{f} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is differentiable at $\xstar$, then all of the partial derivatives exist at $\xstar$, in which case the linear map $\boldsymbol{J}$ is given by the \emph{Jacobian matrix}
+\begin{equation*}
+\boldsymbol{J}(\x) = \begin{bmatrix} 
+\frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \dotsb & \frac{\partial f_1}{\partial x_{d_1}} \\
+\frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & \dotsb & \frac{\partial f_2}{\partial x_{d_1}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial f_{d_2}}{\partial x_1} & \frac{\partial f_{d_2}}{\partial x_2} & \dotsb & \frac{\partial f_{d_2}}{\partial x_{d_1}} \\
+\end{bmatrix} \cdot \begin{bmatrix}
+x_1 \\ x_2 \\ \vdots \\ x_{d_1} 
+\end{bmatrix}
+\end{equation*}
+The converse is not true in general: the existence of partial derivatives (or even all of the directional derivatives) is not guarantee that a function is differentiable at a point.  For instance, the function $f \colon \field{R}^2 \to \field{R}$ given by
+\begin{equation*}
+f(x,y) = \begin{cases} 
+y^3/(x^2+y^2) &\text{if }(x,y) \neq (0,0) \\
+0 &\text{if }(x,y) = (0,0) \end{cases}
+\end{equation*}
+is not differentiable at $(0,0)$, although all partial derivatives and all directional derivatives exist at that point.
+\end{remark}
+
 
 \separator 
 
 A \emph{friendly} version of the differentiability of real-valued functions comes with the next result (see, e.g.~\cite[p.818]{finney2001thomas})
 \begin{theorem}\label{theorem:partialgivesDerivative}
-If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d}$ of a real-valued function $f \colon \field{R}^d \to \field{R}$ are continuous on an open region $G \subseteq \field{R}^d$, then $f$ is differentiable at every point of $\field{R}$.
+If the partial derivatives $\frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_d}$ of a real-valued function $f \colon \field{R}^d \to \field{R}$ are continuous on an open region $G \subseteq \field{R}^d$, then $f$ is differentiable at every point of $G$.
 \end{theorem}
 
 \begin{example}\label{example:gradient}
-Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\xstar \in \field{R}^d$ we need a linear function $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  Under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
+Let $f\colon \field{R}^d \to \field{R}$.  To prove that $f$ is differentiable at a point $\xstar \in \field{R}^d$ we need a linear map $J(h) = \langle \boldsymbol{a}, h \rangle$ for some $\boldsymbol{a} \in \field{R}^d$.  Under the conditions of Theorem \ref{theorem:partialgivesDerivative} we may use
 \begin{equation*}
-\boldsymbol{a} = \gradient{f}(\xstar)= \bigg[ \frac{\partial f (\xstar)}{\partial x_1}, \dotsc, \frac{\partial f (\xstar)}{\partial x_d} \bigg].
+\boldsymbol{a} = \gradient{f}(\xstar)= \bigg[ \frac{\partial f (\xstar)}{\partial x_1}, \dotsc, \frac{\partial f (\xstar)}{\partial x_d} \bigg],
 \end{equation*}
+if we are able to prove that all partial derivatives are continuous in an open set containing $\xstar$.
 \end{example}
 
 \separator 
@@ -124,7 +171,7 @@ We say that a symmetric matrix is:
 \end{description}
 \end{definition}
 
-\begin{example}
+\begin{example}\label{example:quadraticFromMatrix}
 Let $\boldsymbol{A}$ be the $3\times 3$--symmetric matrix
 \begin{equation*}
 \boldsymbol{A} = \begin{bmatrix} 2 & -1 & 2 \\ -1 & 3 & 0 \\ 2 & 0 & 5 \end{bmatrix}
@@ -142,7 +189,7 @@ The associated quadratic form is given by
 
 To easily classify symmetric matrices, we usually employ any of the following two criteria:
 
-\begin{theorem}[Principal Minor Criteria]\label{theorem:PrincipalMinors}
+\begin{theorem}[Principal Minor Criteria]\label{theorem:PrincipalMinors}\index{Theorem!Principal Minor Criteria}
 Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
 \begin{center}
 \begin{tikzpicture}
@@ -166,7 +213,16 @@ A symmetric matrix $\boldsymbol{A}$ is:
 \end{itemize}
 \end{theorem}
 
-\begin{theorem}[Eigenvalue Criteria]\label{theorem:eigenvalues}\index{Characteristic Polynomial}\index{Eigenvalue}
+\begin{example}
+The matrix $\boldsymbol{A}$ in Example \ref{example:quadraticFromMatrix} is positive definite:
+\begin{align*}
+\Delta_1 &= 2 > 0 \\
+\Delta_2 &= \det \begin{bmatrix} 2 & -1 \\ -1 & 3 \end{bmatrix} = 5 > 0 \\
+\Delta_3 &= \det \boldsymbol{A} = 2 \det \begin{bmatrix} -1 & 3 \\ 2 & 0 \end{bmatrix} + 5 \det \begin{bmatrix} 2 & -1 \\ -1 & 3 \end{bmatrix} = 13 >0
+\end{align*}
+\end{example}
+
+\begin{theorem}[Eigenvalue Criteria]\label{theorem:eigenvalues}\index{Characteristic Polynomial}\index{Eigenvalue}\index{Theorem!Eigenvalue Criteria}
 Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the function $p_{\boldsymbol{A}} \colon \field{C} \to \field{C}$ given by $p_{\boldsymbol{A}}(\lambda) = \det\big(\boldsymbol{A} - \lambda \boldsymbol{I}_d \big)$.  This is a polynomial of (at most) degree $d$ in $\lambda$.  We call it the \emph{characteristic polynomial} of $\boldsymbol{A}$.  The roots (in $\field{C}$) of the characteristic polynomial are called the \emph{eigenvalues} of $\boldsymbol{A}$.  Symmetric matrices enjoy the following properties:
 \begin{enumerate}
 	\item The eigenvalues of a symmetric matrix are all real.
@@ -177,6 +233,19 @@ Given a general square $d \times d$ matrix $\boldsymbol{A}$, consider the functi
 	\item A symmetric matrix is indefinite if there exist two eigenvalues $\lambda_1 \neq \lambda_2$ with different sign.
 \end{enumerate}
 \end{theorem}
+
+\begin{example}
+Let's compute the eigenvalues of matrix $\boldsymbol{A}$ in Example \ref{example:quadraticFromMatrix}:
+\begin{align*}
+\det (\boldsymbol{A} - \lambda \boldsymbol{I}) &= \det \begin{bmatrix}
+2-\lambda & -1 & 2 \\ -1 & 3-\lambda & 0 \\ 2 & 0 & 5-\lambda \end{bmatrix} \\
+& = 2 \det\begin{bmatrix} -1 & 2 \\ 3-\lambda & 0 \end{bmatrix} + 5 \det \begin{bmatrix} 2-\lambda & -1 \\ -1 & 3-\lambda \end{bmatrix} \\
+&= -4(3-\lambda) + 5 \big( (2-\lambda)(3-\lambda) -1 \big) \\
+& = -\lambda^3 + 10\lambda^2 - 30\lambda + 25 \\
+& = (\lambda - 5) (-\lambda^2 + 5\lambda - 5).
+\end{align*}
+Notice that this polynomial has three real roots: $\lambda_1 = 5$, $\lambda_2 = \tfrac{5+\sqrt{5}}{2} \approx 3.618$, and $\lambda_3 = \tfrac{5-\sqrt{5}}{2} \approx 1.381966$, all of them positive (as we expected).
+\end{example}
 
 \subsection{Coercive Functions}
 Other set of functions that play an important role in optimization are the kind of functions we explored in Example \ref{example:CoerciveFunctions}.
