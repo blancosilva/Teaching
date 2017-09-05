@@ -26,26 +26,36 @@ This function is trivially continuous at any point $(x,y)\neq(0,0)$.  However, i
 \end{equation*}
 \end{example}
 
-\begin{definition}\label{def:linearMap}\index{Linear map}
-A function $\boldsymbol{J} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is said to be a \emph{linear map} if it satisfies 
+\begin{definition}\label{def:linearMap}\index{Linear map}\index{Linear transformation|see {Linear map}}\index{kernel}\index{image}
+A function $\boldsymbol{T} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ is said to be a \emph{linear map} (or a \emph{linear transformation}) if it satisfies 
 \begin{equation*}
-\boldsymbol{J}(\x+\lambda\y) = \boldsymbol{J}(\x) + \lambda \boldsymbol{J}(\y) \text{ for all }\x, \y \in \field{R}^{d_1}, \lambda \in \field{R}.
+\boldsymbol{T}(\x+\lambda\y) = \boldsymbol{T}(\x) + \lambda \boldsymbol{T}(\y) \text{ for all }\x, \y \in \field{R}^{d_1}, \lambda \in \field{R}.
 \end{equation*}  
+The \emph{kernel} and \emph{image} of a linear map are respectively given by
+\begin{align*}
+\ker T & = \{ \x \in \field{R}^{d_1} : T(\x) = \boldsymbol{0} \}, \\
+\operatorname{im} T &= \{ \y \in \field{R}^{d_2} : \text{ there exists }\x \in \field{R}^{d_1} \text{ so that }\y = T(\x) \}.
+\end{align*}
 \end{definition}
 
 \begin{remark}
-For each real-valued linear map $J \colon \field{R}^d \to \field{R}$ there exists $\boldsymbol{a} \in \field{R}^d$ so that $J(\x) = \langle \boldsymbol{a} , \x \rangle$ for all $\x \in \field{R}^d$.  
+For each real-valued linear map $T \colon \field{R}^d \to \field{R}$ there exists $\boldsymbol{a} \in \field{R}^d$ so that $T(\x) = \langle \boldsymbol{a} , \x \rangle$ for all $\x \in \field{R}^d$.
+
+The kernel of a linear map in this case has a very simple expression:
+\begin{equation*}
+\ker T = \ker \langle \boldsymbol{a}, \cdot \rangle = \{ (x_1, x_2, \dotsc, x_d) \in \field{R}^d : a_1 x_1 + a_2 x_2 + \dotsb + a_d x_d = 0 \}
+\end{equation*}
 
 The graph of a real-valued linear function can be identified with a hyperplane in $\field{R}^{d+1}$ :
 \begin{align*}
-\operatorname{Graph} J &= \{ (\x,y) \in \field{R}^{d+1} : y = J(\x) \} \\
+\operatorname{Graph} T &= \{ (\x,y) \in \field{R}^{d+1} : y = T(\x) \} \\
 &= \{ (x_1, x_2, \dotsc, x_d, y) \in \field{R}^{d+1} : a_1x_1 + a_2 x_2 + \dotsb + a_dx_d = y \} \\
 & = \ker \langle [a_1, a_2, \dotsc, a_d, -1], \cdot \rangle
 \end{align*}
 \end{remark}
 
 \begin{remark}
-For each linear map $J \colon \field{R}^{d_1} \to \field{R}^{d_2}$ there exists a matrix $\boldsymbol{A}$ of size $d_1 \times d_2$ so that $J(\x) = \boldsymbol{A} \cdot \transpose{\x}$.
+For each linear map $\boldsymbol{T} \colon \field{R}^{d_1} \to \field{R}^{d_2}$ there exists a matrix $\boldsymbol{A}$ of size $d_1 \times d_2$ so that $\transpose{\boldsymbol{T}(\x)} = \boldsymbol{A} \cdot \transpose{\x}$.
 \begin{equation*}
 \begin{cases} 
 y_1 &= a_{11} x_1 + \dotsb + a_{1d_1} x_{d_1} \\ 
