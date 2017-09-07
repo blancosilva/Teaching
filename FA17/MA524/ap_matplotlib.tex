@@ -12,17 +12,17 @@ One of the advantages of doing scientific computing with Python is the wealth of
 
 \section{\matplotlib}
 
-The \matplotlib libraries are fundamentally focused on 2D plotting.  They are open source with license based on the \emph{Python Software Foundation} (PSF) license.  If you are planning to use them for your scientific production, it is customary to cite John Hunter's 2007 seminal paper \cite{Hunter:2007}.   
+The \matplotlib\ libraries are fundamentally focused on 2D plotting.  They are open source with license based on the \emph{Python Software Foundation} (PSF) license.  If you are planning to use them for your scientific production, it is customary to cite John Hunter's 2007 seminal paper \cite{Hunter:2007}.   
 
 In this section we are going to explore just a handful of utilities:
 \begin{itemize}
- 	\item The module \pyplot\, that allows us to use a similar syntax and interface as in \texttt{matlab} or \texttt{octave}
+ 	\item The module \pyplot, that allows us to use a similar syntax and interface as in \texttt{matlab} or \texttt{octave}
  	\item The toolkit \texttt{mplot3d} to extend \matplotlib\ for simple 3D plotting.
  	\item The toolkits \texttt{basemap} and \texttt{cartopy} to extend \matplotlib\ for projection and Geographic mapping.
  	\item The toolkit \texttt{ggplot} for those of you familiar with the \texttt{R} plotting system.
  \end{itemize} 
 
-Let's start with a simple example or usage of the module \pyplot\.  We are going to use exclusively the Rosenbrock function $\mathcal{R}_{1,1}$.
+Let's start with a simple example or usage of the module \pyplot.  We are going to use exclusively the Rosenbrock function $\mathcal{R}_{1,1}$.
 
 \begin{minted}[frame=single, fontsize=\footnotesize, linenos, mathescape]{python}
 import numpy as np, matplotlib.pyplot as plt 
