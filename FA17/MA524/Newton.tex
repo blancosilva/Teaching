@@ -1,6 +1,6 @@
 %!TEX root = main.tex
 
-\section{Newton-Raphson's Method}\index{Newton!method|see {Newton-Raphson!method}}
+\section{Newton-Raphson's Method}\index{Newton method|see {Newton-Raphson method}}
 
 \subsection{Newton-Raphson Method to search for roots of univariate functions}
 
@@ -42,7 +42,7 @@ $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline
 % \end{table}
 \end{center}
 
-\begin{definition}\index{Newton-Raphson!iteration}\index{Newton-Raphson!method}\index{Newton-Raphson}\index{Newton-Raphson!recursive formula}
+\begin{definition}\index{Newton-Raphson method!iteration}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}
 Given a differentiable real-valued function $f\colon \field{R} \to \field{R}$ and an initial guess $x_0 \in \field{R}$, we define the \emph{Newton-Raphson iteration} to be the sequence given by the following \emph{recursive formula}
 \begin{equation*}
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
@@ -76,7 +76,7 @@ This sequence turns into a loop: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n\in \fi
 \end{figure}
 \end{example}
 
-\subsection{Efficiency of Newton-Raphson's Method}\index{Newton-Raphson!error}
+\subsection{Efficiency of Newton-Raphson's Method}\index{Newton-Raphson method!error}
 To study the error in a Newton-Raphson iteration $\{ x_n \}_{n \in \field{N}}$ that converges to a root $x^\star$ of the function $f$, we observe that
 \begin{align}
 x_{n+1} - x^\star &= x_n - x^\star - \frac{f(x_n)}{f'(x_n)} \nonumber \\
@@ -108,7 +108,7 @@ If $f''(x^\star) \neq 0$, the Newton-Raphson's iteration exhibits quadratic conv
 We have just proven that, if a Newton-Raphson iteration for a function $f$ gives a convergent sequence, the convergence is quadratic.  But, how can we guarantee convergence to a root of $f$?  The key is in \emph{how far can we start the sequence} given the structure of the graph of $f$.
 \end{remark}
 
-\begin{theorem}[Local Convergence for the Newton-Raphson Method]\label{theorem:LCNR}\index{Newton-Raphson!Local convergence for}\index{Theorem!Local Convergence for Newton-Raphson}
+\begin{theorem}[Local Convergence for the Newton-Raphson Method]\label{theorem:LCNR}\index{Newton-Raphson method!Local convergence for}\index{Theorem!Local Convergence for Newton-Raphson}
 Let $x^\star$ be a simple root of the equation $f(x)=0$, and there exists $\varepsilon > 0$ so that 
 \begin{itemize}
 	\item $f$ is twice continuously differentiable in the interval $(x^\star-\varepsilon, x^\star + \varepsilon)$, and
@@ -178,10 +178,10 @@ Start with a guess for the solution, $\x_0$, and on the $n$--th step of the algo
 \x_{n+1} = \x_n - \big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n),
 \end{equation}
 where $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1}$ represents the inverse matrix of the gradient at $\x_n$.  This is equivalent to selecting in the tangent hyperplane to the graph of $\boldsymbol{g}$ at $\boldsymbol{g}(\x_n)$, the one line in the direction with the most rapid increase/decrease.  The computation of $\x_{n+1}$ is therefore the intersection of that line with the hyperplane $x_d=0$.  We refer to $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n)$ as the \emph{Newton-Raphson direction} for $\boldsymbol{g}$ at $\x_n$.
-\index{Newton-Raphson!direction}
-\index{Newton-Raphson!method}
-\index{Newton-Raphson!iteration}
-\index{Newton-Raphson!recursive formula}
+\index{Newton-Raphson method!direction}
+\index{Newton-Raphson method}
+\index{Newton-Raphson method!iteration}
+\index{Newton-Raphson method!recursive formula}
 
 \begin{example}\label{example:preNewton4poly4}
 Consider the function $\boldsymbol{g}\colon \field{R}^2 \to \field{R}^2$ given by
@@ -323,7 +323,7 @@ To avoid dealing with matrix inversion, we consider the following equivalent for
 This is a simple system of linear equations, a much more reliable process, prone to less numerical error.
 
 The equivalent recursive formula to search for critical points of a twice continuously differentiable real-valued function $f \colon \field{R}^d \to \field{R}$ is thus
-\begin{equation}\index{Newton-Raphson!method}\index{Newton-Raphson!recursive formula}\index{Newton-Raphson!iteration}
+\begin{equation}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}\index{Newton-Raphson method!iteration}
 \Hess{f}(\x_n) \cdot (\x_{n+1}-\x_n) = -\gradient{f}(\x_n).
 \end{equation}
 \end{remark}
