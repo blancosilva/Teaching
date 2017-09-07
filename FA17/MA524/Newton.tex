@@ -1,6 +1,6 @@
 %!TEX root = main.tex
 
-\section{Newton-Raphson's Method}\index{Newton method|see {Newton-Raphson method}}
+\section{Newton-Raphson's Method}\index{Newton!method|see {Newton-Raphson!method}}
 
 \subsection{Newton-Raphson Method to search for roots of univariate functions}
 
@@ -42,7 +42,7 @@ $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline
 % \end{table}
 \end{center}
 
-\begin{definition}\index{Newton-Raphson!iteration}\index{Newton-Raphson!method}\index{Newton-Raphson!}\index{Newton-Raphson!recursive formula}
+\begin{definition}\index{Newton-Raphson!iteration}\index{Newton-Raphson!method}\index{Newton-Raphson}\index{Newton-Raphson!recursive formula}
 Given a differentiable real-valued function $f\colon \field{R} \to \field{R}$ and an initial guess $x_0 \in \field{R}$, we define the \emph{Newton-Raphson iteration} to be the sequence given by the following \emph{recursive formula}
 \begin{equation*}
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
@@ -76,7 +76,7 @@ This sequence turns into a loop: $x_{2n}=x_0$, $x_{2n+1}=-x_0$ for all $n\in \fi
 \end{figure}
 \end{example}
 
-\subsection{Efficiency of Newton-Raphson's Method}\index{Newton-Raphson method!error}
+\subsection{Efficiency of Newton-Raphson's Method}\index{Newton-Raphson!error}
 To study the error in a Newton-Raphson iteration $\{ x_n \}_{n \in \field{N}}$ that converges to a root $x^\star$ of the function $f$, we observe that
 \begin{align}
 x_{n+1} - x^\star &= x_n - x^\star - \frac{f(x_n)}{f'(x_n)} \nonumber \\
