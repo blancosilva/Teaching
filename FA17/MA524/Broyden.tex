@@ -1,30 +1,25 @@
 %!TEX root = main.tex
 
 \section{Broyden's Secant Method}
-Both Newton-Raphson and Steepest descent are sound methods, with their pros and their cons.  Steepest descent always converges to a local minimum, yet slowly.  Newton has a faster convergence, but we cannot always guarantee convergence.  Another drawback of both methods is the fact that we do need expressions for both the function itself and its derivative.  \emph{Broydent Secant method} offers an improvement to these issues:
+Both Newton-Raphson and Steepest descent are sound methods, with their pros and their cons.  Steepest descent always converges to a local minimum, yet slowly.  Newton has a faster convergence, but we cannot always guarantee convergence.  Another drawback of both methods is the fact that we do need expressions for both the function itself and its derivative.  The \emph{Broydent Secant method} offers an improvement to some of these issues.
 
-\begin{definition}\label{def:SecantMethod}\index{Secant method}\index{Secant method!iteration}\index{Secant method!recursive formula}
-Given a function $f \colon \field{R} \to \field{R}$ with a root at $f(x^\star)=0$, take the following steps:
+\subsection{A secant method to search for roots of univariate functions}
+To explain how it works, let's once again try to find an accurate value of $\sqrt{2}$ as the root of the polynomial $p(x) = x^2-2$.
 \begin{enumerate}
-	\item Consider two initial guesses $x_0 \neq x_1$ satisfying $f(x_0) \neq f(x_1)$.
-	\item The line that joins the points $\big(x_0, f(x_0)\big)$ and $\big( x_1, f(x_1) \big)$ has equation
-	\begin{equation*}
-	y - f(x_0) = \frac{f(x_1)-f(x_0)}{x_1-x_0}(x-x_0), 
-	\end{equation*}
+	\item Consider two initial guesses $x_0=3$, $x_1=2.8$.  Notice $f(3)= 7 \neq 5.84 = f(2.8)$.
+	\item The line that joins the points $(3, 7)$ and $( 2,8, 5.84)$ has equation
+	\begin{align*}
+	y - 7 &= \frac{5.84-7}{2.8-3}(x-3), \\ 
+	y &= 5.8x-10.4
+	\end{align*}
 	and intersects the $x$--axis at
 	\begin{equation*}
-	x_2 = x_0 - \frac{x_1 - x_0}{f(x_1)-f(x_0)}f(x_0)
+	x_2 = \frac{10.4}{5.8} \approx 1.7931034483
 	\end{equation*}
-	\item Iterating this process gives the recursive formula
-	\begin{equation}\label{equation:SecantMethod}\index{Secant method!iteration}
-	x_{n+1} = x_{n-1} - \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}f(x_{n-1})
-	\end{equation}
+	\item Repeat this process to get a sequence $x_n$.
 \end{enumerate}
-We call this sequence a \emph{Secant method iteration}.
-\end{definition}
 \begin{example}
-Observe the result of applying this recursive formula to the search for a root of the function $f(x) = x^2-2$ with initial guesses $x_0 = 3$, $x_1=2.8
-$, and compare with the similar experiment using Newton-Raphson:
+Observe the result of applying this recursive process, and compare with the similar experiment we conducted using the Newton-Raphson method in page \pageref{table:Newton-Raphson}.
 \begin{center}
 \begin{tabular}{|r|r|r|} \hline
 $n$ & $x_n$ & $f(x_n)$ \\ \hline \hline
@@ -44,3 +39,11 @@ $8$ & $1.414213562373095$ & $8.8818E-16$ \\ \hline
 \caption{Secant iterative method}\label{figure:SecantMethod}
 \end{figure}
 \end{example}
+
+\begin{definition}\label{def:SecantMethod}\index{Secant method}\index{Secant method!iteration}\index{Secant method!recursive formula}
+Given a function $f \colon \field{R} \to \field{R}$ and two initial guesses $x_0 \neq x_1$ satisfying $f(x_0) \neq f(x_1)$, we define the \emph{Secant method iteration} to be the sequence given by the following recursive formula
+\begin{equation*}\label{equation:SecantMethod}\index{Secant method!iteration}
+	x_{n+1} = x_{n-1} - \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}f(x_{n-1})
+\end{equation*}
+The \emph{Secant method} refers to employing this sequence to search and approximate roots of the equation $f(x)=0$.
+\end{definition}
