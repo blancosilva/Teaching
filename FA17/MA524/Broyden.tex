@@ -1,7 +1,12 @@
 %!TEX root = main.tex
 
-\section{Broyden's Secant Method}
-Both Newton-Raphson and Steepest descent are sound methods, with their pros and their cons.  Steepest descent always converges to a local minimum, yet slowly.  Newton has a faster convergence, but we cannot always guarantee convergence.  Another drawback of both methods is the fact that we do need expressions for both the function itself and its derivative.  The \emph{Broydent Secant method} offers an improvement to some of these issues.
+\section{Secant Methods}
+Both Newton-Raphson and Steepest descent are sound methods to compute local extrema of real-valued functions $f \colon \field{R}^d \to \field{R}$, with their pros and their cons.  
+\begin{itemize}
+	\item The method of Steepest descent always converges to a local minimum, yet slowly.  In order to obtain new approximations, we have to solve many different one-dimensional optimizations, each of them offering their own computational issues. 
+	\item Newton offers faster sequences, but we cannot always guarantee convergence.  Another drawback of this method is the fact that we do need expressions for function itself, its gradient and Hessian matrix.  
+\end{itemize}
+In this section we are going to see a different concept based on the so-called \emph{secant method}, which will allow us to craft algorithms without those shortcomings.
 
 \subsection{A secant method to search for roots of univariate functions}
 To explain how it works, let's once again try to find an accurate value of $\sqrt{2}$ as the root of the polynomial $p(x) = x^2-2$.
@@ -10,13 +15,14 @@ To explain how it works, let's once again try to find an accurate value of $\sqr
 	\item The line that joins the points $(3, 7)$ and $( 2,8, 5.84)$ has equation
 	\begin{align*}
 	y - 7 &= \frac{5.84-7}{2.8-3}(x-3), \\ 
-	y &= 5.8x-10.4
+	y &= 5.8x-10.4.
 	\end{align*}
-	and intersects the $x$--axis at
+	The latter can be seen as a linear approximation to the original function---one that did not use the derivative of $f$. This linear function intersects the $x$--axis at
 	\begin{equation*}
 	x_2 = \frac{10.4}{5.8} \approx 1.7931034483
 	\end{equation*}
-	\item Repeat this process to get a sequence $x_n$.
+	We take this value as an approximation to the root of $f(x)=0$.
+	\item Repeat this process to get a sequence of approximations $x_n$.
 \end{enumerate}
 \begin{example}
 Observe the result of applying this recursive process, and compare with the similar experiment we conducted using the Newton-Raphson method in page \pageref{table:Newton-Raphson}.
@@ -41,9 +47,12 @@ $8$ & $1.414213562373095$ & $8.8818E-16$ \\ \hline
 \end{example}
 
 \begin{definition}\label{def:SecantMethod}\index{Secant method}\index{Secant method!iteration}\index{Secant method!recursive formula}
-Given a function $f \colon \field{R} \to \field{R}$ and two initial guesses $x_0 \neq x_1$ satisfying $f(x_0) \neq f(x_1)$, we define the \emph{Secant method iteration} to be the sequence given by the following recursive formula
-\begin{equation*}\label{equation:SecantMethod}\index{Secant method!iteration}
-	x_{n+1} = x_{n-1} - \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}f(x_{n-1})
-\end{equation*}
+Given a function $f \colon \field{R} \to \field{R}$ and two initial guesses $x_0 \neq x_1$ satisfying $f(x_0) \neq f(x_1)$, we define the \emph{Secant method iteration} to be the sequence $\{ x_n \}_{n \in \field{N}}$ obtained by one of the following recursive formulas:
+\begin{equation}\label{equation:SecantMethod}\index{Secant method!iteration}
+\begin{split}
+\bigg[\frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}\bigg] (x_{n+1} - x_{n-1}) = - f(x_{n-1}) \\
+x_{n+1} = x_{n-1} - \bigg[ \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})} \bigg] f(x_{n-1})
+\end{split}
+\end{equation}
 The \emph{Secant method} refers to employing this sequence to search and approximate roots of the equation $f(x)=0$.
 \end{definition}
