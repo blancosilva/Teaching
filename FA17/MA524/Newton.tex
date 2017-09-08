@@ -8,13 +8,18 @@ In order to find a good estimation of $\sqrt{2}$ with many decimal places, we al
 \begin{enumerate}
 \item Find the tangent line to the graph of $p$ at $x_0$, 
 \begin{equation*}
-y-p(x_0)=p'(x_0)(x-x_0)
+y = p(x_0) + p'(x_0)(x-x_0)
 \end{equation*}
-\item Provided this line is not horizontal ($p'(x_0)\neq 0$), report the intersection of this line with the $x$--axis.  Call this intersection $x_1$
+Intuitively, we \emph{substitute} the original function $f$ by the approximation given by the derivative.  It is so much easier to seek roots of this simpler function, and that is what we do to \emph{approximate} the roots of $p$.
+\item Provided the corresponding line is not horizontal ($p'(x_0)\neq 0$), report the intersection of this line with the $x$--axis.  Call this intersection $x_1$
+\begin{equation*}
+p'(x_0) (x_1 - x_0) = -p(x_0)
+\end{equation*}
+or equivalently,
 \begin{equation*}
 x_1=x_0-\frac{p(x_0)}{p'(x_0)}
 \end{equation*}
-\item Repeat this process, to get the sequence 
+\item Repeat this process, to get a sequence 
 \begin{equation*}
 x_{n+1} = x_n - \frac{p(x_n)}{p'(x_n)} = x_n - \frac{x_n^2-2}{2x_n}=\frac{x_n}{2}-\frac{1}{x_n}.
 \end{equation*}
@@ -163,9 +168,9 @@ Since $\varepsilon M(\varepsilon) < 1$, $\lim_n \big( \varepsilon M(\varepsilon)
 Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ as follows.
 \begin{itemize}
 	\item Any function $\boldsymbol{g} \colon \field{R}^d \to \field{R}^d$ can be described in the form $\boldsymbol{g}(\x) = \big[ g_1(\x), g_2(\x), \dotsc, g_d(\x) \big]$ for $d$ real-valued functions $g_k\colon \field{R}^d \to \field{R}$ ($1\leq k \leq d$).
-	\item For such a function $\boldsymbol{g}$, we may express its gradient as a $d\times d$ matrix in the form
+	\item For such a function $\boldsymbol{g}$, the \emph{derivative} is the Jacobian
 	\begin{equation*}
-	\gradient{\boldsymbol{g}} = \begin{bmatrix}
+	\boldsymbol{J} \boldsymbol{g} = \gradient{\boldsymbol{g}} = \begin{bmatrix}
 	\frac{\partial g_1}{\partial x_1} & \frac{\partial g_1}{\partial x_2} & \dotsb & \frac{\partial g_1}{\partial x_d} \\ \\
 	\frac{\partial g_2}{\partial x_1} & \frac{\partial g_2}{\partial x_2} & \dotsb & \frac{\partial g_2}{\partial x_d} \\ \\
 	\vdots & \vdots & \ddots & \vdots \\ \\
@@ -173,12 +178,26 @@ Let's proceed to extend this process to functions $\boldsymbol{g} \colon \field{
 	\end{bmatrix}
 	\end{equation*}
 \end{itemize}
-Start with a guess for the solution, $\x_0$, and on the $n$--th step of the algorithm compute the $(n+1)$--th term of the sequence by
+Start with a guess for the solution, $\x_0$.  As we did in the one-dimensional case, we \emph{substitute} the function $\boldsymbol{g}$ by the linear approximation given by the Jacobian:
+\begin{equation*}
+\y = \boldsymbol{g}(\x_0)+ \gradient{\boldsymbol{g}}(\x_0)(\x - \x_0).
+\end{equation*}
+Provided the determinant of the Jacobian $\gradient{\boldsymbol{g}}$ is not zero, there is only one solution for the equation $\y = \boldsymbol{0}$.
+ The computation of $\x_1$ is therefore the solution of the following system of linear equations:
+\begin{equation*}
+\gradient{\boldsymbol{g}}(\x_0)(\x_1-\x_0) = -\boldsymbol{g}(\x_0), 
+\end{equation*}
+or equivalently,
+\begin{equation*}
+\transpose{\x_1} = \transpose{\x_0} - \big[ \gradient{\boldsymbol{g}}(\x_0) \big]^{-1} \cdot \transpose{\boldsymbol{g}(\x_0)}.
+\end{equation*}
+We iterate this process to obtain a sequence of approximations $\{ \x_n \}_{n \in \field{N}}$ to a root, via any of the following two recursive formulas:
 \begin{equation}\label{equation:NewtonMethod}
-\x_{n+1} = \x_n - \big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n),
+\begin{split}
+\gradient{\boldsymbol{g}}(\x_n)(\x_{n+1}-\x_n) = -\boldsymbol{g}(\x_n), \\
+\transpose{\x_{n+1}} = \transpose{\x_n} - \big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \cdot \transpose{\boldsymbol{g}(\x_n)},
+\end{split}
 \end{equation}
-where $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1}$ represents the inverse matrix of the gradient at $\x_n$.  This is equivalent to selecting in the tangent hyperplane to the graph of $\boldsymbol{g}$ at $\boldsymbol{g}(\x_n)$, the one line in the direction with the most rapid increase/decrease.  The computation of $\x_{n+1}$ is therefore the intersection of that line with the hyperplane $x_d=0$.  We refer to $\big[ \gradient{\boldsymbol{g}}(\x_n) \big]^{-1} \boldsymbol{g}(\x_n)$ as the \emph{Newton-Raphson direction} for $\boldsymbol{g}$ at $\x_n$.
-\index{Newton-Raphson method!direction}
 \index{Newton-Raphson method}
 \index{Newton-Raphson method!iteration}
 \index{Newton-Raphson method!recursive formula}
@@ -188,7 +207,7 @@ Consider the function $\boldsymbol{g}\colon \field{R}^2 \to \field{R}^2$ given b
 \begin{equation*}
 \boldsymbol{g}(x,y,z) = \big[ x^3-y, y^3-x \big]
 \end{equation*}
-Its gradient at each $(x,y)$ is given by
+Its Jacobian at each $(x,y)$ is given by
 \begin{equation*}
 \gradient{\boldsymbol{g}}(x,y) = \begin{bmatrix} 3x^2 & -1 \\ -1 & 3y^2 \end{bmatrix}
 \end{equation*}
@@ -277,7 +296,7 @@ We can readily see how this process aids in the computation of critical points o
 	\item It is then $\gradient{\boldsymbol{g}}(\x) = \Hess{f}(\x)$
 	\item Perform a Newton method (with initial guess $\x_0$) on $\boldsymbol{g}=\gradient{f}$ to obtain the recursive formula
 	\begin{equation}\label{equation:Newton4Crit}
-	\x_{n+1} = \x_n - \big[ \Hess{f}(\x_n) \big]^{-1} \cdot \gradient{f}(\x_n)
+	\transpose{\x_{n+1}} = \transpose{\x_n} - \big[ \Hess{f}(\x_n) \big]^{-1} \cdot \transpose{\gradient{f}(\x_n)}
 	\end{equation}
 \end{enumerate}
 
@@ -285,14 +304,14 @@ We can readily see how this process aids in the computation of critical points o
 Consider the polynomial $p_4(x,y) = x^4-4xy+y^4$. Notice $\gradient{p_4}(x,y) = \big[ x^3-y, y^3-x \big]$---this is function $\boldsymbol{g}$ in Example \ref{example:preNewton4poly4}.  The critical points we found were $(0,0)$, $(-1,-1)$ and $(1,1)$.  See Figure \ref{figure:NewtonConvergence}.
 \end{example}
 \begin{example}
-A similar process for the Rosenbrock function\index{Function!Rosenbrock} 
+A similar process for the Rosenbrock function\index{Function!Rosenbrock}\index{Function!Rosenbrock}
 \begin{equation*}
 \mathcal{R}_{1,1}(x,y) = (1-x)^2 + (y-x^2)^2
 \end{equation*}
 gives the following recursive formula:
 \begin{align*}
 \begin{bmatrix} x_{n+1} \\ y_{n+1} \end{bmatrix} &=
-\begin{bmatrix} x_{n} \\ y_{n} \end{bmatrix} - \big[ \Hess{\mathcal{R}_{1,1}}(x_n,y_n) \big]^{-1} \cdot \gradient{\mathcal{R}_{1,1}}(x_n, y_n) \\
+\begin{bmatrix} x_{n} \\ y_{n} \end{bmatrix} - \big[ \Hess{\mathcal{R}_{1,1}}(x_n,y_n) \big]^{-1} \cdot \transpose{\gradient{\mathcal{R}_{1,1}}(x_n, y_n)} \\
 % &= \begin{bmatrix} x_{n} \\ y_{n} \end{bmatrix} - \tfrac{2}{2x^2-2y+1} \begin{bmatrix}
 % 1/2 & x_n \\ x_n & 6x_n^2-2y_n+1
 % \end{bmatrix} \begin{bmatrix}
@@ -302,7 +321,7 @@ gives the following recursive formula:
 2x_n^3-2x_n y_n+1 \\ x_n(2x_n^3-2x_n y_n-x_n+2)
 \end{bmatrix}
 \end{align*}
-For instance, starting with the initial guess $(x_0, y_0) = (-2,2)$, the sequence converges to the critical point $(1,1)$.  See Figure \ref{figure:NewtonConvergence}.
+For instance, starting with the initial guess $(x_0, y_0) = (-2,2)$, the sequence converges to the critical point $(1,1)$ in a few steps.  See Figure \ref{figure:NewtonConvergence}.
 \end{example}
 \begin{figure}[ht!]
 \begin{tabular}{cc}
@@ -314,13 +333,9 @@ For instance, starting with the initial guess $(x_0, y_0) = (-2,2)$, the sequenc
 \end{figure}
 
 \begin{remark}
-The Newton-Raphson's method to solve $\boldsymbol{g}=\boldsymbol{0}$, as given by the recursive formula in equation \eqref{equation:NewtonMethod} in page \pageref{equation:NewtonMethod}, is very convenient to provide explicit descriptions of the different iterations.  However, it is hardly suitable for practical purposes, due to the computational issues involving matrix inversion.\index{Matrix!inversion}\index{Matrix!inverse}
+The Newton-Raphson's method to solve $\boldsymbol{g}=\boldsymbol{0}$, as given by the recursive formula in equation \eqref{equation:Newton4Crit}, is very convenient to provide explicit descriptions of the different iterations.  However, it is hardly suitable for practical purposes, due to the computational issues involving matrix inversion.\index{Matrix!inversion}\index{Matrix!inverse}
 
-To avoid dealing with matrix inversion, we consider the following equivalent formula:
-\begin{equation}
-\gradient{\boldsymbol{g}}(\x_n) \cdot \big( \x_{n+1} - \x_n \big) = -\boldsymbol{g}(\x_n)
-\end{equation}
-This is a simple system of linear equations, a much more reliable process, prone to less numerical error.
+To avoid dealing with matrix inversion, we consider the equivalent formula: $\gradient{\boldsymbol{g}}(\x_n) \cdot \big( \x_{n+1} - \x_n \big) = -\boldsymbol{g}(\x_n)$, since it offers a simple system of linear equations, which is a much more reliable process, prone to less numerical error.
 
 The equivalent recursive formula to search for critical points of a twice continuously differentiable real-valued function $f \colon \field{R}^d \to \field{R}$ is thus
 \begin{equation}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}\index{Newton-Raphson method!iteration}
@@ -354,7 +369,7 @@ or equivalently,
 There are some theoretical results that aid in the search for a \emph{good} initial guess in case of multivariate functions.  The following states a simple set of conditions on $f$ and $\x_0$ to guarantee \emph{quadratic convergence} of the corresponding sequences $\{ \x_n \}_{n \in \field{N}}$ to a critical point $\xstar$.
 
 \begin{theorem}[Quadratic Convergence Theorem]\label{theorem:QuadraticConvergence}\index{Theorem!Quadratic Convergence}
-Suppose $f\colon \field{R}^d \to \field{R}$ is a twice continuously differentiable real-valued function, and $\xstar$ is a critical point of $f$. Let $\mathcal{N}(\x) = \x - \big[ \Hess{f}(\x) \big]^{-1} \cdot \gradient{f}(\x)$. If there exists 
+Suppose $f\colon \field{R}^d \to \field{R}$ is a twice continuously differentiable real-valued function, and $\xstar$ is a critical point of $f$. Let $\transpose{\mathcal{N}(\x)} = \transpose{\x} - \big[ \Hess{f}(\x) \big]^{-1} \cdot \transpose{\gradient{f}(\x)}$. If there exists 
 \begin{enumerate}
 	\item $h>0$ so that\footnote{Recall the \emph{norm} of a matrix $M$, defined by $\norm{M} = \max\{ \norm{M\cdot \x} : \norm{\x}=1 \}$.} $\big\lVert \big[ \Hess{f}(\xstar)\big]^{-1} \big\rVert \leq \tfrac{1}{h}$,
 	\item $\beta>0$, $L>0$ for which $\norm{\Hess{f}(\x) - \Hess{f}(\xstar)} \leq L \norm{ \x - \xstar }$ provided $\norm{ \x - \xstar }\leq \beta$.
