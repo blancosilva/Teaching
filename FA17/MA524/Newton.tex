@@ -48,10 +48,13 @@ $7$ & $1.414213562373095$ & $4.4409E-16$ \\ \hline
 \end{center}
 
 \begin{definition}\index{Newton-Raphson method!iteration}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}
-Given a differentiable real-valued function $f\colon \field{R} \to \field{R}$ and an initial guess $x_0 \in \field{R}$, we define the \emph{Newton-Raphson iteration} to be the sequence given by the following \emph{recursive formula}
-\begin{equation*}
+Given a differentiable real-valued function $f\colon \field{R} \to \field{R}$ and an initial guess $x_0 \in \field{R}$, we define the \emph{Newton-Raphson iteration} to be the sequence $\{ x_n \}_{n \in \field{N}}$ given by one of the two following \emph{recursive formulas}
+\begin{equation}\label{equation:NewtonRaphson1dim}
+\begin{split}
+f'(x_n) (x_{n+1}-x_n) = -f(x_n) \\
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
-\end{equation*}
+\end{split}
+\end{equation}
 The \emph{Newton-Raphson method} (or \emph{Newton method}) refers to employing this sequence to search and approximate roots of the equation $f(x) = 0$.
 \end{definition}
 
