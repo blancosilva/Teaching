@@ -1,0 +1,36 @@
+  N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC
+ 1,  0.0, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx
+2a,  2.5, 2.5, ---, ---, 2.5, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+2b,  2.5, 2.5, ---, ---, 2.5, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+2c,  2.5, 2.5, ---, ---, 0.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+2d,  2.5, 1.0, ---, ---, 0.5, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+3a,  3.3, 3.3, ---, ---, 3.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+3b,  3.3, 3.3, ---, ---, 3.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+3c,  3.4, 3.0, ---, ---, 3.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+ 4,  0.0, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx
+5a,  2.5, ---, ---, ---, 2.5, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+5b,  2.5, ---, ---, ---, 2.5, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+5c,  2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5
+5d,  2.5, 0.0, ---, ---, 0.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+6a,  2.0, 2.0, ---, ---, 2.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+6b,  2.0, 2.0, ---, ---, 2.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+6c,  2.0, 2.0, ---, ---, 2.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+6d,  2.0, 2.0, ---, ---, 2.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+6e,  2.0, 2.0, ---, ---, 2.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+ 7, 10.0, ---, ---, ---, 10., ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+ 8, 10.0, ---, ---, ---, 5.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+ 9, 10.0, ---, ---, ---, 7.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+10, 10.0, ---, ---, ---, 0.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+11, 10.0, ---, ---, ---, 6.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+12, 10.0, ---, ---, ---, 0.0, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+
+ T,  100, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---, ---
+
+DE.  This submission is not working well for me.  Hard to read in screen.  Please paper submission instead from now on.
+DE 2d (sketch correct, inequalities not dealt properly.  Work does not support answer)
+DE 3 (label graphs, please.  It is hard to see which one is which.  e.g. Which one is xy=0?)
+DE 5d (The graph doesn't seem to be right.  Is that a circle, elipse?  center? radii?  USe implicit diff instead maybe?)
+DE 8 (Poor delivery. Where are the crit points in the interior? Each border is a 1-dim optimization.  Show work)
+DE 9 (Work on your delivery.  What is f? After finding crit points, how did you find largest?)
+DE 10 (Can't do without Lagrange multipliers. target? constraints?)
+DE 11 (need to prove that gradients of g1 and g2 are not parallel.  When mu=1, there are more points to be considered)
