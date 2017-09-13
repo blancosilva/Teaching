@@ -35,7 +35,7 @@ In order to search for a local minimum for a twice continuously differentiable f
 \begin{remark}\index{Steepest descent!sequence of}
 Sequences constructed following the formula in \eqref{equation:SteepestDescent} are said to be \emph{sequences of Steepest Descent} for $f$.
 
-Unlike Newton's method, this algorithm guarantees that these sequences are non-increasing: $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.  And even better: if there is convergence, their limit must a critical point of $f$.  These results are formalized in Theorems \ref{theorem:SteepestDescentDescends} and \ref{theorem:SteepestDescentConvergesToCritical}  below.
+Unlike Newton-Raphson or the secant methods, this algorithm guarantees that these sequences are non-increasing: $f(\x_{n+1}) \leq f(\x_n)$ for all $n \in \field{N}$.  And even better: if there is convergence, their limit must be a critical point of $f$.  These results are formalized in Theorems \ref{theorem:SteepestDescentDescends} and \ref{theorem:SteepestDescentConvergesToCritical}  below.
 
 Steepest descent sequences have another interesting property: on each step $n$, the direction of descent $x_{n+1} - x_n$ is perpendicular to the direction of the next step!  We state and prove this result in Theorem \ref{theorem:SteepestDescentPerpSteps}.
 \end{remark}
@@ -67,7 +67,7 @@ which proves the statement.
 \begin{example}
 For the polynomial function $p_4(x,y) = x^4-4xy+y^4$ from Example \ref{example:NewtonPoly4}, using the same initial guesses as in Example \ref{example:preNewton4poly4}, we find the following behavior:
 \begin{itemize}
-	\item Starting at $(x_0, y_0) = (-1.0,1.0)$, the sequence also converges to $(0,0)$, but this time in one step.
+	\item Starting at $(x_0, y_0) = (-1.0,1.0)$, the sequence jumps to $(0,0)$ in one step.  At that point, since the gradient of the function is zero, the method of Steepest descent ceases to work.
 	% \begin{table}[ht!]
 	\begin{center}
 	\begin{tabular}{|r|r|r|r|} \hline 

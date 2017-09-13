@@ -1,12 +1,13 @@
 %!TEX root = main.tex
 
 \section{Secant Methods}
-Both Newton-Raphson and Steepest descent are sound methods to compute local extrema of real-valued functions $f \colon \field{R}^d \to \field{R}$, with their pros and their cons.  
+The Newton-Raphson method to compute local extrema of real-valued functions $f \colon \field{R}^d \to \field{R}$, has two main shortcomings: 
 \begin{itemize}
-	\item The method of Steepest descent always converges to a local minimum, yet slowly.  In order to obtain new approximations, we have to solve many different one-dimensional optimizations, each of them offering their own computational issues. 
-	\item Newton offers faster sequences, but we cannot always guarantee convergence.  Another drawback of this method is the fact that we do need expressions for function itself, its gradient and Hessian matrix.  
+	\item Convergence is not guaranteed.
+	\item Even when convergence is guaranteed, the limit of a Newton-Raphson iteration is not necessarily a local minimum.  Any critical point of $f$ is a target.
+	\item For a successful implementation of Newton-Raphson we do need expressions for the function itself, its gradient and Hessian matrix.  
 \end{itemize}
-In this section we are going to see a different concept based on the so-called \emph{secant method}, which will allow us to craft algorithms without those shortcomings.
+The \emph{secant method} takes care of the the latter issue, while retaining the same convergence rates.
 
 \subsection{A secant method to search for roots of univariate functions}
 To explain how it works, let's once again try to find an accurate value of $\sqrt{2}$ as the root of the polynomial $p(x) = x^2-2$.
@@ -96,7 +97,7 @@ The objective now is the search of a root for a function $\boldsymbol{g} \colon 
 \end{equation*}
 for appropriate functions $g_k \colon \field{R}^d \to \field{R}$ ($1 \leq k \leq d$).  We start at an initial guess $\x_0 \in \field{R}^d$ and, if possible, we choose as $\x_1$ the first step of Newton-Raphson: 
 \begin{equation*}
-\transpose{\x_1} = \transpose{\x_0} - \big[ \gradient{\boldsymbol{g}}(\x_0) \big]^{-1} \cdot \transpose{\boldsymbol{g}(\x_0)}
+\transpose{\x_1} = \transpose{\x_0} - \big[ \gradient{\boldsymbol{g}}(\x_0) \big]^{-1} \cdot \transpose{\boldsymbol{g}(\x_0)}.
 \end{equation*}
 At that point we craft a linear approximation $\boldsymbol{L}_1 \colon \field{R}^d \to \field{R}^d$ to the graph of $\boldsymbol{g}$ that interpolates $\big( \x_0, \boldsymbol{g}(\x_0) \big)$ and $\big( \x_1, \boldsymbol{g}(\x_1) \big)$.  We may impose this \emph{secant property} by requesting $\boldsymbol{L}_1$ to be of the form\index{Secant property}
 \begin{equation*}
@@ -122,22 +123,28 @@ The corresponding linear functions are given by
 \begin{equation*}
 \transpose{\boldsymbol{L}_n (\x)} = \transpose{\boldsymbol{g}(\x_n)} + \boldsymbol{A}_n \cdot \transpose{(\x - \x_n)}.
 \end{equation*}
-The recurrence formula can be expressed in any of the following two ways:
+The recurrence formula can then be expressed in any of the following two ways:
 \begin{equation}
 \begin{split}
 \boldsymbol{A}_n \cdot \transpose{(\x_{n+1} - \x_n )} = -\transpose{\boldsymbol{g}(\x_n)}, \\
 \transpose{\x_{n+1}} = \transpose{\x_n} - \boldsymbol{A}_n^{-1} \cdot \transpose{\boldsymbol{g}(\x_n)}
 \end{split}
 \end{equation}
-
-There is not a unique way to choose these matrices $\boldsymbol{A}_n$ (and I encourage you to find one of your own devise).  A straightforward method is given by the following recursive formulas:
-\begin{align}\index{Broyden Method!recursive formula}\index{Broyden Method!iteration}
-\boldsymbol{A}_0 &= \gradient{\boldsymbol{g}}(\x_0) \nonumber \\
-\boldsymbol{A}_{n+1} &= \boldsymbol{A}_n + \frac{\big[ (\boldsymbol{g}(\x_n)-\boldsymbol{g}(\x_n)\big) - \boldsymbol{A}_n (\x_{n+1}-\x_n) \big] \otimes (\x_{n+1} -\x_n)}{\norm{\x_{n+1}-\x_n}^2} \label{equation:Broyden}
-\end{align}
 We refer to this process as the \emph{Broyden Method} for finding roots.\index{Broyden Method}
 
-\begin{example}
+\begin{remark}
+There is not a unique way to choose the matrices $\boldsymbol{A}_n$ in Broyden's method (and I encourage you to find one of your own devise).  A straightforward construction is given by the following recursive formulas:
+\begin{gather}\index{Broyden Method!recursive formula}\index{Broyden Method!iteration}
+\boldsymbol{A}_0 = \gradient{\boldsymbol{g}}(\x_0) \nonumber \\
+\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \frac{\big[ (\boldsymbol{g}(\x_n)-\boldsymbol{g}(\x_n)\big) - \boldsymbol{A}_n (\x_{n+1}-\x_n) \big] \otimes (\x_{n+1} -\x_n)}{\norm{\x_{n+1}-\x_n}^2} \label{equation:Broyden}
+\end{gather}
+\end{remark}
+
+\begin{remark}
+There are other possibilities for the selection of the point $\x_1$ that do not involve using the Jacobian $\gradient{\boldsymbol{g}}(\x_0)$ as the matrix $\boldsymbol{A}_0$.  For the purposes of root searching this choice is not too crucial but, as we shall see in the context of optimization, having the initial matrix $\boldsymbol{A}_0$ satisfy extra properties could be very advantageous.  To learn about different strategies in this regard, see e.g.~\cite[chapter 8]{dennis1996numerical}.
+\end{remark}
+
+\begin{example}\label{example:SecantPoly4}
 Let's use this method to find any of the roots $(-1,-1)$, $(0,0)$, $(1,1)$ of the function $\boldsymbol{g}(x,y) = \big[ x^3-y, y^3 - x \big]$ from Example \ref{example:preNewton4poly4}.
 Starting with initial guess $(x_0, y_0) = (-1, 1)$, we take the first step from Newton-Raphson:
 \begin{align*}
@@ -156,4 +163,28 @@ This gives a linear approximation
 &= \begin{bmatrix} \tfrac{19}{8}x-\tfrac{3}{8}x + \tfrac{3}{4} \\ \\ -\tfrac{3}{8}x+\tfrac{19}{8}y - \tfrac{3}{4} \end{bmatrix}
 \end{align*}
 which has root $(x_2, y_2) = (-3/11, 3/11)$.
+
+If we continue the computations, we arrive to the root $(0,0)$ to an accuracy of 6 decimal places in just 5 steps!
+\begin{center}
+\begin{tabular}{|r|r|r|r@{, }l|} \hline 
+$n$ & $x_n$ & $y_n$ & $f(x_n$ & $y_n)$ \\ \hline \hline 
+$1$ & $-1.000000$ & $1.000000$ & $\big(-2.000000$ & $2.000000 \big)$ \\ \hline 
+$2$ & $-0.500000$ & $0.500000$ & $\big(-0.625000$ & $0.625000 \big)$ \\ \hline 
+$2$ & $-0.272727$ & $0.272727$ & $\big(-0.293013$ & $0.293013 \big)$ \\ \hline 
+$3$ & $-0.072136$ & $0.072136$ & $\big(-0.072511$ & $0.072511 \big)$ \\ \hline 
+$4$ & $-0.006172$ & $0.006172$ & $\big(-0.006172$ & $0.006172 \big)$ \\ \hline 
+$5$ & $-0.000035$ & $0.000035$ & $\big(-0.000035$ & $0.000035 \big)$ \\ \hline 
+$6$ & $-0.000000$ & $0.000000$ & $\big(-0.000000$ & $0.000000 \big)$ \\ \hline 
+\end{tabular}
+\end{center}
+\end{example}
+
+\subsection{Secant Methods for Minimization}
+
+Given a real-valued function $f \colon \field{R}^d \to \field{R}$, we may apply Broyden's method to search for roots of the gradient $\gradient{f} \colon \field{R}^d \to \field{R}^d$.  As it happened with Newton's method, we are not guaranteed convergence to a local minimum.
+
+\begin{example}
+As we did in Example \ref{example:NewtonPoly4}, we may explore the convergence to different critical points of the polynomial $p_4(x,y) = x^4-4xy+y^4$ using different initial guesses.  Note once again that the gradient of $p_4$ is the function $\gradient{p_4} = \boldsymbol{g}$ from Example \ref{example:SecantPoly4}:
+
+For instance, starting with $(x_0,y_0) = (-1,1)$ we converge to the critical point $(0,0)$, which is not a local minimum.
 \end{example}

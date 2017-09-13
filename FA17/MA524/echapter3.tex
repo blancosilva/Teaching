@@ -94,7 +94,7 @@ Design a process in \texttt{desmos.com} to test the search for critical points g
 \end{figure}
 \end{problem}
 
-\begin{problem}[CAS]\index{Horner's!method}\index{Horner's!scheme}
+\begin{problem}[Basic]\index{Horner's!method}\index{Horner's!scheme}
 The purpose of this problem is the design of \emph{Horner's method} to evaluate polynomials effectively.  Given a polynomial
 \begin{equation*}
 p(x) = \sum_{k=0}^n a_k x^k = a_0 + a_1 x + \dotsb + a_n x^n,
@@ -110,14 +110,17 @@ b_0 &= a_0 + b_1 x_0
 \begin{enumerate}
 	\item Prove that $b_0 = p(x_0)$
 	\item Use Horner's method to evaluate $p(x) = 2x^3 - 6x^2 +2x -1$ at $x=3$.  Illustrate all steps, and count the number of basic operations (addition, subtraction, multiplication, division) used.
-	\item Employ the usual method of evaluation of polynomials to evaluate $p(x) = 2x^3 - 6x^2 +2x -1$ at $x=3$.  Count the number of basic operations (note that a raising to the cube counts as two multiplications, e.g.)
-	\item In a computer language or CAS of your choice, write a routine to apply Horner's scheme to evaluate polynomials.  Your routine should gather the following inputs:
+	\item Employ the usual method of evaluation of polynomials to evaluate $p(x) = 2x^3 - 6x^2 +2x -1$ at $x=3$.  Count the number of basic operations (note that $a^3$ counts as two multiplications: $a \times a \times a$, for instance)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[CAS]
+In a computer language or CAS of your choice, write a routine to apply Horner's scheme to evaluate polynomials.  Your routine should gather the following inputs:
 	\begin{itemize}
-		\item A list of coefficients \texttt{[a0, a1, ..., an]} representing the polynomial $p(x)$.
+		\item A list of coefficients \texttt{[a0, a1, ..., an]} representing the polynomial $p(x)=a_0+a_1 x+\dotsb+a_n x^n$.
 		\item A value $x_0$
 	\end{itemize}
 	The output of your routine should be $p(x_0)$.
-\end{enumerate}
 \end{problem}
 
 \begin{problem}[CAS]\label{problem:CASNewton}
