@@ -443,7 +443,7 @@ The image $f(K)$ of a continuous real-valued function $f \colon \field{R}^d \to 
 \end{theorem}
 
 \begin{theorem}[Extreme Value Theorem]\label{theorem:EVT}\index{Theorem!Extreme Value}
-A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimal and maximal values on $K$.
+A continuous real-valued function $f \colon K \to \field{R}$ on a compact set $K \subset \field{R}^d$ takes on minimum and maximum values on $K$.
 \end{theorem}
 
 \subsection{Continuous functions on unbounded domains}
@@ -533,14 +533,14 @@ Find global minima in $\field{R}^2$ (if they exist) for the function
 \begin{equation*}
 f(x,y) = e^{x-y} + e^{y-x}.
 \end{equation*}
-This function also has continuous partial derivatives of any order, but no extrema is guaranteed a priori.  Notice that all points $(x, y)$ satisfying $y = x$ are critical.  For such points, the corresponding Hessians and principal minors are given by
+This function also has continuous partial derivatives of any order, but no extrema is guaranteed a priori.  Notice that all points $(x, y)$ satisfying $y = x$ are critical.  For such points, the corresponding Hessians and eigenvalues are
 \begin{align*}
-\Hess{f}(x,x) &= \begin{bmatrix} 2 & -2 \\ -2 & 2 \end{bmatrix}, & \Delta_1 &= 2 >0, & \Delta_2 &= 0;
+\Hess{f}(x,x) &= \begin{bmatrix} 2 & -2 \\ -2 & 2 \end{bmatrix}, & \lambda_1 &= 2 >0, & \lambda_2 &= 0;
 \end{align*}
 therefore, $\Hess{f}(x,x)$ is positive semidefinite for each critical point.  By Theorem \ref{theorem:sufficientMinima}, $f(x,x) = 2$ is a local minimum for all $x \in \field{R}$.  To prove they are global minima, notice that for each $(x,y) \in \field{R}^2$:
 \begin{align*}
-\Hess{f}(x,y) &= \begin{bmatrix} e^{x-y}+e^{y-x} & -e^{x-y}-e^{y-x} \\ -e^{x-y} - e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix}, \\
-\Delta_1 &= e^{x-y}+e^{y-x} > 0, \quad \Delta_2 =0.
+\Hess{f}(x,y) &= \begin{bmatrix} e^{x-y}+e^{y-x} & -e^{x-y}-e^{y-x} \\ -e^{x-y} - e^{y-x} & e^{x-y}+e^{y-x} \end{bmatrix} = \big( e^{x-y}+e^{y-x} \big) \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix} \\
+\lambda_1 &= e^{x-y}+e^{y-x} > 0, \quad \lambda_2 =0.
 \end{align*}
 The Hessian is positive semidefinite for all points, hence proving that any point in the line $y=x$ is a global minimum of $f$.
 \end{example}
@@ -579,7 +579,7 @@ Find local and global minima in $\field{R}^2$ (if they exist) for the function
 \begin{equation*}
 f(x,y) = 2x^2+y^2 + \frac{1}{2x^2+y^2}.
 \end{equation*}
-The simplest way is to realize that $f$ is a convex function on $\field{R}^2$.  We prove this by re-writing $f=g\circ h$ as a composition of $g(x) = x+1/x$ on $(0,\infty)$ with $h(x,y) = 2x^2+y^2$ on $\field{R}^2$.  Note that both functions are strictly convex (Why?).
+The simplest way is to realize that $f$ is a convex function on $\field{R}^2$.  We prove this by re-writing $f=g\circ h$ as a composition of $g(x) = x+1/x$ on $(0,\infty)$ with $h(x,y) = 2x^2+y^2$ on $\field{R}^2$.  Note that both functions are strictly convex (Why?).  Also, $g$ is an increasing function (Why?).
 
 The only critical point of $g$ in $(0,\infty)$ lies at $x=1$.  By Theorem \ref{theorem:ConvexCritical}, $g(1)=2$ must be a strict global minimum value of $g$.  That being the case, any point $(x,y)$ satisfying $h(x,y)=1$ is a global minimum of $f$.  These are all the points on the ellipse $2x^2+y^2=1$. 
 \end{example}
