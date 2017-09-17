@@ -275,8 +275,8 @@ Let's run this process with three different initial guesses:
 	$4$ & $-2.72553474$ & $-1.73750959$ \\ \hline 
 	$5$ & $-1.87830623$ & $-1.36573112$ \\ \hline 
 	$6$ & $-1.36121191$ & $-1.15374930$ \\ \hline 
-	\end{tabular}~\begin{tabular}{|c|c|c|} \hline
-	$n$ & $x_n$ & $y_n$ \\ \hline \hline 
+	% \end{tabular}~\begin{tabular}{|c|c|c|} \hline
+	% $n$ & $x_n$ & $y_n$ \\ \hline \hline 
 	$7$ & $-1.09518303$ & $-1.04341362$ \\ \hline 
 	$8$ & $-1.00932090$ & $-1.00463507$ \\ \hline 
 	$9$ & $-1.00010404$ & $-1.00005571$ \\ \hline 
@@ -291,6 +291,12 @@ Let's run this process with three different initial guesses:
 	\end{center}
 \end{enumerate}
 \end{example}
+
+\begin{remark}
+The Newton-Raphson's method to solve $\boldsymbol{g}=\boldsymbol{0}$, as given by the recursive formula with the inverse of the gradient is very convenient to provide explicit descriptions of the different iterations.  However, it is hardly suitable for practical purposes, due to the computational issues involving matrix inversion.\index{Matrix!inversion}\index{Matrix!inverse}
+
+To avoid dealing with matrix inversion, we consider the equivalent formula: $\gradient{\boldsymbol{g}}(\x_n) \cdot \big( \x_{n+1} - \x_n \big) = -\boldsymbol{g}(\x_n)$, since it offers a simple system of linear equations, which is a much more reliable process, prone to less numerical error.
+\end{remark}
 
 \subsection{Optimization via Newton's Method}
 We can readily see how this process aids in the computation of critical points of twice continuously differentiable real-valued function $f\colon \field{R}^d \to \field{R}$:
@@ -336,18 +342,14 @@ For instance, starting with the initial guess $(x_0, y_0) = (-2,2)$, the sequenc
 \end{figure}
 
 \begin{remark}
-The Newton-Raphson's method to solve $\boldsymbol{g}=\boldsymbol{0}$, as given by the recursive formula in equation \eqref{equation:Newton4Crit}, is very convenient to provide explicit descriptions of the different iterations.  However, it is hardly suitable for practical purposes, due to the computational issues involving matrix inversion.\index{Matrix!inversion}\index{Matrix!inverse}
-
-To avoid dealing with matrix inversion, we consider the equivalent formula: $\gradient{\boldsymbol{g}}(\x_n) \cdot \big( \x_{n+1} - \x_n \big) = -\boldsymbol{g}(\x_n)$, since it offers a simple system of linear equations, which is a much more reliable process, prone to less numerical error.
-
-The equivalent recursive formula to search for critical points of a twice continuously differentiable real-valued function $f \colon \field{R}^d \to \field{R}$ is thus
+An equivalent recursive formula to \eqref{equation:Newton4Crit} to search for critical points of a twice continuously differentiable real-valued function $f \colon \field{R}^d \to \field{R}$ is given by
 \begin{equation}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}\index{Newton-Raphson method!iteration}
 \Hess{f}(\x_n) \cdot (\x_{n+1}-\x_n) = -\gradient{f}(\x_n).
 \end{equation}
 \end{remark}
 
 \begin{example}
-The equivalent recursive formula to the one we obtained in example \ref{example:preNewton4poly4} is as follows:
+The equivalent recursive formula to the one we obtained in Example \ref{example:preNewton4poly4} is as follows:
 \begin{equation*}
 \begin{bmatrix} 3x_n^2 & -1 \\ -1 & 3y_n^2 \end{bmatrix} \begin{bmatrix} x_{n+1}-x_n \\ y_{n+1}-y_n \end{bmatrix} = \begin{bmatrix} x_n^3 - y_n \\ y_n^3 - x_n \end{bmatrix}
 \end{equation*}

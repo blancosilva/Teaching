@@ -1,9 +1,34 @@
 %!TEX root = main.tex
 
 \section{Effective Algorithms for Unconstrained Optimization}
-All of the methods we have explored so far (Newton-Raphson, Secant methods, Steepest descent) offer sound algorithms to compute local extrema of real-valued functions $f \colon \field{R}^d \to \field{R}$. The do have some pros and cons.  
+All of the methods we have explored so far (Newton-Raphson, Secant methods, Steepest descent) offer sound algorithms to compute local extrema of real-valued functions $f \colon \field{R}^d \to \field{R}$. They do have some pros and cons.  
 \begin{itemize}
-	\item The method of Steepest descent always converges to a local minimum, yet slowly.  In order to obtain new approximations, we have to solve many different one-dimensional optimizations, each of them offering their own computational issues. 
+	\item The method of Steepest descent always converges to a local minimum, yet slowly.  The key is the fact that Steepest descent iterations are non-increasing.
+	\item In order to obtain new approximations on each Steepest descent iteration, we have to solve many different one-dimensional optimizations, each of them offering their own computational issues. 
 	\item Both Newton-Raphson and Secant methods offers faster sequences, but we cannot always guarantee convergence.  
 	\item Another drawback of both Newton-Raphson and Steepest descent is the fact that we do need expressions for function itself, its gradient and Hessian matrix.  
+	\item The recurrence formulas of Broyden's method are simple, and require only evaluations of the function itself.
 \end{itemize}
+
+The goal of this section is precisely gathering the best properties of the previous methods, so we may craft new methods with all the advantges, but none of the shortcomings.  
+
+\separator
+
+Given a function $f \colon \field{R}^d \to \field{R}$ with continuous first partial derivatives, and a given initial guess $\x_0 \in \field{R}^d$, we search for a recursive formula to approximate a minimum of $f$.  We request that this formula has the form
+\begin{equation*}
+\x_{n-1} = \x_n + t_n \w_n,
+\end{equation*}
+with positive parameters $t_n > 0$, satisfying the following criteria:
+\begin{description}
+	\item[Criterion 1] $f(\x_{n+1}) < f(x_n)$ whenever $\gradient{f}(\x_n) \neq 0$.
+	\item[Criterion 2] $\langle \w_n , \gradient{f}(\x_n) \rangle < 0$.
+	\item[Criterion 3] There exists $\lambda \in (0,1)$ so that 
+	\begin{equation*}
+	\langle \w_n , \gradient{f}(\x_{n+1}) \rangle > \lambda \langle \w_n \gradient{f} (\x_n) \rangle.
+	\end{equation*}
+	\item[Criterion 4] There exists $\mu \in (0,1)$, $\mu < \lambda$ so that
+	\begin{equation*}
+	f(\x_{n+1}) \leq f(\x_n) + \mu t_n \langle \w_n \gradient{f}(\x_n) \rangle.
+	\end{equation*}
+\end{description}
+
