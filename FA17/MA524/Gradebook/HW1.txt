@@ -1,30 +1,54 @@
   N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC
  1,  0.0, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx
-2a,  2.5, 2.5, ---, 2.3, 2.5, 2.5, 2.3, 2.5, ---, 2.3, ---, ---, ---, 2.5, ---, 2.5
-2b,  2.5, 2.5, ---, 2.3, 2.5, 2.5, 2.3, 2.5, ---, 2.3, ---, ---, ---, 1.0, ---, 2.5
-2c,  2.5, 2.5, ---, 2.3, 0.0, 2.5, 2.3, 2.0, ---, 2.3, ---, ---, ---, 2.5, ---, 2.5
-2d,  2.5, 1.0, ---, 2.3, 0.5, 1.0, 1.0, 0.5, ---, 2.0, ---, ---, ---, 1.0, ---, 1.0
-3a,  3.3, 3.3, ---, 3.3, 3.0, 3.3, 3.3, 3.0, ---, 3.3, ---, ---, ---, 3.3, ---, 3.0
-3b,  3.3, 3.3, ---, 3.3, 3.0, 3.3, 3.0, 3.0, ---, 3.3, ---, ---, ---, 3.3, ---, 3.0
-3c,  3.4, 3.3, ---, 3.3, 3.0, 3.0, 3.3, 3.0, ---, 3.3, ---, ---, ---, 0.0, ---, 3.0
+2a,  2.5, 2.5, ---, 2.3, 2.5, 2.5, 2.3, 2.5, 2.3, 2.3, ---, ---, ---, 2.5, 2.3, 2.5
+2b,  2.5, 2.5, ---, 2.3, 2.5, 2.5, 2.3, 2.5, 2.3, 2.3, ---, ---, ---, 1.0, 1.0, 2.5
+2c,  2.5, 2.5, ---, 2.3, 0.0, 2.5, 2.3, 2.0, 2.5, 2.3, ---, ---, ---, 2.5, 0.0, 2.5
+2d,  2.5, 1.0, ---, 2.3, 0.5, 1.0, 1.0, 0.5, 1.5, 2.0, ---, ---, ---, 1.0, 2.3, 1.0
+3a,  3.3, 3.3, ---, 3.3, 3.0, 3.3, 3.3, 3.0, 3.3, 3.3, ---, ---, ---, 3.3, 3.3, 3.0
+3b,  3.3, 3.3, ---, 3.3, 3.0, 3.3, 3.0, 3.0, 3.3, 3.3, ---, ---, ---, 3.3, 3.3, 3.0
+3c,  3.4, 3.3, ---, 3.3, 3.0, 3.0, 3.3, 3.0, 3.3, 3.3, ---, ---, ---, 0.0, 3.0, 3.0
  4,  0.0, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx
-5a,  2.5, 2.5, ---, 2.5, 2.5, 2.5, 2.5, 2.5, ---, 2.5, ---, ---, ---, ---, 2.0, 2.5
-5b,  2.5, 2.5, ---, 2.5, 2.5, 2.5, 2.5, 2.5, ---, 2.5, ---, ---, ---, ---, 0.0, 2.5
+5a,  2.5, 2.5, ---, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ---, ---, ---, ---, 2.0, 2.5
+5b,  2.5, 2.5, ---, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, ---, ---, ---, ---, 0.0, 2.5
 5c,  2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5
-5d,  2.5, 0.0, ---, 2.0, 0.0, 0.0, 0.0, 0.0, ---, 0.0, ---, ---, ---, ---, 0.0, 0.0
-6a,  2.0, 1.8, ---, 2.0, 2.0, 1.8, 1.0, 0.0, ---, 0.0, ---, ---, ---, ---, 1.8, 1.8
-6b,  2.0, 1.8, ---, 2.0, 2.0, 1.8, 0.0, 0.0, ---, 0.0, ---, ---, ---, ---, 1.8, 1.8
-6c,  2.0, 1.8, ---, 2.0, 2.0, 0.0, 1.8, 0.0, ---, 1.8, ---, ---, ---, ---, 1.8, 1.8
-6d,  2.0, 1.8, ---, 2.0, 2.0, 1.8, 1.8, 0.0, ---, 1.8, ---, ---, ---, ---, 1.8, 1.8
-6e,  2.0, 2.0, ---, 2.0, 2.0, 1.8, 1.8, 0.0, ---, 1.8, ---, ---, ---, ---, 1.8, 1.8
+5d,  2.5, 0.0, ---, 2.0, 0.0, 0.0, 0.0, 0.0, 2.5, 0.0, ---, ---, ---, ---, 0.0, 0.0
+6a,  2.0, 1.8, ---, 2.0, 2.0, 1.8, 1.0, 0.0, 2.0, 0.0, ---, ---, ---, ---, 1.8, 1.8
+6b,  2.0, 1.8, ---, 2.0, 2.0, 1.8, 0.0, 0.0, 2.0, 0.0, ---, ---, ---, ---, 1.8, 1.8
+6c,  2.0, 1.8, ---, 2.0, 2.0, 0.0, 1.8, 0.0, 1.0, 1.8, ---, ---, ---, ---, 1.8, 1.8
+6d,  2.0, 1.8, ---, 2.0, 2.0, 1.8, 1.8, 0.0, 0.0, 1.8, ---, ---, ---, ---, 1.8, 1.8
+6e,  2.0, 2.0, ---, 2.0, 2.0, 1.8, 1.8, 0.0, 0.0, 1.8, ---, ---, ---, ---, 1.8, 1.8
  7, 10.0,  10, ---,  10,  10,  10,  10,   0, ---,  10, ---, ---, ---, ---,  10,  10
- 8, 10.0,  10, ---,  10,   5,   3,  10, ---, ---,  10, ---, ---, ---, ---,   5,   8
- 9, 10.0,   2, ---,   0,   7,   2,   8, ---, ---,   8, ---, ---, ---, ---, ---,  10
-10, 10.0,   5, ---,   8,   5,   5,   5, ---, ---,   8, ---, ---, ---, ---, ---,   5
-11, 10.0,   8, ---,   8,   6,   6,   8, ---, ---,   0, ---, ---, ---, ---, ---,   4
-12, 10.0,   0, ---,  10,   0,   0,   0, ---, ---,   0,   8, ---, ---, ---,   2,   0
+ 8, 10.0,  10, ---,  10,   5,   3,  10,   5,  10,  10, ---, ---, ---, ---,   5,   8
+ 9, 10.0,   2, ---,   0,   7,   2,   8,   0,   0,   8, ---, ---, ---, ---,   7,  10
+10, 10.0,   5, ---,   8,   5,   5,   5,   0,   8,   8, ---, ---, ---, ---,   5,   5
+11, 10.0,   8, ---,   8,   6,   6,   8,   4,   5,   0, ---, ---, ---, ---,   0,   4
+12, 10.0,   0, ---,  10,   0,   0,   0,   0,   2,   0,   8, ---, ---, ---,   2,   0
 
- T,  100,  71, ---,  85,  65,  59,  73, ---, ---,  68, ---, ---, ---,  17, ---,  71
+ T,  100,  71, ---,  85,  65,  59,  73,  33,  59,  68, ---, ---, ---,  17,  58,  71
+
+PM.
+PM 2 (make an effort to label graphs)
+PM 2b (it should be the exterior of a disk instead: x^2+y^2 > 4)
+PM 2c (the only issue with this function is the denominator.  cannot have y=x or y=x^3)\
+PM 2d (try to show work.  How did you arrive to this graph?)
+PM 3c (xy=0 gives you two lines: x=0 and y=0)
+PM 5a (correct sketch, incorrect equation for line.  Check your algebra always)
+PM 5d (use implicit differentiation maybe)
+PM 6 (give me directions---divide the vectors over their magnitude)
+PM 8 (missing more candidates inside.  Finish the problem)
+PM 9 (Work on delivery.  What is f?  Also, punchline: you got crit points.  Which one is max?)
+PM 10 (good approach.  Check your algebra, and make sure to classify crit points after finding them)
+PM 11 (I can't see a submission for this problem)
+PM 12 (you have computed the derivative and searched for critical points correctly.  What's next?)
+
+HJ.
+HJ 2ab (Label your graphs)
+HJ 2d (Work on inequalities. The rest will follow)
+HJ 3d (xy=0 also gives us x=0)
+HJ 6cde (each of them can be solved similarly.  For instance, Dvf=1: Search for (a,b) that makes 3a+b=1---why?)
+HJ 10 (prove that gradient g is not zero on constraint.  Make sure answers are maxima and not minima)
+HJ 11 (prove that gradients of g1 and g are not parallel.  Finish the problem)
+HJ 12 (need to do it for a function of one variable, instead of 2 variables.)
 
 MC.  Very poor.  Didn't submit much, and there were many basic algebra mistakes on what she submitted
 
@@ -62,7 +86,7 @@ DE 9 (Work on your delivery.  What is f? After finding crit points, how did you 
 DE 10 (Method is ok, but you have only tracked crit points. How do you know they are global min?)
 DE 11 (need to prove gradients of g1 and g2 are not parallel. If mu=1, aren't there more points? Not clear from computations)
 
-HR.  Use the numbering from the notes, instead of from the forum, please
+HR.  Use the numbering from the notes, instead of from the forum, please.  Very poor submission in general.  Let's work on delivery
 HR 2c (The sketch is very misleading.  I am not sure what I see there)
 HR 2d (work on solving inequalities)
 HR 3 (label graphs, please.  It is hard to see which one is which.  e.g. Which one is xy=0?)
@@ -71,6 +95,9 @@ HR 5d (use implicit differentiation instead)
 HR 6 (I don't think you do understand the concept of gradient---or rather, its important properties. Come to the office)
 HR 7 (I'm not sure what you are doing in that problem.  The answer is wrong, anyway)
 HR 8 (Basic trigonometry!!  You can't make those mistakes at this level)
+HR 9 (Explanation is not satisfactory.  Start by rephrasing into an optimization problem, e.g.)
+HR 10 (no work = no points.  Show me that you have mastered the skills we are covering in class, e.g.)
+HR 11 (Check that the gradients of g1 and g2 are not parallel.  Finish the problem)
 
 KE 67.7%
 KE 2 (label your graphs properly)
@@ -85,13 +112,6 @@ KE 10 (nice.  Make sure to prove that the gradient of g is not zero on the const
 
 LR.
 LR 12 (Good effort!  Very little needs to be changed to make it work.)
-
-PM.
-PM 5a (correct sketch, incorrect equation for line.  Check your algebra always)
-PM 5d (use implicit differentiation maybe)
-PM 6 (give me directions---divide the vectors over their magnitude)
-PM 8 (missing more candidates inside.  Finish the problem)
-PM 12 (you have computed the derivative and searched for critical points correctly.  What's next?)
 
 SC.
 SC 2d (inequalities not dealt properly)
