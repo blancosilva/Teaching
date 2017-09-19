@@ -1,0 +1,38 @@
+  N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC ||  AG
+====================================================================================||=====
+ 7a,  25,  --,  --,  25,   0,  --,   0,  --,  --,  25,  --,  --,  --,  --,  --,  25 ||  --
+ 7b,  25,  --,  --,  25,   0,  --,  10,  --,  --,  25,  --,  --,  --,  --,  --,  25 ||  --
+ 7c,  25,  --,  --,  25,  10,  --,  10,  --,  --,  25,  --,  --,  --,  --,  --,  15 ||  --
+ 7d,  25,  --,  --,  20,  10,  --,  10,  --,  --,   0,  --,  --,  --,  --,  --,   0 ||  --
+  8, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx, xxx ||  --
+====================================================================================||=====
+   ,    ,    ,    ,  95,  20,    ,  30,    ,    ,  75,    ,    ,    ,    ,    ,  65 || 
+
+
+HC.
+HC 7a (I am not sure what you tried there.  Try to explain better where those expressions come from.  Why do you need to use xy?)
+      (use the fact that the norm of (x,y) is precisely the square root of x^2+y^2, and use the limit definition)
+HC 7b (The conclussion is correct, but shown work does not provide a reason)
+      (factor the expression, and use that to search for a level line f(x,y)=c that is not bounded, for example)
+HC 7c (correct conclussion, but incorrect work.  You can't assess coercivenes just with one restriction.  Use the technique shown in class instead)
+HC 7d (work does not support answer)
+
+DT. Outstanding, as usual.
+DT 7d. (neither (x-a)^2 nor (y-x^2)^ are coercive.  For example, every point of the form (a,y) gives you a zero for the former, 
+       (and every point of the form (x,x^2) gives you a zero for the latter.  But when you combine the two terms together, that does 
+       (not happen.  You can use that fact to prove that R is coercive.  Good attempt, though!  You got very close.)
+
+DE. 20%
+DE 7a (Why did you eliminate the y?)
+DE 7b (factor the expression, and use that to search for a level line f(x,y)=c that is not bounded, for example)
+DE 7c (correct conclussion, but incorrect work.  You can't assess coercivenes just with one restriction.  Use the technique shown in class instead)
+DE 7d (they are all coercive, but it is very tricky to prove.  We will go over this again, and I will give you point recovery options)
+
+KE 75%  Good job. I really liked the delivery of the first two problems.
+KE 7d (This one was tricky.  We will go over this again, and I will give you oportunity to recover points.)
+
+SC. 65%
+SC 7d (Need only to prove your claims about x^4+y^4 and absolute value of xy)
+SC 7d (This one was tricky.  We will go over this again, and I will give you oportunity to recover points.)
+
+
