@@ -197,10 +197,12 @@ The associated quadratic form is given by
 
 \separator 
 
-To easily classify symmetric matrices, we usually employ any of the following two criteria:
+To easily classify symmetric matrices, we usually employ any of the following three criteria:
 
-\begin{theorem}[Principal Minor Criteria]\label{theorem:PrincipalMinors}\index{Theorem!Principal Minor Criteria}
-Given a general square matrix $\boldsymbol{A}$, we define for each $1\leq \ell \leq d$, $\Delta_\ell$ (the $\ell$th \emph{principal minor} of $\boldsymbol{A}$) to be the determinant of the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  
+\begin{definition}\index{Matrix!principal minor}\index{Matrix!leading principal minor}\index{Principal minor}\index{Principal minor!leading}
+Given a general square matrix $\boldsymbol{A}$, we define for each $1 \leq \ell \leq d$, a \emph{principal minor of order }$\ell$ as the determinant of the submatrix obtained by deleting $d-\ell$ rows and the $d-\ell$ columns with the same indices.  There are always $\binom{d}{\ell}$ principal minors of order $\ell$.  We write $\boldsymbol{A}_\ell^d$ for any of them.
+
+Among those principal minors, we define the \emph{leading principal minors} as those that correspond to the upper left-hand corner $\ell \times \ell$--submatrix of $\boldsymbol{A}$.  We denote them by $\Delta_\ell$.
 \begin{center}
 \begin{tikzpicture}
 \draw (0,0) node{%
@@ -216,20 +218,39 @@ a_{n1} & a_{n2} & a_{n3} & \dotsb & a_{nn}
 \draw[dashed] (-2, -0.15) -- (0.4, -0.15) -- (0.4, 1.2) node[above]{$\Delta_3$};
 \end{tikzpicture}
 \end{center}
+\end{definition}
+
+\begin{theorem}[Principal Minor Criteria]\label{theorem:PrincipalMinors}\index{Theorem!Principal Minor Criteria}
 A symmetric matrix $\boldsymbol{A}$ is:
 \begin{itemize}
 \item Positive definite if and only if $\Delta_\ell > 0$ for all $1\leq \ell \leq d$.
 \item Negative definite if and only if $(-1)^\ell \Delta_\ell>0$ for all $1\leq \ell \leq d$.
+\item Positive semidefinite if and only if $\boldsymbol{A}_\ell^d \geq 0$ for all principal minors, for all $1 \leq \ell \leq d$.
+\item Negative semidefinite if and only if $(-1)^\ell \boldsymbol{A}_\ell^d \geq 0$ for all principal minors, for all $1 \leq \ell \leq d$.
 \end{itemize}
 \end{theorem}
 
 \begin{example}
 The matrix $\boldsymbol{A}$ in Example \ref{example:quadraticFromMatrix} is positive definite:
 \begin{align*}
-\Delta_1 &= 2 > 0 \\
-\Delta_2 &= \det \begin{bmatrix} 2 & -1 \\ -1 & 3 \end{bmatrix} = 5 > 0 \\
-\Delta_3 &= \det \boldsymbol{A} = 2 \det \begin{bmatrix} -1 & 3 \\ 2 & 0 \end{bmatrix} + 5 \det \begin{bmatrix} 2 & -1 \\ -1 & 3 \end{bmatrix} = 13 >0
+\Delta_1 &= 2 > 0, \\
+\Delta_2 &= \det \begin{bmatrix} 2 & -1 \\ -1 & 3 \end{bmatrix} = 5 > 0, \\
+\Delta_3 &= \det \boldsymbol{A} = 2 \det \begin{bmatrix} -1 & 3 \\ 2 & 0 \end{bmatrix} + 5 \det \begin{bmatrix} 2 & -1 \\ -1 & 3 \end{bmatrix} = 13 >0.
 \end{align*}
+\end{example}
+
+\begin{example}
+Consider the symmetric matrix $\boldsymbol{A}$ below:
+\begin{equation*}
+\boldsymbol{A} = \begin{bmatrix} 1 & 4 & 6 \\ 4 & 2 & 1 \\ 6 & 1 & 6 \end{bmatrix}
+\end{equation*}
+Computing the leading principal minors, we obtain
+\begin{align*}
+\Delta_1 &= 1 > 0, \\
+\Delta_2 &= \det \begin{bmatrix} 1 & 4 \\ 4 & 2 \end{bmatrix} = -14 <0, \\
+\Delta_3 &= \det \boldsymbol{A} = -109 < 0.
+\end{align*}
+The principal leading minors we have computed do not fit with any of the criteria in Theorem \ref{theorem:PrincipalMinors}.  We can conclude that $\boldsymbol{A}$ is indefinite.
 \end{example}
 
 \begin{theorem}[Eigenvalue Criteria]\label{theorem:eigenvalues}\index{Characteristic Polynomial}\index{Eigenvalue}\index{Theorem!Eigenvalue Criteria}
