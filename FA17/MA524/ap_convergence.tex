@@ -3,6 +3,13 @@
 \chapter{Rates of Convergence}\label{appendix:convergence}
 
 \begin{definition}
+\index{Convergence!linear}
+\index{Convergence!superlinear}
+\index{Convergence!sublinear}
+\index{Convergence!logarithmic}
+\index{Convergence!quadratic}
+\index{Convergence!cubic}
+\index{Convergence!rate of}
 Consider a convergent sequence $\{ \x_n \}_{n\in\field{N}} \subset \field{R}^d$ with $\xstar=\lim_n \x_n$.  We say that this sequence exhibits
 \begin{description}
 	\item [Linear Convergence] If there exists $0<\delta<1$ so that 
@@ -33,6 +40,7 @@ Consider a convergent sequence $\{ \x_n \}_{n\in\field{N}} \subset \field{R}^d$ 
 		\item Convergence with $q=2$ is said to be \emph{cubic}.
 		\item etc.
 	\end{itemize}
+	In any of these cases, we do refer to $\delta$ as the \emph{rate of convergence}, as we did in the linear case.
 \end{description}
 \end{definition}
 
@@ -61,7 +69,7 @@ The sequence $x_n = 2^{-2^n}$ converges to zero and is superlinear:
 \begin{equation*}
 \lim_n \frac{x_{n+1}}{x_n} = \lim_n 2^{-2^n} = 0
 \end{equation*}
-Using the estimation for $q$ given by the formula in \eqref{equation:estimateQ}, we obtain that this sequence exhibits quadratic convergence.
+Using the estimation for $q$ given by the formula in \eqref{equation:estimateQ}, we obtain that this sequence exhibits quadratic convergence.  What is its rate of convergence?
 \end{example}
 
 \begin{example}
