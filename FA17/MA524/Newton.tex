@@ -117,7 +117,7 @@ We have just proven that, if a Newton-Raphson iteration for a function $f$ gives
 \end{remark}
 
 \begin{theorem}[Local Convergence for the Newton-Raphson Method]\label{theorem:LCNR}\index{Newton-Raphson method!Local convergence for}\index{Theorem!Local Convergence for Newton-Raphson}
-Let $x^\star$ be a simple root of the equation $f(x)=0$, and there exists $\varepsilon > 0$ so that 
+Let $x^\star$ be a simple root of the equation $f(x)=0$, and assume that there exists $\varepsilon > 0$ so that 
 \begin{itemize}
 	\item $f$ is twice continuously differentiable in the interval $(x^\star-\varepsilon, x^\star + \varepsilon)$, and
 	\item there are no critical points of $f$ on that interval.
@@ -165,6 +165,16 @@ The next step is to prove that there is convergence.  A similar computation to t
 \end{equation*}
 Since $\varepsilon M(\varepsilon) < 1$, $\lim_n \big( \varepsilon M(\varepsilon) \big)^n = 0$, and $\{ x_n \}_{n \in \field{N}}$ converges to $x^\star$.
 \end{proof}
+
+\begin{example}
+Let's use this Theorem to prove convergence of Newton-Raphson iterations for $f(x)= x^2-2$ for initial guesses $x_0$ in a meaningful interval---something like the obvious choice $x_0 \in [1,2]$.  Pick for example $\varepsilon = \sqrt{2}/2$, so we can analyze convergence with initial guesses in the interval $[\sqrt{2}/2, 3\sqrt{2}/2] \supset [1,2]$.  Note that
+\begin{align*}
+M\big(\tfrac{\sqrt{2}}{2}\big) &= \max \bigg\{ \frac{1}{2t} : \frac{\sqrt{2}}{2} < t < \frac{3\sqrt{2}}{2} \bigg\} = \frac{\sqrt{2}}{2} \\
+\intertext{and thus,}
+\varepsilon M(\varepsilon) &= \frac{\sqrt{2}}{2} M\big(\tfrac{\sqrt{2}}{2}\big) = \frac{1}{2} < 1.
+\end{align*}
+By virtue of Theorem \ref{theorem:LCNR} we have quadratic convergence to $\sqrt{2}$ if we start with any initial guess in this interval.
+\end{example}
 
 \subsection{Extension to higher dimensions}
 
