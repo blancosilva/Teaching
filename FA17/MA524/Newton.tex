@@ -394,3 +394,28 @@ In that case, for all $\x \in \field{R}^d$ satisfying $\norm{ \x - \xstar }\leq 
 \frac{\norm{ \mathcal{N}(\x) - \xstar }}{\norm{\x - \xstar}^2} \leq \frac{3L}{2h}
 \end{equation*}
 \end{theorem}
+
+\begin{example}\index{Conjugate gradient}\index{scipy}
+There is an implementation of Newton-Raphson method in the \scipy\texttt{.optimize} libraries in Python: the routine \texttt{fmin\_ncg()} (the \texttt{cg} indicates that the inversion of the Hessian is performed using the technique of conjugate gradient).  The following session illustrates how to use this method to approximate the minimum of the Rosenbrock function $\mathcal{R}_{1,100}$ with an initial guess $(x_0, y_0) = (2,2)$
+
+\begin{minted}[frame=single, fontsize=\footnotesize, linenos, mathescape]{python}
+import numpy as np, matplotlib.pyplot as plt 
+from scipy.optimize import fmin_ncg
+
+# Rosenbrock $\mathcal{R}_{1,100}$ function and its Jacobian $\gradient{\mathcal{R}_{1,100}}$
+from scipy.optimize import rosen, rosen_der
+\end{minted}
+
+A session that computes this approximation.  We call \texttt{fmin\_ncf} with the function and its gradient (with the option \texttt{fprime=}), the initial guess $(2,2)$.  In the example below I have deactivated the option \texttt{retall=False}.  If we set it to \texttt{True}, we obtain the complete list of iterations obtained by the algorithm.
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> fmin_ncg(rosen, [-2.,2.], fprime=rosen_der, retall=False)
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 277
+         Function evaluations: 300
+         Gradient evaluations: 1540
+         Hessian evaluations: 0
+array([ 0.99999993,  0.99999987])
+\end{minted}
+\end{example}
