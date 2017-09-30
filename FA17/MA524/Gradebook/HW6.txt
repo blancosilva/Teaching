@@ -1,0 +1,68 @@
+   N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC ||  AG
+=====================================================================================||=====
+ 3.1,  --,  --,  --,  --,  --,  12,  --,  --,  15,  --,  --,  --,  --,  --,  --,  12 ||  --
+ 3.2,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.3,  --,  --,  --,  --,  --,   0,  --,  --,  10,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.4,  --,  --,  --,  --,  --,  15,  --,  --,   5,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.5,  --,  --,  --,  --,  --,   5,  --,  --,   5,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.6,  --,  --,  --,  --,  --,  --,   0,  --,   0,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.7,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.8,  --,  --,  --,  --,  --,   5,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.9,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.10,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.11,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.12,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.13,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.14,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.15,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.16,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+=====================================================================================||=====
+   ,    ,    ,    ,     ,    ,  37,    ,  80,  35,    ,    ,    ,    ,    ,    ,  12 || 
+
+
+HC 
+HC 3.1 (10/20 Nice command of sequences.  )
+	   (First one, check if it is logarithmic too.  For all superlinear, find their order and convergence rate)
+	   (sequence d is linear)
+HC 3.3 (0/20 Your computations seem to suggest that there is no loop)
+HC 3.4 ()
+HC 3.5 ()
+HC 3.6 (0/20)
+
+HR      (80% Am I missing one of the 5 problems?)
+HR 3.10 (20/20 That's an amazing use of recursion.  Python doesn't like too many recursions, though. Careful with that)
+HR 3.12 (20/20 outstanding.  very elegant)
+HR 3.13 (20/20 outstanding.  Have you tried vdom for the HTML bit?)
+HR 3.14 (20/20)
+
+
+DJ     (37%)
+DJ 3.1 (12/20 It looks good.  I'd like to see some more detail on your computations, though.)
+	   (What is the limit of the first one? If zero, you need to check if it is logarithmic too.)
+	   (Find the order of the third and fifth ones)
+DJ 3.3 (0/20 Try another problem instead, maybe?  Or go ahead, think about it longer, and resubmit.)
+DJ 3.4 (15/20 Good try!)
+       (Maybe we can work together to figure out a way to do this proof using Wolfram as helper.  Come to the office)
+DJ 3.5 (5/20)
+       (On that graph, plot all possible lines of the form y = -lambda*x for 0<lambda<1  That shows that there is only one root)
+       (The convergence is guaranteed.  You only need to assess where, pick an epsilon large enough, and do the epsilon*M(epsilon)<1 trick)
+DJ 3.8 (5/20)
+	   (A graph may not be the best way to prove there is only one root.  We could use analysis methods instead.  Let's discuss this in class)
+	   (I'm not sure what you tried to convey here.  Go ahead and rework this problem if you need to.)
+
+SC     (12% You've only done one problem.  Go ahead and submit 4 more, please)
+SC 3.1 (12/20 It looks good.  I'd like to see some more detail on your computations, though.)
+	   (Prove that the first one is logarithmic too.  Find the order of the third and fifth ones)
+	   (The convergence rate of this one is not 0.3400  How did you compute it?)
+
+HJ     (35% I was expecting you to go for the coding problems.  Try those instead of these technical ones, if you want)
+HJ 3.1 (15/20 Nice understanding of limits.)
+       (In the third one, you need to find the order of convergence)
+       (I could not see a conclusion to the 5th one)
+HJ 3.3 (10/20  The choice is correct, but there are computational errors that lead to a different conclusion)
+HJ 3.4 (5/20 Try to plot cos(x) vs x instead.  What you have shown doesn't prove there are no roots outside your graph)
+       (I need to see an epsilon*M(epsilon)<1 proof to guarantee convergence.  You've only proved for two instances)
+HJ 3.5 (5/20  Try to plot tan(x) vs all possible lines -lambda*x with 0<lambda<1)
+       (as in previous, I need to see an epsilon*M(epsilon)<1 proof)
+HJ 3.6 (0/20 Plot log(x)^2 vs x+1)
+       (as in previous, I need to see an epsilon*M(epsilon)<1 proof)
