@@ -406,10 +406,10 @@ from scipy.optimize import fmin_ncg
 from scipy.optimize import rosen, rosen_der
 \end{minted}
 
-A session that computes this approximation.  We call \texttt{fmin\_ncf} with the function and its gradient (with the option \texttt{fprime=}), the initial guess $(2,2)$.  In the example below I have deactivated the option \texttt{retall=False}.  If we set it to \texttt{True}, we obtain the complete list of iterations obtained by the algorithm.
+We call \texttt{fmin\_ncf} with the function and its gradient (with the option \texttt{fprime=}), and with the initial guess $(2,2)$.
 
 \begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
->>> fmin_ncg(rosen, [-2.,2.], fprime=rosen_der, retall=False)
+>>> fmin_ncg(rosen, [2.,2.], fprime=rosen_der, retall=False)
 Optimization terminated successfully.
          Current function value: 0.000000
          Iterations: 277
