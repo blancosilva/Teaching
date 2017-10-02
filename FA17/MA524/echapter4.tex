@@ -5,10 +5,13 @@
 \begin{problem}[Basic]
 Consider the following problem: Find the global minimum of the function $f(x,y) = 6(x-10)^2+4(y-12.5)^2$ on the set $S = \{ (x,y) \in \field{R}^2 : x^2+(y-5)^2 \leq 50, x^2+3y^2\leq 200, (x-6)^2+y^2 \leq 37 \}$.
 \begin{enumerate}
-	\item Write the statement of this problem as a program with the notation from equation \ref{equation:programP}.  Label the objective function, as well as the inequality and equality constraints accordingly.
+	\item Write the statement of this problem as a program with the notation from equation \ref{equation:programP}.  Label the objective function, as well as the inequality constraints accordingly.
+	\item Is the objective function $f$ pseudo-convex? Why or why not?
+	\item Are the inequality constraints quasi-convex?  Why or why not?
 	\item Sketch the feasibility region.  Label all relevant objects involved.
-	\item Is the point $(7,6)$ feasible?
-	\item Employ Theorem \ref{theorem:KKTnecessary} to prove that $(7,6)$ is a candidate for the optimal solution of this program.
+	\item Is the point $(7,6)$ feasible?  Why or why not?
+	\item Employ Theorem \ref{theorem:KKTnecessary} to write a necessary condition for optimality and verify that is satisfied by the point $(7,6)$.
+	\item Employ Theorem \ref{theorem:KKTsufficient} to decide whether this point is an optimal solution of $(P)$.
 \end{enumerate}
 \end{problem}
 % The point $(7,6)$ is feasible.  To see this, set $g_1(x,y)=x^2+(y-5)^2-50$, $g_2(x,y)=x^2+3y^2-200$, $g_3(x,y)=(x-6)^2+y^2-37$, and notice that
@@ -39,8 +42,13 @@ Consider the following problem: Find the global minimum of the function $f(x,y) 
 \begin{problem}[Basic]\cite[lec6\_constr\_opt, 10]{Freund2004nonlinear}
 Let $f(x,y)=(x-4)^2+(y-6)^2$.  Consider the program $(P)$ to find the global minimum of $f$ on the set $S = \{ (x,y) \in \field{R}^2 : y-x^2\geq 0, y\leq 4 \}$.
 \begin{enumerate}
-	\item Write a necessary condition for optimality and verify that is satisfied by the point  $(2,4)$.
-	\item Is this the optimal point? Why or why not?
+	\item Write the statement of this problem as a program with the notation from equation \ref{equation:programP}.  Label the objective function, as well as the inequality constraints accordingly.
+	\item Is the objective function $f$ pseudo-convex? Why or why not?
+	\item Are the inequality constraints quasi-convex?  Why or why not?
+	\item Sketch the feasibility region.  Label all relevant objects involved.
+	\item Is the point $(7,6)$ feasible?  Why or why not?
+	\item Employ Theorem \ref{theorem:KKTnecessary} to write a necessary condition for optimality and verify that is satisfied by the point $(7,6)$.
+	\item Employ Theorem \ref{theorem:KKTsufficient} to decide whether this point is an optimal solution of $(P)$.
 \end{enumerate}
 \end{problem}
 

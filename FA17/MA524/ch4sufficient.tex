@@ -36,3 +36,16 @@ Given a convex set $C \subseteq \field{R}^d$, a real-valued function $f \colon C
 $\Lambda_t(f) = \{ \x \in C : f(x) \leq t \}$ are convex for all $t \in \field{R}$.
 \end{theorem}
 
+We are now ready to state the main result on this section:
+
+\begin{theorem}[KKT Sufficient Conditions]\label{theorem:KKTsufficient}\index{Theorem!KKT sufficient conditions}\index{Theorem!Karush-Kuhn-Tucker}
+Let $\x \in S$ be a feasible point of the consistent program $(P)$ for which there are multipliers $u_k \geq 0$ ($1\leq k \leq m)$ and $v_k \in \field{R}$ ($1\leq k \leq \ell$) satisfying the conditions \ref{item:KKTnecessary1}, \ref{item:KKTnecessary2} and \ref{item:KKTnecessary3} of Theorem \ref{theorem:KKTnecessary}. If $f$ is pseudo-convex, $g_k$ is quasi-convex for all $1\leq k \leq m$, and $h_k$ is linear for all $1\leq k \leq \ell$, then $\x$ is a global optimal solution of $(P)$.
+\end{theorem}
+
+\begin{remark}\index{KKT conditions}
+The conditions \ref{item:KKTnecessary1}, \ref{item:KKTnecessary2} and \ref{item:KKTnecessary3} of Theorem \ref{theorem:KKTnecessary} are called \emph{the KKT conditions} of the program $(P)$ in the literature.
+\end{remark}
+
+\begin{example}
+We saw that the point $(0,0)$ satisfies the KKT conditions for the super-consistent convex program $(P)$ in Example \ref{example:feasibleP1}.  As a consequence of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}, this point must be the optimal global minimum of $(P)$.
+\end{example}

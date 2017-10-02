@@ -32,11 +32,9 @@ If the objective function $f$ and all constraints $g_k$, $h_k$ of a program $(P)
 \index{Program!linear}\index{Program!convex}
 
 \begin{example}\label{example:feasibleP1}
-Let $f(x,y)=x^4+y^4$, and consider the program $(P) = \min_{x\in S} f(x,y)$, where 
-\begin{equation*}
-S = \{ (x,y) \in \field{R}^2: x^2 \leq 1, y^2 \leq 1, e^{x+y}\leq 1\}.
-\end{equation*}
-The inequality constraints are $g_1(x,y)=x^2-1$, $g_2(x,y)=y^2-1$ and $g_3(x,y)=e^{x+y}-1\leq 0$.  The feasibility region is thus a triangular region (see Figure \ref{figure:feasibleP1}):
+Let $f(x,y)=x^4+y^4$, and consider the program $(P) = \min_{x\in S} f(x,y)$, where $S = \{ (x,y) \in \field{R}^2: x^2 \leq 1, y^2 \leq 1, e^{x+y}\leq 1\}$.
+
+The inequality constraints are $g_1(x,y)=x^2-1$, $g_2(x,y)=y^2-1$ and $g_3(x,y)=e^{x+y}-1\leq 0$ (although you may choose simpler equivalent expressions).  The feasibility region is thus a triangular region (see Figure \ref{figure:feasibleP1}):
 \begin{equation*}
 S = \{ (x,y) \in \field{R}^2 : \abs{x} \leq 1, \abs{y} \leq 1, x+y \leq 0 \} \neq \emptyset.
 \end{equation*}
@@ -68,7 +66,7 @@ Given a consistent program $(P)$ as defined in \eqref{equation:programP}, for ea
 	\end{equation*}
 	\item The \emph{cone of inward pointing directions for the binding constraints} at $\x$, as
 	\begin{equation*}
-	\mathcal{G}_0(\x) = \{ \v \in \field{R}^d : \norm{v}=1, \langle \gradient{g_k}(\x), \v \rangle < 0 \text{ for all } k \in \mathcal{I}(\x) \}
+	\mathcal{G}_0(\x) = \{ \v \in \field{R}^d : \norm{\v}=1, \langle \gradient{g_k}(\x), \v \rangle < 0 \text{ for all } k \in \mathcal{I}(\x) \}
 	\end{equation*}
 	\item The set of \emph{tangent directions for the equality constraints} at $\x$, as
 	\begin{equation*}
