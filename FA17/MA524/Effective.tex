@@ -117,7 +117,7 @@ X,Y = np.meshgrid(x,y)
 We call \texttt{fmin\_bfgs} with the function and its gradient (with the option \texttt{fprime=}), the initial guess $(-2,2)$, and activate the option \texttt{retall=True} that offers the complete list of iterations obtained by the algorithm.
 
 % We may not need this if we make modifications prior to this point.  Check often
-\newpage
+% \newpage
 
 \begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
 >>> result = fmin_bfgs(R, [-2.,2.], fprime=jacR, retall=True)
