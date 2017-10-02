@@ -1,0 +1,38 @@
+%!TEX root = main.tex
+
+\section{Sufficient Conditions}
+To explore sufficient conditions, we find useful to study generalizations of convex functions: \emph{quasi-convexity} and \emph{pseudo-convexity}.
+
+\begin{definition}[Quasi-convex functions]\index{Function!quasi-convex}\index{Function!quasi-concave}
+Given a convex set $C \subseteq \field{R}^d$, we say that a real-valued function $f\colon C \to \field{R}$ is \emph{quasi-convex} if for all $\x,\y \in C$ and all $0 \leq \lambda \leq 1$,
+\begin{equation*}
+f\big( \lambda \y + (1-\lambda)\x \big) \leq \max\{ f(\x), f(\y) \}.
+\end{equation*}
+We say that $f$ is \emph{quasi-concave} if 
+\begin{equation*}
+f\big( \lambda \y + (1-\lambda)\x \big) \geq \min\{ f(\x), f(\y) \}.
+\end{equation*}
+\end{definition}
+
+\begin{definition}[Pseudo-convex functions]\index{Function!pseudo-convex}
+Given a convex set $C \subseteq \field{R}^d$, we say that a real-valued differentiable function $f \colon C \to \field{R}$ is \emph{pseudo-convex} if for all $\x, \y \in C$ satisfying $\langle \gradient{f}(\x), \x-\y \rangle \geq 0$, it must be $f(\y) \geq f(\x)$
+\end{definition}
+
+\begin{remark}
+The three functions are related as follows:
+\begin{itemize}
+	\item Differentiable convex functions are pseudo-convex.
+	\item Convex functions are quasi-convex.
+	\item Pseudo-convex functions are quasi-convex.
+\end{itemize}
+\end{remark}
+
+\separator 
+
+Quasi-convex functions have a very nice characterization by means of their \emph{level sets}\index{Level set}:
+
+\begin{theorem}
+Given a convex set $C \subseteq \field{R}^d$, a real-valued function $f \colon C \to \field{R}$ is quasi-convex if and only if its level sets 
+$\Lambda_t(f) = \{ \x \in C : f(x) \leq t \}$ are convex for all $t \in \field{R}$.
+\end{theorem}
+
