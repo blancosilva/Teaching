@@ -1,32 +1,77 @@
    N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC ||  AG
 =====================================================================================||=====
- 3.1,  --,  --,  --,  --,  --,  12,  --,  --,  15,  --,  --,  --,  --,  --,  --,  12 ||  --
+ 3.1,  --,  14,  --,   5,  --,  12,  10,  --,  15,  12,  --,  12,  --,  --,  --,  12 ||  --
  3.2,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
- 3.3,  --,  --,  --,  --,  --,   0,  --,  --,  10,  --,  --,  --,  --,  --,  --,  -- ||  --
- 3.4,  --,  --,  --,  --,  --,  15,  --,  --,   5,  --,  --,  --,  --,  --,  --,  -- ||  --
- 3.5,  --,  --,  --,  --,  --,   5,  --,  --,   5,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.3,  --,   0,  --,  --,  --,   0,   0,  --,  10,   0,  --,  --,  --,  --,  --,  -- ||  --
+ 3.4,  --,  20,  --,  --,  --,  15,  10,  --,   5,  14,  --,  --,  --,  --,  --,  -- ||  --
+ 3.5,  --,   5,  --,  --,  --,   5,   5,  --,   5,   5,  --,  --,  --,  --,  --,  -- ||  --
  3.6,  --,  --,  --,  --,  --,  --,   0,  --,   0,  --,  --,  --,  --,  --,  --,  -- ||  --
  3.7,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
- 3.8,  --,  --,  --,  --,  --,   5,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.8,  --,  18,  --,  --,  --,   5,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
  3.9,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
-3.10,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.10,  --,  --,  --,  20,  --,  --,  --,  20,  --,  --,  --,  20,  --,  --,  --,  -- ||  --
 3.11,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
-3.12,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
-3.13,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
-3.14,  --,  --,  --,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.12,  --,  --,  --,  20,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+3.13,  --,  --,  --,  19,  --,  --,  --,  20,  --,  --,  --,  20,  --,  --,  --,  -- ||  --
+3.14,  --,  --,  --,  19,  --,  --,  --,  20,  --,  --,  --,  20,  --,  --,  --,  -- ||  --
 3.15,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
 3.16,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
 =====================================================================================||=====
-   ,    ,    ,    ,     ,    ,  37,    ,  80,  35,    ,    ,    ,    ,    ,    ,  12 || 
+    ,    ,  57,    ,  83,    ,  37,  25,  80,  35,  31,    ,  72,    ,    ,    ,  12 || 
 
 
-HC 
-HC 3.1 (10/20 Nice command of sequences.  )
-	   (First one, check if it is logarithmic too.  For all superlinear, find their order and convergence rate)
-	   (sequence d is linear)
+DT     (83%)
+DT 3.1 (5/20 Need to work on your limits.  Let me know if you need a hand with this.)
+       (First one is sublinear---compute the limit again. Check if it is logarithmic too)
+       (The second one is linear indeed.  What is its convergence rate?)
+       (The third one is superlinear indeed.  Find its order and convergence rate.)
+       (Fourth one is not superlinear.  Check your simplifications and try again)
+       (Fifth one is not superlinear.  Careful with the way you interpreted the exponents.)
+DT 3.10 (20/20 Good job)
+DT 3.12 (20/20 Good job.  Careful with the statement "Since both are equal, the method works.")
+DT 3.13 (19/20 Nice.  Make sure to force your outputs to provide with as many decimal places as relevant.  Work on string formats if necessary)
+DT 3.14 (19/20 Same as in previous.  I can't check your claim ---although it is clear that it works---because I only see 6 decimal places)
+
+KE     (31% I am missing one problem.  Go ahead and submit one more when you have a chance.)
+KE 3.1 (12/20 Decent command of sequences and limits.)
+       (The first one is not linear. What is the limit?)
+       (For the superlinear sequences, find their order and convergence rates)
+KE 3.3 (0/20 I can't see why that function will give you a loop.  Show me the computations---try again and submit it)
+KE 3.4 (14/20 Try to plot cos(x) vs x instead.  What you have shown doesn't prove there are no roots outside your graph)
+       (Excellent understanding of the epsilon*M(epsilon)<1 trick.  You need to provide a convincing computation of the max in M, though.  I could not see how you got that value.  Go ahead and resubmit if you want.)
+KE 3.5 (5/20  Try to plot tan(x) vs all possible lines -lambda*x with 0<lambda<1)
+       (as in previous, I need to see an epsilon*M(epsilon)<1 proof.  Spoiler alert: they all work)
+
+
+AH     (57% Bring me a solution for 3.3 --20 pts-- and solve the issues in 3.5 with the suggestions I wrote--15 pts.)  
+       (This was a great effort.  I really enjoyed your command of the epsilon*M(epsilon)<1 technique.)
+AH 3.1 (14/20 Decent command of sequences and limits)
+       (The first one is logarithmic too. For all superlinear, find their order and convergence rate)
+AH 3.3 (0/20 Try again if you want.  Thing of something *very* simple that has symmetries around the origin)
+AH 3.4 (20/20 Outstanding understanding of the relationship between cos(x) and x, rather than the function itself.)
+       (Excellent work with the second part too.  Technically we need to show some more detail, but what you've provided is spot on!)
+AH 3.8 (18/20 To show that there is only one root, we need to use considerations of the functions being increasing, for instance.)
+       (The rest of the problem is perfect.  Great understanding of structure of functions and their effect in these algorithms.)
+AH 3.5 (5/20  Try to plot tan(x) vs all possible lines -lambda*x with 0<lambda<1)
+       (as in previous, I need to see an epsilon*M(epsilon)<1 proof.  Spoiler alert: they all work)
+
+MM     (72% Am I missing one problem?  Go ahead and submit one more when you have a chance)
+       (Feel free to send me, instead of a pdf with a jupyter notebook, the notebook itself---that way I can play with it)
+MM 3.1 (12/20 Decent command of sequences and limits)
+       (First one, check if it is logarithmic too. For the superlinear example, find its order and convergence rate)
+       (The last one is not linear, but superlinear)
+MM 3.10 (outstanding.  very elegant)
+MM 3.13 (outstanding! I like your use of CellText)
+
+HC     (25% Go ahead and submit the problems you left out again.  Let me know if you need help understanding the concepts)
+HC 3.1 (10/20 Nice command of sequences.)
+	     (First one, check if it is logarithmic too.  For all superlinear, find their order and convergence rate)
+	     (sequence d is linear)
 HC 3.3 (0/20 Your computations seem to suggest that there is no loop)
-HC 3.4 ()
-HC 3.5 ()
+HC 3.4 (10/20 Try to plot cos(x) vs x instead.  What you have shown could also pass as a proof that there are no roots outside your graph, though)
+       (I need to see an epsilon*M(epsilon)<1 proof to guarantee convergence.  Try that and let me know if it helps)
+HC 3.5 (5/20  Try to plot tan(x) vs all possible lines -lambda*x with 0<lambda<1)
+       (as in previous, I need to see an epsilon*M(epsilon)<1 proof.  Spoiler alert: they all work)
 HC 3.6 (0/20)
 
 HR      (80% Am I missing one of the 5 problems?)
