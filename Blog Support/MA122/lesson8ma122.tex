@@ -1,0 +1,298 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 8: Introduction to Derivatives: The Instantaneous Rate of Change}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Hilbert curve}{
+  \rule{L -> +RF-LFL-FR+}
+  \rule{R -> -LF+RFR+FL-}}
+	\begin{tikzpicture} 
+    \shadedraw [bottom color=white, top color=DeepSkyBlue4, draw=black]
+    [l-system={Hilbert curve, axiom=L, order=5, step=3pt, angle=90}]
+    lindenmayer system; 
+	\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}
+\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$\alert{intercepts} ($f(x)=0$, $f(0)$)
+\item \alert{Change} from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item \alert{Average Rate of Change} from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item \alert{Relative Change} from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+	\item Power Functions \newline \makebox[1cm]{} $kx^p$
+	\item Polynomials $a_0+a_1x+a_2x^2+\dotsb+a_n x^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Instantaneous Rate of Change}
+\subsection{Definition and Motivation}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Definition}
+\begin{definition}
+ 	The \alert{instantaneous rate of change} of $f$ at $x=a$ is defined to be the limit of the average rates of change of $f$ over shorter and shorter intervals around $x=a$.   
+
+ 	\begin{center}
+ 	\begin{tikzpicture}[scale=0.5]
+ 	\draw (0,-1)--(0,4);
+ 	\draw (-2,0)--(2,0);
+ 	\foreach \x in {-2,...,2}{
+ 	\draw (-0.25,\x+2) -- (0.25,\x+2);
+ 	\draw (\x,-0.25) -- (\x,0.25);
+ 	}
+ 	\draw (1,-0.5) node[scale=0.75,DeepSkyBlue4]{$a$};
+ 	\draw[dashed] (1,0) -- (1,1);
+ 	\draw[DeepSkyBlue4] (-1,1) parabola bend (0,0) (2,4);
+	\draw[red] (0,-1) -- (2,3) node[near end,sloped,below,scale=0.5]{$\text{slope}=f'(a)$};
+ 	\end{tikzpicture}
+ 	\end{center}
+ 	It coincides with the slope of the tangent line to the graph of $y=f(x)$ at $x=a$. We also refer to the \emph{instantaneous rate of change} as the \alert{rate of change} of $f$ at $x=a$, or the \alert{derivative} of $f$ at $x=a$, and we denote it \alert{$f'(a)$}.
+ \end{definition} 
+ \end{frame}
+
+ \subsection{Examples}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Examples}
+\begin{example}
+Use the figure below to fill in the blanks in the following statements about the function $f$ at point $B$.
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+	\draw[DeepSkyBlue4] (-4,1) parabola bend (0,0) (8,4) node[above,DeepSkyBlue4]{$f(x)$};
+	\draw (-2,-0.75) -- (8,1.75);
+	\filldraw (2,0.25) circle (3pt) node[above]{$B$} node[below]{$(4,8)$};
+	\filldraw (6,1.25) circle (3pt) node[below]{$(4.05,8.05)$};
+\end{tikzpicture}
+\end{center}
+\begin{align*}
+f\big(\framebox[0.4cm]{\uncover<2->{4}}\big)&=\framebox[0.4cm]{\uncover<2->{8}} \uncover<2->{&\longleftarrow& B=(4,8) \text{ is in the graph of }f} \\
+f'\big(\framebox[0.4cm]{\uncover<3->{4}}\big)&=\framebox[0.4cm]{\uncover<3->{1}} \uncover<3->{&\longleftarrow& \text{the slope of the tangent line is }\frac{8.05-8}{4.05-4} = \frac{0.05}{0.05}=1}
+\end{align*}
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Examples}
+\begin{block}{In the graph below, at which of the labeled $x$-values is}
+\begin{itemize}
+	\item $f(x)$ greatest? \only<2->{\alert{$x_1$}}
+	\item $f(x)$ smallest? \only<3->{\alert{$x_3$}}
+	\item $f'(x)$ greatest? \only<5->{\alert{$x_1$}}
+	\item $f'(x)$ smallest? \only<6->{\alert{$x_2$}}
+\end{itemize}
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-2,0)--(2,0);
+		\draw (0,-1)--(0,3);
+		\draw[dashed] (-0.5,0) -- (-0.5,1.7);
+		\draw[dashed] (1,0) -- (1,-1);
+		\draw[dashed] (0.4,0) -- (0.4,1.3);
+		\draw[dashed] (1.65,0) -- (1.65,0.9);
+		\draw (-0.5,-0.25) node[scale=0.9,DeepSkyBlue4]{$x_1$};
+		\draw (1,0.25) node[scale=0.9,DeepSkyBlue4]{$x_3$};
+		\draw (0.4,-0.25) node[scale=0.9,DeepSkyBlue4]{$x_2$};
+		\draw (1.65,-0.25) node[scale=0.9,DeepSkyBlue4]{$x_4$};
+		\filldraw[DeepSkyBlue4] (-0.5,1.65) circle (1.25pt);
+		\filldraw[DeepSkyBlue4] (1,-1) circle (1.25pt);
+		\filldraw[DeepSkyBlue4] (0.4,1.3) circle (1.25pt);
+		\filldraw[DeepSkyBlue4] (1.65,0.9) circle (1.25pt);
+		\draw[DeepSkyBlue4] plot [smooth, tension=1] coordinates { (-1,0) (0,2) (1,-1) (1.5,0.8) (2,0.3)};
+		\only<4->{
+		\draw[red] (-1,0.65) -- (0,2.6);
+		\draw[red] (0.2,1.95) -- (0.6,0.65);	
+		\draw[red] (1.25,0.9) -- (2.05,0.9);
+		\draw[red] (0.6,-0.65) -- (1.4,-1.35);
+		}
+	\end{tikzpicture}
+\end{center}
+ \end{block} 
+\end{frame}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Examples}
+\begin{example}
+	The graph of a function $y=f(x)$ is shown below.  Indicate whether the following quantities are positive, negative or zero:
+	\begin{itemize}
+		\item $f'(1)$ \hspace{1.4cm} \only<2->{\alert{positive}}
+		\item $f'(3)$ \hspace{1.4cm} \only<3->{\alert{negative}}
+		\item $\dfrac{f(3)-f(1)}{3-1}$ \hspace{0.5cm} \only<4->{\alert{zero}}
+	\end{itemize}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.5]
+		\draw (0,-1) -- (0,5);
+		\draw (-1,0) -- (5,0);
+		\foreach \x in {0,...,4}
+		{
+		\draw (-0.15,\x)--(0.15,\x);
+		\draw (\x,-0.15)--(\x,.15);
+		\draw (\x,-0.25) node[scale=0.8,DeepSkyBlue4]{$\x$};
+		}
+		\draw[dashed] (1,0) -- (1,3);
+		\draw[dashed] (3,0) -- (3,3);
+		\draw[DeepSkyBlue4] (0,0) parabola bend (2,4) (4,0);
+		\only<2>{\draw[red] (0,1)--(2,5);}
+		\only<3>{\draw[red] (4,1)--(2,5);}
+		\only<4>{\draw[red,dashed] (1,3)--(3,3);}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Examples}
+\begin{example}
+The figure below shows $N=f(t)$, the number of farms in the U.S.~as a function of the year $t$.
+\begin{itemize}
+	\item Is $f'(1950)$ positive or negative?  What does this tell you about the number of farms? \newline \only<2->{\alert{Farms were disappearing in 1950: The number of farms decreased.}}
+	\item Which is more negative: $f'(1960)$ or $f('1980)$?  Explain \newline
+	\only<3->{\alert{Many more farms disappeared in 1960 than in 1980.}}
+\end{itemize}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.45]
+		\draw[ultra thin,gray,xstep=1,ystep=0.75] (0,0) grid (7.5,5.5);
+		\draw[->] (-0.5,0)--(8,0) node[right,scale=0.6]{year};
+		\draw[->] (0,-0.5)--(0,6) node[above,scale=0.6]{million farms};
+		\foreach \x in {1,...,7}
+		{
+		\draw (\x,-0.15) -- (\x,0.15);
+		\draw (-0.15,0.75*\x) -- (0.15,0.75*\x);
+		\draw (-0.45,0.75*\x) node[DeepSkyBlue4,scale=0.7]{\x};
+		}
+		\draw (1,-0.45) node[DeepSkyBlue4,scale=0.7]{1930};
+		\draw (3,-0.45) node[DeepSkyBlue4,scale=0.7]{1950};
+		\draw (5,-0.45) node[DeepSkyBlue4,scale=0.7]{1970};
+		\draw (7,-0.45) node[DeepSkyBlue4,scale=0.7]{1990};
+		\draw[DeepSkyBlue4,rounded corners] (1,4.875) -- (2,4.8) -- (3,4.125) -- (4,3) -- (5,2.25) -- (6,1.875) -- (7,1.65);
+		\filldraw[DeepSkyBlue4] (1,4.875) circle (2pt);
+		\filldraw[DeepSkyBlue4] (2,4.8) circle (2pt);
+		\filldraw[DeepSkyBlue4] (3,4.125) circle (2pt);
+		\filldraw[DeepSkyBlue4] (4,3) circle (2pt);
+		\filldraw[DeepSkyBlue4] (5,2.25) circle (2pt);
+		\filldraw[DeepSkyBlue4] (6,1.875) circle (2pt);
+		\filldraw[DeepSkyBlue4] (7,1.65) circle (2pt);
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Examples}
+ \begin{example}
+ The next plot shows the cost $y=f(x)$ of manufacturing $x$ kilograms of a chemical.
+ \begin{itemize}
+ 	\item Is the average rate of change of the cost greater between $x=0$ and $x=3$, or between $x=3$ and $x=5$? \only<4->{\alert{Between $x=0$ and $x=3$.}}
+ 	\item Is the instantaneous rate of change of the cost greater at $x=1$ or at $x=4$? \only<6->{\alert{At $x=1$.}}
+ 	\item What are the units of these rates of change? \only<7->{\alert{thousand \$\$/kg}}
+ \end{itemize}
+ \begin{center}
+ 	\begin{tikzpicture}[scale=0.5]
+ 		\draw[ultra thin,gray,step=1] (0,0) grid (5.5,4.5);
+ 		\draw[->] (-0.5,0)--(6,0) node[right,scale=0.6]{kg};
+ 		\draw[->] (0,-0.5)--(0,5) node[above,scale=0.6]{thousand \$\$};
+ 		%\draw[DeepSkyBlue4] (0,1) parabola bend (3,2.73) (5,3.24); 
+ 		\draw[DeepSkyBlue4,rounded corners] (0,1) -- (0.5,1.7071067812) -- (1,2) -- (2,2.4) -- (3,2.73) -- (4,3) -- (5,3.24);
+ 		\only<2>{\draw[red] (0,1) -- (3,2.73);}
+ 		\only<3,5>{\draw[red] (3,2.73) -- (5,3.24);}
+ 		\only<5>{\draw[red] (0,1.55) -- (2,2.55);}
+ 	\end{tikzpicture}
+ \end{center}
+ \end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+\framesubtitle{Examples}
+ \begin{example}
+ 	Let $f(x)=4^x$.  Use a small interval ($x=2$ to $x=2.01$) to estimate $f'(2)$
+ \end{example}
+ \pause  All we can do at this point is to compute the average rate of change from $x=2$ to $x=2.01$ to estimate the slope.
+\begin{align*}
+	\frac{\Delta y}{\Delta x} &= \frac{f(2.01)-f(2)}{2.01-2}\uncover<3->{=\frac{4^{2.01}-4^2}{0.01} \\}
+	\uncover<4->{&=\frac{16.22335168-16}{0.01}}\uncover<5->{=\frac{0.22335168}{0.01}=22.335168}
+\end{align*}
+\begin{block}<6->{Can we get a better approximation?}
+Let's try a smaller interval: $x=2$ to $x=2.0001$	
+\end{block}
+\begin{equation*}
+	\uncover<7->{\frac{f(2.0001)-f(2)}{2.0001-2}=\frac{4^{2.0001}-4^2}{0.0001}} \uncover<8->{=\frac{16.00221822-16}{0.0001}=22.1822}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Instantaneous Rate of Change}
+    
+\framesubtitle{Examples}
+\begin{example}
+	Estimate the instantaneous rate of change for the function $P=150(1.4)^t$ at $t=3$.
+\end{example}
+\pause Like before, all we can do it compute an average rate of change for a very small interval around $t=3$.  Let us choose, e.g.~from $t=3$ to $t=3.001$:
+\begin{align*}
+	\frac{P(3.001)-P(3)}{3.001-3}&=\frac{150(1.4)^{3.001}-150(1.4)^3}{0.001}\\
+	\uncover<3->{&=\frac{411.73851525-411.6}{0.001}\\}
+	\uncover<4->{&=\frac{0.13851525}{0.001}=138.51525}
+\end{align*}
+\pause\pause\pause \alert{Can you do better than that?}  \pause \newline The best approximation I could come up with, was $138.49197258$.
+\end{frame}
+
+\end{document}

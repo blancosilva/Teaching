@@ -1,0 +1,196 @@
+%lindenmayer.tex
+\documentclass{amsart}
+\usepackage{tikz}
+\usetikzlibrary{lindenmayersystems}
+
+\begin{document}
+\pgfdeclarelindenmayersystem{Dragon curve}{
+	\rule{X -> X+YF+}
+	\rule{Y -> -FX-Y}}
+\pgfdeclarelindenmayersystem{quadric Koch island}{
+	\rule{F -> F+F-F-FF+F+F-F}
+}
+\pgfdeclarelindenmayersystem{peano curve}{
+	\rule{X -> XFYFX+F+YFXFY-F-XFYFX}
+	\rule{Y -> YFXFY-F-XFYFX+F+YFXFY}
+}
+\pgfdeclarelindenmayersystem{sierpinski curve}{
+	\rule{X -> XF-F+F-XF+F+XF-F+F-X}
+}
+\pgfdeclarelindenmayersystem{Hilbert curve}{
+	\rule{X -> -YF+XFX+FY-}
+	\rule{Y -> +XF-YFY-FX+}
+}
+\pgfdeclarelindenmayersystem{Sierpinski arrowhead}{
+	\rule{G -> F+G+F}
+	\rule{F -> G-F-G}
+}
+\pgfdeclarelindenmayersystem{Gosper curve}{
+	\rule{XF -> XF+YF++YF-XF--XFXF-YF+}
+	\rule{YF -> -XF+YFYF++YF+XF--XF-YF}
+}
+\pgfdeclarelindenmayersystem{mat}{
+	\rule{F -> FF+F+F+F+FF}
+}
+\pgfdeclarelindenmayersystem{B}{
+	\rule{F -> FF+F+F+F+F+F-F}
+}
+\pgfdeclarelindenmayersystem{plant}{
+	\rule{X -> F-[[X]+x]+F[+FX]-X}
+	\rule{F -> FF}
+}
+\pgfdeclarelindenmayersystem{weirdtree}{
+	\rule{F -> FF+F++F+F}
+}
+\pgfdeclarelindenmayersystem{testrhombus}{
+	\rule{F -> F+FF++FF+F+++F++F+++F}
+}
+\pgfdeclarelindenmayersystem{levyCurve}{
+	\rule{F -> F+F+}
+}
+\pgfdeclarelindenmayersystem{leaf}{
+	\rule{F -> F--F+F-}
+}
+\pgfdeclarelindenmayersystem{trefoil}{
+	\rule{F -> FF-F}
+}
+\pgfdeclarelindenmayersystem{bush}{
+	\rule{F -> FF[-F+F][+F-F]}
+}
+%\begin{center}
+	%\begin{tikzpicture}
+		%[color=blue]
+		%%%%%\draw[l-system={Sierpinski arrowhead, axiom=F, order=8, step=3.5pt, angle=60}, rounded corners] lindenmayer system;
+	%\end{tikzpicture}
+	%\end{center}
+	%\newpage
+%
+%\begin{center}
+	%\begin{tikzpicture}
+		%[color=blue]
+		%%\draw[l-system={Hilbert curve, axiom=X, order=5, step=5pt, angle=90}] lindenmayer system;
+	%\end{tikzpicture}
+	%\end{center}
+	%\newpage
+%
+%\begin{center}
+	%\begin{tikzpicture}
+		%[color=blue]
+		%%%\draw[l-system={sierpinski curve, axiom=F+XF+F+XF, order=4, step=5pt, angle=90}] lindenmayer system;
+	%\end{tikzpicture}
+	%\end{center}
+	%\newpage
+
+%\begin{center}
+	%\begin{tikzpicture}
+		%[color=blue]
+		%%\draw[l-system={peano curve, axiom=X, order=4, step=5pt, angle=90}] lindenmayer system;
+	%\end{tikzpicture}
+	%\end{center}
+	%\newpage
+
+%\begin{center}
+	%\begin{tikzpicture}
+		%[color=blue]
+		%\draw[l-system={quadric Koch island, axiom=F+F+F+F, order=4, step=1pt, angle=90}] lindenmayer system;
+	%\end{tikzpicture}
+	%\end{center}
+	%\newpage
+
+%\begin{center}
+%	\begin{tikzpicture}[color=blue]
+%    \draw [l-system={Dragon curve, axiom=X, order=11, step=5pt, angle=90}]
+%    lindenmayer system; 
+%	\end{tikzpicture}
+%	\end{center}
+	%\newpage
+
+%\begin{center}
+%	\begin{tikzpicture}[color=blue]
+%    \draw [l-system={Gosper curve, axiom=XF, order=5, step=2pt, angle=60}]
+%    lindenmayer system; 
+%	\end{tikzpicture}
+%	\end{center}
+	%\newpage
+
+%\begin{center}
+	%\begin{tikzpicture}[color=blue]
+    %\draw [l-system={B, axiom=F+F+F+F, order=4, step=2pt, angle=90}]
+    %lindenmayer system; 
+	%\end{tikzpicture}
+	%\end{center}
+	%\newpage
+
+%\begin{center}
+%	\begin{tikzpicture}[color=blue]
+%    \draw [l-system={mat, axiom=F+F+F+F, order=4, step=3pt, angle=90}]
+%    lindenmayer system; 
+%	\end{tikzpicture}
+%	\end{center}
+%	\newpage
+%
+%\begin{center}
+%\begin{tikzpicture}[color=blue]
+%    \draw [l-system={testrhombus, axiom=F+FF++FF+F+++F++F+++F, order=3, step=5pt, angle=90}]
+%    lindenmayer system; 
+%	\end{tikzpicture}	
+%\end{center}
+%\newpage
+
+%\begin{center}
+%\begin{tikzpicture}[color=blue]
+%    \draw [l-system={trefoil, axiom=F, order=7, step=5pt, angle=60 }]
+%    lindenmayer system; 
+%	\end{tikzpicture}	
+%\end{center}
+%\newpage
+%
+%\begin{center}
+%\begin{tikzpicture}[color=blue]
+%    \draw [l-system={levyCurve, axiom=F, order=12, step=5pt, angle=90 }]
+%    lindenmayer system; 
+%	\end{tikzpicture}	
+%\end{center}
+%\newpage
+
+\begin{center}
+\begin{tikzpicture}[color=blue]
+    \draw [l-system={bush, axiom=F, order=5, step=5pt, angle=60}]
+    lindenmayer system; 
+	\end{tikzpicture}	
+\end{center}
+\newpage
+
+%\begin{center}
+%\begin{tikzpicture}[color=blue]
+%    \draw [l-system={leaf, axiom=F+F+F, order=7, step=2pt, angle=60 }]
+%    lindenmayer system; 
+%	\end{tikzpicture}	
+%\end{center}
+%\newpage
+
+%\begin{center}
+%\begin{tikzpicture}[color=blue]
+%    \draw [l-system={weirdtree, axiom=F+F+F+F, order=5, step=1.5pt, angle=90}]
+%    lindenmayer system; 
+%	\end{tikzpicture}	
+%\end{center}
+%\newpage
+
+%\begin{center}
+%	\begin{tikzpicture}[color=blue,rotate=74]
+%    \draw [l-system={plant, axiom=X, order=6, step=1.5pt, angle=15}]
+%    lindenmayer system; 
+%	\end{tikzpicture}
+%	\begin{tikzpicture}[color=blue,rotate=74]
+%    \draw [l-system={plant, axiom=X, order=6, step=1.5pt, angle=25}] lindenmayer system;
+%	\end{tikzpicture}
+%	\begin{tikzpicture}[color=blue,rotate=74]
+%    \draw [l-system={plant, axiom=X, order=6, step=1.5pt, angle=30}] lindenmayer system;
+%	\end{tikzpicture}
+%	\end{center}
+%	\newpage
+
+	$\text{\LaTeX}$
+
+\end{document}

@@ -1,0 +1,336 @@
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Hilbert curve}{
+  \rule{L -> +RF-LFL-FR+}
+  \rule{R -> -LF+RFR+FL-}}
+	\begin{tikzpicture} 
+    \shadedraw [bottom color=white, top color=DeepSkyBlue4, draw=black]
+    [l-system={Hilbert curve, axiom=L, order=5, step=3pt, angle=90}]
+    lindenmayer system; 
+	\end{tikzpicture}
+}
+\title{Lesson 11: Introduction to Second-Order Linear Differential Equations}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\begin{equation*}
+F\big(x,y,y',\dotsc,y^{(n)}\big)=0
+\end{equation*}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Second-Order Linear Equations}
+\subsection{Definitions and Basic Results}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Definitions and Basic Results}
+\begin{definition}
+A second-order differential equation is said to be \alert{linear} if it can be written in the form
+\begin{equation}\label{eq:sole}
+	y''+p(x)y'+q(x)y=f(x).
+\end{equation}
+\end{definition}
+\pause In discussing this equation and trying to solve it, we will restrict ourselves to intervals in which the functions $p(x)$, $q(x)$ and $f(x)$ are countinuous.
+\pause 
+\begin{definition}
+	The corresponding \alert{initial value problem} consists of the differential equation \eqref{eq:sole} together with a pair of initial conditions
+	\begin{align*}
+		y(x_0)&=y_0 &y'(x_0)&=y'_0
+	\end{align*}
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Definitions and Basic Results}
+\begin{definition}
+	A second-order linear equation is said to be \alert{homogeneous} if the term $f(x)$ in \eqref{eq:sole} is zero for all $x$:
+	\begin{equation*}
+		y''+p(x)y'+q(x)y=0
+	\end{equation*}
+	Otherwise, we say that the equation is \alert{non-homogeneous}.
+\end{definition}
+\pause We have already seen one example of homogeneous equation:
+\begin{equation*}
+	y''=-y
+\end{equation*}
+Note that we can write this equation in the form \eqref{eq:sole}, with $p(x)\equiv 0$, $q(x)\equiv 1$ and $f(x)\equiv 0$.
+
+\vspace{2cm}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Definitions and Basic Results}
+\begin{theorem}[The Principle of Superposition]
+	If $y_1$ and $y_2$ are two solutions of the differential equation \eqref{eq:sole}, then the linear combination $Ay_1+By_2$ is also a solution, for any values of the constants $C_1$ and $C_2$.	
+\end{theorem}
+We have also seen this principle in action.  For the equation $y''=-y$, we discovered that two possible solutions are $y_1=\cos x$ and $y_2=\sin x$.  By superposition, we find many other solutions in the form
+\begin{equation*}
+	y=A\cos x + B\sin x
+\end{equation*}
+for any choice of constants $A$ and $B$.
+
+\vspace{1cm}
+\pause But, \alert{how do we know that there are no other posible solutions?}
+
+\vspace{1cm}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Definitions and Basic Results}
+\begin{definition}
+	Given two functions $y_1$ and $y_2$, we define their \alert{Wronskian} as the determinant
+	\begin{equation*}
+		W(y_1,y_2) = \left| \begin{matrix} y_1 & y_2 \\ y'_1 & y'_2 \end{matrix} \right|=y_1 y'_2 - y'_1y_2
+	\end{equation*}
+\end{definition}
+For example, if $y_1=\cos x$ and $y_2=\sin x$, we have, $y'_1=-\sin x$, $y'_2=\cos x$, and therefore,
+\begin{equation*}
+	W(\cos x,\sin x) = \left| \begin{matrix} \cos x & \sin x \\ -\sin x & \cos x \end{matrix} \right|= \cos^2 x + \sin^2 x = 1
+\end{equation*}
+\pause
+\begin{theorem}
+	Suppose that $y_1$ and $y_2$ are two solutions of the differential equation \eqref{eq:sole}.  Then the family of solutions $Ay_1+By_2$ with arbitrary coefficients $A$ and $B$ includes \alert{every solution}, if and only if there is a point $x_0$ for which the Wronskian of $y_1$ and $y_2$ is not zero.
+\end{theorem}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Definitions and Basic Results}
+In the example $y''=-y$, we have just discovered that \alert{any} solution can be written in the form $y=A\cos x + B\sin x$.  
+\pause
+\begin{theorem}
+	Consider the initial value problem
+	\begin{align*}
+		y''+p(x)y'+q(x)y&=f(x), &y(x_0)&=y_0, &y'(x_0)&=y'_0,
+	\end{align*}
+	where the functions $p$, $q$ and $f$ are continuous on an open interval $I=(a,b)$ that contains the point $x_0$.  Then there is exactly one solution $y=y(x)$ of this problem, and the solution exists throughout the interval $I$.
+\end{theorem}
+\pause In the case of our running example, it is
+\begin{equation*}
+	y'=-A\sin x + B\cos x
+\end{equation*}
+For the initial conditions $y(0)=1, y'(0)=2$, we have then:
+\begin{equation*}
+\begin{cases}
+	y(0)=A\cos 0 + B\sin 0 \\
+	y'(0)=-A\sin 0 + B\cos 0
+\end{cases}\qquad
+\uncover<4->{
+\begin{cases}
+A=1\\ B=2
+\end{cases}\qquad}
+\uncover<5->{\alert{y=\cos x +2 \sin x}}
+\end{equation*}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Examples}
+\begin{block}{Given the second-order linear differential equation}
+\begin{equation*}
+	2x^2y''+3xy'-y=0,
+\end{equation*}
+\begin{itemize}
+	\item \alert<2>{Write it in the form of equation \eqref{eq:sole}, and identify $p$, $q$ and $f$.}
+	\item \alert<3>{Verify that the functions $y_1=x^{1/2}$ and $y_2=x^{-1}$ are both solutions.}
+	\item Infere the form of all solutions for this equation.
+	\item Solve the initial value problem with initial conditions $y(1)=0, y'(1)=1$.
+\end{itemize}
+\end{block}
+\begin{itemize}
+	\item<2-> $y''+\tfrac{3}{2}x^{-1}y'-\tfrac{1}{2}x^{-2}y=0,\qquad p(x)=\tfrac{3}{2}x^{-1}, q(x)=-\tfrac{1}{2}x^{-2}, f(x)=0$
+	\item<3-> $y_1=x^{1/2}, y'_1=\tfrac{1}{2}x^{-1/2}, y''_1=-\tfrac{1}{4}x^{-3/2}$; therefore, 
+	\begin{equation*}
+	2x^2y''_1+3xy'_1-y_1=2x^2\big( -\tfrac{1}{4} x^{-3/2} \big)+3x \big( \tfrac{1}{2}x^{-1/2}\big)-x^{1/2}=0
+	\end{equation*}
+	$y_2=x^{-1}, y'_2=-x^{-2}, y''_2=2x^{-3}$; therefore, 
+	\begin{equation*}
+	2x^2y''_2+3xy'_2-y_2=2x^2(2x^{-3})+3x (-x^{-2})-x^{-1}=0
+	\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Examples}
+\begin{block}{Given the second-order linear differential equation}
+\begin{equation*}
+	2x^2y''+3xy'-y=0,
+\end{equation*}
+\begin{itemize}
+	\item Write it in the form of equation \eqref{eq:sole}, and identify $p$, $q$ and $f$.
+	\item Verify that the functions $y_1=x^{1/2}$ and $y_2=x^{-1}$ are both solutions.
+	\item \alert{Infere the form of all solutions for this equation in the interval $(0,2)$.}
+	\item Solve the initial value problem with initial conditions $y(1)=0, y'(1)=1$.
+\end{itemize}
+\end{block}
+\begin{itemize}
+\item Let's compute the Wronksian
+\begin{align*}
+	W\big(x^{1/2},x^{-1}\big) &= \left| \begin{matrix}
+		x^{1/2} & x^{-1} \\ \tfrac{1}{2}x^{-1/2} & -x^{-2} 
+	\end{matrix} \right| \\
+	&= x^{1/2} \big( -x^{-2} \big) - x^{-1} \big( \tfrac{1}{2} x^{-1/2} \big) \\
+	&= -x^{-3/2}-\tfrac{1}{2}x^{-3/2} = -\tfrac{3}{2}x^{-3/2}
+\end{align*}
+Note how $W\big( x^{1/2},x^{-1} \big) = -\tfrac{3}{2}x^{-3/2} \neq 0$ for all values $x \in (0,2)$.
+
+All the solutions are then of the form $y=Ax^{1/2}+Bx^{-1}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Examples}
+\begin{block}{Given the second-order linear differential equation}
+\begin{equation*}
+	2x^2y''+3xy'-y=0,
+\end{equation*}
+\begin{itemize}
+	\item Write it in the form of equation \eqref{eq:sole}, and identify $p$, $q$ and $f$.
+	\item Verify that the functions $y_1=x^{1/2}$ and $y_2=x^{-1}$ are both solutions.
+	\item Infere the form of all solutions for this equation in the interval $(0,2)$.
+	\item \alert{Solve the initial value problem with initial conditions $y(1)=0, y'(1)=1$.}
+\end{itemize}
+\end{block}
+\begin{itemize}
+\item We have so far $y=Ax^{1/2}+Bx^{-1}$, and $y'=\tfrac{A}{2}x^{-1/2}-Bx^{-2}$.  Let us solve the system
+\begin{equation*}
+	\begin{cases}
+		0=y(1)=A+B \\
+		1=y'(1)=\tfrac{A}{2}-B
+	\end{cases}\qquad
+	\uncover<2->{
+	\begin{cases}
+		A=\tfrac{2}{3} \\ B=-\tfrac{2}{3}
+	\end{cases}}\qquad
+	\uncover<3->{\alert{y=\tfrac{2}{3}x^{1/2}-\tfrac{2}{3}x^{-1}}}
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Examples}
+\begin{block}{Given the second-order linear differential equation}
+\begin{equation*}
+	y''-3y'+2y=0
+\end{equation*}
+\begin{itemize}
+	\item \alert<2>{Show that $y_1=e^x$ and $y_2=e^{2x}$ are both solutions.}
+	\item Solve the initial value problem with initial conditions $y(0)=1$, $y'(0)=0$.
+\end{itemize}
+\end{block}
+\begin{itemize}
+	\item<2> $y_1=y'_1=y''_1=e^x$; therefore
+	\begin{equation*}
+		y''_1-3y'_1+2y_1=e^x-3e^x+2e^x=0
+	\end{equation*}
+	$y_2=e^{2x}$, $y'_2=2e^{2x}$ and $y''_2=4e^{2x}$; therefore,
+	\begin{equation*}
+		y''_2-3y'_2+2y_2=4e^{2x}-3\big( 2e^{2x} \big)+2\big( e^{2x} \big) = 0
+	\end{equation*}
+	\end{itemize}
+	\end{frame}
+
+\begin{frame}\frametitle{Second-Order Linear Equations}
+\framesubtitle{Examples}
+\begin{block}{Given the second-order linear differential equation}
+\begin{equation*}
+	y''-3y'+2y=0
+\end{equation*}
+\begin{itemize}
+	\item Show that $y_1=e^x$ and $y_2=e^{2x}$ are both solutions.
+	\item \alert{Solve the initial value problem with initial conditions $y(0)=1$, $y'(0)=0$.}
+\end{itemize}
+\end{block}
+\begin{itemize}
+	\item Note that 
+	\begin{equation*}
+		W\big(e^x,e^{2x} \big) = \left| \begin{matrix}
+			e^x & e^{2x} \\ e^x & 2e^{2x} \end{matrix} \right| = e^x\big( 2e^{2x} \big)-e^{2x}e^x = e^{3x}
+	\end{equation*}
+	Since $e^{3x}$ is never zero, we can say with confidence that the solutions to the differential equation have the form
+	\begin{equation*}
+		y=Ae^x+Be^{2x}
+	\end{equation*}
+	We need to find the coefficients $A,B$ that solve the initial value problem:
+	\begin{equation*}
+		\begin{cases}
+			1=y(0)=A+B\\ 0=y'(0)=A+2B
+		\end{cases}\qquad
+		\begin{cases}
+			A=2 \\ B=-1
+		\end{cases}\qquad
+		\alert{y=2e^x-e^{2x}}
+	\end{equation*}
+\end{itemize}
+
+\end{frame}
+
+\end{document}

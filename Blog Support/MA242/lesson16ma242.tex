@@ -1,0 +1,231 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some useful definitions
+\newcommand*\Laplace[2]{\mathcal{L}\{{#1}({#2})\}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{plant}{
+	\rule{X -> F-[[X]+x]+F[+FX]-X}
+	\rule{F -> FF}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=15}]
+    lindenmayer system; 
+	\end{tikzpicture}
+	\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=25}] lindenmayer system;
+	\end{tikzpicture}
+	\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=30}] lindenmayer system;
+	\end{tikzpicture}
+}
+
+\title{Lesson 16: Introduction to the transform of Laplace---Improper Integrals}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{General Program}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item General Linear Equations (Intro)
+	\item Linear Equations with Constant Coefficients
+	\begin{itemize}
+		\item Characteristic Equation
+		\item Variation of Parameters
+		\item Undetermined Coefficients
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Laplace Transform}
+\subsection{Improper Integrals}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Improper Integrals}
+An \alert{improper integral} over and unbounded interval is defined as \emph{a limit of integrals over finite intervals}.
+\begin{align*}
+	\int_a^\infty f(x)\, dx &= \lim_{A\to\infty} \int_a^A f(x)\, dx \\
+	\int_{-\infty}^a f(x)\, dx &= \lim_{A\to\infty} \int_{-A}^a f(x)\, dx
+\end{align*}
+If the limit exists, then the \emph{improper integral} is said to \alert{converge}; otherwise, is said to \alert{diverge}.
+\end{frame}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Improper Integrals}
+\begin{example}
+	\begin{equation*}
+		\int_0^\infty e^{-x}\, dx \uncover<2->{= \lim_{A\to \infty} \int_0^A e^{-x}\, dx} \uncover<3->{= \lim_{A\to\infty} -e^{-x}\Big\rvert_{0}^{A}} \uncover<4->{=\lim_{A\to\infty} 1-e^{-A}} \uncover<5->{= 1}
+	\end{equation*}
+\end{example}
+\uncover<6->{This improper integral \alert{converges}}
+
+\begin{example}<7->[assume $c\neq 0$]
+\begin{equation*}
+\int_0^\infty e^{cx}\, dx \uncover<8->{= \lim_{A\to\infty} \int_0^A e^{cx}\, dx}\uncover<9->{= \lim_{A\to\infty} \frac{e^{cx}}{c}\bigg\rvert_0^A}\uncover<10->{= \lim_{A\to\infty} \frac{e^{cA}-1}{c}}\uncover<11->{=\begin{cases}
+	-1/c &\text{ if }c<0 \\
+	+\infty &\text{ if }c>0
+\end{cases}}
+\end{equation*}
+\end{example}
+\uncover<12->{Depending on the value of the parameter $c\neq 0$, this improper integral converges to $-1/c$ (if $c<0$), or diverges (if $c>0$).}
+\end{frame}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Improper Integrals}
+\begin{example}[assume $p\neq 1$]
+\begin{align*}
+	\int_1^\infty \frac{dx}{x^p}\uncover<2->{&= \lim_{A\to\infty} \int_1^A x^{-p}\, dx}\uncover<3->{= \lim_{A\to\infty} \frac{x^{1-p}}{1-p} \bigg\rvert_1^A} \\
+	\uncover<4->{&= \lim_{A\to\infty} \frac{A^{1-p}}{1-p} - \frac{1}{1-p}}\\
+	\uncover<5->{&=\begin{cases}
+		\frac{1}{p-1} &\text{ if }p>1 \\
+		+\infty &\text{ if }p<1
+	\end{cases}}
+\end{align*}
+\end{example}
+\uncover<6->{As before, the character of this improper integral depends on the value of the parameter $p\neq 1$.  If $p>1$, the integral converges to $1/(p-1)$; otherwise, diverges.}
+\end{frame}
+
+\subsection{Definition}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Definition}
+\begin{definition}
+	Let $f(x)$ be a \emph{good enough} function given for $x\geq 0$.  The \alert{Laplace transform} of $f$, which we denote $\mathcal{L}\{f(x)\}$, or by $F(s)$, is defined by the equation
+	\begin{equation*}
+		\Laplace{f}{x}=F(s)=\int_0^\infty e^{-sx}f(x)\,dx
+	\end{equation*}
+\end{definition}
+\pause In the scope of this course, all the functions provided will be \emph{good enough}.  The requirements are simple:
+\begin{itemize}
+	\item $f$ must be piecewise continuous on any interval $0\leq x \leq A$ for $A>0$, and
+	\item The function $f$ must be of \alert{exponential order}: There exist three constants $K,M>0$, $a\in \mathbb{R}$ so that $\lvert f(x) \rvert \leq Ke^{at}$ when $t\geq M$.
+\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Definition}
+\begin{block}{Find the Laplace transform of the following functions}
+	\begin{align*}
+		\alert<2->{f(x)}&\alert<2->{=1}, &\alert<2->{x}&\alert<2->{\geq 0} \uncover<5->{&\alert{F(s)}&\alert{=1/s} &\alert{s}&\alert{>0}} \\
+		g(x)&=e^{\alpha x}, &x&\geq 0 \\
+		h(x)&=\sin \beta x, &x&\geq 0
+	\end{align*}
+\end{block}
+\begin{align*}
+\uncover<2->{\int_0^\infty e^{-sx}&f(x)\, dx = \int_0^\infty e^{-sx}\, dx =\lim_{A\to\infty} \int_0^A e^{-sx}\, dx \\}
+\uncover<3->{&=\lim_{A\to\infty} \frac{e^{-sx}}{-s}\bigg\rvert_0^A \\}
+\uncover<4->{&=\lim_{A\to\infty}\frac{e^{-sA}}{-s}+\frac{1}{s} \\}
+\uncover<5->{&= \begin{cases}
+	1/s &\text{ if }s>0 \\
+	+\infty &\text{ otherwise}
+\end{cases}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Definition}
+\begin{block}{Find the Laplace transform of the following functions}
+	\begin{align*}
+		f(x)&=1, &x&\geq 0 &F(s)&=1/s &s&>0 \\
+		\alert{g(x)}&\alert{=e^{\alpha x},} &\alert{x}&\alert{\geq 0} \uncover<4->{&\alert{G(s)}&\alert{=\frac{1}{s-\alpha}} &\alert{s}&\alert{>\alpha}\\}
+		h(x)&=\sin \beta x, &x&\geq 0
+	\end{align*}
+\end{block}
+\begin{align*}
+\int_0^\infty e^{-sx}&g(x)\, dx = \int_0^\infty e^{-sx}e^{\alpha x}\, dx =\lim_{A\to\infty} \int_0^A e^{(\alpha-s)x}\, dx \\
+\uncover<2->{&=\lim_{A\to\infty} \frac{e^{(\alpha-s)x}}{\alpha-s}\bigg\rvert_0^A \\}
+\uncover<3->{&=\lim_{A\to\infty}\frac{e^{(\alpha-s)A}}{\alpha-s}+\frac{1}{s-\alpha} \\}
+\uncover<4->{&= \begin{cases}
+	\frac{1}{s-\alpha} &\text{ if }s>\alpha \\
+	+\infty &\text{ otherwise}
+\end{cases}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Definition}
+\begin{block}{Find the Laplace transform of the following functions}
+	\begin{align*}
+		f(x)&=1, &x&\geq 0 &F(s)&=1/s &s&>0 \\
+		g(x)&=e^{\alpha x}, &x&\geq 0 &G(s)&=\frac{1}{s-\alpha} &s&>\alpha\\
+		\alert{h(x)}&\alert{=\sin \beta x,} &\alert{x}&\alert{\geq 0} \uncover<5->{&\alert{H(s)}&\alert{=\frac{\beta}{s^2+\beta^2}} &\alert{s}&\alert{>0}}
+	\end{align*}
+\end{block}
+\begin{align*}
+\int_0^\infty e^{-sx}&h(x)\, dx = \alert<4-5>{\int_0^\infty e^{-sx}\sin \beta x\, dx} =\lim_{A\to\infty} \int_0^A e^{-sx}\sin \beta x\, dx \\
+\uncover<2->{&=\lim_{A\to\infty}\ \left[ -\frac{e^{-sx}\cos \beta x}{\beta}\bigg\rvert_0^A - \frac{s}{\beta}\int_0^A e^{-sx}\cos \beta x\, dx\right] \\}
+\uncover<3->{&=\frac{1}{\beta} - \frac{s}{\beta}\int_0^\infty e^{-sx}\cos \beta x\, dx \qquad (\text{if }s>0)\\}
+\uncover<4->{&=\frac{1}{\beta}-\frac{s^2}{\beta^2}\alert{\int_0^\infty e^{-sx}\sin \beta x\, dx} \\}
+\end{align*}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,228 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some useful definitions
+\newcommand*\Laplace[2]{\mathcal{L}\{{#1}({#2})\}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{weirdtree}{
+	\rule{F -> FF+F++F+F}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4]
+    \draw [l-system={weirdtree, axiom=F+F+F+F, order=5, step=0.5pt, angle=90}]
+    lindenmayer system; 
+	\end{tikzpicture}	
+}
+
+\title{Lesson 17: The Gamma function}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Warm-up}
+\subsection{Do you remember your limits?}
+
+\begin{frame}\frametitle{Warm-up}
+    
+\framesubtitle{Do you remember your limits?}
+\begin{align*}
+	\only<1>{\lim_{x\to\infty} xe^{-x}}
+	\only<2->{\underbrace{\lim_{x\to\infty} xe^{-x}}_{\infty\cdot 0}} 
+	\only<3>{&=\lim_{x\to\infty} \frac{x}{e^x}} 
+	\only<4->{&=\underbrace{\lim_{x\to\infty} \frac{x}{e^x}}_{\infty/\infty}}
+	\only<5->{= \underbrace{\lim_{x\to\infty} \frac{1}{e^x}}_{\text{L'H\^opital}}}
+	\only<6->{= 0} \\
+	\only<1-6>{\lim_{x\to\infty} x^2e^{-x}}
+	\only<7->{\underbrace{\lim_{x\to\infty} x^2e^{-x}}_{\infty\cdot 0}}
+	\only<8>{&=\lim_{x\to\infty} \frac{x^2}{e^x}}
+	\only<9->{&=\underbrace{\lim_{x\to\infty} \frac{x^2}{e^x}}_{\infty/\infty}} 
+	\only<10->{=\underbrace{\lim_{x\to\infty} \frac{2x}{e^x}}_{\text{L'H\^opital}: \infty/\infty}}
+	\only<11->{= \underbrace{\lim_{x\to\infty} \frac{2}{e^x}}_{\text{L'H\^opital}}}
+	\only<12->{= 0} \\
+	\only<1-12>{\lim_{x\to\infty} x^ne^{-x}}
+	\only<13->{\underbrace{\lim_{x\to\infty} x^ne^{-x}}_{\infty\cdot 0}}
+	\only<14->{&=\lim_{x\to\infty} \frac{x^n}{e^x} = \dotsb } \\
+	\makebox[3cm]{} &\makebox[7cm]{}
+\end{align*}
+
+\end{frame}
+
+\section{What do we know?}
+\subsection{General Program}
+
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item General Linear Equations (Intro)
+	\item Linear Equations with Constant Coefficients
+	\begin{itemize}
+		\item Characteristic Equation
+		\item Variation of Parameters
+		\item Undetermined Coefficients
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{What do we know?}
+\framesubtitle{Laplace Transforms}
+\begin{center}
+\rowcolors{2}{gray!25!white}{white}
+	\begin{tabular}{m{2cm}||m{3.5cm}l}
+	\rowcolor{DeepSkyBlue4}
+		$f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & \\[0.4cm]
+		$1$ & $\dfrac{1}{s}$\raisebox{0.6cm} & $s>0$ \\[0.4cm]
+		$e^{\alpha x}$ & $\dfrac{1}{s-\alpha}$\raisebox{0.6cm} & $s>\alpha$ \\[0.4cm]
+		$\sin \beta x$ & $\dfrac{\beta}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$ \\[0.4cm]
+		$\cos \beta x$ & $\dfrac{s}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\section{Gamma Function}
+\subsection{Motivation}
+
+\begin{frame}\frametitle{Laplace Transform}
+\framesubtitle{Laplace Transform of Powers}
+Let us compute the Laplace transform of $f(x)=x$ ($x>0$):
+\begin{align*}
+	\mathcal{L}\{x\} &= \int_0^\infty e^{-sx}x\, dx
+	\uncover<2->{= \lim_{A\to\infty} \int_0^A \underbrace{x}_{u} \underbrace{e^{-sx}\, dx}_{dv} \\}
+	\uncover<3->{&= \lim_{A\to\infty} \left[ \frac{xe^{-sx}}{-s} \bigg\rvert_0^A + \frac{1}{s} \int_0^A e^{-sx}\, dx \right]} 
+	\only<4>{=\frac{1}{s}\int_0^\infty e^{-sx}\, dx}
+	\uncover<5->{= \frac{1}{s}\underbrace{\int_0^\infty e^{-sx}\, dx}_{\mathcal{L}\{1\}=1/s}}
+	\uncover<6->{= \frac{1}{s^2}}
+\end{align*}
+\uncover<7->{Let us compute now the Laplace transform of $f(x)=x^2$ ($x>0$):}
+\begin{align*}
+	\uncover<7->{\mathcal{L}\{x^2\} &= \int_0^\infty e^{-sx}x^2\, dx}
+	\uncover<8->{= \lim_{A\to\infty} \int_0^A \underbrace{x^2}_{u} \underbrace{e^{-sx}\, dx}_{dv} \\}
+	\uncover<9->{&= \lim_{A\to\infty} \left[ \frac{x^2e^{-sx}}{-s}\bigg\rvert_0^A +\frac{1}{s} \int_0^A 2x e^{-sx}\, dx \right] \\}
+	\only<10>{&=\frac{2}{s} \int_0^\infty e^{-sx}x\, dx}
+	\uncover<11->{&= \frac{2}{s} \underbrace{\int_0^\infty e^{-sx}x\, dx}_{\mathcal{L}\{x\}=1/s^2}}
+	\uncover<12->{= \frac{2}{s^3}}
+\end{align*}
+
+\end{frame}
+
+\subsection{Definition}
+
+\begin{frame}\frametitle{The Gamma Function}
+\framesubtitle{Definition}
+We wish to compute now the Laplace transform of any function of the form $f(x)=x^p$ for any $p>0$.  The previous examples suggest that there is a useful recursion for fast calculation:
+\pause
+\begin{align*}
+	\mathcal{L}\{x^p\} &= \int_0^\infty e^{-sx}x^p\, dx = \lim_{A\to\infty} \int_0^A \underbrace{x^p}_{u} \underbrace{e^{-sx}\, dx}_{dv} \\
+	\uncover<3->{&=\lim_{A\to\infty} \left[ \frac{x^p e^{-sx}}{-s}\bigg\rvert_0^A +\frac{p}{s} \int_0^A e^{-sx}x^{p-1}\, dx \right]} 
+	\uncover<4->{= \frac{p}{s} \mathcal{L}\{x^{p-1}\}}
+\end{align*}
+\uncover<5->{The key is in the integrals}
+\begin{equation*}
+	\uncover<5->{\underbrace{\int e^{-sx}x^{p-1}\, dx}_{u=sx} = \frac{1}{s^{p}} \alert{\int e^{-u} u^{p-1}\, du}}
+\end{equation*}
+\pause\pause\pause\pause
+\begin{definition}
+The Gamma function is denoted by $\Gamma(p)$ and is defined by the integral
+\begin{equation*}
+	\Gamma(p) = \int_0^\infty e^{-u}u^{p-1}\, du
+\end{equation*}
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{The Gamma Function}
+\framesubtitle{Properties}
+Let us explore some properties of the Gamma function
+\begin{itemize}
+	\item<2-> \alert{What is the value of $\Gamma(1)$?}
+	\begin{equation*}
+		\uncover<3->{\Gamma(1) = \int_0^\infty e^{-x} x^{0}\, dx = \int_0^\infty e^{-x}\, dx = 1}
+	\end{equation*}
+	\item<4-> \alert{Is it possible to express the value of $\Gamma(p+1)$ in terms of $\Gamma(p)$?}
+	\begin{align*}
+		\uncover<5->{\Gamma(p+1) &= \int_0^\infty e^{-x}x^p\, dx = \lim_{A\to\infty} \int_0^A \underbrace{x^p}_{u} \underbrace{e^{-x}\, dx}_{dv} \\}
+		\uncover<6->{&= \lim_{A\to\infty} \left[ -x^p e^{-x}\bigg\rvert_0^A + \int_0^A e^{-x} p x^{p-1}\, dx \right] \\}
+		\uncover<7->{&= p\int_0^\infty e^{-x}x^{p-1}\, dx = p\Gamma(p)}
+	\end{align*}
+	\item<8-> \alert{What is the value of $\Gamma(n)$ for positive integers $n$?}
+	\begin{align*}
+		\uncover<9->{\Gamma(n)=(n-1)\Gamma(n-1)=(n-1)(n-2)\Gamma(n-2)=\dotsb=(n-1)!}
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{The Gamma Function}
+\framesubtitle{Laplace Transform of Power functions}
+We are now able to compute the Laplace transform of power functions:
+\begin{equation*}
+	\mathcal{L}\{x^p\} = \frac{p}{s} \mathcal{L}\{x^{p-1}\} = \frac{p}{s} \Big(\frac{1}{s^p}\Gamma(p) \Big)	= \frac{p}{s^{p+1}}\Gamma(p)= \frac{\Gamma(p+1)}{s^{p+1}}
+\end{equation*}
+In particular, for positive integers, it is
+\begin{equation*}
+	\mathcal{L}\{x^n\} = \frac{\Gamma(n+1)}{s^{n+1}} = \frac{n!}{s^{n+1}}
+\end{equation*}
+
+\end{frame}
+
+\end{document}

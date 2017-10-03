@@ -1,0 +1,247 @@
+\documentclass[10pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=black!50!white}
+\setbeamercolor{block title example}{bg=black!50!white}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Sierpinski triangle}{
+\rule{F -> G-F-G}
+\rule{G -> F+G+F}}
+	\begin{tikzpicture} 
+    \shadedraw [top color=DeepSkyBlue4, bottom color=DeepSkyBlue4, draw=DeepSkyBlue4]
+[l-system={Sierpinski triangle, step=1pt, angle=60, axiom=F, order=8}]
+lindenmayer system -- cycle;
+	\end{tikzpicture}
+}
+\title{Lesson 10: Reducible Second-Order Equations}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\begin{equation*}
+F\big(x,y,y',\dotsc,y^{(n)}\big)=0
+\end{equation*}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+\item Separable equations $y'=H_1(x) H_2(y)$
+\item Homogeneous First-Order Equations $y'=H(y/x)$
+\item Linear First-Order Equations $y'+P(x)y=Q(x)$
+\item Bernoulli Equations $y'+P(x)y=Q(x)y^n$
+\item General Substitution Methods
+\item Exact Equations $M(x,y)+N(x,y)y'=0$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Reducible Second-Order Differential Equations}
+\subsection{Definition}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Definition and Motivation}
+So far we have only seen techniques to solve differential equations of first order:
+\begin{align*}
+	y'&=H(x,y), &M(x,y)\,dx+N(x,y)\,dy&=0, &M(x,y) + N(x,y)\, y' &=0
+\end{align*}
+We have also seen one differential equation of second-order, that we solved \emph{intuitively}:
+\begin{block}{Find a general solution}
+\begin{equation*}
+y''=-y
+\end{equation*}
+\end{block}
+We found that we may express the solution as a linear combination of two functions:
+\begin{align*}
+	y=A\cos x + B\sin x
+\end{align*}
+This is always the case with second-order differential equations.
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Definition and Motivation}
+In general, a second-order differential equation has the form
+\begin{equation*}
+	y''=F(x,y,y')
+\end{equation*}
+There are two types of second-order equations that can be transformed into first-order equations by a substitution:
+\begin{itemize}
+	\item Equations with the dependent variable missing:
+	\begin{equation*}
+		y''=F(x,y')
+	\end{equation*}
+	\item Equations with the independent variable missing:
+	\begin{equation*}
+		y''=F(y,y')
+	\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the dependent variable missing}
+For a second-order differential equation of the form $y''=F(x,y')$, the substitution $v=y'$, $v'=y''$ leads to a first-order equation.
+\pause
+\begin{block}{Example: Find a general solution}
+	\begin{equation*}
+	y''+y'=e^{-x}	
+	\end{equation*}
+\end{block}
+\pause We start by performing the substitutions:
+\begin{equation*}
+	v'+v=e^{-x}
+\end{equation*}
+\pause This is a linear first-order equation:
+\begin{align*}
+	P(x)&=1 &Q(x)&=e^{-x} &\int P(x)\, dx &=x &\rho(x)&=e^x
+\end{align*}
+\begin{equation*}
+	\int \rho(x)Q(x)\, dx = \int e^x e^{-x}\, dx = x	
+\end{equation*}
+\pause The solution is then $e^x v = C+ x$, or $\alert{v=Ce^{-x} + xe^{-x}}$
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the dependent variable missing}
+\begin{block}{Example: Find a general solution}
+	\begin{equation*}
+	y''+y'=e^{-x}	
+	\end{equation*}
+\end{block}
+Undoing the substitution, we obtain:
+\begin{align*}
+	v &= Ce^{-x} + xe^{-x} \\
+	\uncover<2->{\frac{dy}{dx} &= Ce^{-x} + xe^{-x} \\}
+	\uncover<3->{\int dy &= \int \big( Ce^{-x} + xe^{-x} \big)\, dx \\}
+	\uncover<4->{&= C\int e^{-x}\, dx + \underbrace{\int xe^{-x}\, dx}_{\text{by parts}} } \\
+	\uncover<5->{\alert{y} &\alert{= -Ce^{-x} - xe^{-x} - e^{-x} +D}}
+\end{align*}
+
+\vspace{3cm}
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the dependent variable missing}
+\begin{block}{Find a general solution for the following equation:}
+	\begin{equation*}
+		y''=-x(y')^2
+	\end{equation*}
+\end{block}
+We start by performing the substitution, solving, and undoing it:
+\begin{align*}
+	y''&=-x(y')^2 & \uncover<4->{\frac{dv}{v^2} &= -x\, dx} & \uncover<7->{\frac{dy}{dx} &= \frac{2}{x^2+C} \\}
+	\uncover<2->{v' &=-x v^2} &  \uncover<5->{-v^{-1} &= -\tfrac{1}{2} x^2 + C} & \uncover<8->{dy &= 2 \frac{dx}{x^2+C} \\}
+	\uncover<3->{\frac{dv}{dx} &= -xv^2} & \uncover<6->{\alert{v}&\alert{=\frac{2}{x^2+C}}} 
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the dependent variable missing}
+Unfortunately, the next step depends on the value of the constant $C$:
+\begin{itemize}
+	\item<2-> If $C=0$, we have
+	\begin{align*}
+		dy &= 2x^{-2}\, dx, \uncover<3->{&\alert{y} &\alert{= -2x^{-1}+D}}
+	\end{align*}
+	\item<4-> If $C>0$, we have
+	\begin{align*}
+		dy &= 2\frac{dx}{x^2+C} \uncover<7->{&y &= 2\frac{\sqrt{C}}{C}\, \tan^{-1}(u)+D \\}
+		\uncover<5->{dy &= \frac{2}{C}\, \frac{dx}{\big(x/\sqrt{C}\big)^2+1}} \uncover<8->{&\alert{y} &\alert{= 2\frac{\sqrt{C}}{C}\, \tan^{-1} \big(x/\sqrt{C}\big)+D} \\}
+		\uncover<6->{\int dy &= \frac{2}{C} \underbrace{\sqrt{C} \int \frac{du}{u^2+1}}_{u=x/\sqrt{C}} \\}
+	\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the dependent variable missing}
+\begin{itemize}
+	\item If $C<0$, we have (write $-C$ instead, and assume $C>0$)
+\begin{align*}
+	dy &= 2\frac{dx}{x^2-C} \\
+	\uncover<2->{\int dy &= 2 \int \frac{dx}{\big(x-\sqrt{C}\big)\big(x+\sqrt{C}\big)} \\}
+	\uncover<3->{\int dy &= \frac{1}{\sqrt{C}} \int \frac{dx}{x-\sqrt{C}} - \frac{1}{\sqrt{C}} \int \frac{dx}{x+\sqrt{C}} \\}
+	\uncover<4->{y &= \frac{1}{\sqrt{C}} \ln \big\lvert x-\sqrt{C} \big\rvert - \frac{1}{\sqrt{C}} \ln \big\lvert x+\sqrt{C} \big\rvert +D \\}
+	\uncover<5->{\alert{y} &\alert{= \frac{1}{\sqrt{C}} \ln \bigg\lvert \frac{x-\sqrt{C}}{x+\sqrt{C}} \bigg\rvert + D}}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the independent variable missing}
+For a second-order differentiable equation of the form $y''=F(y,y')$, we perform the same substitution, $v=y'$, but with a twist:
+\begin{align*}
+	\alert{y''}=v'=\frac{dv}{dx} \uncover<2->{&= \frac{dv}{dy}\underbrace{\frac{dy}{dx}}_{\alert{v}}= \alert{v\frac{dv}{dy}}}
+\end{align*}
+\pause\pause
+\begin{block}{Find a general solution (assume $y,y'>0$)}
+\begin{equation*}
+	yy''+(y')^2=0	
+\end{equation*}
+\end{block}
+\pause With the indicated two substitutions, we have
+\begin{align*}
+	\uncover<4->{yv\frac{dv}{dy} +v^2 &= 0} \uncover<6->{& y\frac{dv}{dy} &= -v} \uncover<8->{& \ln v &= -\ln y + C \\}
+	\uncover<5->{y\frac{dv}{dy} + v &=0} \uncover<7->{&\frac{dv}{v} &= -\frac{dy}{y}} \uncover<9->{& v &= Ay^{-1} \\}
+\end{align*}	
+\end{frame}
+
+\begin{frame}\frametitle{Reducible Second-Order Differential Equations}
+\framesubtitle{Equations with the dependent variable missing}
+\begin{block}{Find a general solution (assume $y,y'>0$)}
+\begin{equation*}
+	yy''+(y')^2=0	
+\end{equation*}
+\end{block}
+We proceed to undo the substitution:
+\begin{gather*}
+	v=Ay^{-1} \\
+	\uncover<2->{\frac{dy}{dx} = Ay^{-1} \\}
+	\uncover<3->{y\, dy = A\, dx \\}
+	\uncover<4->{\tfrac{1}{2}y^2 = Ax +C \\}
+	\uncover<5->{\alert{y^2 = Ax + C}}
+\end{gather*}
+\end{frame}
+\end{document}

@@ -1,0 +1,315 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some useful definitions
+\newcommand*\Laplace[1]{\mathcal{L}\{{#1}\}}
+\newcommand*\iLaplace[1]{\mathcal{L}^{-1}\{{#1}\}}
+\newcommand*\ibLaplace[1]{\mathcal{L}^{-1}\big\{{#1}\big\}}
+\newcommand*\iBLaplace[1]{\mathcal{L}^{-1}\Big\{{#1}\Big\}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{testrhombus}{
+	\rule{F -> F+FF++FF+F+++F++F+++F}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4]
+    \draw [l-system={testrhombus, axiom=F+FF++FF+F+++F++F+++F, order=3, step=1.5pt, angle=90}]
+    lindenmayer system; 
+	\end{tikzpicture}	
+}
+
+\title{Lesson 18: Linearization. Differentiation of transforms. Translation in the $s$--axis} 
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{General Program}
+
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item General Linear Equations (Intro)
+	\item Linear Equations with Constant Coefficients
+	\begin{itemize}
+		\item Characteristic Equation
+		\item Variation of Parameters
+		\item Undetermined Coefficients
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{What do we know?}
+\framesubtitle{Laplace Transforms}
+\begin{center}
+\rowcolors{2}{white}{gray!25!white}
+	\begin{tabular}{m{2cm}||m{3.5cm}l}
+	\rowcolor{DeepSkyBlue4}
+		$f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & \\[0.4cm]
+		$1$ & $\dfrac{1}{s}$\raisebox{0.6cm} & $s>0$ \\[0.4cm]
+		$x^p$ & $\dfrac{\Gamma(p+1)}{s^{p+1}}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+		$e^{\alpha x}$ & $\dfrac{1}{s-\alpha}$\raisebox{0.6cm} & $s>\alpha$ \\[0.4cm]
+		$\sin \beta x$ & $\dfrac{\beta}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$ \\[0.4cm]
+		$\cos \beta x$ & $\dfrac{s}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\section{Linearization}
+\subsection{Linearization}
+
+\begin{frame}\frametitle{Linearization}
+Since the Laplace transform is an integral, we have the following useful property:
+\begin{theorem}[Linearization]
+Given \emph{good enough} functions $f(x)$ and $g(x)$ with Laplace transforms $F(s)$ for $s>a$, $G(s)$ for $s>b$ respectively, and any arbitrary constant $c \in \mathbb{R}$, 
+\begin{equation*}
+		\mathcal{L}\{cf\pm g\} = c\mathcal{L}\{f\} \pm \mathcal{L}\{g\} = cF(s)\pm G(s) \text{ for } s>\max(a,b).
+	\end{equation*}	
+\end{theorem}
+\pause Let us put it to use
+\begin{block}
+	{Compute the Laplace transform of the following functions:}
+	\begin{align*}
+		f(x)&=1-2x^3+4x^5 \uncover<3->{&F(s)&=\Laplace{1}-2\Laplace{x^3}+4\Laplace{x^5}\\}
+		\uncover<4->{&&&=\frac{1}{s}-2\frac{3!}{s^4}+4\frac{5!}{s^6} \quad (s>0)\\}
+		g(x)&=\pi e^{3x}-4\sin(5x) \uncover<5->{&G(s)&=\pi \Laplace{e^{3x}} - 4 \Laplace{\sin (5x)} \\}
+		\uncover<6->{&&&=\pi\frac{1}{s-3}-4\frac{5}{s^2+5^2} \quad (s>3)}
+	\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Linearization}
+It is also possible to compute, from a function of $s$, $F(s)$, its \alert{inverse Laplace transform}: the function $f(x)$ satisfying $\Laplace{f}=F(s)$.  We write
+\begin{equation*}
+	f(x) = \iLaplace{F}
+\end{equation*}
+\pause Let us use the technique of \emph{partial fraction decomposition}, together with this linearization technique, to compute some inverse Laplace transforms:
+\begin{example}
+	{Compute the Inverse Laplace Transform of}
+	\begin{equation*}
+		F(s)=\frac{s}{s^2+2s-3} \quad (s>1)
+	\end{equation*}
+\end{example}
+\pause Note
+\begin{equation*}
+	F(s)=\frac{s}{s^2+2s-3} = \frac{s}{(s-1)(s+3)} \uncover<4->{= \frac{A}{s-1}+\frac{B}{s+3}}
+\end{equation*}
+\uncover<5->{a quick computation gives $A=1/4$ and $B=3/4$.  It is then}
+\begin{align*}
+	\uncover<5->{f(x) &= \iBLaplace{\frac{s}{s^2+2s-3}} = \iBLaplace{\frac{1}{4} \cdot \frac{1}{s-1} + \frac{3}{4} \cdot \frac{1}{s+3}} \\}
+	\uncover<6->{&=\frac{1}{4}\iBLaplace{\frac{1}{s-1}}+\frac{3}{4} \iBLaplace{\frac{1}{s+3}} }
+	\uncover<7->{= \frac{1}{4}e^{x} + \frac{3}{4} e^{-3x}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Linearization}
+\framesubtitle{Examples}
+\begin{block}
+	{Compute the Inverse Laplace Transform of}
+	\begin{equation*}
+	F(s)=\frac{2s-3}{(s-4)(s^2-1)}\quad (s>4)
+	\end{equation*}
+\end{block}
+\pause The technique is always the same:
+\begin{equation*}
+	\uncover<2->{F(s)=\frac{2s-3}{(s-4)(s^2-1)} =\frac{A}{s-4}+\frac{B}{s+1}+\frac{C}{s-1}}
+\end{equation*}
+\uncover<3->{A quick computation gives $A=1/3$, $B=-1/2$, and $C=1/6$.}
+\begin{align*}
+	\uncover<4->{\iBLaplace{\frac{2s-3}{(s-4)(s^2-1)}}&=\iBLaplace{\frac{1}{3}\cdot\frac{1}{s-4}-\frac{1}{2}\cdot\frac{1}{s+1}+\frac{1}{6}\cdot\frac{1}{s-1}} \\}
+	\uncover<5->{&=\frac{1}{3}\iBLaplace{\frac{1}{s-4}}-\frac{1}{2}\iBLaplace{\frac{1}{s+1}}+\frac{1}{6}\iBLaplace{\frac{1}{s-1}} \\}
+	\uncover<6->{&= \frac{1}{3}e^{4x}-\frac{1}{2}e^{-x}+\frac{1}{6}e^x}
+\end{align*}
+
+\end{frame}
+
+\section{Derivative of Transforms}
+\subsection{product}
+
+\begin{frame}\frametitle{The Derivative of Laplace Transforms}
+\framesubtitle{Motivation} 
+At this stage, we are able to compute the Laplace transform of linear combinations of power functions $x^p$, exponential functions $e^{\alpha x}$ and sines/cosines $\sin \beta x, \cos \beta x$.
+
+\pause The next step is to be able to compute Laplace transforms of products of these, with integer-power functions: $x^n f(x)$.  We accomplish this through \alert{the derivative of Laplace transforms}.
+
+\pause If $F(s)$ is the Laplace transform of $f(x)$ for $s>a$, then
+\begin{align*}
+	F'(s) &= \frac{dF(s)}{ds} = \frac{d}{ds} \int_0^\infty e^{-sx} f(x)\, dx \uncover<4->{= \int_0^\infty \frac{d}{ds}\Big( e^{-sx} f(x) \Big)\, dx \\}
+	\uncover<5->{&= \int_0^\infty -xe^{-sx}f(x)\, dx} 
+	\uncover<6->{= -\underbrace{\int_0^\infty e^{-sx} \alert{xf(x)}\, dx}_{\Laplace{xf(x)}}}
+\end{align*}
+\uncover<7->{We have just proven that the Laplace transform of $xf(x)$ is $-F'(s)$.} \uncover<8->{Using the same technique repeatedly, we obtain}
+\begin{equation*}
+	\uncover<8->{\Laplace{x^n f(x)} = (-1)^n F^{(n)}(s)}
+\end{equation*}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{The Derivative of Laplace Transforms}
+\framesubtitle{Examples}
+\begin{example}
+	Compute the Laplace transform of $x^2\sin 3x$.
+\end{example}
+\pause The Laplace transform of $f(x)=\sin 3x$ is $F(s)=\dfrac{3}{s^2+9}$ for $s>0$.
+
+\pause The Laplace transform of $x^2 \sin 3x$ is then $(-1)^2 F''(s)=F''(s)$.  We only need to compute the second derivative of $F$:
+\begin{align*}
+F(s)&=\frac{3}{s^2-9} = 3(s^2+9)^{-1} \\
+\uncover<4->{F'(s)&= -3(s^2+9)^{-2} (2s) = \frac{-6s}{(s^2+9)^2} \\}
+\uncover<5->{F''(s)&= -6(s^2+9)^{-2} + (-6s)(-2)(s^2+9)^{-3}(2s) = \frac{-6}{(s^2+9)^2} + \frac{24s^2}{(s^2+9)^3}}
+\end{align*}
+\uncover<6->{The Laplace transform of $x^2\sin 3x$ is thus}
+\begin{equation*}
+	\uncover<6->{\Laplace{x^2\sin 3x}=\frac{24s^2-6s^2+54}{(s^2+9)^3} = \frac{18s^2+54}{(s^2+9)^3}}
+\end{equation*}
+\end{frame}
+
+\section{Translation on the $s$--axis}
+\subsection{Motivation}
+\begin{frame}\frametitle{Translation on the $s$--axis}
+    
+The next step is the computation of Laplace transforms of functions which are product of basic functions, with exponentials: $e^{\alpha x}f(x)$.
+
+\pause These are easier.  If the Laplace transform of $f(x)$ is $F(s)$ for $s>c$, then the Laplace transform of $e^{\alpha x}f(x)$ is given by
+\begin{equation*}
+	\int_0^\infty e^{-sx} \big( e^{\alpha x}f(x) \big)\, dx = \int_0^\infty e^{-(s-\alpha)x}f(x)\, dx \uncover<3->{= F(s-\alpha)	\text{ for } s-\alpha > c}
+\end{equation*}
+\pause In other words: \emph{translation} $s\mapsto s-\alpha$ \emph{in the transform corresponds to multiplication of the original function by} $e^{\alpha x}$.
+\end{frame}
+
+\begin{frame}\frametitle{Translation on the $s$--axis}
+\framesubtitle{Examples}
+\begin{block}
+	{Compute the Laplace transform of}
+	\begin{equation*}
+		e^{3x}\sin 4x
+	\end{equation*}
+\end{block}
+\pause The Laplace transform of $f(x)=\sin 4x$ is $F(s)=\dfrac{4}{s^2+16}$ for $s>0$.
+
+\pause The Laplace transform of $e^{3x}\sin 4x$ is then 
+\begin{equation*}
+	\Laplace{e^3x\sin 4x}=F(s-3)=\frac{4}{(s-3)^2+16}	
+\end{equation*}
+
+\vspace{3cm}
+\end{frame}
+
+\begin{frame}\frametitle{Translation on the $s$--axis}
+\framesubtitle{Examples}
+\begin{block}
+	{Compute the Laplace transform of}
+	\begin{equation*}
+		e^{3x}x\sin 4x
+	\end{equation*}
+\end{block}
+We have to use two tricks here.  First, the exponential $e^{3x}$ suggests that the Laplace transform of $e^{3x}x\sin 4x$ is $F(s-3)$, where $F(s)$ is the Laplace transform of $x\sin 4x$.  
+
+\pause But to compute the Laplace transform of $x\sin 4x$ we must use the previous technique:  Set $g(x)=\sin 4x$ and $G(s)=\dfrac{4}{s^2+16}$ for $s>0$ its Laplace transform.  The Laplace transform of $x\sin 4x$ is then $F(s)=-G'(s)$.
+\pause The derivative of $G(s)$ is
+\begin{equation*}
+	G'(s)=-4(s^2+16)^{-2}(2s)=\frac{-8s}{(s^2+16)^2}
+\end{equation*}
+We have then that the Laplace transform of $e^{3x}x\sin 4x$ is
+\begin{equation*}
+	\Laplace{e^{3x}x\sin 4x} = F(s-3) = -G'(s-3) = \frac{8(s-3)}{\big( (s-3)^2+16\big)^2}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Summary}
+    
+We have learned today to compute Laplace transforms of complex functions using a table and three simple techniques: \alert{linearization}, \alert{derivative of transforms}, and \alert{translation on the $s$--axis}.  We now have a more complete table:
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node[scale=0.75]{
+\rowcolors{2}{white}{gray!25!white}
+\begin{tabular}{|m{1cm}|m{3.3cm}l|}
+	\rowcolor{DeepSkyBlue4}
+		$f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & \\[0.4cm]
+		$1$ & $\dfrac{1}{s}$\raisebox{0.6cm} & $s>0$ \\[0.4cm]
+		$x^p$ & $\dfrac{\Gamma(p+1)}{s^{p+1}}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+		$e^{\alpha x}$ & $\dfrac{1}{s-\alpha}$\raisebox{0.6cm} & $s>\alpha$ \\[0.4cm]
+		$\sin \beta x$ & $\dfrac{\beta}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$ \\[0.4cm]
+		$\cos \beta x$ & $\dfrac{s}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+		\hline
+	\end{tabular}
+	};
+\draw (0.5\linewidth,0) node[scale=0.75]{
+\rowcolors{2}{white}{gray!25!white}
+\begin{tabular}{|m{1.8cm}|m{3.7cm}l|}
+	\rowcolor{DeepSkyBlue4}
+		$f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & \\[0.4cm]
+		$x^n e^{\alpha x}$ & $\dfrac{n!}{(s-\alpha)^{n+1}}$\raisebox{0.6cm} & $s>\alpha$ \\[0.4cm]
+		$x^n \sin \beta x$ & $(-1)^n F^{(n)}(s), F(s)=\frac{\beta}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+		$x^n \cos \beta x$ & $(-1)^n G^{(n)}(s), G(s)=\frac{s}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$\\[0.4cm]
+		$e^{\alpha x}\sin\beta x$ & $\dfrac{\beta}{(s-\alpha)^2+\beta^2}$\raisebox{0.6cm} & $s>\alpha$ \\[0.4cm]
+		$e^{\alpha x}\cos\beta x$ & $\dfrac{s-\alpha}{(s-\alpha)^2+\beta^2}$\raisebox{0.6cm} & $s>\alpha$ \\[0.4cm]
+		\hline
+	\end{tabular}
+	};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\end{document}

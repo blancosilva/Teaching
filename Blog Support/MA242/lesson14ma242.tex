@@ -1,0 +1,299 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{B}{
+\rule{F -> FF+F+F+F+F+F-F}}
+\begin{tikzpicture}[color=DeepSkyBlue4]
+\draw [l-system={B, axiom=F+F+F+F, order=4, step=0.8pt, angle=90}]
+lindenmayer system; 
+\end{tikzpicture}
+}
+\title{Lesson 14: The General Second-Order Linear Equations with Constant Coefficients: Undetermined Coefficients (I)}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item General Linear Equations (Intro)
+	\item Linear Equations with Constant Coefficients
+	\begin{itemize}
+		\item Characteristic Equation
+		\item Variation of Parameters
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Undetermined Coefficients}
+\subsection{Development}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{The General Method}
+\begin{theorem}
+	The general solution of the non-homogeneous equation
+	\begin{equation*}
+		ay''+by'+cy=f(x)
+	\end{equation*}
+	Can be written in the form 
+	\begin{equation*}
+		y=Ay_1(x)+By_2(x)+Y(x),
+	\end{equation*}
+	where $y_1$ and $y_2$ are the solutions of the homogeneous equation $ay''+by'+cy=0$ that we found in Lesson 12, $A$, $B$ are arbitrary coefficients, and $Y(x)$ is some specific solution to the non-homogeneous equation.
+\end{theorem}
+\pause The method of undetermined coefficients allows us to find this function $Y$ in certain cases.
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{The General Method}
+\begin{center}
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{m{0.45\linewidth}||m{0.45\linewidth}}
+		\rowcolor{DeepSkyBlue4}
+		If $f(x)$ is\dots & then pick $Y(x)$\dots \raisebox{0pt}[0.5cm]{} \pause \\[0.2cm]
+		$\alert{P_n(x)}=a_0+a_1x+\dotsb +a_nx^n$ & $x^s \big( A_0 + A_1x + \dotsb + A_nx^n \big)$ \raisebox{0pt}[0.5cm]{} \pause \\[0.3cm]
+		$\alert{e^{\alpha x}}P_n(x)$ & $x^s e^{\alpha x} \big( A_0 + A_1x + \dotsb + A_nx^n \big)$ \raisebox{0pt}[0.5cm]{} \pause \\[0.3cm]
+		$e^{\alpha x} P_n(x) \alert{\cos \beta x}$, or $e^{\alpha x}P_n(x)\alert{\sin \beta x}$ & $x^s e^{\alpha x} \cos (\beta x) \big( A_0 + A_1x + \dotsb + A_nx^n \big) \raisebox{0pt}[0.5cm]{} \newline \qquad + x^s e^{\alpha x} \sin (\beta x) \big( B_0 + B_1x + \dotsb + B_nx^n \big)$ \pause \\[0.3cm]
+	\end{tabular}
+	\end{center}
+	Here, $s$ is the smallest non-negative integers ($s=0,1,2$) that will ensure that no term in $Y(x)$ is a solution of the corresponding homogeneous equation.
+
+	\pause A good way to compute $s$ is by counting:
+	\begin{itemize}
+		\item The number of times that 0 is a root of the characteristic equation,
+		\item The number of times that $\alpha$ is a root of the characteristic equation, and 
+		\item The number of times that $\alpha + i\beta$ is a root of the characteristic equation.
+	\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find $Y(x)$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=3e^{2x}
+	\end{equation*}
+\end{block}
+\pause This is the second case: $e^{\alpha x}P_n(x)$, where $\alpha=2$, and the \emph{polynomial} $P_n(x)$ reduces to a constant: $n=0$, $a_0=3$
+
+\pause We always start by solving the homogeneous equation: 
+\begin{equation*}
+	r^2-3r-4=0,\qquad r=\frac{3\pm \sqrt{9-4\cdot(-4)}}{2} = \frac{3\pm 5}{2}=\{ -1,4\}
+\end{equation*}
+We obtain the functions $y_1(x)=e^{-x}$ and $y_2(x)=e^{4x}$.
+
+\pause Note that:
+\begin{itemize}
+	\item 0 is not a root of the characteristic equation,
+	\item $\alpha=2$ is not a root of the characteristic equation, and
+	\item the solutions of the characteristic equation are real.
+\end{itemize}
+This means that we have to pick $s=0$.
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find $Y(x)$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=3e^{2x}
+	\end{equation*}
+\end{block}
+It must then be
+\begin{equation*}
+	Y(x) = x^s e^{\alpha x} P_n(x) = x^0 e^{2x} P_0(x) = \alert{A_0}e^{2x}
+\end{equation*}
+And the only thing we need to worry here, is the value of the \alert{undetermined coefficient $A_0$}.
+
+\pause We proceed to search for this value:
+\begin{align*}
+	Y(x)&=A_0 e^{2x} & Y'(x)&=2A_0 e^{2x} &Y''(x)&=4A_0e^{2x}
+\end{align*}
+\begin{gather*}
+\uncover<3->{Y''-3Y'-4Y=3e^{2x} \\}
+\uncover<4->{4A_0e^{2x} - 3\cdot 2A_0e^{2x} - 4\cdot A_0e^{2x} = 3e^{2x} \\}
+\uncover<5->{-6A_0 = 3 \\}
+\uncover<6->{A_0 = -1/2,}
+\end{gather*}
+\pause\pause\pause\pause\pause
+therefore, the solution is $Y(x)=-\frac{1}{2}e^{2x}$.
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find $Y(x)$ for the differential equation}
+	\begin{equation*}
+	y''-3y'-4y=2\sin x	
+	\end{equation*}
+\end{block}
+\pause The non-homogeneous function is of the form $e^{\alpha x}P_n(x)\sin \beta x$ with $\alpha=0$, $n=0$, $a_0=2$ and $\beta=1$. 
+
+\pause The homogeneous equation gives us the functions $y_1(x)=e^{-x}, y_2(x)=e^{4x}$.  
+
+\pause Let us compute the value of $s$ now:
+\begin{itemize}
+	\item 0 is not a root of the characteristic equation, 
+	\item neither is $\alpha=0$,
+	\item and the roots are not complex.
+\end{itemize}
+\pause It must be $s=0$, and therefore the corresponding $Y$ will have the form
+\begin{equation*}
+	Y(x)=x^se^{\alpha x}P_n(x) \sin \beta x+ x^s e^{\alpha x}Q_n(x)\cos \beta x = \alert{A_0}\sin x + \alert{B_0}\cos x
+\end{equation*}
+with two \alert{undetermined coefficients, $A_0$ and $B_0$.}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find $Y(x)$ for the differential equation}
+	\begin{equation*}
+	y''-3y'-4y=2\sin x	
+	\end{equation*}
+\end{block}
+Let us find the value of those two coefficients:
+\begin{align*}
+	Y&=A_0\sin x+B_0\cos x, &Y'&=A_0\cos x - B_0\sin x, &Y''&=-A_0\sin x -B_0\cos x
+\end{align*}
+\begin{gather*}
+	Y''-3Y'-4Y=2\sin x \\
+	\uncover<2->{\big(-A_0\sin x-B_0\cos x\big) - 3\big( A_0\cos x -B_0\sin x\big) - 4\big( A_0\sin x + B_0\cos x\big) =  2\sin x \\}
+	\uncover<3->{\big(-A_0+3B_0-4A_0-2\big)\sin x + \big(-B_0 -3A_0-4B_0\big)\cos x = 0 \\}
+	\uncover<4->{\big(3B_0-5A_0-2\big)\sin x - \big(5B_0+3A_0\big)\cos x=0}
+\end{gather*}
+\pause\pause\pause\pause It must then be
+\begin{equation*}
+	\begin{cases}
+		5A_0-3B_0=-2 \\ 3A_0 + 5B_0 =0
+	\end{cases}\qquad
+	\uncover<6->{\begin{cases}
+		A_0=-5/17 \\B_0=3/17
+	\end{cases}\qquad}
+	\uncover<7->{\alert{Y=-\tfrac{5}{17}\sin x +\tfrac{3}{17}\cos x}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+{Find $Y(x)$ for the differential equation}
+\begin{equation*}
+	y''-3y'-4y=4x^2-1
+\end{equation*}
+\end{block}
+\pause The non-homogeneous function is a quadratic polynomial: $n=2$, $a_0=-1$, $a_1=0$, $a_2=4$.  
+
+\pause The solutions of the homogeneous equation are (again) $y_1=e^{-x}$ and $y_2=e^{4x}$.
+\pause Let us compute the value of $s$ now:
+\begin{itemize}
+	\item 0 is not a root of the characteristic equation,
+	\item we don't need to worry about $\alpha$ (since there is none), and
+	\item the characteristic equation has no complex roots.
+\end{itemize}
+It is then $s=0$. This means that $Y(x)$ will be of the form
+\begin{equation*}
+	Y(x) = x^s P_n(x) = P_2(x)= A_0 + A_1x + A_2x^2
+\end{equation*}
+with three \alert{undetermined coefficients, $A_0$, $A_1$ and $A_2$.}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+{Find $Y(x)$ for the differential equation}
+\begin{equation*}
+	y''-3y'-4y=4x^2-1
+\end{equation*}
+\end{block}
+We proceed to search for those values:
+\begin{align*}
+	Y(x)&=A_0+A_1x+A_2x^2 &Y'(x)&=A_1+2A_2x &Y''(x)&=2A_2
+\end{align*}
+\begin{gather*}
+	Y''-3Y'-4Y=4x^2-1\\
+	\uncover<2->{\big( 2A_2 \big) - 3 \big( A_1+2A_2x \big) - 4 \big( A_0 + A_1 x +A_2x^2 \big) = 4x^2 -1 \\}
+	\uncover<3->{\big( -4A_2 - 4 \big)x^2 + \big(-6A_2 - 4A_1\big)x + \big(2A_2-3A_1-4A_0+1\big) = 0}
+\end{gather*}
+\pause\pause\pause This gives 
+\begin{equation*}
+	\begin{cases}
+		4=-4A_2\\ 0=6A_2+4A_1 \\ -1=2A_2-3A_1-4A_0
+	\end{cases}\qquad
+	\uncover<5->{\begin{cases}
+		A_0=-11/8 \\
+		A_1=3/2 \\
+		A_2=-1
+	\end{cases}\qquad}
+	\uncover<6->{\alert{Y(x)=-x^2+\tfrac{3}{2}x-\tfrac{11}{8}}}
+\end{equation*}
+\end{frame}
+
+\end{document}

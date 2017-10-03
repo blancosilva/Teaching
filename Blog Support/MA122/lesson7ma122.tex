@@ -1,0 +1,368 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 7: Power Functions.  Basic Operations with Functions}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Sierpinski triangle}{
+\rule{F -> G-F-G}
+\rule{G -> F+G+F}}
+	\begin{tikzpicture} 
+    \shadedraw [top color=DeepSkyBlue4, bottom color=black, draw=DeepSkyBlue4]
+[l-system={Sierpinski triangle, step=1pt, angle=60, axiom=F, order=8}]
+lindenmayer system -- cycle;
+	\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}
+\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$intercepts ($f(x)=0$, $f(0)$)
+\item Change from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item Average Rate of Change from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item Relative Change from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Power Functions}
+\subsection{Definition}
+\begin{frame}\frametitle{Power Functions}
+\framesubtitle{Definitions}
+We say that $Q(x)$ is a \alert{power function} of $x$ if $Q(x)$ is proportional to a constant power of $x$:
+\begin{equation*}
+	Q(x)=kx^p
+\end{equation*}
+The coefficient $k$ is called \emph{constant of proportionality}, and $p$ is the \emph{power}.
+\pause
+\begin{block}{Which of these functions are power functions?}
+\begin{align*}
+	y&=5 \sqrt{x}\uncover<3->{\alert{=5x^{1/2}}} \uncover<3->{& k&=5 &p&=\tfrac{1}{2} \\}
+	y&=2x\uncover<4->{\alert{=2x^1}} \uncover<4->{& k&=2 &p&=1 \\}
+	y&=\frac{3}{x}\uncover<5->{\alert{=3x^{-1}}} \uncover<5->{&k&=3 &p&=-1 \\}
+	y &= \big( 3x^5 \big)^2\uncover<6->{\alert{=9x^{10}}} \uncover<6->{&k&=3^2=9 &p&=10 \\}
+	y&= \frac{3}{8x}\uncover<7->{\alert{=\tfrac{3}{8}x^{-1}}} \uncover<7->{&k&=\frac{3}{8} &p&=-1 \\}
+	y&= \frac{5}{2\sqrt{x}}\uncover<8->{\alert{=\tfrac{5}{2}x^{-1/2}}} \uncover<8->{&k&=\frac{5}{2} &p&=-\tfrac{1}{2} \\}
+	y&=\pi\uncover<9->{\alert{=\pi x^0}} \uncover<9->{& k&=\pi &p&=0}
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Power Functions}
+\framesubtitle{Definitions}
+Sums of power functions with non-negative integer exponent are called \alert{polynomials}
+\begin{equation*}
+	y=p(x)=\alert{a_nx^n}+a_{n-1}x^{n-1}+\dotsb+a_1x+a_0
+\end{equation*}
+The highest of the powers, $n$, is called the \alert{degree} of the polynomial.  The power function with that highest power, $a_nx^n$, is called the \alert{leading term} of the polynomial, and the corresponding coefficient $a_n$ is called the \alert{leading coefficient}.
+\pause
+\begin{example}
+	The following are polynomials.  What are their degrees and leading coefficients?
+	\begin{align*}
+		y&=\pi \uncover<3->{&n&=0 &a_0&=\pi\\}
+		y&=1-2x+3x^4-5x^6 \uncover<4->{&n&=6 &a_6&=-5 \\}
+		y&=\tfrac{1}{2}x^3 - \tfrac{3}{4}x^5 + \tfrac{5}{6}x^7 \uncover<5->{&n&=7 &a_7&=\tfrac{5}{6} }
+	\end{align*}
+\end{example}
+\end{frame}
+
+\section{Operations with Functions}
+\subsection{Tables}
+\begin{frame}\frametitle{Operations with functions}
+\framesubtitle{Vertical Operations}
+\begin{center}
+\rowcolors{1}{gray!25}{gray!25}
+   \begin{tabular}{c||l} 
+   \rowcolor{DeepSkyBlue4} &\\
+   \rowcolor{DeepSkyBlue4}
+   \textbf{Operation on }$f(x)$ & \textbf{Effect on the graph} \\
+   \rowcolor{DeepSkyBlue4} & \pause \\ 
+   & \\ $f(x)+C\qquad (C>0)$ & Vertical shift (up) by $C$ units \\
+   & \pause \\ 
+   \rowcolor{white} &\\ \rowcolor{white}
+   $f(x)-C\qquad (C>0)$ & Vertical shift (down) by $C$ units \\
+   \rowcolor{white} & \pause \\ 
+   &\\ $a f(x)\qquad (a>1)$ & Vertical stretching by a factor of $a$ \\
+   & \pause \\ 
+   \rowcolor{white} &\\
+   \rowcolor{white}
+   $a f(x)\qquad (0<a<1)$ & Vertical compression by a factor of $1/a$ \\
+   \rowcolor{white} & \pause \\ 
+   &\\ $-f(x)$ & Reflection with respect to the $x$--axis  \\ & \\
+   \end{tabular}
+   \end{center}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Operations with functions}
+\framesubtitle{Vertical Operations}
+\begin{example}
+Given the graph of the function $f(x)$ below, sketch the graph of the function $2f(x)-3$
+\end{example}
+\begin{center}
+\begin{tikzpicture}
+\draw[step=0.25, help lines] (-2,-2) grid (2,2);
+\draw(0,-2)--(0,2);
+\draw(-2,0)--(2,0);
+\foreach \x in {-2,-1.75,-1.5,...,2}{
+\draw (-0.1,\x)--(0.1,\x);
+\draw (\x, -0.1)-- (\x, 0.1);
+}
+\draw[DeepSkyBlue4,ultra thick](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
+\only<2->{
+	\draw (2.5,1) node[DeepSkyBlue4
+]{$f(x)$};
+	\draw(3,-2.5) node[DeepSkyBlue4]{$f(x) \to 2f(x) \to 2f(x)-3$};}
+\only<1>{
+	\draw(-2,0.3) node[scale=0.8,DeepSkyBlue4
+]{(-8,2)};
+	\draw(-1,1.2) node[scale=0.8,DeepSkyBlue4
+]{(-4,4)};
+	\draw(0,-0.2) node[scale=0.8,DeepSkyBlue4
+]{(0,0)};
+	\draw(1,1.2) node[scale=0.8,DeepSkyBlue4
+]{(4,4)};
+	\draw(2,1.2) node[scale=0.8,DeepSkyBlue4
+]{(8,4)};
+}
+\begin{scope}[xshift=6cm]
+\draw[step=0.25, help lines] (-2,-2) grid (2,2);
+\draw(0,-2)--(0,2);
+\draw(-2,0)--(2,0);
+\foreach \x in {-2,-1.75,-1.5,...,2}{
+\draw (-0.1,\x)--(0.1,\x);
+\draw (\x, -0.1)-- (\x, 0.1);
+}
+\only<4>{\draw(2.5,2) node[DeepSkyBlue4]{$2f(x)$};}
+\only<3>{
+	\draw(-2,0.8) node[scale=0.8,DeepSkyBlue4
+]{(-8,4)};
+	\draw(-1,2.2) node[scale=0.8,DeepSkyBlue4
+]{(-4,8)};
+	\draw(0,-0.2) node[scale=0.8,DeepSkyBlue4
+]{(0,0)};
+	\draw(1,2.2) node[scale=0.8,DeepSkyBlue4
+]{(4,8)};
+	\draw(2,2.2) node[scale=0.8,DeepSkyBlue4
+]{(8,8)};
+}
+\only<3-4>{
+\draw[red,ultra thin](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
+\draw[DeepSkyBlue4,ultra thick] (-2,1)--(-1,2)--(0,0)--(1,2)--(2,2);
+}
+\only<5>{
+\draw[red,ultra thin] (-2,1)--(-1,2)--(0,0)--(1,2)--(2,2);
+\draw[DeepSkyBlue4,ultra thick] (-2,0.25)--(-1,1.25)--(0,-0.75)--(1,1.25)--(2,1.25);
+\draw (2.75,1.25) node[DeepSkyBlue4]{$2f(x)-3$};
+}
+\end{scope}
+\end{tikzpicture}
+\end{center}	
+\end{frame}
+
+\begin{frame}\frametitle{Operations with functions}
+\framesubtitle{Horizontal Operations}
+\begin{center}
+\rowcolors{1}{gray!25}{gray!25}
+   \begin{tabular}{c||l} 
+   \rowcolor{DeepSkyBlue4} &\\
+   \rowcolor{DeepSkyBlue4}
+   \textbf{Operation on }$f(x)$ & \textbf{Effect on the graph} \\
+   \rowcolor{DeepSkyBlue4} & \pause \\ 
+   & \\ $f(x+C)\qquad (C>0)$ & Horizontal shift (\alert{left}) by $C$ units \\
+   & \pause \\ 
+   \rowcolor{white} &\\ \rowcolor{white}
+   $f(x-C)\qquad (C>0)$ & Horizontal shift (\alert{right}) by $C$ units \\
+   \rowcolor{white} & \pause \\ 
+   &\\ $f(ax)\qquad (a>1)$ & Horizontal compression by a factor of $1/a$ \\
+   & \pause \\ 
+   \rowcolor{white} &\\
+   \rowcolor{white}
+   $f(x/a)\qquad (0<a<1)$ & Horizontal stretching by a factor of $a$ \\
+   \rowcolor{white} & \pause \\ 
+   &\\ $f(-x)$ & Reflection with respect to the $y$--axis  \\ & \\
+   \end{tabular}
+   \end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Operations with functions}
+\framesubtitle{Horizontal Operations}
+\begin{example}
+Given the graph of the function $f(x)$ below, sketch the graph of the function $2-f(2x)$
+\end{example}
+\begin{center}
+\begin{tikzpicture}
+\draw[step=0.25, help lines] (-2,-2) grid (2,2);
+\draw(0,-2)--(0,2);
+\draw(-2,0)--(2,0);
+\foreach \x in {-2,-1.75,-1.5,...,2}{
+\draw (-0.1,\x)--(0.1,\x);
+\draw (\x, -0.1)-- (\x, 0.1);
+}
+\draw[DeepSkyBlue3,ultra thick](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
+\draw (2.5,1) node[DeepSkyBlue3]{$f(x)$};
+\only<2->{
+	\draw(3,-2.5) node[DeepSkyBlue4]{$f(x) \to f(2x) \to -f(2x) \to -f(2x)+2$};}
+\begin{scope}[xshift=6cm]
+\draw[step=0.25, help lines] (-2,-2) grid (2,2);
+\draw(0,-2)--(0,2);
+\draw(-2,0)--(2,0);
+\foreach \x in {-2,-1.75,-1.5,...,2}{
+\draw (-0.1,\x)--(0.1,\x);
+\draw (\x, -0.1)-- (\x, 0.1);
+}
+\only<3>{
+	\draw(-1.5,0.5) node[scale=0.8,DeepSkyBlue3]{(-4,2)};
+	\draw(-0.5,1.2) node[scale=0.8,DeepSkyBlue3]{(-2,4)};
+	\draw(0,-0.2) node[scale=0.8,DeepSkyBlue3]{(0,0)};
+	\draw(0.5,1.2) node[scale=0.8,DeepSkyBlue3]{(2,4)};
+	\draw(1.25,1.2) node[scale=0.8,DeepSkyBlue3]{(4,4)};
+}
+\only<3-4>{
+	\draw(1.5,0.6) node[DeepSkyBlue3]{$f(2x)$};
+	\draw[red,ultra thin](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
+	\draw[DeepSkyBlue3,ultra thick] (-1,0.5)--(-0.5,1)--(0,0)--(0.5,1)--(1,1);
+}
+\only<5>{
+	\draw[red,ultra thin] (-1,0.5)--(-0.5,1)--(0,0)--(0.5,1)--(1,1);
+	\draw[DeepSkyBlue3,ultra thick] (-1,-0.5)--(-0.5,-1)--(0,0)--(0.5,-1)--(1,-1);
+	\draw (1.5,-0.6) node[DeepSkyBlue3]{$-f(2x)$};
+}
+\only<6>{
+	\draw[red,ultra thin] (-1,-0.5)--(-0.5,-1)--(0,0)--(0.5,-1)--(1,-1);
+	\draw[DeepSkyBlue3,ultra thick] (-1,0)--(-0.5,-0.5)--(0,0.5)--(0.5,-0.5)--(1,-0.5);
+	\draw (1.5,-1.1) node[DeepSkyBlue3]{$-f(2x)+2$};
+}
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Operations with functions}
+\framesubtitle{Horizontal Operations}
+\begin{example}
+Given the graph of the function $f(x)$ below, sketch the graph of the function $f(4x-2)$
+\end{example}
+\begin{center}
+\begin{tikzpicture}
+\draw[step=0.25, help lines] (-2,-2) grid (2,2);
+\draw(0,-2)--(0,2);
+\draw(-2,0)--(2,0);
+\foreach \x in {-2,-1.75,-1.5,...,2}{
+\draw (-0.1,\x)--(0.1,\x);
+\draw (\x, -0.1)-- (\x, 0.1);
+}
+\draw[DeepSkyBlue4,ultra thick](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
+\draw (2.5,1) node[DeepSkyBlue4]{$f(x)$};
+\only<2->{
+	\draw(3,-2.5) node[DeepSkyBlue4]{$f(x) \to f(4x) \to f(4x-2)$};}
+\begin{scope}[xshift=6cm]
+\draw[step=0.25, help lines] (-2,-2) grid (2,2);
+\draw(0,-2)--(0,2);
+\draw(-2,0)--(2,0);
+\foreach \x in {-2,-1.75,-1.5,...,2}{
+\draw (-0.1,\x)--(0.1,\x);
+\draw (\x, -0.1)-- (\x, 0.1);
+}
+\only<3>{
+	\draw[red,ultra thin](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
+	\draw[DeepSkyBlue4
+,ultra thick] (-0.5,0.5)--(-0.25,1)--(0,0)--(0.25,1)--(0.5,1);
+	\draw (1.5,0.6) node[DeepSkyBlue4
+]{$f(4x)$};
+}
+\only<4>{
+	\draw (2,0.6) node[DeepSkyBlue4
+]{$f(4x-2)$};
+	\draw[red,ultra thin] (-0.5,0.5)--(-0.25,1)--(0,0)--(0.25,1)--(0.5,1);
+	\draw[DeepSkyBlue4
+,ultra thick] (0,0.5)--(0.25,1)--(0.5,0)--(0.75,1)--(1,1);
+}
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Operations with functions}
+\framesubtitle{Examples}
+\begin{example}
+	Write an equation for a graph obtained by \alert{vertically stretching} the graph of $y=x^3$ by a factor of 3, followed by a \alert{vertical upward shift} of 2 units.
+\end{example}
+\pause Solution: $y=3x^3+2$
+\begin{align*}
+	\text{Original function} && \text{After vertical stretch} && \text{After shift up} \\
+	x^3 && \uncover<3->{3x^3} && \uncover<4->{3x^3+2}
+\end{align*}
+\pause\pause
+\begin{example}
+	What is the equation if the order of the transformations is interchanged?
+\end{example}
+\pause Solution: $y=3\big( x^3+2 \big)$
+\begin{align*}
+	\text{Original function} && \text{After shift up} && \text{After vertical stretch} \\
+	x^3 && x^3+2 && 3\big( x^3+2 \big)
+\end{align*}
+\end{frame}
+
+\end{document}

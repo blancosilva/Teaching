@@ -1,0 +1,248 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 10: Rules of Differentiation---Logarithms and the Chain Rules}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Funny curve}{
+\rule{X -> X+YF+}
+\rule{Y -> -FX-Y}}
+\begin{tikzpicture} 
+\draw [DeepSkyBlue4]
+[l-system={Funny curve, axiom=X, order=11, step=2.5pt, angle=90}]
+lindenmayer system; 
+\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{}
+
+\begin{frame}
+\frametitle{What do we know?}
+\framesubtitle{The General Program}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$\alert{intercepts} ($f(x)=0$, $f(0)$)
+\item \alert{Change} from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item \alert{Average Rate of Change} from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item \alert{Relative Change} from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\item \alert{Instantaneous Rate of Change} at $x=a$
+\begin{equation*}
+	f'(a)
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+	\item Power Functions \newline \makebox[1cm]{} $kx^p$
+	\item Polynomials $a_0+a_1x+a_2x^2+\dotsb+a_n x^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{What do we know?}
+\framesubtitle{Rules of Differentiation}
+\begin{description}
+	\item[\textbf{D1}] The derivative of a constant function is zero.
+	\begin{equation*}
+		f(x)=c, \qquad f'(x)=0
+	\end{equation*}
+	\item[\textbf{D2}] The derivative of $f(x)=x$ is $f'(x)=1$.
+	\item[\textbf{D3}] The derivative of a sum is the sum of the derivatives:
+	\begin{equation*}
+		h(x)=f(x)+g(x),\qquad h'(x)=f'(x)+g'(x)
+	\end{equation*}
+	\item[\textbf{D4}] The derivative of a subtraction is the subtraction of the derivatives:
+	\begin{equation*}
+		h(x)=f(x)-g(x),\qquad h'(x)=f'(x)-g'(x)
+	\end{equation*}
+	\item[\textbf{D5}] The derivative of a scalar times a function is a scalar times the derivative of the function.
+	\begin{equation*}
+		h(x)=c\cdot f(x),\qquad h'(x)=c\cdot f'(x)	
+	\end{equation*}
+	\item[\textbf{D6}] \textbf{The Power Rule}
+	\begin{equation*}
+		f(x)=x^n,\qquad f'(x)=nx^{n-1}
+	\end{equation*}
+	\item[\textbf{D7}] The derivative of $f(x)=e^x$ is $f'(x)=e^x$.
+	\item[\textbf{D8}] For any $a>0$, the derivative of $f(x)=a^x$ is $f'(x)=a^x \ln a$.
+\end{description}
+\end{frame}
+
+\section{Warm-up}
+\subsection{}
+
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{}
+\begin{example}
+	Find the tangent line to the graph of $y=f(x)=3x^2-5x+6$ at $x=1$.
+\end{example}
+\pause The best idea here is to use the point-slope equation of a line:
+\begin{equation*}
+	y-y_0 = m(x-x_0)
+\end{equation*}
+All we need to do is to provide with the \emph{ingredients}: $x_0$, $y_0$ and $m$.\pause
+\begin{itemize}[<+->]
+	\item $x_0=1$ is given in the statement of the problem.
+	\item $y_0=f(x_0)=f(1)=3\cdot 1^2-5\cdot 1 + 6 =4$.
+	\item The slope is by definition the derivative of the function $f$ at $x=1$: 
+	\begin{equation*}
+		m=f'(1)
+	\end{equation*}
+	Note that $f'(x)=3\cdot 2x^{2-1}-5\cdot 1=6x-5$; therefore, $m=f'(1)=1$.
+\end{itemize}
+\uncover<6->{The equation of the tangent line to the graph of $f$ at $x=1$ is then
+\begin{equation*}
+	\alert{y-4=x-1}
+\end{equation*}}
+\end{frame}
+
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{}
+\begin{example}
+For what $x$-values is the tangent line to the graph of 
+\begin{equation*}
+y=f(x)=\frac{1}{3}x^3+\frac{1}{2}x^2-6x+4
+\end{equation*} a horizontal line?
+\end{example}
+\pause This is equivalent to asking for what $x$-values is the derivative of $f$ equal to zero (the slope of a horizontal line).  Therefore, we need to solve for $x$ in the equation
+\begin{equation*}
+	f'(x)=0
+\end{equation*}
+\pause Let us compute the derivative of $f$ now:
+\begin{equation*}
+	f'(x)=\frac{1}{3}\cdot 3x^{3-1} + \frac{1}{2}\cdot 2x^{2-1} - 6\cdot 1 + 0 = x^2+x-6
+\end{equation*}
+\pause We are almost done:  Let us solve the quadratic equation
+\begin{equation*}
+	x^2+x-6=0,\qquad \uncover<5->{x=\frac{-1\pm \sqrt{1-4\cdot(-6)}}{2}} \uncover<6->{=\frac{-1\pm 5}{2} = \alert{\{-3, 2\}}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{}
+\begin{example}
+Find all $x$-values for which the tangent line to the graph of the function
+\begin{equation*}
+	y=f(x)=\frac{1}{3}x^3+\frac{1}{2}x^2
+\end{equation*}
+is parallel to the line $12x-2y=41$.
+\end{example}
+\pause First, we need to find the slope of the given line:
+\begin{align*}
+	12x-2y&=41, \uncover<3->{&2y&=12x-41,} \uncover<4->{&y&=\frac{12x-41}{2}=\frac{12}{2}x-\frac{41}{2}=\alert{6}x-\frac{41}{2}}
+\end{align*}
+\pause\pause\pause Second, we find the $x$-values for which the slope of the tangent line of $f$ equals $6$.  For that, we need to compute beforehand the derivative of $f$:
+\begin{equation*}
+	f'(x)=\frac{1}{3}\cdot 3x^{3-1} + \frac{1}{2}\cdot 2x^{2-1}=x^2+x
+\end{equation*}
+\pause We solve now for $x$ in the equation $f'(x)=6$:
+\begin{align*}
+	x^2+x&=6 \uncover<7->{&x^2+x-6&=0} \uncover<8->{&\alert{x}&\alert{=\{-3,2\}}}
+\end{align*}
+\end{frame}
+
+\section{Rules of Differentiation}
+\subsection{Chain Rule and Log rule}
+
+\begin{frame}\frametitle{More Rules of Differentiation}
+\framesubtitle{Rules of Differentiation}
+\begin{description}
+	\item[\textbf{D9}] The derivative of $f(x)=\ln x$ is $f'(x)=1/x$.
+	\item[\textbf{D10}] \alert{Chain Rules:}
+	\begin{itemize}
+		\item If $f(x)= g(x)^n$, then $f'(x)=ng(x)^{n-1} g'(x)$ \newline
+		\item If $f(x)= e^{g(x)}$, then $f'(x)=g'(x) e^{g(x)}$ \newline
+		\item If $f(x)= a^{g(x)}$, then $f'(x)=g'(x) a^{g(x)} \ln a$ \newline
+		\item If $f(x)= \ln g(x)$, then $f'(x)= \dfrac{g'(x)}{g(x)}$ \newline
+	\end{itemize}
+\end{description}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{More Rules of Differentiation}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following functions}
+	\begin{align*}
+		f(x)&=\big( \underbrace{3x-5}_{g(x)} \big)^6 \uncover<2->{&\alert{f'(x)} &\alert{=6 \big( 3x-5 \big)^{6-1}\cdot \underbrace{(3-0)}_{g'(x)} = 18 \big( 3x-5 \big)^5} \\}
+		f(x)&=\big(e^x+4x^6\big)^{54} \uncover<3->{&\alert{f'(x)} &\alert{= 54\big( e^x+4x^6 \big)^{54-1} \big( e^x + 4\cdot 6x^{6-1}\big)} \\}
+		&&&\uncover<4->{\alert{=54\big(e^x+4x^6\big)^{53}\big(e^x+24x^5\big)}} \\
+		f(x)&= \sqrt{3x^2+\ln x} \\
+		&\uncover<5->{=\big( 3x^2+\ln x \big)^{1/2}} 
+		\uncover<5->{&\alert{f'(x)} &\alert{= \frac{1}{2}\big( 3x^2+\ln x \big)^{1/2-1} \big( 3\cdot 2x^{2-1} + \tfrac{1}{x} \big)}\\} 
+		&&&\uncover<6->{\alert{=\frac{1}{2}\big( 3x^2 + \ln x \big)^{-1/2} \big( 6x + \tfrac{1}{x} \big)}} \\
+	\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{More Rules of Differentiation}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following functions}
+	\begin{align*}
+		f(x)&=e^{3x^2-4x+7} \uncover<2->{&\alert{f'(x)}&\alert{=\big( 3\cdot 2x^{2-1}-4\cdot 1 + 0\big) e^{3x^2-4x+7}} \\}
+		&&&\uncover<3->{\alert{=(6x-4)e^{3x^2-4x+7}} \\}
+		f(x)&= 2^{x^6-3e^x} \uncover<4->{&\alert{f'(x)}&\alert{=\big( 6x^{6-1}-3e^x \big) 2^{x^6-3e^x} \ln 2} \\}
+		&&&\uncover<5->{\alert{=(6x^5-3e^x)2^{x^6-3e^x}\ln 2} \\}
+		f(x)&=e^{x^4}-\big(3x^2-2^x\big)^6 \uncover<6->{&\alert{f'(x)}&\alert{=4x^3 e^{x^4} - 6\big( 3x^2-2^x \big)^5 \big( 6x-2^x\ln 2 \big)} \\}
+		f(x)&= \ln \big( 3x^5- e^x \big) \uncover<7->{&\alert{f'(x)}&\alert{=\frac{15x^4-e^x}{3x^5-e^x}} \\}
+		f(x)&=\ln \big(1-x^4+2^x\big) \uncover<8->{&\alert{f'(x)} &\alert{= \frac{-4x^3+2^x \ln 2}{1-x^4+2^x}}}
+	\end{align*}
+\end{block}
+\end{frame}
+\end{document}

@@ -1,0 +1,264 @@
+\documentclass[10pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=black!50!white}
+\setbeamercolor{block title example}{bg=black!50!white}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+	\begin{tikzpicture}[decoration=Koch curve type 2] 
+		\draw[DeepSkyBlue4] decorate{ decorate{ decorate{ (0,0) -- (3,0) }}}; 
+	\end{tikzpicture}  
+	\\
+	\today
+}
+\title{Lesson 9: Conservative vector fields---Exact Equations}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\begin{equation*}
+F\big(x,y,y',\dotsc,y^{(n)}\big)=0
+\end{equation*}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+\item Separable equations $y'=H_1(x) H_2(y)$
+\item Homogeneous First-Order Equations $y'=H(y/x)$
+\item Linear First-Order Equations $y'+P(x)y=Q(x)$
+\item Bernoulli Equations $y'+P(x)y=Q(x)y^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Exact Equations}
+\subsection{Definition}
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Motivation and Definition}
+Consider the general differential equation of first order, $y'=H(x,y)$, and its solution in implicit form, $F(x,y)=C$.
+
+\pause Taking differentials of the solution in this form, we should arrive to the original equation:
+\begin{gather*}
+	F(x,y)=C \\
+	\alert{\frac{\partial F}{\partial x}\, dx + \frac{\partial F}{\partial y}\,  dy = 0} \\
+	\uncover<3->{\alert{\frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\, \frac{dy}{dx} = 0}}
+\end{gather*}
+\pause\pause This means that it must be
+\begin{equation*}
+	\frac{dy}{dx} = -\frac{\partial F/\partial x}{\partial F/\partial y}, \text{ so } H(x,y) = -\frac{\partial F/\partial x}{\partial F/\partial y}
+\end{equation*}
+\pause But note the other possible ways to write our equation:
+\begin{align*}
+	\frac{\partial F}{\partial x}(x,y)+\frac{\partial F}{\partial y}(x,y) \frac{dy}{dx} &= 0 & \frac{\partial F}{\partial x}(x,y)\, dx + \frac{\partial F}{\partial y}(x,y)\, dy &=0
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Motivation and Definition}
+If we receive now a differential equation of first order in one of these forms,
+\begin{align*}
+	M(x,y)+N(x,y)\frac{dy}{dx}&=0 & M(x,y)dx + N(x,y)dy &=0,
+\end{align*}
+we know that the solution is guaranteed, provided 
+\begin{equation*}
+	M(x,y) = \frac{\partial F}{\partial x}, \text{ and } N(x,y)=\frac{\partial F}{\partial y}
+\end{equation*}
+for some suitable function $F(x,y)$.  In this case, it must be $F(x,y)=C$ the solution of the equation (in implicit form).
+
+\pause So the real question is, \alert{how do we know that $M$ and $N$ are the partial derivatives of a function $F$?}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Motivation and Definition}
+This is simple: If $M=\frac{\partial F}{\partial x}$ and $N=\frac{\partial F}{\partial y}$, then it must be (assuming $M$ and $N$ are \emph{good enough})
+\begin{equation*}
+	\frac{\partial M}{\partial y} \uncover<2->{= \frac{\partial}{\partial y} \bigg( \frac{\partial F}{\partial x} \bigg)} \uncover<3->{= \frac{\partial^2 F}{\partial y\partial x}} \uncover<4->{= \frac{\partial^2 F}{\partial x\partial y}}\uncover<5->{= \frac{\partial}{\partial x} \bigg( \frac{\partial F}{\partial y} \bigg)}\uncover<6->{= \frac{\partial N}{\partial x}}
+\end{equation*}
+\begin{definition}<7->
+	We say that a differential equation of the form
+\begin{align*}
+	M(x,y)+N(x,y)\frac{dy}{dx}&=0 & M(x,y)dx + N(x,y)dy &=0,
+\end{align*}
+is exact, if
+\begin{equation*}
+	\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+\end{equation*}
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Motivation and Definition}
+In order to solve these equations, it is enough to find an expression for $F$ from $M$ and $N$ from integration: It must be
+\begin{align*}
+  	F(x,y) &= \int M(x,y)\,dx + C(y), \text{ and} \\
+  	F(x,y) &= \int N(x,y)\, dy + C(x)
+  \end{align*}  
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Examples}
+\begin{block}{Which of the following equations are exact?}
+	\begin{gather*}
+		(6xy-y^3)\, dx +(4y+3x^2-3xy^2)\, dy=0 \\
+		\alert<2>{y^3\, dx-3xy^2\, dy =0 \only<2>{\longleftarrow \text{ this one is not!}}}\\ 
+		\Big(x^3 + \frac{y}{x} \Big)\, dx + (y^2 + \ln x)\, dy = 0 \\  
+		\big( x + \tan^{-1} y\big)\, dx + \frac{x+y}{1+y^2}\, dy =0 \\
+		(e^x \sin y + \tan y)\, dx + (e^x\cos y + x \sec^2 y)\, dy = 0 \\ 
+		\bigg( \frac{2x}{y}- \frac{3y^2}{x^4} \bigg)\, dx + \bigg( \frac{2y}{x^3} - \frac{x^2}{y^2} - \frac{1}{\sqrt{y}} \bigg)\, dy =0
+	\end{gather*}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Let us solve the exact equations}
+\begin{block}{Solve the differential equation}
+\begin{equation*}
+(6xy-y^3)\, dx +(4y+3x^2-3xy^2)\, dy=0
+\end{equation*}
+\end{block}
+We have
+\begin{align*}
+	M(x,y) &= 6xy-y^3 & N(x,y) &= 4y+3x^2-3xy^2 \\
+	\uncover<2->{\frac{\partial M}{\partial y} &=6x-3y^2 & \frac{\partial N}{\partial x} &= 6x-3y^2 \\}
+	\uncover<3->{\int M(x,y)\, dx &= \alert<5>{3x^2y}\alert<6>{-xy^3} + \alert<7>{C(y)}} \uncover<4->{&\int N(x,y)\, dy &= \alert<7>{2y^2} + \alert<5>{3x^2y}\alert<6>{- xy^3} + C(x)}
+\end{align*}
+\pause\pause\pause\pause We proceed to gather (not add!) the different expressions in the integrals:
+\begin{equation*}
+	F(x,y)=\uncover<5->{3x^2y}\uncover<6->{-xy^3}\uncover<7->{+2y^2.}
+\end{equation*}
+\pause\pause\pause Therefore, the solution is $3x^2y-xy^3+2y^2=C$
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Let us solve the exact equations}
+\begin{block}{Solve the differential equation}
+\begin{equation*}
+y^3\, dx - 3xy^2\, dy =0
+\end{equation*}
+\end{block}
+We have
+\begin{align*}
+	M(x,y) &= y^3
+	& N(x,y) &= -3xy^2 \\
+	\uncover<2->{\frac{\partial M}{\partial y} &= \alert{3y^2} & \frac{\partial N}{\partial x} &= \alert{-3y^2} \\}
+\end{align*}
+\pause\pause We cannot use this procedure to solve the equation. But\dots 
+\begin{align*}
+	y^3\, dx - 3xy^2\, dy &=0 &
+	\uncover<5->{3xy^2 \frac{dy}{dx} &= y^3 &}
+	\uncover<7->{\frac{dy}{y} &= \frac{dx}{3x} \\}
+	\uncover<4->{y^3 - 3xy^2 \frac{dy}{dx} &= 0 &}
+	\uncover<6->{\alert<6>{\frac{dy}{dx}} = \frac{y^3}{3xy^2} &= \alert<6>{\frac{y}{3x}} &}
+	\uncover<8->{\ln \lvert y \rvert &=  \tfrac{1}{3} \ln \lvert x \rvert + C \\}
+	\uncover<9>{&&&&\alert{\lvert y \rvert} &\alert{= A\lvert x \rvert^{1/3}}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Let us solve the exact equations}
+\begin{block}{Solve the differential equation}
+\begin{equation*}
+\big( x + \tan^{-1} y\big)\, dx + \frac{x+y}{1+y^2}\, dy =0
+\end{equation*}
+\end{block}
+We have
+\begin{align*}
+	M(x,y) &= x + \tan^{-1} y
+	& N(x,y) &= \frac{x+y}{1+y^2} \\
+	\uncover<2->{\frac{\partial M}{\partial y} &=\frac{1}{1+y^2} & \frac{\partial N}{\partial x} &= \frac{1}{1+y^2} \\}
+	\uncover<3->{\int M(x,y)\, dx &= \alert<6>{\tfrac{1}{2}x^2} + \alert<5>{x\tan^{-1}y} + \alert<7>{C(y)}} \\
+	\uncover<4->{\int N(x,y)\, dy &= \alert<5>{x\tan^{-1}y} + \alert<7>{\tfrac{1}{2}\ln (1+y^2)} + \alert<6>{C(x)}}
+\end{align*}
+\pause\pause\pause\pause Solution:
+\begin{equation*}
+	\uncover<5->{x\tan^{-1} y}\uncover<6->{+\tfrac{1}{2}x^2}\uncover<7->{+\tfrac{1}{2}\ln (1+y^2)}\uncover<8->{=C}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Let us solve the exact equations}
+\begin{block}{Solve the differential equation}
+\begin{equation*}
+(e^x \sin y + \tan y)\, dx + (e^x\cos y + x \sec^2 y)\, dy = 0
+\end{equation*}
+\end{block}
+We have
+\begin{align*}
+	M(x,y) &= e^x \sin y + \tan y
+	& N(x,y) &= e^x\cos y + x \sec^2 y\\
+	\uncover<2->{\frac{\partial M}{\partial y} &=e^x\cos y + \sec^2 y & \frac{\partial N}{\partial x} &= e^x\cos y + \sec^2 y \\}
+	\uncover<3->{\int M(x,y)\, dx &= \alert<5>{e^x\sin y + x\tan y} + C(y)}\\
+	\uncover<4->{\int N(x,y)\, dy &= \alert<5>{e^x\sin y + x\tan y} + C(x)}
+\end{align*}
+\pause\pause\pause\pause Solution:
+\begin{equation*}
+	e^x\sin y + x\tan y =  C
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Exact Equations}
+\framesubtitle{Let us solve the exact equations}
+\begin{block}{Solve the differential equation}
+\begin{equation*}
+\bigg( \frac{2x}{y}- \frac{3y^2}{x^4} \bigg)\, dx + \bigg( \frac{2y}{x^3} - \frac{x^2}{y^2} - \frac{1}{\sqrt{y}} \bigg)\, dy =0
+\end{equation*}
+\end{block}
+We have
+\begin{align*}
+	M(x,y) &= \frac{2x}{y}- \frac{3y^2}{x^4}
+	& N(x,y) &= \frac{2y}{x^3} - \frac{x^2}{y^2} - \frac{1}{\sqrt{y}} \\
+	\uncover<2->{\frac{\partial M}{\partial y} &= -2xy^{-2} - 6x^{-4}y & \frac{\partial N}{\partial x} &= -6x^{-4}y - 2xy^{-2} \\}
+	\uncover<3->{\int M(x,y)\, dx &= \alert<5>{y^{-1}x^2 + y^2 x^{-3}} + \alert<6>{C(y)}} \\
+	\uncover<4->{\int N(x,y)\, dy &= \alert<5>{x^{-3}y^2 + x^2 y^{-1}} \alert<6>{- 2y^{1/2}} + C(x)}
+\end{align*}
+\pause\pause\pause\pause Solution:
+\begin{equation*}
+	x^{-3}y^2+x^2y^{-1}\uncover<6->{-2y^{1/2} = C}
+\end{equation*}
+\end{frame}
+\end{document}

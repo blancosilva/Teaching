@@ -1,0 +1,375 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+\usepackage{wasysym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 12: Marginal Analysis.  Relative Rate of Change}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{plant}{
+	\rule{X -> F-[[X]+x]+F[+FX]-X}
+	\rule{F -> FF}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=15}]
+    lindenmayer system; 
+	\end{tikzpicture}
+	\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=25}] lindenmayer system;
+	\end{tikzpicture}
+	\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=30}] lindenmayer system;
+	\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{}
+
+\begin{frame}
+\frametitle{What do we know?}
+\framesubtitle{The General Program}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$\alert{intercepts} ($f(x)=0$, $f(0)$)
+\item \alert{Change} from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item \alert{Average Rate of Change} from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item \alert{Relative Change} from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\item \alert{Instantaneous Rate of Change} at $x=a$
+\begin{equation*}
+	f'(a)
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+	\item Power Functions \newline \makebox[1cm]{} $kx^p$
+	\item Polynomials $a_0+a_1x+a_2x^2+\dotsb+a_n x^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{What do we know?}
+\framesubtitle{Rules of Differentiation}
+\fontsize{7}{8.2}\selectfont
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{description}
+	\item[\textbf{D1}] $f(x)=c\newline \alert{f'(x)=0}$
+	\item[\textbf{D2}] $f(x)=x\newline \alert{f'(x)=1}$
+	\item[\textbf{D3}] $h(x)=f(x)+g(x)\newline \alert{h'(x)=f'(x)+g'(x)}$
+	\item[\textbf{D4}] $h(x)=f(x)-g(x)\newline \alert{h'(x)=f'(x)-g'(x)}$
+	\item[\textbf{D5}] $h(x)=c\cdot f(x)\newline \alert{h'(x)=c\cdot f'(x)}$
+	\item[\textbf{\alert{D6}}] $f(x)=x^n\newline \alert{f'(x)=nx^{n-1}}$
+	\item[\textbf{\alert{D7}}] $f(x)=e^x\newline \alert{f'(x)=e^x}$
+	\item[\textbf{\alert{D8}}] $f(x)=a^x\newline \alert{f'(x)=a^x \ln a}$
+	\item[\textbf{\alert{D9}}] $f(x)=\ln x\newline \alert{f'(x)=\frac{1}{x}}$
+\end{description}
+\end{column}
+\begin{column}{0.55\linewidth}
+	\begin{description}
+	\item[\textbf{D10}] 
+	\begin{itemize}
+	\item $f(x)=g(x)^n\newline \alert{f'(x)=ng(x)^{n-1}g'(x)}$
+	\item $f(x)=e^{g(x)}\newline \alert{f'(x)=g'(x)e^{g(x)}}$
+	\item $f(x)=a^{g(x)}\newline \alert{f'(x)=g'(x)\ln a\,a^{g(x)}}$
+	\item $f(x)=\ln g(x)\newline \alert{f'(x)=\frac{g'(x)}{g(x)}}$
+	\end{itemize}
+	\item[\textbf{D11}] $h(x)=f(x)\cdot g(x)\newline \alert{h'(x)=f'(x)g(x)+f(x)g'(x)}$
+	\item[\textbf{D12}] $h(x)=f(x)/g(x)\newline \alert{h'(x)=\dfrac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}}$
+\end{description}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Marginal Analysis}
+\subsection{Definition}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Definition}
+\begin{itemize}[<+->]
+\item \textbf{Marginal Analysis} is one of the key features that defines the \emph{classical economics} of \alert{Adam Smith}, and the more mathematical approach of \emph{Neoclassical Economists} pioneered by \alert{Alfred Marshall}.
+\item \alert{What's the principle?}\newline Economic decisions are made at the margin.  For example, a consumer might decide to buy one more apple if the price was reduced by 5\cent, or a business might decide to buy one more van if the cost was reduced by \$1,000. 
+\item \alert{How do we use it?}\newline The extra cost of an extra unit is known as the \alert{marginal cost}; the extra revenue of an extra unit is known as the \alert{marginal revenue}. Marginal Analysis suggests that companies will maximize profit if they produce where marginal cost is equal to marginal revenue, since then they are increasing profit on all previous units produced.
+\item In our case, if we know the \alert{cost} $C(q)$ and \alert{revenue} $R(q)$, then the marginal cost and revenue (denoted $MC$ and $MR$ respectively) are computed as follows:
+\begin{align*}
+	MC(q)&=C'(q) &MR(q)&=R'(q)
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Example}
+\begin{example}
+	In the figure below, is marginal cost greater at $q=5$ or at $q=30$?
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6]
+			\draw(0,0) grid (5,5);
+			\draw(0,5.5) node{\$};
+			\draw(5.5,0) node{$q$};
+			\draw(5.5,5.5) node{$C(q)$};
+			\foreach \x in {1,...,5}{
+				\draw (\x,-0.15) node[below]{$\x0$};
+				\draw (-0.15,\x) node[left]{$\x00$};
+			}
+			\draw[DeepSkyBlue4,ultra thick] (0,0) parabola bend (2,2) (2,2);
+			\draw[DeepSkyBlue4,ultra thick] (2,2) parabola bend (2,2) (4.449489743,5);
+			\only<2->{
+				\draw[red] (2,1.5) -- (4,3.5);
+				\draw[red] (0,0.25) -- (1,1.75);
+			}
+			\end{tikzpicture}
+	\end{center}
+\end{example}
+\pause\pause Note that the marginal cost (being the derivative) could be measured by assessing the value of the slopes of tangent lines.  From the picture, it is clear that the largest of the two slopes happens at $q=5$; that is where the marginal cost is greater.
+\end{frame}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+	The cost of producing $q$ items is given by $C(q)=0.08q^3+75q+1000$.
+	\begin{itemize}
+		\item \alert<2>{Find the marginal cost function.}
+		\item \alert<3->{Find $C(50)$ and $MC(50)$.  Give units and explain what it means about cost of production.}
+	\end{itemize}
+\end{example}
+\pause
+\begin{itemize}[<+->]
+	\item $MC(q)=C'(q)=0.08\cdot3 q^2+75$
+	\item $C(50)=0.08\cdot50^3+75\cdot50+1000=\$14750$, $MC(50)=C'(50)=0.08\cdot3\cdot 50^2+75=\$675$/unit.
+
+	\uncover<4->{This means that it costs \$14750 to produce 50 units.  And at this production level, if we want to increase the production by one unit, we will have to pay some extra \$675 per unit.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+Assume that $C(q)$ and $R(q)$ represent the cost and revenue (resp.) in dollars, of producing $q$ items. 
+\begin{itemize}
+	\item \alert<2>{If $C(50)=4300$ and $MC(50)=24$, estimate $C(52)$.}
+	\item \alert<3>{If $MC(50)=24$ and $MR(50)=35$, approximately how much profit is earned by the 51st item?}
+	\item \alert<4>{If $C'(100)=38$ and $R'(100)=35$, should the company produce the 101st item?  Why?}
+\end{itemize}
+\end{example}
+\pause\begin{itemize}[<+->]
+	\item $C(52)\approx C(50)+2\cdot MC(50) = 4300+2\cdot 24 =\$4348$
+	\item $MR(50)-MC(50)=35-24=\$11$/item
+	\item $MR(100)-MC(100)=R'(100)-C'(100)=35-38=-\$3$/item.  We would be losing \$3 per item.  Imma say \alert{no}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+	An industrial production process costs $C(q)$ million dollars to produce $q$ million units; these units then sell for $R(q)$ million dollars.
+
+	If $C(2.1)=5.2$, $R(2.1)=6.6$, $MC(2.1)=0.6$, and $MR(2.1)=0.7$, calculate the following:
+	\begin{itemize}
+		\item \alert<2>{The profit by producing 2.1 million units.}
+		\item The approximate change in revenue if production increases from 2.1 to 2.15 million units (in thousand dollars)
+		\item The approximate change in revenue if production decreases from 2.1 to 2.07 million units (in thousand dollars)
+		\item The approximate change in profit if production increases from 2.1 to 2.15 million units (in thousand dollars)
+	\end{itemize}
+\end{example}
+\pause \begin{itemize}
+	\item $\Pi(2.1)=R(2.1)-C(2.1)=6.6-5.2=1.4$ million dollars.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+	An industrial production process costs $C(q)$ million dollars to produce $q$ million units; these units then sell for $R(q)$ million dollars.
+
+	If $C(2.1)=5.2$, $R(2.1)=6.6$, $MC(2.1)=0.6$, and $MR(2.1)=0.7$, calculate the following:
+	\begin{itemize}
+		\item The profit by producing 2.1 million units.
+		\item \alert{The approximate change in revenue if production increases from 2.1 to 2.15 million units (in thousand dollars)}
+		\item The approximate change in revenue if production decreases from 2.1 to 2.07 million units (in thousand dollars)
+		\item The approximate change in profit if production increases from 2.1 to 2.15 million units (in thousand dollars)
+	\end{itemize}
+\end{example}
+\begin{itemize}
+	\item We need to approximate $R(2.15)-R(2.1)$.
+	\begin{equation*}
+	     \uncover<2->{R(2.15) - R(2.1) \approx (2.15-2.1)\cdot MR(2.1)}\uncover<3->{=0.05 \cdot 0.7=0.035}
+     \end{equation*}
+     \pause\pause\pause Therefore, $R(2.15)-R(2.1)\approx \$35,000.$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+	An industrial production process costs $C(q)$ million dollars to produce $q$ million units; these units then sell for $R(q)$ million dollars.
+
+	If $C(2.1)=5.2$, $R(2.1)=6.6$, $MC(2.1)=0.6$, and $MR(2.1)=0.7$, calculate the following:
+	\begin{itemize}
+		\item The profit by producing 2.1 million units.
+		\item The approximate change in revenue if production increases from 2.1 to 2.15 million units (in thousand dollars)
+		\item \alert{The approximate change in revenue if production decreases from 2.1 to 2.07 million units (in thousand dollars)}
+		\item The approximate change in profit if production increases from 2.1 to 2.15 million units (in thousand dollars)
+	\end{itemize}
+\end{example}
+\begin{itemize}
+	\item We need to approximate $R(2.07)-R(2.1)$.
+	\begin{equation*}
+	     \uncover<2->{R(2.07) - R(2.1) \approx (2.07-2.1)\cdot MR(2.1)}\uncover<3->{=-0.03 \cdot 0.7=-0.021}
+     \end{equation*}
+     \pause\pause\pause Therefore, $R(2.07)-R(2.1)\approx \$21,000.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+	An industrial production process costs $C(q)$ million dollars to produce $q$ million units; these units then sell for $R(q)$ million dollars.
+
+	If $C(2.1)=5.2$, $R(2.1)=6.6$, $MC(2.1)=0.6$, and $MR(2.1)=0.7$, calculate the following:
+	\begin{itemize}
+		\item The profit by producing 2.1 million units.
+		\item The approximate change in revenue if production increases from 2.1 to 2.15 million units (in thousand dollars)
+		\item The approximate change in revenue if production decreases from 2.1 to 2.07 million units (in thousand dollars)
+		\item \alert{The approximate change in profit if production increases from 2.1 to 2.15 million units (in thousand dollars)}
+	\end{itemize}
+\end{example}
+We need to approximate $\Pi(2.15)-\Pi(2.1)$.  
+\only<1>{
+\begin{equation*}
+	\Pi(2.15)-\Pi(2.1) = \overbrace{\big( R(2.15)-C(2.15) \big)}^{\Pi(2.15)} - \overbrace{\big( R(2.1)-C(2.1) \big)}^{\Pi(2.1)}
+\end{equation*}}
+\only<2>{
+\begin{equation*}
+	\Pi(2.15)-\Pi(2.1) = \big( R(2.15)-R(2.1) \big) - \big( C(2.15)-C(2.1) \big)
+\end{equation*}}
+\only<3->{We already know $R(2.15)-R(2.1)\approx 0.035$.  We need to approximate now $C(2.15)-C(2.1)$.
+\begin{equation*}
+	\uncover<3->{C(2.15) - C(2.1) \approx (2.15-2.1)\cdot MC(2.1)}\uncover<4->{=0.05 \cdot 0.6 = 0.03}
+\end{equation*}}
+\end{frame}
+
+\begin{frame}\frametitle{Marginal Analysis}
+\framesubtitle{Examples}
+\begin{example}
+	An industrial production process costs $C(q)$ million dollars to produce $q$ million units; these units then sell for $R(q)$ million dollars.
+
+	If $C(2.1)=5.2$, $R(2.1)=6.6$, $MC(2.1)=0.6$, and $MR(2.1)=0.7$, calculate the following:
+	\begin{itemize}
+		\item The profit by producing 2.1 million units.
+		\item The approximate change in revenue if production increases from 2.1 to 2.15 million units (in thousand dollars)
+		\item The approximate change in revenue if production decreases from 2.1 to 2.07 million units (in thousand dollars)
+		\item \alert{The approximate change in profit if production increases from 2.1 to 2.15 million units (in thousand dollars)}
+	\end{itemize}
+\end{example}
+\begin{align*}
+		\Pi(2.15)&-\Pi(2.1) =\only<1>{\overbrace{\big( R(2.15)-C(2.15) \big)}^{\Pi(2.15)} - \overbrace{\big( R(2.1)-C(2.1) \big)}^{\Pi(2.1)}}\only<2->{\big( R(2.15)-C(2.15) \big) - \big( R(2.1)-C(2.1) \big)} \\
+		\uncover<2->{&= \big( R(2.15)-R(2.1) \big) - \big( C(2.15) - C(2.1) \big) = 0.035-0.03=\alert{0.005} }
+     \end{align*}
+     \uncover<3>{The approximate change in profit is \alert{\$5,000}}
+\end{frame}
+
+\section{Relative Rate of Change}
+\subsection{Definition}
+
+\begin{frame}\frametitle{Relative Rate of Change}
+\framesubtitle{Definition}
+\begin{definition}
+The \alert{relative rate of change} of $y=f(x)$ at $x=a$ is defined to be
+\begin{equation*}
+	\frac{f'(a)}{f(a)}
+\end{equation*}
+\pause Similar to the \emph{relative change}, it has no units.  We usually represent it as a percentage (after multiplying times 100, of course)
+\end{definition}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Relative Rate of Change}
+\framesubtitle{Examples}
+\begin{example}
+	Annual world soybean production, $W=f(t)$, in million tons, is a function of $t$ years since the start of 2000.
+	\begin{itemize}
+		\item \alert<2>{Interpret the statements $f(8)=253$ and $f'(8)=17$ in terms of soybean production.}
+		\item \alert<3>{Calculate the relative rate of change of $W$ at $t=8$; interpret it in terms of soybean production.}
+	\end{itemize}
+\end{example}
+\pause \begin{itemize}[<+->]
+	\item 253 million tons of soybeans were produced in the year 2008.  That year, the annual soybean production was \alert{increasing at a rate of 17 million tons per year}.
+	\item We have
+	\begin{equation*}
+		\frac{f'(8)}{f(8)}=\frac{17}{253}=0.067
+	\end{equation*}
+	In 2008, annual soybean production was \alert{increasing at a rate of 6.7\% per year.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Relative Rate of Change}
+\framesubtitle{Examples}
+\begin{block}
+	{Compute the relative rate of change of the following functions:}
+	\begin{align*}
+		f(x)&=5x+4 \uncover<2->{&f'(x)&=5} \uncover<3->{&\alert{\frac{f'(x)}{f(x)}}&\alert{=\frac{5}{5x+4}} \\}
+		f(x)&=4x^2+\sqrt{x} \uncover<4->{&f'(x)&=8x+\tfrac{1}{2}x^{-1/2}} \uncover<5->{&\alert{\frac{f'(x)}{f(x)}}&\alert{=\frac{8x+\tfrac{1}{2}x^{-1/2}}{4x^2+\sqrt{x}}} \\}
+		f(x)&=6e^{5x} \uncover<6->{&f'(x)&=30e^{5x}} \uncover<7->{&\alert{\frac{f'(x)}{f(x)}}&\alert{=\frac{30e^{5x}}{6e^{5x}}=5} \\}
+		f(x)&=\ln(3x-5) \uncover<8->{&f'(x)&=\frac{3}{3x-5}} \uncover<9->{&\alert{\frac{f'(x)}{f(x)}}&\alert{=\frac{3}{(3x-5)\ln(3x-5)}}}
+	\end{align*}
+\end{block}
+\end{frame}
+
+\end{document}

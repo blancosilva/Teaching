@@ -1,0 +1,429 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+\usepackage{wasysym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 13: Using the Derivative I}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{testrhombus}{
+	\rule{F -> F+FF++FF+F+++F++F+++F}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4]
+    \draw [l-system={testrhombus, axiom=F+FF++FF+F+++F++F+++F, order=3, step=1.5pt, angle=90}]
+    lindenmayer system; 
+	\end{tikzpicture}	
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{}
+
+\begin{frame}
+\frametitle{What do we know?}
+\framesubtitle{The General Program}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$\alert{intercepts} ($f(x)=0$, $f(0)$)
+\item \alert{Change} from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item \alert{Average Rate of Change} from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item \alert{Relative Change} from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\item \alert{Instantaneous Rate of Change} at $x=a$
+\begin{equation*}
+	f'(a)
+\end{equation*}
+\item \alert{Relative Rate of Change} at $x=a$
+\begin{equation*}
+	\frac{f'(a)}{f(a)}
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+	\item Power Functions \newline \makebox[1cm]{} $kx^p$
+	\item Polynomials $a_0+a_1x+a_2x^2+\dotsb+a_n x^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Using the Derivative}
+\subsection{Definitions}
+
+\begin{frame}\frametitle{Using the Derivative}
+    
+    Taking derivatives of a derivative yields what we call a \alert{second derivative}.  We denote them by $f''(x)$.  \pause Let us compute some:
+
+    \begin{block}
+    	{Compute the second derivative of the following functions:}
+    	\begin{align*}
+    		f(x)&=\pi x^2 - 3ex +13 \uncover<3->{&f'(x)&= 2\pi x - 3e} \\
+    		\uncover<4->{&&f''(x)&=2\pi} \\
+    		g(x)&=\ln (3x^2-4) \uncover<5->{&g'(x)&=\frac{6x}{3x^2-4} \\}
+    		\uncover<6->{&&g''(x)&=\frac{6(3x^2-4)-6x\cdot 6x}{(3x^2-4)^2}}\\
+    		h(x)&=\big( x^5 - x^{1/3}\big)^2 \uncover<7->{&h'(x)&=2 \big( x^5 - x^{1/3} \big) \big( 5x^4 - \tfrac{1}{3}x^{-2/3} \big) \\}
+    		\uncover<8->{&&&=\big( 2x^5 - 2x^{1/3}\big) \big( 5x^4 - \frac{1}{3}x^{-2/3} \big) \\}
+    		\uncover<9->{&&&= 10x^{9} -\frac{32}{3}x^{13/3} + \frac{2}{3}x^{-1/3} \\}
+    		\uncover<10->{&&h''(x)&= 90x^8 - \frac{416}{9}x^{10/3} - \frac{2}{9}x^{-4/3}}
+    	\end{align*}
+    \end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{How does the sign of derivatives affect the shape of a function?}
+Because the derivative is linked to the values of slopes of tangent lines, we have the following results:
+\begin{center}
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{c||c}	
+		\rowcolor{DeepSkyBlue4}	
+		If the derivative is\dots & then, the function is\dots \\
+		$f'(x)>0$ & increasing at $x$ \\
+		$f'(x)<0$ & decreasing at $x$ \\
+		$f'(x)=0$ & \emph{stationary} at $x$
+	\end{tabular}	
+\end{center}
+\pause We say that $f$ has a \alert{critical point} at $x$ if $f'(x)=0$, or $f'(x)$ is not defined.
+
+\pause The sign of the second derivative also offers a clear interpretation in terms of graph shape.
+\begin{center}
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{c||c}	
+		\rowcolor{DeepSkyBlue4}	
+		If the second derivative is\dots & then, the function is\dots \\
+		$f''(x)>0$ & concave upwards at $x$ ($\smile$) \\
+		$f''(x)<0$ & concave downwards at $x$ ($\frown$) \\
+		$f''(x)=0$ & the concavity might change at $x$
+	\end{tabular}
+\end{center}
+\pause We say that $f$ has an \alert{inflection point} at $x$ if the concavity of $f$ changes at $x$.
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+    
+\framesubtitle{Maxima and Minima}
+\begin{definition}
+	We say that a critical point $x=a$ is
+	\begin{itemize}
+		\item a (local) \alert{minimum} of $f$, if $f(a)\leq f(x)$ for nearby values of $x$.
+		\item a (local) \alert{maximum} of $f$, if $f(a) \geq f(x)$ for nearby values of $x$.
+	\end{itemize}
+\end{definition}
+\pause We have two tests to verify whether a critical point is a maximum or a minimum
+\pause \begin{block}
+	{The First Derivative Test}
+	\begin{itemize}
+		\item If $f'(c)=0$, $f'(x)<0$ for $x<c$, and $f'(x)>0$ for $x>c$, then $x=c$ is a local minimum.
+		\item If $f'(c)=0$, $f'(x)>0$ for $x<c$, and $f'(x)<0$ for $x>c$, then $x=c$ is a local maximum.
+	\end{itemize}
+\end{block}
+
+\pause \begin{block}
+	{The Second Derivative Test}
+	\begin{itemize}
+		\item If $f'(c)=0$, and $f''(c)>0$, then $x=c$ is a local minimum.
+		\item If $f'(c)=0$, and $f''(c)<0$, then $x=c$ is a local maximum.
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{block}
+	{Find all critical points and inflection points of the following function}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\draw[thick] (0,0) -- (8,0) node[right]{$t$};
+			\draw[thick] (0,0) -- (0,7);
+			\draw[DeepSkyBlue4,very thick] (0,0) to [out=80, in=180] (1,3)
+												 to [out=0, in=180] (3,2)
+												 to [out=0, in=180] (5,4)
+												 to [out=0, in=180] (6,3)
+												 to [out=0, in=-90] (7,6);
+			\draw (6,6) node{$f(t)$};
+			\only<2->{
+			\filldraw[red] (1,3) circle (2pt) node[above]{M};
+			\filldraw[red] (3,2) circle (2pt) node[below]{m};
+			\filldraw[red] (5,4) circle (2pt) node[above]{M};
+			\filldraw[red] (6,3) circle (2pt) node[below]{m};
+			}
+			\only<3->{
+			\filldraw[black] (2,2.5) circle (2pt);
+			\filldraw[black] (4,3) circle (2pt);
+			\filldraw[black] (5.5,3.5) circle (2pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+The figure below is a graph of $f'(x)$.  Find the $x$--values that are critical points of the function $f$ itself. Are they local maxima, local minima, or neither?
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-3,0) -- (3,0);
+		\draw (0,-1.25) -- (0,2.25);
+		\draw (0.125,-1) -- (-0.125,-1) node[left]{$-2$};
+		\draw (0.125,1) -- (-0.125,1) node[left]{$2$};
+		\draw (0.125,2) -- (-0.125,2) node[left]{$4$};
+		\draw (-2,0.125) -- (-2,-0.125) node[below]{$-2$};
+		\draw (-1,0.125) -- (-1,-0.125) node[below]{$-1$};
+		\draw (1,0.125) -- (1,-0.125) node[below]{$1$};
+		\draw (2,0.125) -- (2,-0.125) node[below]{$2$};
+		\draw[DeepSkyBlue4,thick] (-1.6,-1.25) to [out=70,in=220] (-1,1)
+											   to [out=0, in=180] (0,0.5)
+											   to [out=0, in=180] (1,0)
+											   to [out=20, in=-110] (1.6,2.25);
+		\only<2->{
+		\filldraw[red] (-1.45,0) circle (2pt);
+		\filldraw[red] (1,0) circle (2pt);
+		}
+	\end{tikzpicture}
+\end{center}
+\end{example}
+\pause We have two critical points ($f'(x)=0$):
+\begin{itemize}
+ 	\item<3->{One at $c=-1.5$.  Note how $f'(x)<0$ for $x<-1.5$ and $f'(x)>0$ for $x>-1.5$.  It must be a minimum at $c=-1.5$.}
+ 	\item<4->{Another at $c=1$.  Note how $f'(x)>0$ both before and after $c=1$.  This point is neither maximum nor minimum.}
+ \end{itemize} 
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+	The function $f(x)=x^4-7x^3+17x$ has a critical point at $x=1$.  Use the second derivative test to identify it as a local maximum or local minimum.
+\end{example}
+\pause We need to evaluate $f''(1)$.
+\begin{align*}
+	\uncover<3->{f'(x)&=4x^3 -21 x^2+17 \\}
+	\uncover<4->{f''(x)&=12x^2-42x \\}
+	\uncover<5->{\alert{f''(1)}&\alert{= 12-42 =-30<0}}
+\end{align*}
+\uncover<6->{Therefore, $x=1$ is a local maximum of $f$.}
+
+\vspace{2cm}
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+	Use the first derivative to find all critical points, and use the second derivative to find all inflection points of the function 
+	\begin{equation*}
+	f(x)=2x^3+3x^2-180x+3.
+	\end{equation*}  
+	Identify each critical point as a local maximum, a local minimum, or neither.
+\end{example}
+\pause We have $f'(x)=6x^2+6x-180$; therefore, the critical points are
+\begin{equation*}
+	x=\frac{-6\pm\sqrt{36-4\cdot6\cdot(-180)}}{12}=\{-6,5\}
+\end{equation*}
+\pause To decide whether they are local max or min, we will make use of a sign chart:
+\begin{center}
+	\begin{tikzpicture}[scale=0.4]
+		\uncover<3->{
+		\draw[<->] (-10,0) -- (10,0);	
+		\draw (-10.9,0) node{$-\infty$};
+		\draw (10.7,0) node{$\infty$};
+		\foreach \x in {-9,...,9}{\draw (\x,0.125) -- (\x,-0.125); }
+		\draw (0,-0.25) node[below]{$0$};}
+		\uncover<4->{
+		\draw (-10,3) -- (10,3);
+		\draw (-6,0) -- (-6,3);
+		\draw (5,0) -- (5,3);
+		\draw (-6,-0.25) node[below]{$-6$};
+		\draw (5,-0.25) node[below]{$5$};
+		}
+		\uncover<5->{
+		\draw (-10,2) node[DeepSkyBlue4,scale=0.6]{$6\cdot(-7)^2+6\cdot(-7)-180=72>0$};
+		\draw[->,thick,DeepSkyBlue4] (-9,0.5) -- (-7,1.5);
+		}
+		\uncover<6->{
+		\draw (0,2) node[DeepSkyBlue4,scale=0.6]{$6\cdot 0^2+6\cdot 0 -180 = -180<0$};
+		\draw[->,thick,DeepSkyBlue4] (-1,1.5) -- (1,0.5);
+		}
+		\uncover<7->{
+		\draw (8.5,2) node[DeepSkyBlue4,scale=0.6]{$6\cdot 6^2+6\cdot 6 -180 = 72>0$};
+		\draw[->,thick,DeepSkyBlue4] (7,0.5) -- (9,1.5);
+		}
+		\uncover<8->{
+		\draw (-4.5,-0.25) node[DeepSkyBlue4,below]{$\leftarrow M$};
+		\draw (6.2,-0.25) node[DeepSkyBlue4,below]{$\leftarrow m$};
+		}
+	\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+	Use the first derivative to find all critical points, and use the second derivative to find all inflection points of the function 
+	\begin{equation*}
+	f(x)=2x^3+3x^2-180x+3.
+	\end{equation*}  
+	Identify each critical point as a local maximum, a local minimum, or neither.
+\end{example}
+To look for inflection points, we need to compute the second derivative:
+\begin{align*}
+	f(x)&=2x^3+3x^2-180x+3, &f'(x)&=6x^2+6x-180\uncover<2->{, &f''(x)&=12x+6}
+\end{align*}
+\uncover<3->{The inflection points are among the zeros of the second derivative:}
+\begin{align*}
+	\uncover<4->{f''(x)&=0}
+	\uncover<5->{, &12x+6&=0} 
+	\uncover<6->{, &x&=\frac{-6}{12}=-0.5}
+\end{align*}
+\uncover<6->{To decide whether this is an actual inflection point, we need another sign chart!}
+\begin{center}
+	\begin{tikzpicture}[scale=0.4]
+		\uncover<6->{
+		\draw[<->] (-10,0) -- (10,0);	
+		\draw (-10.9,0) node{$-\infty$};
+		\draw (10.7,0) node{$\infty$};
+		\foreach \x in {-9,...,9}{\draw (\x,0.125) -- (\x,-0.125); }
+		\draw (-10,2) -- (10,2);
+		\draw (-0.5,0) -- (-0.5,2);
+		\draw (-0.5,-0.25) node[below]{$-0.5$};
+		}
+		\uncover<7->{
+		\draw (-8,1.5) node[DeepSkyBlue4,scale=0.6]{$12\cdot(-1)+6=-6<0$};
+		\draw[thick,DeepSkyBlue4] (-4,0.5) parabola bend (-3, 1.5) (-2,0.5);
+		}
+		\uncover<8->{
+		\draw (7,1.5) node[DeepSkyBlue4,scale=0.6]{$12\cdot 0 +6=6>0$};
+		\draw[thick,DeepSkyBlue4] (0.5,1.5) parabola bend (1.5,0.5) (2.5,1.5);
+		\draw[DeepSkyBlue4] (4,-0.25) node[below]{$\leftarrow \text{inflection point}$};
+		}
+	\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+	Find constant $a$ and $b$ so that the minimum of the parabola $f(x)=x^2+ax+b$ is at the point $(6,2)$.
+\end{example}
+\pause If the point $(6,2)$ is in the graph of $f$, it must be $f(6)=2$.  This gives us a first condition on the unknown parameters $a$ and $b$:
+\begin{align*}
+	\uncover<3->{f(6)&=2}
+	\uncover<4->{, &6^2+6a+b&=2}
+	\uncover<5->{, &\alert{6a+b}&\alert{=-34}}
+\end{align*}
+\uncover<6->{If the point $(6,2)$ is to be a minimum, in particular it must be a critical point: this gives a second condition on $a$ and $b$: $f'(6)=0$}
+\begin{align*}
+	\uncover<7->{f'(x)&=2x+a \\}
+	\uncover<8->{f'(6)&=0}
+	\uncover<8->{, &2\cdot 6 + a &=0}
+	\uncover<9->{, &\alert{a} &\alert{= -12}}
+\end{align*}
+\uncover<10->{Two conditions are enough to find the value of two unknowns:}
+\begin{equation*}
+	\uncover<11->{
+	\begin{cases}
+		6a+b=-34 \\ a=-12
+	\end{cases}\qquad}
+	\uncover<12->{
+	\begin{cases}
+		a=-12\\ b=-34+6\cdot 12=38
+	\end{cases}\qquad
+	}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+	Find constant $a$ and $b$ so that the minimum of the parabola $f(x)=x^2+ax+b$ is at the point $(6,2)$.
+\end{example}    
+The equation of the parabola is then $f(x)=x^2-12x+38$.  It is easy to check that $(6,2)$ is indeed a minimum (just in case!)
+\begin{align*}
+	\uncover<2->{f(x)&=x^2-12x+38}
+	\uncover<3->{, &f'(x)&=2x-12}
+	\uncover<4->{, &f''(x)&=2}
+\end{align*}
+\uncover<5->{If $(6,2)$ is to be a minimum, it should be $f''(6)>0$.  This is obviously satisfied.  We are good.}
+
+\vspace{3cm}
+\end{frame}
+
+\begin{frame}\frametitle{Using the Derivative}
+\framesubtitle{Examples}
+\begin{example}
+	For what values of $a$ and $b$ does $f(x)=a(x-b\ln x)$ have a local extremum at the point $(5,8)$?
+\end{example}
+\pause  We need two conditions, because we have two unknowns.  The first comes from the fact that the point $(5,8)$ is in the graph of $f$:
+\begin{align*}
+	\uncover<3->{f(5)&=8}
+	\uncover<4->{, &\alert{a(5-b\ln 5)}&\alert{=8}}
+\end{align*}
+\uncover<5->{The second comes from the fact that $(5,8)$ is a critical point: $f'(5)=0$}
+\begin{align*}
+	\uncover<6->{f'(x)&=a\Big( 1 - \frac{b}{x} \Big)}
+	\uncover<7->{, &f'(5)&=0}
+	\uncover<8->{, &\alert{a \Big( 1 - \frac{b}{5}\Big)} &\alert{= 0}}
+\end{align*}
+\uncover<9->{Let us solve for $a$ and $b$.  The second condition looks easier: it can only be $a=0$ or $b=5$}
+\begin{itemize}
+	\item<10-> If $a=0$, then the first condition is not satisfied, so we need to disregard this option.
+	\item<11-> If \alert{$b=5$}, the first condition turns into
+	\begin{equation*}
+		a(5-5\ln 5)=8
+		\uncover<12->{,\qquad \alert{a}=\frac{8}{5-5\ln 5}\approx \alert{-2.625369982}}
+	\end{equation*}
+\end{itemize}
+\end{frame}
+\end{document}

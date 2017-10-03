@@ -1,0 +1,450 @@
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Funny curve}{
+\rule{X -> X+YF+}
+  \rule{Y -> -FX-Y}}
+	\begin{tikzpicture} 
+    \draw [DeepSkyBlue4]
+    [l-system={Funny curve, axiom=X, order=11, step=2.5pt, angle=90}]
+    lindenmayer system; 
+	\end{tikzpicture}
+}
+\title{Lesson 13: The General Second-Order Linear Equations with Constant Coefficients: Variation of Parameters}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Warm up}
+\subsection{Integration by Parts}
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{Remembering Tricks using Integrations by Parts}
+   \begin{block}
+    	{Compute the following integral:}
+    	\begin{equation*}
+    		\int e^x\sin x\, dx
+    	\end{equation*}
+    \end{block} 
+    \pause We start with integration by parts:
+    \begin{align*}
+    	u&=e^x & dv&=\sin x \\
+    	du&=e^x &v&= -\cos x
+    \end{align*}
+    It is then
+    \begin{equation*}
+    	\int e^x\sin x\, dx = -e^x\cos x + \int e^x\cos x\, dx
+    \end{equation*}
+    \pause This new integral, can be also done by parts:
+    \begin{align*}
+    	u&=e^x &dv&=\cos x
+    \end{align*}
+    This gives us
+    \begin{align*}
+    	\alert{\int e^x\sin x} &= -e^x\cos x + \Big( e^x\sin x - \int e^x\sin x\, dx\Big) \\
+    	&= -e^x\cos x + e^x\sin x - \alert{\int e^x\sin x\, dx}
+    \end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{Remembering Tricks using Integrations by Parts}
+   \begin{block}
+    	{Compute the following integral:}
+    	\begin{equation*}
+    		\int e^x\sin x\, dx
+    	\end{equation*}
+    \end{block} 
+    This means, that it must be
+    \begin{equation*}
+    2 \int e^x\sin x\, dx = -e^x\cos x + e^x\sin x,
+    \end{equation*}
+    or simplifying,
+    \begin{equation*}
+    \int e^x\sin x\, dx = \tfrac{1}{2} e^x \big( \sin x - \cos x \big)
+    \end{equation*}
+
+    \vspace{2.5cm}
+\end{frame}
+
+\subsection{Cramer's Rule}
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{Cramer's Rule}
+Given the system of $2$ equations with $2$ variables
+\begin{equation*}
+	\begin{cases}
+		a_{1,1} x + a_{2,1} y =b_1 \\
+		a_{1,2} x + a_{2,2} y =b_2
+	\end{cases}
+\end{equation*}
+We can code it in matrix form:
+\begin{equation*}
+	\underbrace{\begin{bmatrix}
+	a_{1,1} & a_{2,1} \\
+	a_{1,2} & a_{2,2}
+	\end{bmatrix}}_{A} \cdot
+	\begin{bmatrix}
+		x\\ y 
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		b_1 \\ b_2 
+	\end{bmatrix}
+\end{equation*}
+If the determinant of $A$ is not zero, then we may write the solutions to this system using Cramer's rule as
+\begin{align*}
+	x &= \frac{1}{\det A} \begin{vmatrix}
+		b_1 & a_{2,1} \\ b_2 & a_{2,2}
+	\end{vmatrix} &
+	y &= \frac{1}{\det A} \begin{vmatrix}
+		a_{1,1} & b_1 \\ a_{1,2} & b_2
+	\end{vmatrix}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Warm-up}
+\framesubtitle{Cramer's Rule: Example}
+\begin{block}
+	{Use Cramer's rule to solve the following system}
+	\begin{equation*}
+		\begin{cases}
+			4x - 3y = 7 \\
+			3x + 5y = -2
+		\end{cases}
+	\end{equation*}
+\end{block}
+\pause We code it in matrix form:
+\begin{equation*}
+	\underbrace{\begin{bmatrix}
+		4 & -3 \\ 3 & 5
+	\end{bmatrix}}_{A}
+	\begin{bmatrix}
+		x \\ y
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		7 \\ -2
+	\end{bmatrix}
+\end{equation*}
+\pause Note that the determinant of $A$ is non-zero:
+\begin{equation*}
+	\det A = \begin{vmatrix}
+		4 & -3 \\ 3 & 5
+	\end{vmatrix} = 4\cdot 5- (-3)\cdot 3 = 29
+\end{equation*}
+\pause The solution of the system is then
+\begin{align*}
+	x&=\frac{1}{29} \begin{vmatrix}
+		\alert{7} & -3 \\ \alert{-2} & 5
+	\end{vmatrix} = \frac{7\cdot 5 - (-2)(-3) }{29}=\frac{29}{29}=1 \\
+	\uncover<5->{y&= \frac{1}{29} \begin{vmatrix}
+		4 & \alert{7} \\ 3 & \alert{-2}
+	\end{vmatrix} = \frac{4\cdot (-2) - 7\cdot 3}{29} = -\frac{29}{29}=-1}
+\end{align*}
+\end{frame}
+
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item Linear Equations (Intro)
+	\item Homogeneous with Constant Coefficients
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section[Variation of Parameters]{Second-Order Linear Equations with Constant Coefficients: Variation of Parameters}
+\subsection{The Formula}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{The Formulas}
+   Consider now the \alert{non-homogeneous} linear second-order differential equation with constant coefficients:
+   \begin{equation*}
+   	ay''+by'+cy=f(x)
+   \end{equation*}
+\pause The solution of this equation comes in the form
+\begin{equation*}
+   	y=A(x)y_1(x)+B(x)y_2(x),
+   \end{equation*}   
+   where $y_1$ and $y_2$ are the solutions of the homogeneous equation $ay''+by'+cy=0$ that we found in the previous lecture, and the functions $A(x), B(x)$ are computed as follows:
+   \begin{align*}
+   	A(x) &= -\frac{1}{a} \int \frac{y_2(x) f(x)}{W(y_1,y_2)}\, dx 
+   	&B(x) &= \frac{1}{a} \int \frac{y_1(x) f(x)}{W(y_1,y_2)}\, dx.
+   \end{align*}
+   Note that there will be a different constant after each integration.
+\end{frame}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{The Formulas}
+This is then the algorithm to solve non-homogeneous second-order linear equations with constant coefficients:
+\begin{equation*}
+	ay''+by'+cy=f(x)
+\end{equation*}
+\pause
+\begin{description}[<+->]
+	\item[\textbf{Step \#1:}] Find two solutions $y_1(x)$, $y_2(x)$ of the homogeneous equation $ay''+by'+cy=0$, using the technique from last lecture.
+	\item[\textbf{Step \#2:}] Compute their Wronkskian $W(y_1,y_2)$ (we know it is never zero!).
+	\item[\textbf{Step \#3:}] Compute the integrals 
+   \begin{align*}
+   	A(x) &= -\frac{1}{a} \int \frac{y_2(x) f(x)}{W(y_1,y_2)}\, dx 
+   	&B(x) &= \frac{1}{a} \int \frac{y_1(x) f(x)}{W(y_1,y_2)}\, dx.
+   \end{align*}
+	\item[\textbf{Step \#4:}] The solution is then
+	\begin{equation*}
+		y=A(x)y_1(x)+B(x)y_2(x)	
+	\end{equation*}
+\end{description}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Examples}
+\begin{block}
+	{Solve the differential equation}
+	\begin{equation*}
+		y''+3y'+2y=4e^x
+	\end{equation*}
+\end{block}
+\pause
+\begin{itemize}[<+->]
+	\item Solve the homogeneous equation $y''+3y'+2y=0$:
+	\begin{equation*}
+		r^2+3r+2=0, \qquad r=\frac{-3\pm \sqrt{9-4\cdot 2}}{2}=\frac{-3\pm 1}{2}=\{-2,-1\}
+	\end{equation*}
+	We have $y_1(x)=e^{-x}$, $y_2(x)=e^{-2x}$.
+	\item Compute the Wronskian:
+	\begin{equation*}
+		W(y_1,y_2)= \begin{vmatrix}
+			e^{-x} & e^{-2x} \\ -e^{-x} & -2e^{-2x}
+		\end{vmatrix} = -2e^{-x}e^{-2x} + e^{-x}e^{-2x} = -e^{-3x}
+	\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Examples}
+\begin{block}
+	{Solve the differential equation}
+	\begin{equation*}
+		y''+3y'+2y=4e^x
+	\end{equation*}
+\end{block}
+\begin{itemize}
+	\item Compute the \emph{parameter} functions $A$ and $B$:
+	\begin{align*}
+		A(x)&= -\int \frac{y_2(x) f(x)}{W(y_1,y_2)}\, dx = -\int \frac{e^{-2x}\, 4e^{x}}{-e^{-3x}}\, dx \uncover<2->{= \int 4e^{2x}\, dx = 2e^{2x}+\alert{A}} \\
+		\uncover<3->{B(x) &= \int \frac{y_1(x) f(x)}{W(y_1,y_2)}\, dx = \int \frac{e^{-x}\, 4e^{x}}{-e^{-3x}}\, dx} \uncover<4->{= \int -4e^{3x}\, dx = -\tfrac{4}{3}e^{3x}+\alert{B}}
+	\end{align*}
+	\item<5-> The solution is then
+	\begin{align*}
+		y&=\big( 2e^{2x}+A\big)e^{-x} + \big(-\tfrac{4}{3}e^{3x}+B\big)e^{-2x}\\
+		\uncover<6->{&=2e^x-\tfrac{4}{3}e^x+Ae^{-x}+Be^{-2x} \\}
+		\uncover<7->{&= \alert{A\underbrace{e^{-x}}_{y_1}+B\underbrace{e^{-2x}}_{y_2}+\tfrac{2}{3}e^x}}
+	\end{align*}
+	\end{itemize}
+	\end{frame}
+
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Examples}
+\begin{block}
+	{Solve the differential equation}
+	\begin{equation*}
+		y''-y'-6y=2\sin 3x
+	\end{equation*}
+\end{block}
+\pause \begin{itemize}[<+->]
+\item Solve the homogeneous equation:
+\begin{equation*}
+	r^2-r-6=0,\qquad r=\frac{1\pm \sqrt{1-4\cdot (-6)}}{2}=\frac{1\pm 5}{2}=\{3,-2\}
+\end{equation*}
+We have $y_1(x)=e^{3x}$, $y_2(x)=e^{-2x}$.
+\item  Compute the Wronskian:
+\begin{equation*}
+	W(y_1,y_2) = \begin{vmatrix}
+		e^{3x} & e^{-2x} \\ 3e^{3x} & -2e^{-2x}
+	\end{vmatrix} = -2e^{3x}e^{-2x}-3e^{3x}e^{-2x}=-5e^x
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Examples}
+\begin{block}
+	{Solve the differential equation}
+	\begin{equation*}
+		y''-y'-6y=2\sin 3x
+	\end{equation*}
+\end{block}
+\begin{itemize}
+\item Compute the \emph{parameter} functions $A$ and $B$:
+\begin{align*}
+	A(x) &= -\int \frac{y_2(x) f(x)}{W(y_1,y_2)}\, dx = \int \frac{e^{-2x} 2\sin 3x}{5e^{x}}\, dx  \\
+	\uncover<2->{&= \int \tfrac{2}{5} e^{-3x}\sin 3x\, dx= -\tfrac{1}{15}e^{-3x} \big( \sin 3x + \cos 3x \big)+\alert{A} \\}
+	\uncover<3->{B(x) &= \int \frac{y_1(x) f(x)}{W(y_1,y_2)}\, dx = \int \frac{e^{3x}\, 2\sin 3x}{-5e^x}\, dx \\}
+	\uncover<4->{&= \int -\tfrac{2}{5} e^{2x}\sin 3x\, dx = \tfrac{2}{65}e^{2x}\big( 3\cos 3x -2 \sin 3x \big) + \alert{B}}
+\end{align*}
+\item<5-> The solution is then
+\begin{align*}
+	y&=\Big( -\tfrac{1}{15}e^{-3x} \big( \sin 3x + \cos 3x \big) + A \Big) e^{3x} - \Big( \tfrac{2}{65} e^{2x} \big( 3\cos 3x - 2\sin 3x\big) + B \Big) e^{-2x} \\
+	&= Ae^{3x} + Be^{-2x} - \frac{5}{39}\sin 3x + \frac{1}{39}\cos 3x
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\subsection{Proof}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Proof}
+Let's see why this method works: We are looking for a function of the form $y=A(x)y_1(x) + B(x)y_2(x)$ that solves the differential equation $ay''+by'+cy=f(x)$, where $y_1$ and $y_2$ solve the homogeneous equation:
+\begin{align}\label{eq:yh}
+	ay''_1(x)+by'_1(x)+cy_1(x)&=0  &
+	ay''_2(x)+by'_2(x)+cy_2(x)&=0 
+\end{align}
+\pause Let us compute the first derivative of $y$:
+\begin{align*}
+	y' &= A'(x)y_1(x) + A(x)y'_1(x) + B'(x)y_2(x)+ B(x)y'_2(x) \\
+	\uncover<3->{&= \big( A(x) y'_1(x) + B(x) y'_2(x) \big) + \alert{\big( A'(x)y_1(x)+B'(x) y_2(x)\big)}}
+\end{align*}
+\pause\pause We would like to have as simple as expression as possible, so we are going to (artificially) impose that the second term is zero:
+\begin{equation}\label{eq:cond1}
+	A'(x)y_1+B'(x)y_2=0
+\end{equation}
+\pause In this case, the first derivative of $y$ reads:
+\begin{equation}\label{eq:cond2}
+	y' = A(x)y'_1(x)+B(x)y'_2(x)
+\end{equation}
+\end{frame}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Proof}
+The second derivative of $y$ is then
+\begin{align*}
+	y'' &= A'(x)y'_1(x)+A(x)y''_1(x)+B'(x)y'_2(x)+B(x)y''_2(x) \\
+	\uncover<2->{&= \big(A(x)\alert{y''_1(x)}+B(x)\alert{y''_2(x)}\big) + \big( A'(x)y'_1(x)+B'(x)y'_2(x) \big)}
+\end{align*}
+\pause\pause By \eqref{eq:yh}, it must be
+\begin{align*}
+	y''_1&=-\frac{b}{a}y'_1-\frac{c}{a}y_1 &
+	y''_2&=-\frac{b}{a}y'_2-\frac{c}{a}y_2
+\end{align*}
+And so we may re-write the second derivative of $y$ as follows:
+\begin{align*}
+	y''&= A(x)\Big(-\tfrac{b}{a}y'_1(x) -\tfrac{c}{a}y_1(x) \Big) + B(x) \Big( -\tfrac{b}{a}y'_2(x) -\tfrac{c}{a} y_2(x)\Big) \\
+	&\quad + \big( A'(x)y'_1(x) + B'(x)y'_2(x) \big) \\
+	\uncover<4->{&= -\frac{b}{a} \underbrace{\big( A(x)y'_1(x) + B(x)y'_2(x) \big)}_{y' \text{ by }\eqref{eq:cond2}} 
+	-\frac{c}{a} \underbrace{\big( A(x)y_1(x) + B(x)y_2(x) \big)}_{y \text{ by definition}}  \\
+	&\quad +\big( A'(x)y'_1(x) + B'(x)y'_2(x) \big) \\}
+	\uncover<5->{&= \big( A'(x)y'_1(x) + B'(x)y'_2(x) \big) -\frac{b}{a}y' - \frac{c}{a}y}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Proof}
+Let us re-write this last equation:
+\begin{gather*}
+	y'' = -\frac{b}{a}y'-\frac{c}{a}y + \big( A'(x)y'_1(x)+B'(x)y'_2(x) \big) \\
+	\uncover<2->{\underbrace{ay''+by'+cy}_{f(x)} = a\big( A'(x)y'_1(x) + B'(x)y'_2(x) \big)}
+\end{gather*}
+\pause\pause This gives us one new condition on $A$ and $B$:
+\begin{equation}\label{eq:cond3}
+	A'(x)y'_1(x) + B'(x)y'_2(x) = \frac{1}{a}f(x)
+\end{equation}
+\pause Note how now we can gather conditions \eqref{eq:cond1} and \eqref{eq:cond3} to form a system of two equations with two unknowns: $A'$ and $B'$.
+\begin{equation*}
+	\begin{cases}
+		A'(x)y_1(x) + B'(x)y_2 = 0\\
+		A'(x)y'_1(x) + B'(x)y'_2(x) = \tfrac{1}{a}f(x)
+	\end{cases}
+\end{equation*}
+\pause In matrix form, this is:
+\begin{equation*}
+\begin{bmatrix}
+y_1 & y_2 \\ y'_1 & y'_2
+\end{bmatrix} \cdot
+\begin{bmatrix}
+A'(x) \\ B'(x)
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\ \tfrac{1}{a}f(x)
+\end{bmatrix}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{The Method of Variation of Parameters}
+\framesubtitle{Proof}
+The solution, using Cramer's rule---and noticing that the determinant of the square matrix is precisely $W(y_1,y_2)$---yields
+\begin{align*}
+	A'(x) &= \frac{1}{W(y_1,y_2)} \begin{vmatrix}
+		0 & y_2(x) \\ \tfrac{1}{a}f(x) & y'_2(x)
+	\end{vmatrix} \uncover<2->{= -\frac{y_2(x) f(x)}{a W(y_1,y_2)}} \\ \\
+	\uncover<3->{B'(x) &= \frac{1}{W(y_1,y_2)} \begin{vmatrix}
+		y_1(x) & 0 \\ y'_1(x) & \tfrac{1}{a}f(x)
+	\end{vmatrix}} \uncover<4->{= \frac{y_1(x) f(x)}{a W(y_1,y_2)}}
+\end{align*}
+\pause\pause\pause\pause Taking integrals, we obtain the desired formulas:
+\begin{align*}
+	\alert{A(x)} &\alert{= -\frac{1}{a} \int \frac{y_2(x) f(x)}{W(y_1,y_2)}\, dx} \\
+	\alert{B(x)} &\alert{= \frac{1}{a} \int \frac{y_1(x) f(x)}{W(y_1,y_2)}\, dx}
+\end{align*}
+\end{frame}
+\end{document}

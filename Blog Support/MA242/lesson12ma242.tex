@@ -1,0 +1,312 @@
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Funny curve}{
+  \rule{F -> FF+F+F+F+FF}}
+	\begin{tikzpicture} 
+    \draw [DeepSkyBlue4]
+    [l-system={Funny curve, axiom=F+F+F+F, order=4, step=1.5pt, angle=90}]
+    lindenmayer system -- cycle; 
+	\end{tikzpicture}
+}
+\title{Lesson 12: Homogeneous Second-Order Linear Equations with Constant Coefficients}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item Linear Equations (Intro)
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\subsection{Definitions and Basic Results}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Motivation}
+A \alert{homogeneous second-order linear equation with constant coefficients} has the form:
+\begin{equation*}
+	ay''+by'+cy=0 \qquad(a\neq 0)
+\end{equation*}
+\pause \alert{Can you guess (intuitively) what a solution of this equation looks like?}
+
+\pause It looks like something of the form $y_1=e^{r x}$ could do the trick.  If that is the case, we may find the value of $r$ by substitution:
+\begin{align*}
+y_1&=e^{rx} &y'_1&=	re^{rx} &y''_1&=r^2 e^{rx}
+\end{align*}
+\pause Let's try:
+\begin{gather*}
+	\alert<6>{ay''_1 + by'_1 + cy_1 =0} \\
+	ar^2 e^{rx} + br e^{rx} + ce^{rx} =0 \\
+	\uncover<5->{e^{rx} \big( ar^2+br+c \big) =0 \\}
+	\uncover<6->{\alert{ar^2+br+c=0}}
+\end{gather*}
+\end{frame}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+ 	\framesubtitle{Definition} 
+\begin{definition}
+Given a homogeneous second-order linear differential equation with constant coefficients $ay''+by'+cy=0$, we say that the quadratic equation $ar^2+br+c=0$ is the \alert{characteristic equation}.  
+\end{definition}
+\pause The roots of the characteristic equation give away the solutions of the differential equation.  We have three cases:
+\begin{itemize}[<+->]
+	\item Both roots are real and different: $r_1 \neq r_2$
+	\begin{equation*}
+		\alert{r^2-5r+6=0\qquad \{ r=2, r=3 \}}
+	\end{equation*}
+	\item Both roots are real and equal: $r=r_1=r_2$.
+	\begin{equation*}
+	\alert{r^2-2r+1=0\qquad \{r=1\} }
+	\end{equation*}
+	\item Both roots are complex: $r=\alpha \pm i\beta$ with $\beta>0$.
+	\begin{equation*}
+		\alert{r^2+1=0\qquad \{r=\pm i\}}
+	\end{equation*}
+	\end{itemize}
+
+\end{frame}
+
+\subsection{Cases}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{First Case: $r_1\neq r_2$ real roots}
+	In this case, the two possible solutions are 
+	\begin{align*}
+	\alert{y_1}&\alert{=e^{r_1x}} &\alert{y_2}&\alert{=e^{r_2x}} \\
+	\intertext{\uncover<2->{Note that the Wronskian is never zero:}}
+	\uncover<2->{y'_1&=r_1 e^{r_1x} &y'_2&=r_2 e^{r_2x}.}
+	\end{align*}
+	\pause
+	\begin{equation*}
+		W\big(e^{r_1x},e^{r_2x}\big) = \left| \begin{matrix} e^{r_1x} & e^{r_2x} \\ r_1e^{r_1x} & r_2 e^{r_2x} \end{matrix} \right| \uncover<3->{= r_2e^{r_1x}e^{r_2 x}-r_1e^{r_1x}e^{r_2 x}} \uncover<4->{= \underbrace{(r_2-r_1)}_{\neq 0} e^{(r_1+r_2)x}}
+	\end{equation*}
+	\pause\pause\pause This means that a general solution to the differential equation has the form 
+	\begin{equation*}
+	y=Ae^{r_1x}+Be^{r_2x}
+	\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Second Case: $r=r_1=r_2$ real roots}
+In this case, the two possible solutions are 
+\begin{align*}
+\alert{y_1}&\alert{=e^{rx}} &\alert{y_2}&\alert{=xe^{rx}} \\
+\intertext{\uncover<2->{The Wronskian is also non-zero:}}
+\uncover<2->{y'_1&=re^{rx} &y'_2&=e^{rx}+rxe^{rx} = (1+rx)e^{rx}}
+\end{align*}
+\pause 
+\begin{equation*}
+W\big( e^{rx}, xe^{rx} \big) = \left| \begin{matrix}
+e^{rx} & xe^{rx} \\ re^{rx} & (1+rx)e^{rx} \end{matrix} \right| \uncover<3->{= (1+rx)e^{2rx} - rxe^{2rx}} \uncover<4->{= e^{2rx}}
+\end{equation*}
+\pause\pause\pause This means that a general solution to the differential equation has the form 
+\begin{equation*}
+y=Ae^{rx}+Bxe^{rx} = (A+Bx)e^{rx}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Third Case: $r=\alpha \pm i\beta$ complex roots ($\beta > 0$)}
+In this case, the two possible solutions are 
+\begin{align*}
+\alert{y_1}&\alert{=e^{\alpha x}\cos (\beta x)} &\alert{y_2}&\alert{=e^{\alpha x} \sin (\beta x)} \\
+\intertext{\uncover<2->{The Wronskian is not zero:}}
+\uncover<2->{y'_1&=\alpha e^{\alpha x}\cos(\beta x)-\beta e^{\alpha x}\sin (\beta x) &y'_2&=\alpha e^{\alpha x}\sin (\beta x)+\beta e^{\alpha x}\cos (\beta x)}
+\end{align*}
+\pause 
+\begin{align*}
+	W &(y_1, y_2 ) = \left| \begin{matrix}
+		e^{\alpha x} \cos(\beta x) & e^{\alpha x} \sin(\beta x) \\
+		e^{\alpha x} \big(\alpha \cos (\beta x) - \beta \sin (\beta x) \big) & e^{\alpha x} \big(\alpha \sin (\beta x)+ \beta \cos (\beta x) \big)
+	\end{matrix} \right| \\
+	\uncover<3->{&=e^{2\alpha x} \cos(\beta x) \big( \alpha \sin (\beta x) + \beta \cos(\beta x)\big) - e^{2\alpha x} \sin (\beta x) \big( \alpha \cos(\beta x) - \beta \sin (\beta x) \big) \\}
+	\uncover<4->{&=\textcolor{red}{\alpha e^{2\alpha x} \sin (\beta x)\cos(\beta x)} + \beta e^{2\alpha x} \cos^2(\beta x) \textcolor{red}{- \alpha e^{2\alpha x}\sin(\beta x) \cos (\beta x)} + \beta e^{2\alpha x} \sin^2(\beta x)} \\
+	\uncover<5->{&=\beta e^{2\alpha x} \big( \cos^2(\beta x) + \sin^2 (\beta x) \big) = \beta e^{2\alpha x}}
+\end{align*}
+\pause\pause\pause\pause This means that a general solution to the differential equation has the form
+\begin{equation*}
+	y=Ae^{\alpha x}\sin(\beta x)+Be^{\alpha x} \cos(\beta x)
+\end{equation*}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find a particular solution to the initial value problem}
+	\begin{align*}
+		y''-5y'+6y&=0 &y(0)&=1 &y'(0)&=2
+	\end{align*}
+\end{block}
+\pause First, we seek a general solution of the differential equation.  We form the characteristic equation, and solve it to find the roots:
+\begin{equation*}
+	\alert{r^2-5r+6=0}\qquad 
+	\uncover<3->{r=\frac{5\pm \sqrt{25-4\cdot 6}}{2}=\frac{5\pm 1}{2}=\{ 2,3 \}}
+\end{equation*}
+\pause The general solution (and its derivative) is then 
+\begin{align*}
+	y&=Ae^{2x}+Be^{3x} & y'&=2Ae^{2x}+3Be^{3x} 
+\end{align*}
+\pause We need to find the value of the constants $A,B$ that solve the IVP:
+\begin{equation*}
+\begin{cases}
+	1=y(0)=A+B \\ 2=y'(0)=2A+3B
+\end{cases}\qquad
+\uncover<5->{\begin{cases}
+	A=1 \\B=0
+\end{cases}\qquad}
+\uncover<6->{\alert{y=e^{2x}}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find a particular solution to the initial value problem}
+	\begin{align*}
+		y''-2y'+y&=0 &y(0)&=1 &y'(0)&=2
+	\end{align*}
+\end{block}
+\pause First, we seek a general solution of the differential equation.  We form the characteristic equation, and solve it to find the roots:
+\begin{equation*}
+	\alert{r^2-2r+1=0}\qquad 
+	\uncover<3->{r=\frac{2\pm \sqrt{4-4}}{2}=1}
+\end{equation*}
+\pause The general solution (and its derivative) is then 
+\begin{align*}
+	y&=(A+Bx)e^x & y'&=Be^x+(A+Bx)e^x=(A+B+Bx)e^x
+\end{align*}
+\pause We need to find the value of the constants $A,B$ that solve the IVP:
+\begin{equation*}
+\begin{cases}
+	1=y(0)=A \\ 2=y'(0)=A+B
+\end{cases}\qquad
+\uncover<5->{\begin{cases}
+	A=1 \\B=1
+\end{cases}\qquad}
+\uncover<6->{\alert{y=(1+x)e^x}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find a particular solution to the initial value problem}
+	\begin{align*}
+		y''&=-y &y(0)&=1 &y'(0)&=2
+	\end{align*}
+\end{block}
+\pause First, we seek a general solution of the differential equation.  We form the characteristic equation, and solve it to find the roots:
+\begin{equation*}
+	\alert{r^2+1=0}\qquad 
+	\uncover<3->{r=\pm i\qquad (\alpha=0, \beta=1)}
+\end{equation*}
+\pause The general solution (and its derivative) is then 
+\begin{align*}
+	y&=Ae^{0\cdot x}\cos(1\cdot x)+ Be^{0\cdot x}\sin(1\cdot x)=A\cos x + B\sin x, & y'&=-A\sin x + B\cos x
+\end{align*}
+\pause We need to find the value of the constants $A,B$ that solve the IVP:
+\begin{equation*}
+\begin{cases}
+	1=y(0)=A \\ 2=y'(0)=B
+\end{cases}\qquad
+\uncover<5->{\alert{y=\cos x + 2\sin x}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Homogeneous Second-Order Linear Equations with Constant Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find a particular solution to the initial value problem}
+	\begin{align*}
+		y''+2y'+5y&=0 &y(0)&=1 &y'(0)&=2
+	\end{align*}
+\end{block}
+\pause First, we seek a general solution of the differential equation.  We form the characteristic equation, and solve it to find the roots:
+\begin{equation*}
+	\alert{r^2+2r+5=0}\qquad 
+	\uncover<3->{r=\frac{-2\pm \sqrt{4-4\cdot 5}}{2}=\frac{-2\pm \sqrt{-16}}{2}=\frac{-2\pm 4i}{2} = \underbrace{-1\pm 2i}_{\alert{\alpha+\beta i}}}
+\end{equation*}
+\pause The general solution (and its derivative) is then 
+\begin{align*}
+	y&=Ae^{-x}\cos(2x)+Be^{-x}\sin(2x)=e^{-x}\big(A\cos(2x)+B\sin(2x)\big) \\
+	y'&=-Ae^{-x}\cos(2x)-2Ae^{-x}\sin(2x)-Be^{-x}\sin(2x)+2Be^{-x}\cos(2x)
+\end{align*}
+\pause We need to find the value of the constants $A,B$ that solve the IVP:
+\begin{equation*}
+\begin{cases}
+	1=y(0)=A \\ 2=y'(0)=-A+2B
+\end{cases}\qquad
+\uncover<5->{\begin{cases}
+	A=1 \\B=\tfrac{3}{2}
+\end{cases}\qquad}
+\uncover<6->{\alert{y=e^{-x}\big(\cos(2x)+\tfrac{3}{2}\sin(2x)\big)}}
+\end{equation*}
+\end{frame}
+
+\end{document}

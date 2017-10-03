@@ -1,0 +1,235 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 9: Rules of Differentiation---Power functions and Polynomials}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Funny curve}{
+  \rule{F -> FF+F+F+F+FF}}
+	\begin{tikzpicture} 
+    \draw [DeepSkyBlue4]
+    [l-system={Funny curve, axiom=F+F+F+F, order=4, step=1.5pt, angle=90}]
+    lindenmayer system -- cycle; 
+	\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}
+\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$\alert{intercepts} ($f(x)=0$, $f(0)$)
+\item \alert{Change} from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item \alert{Average Rate of Change} from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item \alert{Relative Change} from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\item \alert{Instantaneous Rate of Change} at $x=a$
+\begin{equation*}
+	f'(a)
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+	\item Power Functions \newline \makebox[1cm]{} $kx^p$
+	\item Polynomials $a_0+a_1x+a_2x^2+\dotsb+a_n x^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{The Derivative as a Function}
+\subsection{Definition}
+\begin{frame}\frametitle{The Derivative as a Function}
+In the previous lesson we have seen that the derivative of a function $y=f(x)$ can be seen as a function itself: One that assigns, to each $x$, the value of the slope of the tangent line at the graph of $f$ at the point $\big(x,f(x)\big)$.
+
+We denote this new function in two ways
+\begin{equation*}
+	f'(x) = \!\!\!\!\!\!\!\!\!\! \underbrace{\frac{df}{dx}}_{\text{Leibnitz notation}} \!\!\!\!\!\!\!\! \genfrac{}{}{0pt}{}{\longleftarrow \text{derivative of }f \hspace{2cm}}{\longleftarrow\text{with respect to the variable }x}
+\end{equation*}
+\pause
+\begin{block}{
+	Write the Leibnitz notation for the derivative of the given function and include units.
+}
+An employee's pay, $P$, in dollars, for a week is a function of the number of hours worked, $H$.
+\end{block}
+\pause The solution is 
+\begin{equation*}
+	\frac{dP}{dH} \uncover<4->{\genfrac{}{}{0pt}{}{\longleftarrow \text{dollars}}{\longleftarrow \text{hours}}}
+\end{equation*}
+\pause\pause Therefore, the units are \alert{dollars/hour}.
+\end{frame}
+
+\subsection{Interpretation}
+\begin{frame}\frametitle{The Derivative as a function}
+\begin{block}{Interpretation of the Derivative}
+The statement $f'(a)=b$ means that if the independent variable $x$ goes up from $a$ to $a+1$, then the dependent variable goes up or down by $\lvert b\rvert$ units.
+\end{block}
+\pause
+\begin{example}
+	An economist is interested in how the price of a certain item affects its sales.  At a price of $p$ dollars, a quantity $q$ of the item is sold.
+	\begin{equation*}
+		q=f(p)
+	\end{equation*}
+	\begin{itemize}
+		\item What does it mean $f(160)=2050$?
+
+		\uncover<3->{\alert{If the price is \$160, then 2050 items will be sold.}}
+		\item What does it mean $f'(160)=-25$?
+
+		\uncover<4->{\alert{If the price goes up from \$160 by \$1 per item, about 25 fewer items will be sold.}}
+		\item What does it mean $f'(30)=49$?
+
+		\uncover<5->{\alert{If the price goes up from \$30 by \$1 per item, about 49 more items will be sold.}}
+	\end{itemize}
+\end{example}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{The Derivative as a function}
+\framesubtitle{Examples}
+\begin{example}
+	The average value of corn production in Kenya, in Kenyan shillings, of the yearly maize production from an average plot of land is a function $y=f(x)$ of the quantity $x$ of fertilizer used (in kilograms).
+	\begin{itemize}
+		\item \alert<2-3>{Interpret the statements $f(5)=11,500$ and $f'(5)=350$.}
+		\item \alert<4>{Use the statements to estimate $f(6)$ and $f(10)$.}
+		\item \alert<5>{Which estimate in the previous part is more reliable?}
+	\end{itemize}
+\end{example}
+\begin{itemize}
+	\item<2-> $f(5)=11,500$ means that if 5~kg~of fertilizer are used on an average plot of land, the average value of corn production in Kenya will be 11,500KSh. 
+
+	\uncover<3->{$f'(5)=350$ means that, if the amount of fertilizer used on an average plot of land goes up to 6~kg, then the average value of corn production will \alert{increase} by 350KSh more.}
+	\item<4-> We may estimate then $f(6)\approx f(5)+350=11,500+350=11,850$KSh, and $f(10)\approx 11,500+5\cdot 350=11,500+1,750=13,250$KSh
+	\item<5-> $f(6)\approx 11,850$KSh
+\end{itemize}
+\end{frame}
+
+\section{Rules of Differentiation}
+\subsection{The Rules}
+\begin{frame}\frametitle{Rules of Differentiation}
+\begin{description}[<+->]
+	\item[\textbf{D1}] The derivative of a constant function is zero.
+	\begin{equation*}
+		f(x)=c, \qquad f'(x)=0
+	\end{equation*}
+	\item[\textbf{D2}] The derivative of $f(x)=x$ is $f'(x)=1$.
+	\item[\textbf{D3}] The derivative of a sum is the sum of the derivatives:
+	\begin{equation*}
+		h(x)=f(x)+g(x),\qquad h'(x)=f'(x)+g'(x)
+	\end{equation*}
+	\item[\textbf{D4}] The derivative of a subtraction is the subtraction of the derivatives:
+	\begin{equation*}
+		h(x)=f(x)-g(x),\qquad h'(x)=f'(x)-g'(x)
+	\end{equation*}
+	\item[\textbf{D5}] The derivative of a scalar times a function is a scalar times the derivative of the function.
+	\begin{equation*}
+		h(x)=c\cdot f(x),\qquad h'(x)=c\cdot f'(x)	
+	\end{equation*}
+	\item[\textbf{D6}] \textbf{The Power Rule}
+	\begin{equation*}
+		f(x)=x^n,\qquad f'(x)=nx^{n-1}
+	\end{equation*}
+	\item[\textbf{D7}] The derivative of $f(x)=e^x$ is $f'(x)=e^x$.
+	\item[\textbf{D8}] For any $a>0$, the derivative of $f(x)=a^x$ is $f'(x)=a^x \ln a$.
+\end{description}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{Rules of Differentiation}
+\framesubtitle{Basic Examples}
+\begin{block}
+	{Find the derivative of the following functions:}
+	\begin{center}
+	\begin{tabular}{ll}
+		$f(x)=5$ &\uncover<2->{\alert{$f'(x)=0$}} \\[0.15cm]
+		$f(x)=x$ &\uncover<3->{\alert{$f'(x)=1$}} \\[0.15cm]
+		$f(x)=x+\pi$ &\uncover<4->{\alert{$f'(x)=1 + 0 = 1$}} \\[0.15cm]
+		$f(x)=200x$ &\uncover<5->{\alert{$f'(x)=200\cdot 1=200$}} \\[0.15cm]
+		$f(x)=45-5x$ &\uncover<6->{\alert{$f'(x)=0-5\cdot 1=-5$}} \\[0.15cm]
+		$f(x)=x^5$ &\uncover<7->{\alert{$f'(x)=5x^{5-1}=5x^4$}} \\[0.15cm]
+		$f(x)=45x^7$ &\uncover<8->{\alert{$f'(x)=45\cdot 7x^{7-1} = 315x^6$}} \\[0.15cm]
+		$f(x)=2\pi-x^{3/2}$ &\uncover<9->{\alert{$f'(x)=0-\tfrac{3}{2}x^{3/2-1}=-\tfrac{3}{2}x^{1/2}$}} \\[0.15cm]
+		$f(x)=3\sqrt{x}$\uncover<10->{$=3x^{1/2}$} &\uncover<11->{\alert{$f'(x)=3\cdot \tfrac{1}{2}x^{1/2-1} = \tfrac{3}{2}x^{-1/2}$}} \\[0.15cm]
+		$f(x)=\dfrac{1}{\sqrt{x^7}}$ \uncover<12->{$=x^{-7/2}$} &\uncover<13->{\alert{$f'(x)=-\tfrac{7}{2}x^{-7/2-1}=-\tfrac{7}{2}x^{-9/2}$}}\\[0.15cm]
+		$f(x)=e^x$ &\uncover<14->{\alert{$f'(x)=e^x$}} \\[0.15cm]
+		$f(x)=2^x$ &\uncover<15->{\alert{$f'(x)=2^x \ln 2$}}\\[0.15cm]
+	\end{tabular}
+	\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Rules of Differentiation}
+\framesubtitle{Advanced Examples}
+\begin{block}
+{Find the derivative of the following functions:}
+\begin{center}
+\begin{tabular}{ll}
+$f(t)=t^2-3t^6+5e^t$ &\uncover<2->{\alert{$f'(t)=2t^{2-1}-3\cdot 6 t^{6-1}+5\cdot e^t$}} \\[0.15cm]
+&\uncover<3->{\alert{$\qquad=2t-18t^5+5e^t$}} \\[0.15cm]
+$h(t)=(t-3t^2)(\sqrt{t}+4)$ \\[0.15cm]
+\uncover<4->{$\qquad=t\sqrt{t}+4t-3t^2\sqrt{t}-12t^2$} \\[0.15cm]
+\uncover<5->{$\qquad=t^{3/2} +4t-3t^{5/2}-12t^2$} &\uncover<6->{\alert{$h'(t)=\tfrac{3}{2}t^{3/2-1}+4-3\cdot \tfrac{5}{2}t^{5/2-1}-12\cdot 2t^{2-1}$}} \\[0.15cm]
+&\uncover<7->{\alert{$\qquad=\tfrac{3}{2}t^{1/2}+4-\tfrac{15}{2}t^{3/2}-24t$}} \\[0.15cm]
+$h(t)=\dfrac{4+\sqrt{t}}{t^5}$ \\[0.15cm]
+\uncover<8->{$\qquad=\dfrac{4}{t^5}+\dfrac{t^{1/2}}{t^5}$} \\[0.15cm]
+\uncover<9->{$\qquad=4t^{-5}+t^{-9/2}$} &\uncover<10->{\alert{$h'(t)=4\cdot (-5)t^{-5-1}-\tfrac{9}{2}t^{-9/2-1}$}} \\[0.15cm]
+&\uncover<11->{\alert{$\qquad=-20t^{-6}-\tfrac{9}{2}t^{-11/2}$}}\\[0.15cm]
+\end{tabular}
+\end{center}
+\end{block}
+\end{frame}
+\end{document}

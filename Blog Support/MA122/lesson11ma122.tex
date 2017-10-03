@@ -1,0 +1,264 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 11: Rules of Differentiation---Product and Quotient Rules}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Gosper curve}{
+	\rule{XF -> XF+YF++YF-XF--XFXF-YF+}
+	\rule{YF -> -XF+YFYF++YF+XF--XF-YF}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4]
+\draw [l-system={Gosper curve, axiom=XF, order=5, step=0.6pt, angle=60}]
+lindenmayer system; 
+\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{}
+
+\begin{frame}
+\frametitle{What do we know?}
+\framesubtitle{The General Program}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item Functions
+\begin{itemize}
+\item $x-$ and $y-$\alert{intercepts} ($f(x)=0$, $f(0)$)
+\item \alert{Change} from $x=a$ to $x=b$ 
+\begin{equation*}
+	\Delta y = f(b)-f(a)
+\end{equation*}
+\item \alert{Average Rate of Change} from $x=a$ to $x=b$
+\begin{equation*}
+ARC=\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a} 
+\end{equation*}
+\item \alert{Relative Change} from $x=a$ to $x=b$
+\begin{equation*}
+RC=\frac{\Delta y}{f(a)}=\frac{f(b)-f(a)}{f(a)}
+\end{equation*}
+\item \alert{Instantaneous Rate of Change} at $x=a$
+\begin{equation*}
+	f'(a)
+\end{equation*}
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+	\item Linear Functions: $f(x)=b+mx$
+	\item Exponential Functions $P_0 a^t = P_0 (1+r)^t = P_0 e^{kt}$
+	\item Power Functions \newline \makebox[1cm]{} $kx^p$
+	\item Polynomials $a_0+a_1x+a_2x^2+\dotsb+a_n x^n$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{What do we know?}
+\framesubtitle{Rules of Differentiation}
+\begin{description}
+	\item[\textbf{D1}] $f(x)=c,\quad \alert{f'(x)=0}$
+	\item[\textbf{D2}] $f(x)=x,\quad \alert{f'(x)=1}$
+	\item[\textbf{D3}] $h(x)=f(x)+g(x),\quad \alert{h'(x)=f'(x)+g'(x)}$
+	\item[\textbf{D4}] $h(x)=f(x)-g(x),\quad \alert{h'(x)=f'(x)-g'(x)}$
+	\item[\textbf{D5}] $h(x)=c\cdot f(x),\quad \alert{h'(x)=c\cdot f'(x)}$
+	\item[\textbf{\alert{D6}}] $f(x)=x^n,\quad \alert{f'(x)=nx^{n-1}}$
+	\item[\textbf{\alert{D7}}] $f(x)=e^x,\quad \alert{f'(x)=e^x}$
+	\item[\textbf{\alert{D8}}] $f(x)=a^x,\quad \alert{f'(x)=a^x \ln a}$
+	\item[\textbf{\alert{D9}}] $f(x)=\ln x,\quad \alert{f'(x)=\tfrac{1}{x}}$
+	\item[\textbf{D10}] 
+	\begin{itemize}
+		\item $f(x)=g(x)^n,\quad \alert{f'(x)=ng(x)^{n-1}g'(x)}$
+		\item $f(x)=e^{g(x)},\quad \alert{f'(x)=g'(x)e^{g(x)}}$
+		\item $f(x)=a^{g(x)},\quad \alert{f'(x)=g'(x)\ln a\,a^{g(x)}}$
+		\item $f(x)=\ln g(x),\quad \alert{f'(x)=\frac{g'(x)}{g(x)}}$
+	\end{itemize}
+\end{description}
+\end{frame}
+
+\section{The Product and Quotient Rule}
+\subsection{Rules}
+\begin{frame}\frametitle{The Product and Quotient Rules}
+\framesubtitle{Two more rules}
+\begin{description}
+\item[\textbf{D11}] \alert{The Product Rule}
+
+If $h(x)=f(x)\cdot g(x)$, then $h'(x)=f'(x)\cdot g(x) + f(x)\cdot g'(x)$.
+\item[\textbf{D12}] \alert{The Quotient Rule} 
+
+If $h(x)=\dfrac{f(x)}{g(x)}$, then $h'(x)=\dfrac{f'(x)\cdot g(x) - f(x)\cdot g'(x)}{g(x)^2}$.
+\end{description}
+\pause You may have seen these two rules with the $u,v$ notation:
+\begin{description}
+	\item[\textbf{D11}] $\big( u\cdot v \big)' = u' v + u v'$.
+	\item[\textbf{D12}] $\Big( \dfrac{u}{v} \Big)' = \dfrac{u'v-uv'}{v^2}$.
+\end{description}
+\pause No matter what technique you use, make sure you get the order of the parts and the sign right.
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}\frametitle{The Product and Quotient Rule}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following functions}
+	\begin{itemize}
+		\item $f(x)=\only<1>{(x^2-4)(4x^6-7x+2)}\only<2->{\underbrace{(x^2-4)}_{u} \underbrace{(4x^6-7x+2)}_{v}}$
+		\begin{align*}
+			\uncover<3->{u&=x^2-4} \uncover<4->{&u'&=2x} \\
+			\uncover<3->{v&=4x^6-7x+2} \uncover<4->{&v'&=24x^5-7} 
+		\end{align*}
+		\begin{equation*}
+			\alert{\uncover<5->{f'(x)=u'v+uv'}\uncover<6->{= 2x(4x^6-7x+2)+(x^2-4)(24x^5-7)}}
+		\end{equation*}
+		\item $f(x)=\only<1-6>{\big(x+\sqrt[3]{x}\big)(5x^2+e^x)}\only<7->{\underbrace{(x+x^{1/3})}_{u}\underbrace{(5x^2+e^x)}_{v}}$
+		\begin{align*}
+			\uncover<8->{u&=x+x^{1/3}} \uncover<9->{&u'&=1+\tfrac{1}{3}x^{-2/3}} \\
+			\uncover<8->{v&=5x^2+e^x} \uncover<9->{&v'&=10x+e^x}
+		\end{align*}
+		\begin{equation*}
+			\alert{\uncover<9->{f'(x)=u'v+uv'}\uncover<10->{=(1+\tfrac{1}{3}x^{-2/3})(5x^2+e^x)+(x+x^{1/3})(10x+e^x)}}
+		\end{equation*}
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{The Product and Quotient Rule}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following functions}
+	\begin{itemize}
+		\item $f(x)=\only<1>{(3x^3-\ln x)\big(x^5-\sqrt{x}\big)}\only<2->{\underbrace{(3x^3-\ln x)}_{u} \underbrace{\big(x^5-x^{1/2}\big)}_{v}}$
+		\begin{align*}
+			\uncover<3->{u&=3x^3-\ln x} \uncover<4->{&u'&=9x^2-\tfrac{1}{x}} \\
+			\uncover<3->{v&=x^5-x^{1/2}} \uncover<4->{&v'&=5x^4-\tfrac{1}{2}x^{-1/2}} 
+		\end{align*}
+		\begin{equation*}
+			\alert{\uncover<5->{f'(x)=u'v+uv'}\uncover<6->{= \big(9x^2-\tfrac{1}{x}\big)\big(x^5-x^{1/2}\big)+(3x^3-\ln x)\big(5x^4-\tfrac{1}{2}x^{-1/2}\big)}}
+		\end{equation*}
+		\item $f(x)=\only<1-6>{\big(x^3+\sqrt{x}\big)(5x^2+e^x)}\only<7->{\underbrace{(x^3+x^{1/2})}_{u}\underbrace{(5x^2+e^x)}_{v}}$
+		\begin{align*}
+			\uncover<8->{u&=x^3+x^{1/2}} \uncover<9->{&u'&=3x^2+\tfrac{1}{2}x^{-1/2}} \\
+			\uncover<8->{v&=5x^2+e^x} \uncover<9->{&v'&=10x+e^x}
+		\end{align*}
+		\begin{equation*}
+			\alert{\uncover<9->{f'(x)=u'v+uv'}\uncover<10->{=(3x^2+\tfrac{1}{2}x^{-1/2})(5x^2+e^x)+(x^3+x^{1/2})(10x+e^x)}}
+		\end{equation*}
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{The Product and Quotient Rule}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following function}
+	\begin{equation*}
+		f(x)=\dfrac{3x^2+\ln x}{1-3x^{4/3}+2^x}\alert{\only<2->{\quad\displaystyle{\genfrac{}{}{0pt}{}{\longleftarrow u}{\longleftarrow v}}}}
+	\end{equation*}
+\end{block}
+		\begin{align*}
+			\uncover<2->{u&=3x^2+\ln x} \uncover<3->{&u'&=6x+\tfrac{1}{x}} \\
+			\uncover<2->{v&=1-3x^{4/3}+2^x} \uncover<3->{&v'&=-4x^{1/3}+2^x\ln 2} 
+		\end{align*}
+		\begin{align*}
+			\uncover<4->{\alert{f'(x)}&\alert{=\frac{u'v-uv'}{v^2}}}\\
+			\uncover<5->{&\alert{=\frac{\big(6x+\tfrac{1}{x}\big)(1-3x^{4/3}+2^x)-(3x^2+\ln x)(-4x^{1/3}+2^x\ln 2)}{(1-3x^{4/3}+2^x)^2}}}
+		\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{The Product and Quotient Rule}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following function}
+	\begin{equation*}
+		f(x)=\dfrac{\pi + 2\pi x - \ln \pi + \pi^x}{e-e^x+3x^2}\alert{\only<2->{\quad\displaystyle{\genfrac{}{}{0pt}{}{\longleftarrow u}{\longleftarrow v}}}}
+	\end{equation*}
+	\end{block}
+		\begin{align*}
+			\uncover<2->{u&=\pi+2\pi x-\ln \pi+\pi^x} \uncover<3->{&u'&=2\pi + \pi^x \ln\pi} \\
+			\uncover<2->{v&=e-e^x+3x^2} \uncover<3->{&v'&=-e^x+6x}
+		\end{align*}
+		\begin{align*}
+			\uncover<4->{\alert{f'(x)}&\alert{=\frac{u'v-uv'}{v^2}}}\\
+			\uncover<5->{&\alert{=\frac{(2\pi+\pi^x \ln\pi)(e-e^x+3x^2)-(\pi+2\pi x-\ln\pi+\pi^x)(-e^x+6x)}{(e-e^x+3x^2)^2}}}
+		\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{The Product and Quotient Rule}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following function}
+	\begin{equation*}
+		f(x)=\only<1>{\big(e^{x^3}-\ln (4x^6-5)\big)\Big(3 + \frac{1}{\sqrt{3x-9}}\Big)}\only<2->{\underbrace{\big(e^{x^3}-\ln (4x^6-5)\big)}_{u}\underbrace{\Big(3 + \frac{1}{\sqrt{3x-9}}\Big)}_{v}}
+	\end{equation*}
+\end{block}
+\begin{align*}
+	\uncover<2->{u&=e^{x^3}-\ln(4x^6-5)} \uncover<3->{&u'&=3x^2 e^{x^3} - \dfrac{24x^5}{4x^6-5}} \\
+	\uncover<2->{v&=3+(3x-9)^{-1/2}} \uncover<4->{&v'&=-\tfrac{3}{2}(3x-9)^{-3/2}}
+\end{align*}
+\begin{align*}
+	\uncover<5->{\alert{f'(x)}&\alert{=u'v+uv'}\\}
+	\uncover<6->{&\alert{=\Big(3x^2 e^{x^3} - \frac{24x^5}{4x^6-5} \Big)\big(3+(3x-9)^{-1/2}\big)} \\}
+	\uncover<6->{&\quad\alert{+ \big( e^{x^3}-\ln(4x^6-5)\big) \big( -\tfrac{3}{2}(3x-9)^{-3/2}\big)}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{The Product and Quotient Rule}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the derivative of the following function}
+	\begin{equation*}
+	f(x)=\frac{\big(5x^7-4x+3\sqrt{x}\big)^2}{\ln\big(3-4x^{2/3}\big)} \alert{\uncover<2->{\quad \displaystyle{\genfrac{}{}{0pt}{}{\longleftarrow u}{\longleftarrow v}}}}
+	\end{equation*}
+\end{block}
+\begin{align*}
+	\uncover<2->{u&=\big(5x^7-4x+3x^{1/2}\big)^2} \uncover<3->{&u'&=2\big(5x^7-4x+3x^{1/2}\big)\big(35x^6-4+\tfrac{3}{2}x^{-1/2}\big)} \\
+	\uncover<2->{v&=\ln \big( 3-4x^{2/3}\big)} \uncover<4->{&v'&=\frac{-\tfrac{8}{3}x^{-1/3}}{3-4x^{2/3}}}
+\end{align*}
+\begin{align*}
+	\uncover<5->{\alert{f'(x)}&\alert{=\frac{u'v-uv'}{v^2}}} 
+	\uncover<6->{\alert{=\text{ain't nobody got time for that!}}}
+\end{align*}
+\end{frame}
+
+\end{document}

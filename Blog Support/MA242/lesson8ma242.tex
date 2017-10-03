@@ -1,0 +1,302 @@
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=black!50!white}
+\setbeamercolor{block title example}{bg=black!50!white}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+	\begin{tikzpicture}[decoration=Koch curve type 1] 
+		\draw[DeepSkyBlue4] decorate{ decorate{ decorate{ (0,1) -- (3,0) -- (5,1)}}}; 
+	\end{tikzpicture}  
+	\\
+	\today
+}
+\title{Lesson 8: General Substitution Methods}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item The concepts of \alert<1>{differential equation} and \alert<1>{initial value problem}
+\begin{equation*}
+F\big(x,y,y',\dotsc,y^{(n)}\big)=0
+\end{equation*}
+\item The concept of \alert<1>{order} of a differential equation.
+\item The concepts of \alert<1>{general solution}, \alert<1>{particular solution} and \alert<1>{singular solution}.
+\item \alert<1>{Slope fields}
+\item Approximations to solutions via \alert<1>{Euler's Method} and \alert<1>{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+\item Separable Equations $y'=H_1(x) H_2(y)$
+\item \alert<2>{Homogeneous First-Order Equations $y'=H(y/x)$}
+\item Linear First-Order Equations $y'+P(x)y=Q(x)$
+\item \alert<2>{Bernoulli Equations $y'+P(x)y=Q(x)y^n$}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{General Substitution Methods}
+\subsection{The idea}
+\begin{frame}\frametitle{The Substitution Method}
+    
+\framesubtitle{Jazz}
+We have seen two kinds of equations that employ a substitution method already:
+\begin{columns}[T]
+	\begin{column}{0.45\linewidth}
+	\alert{The Homogeneous Equation}
+	\begin{equation*}
+	y'=H(y/x)	
+	\end{equation*}
+	Substitution 
+	\begin{equation*}
+	v=y/x
+	\end{equation*}
+	Ingredients:
+	\begin{align*}
+		y&=xv \\
+		\frac{dy}{dx}&=v+x\frac{dv}{dx}
+	\end{align*}
+	\end{column}
+	%\vrule{}
+	\begin{column}{0.45\linewidth}
+	\alert{Bernoulli Equation}
+	\begin{equation*}
+	y'+P(x)y=Q(x)y^n	
+	\end{equation*}
+	Substitution 
+	\begin{equation*}
+	v=y^{1-n}
+	\end{equation*}
+	Ingredients:
+	\begin{align*}
+		y&=v^{1/(1-n)} \\ 
+		\frac{dy}{dx}&=\frac{1}{1-n}v^{n/(1-n)}\frac{dv}{dx}
+	\end{align*}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Jazz}
+Although the equations are different, the method of solution is exactly the same:
+\begin{itemize}[<+-|alert@+>]
+	\item We impose a substitution $v=f(x,y)$
+	\item We express $y$ as a function of $x$ and $v$ alone
+	\item We express $y'$ as a function of $x$, $v$ and $v'$ alone
+	\item We change each occurrence of $y$ and $y'$ in the original equation.
+	\item We solve the new (hopefully simpler) equation 
+	\item We undo the substitution
+\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Example: Homogeneous Equation}
+\begin{block}{Find a general solution of the equation}
+\begin{equation*}
+	yy'+x=\sqrt{x^2+y^2}
+\end{equation*}
+\end{block}
+\begin{itemize}
+	\item<2-> Rewrite the equation to realize it could be seen as homogeneous
+	\begin{equation*}
+	y'=-\frac{x}{y}+\frac{\sqrt{x^2+y^2}}{y}=-\frac{x}{y}+\sqrt{\frac{x^2+y^2}{y^2}}=-\alert{\frac{x}{y}}+\sqrt{\Big(\alert{\frac{x}{y}}\Big)^2+1}
+	\end{equation*}
+	\item<3-> Apply the substitution $v=y/x$ ($y=xv, \tfrac{dy}{dx}=v+x\tfrac{dv}{dx}$)
+	\begin{columns}[T]
+	\begin{column}{0.45\linewidth}
+	\begin{align*}
+	\uncover<4->{\frac{dy}{dx} &= -\frac{x}{y} + \sqrt{ \Big( \frac{x}{y} \Big)^2+1} \\}
+	\uncover<4->{v+x\frac{dv}{dx} &= -\frac{1}{v} + \sqrt{\frac{1}{v^2} +1 } \\}
+	\uncover<5->{x\frac{dv}{dx} &= \sqrt{\frac{1+v^2}{v^2}}-\frac{1}{v}-v}
+	\end{align*}
+	\end{column}
+	\begin{column}{0.45\linewidth}
+	\begin{gather*}
+		\uncover<6->{x\frac{dv}{dx} = \frac{1}{v}\sqrt{1+v^2}-\frac{1+v^2}{v} \\}
+		\uncover<7->{\only<8->{\int} \frac{v}{\sqrt{1+v^2}-(1+v^2)}\, dv = \only<8->{\int} \frac{dx}{x}\\}
+		\uncover<9->{\int \frac{v}{\sqrt{1+v^2}-(1+v^2)}\, dv = \ln \lvert x \rvert + C \\}
+	\end{gather*}
+	\end{column}
+	\end{columns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Example: Homogeneous Equation}
+\begin{block}{Find a general solution of the equation}
+\begin{equation*}
+	yy'+x=\sqrt{x^2+y^2}
+\end{equation*}
+\end{block}
+At this point, we need to take care of the integral
+\begin{align*}
+	\int \frac{v}{\sqrt{1+v^2}-(1+v^2)}\, dv \uncover<2->{&= \underbrace{\tfrac{1}{2} \int \frac{du}{u^{1/2}-u}}_{\alert{u=1+v^2}} \\}
+	\uncover<3->{&= \tfrac{1}{2} \int \frac{du}{u^{1/2} \big( 1-u^{1/2} \big)} \\}
+	\uncover<4->{&= \int \frac{\tfrac{1}{2} u^{-1/2}}{1-u^{1/2}}\, du \\}
+	\uncover<5->{&= \underbrace{-\int \frac{d\omega}{\omega}}_{\alert{\omega=1-u^{1/2}}} = -\ln \lvert \omega \rvert \\}
+	\uncover<6->{&= -\ln \big\lvert 1-u^{1/2} \big\rvert = -\ln \big\lvert 1 - (1+v^2)^{1/2} \big\rvert } 
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Example: Homogeneous Equation}
+\begin{block}{Find a general solution of the equation}
+\begin{equation*}
+	yy'+x=\sqrt{x^2+y^2}
+\end{equation*}
+\end{block}
+\begin{gather*}
+	-\ln \big\lvert 1-(1+v^2)^{1/2} \big\rvert = \ln \lvert x \rvert + C \\
+	\uncover<2->{\frac{1}{\big\lvert 1-(1+v^2)^{1/2} \big\rvert} = A\lvert x \rvert \\}
+	\uncover<3->{\intertext{flipping both sides, and substituting back $v=y/x$}
+	\alert{\Big\lvert 1 - \sqrt{ 1 + (y/x)^2 } \Big\rvert = A \lvert x \rvert^{-1}}}
+\end{gather*}
+
+\vspace{4cm}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Example: Bernoulli Equation}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	x\frac{dy}{dx} +6y = 3xy^{4/3}
+\end{equation*}
+\end{block}
+\pause Rewrite the equation to realize it is a Bernoulli, and find $\overline{P}$, $\overline{Q}$, $n$:
+\begin{equation*}
+	\uncover<3->{\frac{dy}{dx} + \frac{6}{x} y = 3y^{4/3}}
+\end{equation*}
+\pause It is $\overline{P}(x)=6/x$, $\overline{Q}(x)=3$, $n=4/3$.
+
+\pause We need to apply the substitution $v=y^{1-4/3}=y^{-1/3}$. 
+\begin{align*}
+	\uncover<4->{y&=v^{-3}} \uncover<5->{&\frac{dy}{dx} &=-3v^{-4}\frac{dv}{dx}}
+\end{align*}
+\pause\pause We get then
+\begin{align*}
+	\uncover<7->{\frac{dy}{dx} + \frac{6}{x} y &= 3 y^{4/3}}
+	\uncover<8->{&-3v^{-4}\frac{dv}{dx} + \frac{6}{x} v^{-3} &= 3 v^{-4}}
+	\uncover<9->{&\frac{dv}{dx} -\frac{2}{x} v &= -1}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Example: Bernoulli Equation}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	x\frac{dy}{dx} +6y = 3xy^{4/3}
+\end{equation*}
+\end{block}
+We need to solve now the linear first-order equation
+\begin{equation*}
+	\frac{dv}{dx} - \frac{2}{x}\, v = -1
+\end{equation*}
+Let us compute all the ingredients of the formula:
+\begin{align*}
+	\uncover<2->{P(x)&=-\frac{2}{x}}
+	\uncover<3->{&Q(x)&=-1}
+	\uncover<4->{&\int P(x)\, dx&=-2\ln \lvert x \rvert = \ln x^{-2}}
+	\uncover<5->{&\rho(x)&=x^{-2}}
+\end{align*}
+\begin{equation*}
+	\uncover<6->{\int \rho(x)Q(x)\, dx = \int -x^{-2} \, dx =  x^{-1}}
+\end{equation*}
+\pause\pause \pause\pause \pause\pause Therefore, the solution of this equation is
+\begin{align*}
+	\uncover<7->{x^{-2} \alert{v} &= C + x^{-1}} 
+	\uncover<8->{& x^{-2} y^{-1/3} &= C + x^{-1}}
+\end{align*}
+\end{frame}
+
+\subsection{More opportunities for substitution}
+
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{The Linear Substitution}
+Another opportunity for substitution arises when we can write 
+\begin{equation*}
+y'=H(ax+by+c).
+\end{equation*}
+In this case, we do $v=ax+by+c$, that gives us $y = \tfrac{1}{b}\, (v-ax-c)$ and $y'= \tfrac{1}{b} \big(v' - a \big)$.
+\pause
+\begin{example}
+Find a general solution:
+\begin{equation*}
+	\frac{dy}{dx} = (x+y+3)^2
+\end{equation*}
+\end{example}
+Set $v=x+y+3$.  This gives $y=v-x-3$ and $y'=v'-1$.
+\begin{align*}
+	\uncover<3->{&\frac{dy}{dx} = (x+y+3)^2}
+	\uncover<5->{&&\only<6->{\int} \frac{dv}{v^2+1} = \only<6->{\int} dx}
+	\uncover<9->{&&x+y+3 = \tan(x+C) \\}
+	\uncover<3->{&\frac{dv}{dx}-1 = v^2}
+	\uncover<7->{&&\tan^{-1} v = x+C}
+	\uncover<10->{&&\alert{y = \tan(x+C)-x-3}\\}
+	\uncover<4->{&\frac{dv}{dx} =v^2+1}
+	\uncover<8->{&&v = \tan (x+C) }
+\end{align*}
+\end{frame}
+
+\subsection{Jazz}
+\begin{frame}\frametitle{The Substitution Method}
+\framesubtitle{Which substitution do you prefer?}
+\begin{block}{Find a general solution}
+\begin{equation*}
+y'=\frac{x-y}{x+y}
+\end{equation*}
+\end{block}
+I see two ways to solve this problem:
+\begin{itemize}
+	\item Take the substitution $v=x+y$ (always try the denominator first!), or
+	\item Note that 
+	\begin{equation*}
+		\frac{x-y}{x+y}=\frac{\frac{x-y}{x}}{\frac{x+y}{x}} = \frac{1-y/x}{1+y/x}
+	\end{equation*}
+	and treat it as homogeneous: $v=y/x$
+\end{itemize}
+
+\vspace{3cm}
+\end{frame}
+\end{document}

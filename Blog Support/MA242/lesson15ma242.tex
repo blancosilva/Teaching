@@ -1,0 +1,335 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{Gosper curve}{
+	\rule{XF -> XF+YF++YF-XF--XFXF-YF+}
+	\rule{YF -> -XF+YFYF++YF+XF--XF-YF}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4]
+\draw [l-system={Gosper curve, axiom=XF, order=5, step=0.6pt, angle=60}]
+lindenmayer system; 
+\end{tikzpicture}
+}
+
+\title{Lesson 15: The General Second-Order Linear Equations with Constant Coefficients: Undetermined Coefficients (II)}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{General Program}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\begin{itemize}
+\item First-Order Differential Equations
+\begin{itemize}
+\item Separable equations 
+\item Homogeneous First-Order Equations 
+\item Linear First-Order Equations 
+\item Bernoulli Equations 
+\item General Substitution Methods
+\item Exact Equations 
+\end{itemize}
+\item Second-Order Differential Equations
+\begin{itemize}
+	\item Reducible Equations
+	\item General Linear Equations (Intro)
+	\item Linear Equations with Constant Coefficients
+	\begin{itemize}
+		\item Characteristic Equation
+		\item Variation of Parameters
+		\item Undetermined Coefficients
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Undetermined coefficients}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{The General Method}
+\begin{center}
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{|m{0.45\linewidth}||m{0.45\linewidth}|}
+		\rowcolor{DeepSkyBlue4}
+		If $f(x)$ is\dots & then pick $Y(x)$\dots \raisebox{0pt}[0.5cm]{} \\[0.2cm]
+		$\alert{P_n(x)}=a_0+a_1x+\dotsb +a_nx^n$ & $x^s \big( A_0 + A_1x + \dotsb + A_nx^n \big)$ \raisebox{0pt}[0.5cm]{} \\[0.3cm]
+		$\alert{e^{\alpha x}}P_n(x)$ & $x^s e^{\alpha x} \big( A_0 + A_1x + \dotsb + A_nx^n \big)$ \raisebox{0pt}[0.5cm]{} \\[0.3cm]
+		$e^{\alpha x} P_n(x) \alert{\cos \beta x}$, or $e^{\alpha x}P_n(x)\alert{\sin \beta x}$ & $x^s e^{\alpha x} \cos (\beta x) \big( A_0 + A_1x + \dotsb + A_nx^n \big) \raisebox{0pt}[0.5cm]{} \newline \qquad + x^s e^{\alpha x} \sin (\beta x) \big( B_0 + B_1x + \dotsb + B_nx^n \big)$ \\[0.3cm]
+	\end{tabular}
+	\end{center}
+	A good way to compute $s$ is by counting:
+	\begin{itemize}
+		\item The number of times that 0 is a root of the characteristic equation,
+		\item The number of times that $\alpha$ is a root of the characteristic equation, and 
+		\item The number of times that $\alpha + i\beta$ is a root of the characteristic equation.
+	\end{itemize}
+\end{frame}
+
+\section{Examples}
+\subsection{Intermediate level}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the function $Y$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=-8e^x\cos 2x
+	\end{equation*}
+\end{block}
+\pause Note that $f(x)$ is of the form $e^{\alpha x}P_n(x)\cos \beta x$ with $\alpha = 1$, $\beta=2$, $n=0$ and $a_0=-8$.  We are looking for $Y(x)$ of the form $x^s e^x \big(\alert{A_0}\cos 2x + \alert{B_0}\sin 2x\big)$.
+
+\pause The characteristic equation of the homogeneous part is $(r+1)(r-4)$, and this gives us the solutions $y_1=e^{-x}$, $y_2=e^{4x}$.
+
+\pause Note that
+\begin{itemize}
+	\item 0 is not a root of the characteristic equation,
+	\item $\alpha=1$ is not a root of the characteristic equation, and
+	\item the characteristic equation has no complex roots.
+\end{itemize}
+It must then be $s=0$, and $Y(x)=e^x \big( \alert{A_0}\cos 2x + \alert{B_0}\sin 2x \big)$ with \alert{undetermined coefficients $A_0$ and $B_0$}.
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the function $Y$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=-8e^x\cos 2x
+	\end{equation*}
+\end{block}
+\begin{align*}
+	Y&=e^x \big( A_0 \cos 2x + B_0 \sin 2x\big)  \\
+	\uncover<2->{Y'&= e^x \big( A_0 \cos 2x + B_0 \sin 2x \big) + e^x \big( -2A_0\sin 2x +2B_0\cos 2x \big) \\}
+	\uncover<3->{&= e^x \big( (A_0+2B_0)\cos 2x + (B_0-2A_0)\sin 2x \big) \\}
+	\uncover<4->{Y'' &= e^x \big( (A_0+2B_0)\cos 2x + (B_0-2A_0)\sin 2x \big) \\}
+	\uncover<4->{&\quad + e^x \big( -2(A_0+2B_0)\sin 2x + 2(B_0-2A_0)\cos 2x \big) \\}
+	\uncover<5->{&= e^x \big( (-3A_0+4B_0)\cos 2x + (-4A_0-3B_0)\sin 2x \big)}
+	\end{align*}
+	\uncover<6->{\hrule}
+	\begin{align*}
+	\uncover<6->{-8e^x\cos 2x &= Y''-3Y'-4Y \\}
+	\uncover<7->{-8e^x\cos 2x &= e^x \big( (-3A_0+4B_0)\cos 2x - (4A_0+3B_0)\sin 2x\big) \\}
+	\uncover<7->{&\quad -3 e^x \big( (A_0+2B_0)\cos 2x + (B_0-2A_0) \sin 2x \big) \\}
+	\uncover<7->{&\quad -4e^x\big( A_0\cos 2x + B_0 \sin 2x \big) \\}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find the function $Y$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=-8e^x\cos 2x
+	\end{equation*}
+\end{block}
+\begin{align*}
+	0 &= \big( -3A_0 + 4 B_0 -3A_0 -6B_0 -4A_0+8\big)\cos 2x \\
+	&\quad + \big( -4A_0-3B_0 -3B_0+6A_0-4B_0\big)\sin 2x 
+\end{align*}
+\pause The coefficients $A_0$ and $B_0$ satisfy 
+\begin{equation*}
+	\begin{cases}
+		4 = 5A_0+B_0 \\
+		0 = A_0-5B_0
+	\end{cases}
+	\uncover<3->{
+	\begin{cases}
+		A_0= 10/13\\
+		B_0= 2/13\\
+	\end{cases} }
+	\uncover<4->{\alert{Y(x)=e^x \big( \tfrac{10}{13}\cos 2x + \tfrac{2}{13}\sin 2x \big)}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}	
+\begin{block}
+	{Find the function $Y$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=2e^{-x}
+	\end{equation*}
+\end{block}
+\pause It must be $Y(x)=x^sA_0e^{-x}$, because $f(x)$ is of the form $e^{\alpha x}P_n(x)$ with $\alpha=-1$, $n=0$ and $a_0=2$.
+
+\pause Note that the characteristic equation is again $(r+1)(r-4)$, and thus
+\begin{itemize}
+	\item 0 is not a root of the characteristic equation,
+	\item but $\alpha=-1$ is one of the roots, and
+	\item the equation has no complex roots.
+\end{itemize}
+\pause  It must then be $s=1$, and $Y(x)=\alert{A_0}xe^{-x}$ with one undetermined coefficient.  \pause Let's find its value:
+\begin{align*}
+\uncover<4->{Y&=A_0xe^{-x}  \\}
+\uncover<6->{Y'&= A_0e^{-x} - A_0xe^{-x} = A_0(1-x)e^{-x} \\}
+\uncover<7->{Y''&= -A_0e^{-x} - A_0(1-x)e^{-x} = -A_0(2-x)e^{-x}}
+\end{align*}	
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}	
+\begin{block}
+	{Find the function $Y$ for the differential equation}
+	\begin{equation*}
+		y''-3y'-4y=2e^{-x}
+	\end{equation*}
+\end{block}
+\begin{gather*}
+	Y''-3Y'-4Y=2e^{-x} \\
+	\uncover<2->{-A_0(2-x)e^{-x} -3A_0(1-x)e^{-x}-4A_0xe^{-x} = 2e^{-x} \\}
+	\uncover<3->{\textcolor{red}{(A_0+3A_0-4A_0)}xe^{-x} + (-2A_0-3A_0-2)e^{-x}=0}
+\end{gather*}
+\pause\pause Which means it must be $5A_0=-2$, and thus
+\begin{equation*}
+	\alert{Y=-\tfrac{2}{5}xe^{-x}}
+\end{equation*}
+
+\vspace{2cm}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find $Y$ for the differential equation}
+	\begin{equation*}
+		y''+y=\sin x
+	\end{equation*}
+\end{block}
+\pause We have:
+\begin{itemize}[<+->]
+	\item $f(x)=e^{\alpha x}P_n(x)\sin \beta x$ for $\alpha=0$, $\beta=1$, $n=0$ ($a_0=1$).  This means 
+	\begin{equation*}
+		Y(x)=x^s e^{\alpha x}\big( P_n(x)\cos \beta x + Q_n(x)\sin \beta x\big) = x^s \big( A_0\cos x + B_0\sin x \big)
+	\end{equation*}
+	\item The characteristic equation is $r^2+1=0$ with solutions $\pm i$. The solutions of the homogeneous equation are $y_1=\cos x$, $y_2=\sin x$.
+	\item 0 is not a root of the characteristic equation, and neither is $\alpha=0$.  But $i=0+1\cdot i$ is a root.  This means it must be $s=1$, and therefore,
+	\begin{equation*}
+		Y=x(\alert{A_0}\cos x + \alert{B_0}\sin x)
+	\end{equation*}
+\end{itemize}
+\uncover<4->{Let's look for the values of the \alert{undetermined coefficients $A_0$ and $B_0$.}}
+\end{frame}
+
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+	{Find $Y$ for the differential equation}
+	\begin{equation*}
+		y''+y=\sin x
+	\end{equation*}
+\end{block}
+\begin{align*}
+	Y&=x(A_0\cos x + B_0\sin x) = A_0x\cos x + B_0x\sin x \\
+	\uncover<2->{Y'&=(A_0\cos x + B_0\sin x) + x(-A_0\sin x + B_0\cos x) \\}
+	\uncover<3->{&=(A_0+xB_0)\cos x + (B_0-A_0x)\sin x \\}
+	\uncover<4->{Y''&= B_0\cos x-(A_0+xB_0)\sin x -A_0\sin x + (B_0-A_0x)\cos x \\}
+	\uncover<5->{&= 2B_0\cos x -A_0x\cos x -2A_0\sin x -B_0x\sin x}
+\end{align*}
+\uncover<6->{\hrule}
+\begin{gather*}
+	\uncover<6->{Y''+Y=\sin x \\}
+	\uncover<7->{\big( 2B_0\cos x -A_0 x\cos x -2A_0\sin x -B_0x\sin x\big) + \big( A_0x\cos x +B_0x\sin x\big)=\sin x\\}
+	\uncover<8->{2B_0\cos x + (-2A_0-1)\sin x = 0}
+\end{gather*}
+\uncover<8->{which means $B_0=0$ and $A_0=-1/2$; therefore,}
+\begin{equation*}
+	\uncover<9->{\alert{Y=-\tfrac{1}{2}x\cos x}}
+\end{equation*}
+\end{frame}
+
+\subsection{Summary}
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Summary}
+\begin{center}
+\begin{align*}
+y''-3y'-4y&=\alert{3e^{2x}}& \longleftarrow \alert{Y(x)}&\alert{=-\tfrac{1}{2}e^{2x}} \\
+y''-3y'-4y&=\alert{2\sin x}& \longleftarrow \alert{Y(x)}&\alert{=-\tfrac{5}{17}\sin x+\tfrac{3}{17}\cos x} \\
+y''-3y'-4y&=\alert{4x^2-1}& \longleftarrow \alert{Y(x)}&\alert{=-x^2+\tfrac{3}{2}x-\tfrac{11}{8}} \\
+y''-3y'-4y&=\alert{-8e^x\cos 2x}& \longleftarrow \alert{Y(x)}&\alert{=e^x\big( \tfrac{10}{13}\cos 2x + \tfrac{2}{13}\sin 2x\big)} \\
+y''-3y'-4y&=\alert{2e^{-x}}& \longleftarrow \alert{Y(x)}&\alert{=-\tfrac{2}{5}xe^{-x}} \\
+y''+y&=\alert{\sin x}& \longleftarrow \alert{Y(x)}&\alert{=-\tfrac{1}{2}x\cos x} \\
+\end{align*}
+\end{center}
+\end{frame}
+
+\section{Putting it all together}
+\subsection{General solutions}
+\begin{frame}\frametitle{Undetermined Coefficients}
+\framesubtitle{Examples}
+\begin{block}
+{Find a general solution to the differential equation}
+\begin{equation*}
+	y''-3y'-4y=\only<1-2>{\underbrace{3e^{2x}+2\sin x +2e^{-x}}_{f(x)}}\only<3->{\underbrace{3e^{2x}}_{f_1(x)}+\underbrace{2\sin x}_{f_2(x)} + \underbrace{2e^{-x}}_{f_3(x)}}
+\end{equation*}
+\end{block}
+\pause We always start by finding the solutions $y_1$ and $y_2$ of the homogeneous equation:
+\begin{align*}
+	y_1(x)&=e^{-x}  &y_2(x)&=e^{4x}
+\end{align*}
+\pause In a situation like this, we need to \emph{divide and conquer}:  Notice how we have broken the initial non-homogeneous function $f(x)$ into as many functions as necessary.
+
+\pause We solve then each part independently, and add the solutions:
+\begin{align*}
+	Y_1(x)&=-\tfrac{1}{2}e^{2x}, &
+	Y_2(x)&=-\tfrac{5}{17}\sin x + \tfrac{3}{17} \cos x, & 
+	Y_3(x)&= -\tfrac{2}{5}xe^{-x}
+\end{align*}
+\pause The general solution is then 
+\begin{align*}
+	y&=Ay_1(x) + By_2(x) + Y(x) \\
+	\uncover<6->{&=Ay_1(x) + By_2(x) + \big( Y_1(x)+Y_2(x)+Y_3(x) \big) \\}
+	\uncover<7->{&= \alert{Ae^{-x} + Be^{4x} -\tfrac{1}{2}e^{2x} -\tfrac{5}{17}\sin x + \tfrac{3}{17} \cos x -\tfrac{2}{5} xe^{-x}}}
+\end{align*}
+\end{frame}
+\end{document}

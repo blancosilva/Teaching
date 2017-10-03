@@ -1,0 +1,257 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[9pt,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+\usepackage{wasysym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=DeepSkyBlue4} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=DeepSkyBlue4}
+\setbeamercolor{block title example}{bg=DeepSkyBlue4}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lesson 2: Intercepts, Change and Average Rate of Change}
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+\pgfdeclarelindenmayersystem{plant}{
+	\rule{X -> F-[[X]+x]+F[+FX]-X}
+	\rule{F -> FF}
+}
+\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=15}]
+    lindenmayer system; 
+	\end{tikzpicture}
+	\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=25}] lindenmayer system;
+	\end{tikzpicture}
+	\begin{tikzpicture}[color=DeepSkyBlue4,rotate=74]
+    \draw [l-system={plant, axiom=X, order=6, step=0.5pt, angle=30}] lindenmayer system;
+	\end{tikzpicture}
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{What do we know?}
+\subsection{}
+
+\begin{frame}[t]
+\frametitle{What do we know?}
+\framesubtitle{The General Program}
+
+\begin{itemize}
+\item Background Material (Basic Algebra)
+\item Functions
+\begin{itemize}
+	\item Definition
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{}
+
+\begin{frame}[c]\frametitle{Warm-up}
+    
+\framesubtitle{A somewhat advanced Example}
+
+\begin{example}
+\alert{The solid waste $W$ generated each year in the cities of the US is increasing.  The solid waste generated (in millions of tons) was 238.3 in 2000, and 251.3 in 2006. 
+
+Find a formula for this function by using the equation of the line through these two points.}
+
+	\pause We always start indicating independent variable and dependent variable.
+
+	\pause Independent variable: $t$, years after 2000 (let's keep it simple!)
+
+	Dependent variable: $W$, in millions of tons of waste.
+
+	\pause We are searching then for a function of the kind $W = f(t) = \underbrace{a + mt}_{\text{a line!}}$
+
+	\pause 
+	\begin{align*}
+		a &= f(0) = 238.3 &
+		m &= \frac{251.3 - 238.3}{6-0} = \frac{13}{6} \approx 2.167
+	\end{align*}
+	\pause Solution: 
+	\begin{equation*}
+		W = f(t) = 238.3 + \tfrac{13}{6}t
+	\end{equation*}
+\end{example}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Warm-up}
+    
+\framesubtitle{Another somewhat advanced Example}
+
+\begin{example}
+\alert{A city's population was 30,700 in the year 2000, and is growing by 850 people a year.}
+\begin{itemize}
+	\item \alert{Give a formula for the city's population, $P$, as a function of the number of years, $t$, since 2000.}
+
+	\uncover<2->{$P = f(t) = 30700 + 850t$}
+	\item \alert{What is the population predicted to be in 2020?}
+	\uncover<3->{$f(20) = 30700 + 850 \times 20 = 47700$ people}
+	\item \alert{When is the population expected to reach 55,000?}
+	\begin{align*}
+	\uncover<4->{f(t) &= 55000 \\}
+	\uncover<5->{30700 + 850t &= 55000 \\}
+	\uncover<6->{850t &= 55000 - 30700 = 24300 \\}
+	\uncover<7->{t &= \frac{24300}{850} \approx 28.59\, \text{years}}
+	\end{align*}
+	\uncover<8>{Solution: The population of this city will reach 55000 sometime during 2028.}
+\end{itemize}
+\end{example}
+\end{frame}
+
+\section{Extracting Basic Information from Functions}
+
+\subsection{}
+
+\begin{frame}[c]\frametitle{Extracting Basic Information from Functions}
+    
+\framesubtitle{Intercepts, change, average rate of change}
+
+In the previous examples, we have learned of the significance of the intersection of a function $y = f(x)$ with the axes:
+
+\begin{itemize}
+	\item<2-> The $y$-intersect indicates the \alert{initial value} of the function.
+
+	\begin{quotation}We obtain $y$-intersects by evaluating $f(0)$.\end{quotation}
+	\item<3-> The $x$-intersects (there might be many!) indicate when the function is zero.
+
+	\begin{quotation}We obtain $x$-intersects by solving the equation $f(x) = 0$\end{quotation}
+\end{itemize}
+
+\pause\pause\pause Other relevant information we can ask:
+
+\begin{itemize}
+	\item<4-> The \alert{change} of $f$ between $x=a$ and $x=b$
+	\begin{equation*}
+	\Delta y = f(b) - f(a)\, \text{(units = dep.~variable)}
+	\end{equation*}
+	\item<5-> The \alert{average rate of change} of $f$ between $x=a$ and $x=b$:
+	\begin{equation*}
+	\frac{\Delta y}{\Delta x} = \frac{f(b) - f(a)}{b-a}\, \text{(units = dep.~variable/ind.~variable)}
+	\end{equation*}
+\end{itemize}
+\end{frame}
+
+\subsection{}
+
+\begin{frame}[c]\frametitle{Examples}
+
+\begin{example}[Winning Height in Men's Olympic Pole Vault]
+
+\begin{center}
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{|c||c|c|c|c|c|c|c|}	
+	\rowcolor{DeepSkyBlue4}	
+	&&&&&&&\\
+	Year & 1960 & 1964 & 1968 & \dots & 1992 & 1996 & 2000 \\
+	Height (in) & 185 & 201 & 213 & \dots & 228 & 233 & 232
+	\end{tabular}
+\end{center}
+
+\begin{itemize}
+	\item  \alert{What was the change in height from 1960 to 1968?}
+
+	\uncover<2->{$\Delta f = f(b) - f(a)$} \uncover<3->{$ = 213 - 185 = 28$ inches}
+	\item \alert{What was the average rate of change in height from 1960 to 1968?}
+
+	\uncover<4->{ARC $= \dfrac{f(b)-f(a)}{b-a}$}
+	\uncover<5->{$=\dfrac{213 - 185}{1968-1960} = \dfrac{28}{8} = 3.5\, \text{inches}/\text{year}$}
+	\item \alert{What was the change in height from 1992 to 2000?}
+
+	\uncover<6->{$232 - 228 = 4$ inches}
+	\item \alert{What was the average rate of change in height from 1992 to 2000?}
+
+	\uncover<7->{$\dfrac{232 - 228}{2000 - 1992} = \dfrac{4}{8} = 0.5\, \text{inches}/\text{year}$}
+\end{itemize}
+\end{example}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Examples}
+    
+\begin{example}
+\alert{High levels of PCB in the environment affect pelicans' eggs.  As the concentration of PCB in environment increases, the thickness of eggshells decreases, making the eggs more likely to break.}
+
+\begin{center}
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{|c||c|c|c|c|c|c|}	
+	\rowcolor{DeepSkyBlue4}	
+	&&&&&&\\
+	PCB (parts per million) & 87 & 147 & 204 & 289 & 356 & 452 \\
+	thickness (mm) & 0.44 & 0.39 & 0.28 & 0.23 & 0.22 & 0.14
+	\end{tabular}
+\end{center}
+\alert{What is the ARC of the thickness from 87 ppm to 452 ppm?  Explain with words what that means.}
+	
+\begin{equation*}
+\uncover<2->{\text{ARC} = \frac{0.14 - 0.44}{452 - 87} = \frac{-0.3}{365} \approx -0.0008\, \text{mm}/\text{ppm}}
+\end{equation*}
+
+\uncover<3->{\only<4>{\textcolor{red}}{The thickness of pelican eggs} \only<5>{\textcolor{red}}{decreases by an average of} \only<6>{\textcolor{red}}{$0.0008$ mm} \only<7>{\textcolor{red}}{for every additional part per million of PCB in the environment.}}
+
+\end{example}
+
+\end{frame}
+
+\begin{frame}[c]\frametitle{Examples}
+    
+\begin{example}[Tobacco production in the US]
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node [scale=0.899999]{
+\rowcolors{2}{white}{gray!50!white}
+	\begin{tabular}{|c||c|c|c|c|c|c|c|c|}	
+	\rowcolor{DeepSkyBlue4}
+	&&&&&&&&\\
+	Year & 1996 & 1997 & 1998 & 1999 & 2000 & 2001 & 2002 & 2003 \\
+	Production & 1517 & 1787 & 1480 & 1293 & 1053 & 991 & 879 & 831  \\
+	\rowcolor{white}
+	(million pounds) &&&&&&&&
+	\end{tabular}};
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+	\item \alert{What is the average rate of change in tobacco production between 1996 and 2003?  Interpret your answer.}
+
+	\uncover<2->{$\text{ARC} = \dfrac{831-1517}{2003-1996} = \dfrac{-686}{7} = -98$ millions of pounds per year}
+
+	\uncover<3->{The production of tobacco in US decreased by an average of 98 millions of pounds every year between 1996 and 2003.}
+	\item \alert{During this seven-year period, is there any interval during which the average rate of change was positive?  If so, when?}
+
+	\uncover<4->{Only between 1996 and 1997.}
+\end{itemize}
+\end{example}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,336 @@
+\documentclass[smaller,xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals,lindenmayersystems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=black!50!white}
+\setbeamercolor{block title example}{bg=black!50!white}
+\setbeamercolor{block body}{bg=black!15!white}
+\setbeamercolor{block body example}{bg=black!15!white}
+
+\setbeamertemplate{navigation symbols}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[Francisco Blanco-Silva]{Francisco Blanco-Silva}
+\institute[USC]{University of South Carolina}
+\date{
+	\begin{tikzpicture}[decoration=Koch curve type 2] 
+		\draw[DeepSkyBlue4] decorate{ decorate{ decorate{ (0,0) -- (3,0) }}}; 
+	\end{tikzpicture}  
+	\\
+	\today
+}
+\title{Lesson 7: Linear First-Order and Bernoulli Equations}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What do we know?}
+\begin{frame}\frametitle{What do we know?}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+\item The concepts of \alert{differential equation} and \alert{initial value problem}
+\begin{equation*}
+F\big(x,y,y',\dotsc,y^{(n)}\big)=0
+\end{equation*}
+\item The concept of \alert{order} of a differential equation.
+\item The concepts of \alert{general solution}, \alert{particular solution} and \alert{singular solution}.
+\item \alert{Slope fields}
+\item Approximations to solutions via \alert{Euler's Method} and \alert{Improved Euler's Method}
+\end{itemize} 
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+\item Separable equations $y'=H_1(x) H_2(y)$
+\item Homogeneous First-Order Equations $y'=H(y/x)$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Linear First-Order Equations}
+\subsection{Definition}
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Definition}
+The linear first-order equation has the form
+\begin{equation*}
+	\frac{dy}{dx}+P(x)y=Q(x)	
+\end{equation*}
+\pause To solve it, we use an integrating factor (we disregard constant of integration now)
+\begin{equation*}
+\rho(x) = e^{\int P(x)\, dx} 
+\end{equation*}
+\pause The solution of the linear first-order equation can then be written in implicit form as
+\begin{equation*}
+\rho(x) y = C+ \int \rho(x) Q(x)\, dx
+\end{equation*}
+\pause \alert{Why?}
+\end{frame}
+
+\subsection{Proof}
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Proof}
+\alert{Why does this formula work?}  We start with the differential equation
+\begin{equation*}
+	\frac{dy}{dx} + P(x)y = Q(x)
+\end{equation*}
+\pause Let us examine first the integration factor $\rho(x) = e^{\int P(x)\, dx}$. What is its derivative? \pause
+\begin{equation*}
+\frac{d}{dx} \big( \rho(x) ) = P(x) e^{\int P(x)\, dx} = P(x) \rho(x)
+\end{equation*}
+\pause The key of the formula for the solution of these equations is the product \alert{$\rho(x) y$}.
+\pause If we take derivatives in this product, we get
+\begin{align*}
+\frac{d}{dx} \big( \rho(x) y \big) &= \frac{d}{dx} \rho(x) y + \rho(x) \frac{dy}{dx} \\
+\uncover<6->{&= P(x) \alert{\rho(x)} y + \alert{\rho(x)} \frac{dy}{dx} \\}
+\uncover<7->{&= \rho(x) \alert{\underbrace{\Big( P(x) y + \frac{dy}{dx} \Big)}_{\text{What is this?}}}} \uncover<8->{ = \rho(x) Q(x)}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Proof}
+We have just discovered that 
+\begin{equation*}
+	\frac{d}{dx} \big( \rho(x) y \big) = \rho(x) Q(x).
+\end{equation*}
+\pause Integrate both sides.
+\begin{equation*}
+	\rho(x) y = \int \rho(x) Q(x)\, dx \uncover<3->{+C}
+\end{equation*}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	\frac{dy}{dx}-y=e^{-x}	
+\end{equation*}
+\end{block}
+\pause Let us identify $P$, $Q$, and compute $\rho$:
+\begin{align*}
+	\uncover<3->{\alert{P(x)}&\alert{=-1} &\alert{Q(x)}&\alert{=e^{-x}}} \uncover<4->{&\int P(x)\,dx &=-x} \uncover<5->{&\alert{\rho(x)} &\alert{=e^{-x}}}
+\end{align*}
+\pause\pause\pause\pause We need only one more ingredient: \pause
+\begin{equation*}
+	\alert{\int \rho(x)Q(x)\, dx} = \int e^{-x}e^{-x}\, dx = \int e^{-2x}\, dx = \alert{-\tfrac{1}{2}e^{-2x}}
+\end{equation*}
+\pause The solution is then
+\begin{align*}
+	\uncover<8->{\rho(x)\, y &= C + \int \rho(x)Q(x)\, dx} \\
+	\uncover<9->{e^{-x} y &= C -\tfrac{1}{2}e^{-2x}}  \\
+	\uncover<10->{y &= Ce^x-\tfrac{1}{2}e^{-x}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	(x^2+1)\frac{dy}{dx}=6x-3xy
+\end{equation*}
+\end{block}
+\pause Let us identify $P$, $Q$.  But first, we need to re-write the equation:
+\begin{gather*}
+	\uncover<3->{\frac{dy}{dx}=\frac{6x-3xy}{x^2+1} = \frac{6x}{x^2+1} - \frac{3x}{x^2+1}y \\}
+	\uncover<4->{\frac{dy}{dx} + \alert{\underbrace{\frac{3x}{x^2+1}}_{P(x)}}\, y = \alert{\underbrace{\frac{6x}{x^2+1}}_{Q(x)}}}
+\end{gather*}
+\pause\pause\pause Let us compute the integrating factor:
+\begin{align*}
+\uncover<5->{\int P(x)\, dx &= \int \frac{3x}{x^2+1}\, dx = \tfrac{3}{2}\ln \lvert x^2+1 \rvert = \tfrac{3}{2} \ln (x^2+1) \\}
+\uncover<6->{\alert{\rho(x)} &\alert{= e^{\tfrac{3}{2}\ln(x^2+1)} = (x^2+1)^{3/2}}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	(x^2+1)\frac{dy}{dx}=6x-3xy
+\end{equation*}
+\end{block}
+The final ingredient:
+\begin{align*}
+	\alert{\int \rho(x)Q(x)\, dx} \uncover<2->{&= \int (x^2+1)^{3/2} \frac{6x}{x^2+1}\, dx = \int 6x (x^2+1)^{1/2}\, dx \\}
+	\uncover<3->{&= \underbrace{\int 3 u^{1/2}\, du}_{u=x^2+1} = 2 u^{3/2} = \alert{(x^2+1)^{3/2}}}
+\end{align*}
+\pause\pause\pause The solution is then
+\begin{align*}
+\rho(x)\,y &= C+\int \rho(x)Q(x)\, dx \\
+\uncover<5->{(x^2+1)^{3/2} y &= (x^2+1)^{3/2} + C}  \\
+\uncover<6->{y &= 1+C(x^2+1)^{-3/2}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	y'=1+x+y+xy
+\end{equation*}
+\end{block}
+We have seen this equation before, in the setting of \emph{separable equations}.  But we may re-write it also as a linear first-order too!
+\begin{align*}
+\frac{dy}{dx} &= (1+x)+y(1+x)  \uncover<2->{&\frac{dy}{dx} &\alert{\underbrace{- (1+x)}_{P(x)}}\, y = \alert{\underbrace{1+x}_{Q(x)}}}\\ 
+\uncover<3->{\int P(x)\, dx &= -\int (1+x)\, dx = -x-\tfrac{1}{2}x^2} \uncover<4->{&\alert{\rho(x)} &\alert{= e^{-x-x^2/2}} }\\
+\end{align*}
+\begin{equation*}
+\uncover<5->{\alert{\int \rho(x)Q(x)\, dx} = \int (1+x)e^{-x-x^2/2}\, dx} \uncover<6->{ =\underbrace{\int e^{-u}\, du}_{u=x+x^2/2} = -e^{-u} = \alert{-e^{-x-x^2/2}}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Linear First-Order Equations}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	y'=1+x+y+xy
+\end{equation*}
+\end{block}
+The solution is then
+\begin{align*}
+\rho(x)\, y &= C + \int \rho(x) Q(x)\, dx \\
+\uncover<2->{e^{-x-x^2/2} y & = C - e^{-x-x^2/2}}  \\
+\uncover<3->{\alert{y} &\alert{= Ce^{x+x^2/2}-1}}
+\end{align*}
+\end{frame}
+
+\section{Bernoulli Equation}
+\subsection{Definition}
+\begin{frame}\frametitle{Bernoulli Equation}
+\framesubtitle{Definition}
+The Bernoulli equation is very similar to the linear equation:
+\begin{equation*}
+	\frac{dy}{dx}+\overline{P}(x)y=\overline{Q}(x)\alert{y^n}
+\end{equation*}
+\pause We can turn it into one of those, by performing a substitution: $v=y^{1-n}$.
+\begin{align*}
+	\uncover<3->{y&=v^{1/(1-n)}} \uncover<4->{&\frac{dy}{dx} &= \frac{1}{1-n} v^{n/(1-n)} \frac{dv}{dx}}
+\end{align*}
+\pause\pause\pause We use this substitution in the original equation, to get rid of the $y$'s:
+\begin{align*}
+	\frac{dy}{dx}+\overline{P}(x)y &= \overline{Q}(x)y^n \\
+	\uncover<6->{\frac{1}{1-n} v^{n/(1-n)} \frac{dv}{dx} +\overline{P}(x)v^{1/(1-n)} &= \overline{Q}(x) v^{n/(1-n)} \\}
+	\uncover<7->{\frac{dv}{dx} + \alert{\underbrace{(1-n)\overline{P}(x)}_{P(x)}} v &= \alert{\underbrace{(1-n) \overline{Q}(x)}_{Q(x)}}}
+\end{align*}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{Bernoulli Equation}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	x\frac{dy}{dx} +6y = 3xy^{4/3}
+\end{equation*}
+\end{block}
+\pause Rewrite the equation to realize it is a Bernoulli, and find $\overline{P}$, $\overline{Q}$, $n$:
+\begin{equation*}
+	\uncover<3->{\frac{dy}{dx} + \frac{6}{x} y = 3y^{4/3}}
+\end{equation*}
+\pause It is $\overline{P}(x)=6/x$, $\overline{Q}(x)=3$, $n=4/3$.
+
+\pause We need to apply the substitution $v=y^{1-4/3}=y^{-1/3}$.  \pause Rather than using the formula, it pays off to perform all the computations from scratch.
+\begin{align*}
+	\uncover<5->{y&=v^{-3}} \uncover<6->{&\frac{dy}{dx} &=-3v^{-4}\frac{dv}{dx}}
+\end{align*}
+\pause\pause\pause We get then
+\begin{align*}
+	\uncover<8->{\frac{dy}{dx} + \frac{6}{x} y &= 3 y^{4/3}}
+	\uncover<9->{&-3v^{-4}\frac{dv}{dx} + \frac{6}{x} v^{-3} &= 3 v^{-4}}
+	\uncover<10->{&\frac{dv}{dx} -\frac{2}{x} v &= -1}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Bernoulli Equation}
+\framesubtitle{Examples}
+\begin{block}{Find a general solution}
+\begin{equation*}
+	x\frac{dy}{dx} +6y = 3xy^{4/3}
+\end{equation*}
+\end{block}
+We need to solve now the linear first-order equation
+\begin{equation*}
+	\frac{dv}{dx} - \frac{2}{x}\, v = -1
+\end{equation*}
+Let us compute all the ingredients of the formula:
+\begin{align*}
+	\uncover<2->{P(x)&=-\frac{2}{x}}
+	\uncover<3->{&Q(x)&=-1}
+	\uncover<4->{&\int P(x)\, dx&=-2\ln \lvert x \rvert}
+	\uncover<5->{&\rho(x)&=x^{-2}}
+\end{align*}
+\begin{equation*}
+	\uncover<6->{\int \rho(x)Q(x)\, dx = \int -x^{-2} \, dx =  x^{-1}}
+\end{equation*}
+\pause\pause \pause\pause \pause\pause Therefore, the solution of this equation is
+\begin{align*}
+	\uncover<7->{x^{-2} \alert{v} &= C + x^{-1}} 
+	\uncover<8->{& x^{-2} y^{-3} &= C + x^{-1}}
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Bernoulli Equation}
+\framesubtitle{Examples}    
+\begin{block}{Find a general solution}
+\begin{equation*}
+	(1+x^2) y'+xy=x^2y^2
+\end{equation*}
+\end{block}
+\pause \begin{equation*}
+	\frac{dy}{dx} + \alert{\underbrace{\frac{x}{1+x^2}}_{\overline{P}(x)}} y = \alert{\underbrace{\frac{x^2}{1+x^2}}_{\overline{Q}(x)}} y^{\alert{2}}
+\end{equation*}
+$n=2$.  We use the substitution $v=y^{1-2}=y^{-1}$.
+\begin{align*}
+	\uncover<3->{y&=v^{-1} &\frac{dy}{dx}&=-v^{-2}\frac{dv}{dx}}
+\end{align*}
+\pause\pause We get the linear equation
+\begin{align*}
+	\uncover<4->{\frac{dy}{dx}+\frac{x}{1+x^2}y &= \frac{x^2}{1+x^2} y^2}
+	\uncover<6->{& \alert{\frac{dv}{dx} - \frac{x}{1+x^2} v}&\alert{= -\frac{x^2}{1+x^2}}} \\
+	\uncover<5->{-v^{-2}\frac{dv}{dx} + \frac{x}{1+x^2}v^{-1} &= \frac{x^2}{1+x^2} v^{-2}} 
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Bernoulli Equation}
+\framesubtitle{Examples}    
+\begin{block}{Find a general solution}
+\begin{equation*}
+	(1+x^2) y'+xy=x^2y^2
+\end{equation*}
+\end{block}
+Let us solve the linear equation:
+\begin{equation*}
+	\frac{dv}{dx}-\frac{x}{1+x^2}v = -\frac{x^2}{1+x^2}	
+\end{equation*}
+In this equation, $P(x)=-x/(1+x^2)$, $Q(x)=-x^2/(1+x^2)$.  We solve it in the usual way:
+\begin{align*}
+	\int P(x)\, dx &= -\int \frac{x}{1+x^2}\, dx = -\tfrac{1}{2} \ln \lvert 1+x^2 \rvert = \ln (1+x^2)^{-1/2} \\
+	\rho(x) &= (1+x^2)^{-1/2}  \\
+	\int \rho(x) Q(x)\, dx &= -\int \frac{x^2}{(1+x^2)^{3/2}}\, dx \alert{\longleftarrow \text{can you find this integral?}}
+\end{align*}
+\end{frame}
+\end{document}
