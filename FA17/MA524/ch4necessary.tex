@@ -29,9 +29,9 @@ If $\x \in S$ is a feasible local minimum of the consistent program $(P)$, then 
 \begin{theorem}[Karush-Kuhn-Tucker Necessary Conditions]\index{Theorem!Karush-Kuhn-Tucker}\index{Theorem!KKT necessary conditions}\label{theorem:KKTnecessary}
 If $\x \in S$ is a feasible local minimum of the consistent program $(P)$ for which all the vectors $\{ \gradient{h_k}(\x), \gradient{g_j}(\x) : 1 \leq k \leq \ell, j \in \mathcal{I}(\x) \}$ are linearly independent, then there exist $u_k \geq 0$ for $1\leq k \leq m$, and $v_1, \dots, v_\ell \in \field{R}$ so that
 \begin{enumerate}
- 	\item\label{item:KKTnecessary1} $[u_0, u_1, \dotsc, u_m, v_1 \dotsc, v_\ell ] \neq \boldsymbol{0}$,
+ 	\item\label{item:KKTnecessary1} $[u_1, \dotsc, u_m, v_1 \dotsc, v_\ell ] \neq \boldsymbol{0}$,
  	\item\label{item:KKTnecessary2} $u_k g_k(\x) = 0$ for all $1 \leq k \leq m$.
- 	\item\label{item:KKTnecessary3} $u_0 \gradient{f}(\x) + \sum_{k=1}^m u_k \gradient{g_k}(\x) + \sum_{k=1}^\ell v_k \gradient{h_k}(\x) = 0$.
+ 	\item\label{item:KKTnecessary3} $\gradient{f}(\x) + \sum_{k=1}^m u_k \gradient{g_k}(\x) + \sum_{k=1}^\ell v_k \gradient{h_k}(\x) = 0$.
  \end{enumerate}
 \end{theorem}
 

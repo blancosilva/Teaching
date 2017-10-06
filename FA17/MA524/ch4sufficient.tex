@@ -39,3 +39,20 @@ A simple case of the previous example: Set $\boldsymbol{A} = \big( \begin{smallm
 \end{equation*}
 This gives the points $\pm(\sqrt{2}/2, \sqrt{2}/2)$.
 \end{example}
+
+\begin{example}
+Another classic constraint optimization problem: Find the point on the sphere of radius $\lambda>0$, $\lambda\field{S}_d = \{ \x \in \field{R}^d : \norm{\x}=\lambda \}$ that is closer to the point $\x_0 \in \field{R}^d$.
+
+We may write this program by using $f(\x)=\norm{\x-\x_0}$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}-\lambda^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT condition request $v \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{x} = \lambda$ so that
+\begin{align*} 
+\gradient{f}(\x) + v\gradient{h_1}(\x) &= \boldsymbol{0}, \\
+2(\x-\x_0)+2v\x &= \boldsymbol{0}, \\
+(1+v)\x = \x_0.
+\end{align*}
+This means that $\x$ is in the half-line 
+If $\x_0 = \boldsymbol{0}$, then any $\x$ within the constraint is a valid solution (pick $v=-1$).  Otherwise, pick $v = -1+\norm{\x_0}/\lambda$.  We have now two cases:
+\begin{enumerate}
+	\item If $\norm{\x_0}=\lambda$, then $v=0$ and $\x=\x_0$ is the only solution.
+	\item If $\norm{\x_0} \neq\lambda$ (the point $\x_0$ is not on the sphere), then $\x = \lambda\x_0/\norm{\x_0}$
+\end{enumerate}
+\end{example}
