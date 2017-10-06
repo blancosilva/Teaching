@@ -3,7 +3,7 @@
 \section{Effective Algorithms for Unconstrained Optimization}
 All of the methods we have explored so far (Newton-Raphson, Secant methods, Steepest descent) offer sound algorithms to compute local extrema of real-valued functions $f \colon \field{R}^d \to \field{R}$. They do have some pros and cons.  
 \begin{itemize}
-	\item The method of Steepest descent always converges to a local minimum, yet slowly.  The key is the fact that Steepest descent iterations are non-increasing.
+	\item The method of Steepest descent produces non-increasing iterations.
 	\item In order to obtain new approximations on each Steepest descent iteration, we have to solve many different one-dimensional optimizations, each of them offering their own computational issues. 
 	\item Both Newton-Raphson and Secant methods offers faster sequences, but we cannot always guarantee convergence.  
 	\item Another drawback of both Newton-Raphson and Steepest descent is the fact that we do need expressions for function itself, its gradient and Hessian matrix.  
