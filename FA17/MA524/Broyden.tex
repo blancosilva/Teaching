@@ -136,7 +136,7 @@ We refer to this process as the \emph{Broyden Method} for finding roots.\index{B
 There is not a unique way to choose the matrices $\boldsymbol{A}_n$ in Broyden's method (and I encourage you to find one of your own devise).  A straightforward construction is given by the following recursive formulas:
 \begin{gather}\index{Broyden Method!recursive formula}\index{Broyden Method!iteration}
 \boldsymbol{A}_0 = \gradient{\boldsymbol{g}}(\x_0) \nonumber \\
-\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \frac{\big[ (\boldsymbol{g}(\x_n)-\boldsymbol{g}(\x_n)\big) - \boldsymbol{A}_n (\x_{n+1}-\x_n) \big] \otimes (\x_{n+1} -\x_n)}{\norm{\x_{n+1}-\x_n}^2} \label{equation:Broyden}
+\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \frac{\big[ \transpose{\big(\boldsymbol{g}(\x_{n+1})-\boldsymbol{g}(\x_n)\big)} - \boldsymbol{A}_n \transpose{(\x_{n+1}-\x_n)} \big] \otimes (\x_{n+1} -\x_n)}{\norm{\x_{n+1}-\x_n}^2} \label{equation:Broyden}
 \end{gather}
 \end{remark}
 
@@ -153,7 +153,9 @@ Starting with initial guess $(x_0, y_0) = (-1, 1)$, we take the first step from 
 \end{align*}
 This gives $(x_1, y_1) = (-1/2, 1/2)$ as root of $\boldsymbol{L}_0$.  For the second step, we compute the matrix $\boldsymbol{A}_1$ satisfying the secant property:
 \begin{align*}
-\boldsymbol{A}_1 &= \begin{bmatrix} 3 & -1 \\ -1 & 3 \end{bmatrix} + 2 \big( \big[ -\tfrac{5}{8}, \tfrac{5}{8} \big] \otimes \big[ \tfrac{1}{2}, -\tfrac{1}{2} \big] \big) \\
+\boldsymbol{A}_1 &= \boldsymbol{A}_0 + \frac{\big[ \transpose{\big(\boldsymbol{g}(-1/2,1/2)-\boldsymbol{g}(-1,1)\big)} - \boldsymbol{A}_0 \transpose{[\tfrac{1}{2},-\tfrac{1}{2}]} \big] \otimes [\tfrac{1}{2},-\tfrac{1}{2}]}{\norm{[\tfrac{1}{2},-\tfrac{1}{2}]}^2} \\
+&= \begin{bmatrix} 3 & -1 \\ -1 & 3 \end{bmatrix} + \frac{\bigg( \begin{bmatrix} -\tfrac{5}{8} -(-2) \\ \tfrac{5}{8}-2 \end{bmatrix} - \begin{bmatrix} 3 & -1 \\ -1 & 3 \end{bmatrix} \begin{bmatrix} \tfrac{1}{2} \\ -\tfrac{1}{2} \end{bmatrix} \bigg) \otimes \big[ \tfrac{1}{2}, -\tfrac{1}{2} \big]}{1/2} \\
+&= \begin{bmatrix} 3 & -1 \\ -1 & 3 \end{bmatrix} + 2 \big( \big[ -\tfrac{5}{8}, \tfrac{5}{8} \big] \otimes \big[ \tfrac{1}{2}, -\tfrac{1}{2} \big] \big) \\
 &= \begin{bmatrix} 3 & -1 \\ -1 & 3 \end{bmatrix} + 2 \begin{bmatrix} -\tfrac{5}{8} \cdot \tfrac{1}{2} & -\tfrac{5}{8}\cdot \big( -\tfrac{1}{2} \big) \\ \tfrac{5}{8} \cdot \tfrac{1}{2} & \tfrac{5}{8} \cdot \big(- \tfrac{1}{2} \big) \end{bmatrix} \\
 &= \begin{bmatrix} 3 & -1 \\ -1 & 3 \end{bmatrix} + \begin{bmatrix} -5/8 & 5/8 \\ 5/8 & -5/8 \end{bmatrix} = \begin{bmatrix} 19/8 & -3/8 \\ -3/8 & 19/8 \end{bmatrix}
 \end{align*}
