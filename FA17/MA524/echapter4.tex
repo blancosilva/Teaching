@@ -46,9 +46,18 @@ Let $f(x,y)=(x-4)^2+(y-6)^2$.  Consider the program $(P)$ to find the global min
 	\item Is the objective function $f$ pseudo-convex? Why or why not?
 	\item Are the inequality constraints quasi-convex?  Why or why not?
 	\item Sketch the feasibility region.  Label all relevant objects involved.
-	\item Is the point $(7,6)$ feasible?  Why or why not?
-	\item Employ Theorem \ref{theorem:KKTnecessary} to write a necessary condition for optimality and verify that is satisfied by the point $(7,6)$.
+	\item Is the point $(2,4)$ feasible?  Why or why not?
+	\item Employ Theorem \ref{theorem:KKTnecessary} to write a necessary condition for optimality and verify that is satisfied by the point $(2,4)$.
 	\item Employ Theorem \ref{theorem:KKTsufficient} to decide whether this point is an optimal solution of $(P)$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Basic]\cite[lec6\_constr\_opt, 12]{Freund2004nonlinear}
+Let $f(x,y)=(x-9/4)^2+(y-2)^2$.  Consider the program $(P)$ to find the global minimum of $f$ on the set $S = \{ (x,y) \in \field{R}^2 : y-x^2 \geq 0, y+y\leq 6, x\geq 0, y \geq 0 \}$. 
+\begin{enumerate}
+	\item Write down the KKT optimality conditions and verify that these conditions are satisfied at the point $(3/2, 9/4)$.
+	\item Present a graphical interpretation of the KKT conditions at $(3/2, 9/4)$.
+	\item Show that this point is the optimal solution to the program.
 \end{enumerate}
 \end{problem}
 
@@ -67,4 +76,13 @@ Find examples of non-diagonal $3\times 3$ symmetric square matrices with integer
 \item $\boldsymbol{A}_5$ indefinite. 
 \end{itemize}
 For each of these matrices, find the maximum of their corresponding quadratic form $\quadratic{A_k}(x,y,z)$ over the unit ball $\field{B}_3 = \{ (x,y,z) \in \field{R}^3: x^2+y^2+z^2 \leq 1 \}$.
+\end{problem}
+
+\begin{problem}[Advanced]\cite[lec6\_constr\_opt, 19]{Freund2004nonlinear}\index{Arrow-Hurwicz-Uzawa constraint qualification}
+
+\noindent\textbf{Arrow-Hurwicz-Uzawa constraint qualification:} Consider the problem to minimize $f(\x)$ subject to $\x \in X$ ($X$ being an open set $X \subseteq \field{R}^d$) and a set of continuous inequality constraints $g_k(\x)\leq 0$ ($1\leq k \leq m$).  Let $\mathcal{J}=\big\{ k \in \{1, \dotsc, m\} : g_k \text{ is pseudo-concave}\big\}$. Prove that if the set 
+\begin{equation*}
+\big\{ \x \in X : \langle\gradient{g_k}(\xstar), \x\rangle \leq 0, (k \in \mathcal{J}); \langle\gradient{g_k}(\xstar), \x \rangle < 0, \big(k \in \mathcal{I}(\xstar)\setminus\mathcal{J}\big) \big\}
+\end{equation*}
+is nonempty, then $\xstar$ satisfies the KKT conditions.
 \end{problem}

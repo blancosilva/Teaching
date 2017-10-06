@@ -18,22 +18,20 @@ We also saw that the point $(2,1)$ satisfies the KKT conditions for the program 
 In the following section we are going to use the KKT conditions to address the characterization of optimal solutions of generic programs.  We start with one of the simplest settings.
 
 \begin{example}
-Let $\boldsymbol{A}$ be a symmetric $d \times d$ square matrix.  Consider the associated quadratic form $\quadratic{A}(\x)$.  We wish to find the global \emph{maximum} over all points of this function in the unit ball in $\field{R}^d$: $\field{B}_d = \{ \x \in \field{R}^d : \norm{\x} \leq 1 \}$.
+Let $\boldsymbol{Q}$ be a symmetric $d \times d$ square matrix.  Consider the associated quadratic form $\quadratic{Q}(\x)$.  We wish to find the global \emph{maximum} over all points of this function in the unit ball $\field{B}_d = \{ \x \in \field{R}^d : \norm{\x} \leq 1 \}$.
 
-An equivalent program $(P)$ is thus defined with $f(\x) = -\quadratic{A}(\x)$ as its objective function, and a single inequality constraint $g_1(\x) = \norm{\x}-1$.  This is a super-consistent program with a convex inequality constraint.  Checking the KKT conditions is justified under the hypothesis of Theorem \ref{theorem:Slater}.  Notice that 
+An equivalent program $(P)$ is thus defined with $f(\x) = -\quadratic{Q}(\x)$ as its objective function, and a single inequality constraint $g_1(\x) = \norm{\x}^2-1$.  This is a super-consistent program with a convex inequality constraint.  Checking the KKT conditions is justified under the hypothesis of Theorem \ref{theorem:Slater}.  Notice that 
 \begin{align*}
 \gradient{f}(\x) &= -2 \langle \boldsymbol{A}, \x \rangle, \\
 \gradient{g_1}(\x) &= 2\x;
 \end{align*}
-therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $u \geq 0$ so that $u\big(1-\norm{\x}\big)=0$ and $-2\langle \boldsymbol{A}, \x \rangle + 2u\x = \boldsymbol{0}$.  
+therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $u >0$ so that $u\big(1-\norm{\x}^2 \big)=0$ and $-2\langle \boldsymbol{Q}, \x \rangle + 2u\x = \boldsymbol{0}$.  
 
-One obvious solution of the KKT conditions is $u=0$, $\x=\boldsymbol{0}$.  In this case, it is $f(\boldsymbol{0})=0$.
-
-If we impose $u>0$, then it must be $\norm{x}=1$ by the first condition.  The second condition states that $\x$ must be an eigenvector of $\boldsymbol{A}$ with eigenvalue $u$: $\boldsymbol{A} \transpose{\x} = u \transpose{\x}$.  The value of the objective function in this case is $f(\x) = -\quadratic{A}(\x) = -\x \boldsymbol{A} \transpose{\x} = -\langle \x, u\x \rangle = -u \norm{\x}^2= -u$.  In order to obtain the requested global minimum value (different than zero), $u$ has to be the largest non-negative eigenvalue of $\boldsymbol{A}$ and $\x$ its corresponding normalized eigenvector.
+It must be $\norm{x}=1$ by the first condition.  The second condition states that $\x$ must be an eigenvector of $\boldsymbol{Q}$ with eigenvalue $u$: $\boldsymbol{Q} \transpose{\x} = u \transpose{\x}$.  The value of the objective function in this case is $f(\x) = -\quadratic{Q}(\x) = -\x \boldsymbol{Q} \transpose{\x} = -\langle \x, u\x \rangle = -u \norm{\x}^2= -u$.  In order to obtain the requested global minimum value (different than zero), $u$ has to be the largest non-negative eigenvalue of $\boldsymbol{Q}$ and $\x$ its corresponding normalized eigenvector.
 \end{example}
 
 \begin{example}
-A simple case of the previous example: Set $\boldsymbol{A} = \big( \begin{smallmatrix} 1 & 3 \\ 3 & 1 \end{smallmatrix}\big)$.  The eigenvalues of $\boldsymbol{A}$ are $-2$ and $4$, and therefore the maximum of the associated quadratic form $\quadratic{A}(x,y) = x^2+y^2+6xy$ over the ball $x^2+y^2\leq 1$ happens at the (normalized) solution of the system
+A simple case of the previous example: Set $\boldsymbol{Q} = \big( \begin{smallmatrix} 1 & 3 \\ 3 & 1 \end{smallmatrix}\big)$.  The eigenvalues of $\boldsymbol{Q}$ are $-2$ and $4$, and therefore the maximum of the associated quadratic form $\quadratic{Q}(x,y) = x^2+y^2+6xy$ over the ball $x^2+y^2\leq 1$ happens at the (normalized) solution of the system
 \begin{equation*}
 \begin{bmatrix} 1 & 3 \\ 3 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = 4\begin{bmatrix} x \\ y \end{bmatrix}.
 \end{equation*}
@@ -41,18 +39,33 @@ This gives the points $\pm(\sqrt{2}/2, \sqrt{2}/2)$.
 \end{example}
 
 \begin{example}
-Another classic constraint optimization problem: Find the point on the sphere of radius $\lambda>0$, $\lambda\field{S}_d = \{ \x \in \field{R}^d : \norm{\x}=\lambda \}$ that is closer to the point $\x_0 \in \field{R}^d$.
+Find the point on the sphere of radius $r$ that is closer to a given point.
 
-We may write this program by using $f(\x)=\norm{\x-\x_0}$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}-\lambda^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT condition request $v \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{x} = \lambda$ so that
+Let $\x_0 \in \field{R}^d$ and $r>0$.  We may write a super-consistent convex program to solve this optimization problem by using $f(\x)=\norm{\x-\x_0}$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}-r^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT condition request $v \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{x} = \lambda$ so that
 \begin{align*} 
 \gradient{f}(\x) + v\gradient{h_1}(\x) &= \boldsymbol{0}, \\
 2(\x-\x_0)+2v\x &= \boldsymbol{0}, \\
 (1+v)\x = \x_0.
 \end{align*}
 This means that $\x$ is in the half-line 
-If $\x_0 = \boldsymbol{0}$, then any $\x$ within the constraint is a valid solution (pick $v=-1$).  Otherwise, pick $v = -1+\norm{\x_0}/\lambda$.  We have now two cases:
+If $\x_0 = \boldsymbol{0}$, then any $\x$ within the constraint is a valid solution (pick $v=-1$).  Otherwise, pick $v = -1+\norm{\x_0}/r$.  We have now two cases:
 \begin{enumerate}
-	\item If $\norm{\x_0}=\lambda$, then $v=0$ and $\x=\x_0$ is the only solution.
-	\item If $\norm{\x_0} \neq\lambda$ (the point $\x_0$ is not on the sphere), then $\x = \lambda\x_0/\norm{\x_0}$
+	\item If $\norm{\x_0}=r$, then $v=0$ and $\x=\x_0$ is the only solution.
+	\item If $\norm{\x_0} \neq r$ (the point $\x_0$ is not on the sphere), then $\x = r\x_0/\norm{\x_0}$
 \end{enumerate}
+\end{example}
+
+\begin{example}\index{Linear map}
+Find the minimum value of a (real-valued) linear map over the unit ball.
+
+Given $\boldsymbol{a} \in \field{R}^d\setminus\{ \boldsymbol{0}\}$, consider the corresponding linear map $L(\x) = \langle \boldsymbol{a}, \x \rangle$.  We wish to find the minimum value of $L$ over all points in the unit ball $\field{B}_d = \{ \x \in \field{R}^d : \norm{x} \leq 1 \}$.
+
+An equivalent program $(P)$ is defined with $L$ as its objective function and $g_1(\x) = \norm{\x}^2-1$. This is a super-consistent convex program.  Checking the KKT conditions is justified under the hypothesis of Theorem \ref{theorem:KKTnecessary}. Notice that
+\begin{align*}
+\gradient{L}(\x) &= \boldsymbol{a}, \\
+\gradient{g_1}(\x) &= 2\x;
+\end{align*}
+therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $u > 0$ so that $u\big( \norm{\x}^2-1 \big)=0$ and $\boldsymbol{a}+2u\x=\boldsymbol{0}$.
+
+This first condition imposes $\norm{x}=1$.  The second condition requires $\x = -\boldsymbol{a}/(2u)$.  These two put together imply that it must be $u = -\norm{\boldsymbol{a}}/2$, and hence $\x = -\boldsymbol{a}/\norm{\boldsymbol{a}}$.
 \end{example}
