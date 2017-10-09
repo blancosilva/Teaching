@@ -48,14 +48,13 @@ Further properties of the involved functions provide us with simpler sets of con
 \begin{theorem}[Karush-Kuhn-Tucker Necessary Conditions]\index{Theorem!Karush-Kuhn-Tucker}\index{Theorem!KKT necessary conditions}\label{theorem:KKTnecessary}
 If $\x \in S$ is a feasible local minimum of the consistent program $(P)$ for which all the vectors $\{ \gradient{h_k}(\x), \gradient{g_j}(\x) : 1 \leq k \leq \ell, j \in \mathcal{I}(\x) \}$ are linearly independent, then there exist $\lambda_k \geq 0$ for $1\leq k \leq m$, and $\mu_1, \dots, \mu_\ell \in \field{R}$ so that
 \begin{enumerate}
- 	\item\label{item:KKTnecessary1} $[\lambda_1, \dotsc, \lambda_m, \mu_1 \dotsc, \mu_\ell ] \neq \boldsymbol{0}$,
- 	\item\label{item:KKTnecessary2} $\lambda_k g_k(\x) = 0$ for all $1 \leq k \leq m$.
- 	\item\label{item:KKTnecessary3} $\gradient{f}(\x) + \sum_{k=1}^m \lambda_k \gradient{g_k}(\x) + \sum_{k=1}^\ell \mu_k \gradient{h_k}(\x) = 0$.
+ 	\item\label{item:KKTnecessary1} $\lambda_k g_k(\x) = 0$ for all $1 \leq k \leq m$.
+ 	\item\label{item:KKTnecessary2} $\gradient{f}(\x) + \sum_{k=1}^m \lambda_k \gradient{g_k}(\x) + \sum_{k=1}^\ell \mu_k \gradient{h_k}(\x) = 0$.
  \end{enumerate}
 \end{theorem}
 
 \begin{remark}\index{KKT conditions}
-The conditions \ref{item:KKTnecessary1}, \ref{item:KKTnecessary2} and \ref{item:KKTnecessary3} of Theorem \ref{theorem:KKTnecessary} are called \emph{the KKT conditions} of the program $(P)$ in the literature.
+The conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are called \emph{the KKT conditions} of the program $(P)$ in the literature.
 \end{remark}
 
 \begin{example}\label{example:feasibleP3}
@@ -83,19 +82,19 @@ We have concluded that $(P)$ is consistent.  Notice that, $\mathcal{I}(2,1)=\emp
 \gradient{h_1}(x,y) &= [ 8, 4]             &\gradient{h_1}(2,1) &= [  8, 4], 
 \end{align*}
 
-Vectors $\gradient{g_1}(2,1)$ and $\gradient{g_2}(2,1)$ are linearly independent; therefore, to verify that $(2,1)$ is candidate for optimal solution of $(P)$, we may now use Theorem \ref{theorem:KKTnecessary}.  The KKT conditions read as follows: we are looking for $\lambda_k \geq 0, \mu_1 \in \field{R}$ (not all of them simultaneously equal to zero) so that $\lambda_k g_k(2,1)=0$ ($k=1,2$) and
+Vectors $\gradient{g_1}(2,1)$ and $\gradient{g_2}(2,1)$ are linearly independent; therefore, to verify that $(2,1)$ is candidate for optimal solution of $(P)$, we may now use Theorem \ref{theorem:KKTnecessary}.  The KKT conditions read as follows: we are looking for $\lambda_k \geq 0, \mu_1 \in \field{R}$ so that $\lambda_k g_k(2,1)=0$ ($k=1,2$) and
 \begin{equation*}
 \gradient{f}(2,1) + \lambda_1 \gradient{g_1}(2,1) + \lambda_2 \gradient{g_2}(2,1) + \mu_1 \gradient{h_1}(2,1) = [0,0], 
 \end{equation*}
-Let's address the first two conditions: Since $g_1(2,1)=0$ and $g_2(2,1)=-14<0$, it must be $\lambda_2=0$.  The third condition turns then into the equation
+Let's address the first condition: Since $g_1(2,1)=0$ and $g_2(2,1)=-14<0$, it must be $\lambda_2=0$.  The second condition turns then into the equation
 \begin{equation*}
 [-20,14] + \lambda_1 [7,-2.5] + 0 \cdot [-14,2] + \mu_1 [8,4] = [0,0]
 \end{equation*}
 or equivalently
 \begin{equation*}
-\begin{bmatrix} 7 & 8 \\ -2.5 & 4 \end{bmatrix} \begin{bmatrix} \lambda_1 \\ \mu_1 \end{bmatrix} = \begin{bmatrix} 20 \\ -14 \end{bmatrix}
+\begin{bmatrix} 7 & 8 \\ -2.5 & 4 \end{bmatrix} \begin{bmatrix} \lambda_1 \\ \mu_1 \end{bmatrix} = \begin{bmatrix} 20 \\ -14 \end{bmatrix},
 \end{equation*}
-Which gives $\lambda_1=4$, and $\mu_1=-1$.  This proves that the point $(2,1)$ is indeed a good candidate for the optimal solution of $(P)$.
+which gives $\lambda_1=4$, and $\mu_1=-1$.  This proves that the point $(2,1)$ is indeed a good candidate for the optimal solution of $(P)$.
 \end{example}
 
 \separator
@@ -103,9 +102,9 @@ Which gives $\lambda_1=4$, and $\mu_1=-1$.  This proves that the point $(2,1)$ i
 Other instances in which the KKT conditions can be used instead of those in the Fritz John Theorem
 
 \begin{theorem}[Slater Necessary Condition]\label{theorem:Slater}\index{Theorem!Slater condition}
-Suppose that the inequality constraints $g_k$ of a super-consistent program $(P)$ are pseudo-convex ($1\leq k \leq m$), the equality constraints $h_k$ are linear ($1\leq k \leq \ell$), and the vectors $\gradient{h_k}$ are linearly independent, then the KKT conditions \ref{item:KKTnecessary1}, \ref{item:KKTnecessary2} and \ref{item:KKTnecessary3} of Theorem \ref{theorem:KKTnecessary} are necessary to characterize optimal solutions of $(P)$.
+Suppose that the inequality constraints $g_k$ of a super-consistent program $(P)$ are pseudo-convex ($1\leq k \leq m$), the equality constraints $h_k$ are linear ($1\leq k \leq \ell$), and the vectors $\gradient{h_k}$ are linearly independent, then the KKT conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are necessary to characterize optimal solutions of $(P)$.
 \end{theorem}
 
 \begin{theorem}
-If all constraints of a consistent program $(P)$ are linear, then the KKT conditions \ref{item:KKTnecessary1}, \ref{item:KKTnecessary2} and \ref{item:KKTnecessary3} of Theorem \ref{theorem:KKTnecessary} are necessary to characterize optimal solutions of $(P)$.
+If all constraints of a consistent program $(P)$ are linear, then the KKT conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are necessary to characterize optimal solutions of $(P)$.
 \end{theorem}

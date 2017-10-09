@@ -5,7 +5,7 @@
 It all boils down to a single result.
 
 \begin{theorem}[KKT Sufficient Conditions]\label{theorem:KKTsufficient}\index{Theorem!KKT sufficient conditions}\index{Theorem!Karush-Kuhn-Tucker}
-Let $\x \in S$ be a feasible point of the consistent program $(P)$ for which there are multipliers $\lambda_k \geq 0$ ($1\leq k \leq m)$ and $\mu_k \in \field{R}$ ($1\leq k \leq \ell$) satisfying the conditions \ref{item:KKTnecessary1}, \ref{item:KKTnecessary2} and \ref{item:KKTnecessary3} of Theorem \ref{theorem:KKTnecessary}. If $f$ is pseudo-convex, $g_k$ is quasi-convex for all $1\leq k \leq m$, and $h_k$ is linear for all $1\leq k \leq \ell$, then $\x$ is a global optimal solution of $(P)$.
+Let $\x \in S$ be a feasible point of the consistent program $(P)$ for which there are multipliers $\lambda_k \geq 0$ ($1\leq k \leq m)$ and $\mu_k \in \field{R}$ ($1\leq k \leq \ell$) satisfying the conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary}. If $f$ is pseudo-convex, $g_k$ is quasi-convex for all $1\leq k \leq m$, and $h_k$ is linear for all $1\leq k \leq \ell$, then $\x$ is a global optimal solution of $(P)$.
 \end{theorem}
 
 \begin{example}
@@ -25,7 +25,7 @@ An equivalent program $(P)$ is thus defined with $f(\x) = -\quadratic{Q}(\x)$ as
 \transpose{\gradient{f}(\x)} &= -2 \boldsymbol{Q} \transpose{\x}, \\
 \gradient{g_1}(\x) &= 2\x;
 \end{align*}
-therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $\lambda >0$ so that $u\big(1-\norm{\x}^2 \big)=0$ and $-2\boldsymbol{Q} \transpose{\x} + 2\lambda\transpose{\x} = \transpose{\boldsymbol{0}}$.  
+therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $\lambda \geq 0$ so that $\lambda \big(1-\norm{\x}^2 \big)=0$ and $-2\boldsymbol{Q} \transpose{\x} + 2\lambda\transpose{\x} = \transpose{\boldsymbol{0}}$.  
 
 It must be $\norm{\x}=1$ by the first condition.  The second condition states that $\x$ must be an eigenvector of $\boldsymbol{Q}$ with eigenvalue $\lambda$: $\boldsymbol{Q} \transpose{\x} = \lambda \transpose{\x}$.  The value of the objective function in this case is $f(\x) = -\quadratic{Q}(\x) = -\x \boldsymbol{Q} \transpose{\x} = -\lambda \norm{\x}^2= -\lambda$.  In order to obtain the requested global minimum value (different than zero), $\lambda$ has to be the largest non-negative eigenvalue of $\boldsymbol{Q}$, and $\x$ its corresponding normalized eigenvector.
 \end{example}
@@ -41,7 +41,7 @@ This gives the points $\pm(\sqrt{2}/2, \sqrt{2}/2)$.
 \begin{example}
 Let $\x_0 \in \field{R}^d\setminus\{\boldsymbol{0}\}$ and $r>0$.  Find the point on the sphere of radius $r$, $\field{S}_d=\{ \x \in \field{R}^d: \norm{\x}=r \}$ that is closer to $\x_0$. 
 
- We may write a super-consistent convex program to solve this optimization problem by using $f(\x)=\norm{\x-\x_0}$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}-r^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT conditions request $\mu \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{\x} = r$ so that
+We may write a super-consistent convex program to solve this optimization problem by using $f(\x)=\norm{\x-\x_0}$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}-r^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT conditions request $\mu \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{\x} = r$ so that
 \begin{equation*} 
 \gradient{f}(\x) + \mu\gradient{h_1}(\x) = \boldsymbol{0},
 \end{equation*}
@@ -64,7 +64,7 @@ An equivalent program $(P)$ is defined with $\boldsymbol{L}$ as its objective fu
 \gradient{\boldsymbol{L}}(\x) &= \boldsymbol{a}, \\
 \gradient{g_1}(\x) &= 2\x;
 \end{align*}
-therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $\lambda > 0$ so that $\lambda \big( \norm{\x}^2-1 \big)=0$ and $\boldsymbol{a}+2\lambda\x=\boldsymbol{0}$.
+therefore, the KKT conditions request the search for $\x \in \field{B}_d$ and $\lambda \geq 0$ so that $\lambda \big( \norm{\x}^2-1 \big)=0$ and $\boldsymbol{a}+2\lambda\x=\boldsymbol{0}$.
 
 This first condition imposes $\norm{\x}=1$.  The second condition requires $\x = -\boldsymbol{a}/(2\lambda)$.  These two put together imply that it must be $\lambda = -\norm{\boldsymbol{a}}/2$, and hence $\x = -\boldsymbol{a}/\norm{\boldsymbol{a}}$.
 \end{example}
