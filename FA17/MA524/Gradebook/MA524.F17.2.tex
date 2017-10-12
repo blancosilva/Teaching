@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+% \renewcommand{\theenumi}{(\alph{enumi})} 
+% \renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 524}\hfill{\large\bf Exam \#2.}\hfill{\large\bf
+  Fall 2017}\hfill{\large\bf Page 1/1}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node[scale=0.8]{%}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Problem} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 1} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+  \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}};
+\end{tikzpicture}
+\end{center}
+
+\hrule
+
+\bigskip
+Write down your date of birth in the form \texttt{mm/dd/YY}, and set $m$ to be the value of the month, $d$ the value of the day, and $Y$ the value of those two last digits of the year you were borth  (for instance, today it would be $m=10$, $d=12$, $Y=17$). With that choice of parameters, consider the point $(x_0, y_0)=(0,Y)$ and the Rosenbrock $(d,m)$ function:
+\begin{equation*}
+\mathcal{R}_{d,m}(x,y) = (d-x)^2 + m(y-x^2)^2.
+\end{equation*}
+
+We would like to use the three methods covered in class to compute approximations to the strict global minimum of $\mathcal{R}_{d,m}(x,y)$, all of them starting at the same initial guess $(x_0, y_0)=(0,Y)$:
+
+\begin{enumerate}
+\item Perform one step of the Steepest descent method.  Compute the distance from the point obtained to the target.
+\item Perform one step of the Newton-Raphson method.  Compute the distance from the point obtained to the target.
+\item Perform \emph{two} steps of the Broyden method, with $\boldsymbol{A}_0=\mathop{\mathrm{Hess}}{\mathcal{R}_{d,m}}(x_0,y_0)$.  Compute the distance from the last point obtained to the target.
+\item Perform \emph{two} steps of the Broyden method with $\boldsymbol{A}_0 = \begin{bmatrix} 2 & 0 \\ 0 & 2m \end{bmatrix}$.  Compute the distance from the last point obtained to the target.
+\end{enumerate}
+
+\end{document}
