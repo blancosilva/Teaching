@@ -1,0 +1,11 @@
+%!TEX root = main.tex
+
+\section{Projection Methods for Linear Equality constrained programs}
+
+Consider the minimization of a function $f\colon \field{R}^d \to \field{R}$ subject to $m$ linear constraints $h_k(\x) = 0$, where $h_k(\x) = \langle \boldsymbol{a}_k , \x \rangle - b_k$ for vectors $\boldsymbol{a}_k=[a_{k1}, \dotsc, a_{kd}] \in \field{R}^d$, and real values $b_k \in \field{R}$ ($1\leq k \leq m$).  If we set 
+\begin{equation*}
+\boldsymbol{A} = \begin{bmatrix} a_{11} & \dotsb & a_{1d} \\ \vdots & \ddots & \vdots \\ a_{m1} & \dotsb & a_{md} \end{bmatrix}
+\end{equation*}
+and $\boldsymbol{b} = [b_1, \dotsc, b_m]$ we may write these linear constraints as $\boldsymbol{A}\x=\boldsymbol{b}$.
+
+The corresponding program with $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  By virtue of Theorem 
