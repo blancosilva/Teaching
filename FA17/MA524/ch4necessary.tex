@@ -53,8 +53,8 @@ If $\x \in S$ is a feasible local minimum of the consistent program $(P)$ for wh
  \end{enumerate}
 \end{theorem}
 
-\begin{remark}\index{KKT conditions}
-The conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are called \emph{the KKT conditions} of the program $(P)$ in the literature.
+\begin{remark}\index{KKT conditions}\index{Multipliers}
+The conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are called \emph{the KKT conditions} of the program $(P)$ in the literature.   The values $\lambda_k$, $\mu_k$ are called \emph{multipliers}.
 \end{remark}
 
 \begin{example}\label{example:feasibleP3}
@@ -67,7 +67,7 @@ h_1(x,y) &=8x+4y-20,
 \end{align*}
 (or simpler equivalent constraints), and notice that
 \begin{equation*}
-g_1(2,1)=-12, \quad g_2(2,1)=-14, \quad h_1(2,1)=0.
+g_1(2,1)=0, \quad g_2(2,1)=-14, \quad h_1(2,1)=0.
 \end{equation*}
 \begin{figure}[ht!]
 \includegraphics[width=0.5\linewidth]{images/feasibleP3.png}
@@ -94,15 +94,14 @@ g_1(2,1)=-12, \quad g_2(2,1)=-14, \quad h_1(2,1)=0.
 \caption{Feasibility region for $(P)$ in example \ref{example:feasibleP3}}
 \label{figure:feasibleP3}
 \end{figure}
-We have concluded that $(P)$ is consistent.  Notice that, $\mathcal{I}(2,1)=\emptyset$, since $h_1(2,1) = 0$.  Further,
+We have concluded that $(P)$ is consistent.  Notice that, $\mathcal{I}(2,1) = \{ 1 \}$, since $g_1(2,1) = 0$, $g_2(2,1) \neq 0$.  Further,
 \begin{align*}
 \gradient{f}(x,y)   &= [ 2(x-12), 2(y+6) ] &\gradient{f}(2,1)   &= [-20, 14], \\
 \gradient{g_1}(x,y) &= [ 2x+3, 2y-4.5 ]    &\gradient{g_1}(2,1) &= [  7, -2.5], \\
 \gradient{g_2}(x,y) &= [ 2(x-9), 2y ]      &\gradient{g_2}(2,1) &= [-14, 2], \\
 \gradient{h_1}(x,y) &= [ 8, 4]             &\gradient{h_1}(2,1) &= [  8, 4], 
 \end{align*}
-
-Vectors $\gradient{g_1}(2,1)$ and $\gradient{g_2}(2,1)$ are linearly independent; therefore, to verify that $(2,1)$ is candidate for optimal solution of $(P)$, we may now use Theorem \ref{theorem:KKTnecessary}.  The KKT conditions read as follows: we are looking for $\lambda_k \geq 0, \mu_1 \in \field{R}$ so that $\lambda_k g_k(2,1)=0$ ($k=1,2$) and
+The vectors $\gradient{g_1}(2,1) = [7,-2.5]$ and $\gradient{h_1}(2,1)=[8,4]$ are linearly independent.  Therefore, to verify that $(2,1)$ is candidate for optimal solution of $(P)$, we may now use Theorem \ref{theorem:KKTnecessary}.  The KKT conditions read as follows: we are looking for $\lambda_k \geq 0, \mu_1 \in \field{R}$ so that $\lambda_k g_k(2,1)=0$ ($k=1,2$) and
 \begin{equation*}
 \gradient{f}(2,1) + \lambda_1 \gradient{g_1}(2,1) + \lambda_2 \gradient{g_2}(2,1) + \mu_1 \gradient{h_1}(2,1) = [0,0], 
 \end{equation*}
@@ -119,12 +118,12 @@ which gives $\lambda_1=4$, and $\mu_1=-1$.  This proves that the point $(2,1)$ i
 
 \separator
 
-Other instances in which the KKT conditions can be used instead of those in the Fritz John Theorem
+There are other instances in which the KKT conditions can be used instead of those in the Fritz John Theorem.
 
 \begin{theorem}[Slater Necessary Condition]\label{theorem:Slater}\index{Theorem!Slater condition}
 Suppose that the inequality constraints $g_k$ of a super-consistent program $(P)$ are pseudo-convex ($1\leq k \leq m$), the equality constraints $h_k$ are linear ($1\leq k \leq \ell$), and the vectors $\gradient{h_k}$ are linearly independent, then the KKT conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are necessary to characterize optimal solutions of $(P)$.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:KKTAllLinear}
 If all constraints of a consistent program $(P)$ are linear, then the KKT conditions \ref{item:KKTnecessary1} and \ref{item:KKTnecessary2} of Theorem \ref{theorem:KKTnecessary} are necessary to characterize optimal solutions of $(P)$.
 \end{theorem}
