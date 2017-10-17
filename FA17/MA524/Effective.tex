@@ -6,7 +6,7 @@ All of the methods we have explored so far (Newton-Raphson, Secant methods, Stee
 	\item The method of Steepest descent produces non-increasing iterations.
 	\item In order to obtain new approximations on each Steepest descent iteration, we have to solve many different one-dimensional optimizations, each of them offering their own computational issues. 
 	\item Both Newton-Raphson and Secant methods offers faster sequences, but we cannot always guarantee convergence.  
-	\item Another drawback of both Newton-Raphson and Steepest descent is the fact that we do need expressions for function itself, its gradient and Hessian matrix.  
+	\item Another drawback of Newton-Raphson is the fact that we do need to evaluate the function itself, its gradient and Hessian matrix. 
 	\item The recurrence formulas of Broyden's method are simple, and require only evaluations of the function itself.
 \end{itemize}
 
@@ -61,10 +61,10 @@ The Davidon-Fletcher-Powell method is is one of the earliest and most effective 
 
 To minimize $f \colon \field{R}^d \to \field{R}$, select an initial guess $\x_0$ and an initial \emph{positive definite} matrix $\boldsymbol{A}_0$.  If $\x_n$ and $\boldsymbol{A}_n$ have been computed, then 
 \begin{enumerate}
-	\item Find $t_n>0$ so that $\x_{n+1} = \x_n - t_n \overbrace{\boldsymbol{A}_n \cdot \transpose{\gradient{f}(\x_n)}}^{\w_n}$ satisfies criteria \eqref{Criterion2}, \eqref{Criterion3} and \eqref{Criterion4}.
+	\item Find $t_n>0$ so that $\x_{n+1} = \x_n + t_n \overbrace{\big( \boldsymbol{-A}_n \cdot \transpose{\gradient{f}(\x_n)}\big)}^{\w_n}$ satisfies criteria \eqref{Criterion3} and \eqref{Criterion4}.
 	\item Update
 	\begin{equation}\label{equation:DFP}
-	\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \frac{\boldsymbol{d}_n \otimes \boldsymbol{d}_n}{\langle \y_n, \boldsymbol{d}_n \rangle } - \frac{\boldsymbol{A}_n \transpose{\y}_n \otimes \boldsymbol{A}_n \transpose{\y}_n }{\quadratic{\boldsymbol{A}_n}(\y_n)}
+	\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \tfrac{1}{\langle \y_n, \boldsymbol{d}_n \rangle} \big( \boldsymbol{d}_n \otimes \boldsymbol{d}_n \big) - \tfrac{1}{\quadratic{\boldsymbol{A}_n}(\y_n)} \big( \boldsymbol{A}_n \transpose{\y}_n \otimes \boldsymbol{A}_n \transpose{\y}_n \big)
 	\end{equation}
 	with $\boldsymbol{d}_n = \x_{n+1}-\x_n= t_n\w_n$, and $\y_n = \gradient{f}(\x_{n+1}) - \gradient{f}(\x_n)$.
 \end{enumerate}
@@ -80,10 +80,10 @@ Different parts of this method were devised by Broyden, Fletcher, Goldfarb and S
 
 To minimize $f \colon \field{R}^d \to \field{R}$, select an initial guess $\x_0$ and an initial \emph{positive definite} matrix $\boldsymbol{A}_0$.  If $\x_n$ and $\boldsymbol{A}_n$ have been computed, then
 \begin{enumerate}
-	\item Find $t_n>0$ so that $\x_{n+1} = \x_n - t_n \overbrace{\boldsymbol{A}_n^{-1} \cdot \transpose{\gradient{f}(\x_n)}}^{\w_n}$ satisfies criteria \eqref{Criterion2}, \eqref{Criterion3} and \eqref{Criterion4}.
+	\item Find $t_n>0$ so that $\x_{n+1} = \x_n + t_n \overbrace{\big( \boldsymbol{-A}_n^{-1} \cdot \transpose{\gradient{f}(\x_n)}\big)}^{\w_n}$ satisfies criteria \eqref{Criterion3} and \eqref{Criterion4}.
 	\item Update
 	\begin{equation}\label{equation:BFGS}
-	\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \frac{\y_n \otimes \y_n}{\langle \boldsymbol{d}_n, \y_n \rangle } - \frac{\boldsymbol{A}_n \transpose{\boldsymbol{d}}_n \otimes \boldsymbol{A}_n \transpose{\boldsymbol{d}}_n }{\quadratic{A_n} (\boldsymbol{d}_n) }
+	\boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \tfrac{1}{\langle \boldsymbol{d}_n, \y_n \rangle } \big( \y_n \otimes \y_n \big) - \tfrac{1}{\quadratic{A_n} (\boldsymbol{d}_n) } \big( \boldsymbol{A}_n \transpose{\boldsymbol{d}}_n \otimes \boldsymbol{A}_n \transpose{\boldsymbol{d}}_n \big)
 	\end{equation}
 	with $\boldsymbol{d}_n = \x_{n+1}-\x_n= t_n\w_n$, and $\y_n = \gradient{f}(\x_{n+1}) - \gradient{f}(\x_n)$.
 \end{enumerate}
