@@ -2,10 +2,90 @@
 
 \section{Projection Methods for Linear Equality constrained programs}
 
-Consider the minimization of a function $f\colon \field{R}^d \to \field{R}$ subject to $m$ linear constraints $h_k(\x) = 0$, where $h_k(\x) = \langle \boldsymbol{a}_k , \x \rangle - b_k$ for vectors $\boldsymbol{a}_k=[a_{k1}, \dotsc, a_{kd}] \in \field{R}^d$, and real values $b_k \in \field{R}$ ($1\leq k \leq m$).  If we set 
+Consider the minimization of a function $f\colon \field{R}^d \to \field{R}$ subject to $\ell$ linear constraints $h_k(\x) = 0$, where $h_k(\x) = \langle \boldsymbol{a}_k , \x \rangle - b_k$ for vectors $\boldsymbol{a}_k=[a_{k1}, \dotsc, a_{kd}] \in \field{R}^d$, and real values $b_k \in \field{R}$ ($1\leq k \leq \ell$).  If we set 
 \begin{equation*}
-\boldsymbol{A} = \begin{bmatrix} a_{11} & \dotsb & a_{1d} \\ \vdots & \ddots & \vdots \\ a_{m1} & \dotsb & a_{md} \end{bmatrix}
+\boldsymbol{A} = \begin{bmatrix} a_{11} & \dotsb & a_{1d} \\ \vdots & \ddots & \vdots \\ a_{\ell 1} & \dotsb & a_{\ell d} \end{bmatrix}
 \end{equation*}
-and $\boldsymbol{b} = [b_1, \dotsc, b_m]$ we may write these linear constraints as $\boldsymbol{A}\x=\boldsymbol{b}$.
+and $\boldsymbol{b} = [b_1, \dotsc, b_\ell]$ we may write these linear constraints as $\boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}$.
 
-The corresponding program with $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  By virtue of Theorem 
+The corresponding program (P) has $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  If this program happens to be consistent (it will depend on $\boldsymbol{A}$), then Theorem \ref{theorem:KKTAllLinear} allows us to use KKT to find the optimal solutions. 
+
+The KKT conditions read as follows: Find $\x \in \field{R}^d$ satisfying $\boldsymbol{A}\transpose{\x} = \transpose{\boldsymbol{b}}$, $\mu_k \in \field{R}$ for $1 \leq k \leq \ell$ so that
+\begin{equation}\label{equation:KKTforLECP}
+\gradient{f}(\x) + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k = \boldsymbol{0}.
+\end{equation}
+
+
+\begin{example}
+We would like to find the minimum value of the function $f(x,y,z)=x^2+y^2+z^2$ over the line at the intersection of the planes $x+y+z=0$ and $x-y+2z=3$.  
+
+The method we used in MATH 241 would start by computing a parameterization of the line first.  For instance, by forcing $z=0$ and solving the system formed by the two planes (with this restriction), we find that the point $(3/2,-3/2,0)$ belongs in this line.  The cross product of the normal vectors to the planes is the direction of the line: 
+\begin{equation*}
+[1,1,1] \times [1,-1,2] = \left\lvert \begin{matrix} \boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\ 1 & 1 & 1 \\ 1 & -1 & 2 \end{matrix} \right\rvert= [3,-1,-2].
+\end{equation*}
+We have then the line with equation $(3/2+3t, -3/2-t, -2t)$, $t\in \field{R}$.  A restriction of $f$ on this line gives
+\begin{align*}
+\varphi(t) &= f \big(\tfrac{3}{2}+3t, -\tfrac{3}{2}-t, -2t \big) \\
+           &= \big( \tfrac{3}{2}  + 3t \big)^2 + \big( -\tfrac{3}{2} - t \big)^2 + (-2t)^2 \\
+           &= \tfrac{9}{4} + 9t^2 + 9t + \tfrac{9}{4} + t^2 + 3t + 4t^2 \\
+           &= 14t^2 + 12t + \tfrac{9}{2}
+\end{align*}
+The minimum of this function occurs at $t=-3/7$.  This yields the point 
+\begin{equation*}
+\big( \tfrac{3}{2} - 3 \cdot\tfrac{3}{7}, -\tfrac{3}{2} + \tfrac{3}{7}, 2\cdot \tfrac{3}{7} \big) = \big( \tfrac{3}{14}, -\tfrac{15}{14}, \tfrac{6}{7} \big).
+\end{equation*}
+
+The method we have explained in Chapter \ref{chapter:ConstrainedExistenceCharacterization} starts by collecting the constraints first, and claiming the use of the KKT conditions.  In this case, Theorem \ref{theorem:KKTAllLinear} guarantees we may use this technique.
+\begin{align*}
+h_1(x,y,z) &= x+y+z = \langle [1,1,1], [x,y,z]\rangle, \\
+h_2(x,y,z) &= x-y+2z-3 = \langle [1,-1,2],[x,y,z] \rangle -3.
+\end{align*}
+The corresponding KKT condition request feasible points $(x,y,z) \in \field{R}^3$ and two real values $\mu_1, \mu_2 \in \field{R}$ that satisfy:
+\begin{align*}
+0 &= x+y+z, \\
+3 &= x-y+2z, \\
+[0,0,0] &= [2x,2y, 2z] + \mu_1 [1,1,1] + \mu_2 [1,-1,2].
+\end{align*}
+This gives the following system:
+\begin{align*}
+0 &= x+y+z = -\tfrac{1}{2}(\mu_1+\mu_2) -\tfrac{1}{2}(\mu_1-\mu_2) -\tfrac{1}{2}(\mu_1+2\mu_2), \\
+3 &= x-y+2z = -\tfrac{1}{2}(\mu_1+\mu_2) + \tfrac{1}{2}(\mu_1-\mu_2) - (\mu_1+2\mu_2),
+\end{align*}
+which reduces to 
+\begin{equation*}
+\begin{bmatrix}  3/2 & 1 \\ 1 & 3 \end{bmatrix} \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix} = \begin{bmatrix} 0 \\ -3 \end{bmatrix}.
+\end{equation*}
+There is a unique solution $\mu_1 = 6/7$, $\mu_2 = -9/7$, and therefore the point $\big( \tfrac{3}{14}, -\tfrac{15}{14}, \tfrac{6}{7} \big)$
+\end{example}
+
+\separator
+
+Notice how, in either case above, we ended solving the optimization problem \emph{symbolically}.  In this section we are going to adapt the techniques we learned in Chapter \ref{chapter:UnconstrainedNumerical} to approximate the solution of this kind of programs numerically.  As we have done in the past, it all starts by selecting a feasible initial guess, and solving a linear approximation instead.
+
+\subsection{Steepest Descent}
+Given a feasible initial guess $\x_0 \in \field{R}^d$ (satisfying $\boldsymbol{A}\transpose{\x_0}=\transpose{\boldsymbol{b}}$), we proceed to search for a next iteration \emph{within the feasibility region} that approaches the solution of $L(\x) = f(\x_0) + \gradient{f}(\x_0)\transpose{(\x-\x_0)}$.   Namely, we need $\x_1 \in \field{R}^d$ satisfying $\boldsymbol{A}\transpose{\x_1}=\transpose{\boldsymbol{b}}$ that minimizes $L(\x)$.  We usually further impose a maximum distance from $\x_0$ to $\x_1$; that is, we force for example $\norm{\x_1 - \x_0} \leq R$ for some $R>0$.  This gives the \emph{Direction Finding Program} $(DFP)$\index{Program!Direction Finding}
+\begin{equation*}
+\min_{\x \in S}L(\x), \quad S=\{ \x \in \field{R}^d :  \boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}, \norm{\x-\x_0} \leq R \}.
+\end{equation*}
+If we set $\v = \x - \x_0$, the program translates into simpler terms:
+\begin{equation*}
+\min_{\v \in S'} \gradient{f}(\x_0)\transpose{\v}, \quad S' = \{ \boldsymbol{A}\transpose{\v} = \transpose{\boldsymbol{0}}, \norm{\v} \leq R \}.
+\end{equation*}
+Note this is a convex program (it is linear, as a matter of fact) with a Slater point at $\boldsymbol{0}$.  The KKT conditions for the $(DFP)$ program are therefore necessary and sufficient for optimality. 
+
+Notice how much simpler these conditions are: Set $g_1(\v) = \norm{\v}^2-R^2$, $h_k(\v) = \langle \boldsymbol{a}_k, \v \rangle$ for $1\leq k \leq \ell$.  Find $\v \in \field{R}^d$ with $\boldsymbol{A}\transpose{\v} = \transpose{\boldsymbol{0}}$, $\lambda_1 \geq 0$, $\mu_k \in \field{R}$, $1\leq k \leq \ell$ so that:
+\begin{gather*}
+\lambda_1 \big( \norm{\v}^2 - R^2 \big) = 0, \\
+\gradient{f}(\x_0) + 2\lambda_1 \v + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k = \boldsymbol{0}.
+\end{gather*}
+This gives two possibilities.
+\begin{enumerate}
+	\item $\lambda_1 = 0$, in which case we have $\gradient{f}(\x_0) + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k=0$.  This means that $\x_0$ is already a feasible point that satisfies the KKT conditions for $(P)$.
+	\item $\lambda_1 \neq 0$, and $\v$ with $\norm{\v} = R$ that satisfies
+	\begin{equation*}
+	2\lambda_1 \v + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k = - \gradient{f}(\x_0).
+	\end{equation*}
+	If $\gradient{f}(\x_0)\transpose{\v}=\transpose{\boldsymbol{0}}$, then again $\x_0$ happens to be a feasible point satisfying the KKT conditions for $(P)$.
+\end{enumerate}
+
+
