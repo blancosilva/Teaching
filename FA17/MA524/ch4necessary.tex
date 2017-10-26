@@ -34,12 +34,17 @@ Continuing with example \ref{example:feasibleP1}, let's check if the point $(0,0
 \gradient{g_2}(x,y) &= [0, 2y] &\gradient{g_2}(0,0) &= [0,0], \\
 \gradient{g_3}(x,y) &= \big[e^{x+y}, e^{x+y} \big] &\gradient{g_3}(0,0) &= [1,1].
 \end{align*}
-Notice how the gradients \emph{line up} nicely---can we find $\lambda_k \geq 0$ (not all of them simultaneously equal to zero) so that the following linear combination is equal to $[0,0]$?
-\begin{gather*}
-\lambda_0\gradient{f}(0,0) + \lambda_1 \gradient{g_1}(0,0) + \lambda_2 \gradient{g_2}(0,0) + \lambda_3 \gradient{g_3}(0,0) = [0,0], \\
-\lambda_0[0,0] + \lambda_1[0,0] + \lambda_2[0,0] + \lambda_3[1,1] = [0,0],
-\end{gather*}
-We may select, for instance $\lambda_0=\lambda_1=\lambda_2=1$, $\lambda_3=0$, which proves that the point $(0,0)$ is indeed a candidate for optimal solution of $(P)$.
+Notice how the gradients \emph{line up} nicely---can we find $\lambda_k \geq 0$ so that:
+\begin{enumerate}
+	\item $[\lambda_0, \lambda_1, \lambda_2, \lambda_3] \neq [0,0,0,0]$,
+	\item $\lambda_1=\lambda_2=0$ (since $\lambda_1 g_1(0,0) = -2\lambda_1$ and $\lambda_2 g_2(0,0) = -2\lambda_2$), and
+	\item the following linear combination is equal to $[0,0]$
+	\begin{gather*}
+	\lambda_0\gradient{f}(0,0) + \lambda_1 \gradient{g_1}(0,0) + \lambda_2 \gradient{g_2}(0,0) + \lambda_3 \gradient{g_3}(0,0) = [0,0], \\
+	\lambda_0[0,0] + \lambda_1[0,0] + \lambda_2[0,0] + \lambda_3[1,1] = [0,0],
+	\end{gather*}
+\end{enumerate}
+We may select, for instance $\lambda_0=1$, $\lambda_1=\lambda_2=\lambda_3=0$, which proves that the point $(0,0)$ is indeed a candidate for optimal solution of $(P)$.
 \end{example}
 
 \separator
