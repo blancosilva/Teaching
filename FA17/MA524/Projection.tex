@@ -1,6 +1,6 @@
 %!TEX root = main.tex
 
-\section{Projection Methods for Linear Equality constrained programs}
+\section[Projection Methods]{Projection Methods for Linear Equality constrained programs}
 
 Consider the minimization of a function $f\colon \field{R}^d \to \field{R}$ subject to $\ell$ linear constraints $h_k(\x) = 0$, where $h_k(\x) = \langle \boldsymbol{a}_k , \x \rangle - b_k$ for vectors $\boldsymbol{a}_k=[a_{k1}, \dotsc, a_{kd}] \in \field{R}^d$, and real values $b_k \in \field{R}$ ($1\leq k \leq \ell$).  If we set 
 \begin{equation*}
@@ -16,7 +16,7 @@ The KKT conditions read as follows: Find $\x \in \field{R}^d$ satisfying $\bolds
 \end{equation}
 
 
-\begin{example}
+\begin{example}\label{example:ProjMethods}
 We would like to find the minimum value of the function $f(x,y,z)=x^2+y^2+z^2$ over the line at the intersection of the planes $x+y+z=0$ and $x-y+2z=3$.  
 
 The method we used in MATH 241 would start by computing a parameterization of the line first.  For instance, by forcing $z=0$ and solving the system formed by the two planes (with this restriction), we find that the point $(3/2,-3/2,0)$ belongs in this line.  The cross product of the normal vectors to the planes is the direction of the line: 
@@ -63,29 +63,74 @@ There is a unique solution $\mu_1 = 6/7$, $\mu_2 = -9/7$, and therefore the poin
 Notice how, in either case above, we ended solving the optimization problem \emph{symbolically}.  In this section we are going to adapt the techniques we learned in Chapter \ref{chapter:UnconstrainedNumerical} to approximate the solution of this kind of programs numerically.  As we have done in the past, it all starts by selecting a feasible initial guess, and solving a linear approximation instead.
 
 \subsection{Steepest Descent}
-Given a feasible initial guess $\x_0 \in \field{R}^d$ (satisfying $\boldsymbol{A}\transpose{\x_0}=\transpose{\boldsymbol{b}}$), we proceed to search for a next iteration \emph{within the feasibility region} that approaches the solution of $L(\x) = f(\x_0) + \gradient{f}(\x_0)\transpose{(\x-\x_0)}$.   Namely, we need $\x_1 \in \field{R}^d$ satisfying $\boldsymbol{A}\transpose{\x_1}=\transpose{\boldsymbol{b}}$ that minimizes $L(\x)$.  We usually further impose a maximum distance from $\x_0$ to $\x_1$; that is, we force for example $\norm{\x_1 - \x_0} \leq R$ for some $R>0$.  This gives the \emph{Direction Finding Program} $(DFP)$\index{Program!Direction Finding}
+Given a feasible initial guess $\x_0 \in \field{R}^d$ (satisfying $\boldsymbol{A}\transpose{\x_0}=\transpose{\boldsymbol{b}}$), we proceed to search for a next iteration \emph{within the feasibility region} that approaches the solution of $L_0(\x) = f(\x_0) + \gradient{f}(\x_0)\transpose{(\x-\x_0)}$.   Namely, we need $\bar{\x}_0 \in \field{R}^d$ satisfying $\boldsymbol{A}\transpose{\bar{\x}_0}=\transpose{\boldsymbol{b}}$ that minimizes $L_0(\x)$.  We usually further impose a maximum distance from $\x_0$ to $\bar{\x}_0$; that is, we force for example $\norm{\bar{\x}_0 - \x_0} \leq R_0$ for some $R_0>0$.  This gives the \emph{Direction Finding Program} $(DFP)$\index{Program!Direction Finding}
 \begin{equation*}
-\min_{\x \in S}L(\x), \quad S=\{ \x \in \field{R}^d :  \boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}, \norm{\x-\x_0} \leq R \}.
+\min_{\x \in S_0}L_0(\x), \quad S_0=\{ \x \in \field{R}^d :  \boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}, \norm{\x-\x_0} \leq R_0 \}.
 \end{equation*}
 If we set $\v = \x - \x_0$, the program translates into simpler terms:
 \begin{equation*}
-\min_{\v \in S'} \gradient{f}(\x_0)\transpose{\v}, \quad S' = \{ \boldsymbol{A}\transpose{\v} = \transpose{\boldsymbol{0}}, \norm{\v} \leq R \}.
+\min_{\v \in S_0'} \gradient{f}(\x_0)\transpose{\v}, \quad S_0' = \{ \boldsymbol{A}\transpose{\v} = \transpose{\boldsymbol{0}}, \norm{\v} \leq R_0 \}.
 \end{equation*}
 Note this is a convex program (it is linear, as a matter of fact) with a Slater point at $\boldsymbol{0}$.  The KKT conditions for the $(DFP)$ program are therefore necessary and sufficient for optimality. 
 
-Notice how much simpler these conditions are: Set $g_1(\v) = \norm{\v}^2-R^2$, $h_k(\v) = \langle \boldsymbol{a}_k, \v \rangle$ for $1\leq k \leq \ell$.  Find $\v \in \field{R}^d$ with $\boldsymbol{A}\transpose{\v} = \transpose{\boldsymbol{0}}$, $\lambda_1 \geq 0$, $\mu_k \in \field{R}$, $1\leq k \leq \ell$ so that:
+Notice how much simpler these conditions are: Set $g_1(\v) = \norm{\v}^2-R_0^2$, $h_k(\v) = \langle \boldsymbol{a}_k, \v \rangle$ for $1\leq k \leq \ell$.  Find $\v \in \field{R}^d$ with $\boldsymbol{A}\transpose{\v} = \transpose{\boldsymbol{0}}$, $\lambda_1 \geq 0$, $\mu_k \in \field{R}$, $1\leq k \leq \ell$ so that:
 \begin{gather*}
-\lambda_1 \big( \norm{\v}^2 - R^2 \big) = 0, \\
+\lambda_1 \big( \norm{\v}^2 - R_0^2 \big) = 0, \\
 \gradient{f}(\x_0) + 2\lambda_1 \v + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k = \boldsymbol{0}.
 \end{gather*}
 This gives two possibilities.
 \begin{enumerate}
 	\item $\lambda_1 = 0$, in which case we have $\gradient{f}(\x_0) + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k=0$.  This means that $\x_0$ is already a feasible point that satisfies the KKT conditions for $(P)$.
-	\item $\lambda_1 \neq 0$, and $\v$ with $\norm{\v} = R$ that satisfies
+	\item $\lambda_1 \neq 0$, and $\v$ with $\norm{\v} = R_0$ that satisfies
 	\begin{equation*}
 	2\lambda_1 \v + \sum_{k=1}^\ell \mu_k \boldsymbol{a}_k = - \gradient{f}(\x_0).
 	\end{equation*}
-	If $\gradient{f}(\x_0)\transpose{\v}=\transpose{\boldsymbol{0}}$, then again $\x_0$ happens to be a feasible point satisfying the KKT conditions for $(P)$.
+	A solution is found by the following formulas (it is easy to check why, and left to the reader):
+	\begin{equation}\label{equation:projMethodsFormulae}
+	\begin{split}
+	\boldsymbol{P} = R_0^2 \big( \boldsymbol{I} - \transpose{\boldsymbol{A}} ( \boldsymbol{A} \transpose{\boldsymbol{A}} )^{-1} \boldsymbol{A} \big), \\
+	\lambda_1 = \tfrac{1}{2} \quadratic{P}\big(\gradient{f}(\x_0)\big)^{1/2}, \\
+	\transpose{[\mu_1, \dotsc, \mu_\ell]} = -(\boldsymbol{A}\transpose{\boldsymbol{A}})^{-1} \big( \boldsymbol{A}\transpose{\gradient{f}(\x_0)} \big), \\
+	\transpose{\v} = -\quadratic{P}\big(\gradient{f}(\x_0)\big)^{-1/2} P \transpose{\gradient{f}(\x_0)}.
+	\end{split}
+	\end{equation}
+	% If $\gradient{f}(\x_0)\transpose{\v}=\transpose{\boldsymbol{0}}$, then again $\x_0$ happens to be a feasible point satisfying the KKT conditions for $(P)$.
 \end{enumerate}
 
+The solution $\v_0$ of the $(DFP)$ points to a \emph{direction of steepest descent} for the program $(P)$ starting at $\x_0$.  We proceed to restrict $f$ on the half line starting at $\x_0$ in the direction given by $\v_0$, and search for a global minimum:\index{Direction!of steepest descent}
+\begin{equation*}
+t_0 = \arg\min_{t \geq 0} \varphi_0(t) = \arg \min_{t \geq 0} f(\x_0 + t\v_0).
+\end{equation*}
+Set $\x_1 = \x_0 + t_0\v_0$.  We iterate this process to obtain a sequence of feasible points.  Given $\x_n \in \field{R}^d$ a feasible guess, and $R_n > 0$:
+\begin{align*}
+\v_n &= \arg\min_{\v \in S_n'} \gradient{f}(\x_n)\transpose{\v}, \quad S_n' = \{ \v \in \field{R}^d : \norm{\v} \leq R_n, \boldsymbol{A}\transpose{\v}=\transpose{\boldsymbol{0}}\} \\
+t_n &= \arg\min_{t \geq 0} \varphi_n(t) = \arg\min{t \geq 0} f(\x_n + t \v_n) \\
+\x_{n+1} &= \x_n + t_n \v_n.
+\end{align*}
 
+\begin{example}
+Let's illustrate this technique with the running example \ref{example:ProjMethods}.  Assume the initial guess is the feasible point $(3/2, -3/2, 0)$.  The corresponding $(DFP)$ for a direction search with unit vectors reads as follows:
+\begin{equation*}
+\min_{\v \in S'} \langle [3,-3,0], \v \rangle, \quad S' = \big\{ \v \in \field{R}^3 : \norm{\v}\leq 1, \big[ \begin{smallmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{smallmatrix}\big] \transpose{\v} = \boldsymbol{0} \big\}
+\end{equation*}
+The KKT conditions request a feasible $\v \in \field{R}^3$, $\lambda_1 \geq 0$, $\mu_1, \mu_2 \in \field{R}$ so that
+\begin{gather*}
+\lambda_1(\norm{\v}^2 - 1) = 0, \\
+2\lambda_1 \v + \mu_1 [1,1,1] + \mu_2 [1,-1,2] = [-3,3,0].
+\end{gather*}
+The formulas in \eqref{equation:projMethodsFormulae} give
+\begin{align*}
+\boldsymbol{P} &= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 1 & 2 \end{bmatrix} \bigg( \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 1 & 2 \end{bmatrix} \bigg)^{-1} \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{bmatrix} \\ 
+&= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 1 & 2 \end{bmatrix} \begin{bmatrix} 3 & 2 \\ 2 & 6 \end{bmatrix}^{-1} \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{bmatrix} \\
+&= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 1 & 2 \end{bmatrix} \begin{bmatrix} 3/7 & -1/7 \\ -1/7 & 3/14 \end{bmatrix} \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{bmatrix} \\
+&= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 1 & 2 \end{bmatrix} \begin{bmatrix} 2/7 & 4/7 & 1/7 \\ 1/14 & -5/14 & 2/7 \end{bmatrix} \\
+&= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} 5/14 & 3/14 & 3/7 \\ -3/14 & 1/14 & 1/7 \\ -3/7 & 1/7 & 2/7 \end{bmatrix} = \begin{bmatrix} 9/14 & -3/14 & -3/7 \\ -3/14 & 1/14 & 1/7 \\ -3/7 & 1/7 & 2/7 \end{bmatrix} \\
+\intertext{and thus,}
+\begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix} &= \bigg( \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 1 & 2 \end{bmatrix} \bigg)^{-1} \bigg( \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & 2 \end{bmatrix} \begin{bmatrix} 3 \\ -3 \\ 0 \end{bmatrix} \bigg) \\
+&= \begin{bmatrix} 3/7 & -1/7 \\ -1/7 & 3/14 \end{bmatrix} \begin{bmatrix} 0 \\ 6 \end{bmatrix} = \begin{bmatrix} -6/7 \\ 9/7 \end{bmatrix}, \\
+\lambda_1 &= \frac{1}{2} \bigg( \begin{bmatrix} 3 & -3 & 0 \end{bmatrix} \begin{bmatrix} 9/14 & -3/14 & -3/7 \\ -3/14 & 1/14 & 1/7 \\ -3/7 & 1/7 & 2/7 \end{bmatrix} \begin{bmatrix} 3 \\ -3 \\ 0 \end{bmatrix} \bigg)^{1/2} = \tfrac{3}{7}\sqrt{14} \\
+\transpose{\v} &= -\tfrac{1}{12} \sqrt{14} \begin{bmatrix} 9/14 & -3/14 & -3/7 \\ -3/14 & 1/14 & 1/7 \\ -3/7 & 1/7 & 2/7 \end{bmatrix} \begin{bmatrix} 3 \\ -3 \\ 0 \end{bmatrix} \\
+&= -\tfrac{1}{12}\sqrt{14} \begin{bmatrix} 18/7 \\ -6/7 \\ -12/7 \end{bmatrix} = \tfrac{1}{14}\sqrt{14} \begin{bmatrix} -3 \\ 1 \\ 2  \end{bmatrix}
+\end{align*}
+Notice how $\v$ satisfies all required constraints, and $\norm{\v}=1$.  This vector is an optimal solution of $(DFP)$, and therefore a \emph{direction of steepest descent} for $(P)$ from the point $(3/2, -3/2, 0)$.
+\end{example}
