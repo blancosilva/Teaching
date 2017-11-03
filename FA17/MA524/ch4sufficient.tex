@@ -41,7 +41,7 @@ This gives the points $\pm(\sqrt{2}/2, \sqrt{2}/2)$.
 \begin{example}
 Let $\x_0 \in \field{R}^d\setminus\{\boldsymbol{0}\}$ and $r>0$.  Find the point on the sphere of radius $r$, $\field{S}_d=\{ \x \in \field{R}^d: \norm{\x}=r \}$ that is closer to $\x_0$. 
 
-We may write a super-consistent convex program to solve this optimization problem by using $f(\x)=\norm{\x-\x_0}$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}-r^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT conditions request $\mu \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{\x} = r$ so that
+We may write a super-consistent convex program to solve this optimization problem by using $f(\x)=\norm{\x-\x_0}^2$ as objective function, and one equality constraint $h_1(\x)=\norm{\x}^2-r^2$.  With this choice, we are well within the hypothesis of Theorems \ref{theorem:KKTnecessary} and \ref{theorem:KKTsufficient}.  The KKT conditions request $\mu \in \field{R}$ and a point $\x \in \field{R}^d$ with $\norm{\x} = r$ so that
 \begin{equation*} 
 \gradient{f}(\x) + \mu\gradient{h_1}(\x) = \boldsymbol{0},
 \end{equation*}
