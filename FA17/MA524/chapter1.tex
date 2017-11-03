@@ -178,9 +178,9 @@ Suppose $f(x,y)$ is differentiable in a region whose interior contains a smooth 
 This result leads to the \emph{Method of Lagrange Multipliers}
 
 \begin{theorem}[Lagrange Multipliers on one constraint]\label{theorem:LM1C}\index{Lagrange Multipliers}
-Suppose that $f(x,y)$ and $g(x,y)$ are differentiable and $\gradient{g} \neq 0$ when $g(x,y)=0$.  To find the local extrema of $f$ subject to the constraint $g(x,y)=0$ (if these exist), find the values of $x,y$ and $\lambda$ that simultaneously satisfy the equations
+Suppose that $f(x,y)$ and $h_1(x,y)$ are differentiable and $\gradient{h_1} \neq 0$ when $h_1(x,y)=0$.  To find the local extrema of $f$ subject to the constraint $h_1(x,y)=0$ (if these exist), find the values of $x,y$ and $\lambda$ that simultaneously satisfy the equations
 \begin{equation*}
-\gradient{f} = \lambda \gradient{g}, \text{ and }g(x,y)=0
+\gradient{f} = \lambda \gradient{h_1}, \text{ and }h_1(x,y)=0
 \end{equation*}
 \end{theorem}
 
@@ -189,9 +189,9 @@ Find the minimum value of the expression $3x+4y$ for values of $x$ and $y$ on th
 
 We start by modeling this problem to adapt the technique of Lagrange multipliers:
 \begin{align*}
-f(x,y) &= \underbrace{3x+4y}_{\text{target}} & g(x,y)&=\underbrace{x^2+y^2-1}_{\text{constraint}}
+f(x,y) &= \underbrace{3x+4y}_{\text{target}} & h_1(x,y)&=\underbrace{x^2+y^2-1}_{\text{constraint}}
 \end{align*}
-Look for the values of $x,y$ and $\lambda$ that satisfy the equations $\gradient{f} = \lambda\gradient{g}$, $g(x,y)=0$
+Look for the values of $x,y$ and $\lambda$ that satisfy the equations $\gradient{f} = \lambda\gradient{h_1}$, $h_1(x,y)=0$
 \begin{align*}
 3 &= 2\lambda x, & 4 &= 2\lambda y & 1 &= x^2+y^2 \\
 \intertext{Equivalently, $\lambda \neq 0$ and $x,y$ satisfy}
@@ -202,28 +202,28 @@ These equations lead to $\lambda = \pm \frac{5}{2}$, and there are only two poss
 
 This method can be extended to more than two dimensions, and more than one constraint.  For instance:
 \begin{theorem}[Lagrange Multipliers on two constraints]\label{theorem:LM2C}
-Suppose that $f(x,y,z)$, $g_1(x,y,z)$, $g_2(x,y,z)$ are differentiable with $\gradient{g_1}$ not parallel to $\gradient{g_2}$.  To find the local extrema of $f$ subject to the constraint $g_1(x,y,z)=g_2(x,y,z)=0$ (if these exist), find the values of $x,y, \lambda$ and $\mu$ that simultaneously satisfy the equations
+Suppose that $f(x,y,z)$, $h_1(x,y,z)$, $h_2(x,y,z)$ are differentiable with $\gradient{h_1}$ not parallel to $\gradient{h_2}$.  To find the local extrema of $f$ subject to the constraint $h_1(x,y,z)=h_2(x,y,z)=0$ (if these exist), find the values of $x,y, \lambda_1$ and $\lambda_2$ that simultaneously satisfy the equations
 \begin{align*}
-\gradient{f} &= \lambda \gradient{g_1}+\mu\gradient{g_2}, &g_1(x,y,z)&=0, &g_2(x,y,z)&=0
+\gradient{f} &= \lambda_1 \gradient{h_1}+\lambda_2 \gradient{h_2}, & h_1(x,y,z)&=0, & h_2(x,y,z)&=0
 \end{align*}
 \end{theorem}
 
 \begin{example}
-The cylinder $x^2+y^2=1$ intersects the plane $x+y+z=1$ in an ellipse.  Find the points on the ellipse that lie closest to the origin.
+The cylinder $x^2+y^2=1$ intersects the plane $x+y+z=1$ in an ellipse.  Find the points on the ellipse that lies closest to the origin.
 
 We again model this as a Lagrange multipliers problem:
 \begin{align*}
 f(x,y,z) &= \overbrace{x^2+y^2+z^2}^{\text{target}}, \\ 
-g_1(x,y,z)&= \underbrace{x^2+y^2-1}_{\text{constraint}}, & g_2(x,y,z) &= \underbrace{x+y+z-1}_{\text{constraint}}.
+h_1(x,y,z)&= \underbrace{x^2+y^2-1}_{\text{constraint}}, & h_2(x,y,z) &= \underbrace{x+y+z-1}_{\text{constraint}}.
 \end{align*}
-The gradient equation $\gradient{f} = \lambda \gradient{g_1} + \mu \gradient{g_2}$ gives
+The gradient equation $\gradient{f} = \lambda_1 \gradient{h_1} + \lambda_2 \gradient{h_2}$ gives
 \begin{align*}
-2x &= 2\lambda x + \mu, &2y &= 2\lambda y+\mu, &2z &= \mu
+2x &= 2\lambda_1 x + \lambda_2, &2y &= 2\lambda_1 y+\lambda_2, &2z &= \lambda_2
 \end{align*}
 These equations are satisfied simultaneously only in two scenarios:
 \begin{enumerate}
-	\item $\lambda=1$ and $z=0$
-	\item $\lambda \neq 1$ and $x=y=z/(1-\lambda)$
+	\item $\lambda_1=1$, $\lambda_2=0$ and $z=0$
+	\item $\lambda_1 \neq 1$ and $x=y=z/(1-\lambda_1)$
 \end{enumerate} 
 Resolving each case we find four candidates: 
 \begin{equation*}
@@ -271,7 +271,7 @@ For each of these problems, we follow a similar program:
 	\item[Characterization of extrema] Establish results that describe conditions for points $\x \in D$ to be extrema of $f$.  
 	\item[Tracking extrema] Design robust numerical algorithms that find the extrema for scientific computing purposes.
 \end{description}
-The development of existence and characterization results for unconstrained optimization will be covered in chapter \ref{chapter:UnconstrainedExistenceCharacterization}.  The design of algorithms to track extrema in the unconstrained setting will be covered in chapter \ref{chapter:UnconstrainedNumerical}.  Chapter \ref{chapter:ConstrainedExistenceCharacterization} is devoted to existence and characterization results for constrained optimization, and Chapter \ref{chapter:ConstrainedNumerical} for the design of algorithms in that setting.
+The development of existence of solutions of any optimization problem, as well as the characterization results for unconstrained optimization will be covered in chapter \ref{chapter:UnconstrainedExistenceCharacterization}.  The design of algorithms to track extrema in the unconstrained setting will be covered in chapter \ref{chapter:UnconstrainedNumerical}.  Chapter \ref{chapter:ConstrainedExistenceCharacterization} is devoted to characterization results for constrained optimization, and Chapter \ref{chapter:ConstrainedNumerical} for the design of algorithms in that setting.
 
 
 
