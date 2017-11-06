@@ -1,0 +1,36 @@
+   N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC ||  AG
+=====================================================================================||=====
+ 4.1,  25,  25,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 4.2,  25,  25,  --,  --,  --,  --,  20,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 4.3,  25,  25,  --,  --,  --,  --,   0,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 4.4,  25,  20,  --,  --,  --,  --,  10,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
+=====================================================================================||=====
+    ,    ,    ,    ,    ,    ,    ,  50,    ,    ,    ,    ,    ,    ,    ,    ,     || 
+
+
+HC 50%
+HC 4.1 20/25
+      (c) To do quasi-convex, notice that pseudo-convex implies quasi-convex.  
+          Simply prove convexity+differentiability for the latter, and you will have the former as a consequence. 
+          One of the functions does not have disks as level sets, but ellipses.
+      (e) For a point to be feasible, it must satisfy ALL constraints simultaneously.  Satisfying only one is not enough.
+HC 4.2 20/25
+      (a) You cannot have constraints as g(x,y) >= 0.  Multiply g times -1 if necessary.
+      (f) All the lambdas must be non-negative.  Change that sign there.  
+          The reason you got one lambda negative is the wrong choice of the corresponding g
+HC 4.3 0/25
+      (a) Same as in the previous problem.  All the inequalities must be <=
+      (b) Feasibility must be thoroughly proven.  Check that is satisfies all constraints.
+      (c) In order to affirm that a function is convex and differentiable, you must prove each claim.  
+          In easy cases like this, differentiability can be easily stated by indicating that the function is a polynomial.
+          But you need to be more convincing with the convex property.  Do the Hessians, for instance.  This ones were tricky, actually.
+HC 4.4 10/25
+      A_3 is "indefinite" (watch out for spelling).  The solutions of its associated system are not (0,0,0).  Do those computations again
+      A_4 and A_5 are perfectly possible.  Remember that a continuous function ALWAYS attains a minimum on a compact set.
+
+AH Outstanding  95%
+AH 4.4 20/25
+      A_1, A_3 The eigenvalues need to be all integers.  
+      Not a big deal for the rest of the exercise, but make sure to read the instructions carefully.
+      (c) Yup.  For negative definite matrices, the corresponding quadratic form satisfies f(x,y,z) < 0 for all (x,y,z) different than (0,0,0).
+          Logically, the maximum can only be at the origin.
