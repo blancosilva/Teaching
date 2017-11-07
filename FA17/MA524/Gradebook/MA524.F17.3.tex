@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+% \renewcommand{\theenumi}{(\alph{enumi})} 
+% \renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 524}\hfill{\large\bf Exam \#3.}\hfill{\large\bf
+  Fall 2017}\hfill{\large\bf Page 1/1}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node[scale=0.8]{%}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+    {\large\bf Problem} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 1} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 2} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 3} & \Large 25 & \cr
+    &&\cr
+    \hline
+    &&\cr
+    {\Large 4} & \Large 25 & \cr
+    &&\cr
+  \hline\hline
+    &&\cr
+    {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+    \hline
+  \end{tabular}};
+\end{tikzpicture}
+\end{center}
+
+\hrule
+
+\bigskip
+Write down your birth-date in the form \texttt{mm/dd/YY}, and set $m$ to be the value of the month, $d$ the value of the day, and $Y$ the value of those two last digits of the year you were born  (for instance, today it would be $m=11$, $d=7$, $Y=17$). 
+
+\begin{enumerate}
+    \item We want to find the \textbf{minimum} of the function $f(x,y) = Y(x-d)^2 + (y-m)^2$ over the half-disk that contains the point $(1,4)$, and has as diameter the segment of endpoints $(1,1)$ and $(3,5)$.
+    \begin{enumerate}
+        \item Write the statement of this problem as a program.
+        \item Is the objective function pseudo-convex?  Why or why not?
+        \item Are the inequality constraints quasi-convex? Why or why not?
+        \item Sketch the feasibility region. Label all relevant objects involved.
+        \item Use the techniques we have covered in Chapter 4 to find the optimal solution.  Make sure to name the Theorems you use.
+    \end{enumerate}
+    \item Find a non-diagonal positive definite matrix $\boldsymbol{Q}$ of the form
+    \begin{equation*}
+    \boldsymbol{Q} = \begin{bmatrix} m & a_{12} & a_{13} \\ a_{12} & d & a_{23} \\ a_{13} & a_{23} & Y \end{bmatrix}
+    \end{equation*}
+    (the coefficients $a_{12}, a_{13}$ and $a_{23}$ cannot be simultaneously equal to zero)
+    \item Find the \textbf{maximum} of the quadratic form $\mathcal{Q}_{\boldsymbol{Q}}$ over the unit ball 
+    \begin{equation*}
+    \mathbb{B}_3 = \{ (x,y,z) \in \mathbb{R}^3 : x^2+y^2+z^2 \leq 1 \}.
+    \end{equation*}
+    \item Find the \textbf{minimum} of the quadratic form $\mathcal{Q}_{\boldsymbol{Q}}$ over the ball 
+    \begin{equation*}
+    S = \{ (x,y,z) \in \mathbb{R}^3 : x^2+y^2+z^2 \leq Y^2+m^2+d^4 \}.
+    \end{equation*}
+
+\end{enumerate}
+
+\end{document}
