@@ -130,11 +130,11 @@ The recurrence formula can then be expressed in any of the following two ways:
 \transpose{\x_{n+1}} = \transpose{\x_n} - \boldsymbol{A}_n^{-1} \cdot \transpose{\boldsymbol{g}(\x_n)}
 \end{split}
 \end{equation}
-We refer to this process as the \emph{Broyden Method} for finding roots.\index{Broyden Method}
+We refer to this process as the \emph{Broyden Method} for finding roots.\index{Broyden method}
 
 \begin{remark}
 There is not a unique way to choose the matrices $\boldsymbol{A}_n$ in Broyden's method (and I encourage you to find one of your own devise).  A straightforward construction is given by the following recursive formulas:
-\begin{gather}\index{Broyden Method!recursive formula}\index{Broyden Method!iteration}
+\begin{gather}\index{Broyden method!recursive formula}\index{Broyden method!iteration}
 \boldsymbol{A}_0 = \gradient{\boldsymbol{g}}(\x_0) \nonumber \\
 \boldsymbol{A}_{n+1} = \boldsymbol{A}_n + \frac{\big[ \transpose{\big(\boldsymbol{g}(\x_{n+1})-\boldsymbol{g}(\x_n)\big)} - \boldsymbol{A}_n \transpose{(\x_{n+1}-\x_n)} \big] \otimes (\x_{n+1} -\x_n)}{\norm{\x_{n+1}-\x_n}^2} \label{equation:Broyden}
 \end{gather}
