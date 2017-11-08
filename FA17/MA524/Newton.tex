@@ -353,9 +353,10 @@ For instance, starting with the initial guess $(x_0, y_0) = (-2,2)$, the sequenc
 
 \begin{remark}
 The equivalent recursive formula to \eqref{equation:Newton4Crit} to search for critical points of a twice continuously differentiable real-valued function $f \colon \field{R}^d \to \field{R}$ is given by
-\begin{equation}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}\index{Newton-Raphson method!iteration}
+\begin{equation}\index{Newton-Raphson method}\index{Newton-Raphson method!recursive formula}\index{Newton-Raphson method!iteration}\index{Newton-Raphson method!direction}
 \Hess{f}(\x_n) \transpose{(\x_{n+1}-\x_n)} = -\transpose{\gradient{f}(\x_n)}.
 \end{equation}
+We refer to this formula as the \emph{Newton-Raphson recursive formula}, and the sequence $\{ \x_n \}_{n \in \field{N}}$ is coined the \emph{Newton-Raphson iteration}.  The sequence of directions associated to $\{ \x_{n+1} - \x_n \}_{n \in \field{N}}$ are called \emph{Newton-Raphson directions}.
 \end{remark}
 
 \begin{example}
