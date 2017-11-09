@@ -157,8 +157,9 @@ It is clear that a polynomial of this kind must attain a minimum somewhere in it
 \end{example}
 
 \begin{example}
-Find the global minima of the function $f(x)= \log (x^4-2x^2+2)$ in $\field{R}$.  
-
+Find the global minima of the function 
+\begin{equation*}f(x)= \log (x^4-2x^2+2).
+\end{equation*}
 Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x^2-1)^2+1 \geq 1$ for all $x\ \in \field{R}$.  Note also that we can write $f(x) = (g \circ h)(x)$ with $g(x) = \log(x)$ and $h(x)=x^4-2x^2+1$.  Since $g$ is one-to-one and increasing, we can focus on $h$ to obtain the requested solution.  For instance, $\lim_{\abs{x}\to\infty}f(x) = +\infty$, since $\lim_{\abs{x}\to\infty} h(x) = +\infty$. This guarantees the existence of global minima.  To look for it, $h$ again points to the possible locations by solving for its critical points: $h'(x)=0$.  We have then that $f$ attains its minima at $x=\pm 1$.
 \begin{figure}[ht!]
 \begin{center}
@@ -168,6 +169,8 @@ Note first that the domain of $f$ is the whole real line, since $x^4-2x^2+2 = (x
 \label{figure:coercivelog}
 \end{figure}
 \end{example}
+
+\separator
 
 We learned other useful characterizations for extrema, when the domain could be expressed as solutions of equations:
 
