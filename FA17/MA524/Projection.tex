@@ -8,7 +8,7 @@ Consider the minimization of a function $f\colon \field{R}^d \to \field{R}$ subj
 \end{equation*}
 and $\boldsymbol{b} = [b_1, \dotsc, b_\ell]$ we may write these linear constraints as $\boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}$.
 
-The corresponding program (P) has $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  If this program happens to be consistent (it will depend on $\boldsymbol{A}$), then Theorem \ref{theorem:KKTAllLinear} allows us to use KKT to find the optimal solutions. 
+The corresponding program (P) has $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  If this program happens to be consistent (it will depend on $\boldsymbol{A}$ and $\boldsymbol{b}$), then Theorem \ref{theorem:KKTAllLinear} allows us to use KKT to find the optimal solutions. 
 
 The KKT conditions read as follows: Find $\x \in \field{R}^d$ satisfying $\boldsymbol{A}\transpose{\x} = \transpose{\boldsymbol{b}}$, $\mu_k \in \field{R}$ for $1 \leq k \leq \ell$ so that
 \begin{equation}\label{equation:KKTforLECP}
@@ -55,14 +55,14 @@ which reduces to
 \begin{equation*}
 \begin{bmatrix}  3/2 & 1 \\ 1 & 3 \end{bmatrix} \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix} = \begin{bmatrix} 0 \\ -3 \end{bmatrix}.
 \end{equation*}
-There is a unique solution $\mu_1 = 6/7$, $\mu_2 = -9/7$, and therefore the point $\big( \tfrac{3}{14}, -\tfrac{15}{14}, \tfrac{6}{7} \big)$
+There is a unique solution $\mu_1 = 6/7$, $\mu_2 = -9/7$, with the point $\big( \tfrac{3}{14}, -\tfrac{15}{14}, \tfrac{6}{7} \big)$.
 \end{example}
 
 \separator
 
 Notice how, in either case above, we ended solving the optimization problem \emph{symbolically}.  In this section we are going to adapt the techniques we learned in Chapter \ref{chapter:UnconstrainedNumerical} to approximate the solution of this kind of programs numerically.  As we have done in the past, it all starts by selecting a feasible initial guess, and solving a related program, associated to a simpler approximation instead.  We explore the following options:
 \begin{itemize}
-	\item Using linear approximations (this leads to the \emph{steepest descent method}).
+	\item Using linear approximations (this leads to the \emph{steepest des\-cent me\-thod}).
 	\item Using quadratic approximations (this leads to the \emph{Newton method}).
 \end{itemize}
 
@@ -138,7 +138,7 @@ The formulas in \eqref{equation:projMethodsSteepest} give
 \end{align*}
 Notice how $\v_0$ satisfies all required constraints, and $\norm{\v_0}=1$.  This vector is an optimal solution of $(DFP)$, and therefore a \emph{direction of steepest descent} for $(P)$ from the point $(3/2, -3/2, 0)$.
 
-We perform now the line search from $\x_0$ in this direction:
+We perform now the line search from $\x_0$ in this direction:\index{Line-search}
 \begin{gather*}
 \varphi_0(t) = f(\x_0 + t\v_0) = t^2 - \tfrac{6}{7} \sqrt{14} \, t + \tfrac{9}{2} \\
 t_0 = \argmin_{t\geq 0} \varphi_0(t) = \tfrac{3}{7}\sqrt{14}
