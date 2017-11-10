@@ -1,6 +1,5 @@
 %!TEX root = main.tex
 
-\chapter{Numerical Approximation for Unconstrained Optimization}\label{chapter:UnconstrainedNumerical}
 Although technically any characterization result finds the exact value of the extrema of a function, computationally this is hardly feasible (specially for functions of very high dimension).  See the following session based on problem \ref{problem:tricky} for an example, where we try to find the critical points of the function $f(x,y,z)=e^{x^2+y^2+z^2}-x^4-y^y-z^6$ symbolically in Python with the \texttt{sympy} libraries:
 
 % framesep=2mm,
@@ -24,8 +23,3 @@ NotImplementedError: could not solve
 \end{minted}
 
 Too complex a task to be performed symbolically, although the obvious answer is $(0,0,0)$.  A better way to approach this is by trying to approximate this minimum using the structure of the graph of $f$.  In these notes we are going to explore several strategies to accomplish this task, based on the concept of \emph{iterative methods for finding zeros of real-valued functions}.
-
-\input{Newton}
-\input{Broyden}
-\input{Steepest}
-\input{Effective}

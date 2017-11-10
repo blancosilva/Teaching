@@ -31,8 +31,8 @@ Find
 \begin{align*}
 \bar{\x}_n &= \argmin_{\x \in S} L_n(\x) = \argmin_{\x \in S} \langle \gradient{f}(\x_n), \x-\x_n \rangle,\\
 \xi_n &= \min_{\x \in S} L_n(\x) = L_n(\bar{\x}_n),\\
-t_n &= \argmin_{0 \leq t \leq 1} f\big(\x_n + t(\x_n - \bar{\x}_n)\big), \\
-\x_{n+1} &= \x_n + t_n (\x_n - \bar{\x}_n), \\
+t_n &= \argmin_{0 \leq t \leq 1} f\big(\x_n + t(\bar{\x}_n - \x_n)\big), \\
+\x_{n+1} &= \x_n + t_n (\bar{\x}_n - \x_n), \\
 LB &= \max(LB, \xi_n)
 \end{align*}
 \item [Stopping Criteria] If $\lvert UB-LB \rvert \leq \varepsilon$, then stop. Otherwise, update the upper bound, $UB = f(\x_{n+1})$, and perform the next \textbf{Iteration}.
@@ -75,9 +75,9 @@ f\big(0, \tfrac{3}{2}\big) &= \tfrac{1}{4}, & f\big(0, -\tfrac{3}{2}\big) &= \tf
 \end{description}
 We have shown that the optimal solution of $(P'_0)$ is attained at the point $(\bar{x}_0, \bar{y}_0) = (0, 3/2)$, with $\xi_0 = -6$. We proceed to perform a line-search on the segment joining $(0,0)$ and $(0,3/2)$:
 \begin{equation*}
-t_0 = \argmin_{0 \leq t \leq 1} f\big(0, \tfrac{3}{2}t \big) = \argmin_{0 \leq t \leq 1} \big[ 9 + \big(\tfrac{3}{2}t-2 \big)^2 \big] = \tfrac{4}{3}.
+t_0 = \argmin_{0 \leq t \leq 1} f\big(0, \tfrac{3}{2}t \big) = \argmin_{0 \leq t \leq 1} \big[ 9 + \big(\tfrac{3}{2}t-2 \big)^2 \big] = 1.
 \end{equation*}
+It is then $(x_1,y_1)=(x_0,y_0)+t_0(\bar{x}_0-x_0, \bar{y}_0 - y_0) = \big( \tfrac{3}{2}, 0 \big)$, and $LB=\max(-\infty, \xi_0)=-6$.
 
-
-
+At this point the stopping criteria gives $\lvert UB - LB \rvert = \lvert 13-(-6) \rvert = 19$.
 \end{example}

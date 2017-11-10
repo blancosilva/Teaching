@@ -22,14 +22,40 @@ University of South Carolina}
 
 % mainmatter
 \mainmatter
+
+%%%%% chapter 1
+\chapter{Review of Optimization from Vector Calculus}
+\label{chapter:intro}
 \input{chapter1}
 \input{echapter1}
+
+%%%%% chapter 2
+\chapter[Unconstrained Optimization]{Existence and Characterization of Extrema for Unconstrained Optimization}
+\label{chapter:UnconstrainedExistenceCharacterization}
 \input{chapter2}
 \input{echapter2}
+
+%%%%% chapter 3
+\chapter{Numerical Approximation for Unconstrained Optimization}\label{chapter:UnconstrainedNumerical}
 \input{chapter3}
+\input{Newton}
+\input{Broyden}
+\input{Steepest}
+\input{Effective}
 \input{echapter3}
+
+%%%%% chapter 4
+\chapter[Constrained Optimization]{Existence and Characterization of Extrema for Constrained Optimization}
+\label{chapter:ConstrainedExistenceCharacterization}
 \input{chapter4}
-\input{chapter5}
+\input{ch4necessary}
+\input{ch4sufficient}
+\input{echapter4}
+
+\chapter{Numerical Approximation for Constrained Optimization}
+\label{chapter:ConstrainedNumerical}
+\input{Projection}
+\input{FrankWolfe}
 
 % backmatter
 \printindex
