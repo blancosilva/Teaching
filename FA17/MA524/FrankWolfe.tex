@@ -48,36 +48,63 @@ g_4(x,y) &= -x+y-\tfrac{3}{2} = \langle [-1,1], [x,y] \rangle - \tfrac{3}{2}
 \end{align*}
 \begin{figure}[ht!]
 \includegraphics[width=0.75\linewidth]{images/frankwolfesetup.png}
-\caption{Set up for example \ref{example:FrankWolfe}}\label{figure:FrankWolfesetup}
+\caption{Set up for Example \ref{example:FrankWolfe}}\label{figure:FrankWolfesetup}
 \end{figure}
 We also need the gradient of $f$: $\gradient{f}(x,y) = \big[ 2(x-3), 2(y-2) \big]$. At any point $(x_0,y_0)$, the linear approximation needed for this method is given by
 \begin{align*}
 L_0(x,y) &= f(x_0,y_0) + \langle \gradient{f}(x_0, y_0), (x-x_0,y-y_0) \rangle \\
 &= (x_0-3)^2 + (y_0-2)^2 + 2(x_0-3)(x-x_0) + 2(y_0-2)(y-y_0).
 \end{align*}
-Let's assume that the initial guess is $(0,0)$.  At this point, we set up $LB=-\infty$, and $UB=f(0,0)=13$.  According to our description of Frank-Wolfe, we have to solve at this step the program
+Let's assume that the initial guess is $(0,0)$, and we are looking for an exact solution ($\varepsilon=0$).  At this point, we set up $LB=-\infty$, and $UB=f(0,0)=13$.  According to our description of Frank-Wolfe, we have to solve at this step the program
 \begin{equation*}
-(LP_0): \begin{cases} \min_{(x,y) \in S} \big( -6x-4y \big) \\ S = \{ (x,y) \in \field{R}^2 : g_k(x,y) \leq 0, 1 \leq k \leq 4 \} \end{cases}
+(LP_0): \begin{cases} \displaystyle{\min_{(x,y) \in S}} \big( -6x-4y \big) \\ S = \{ (x,y) \in \field{R}^2 : g_k(x,y) \leq 0, 1 \leq k \leq 4 \} \end{cases}
 \end{equation*}
-The KKT conditions request a point $(x,y) \in S$, and multipliers $\lambda_k \geq 0$ so that $\lambda_k g_k(x,y) = 0$ for $1\leq k \leq 4$, and
-\begin{equation}\label{equation:secondKKTcondition}
-[-6,-4] + \lambda_1 [1,1] + \lambda_2 [1,-1] + \lambda_3 [-1,-1] + \lambda_4 [-1,1] = [0,0].
-\end{equation}
-A quick inspection shows that there are no optimal solutions on the interior of $S$.  It must be located on one of the borders. 
-\begin{description}
-\item[Case 1] The four corners of $S$ are always candidates.  Notice that
-\begin{align*}
-f\big(\tfrac{3}{2}, 0\big) &= \tfrac{9}{4}, & f\big(-\tfrac{3}{2}, 0\big) &= \tfrac{81}{4}, &
-f\big(0, \tfrac{3}{2}\big) &= \tfrac{1}{4}, & f\big(0, -\tfrac{3}{2}\big) &= \tfrac{49}{4}. 
-\end{align*}
-\item[Case 2] If the point is not a corner, and belongs in the border associated to $g_1$, it must be $\lambda_2=\lambda_3=\lambda_4=0$.  In this case, the second KKT condition \eqref{equation:secondKKTcondition} will never be satisfied. 
-\item[Cases 3,4,5] Similarly, we infer that there are no valid solutions in any of the single borders of $S$, except on the corners.
-\end{description}
-We have shown that the optimal solution of $(P'_0)$ is attained at the point $(\bar{x}_0, \bar{y}_0) = (0, 3/2)$, with $\xi_0 = -6$. We proceed to perform a line-search on the segment joining $(0,0)$ and $(0,3/2)$:
+By performing the simplex method, we find the optimal solution of this program attained at the point $(\bar{x}_0, \bar{y}_0) = (3/2,0)$, with $\xi_0 = L_0(3/2,0) = -9$. We proceed to perform a line-search on the segment joining $(0,0)$ and $(3/2,0)$:
 \begin{equation*}
-t_0 = \argmin_{0 \leq t \leq 1} f\big(0, \tfrac{3}{2}t \big) = \argmin_{0 \leq t \leq 1} \big[ 9 + \big(\tfrac{3}{2}t-2 \big)^2 \big] = 1.
+t_0 = \argmin_{0 \leq t \leq 1} f\big(\tfrac{3}{2}t, 0 \big) = \argmin_{0 \leq t \leq 1} \big[ 4 + \big(\tfrac{3}{2}t-3 \big)^2 \big] = 1.
 \end{equation*}
-It is then $(x_1,y_1)=(x_0,y_0)+t_0(\bar{x}_0-x_0, \bar{y}_0 - y_0) = \big( \tfrac{3}{2}, 0 \big)$, and $LB=\max(-\infty, \xi_0)=-6$.
+It is then $(x_1,y_1)=(x_0,y_0)+t_0(\bar{x}_0-x_0, \bar{y}_0 - y_0) = \big( \tfrac{3}{2}, 0 \big)$, and $LB=\max(-\infty, \xi_0)=-9$.
 
-At this point the stopping criteria gives $\lvert UB - LB \rvert = \lvert 13-(-6) \rvert = 19$.
+At this point the stopping criteria gives $\lvert UB - LB \rvert = \lvert 13-(-9) \rvert = 22$.  We proceed to the second iteration step, but we update the upper bound first: $UB=f(x_1,y_1)=f(3/2,0)=25/4$.
+
+We need the approximation to $f$ at $(3/2,0)$: 
+\begin{align*}
+L_1(x,y) &= f\big( \tfrac{3}{2} ,0\big) + \big\langle \gradient{f}\big( \tfrac{3}{2},0 \big), \big[ x-\tfrac{3}{2}, y \big] \big\rangle \\
+&= \tfrac{25}{4} + \big\langle [-3,-4], \big[ x-\tfrac{3}{2}, y \big] \big\rangle = \tfrac{25}{4} - 3\big( x-\tfrac{3}{2} \big) - 4y
+\end{align*}
+The corresponding associated program at this stage is as follows:
+\begin{equation*}
+(LP_1): \begin{cases} 
+\displaystyle{\min_{(x,y) \in S}} \big( -3x-4y \big) \\
+S = \{ (x,y) \in \field{R}^2 : g_k(x,y) \leq 0, 1 \leq k \leq 4 \}
+\end{cases}
+\end{equation*}
+After applying the simplex method to this program, we find that the solution is the point $(\bar{x}_1, \bar{y}_1) = (0,3/2)$, with $\xi_1 = L_1(0,3/2) = 19/4$.
+
+A line search between $(x_1,y_1)$ and $(\bar{x}_1, \bar{y}_1)$ gives
+\begin{equation*}
+t_1 = \argmin_{0 \leq t \leq 1} f\big( \tfrac{3}{2}(1-t), \tfrac{3}{2}t \big) = \argmin_{0 \leq t \leq 1} \big( \tfrac{9}{2}t^2 - \tfrac{3}{2}t + \tfrac{25}{4} \big) = \tfrac{1}{6},
+\end{equation*}
+and therefore $(x_2,y_2) = (x_1,y_1)+t(\bar{x}_1-x_1, \bar{y}_1-y_1) = (5/4, 1/4)$. We also have $LB = \max( -9, \xi_1 ) = 19/4$.  
+
+At this point, the stopping criteria gives $\lvert UB - LB \rvert = \lvert 25/4 - 19/4 \rvert = \tfrac{3}{2}$.  We proceed to the third step, but update the upper bound first: $UB=f(x_2,y_2)=f(5/4,1/4)=49/8$.
+
+We need the approximation to $f$ at $(5/4, 1/4)$:
+\begin{equation*}
+L_2(x,y) = f\big(\tfrac{5}{4}, \tfrac{1}{4} \big) + \big\langle \gradient{f}(\tfrac{5}{4}, \tfrac{1}{4} \big), \big[ x - \tfrac{5}{4}, y-\tfrac{1}{4} \big] \big\rangle = -\tfrac{7}{2}x -\tfrac{7}{2}y + \tfrac{91}{8}.
+\end{equation*}
+The corresponding associated program at this stage is as follows:
+\begin{equation*}
+(LP_2): \begin{cases}
+\displaystyle{\min_{(x,y) \in S}} \big( -\tfrac{7}{2}x -\tfrac{7}{2}y \big) \\
+S = \{ (x,y) \in \field{R}^2 : g_k(x,y) \leq 0, 1 \leq k \leq 4 \}
+\end{cases}
+\end{equation*}
+The solution is again the point $(\bar{x}_2, \bar{y}_2) = (5/4, 1/4)$, with $\xi_2 = L_2(5/4,1/4) = 49/8$.  No further computations are needed at this point to realize that $(x_3,y_3)=(\bar{x}_2, \bar{y}_2)=(x_2,y_2)=(5/4, 1/4)$.  Notice that $\lvert UB-LB \rvert=0$, and the stopping criteria has been satisfied as expected.
+
+The solution of the program $(P)$ is precisely this point.
+\begin{figure}[ht!]
+\includegraphics[width=0.75\linewidth]{images/frankwolfesequence.png}
+\caption{Frank-Wolfe iteration to solve the program $(P)$ in Example \ref{example:FrankWolfe}.}
+\end{figure}
 \end{example}
