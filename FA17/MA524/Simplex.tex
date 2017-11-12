@@ -21,7 +21,7 @@ for a given $\boldsymbol{c}=[c_1, \dotsc, c_d], \boldsymbol{a}_k = [a_{k1}, \dot
 	\begin{equation*}
 	a_1 x_1 + \dotsb + a_d x_d - s = b, \quad s \geq 0.
 	\end{equation*}
-	\item[Unrestricted variables in sign]\index{Simplex method!Unrestricted variables in sign} If some variable $x_k$ is unrestricted in sign, replace it every where in the formulation by $x_k^+ - x_k^-$, where $x_k^+ \geq 0$ and $x_k^- \geq 0$.
+	\item[Unrestricted variables in sign]\index{Simplex method!Unrestricted variables in sign} If some variable $x_k$ is unrestricted in sign, replace it everywhere in the formulation by $x_k^+ - x_k^-$, where $x_k^+ \geq 0$ and $x_k^- \geq 0$.
 \end{description}
 
 \separator 
@@ -46,7 +46,7 @@ x - 3y + 2z \leq 3, \\
 y \geq 0, z \geq 0 \\
 \end{cases}
 \end{equation*}
-We can easily convert the objective function to a maximum, and the first two inequality constraints into equality constraints by introducing a slack variable $s_1 \geq 0$ and a surplus variable $s_2 \geq 0$.  Notice that the variable $x$ is unrestricted in sign.  We convert it into two non-negative variables $x^+ - x^-$:
+We can easily convert the objective function to a maximum, and the first two inequality constraints into equality constraints by introducing a slack variable $s_1 \geq 0$ and a surplus variable $s_2 \geq 0$.  Notice that the variable $x$ is unrestricted in sign.  We convert it to two non-negative variables $x^+ - x^-$:
 \begin{equation*}
 \left\{
 \begin{matrix}
@@ -59,11 +59,13 @@ We can easily convert the objective function to a maximum, and the first two ine
 \end{equation*}
 The corresponding tableau is as follows:
 \begin{equation*}
-\begin{bmatrix}
-1 & -2 & 2  & 3  & 0 & 0 & 0  & 0\\
+\begin{tabular}{|r|rrrrrr|r|}
+\hline 
+1 & -2 & 2  & 3  & 0 & 0 & 0  & 0 \\ \hline
 0 & 1  & -1 & -3 & 2 & 1 & 0  & 3 \\
-0 & -1 &  1 & 2  & 0 & 0 & -1 & 2
-\end{bmatrix}
+0 & -1 &  1 & 2  & 0 & 0 & -1 & 2 \\ \hline \hline
+$z$ & $x^+$ & $x^-$ & $y$ & $z$ & $s_1$ & $s_2$ & \\ \hline
+\end{tabular}
 \end{equation*}
 \end{example}
 
@@ -224,23 +226,92 @@ We have found two different optimal solutions of the program $(LP)$ using the si
 
 
 \begin{example}
-What happens if we are unable to employ Rule 1 from the simplex method?  This situation arises on the program from Example \ref{example:FirstLinearProgram}:
+What happens if we are unable to employ Rule 1 from the simplex method?  This situation arises on unbounded programs.  Consider the one below:
+\begin{equation*}
+(LP): \begin{cases}
+\displaystyle{\max_{(x,y) \in \field{R}^2} \big( 2x+y \big)} \\
+-x+y \leq 1 \\
+x - 2y \leq 2 \\
+x \geq 0, y \geq 0
+\end{cases}
+\end{equation*}
+Once in standard form, its tableau is as follows:
 \begin{equation*}
 \begin{bmatrix}
-1 & \boldsymbol{-2} & 2  & 3  & 0 & 0 & 0 & 0\\
-0 & 1  & -1 & -3 & 2 & 1 & 0  & 3 \\
-0 & -1 &  1 & 2  & 0 & 0 & -1 & 2 \\ \hline
-z & x_1 & x_2 & x_3 & x_4 & x_5 & x_6
+1 & -2  & -1  & 0   & 0   & 0 \\
+0 & -1  &  1  & 1   & 0   & 1 \\
+0 &  1  & -2  & 0   & 1   & 2 \\ \hline
+z & x_1 & x_2 & x_3 & x_4
 \end{bmatrix}
 \end{equation*}
-The first entering variable is $x_1$.  The only row we may use to pivot is the second:
+At this stage, an initial solution is given by
+\begin{equation*}
+z=0 \qquad \underbrace{x_3=1, \quad x_4=2}_{\text{basic solutions}} \qquad \underbrace{x_1=x_2=0}_{\text{non-basic solutions}}
+\end{equation*}
+The entering variable $x_1$ must be pivoted with the third row.
 \begin{equation*}
 \begin{bmatrix}
-1 & 0  & 0  & \boldsymbol{-3} & 4 & 2 & 0 & 6\\
-0 & 1  & -1 & -3 & 2 & 1 & 0  & 3 \\
-0 & 0  & 0  & -1 & 2 & 1 & -1 & 5 \\ \hline
-z & x_1 & x_2 & x_3 & x_4 & x_5 & x_6
+1 &  0  & -5  & 0   & 2   & 4 \\
+0 &  0  & -1  & 1   & 1   & 3 \\
+0 &  1  & -2  & 0   & 1   & 2 \\ \hline
+z & x_1 & x_2 & x_3 & x_4
 \end{bmatrix}
 \end{equation*}
-The next entering variable is $x_3$, but there are no possible rows to pivot.  The program is \emph{unbounded}\index{Program!unbounded}: if we increase the value of $x_3$, the value of $z$ increases (on the first row), and so do the values of the basic variables (on the other rows).
+At this stage, we have
+\begin{equation*}
+z=4 \qquad \underbrace{x_1=2, \quad x_3=3}_{\text{basic solution}} \qquad \underbrace{x_2=x_4=0}_{\text{non-basic solutions}}
+\end{equation*}
+But notice that at this new stage we are unable to apply rule 1, since there are no positive coefficients for $x_2$. Any pivot operation that we apply using the second row will change the values of $z$; in particular, we should be able to perform enough changes to make $z$ as large as we desire.  For instance: what row operations would you perform to get $z=19$, with the feasible point $(8,3)$?
+\end{example}
+
+\begin{example}\index{scipy}
+In Python there is an implementation of the simplex algorithm in the libraries \texttt{sympy.optimize}: the routine \texttt{linprog} with the option \texttt{method='simplex'}.  It is smart enough to indicate, among other things,
+\begin{itemize}
+	\item If the program terminates successfully, is infeasible or unbounded.
+	\item The value of the slack or surplus variables, when these are used.
+	\item In case of failure, the coordinates of the last point obtained by the algorithm.
+\end{itemize} 
+The following session illustrates how to use it to solve some of the examples we have shown in this section.
+
+\begin{minted}[frame=single, fontsize=\footnotesize, linenos, mathescape]{python}
+import numpy as np, matplotlib.pyplot as plt 
+from scipy.optimize import linprog
+
+# First program: $\max(x+y)$ with $2x+y \leq 4, x+2y \leq 3, x \geq 0, y \geq 0$
+# We obtained the value $7/3$ at the point $(5/3,2/3)$
+c1 = [-1, -1]
+A1 = [[2,1], [1,2]]
+b1 = [4,3]
+x0_bnds = (0, None) # This means literally $0 \leq x_0 < \infty$
+x1_bnds = (0, None) # and this, $0 \leq x_1 < \infty$
+
+# Second program: $\max(2x+y)$ with $-x+y \leq 1, x-2y\leq 2, x\geq 0, y\geq 0$
+# The program is unbounded
+c2 = [-2, -1]
+A2 = [[-1, 1], [1, -2]]
+b2 = [1, 2]
+\end{minted}
+
+We call the optimization \texttt{linprog} with the values of $\boldsymbol{c}$ first (as a list), then the values of the matrix $\boldsymbol{A}$ (as a list of lists), and the values of $\boldsymbol{b}$ (as a list).  We use the option \texttt{bounds=} to provide a collection of bounds \texttt{(min\_value, max\_value)} for each of the relevant variables.  For instance if we request the first variable, $x_0$ to satisfy $a \leq x_0 \leq b$, we input \texttt{(a,b)}.  If any of the bounds is infinite, we signal it with \texttt{None}.
+
+\begin{minted}[frame=single,fontsize=\footnotesize, mathescape]{python}
+>>> linprog(c1, A1, b1, bounds=(x0_bnds, x1_bnds), method='simplex')
+     fun: -2.3333333333333335
+ message: 'Optimization terminated successfully.'
+     nit: 2
+   slack: array([ 0.,  0.])
+  status: 0
+ success: True
+       x: array([ 1.66666667,  0.66666667])
+
+ >>> linprog(c2, A2, b2, bounds=(x0_bnds, x1_bnds), method='simplex')
+      fun: -4.0
+ message: 'Optimization failed. The problem appears to be unbounded.'
+     nit: 1
+   slack: array([ 3.,  0.])
+  status: 3
+ success: False
+       x: array([ 2.,  0.])
+
+\end{minted}
 \end{example}

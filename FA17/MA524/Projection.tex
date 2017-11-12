@@ -8,7 +8,7 @@ Consider the minimization of a function $f\colon \field{R}^d \to \field{R}$ subj
 \end{equation*}
 and $\boldsymbol{b} = [b_1, \dotsc, b_\ell]$ we may write these linear constraints as $\boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}$.
 
-The corresponding program (P) has $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  If this program happens to be consistent (it will depend on $\boldsymbol{A}$ and $\boldsymbol{b}$), then Theorem \ref{theorem:KKTAllLinear} allows us to use KKT to find the optimal solutions. 
+The corresponding program (P) has $f$ as objective function and linear equality constraints $h_k\colon \field{R}^d \to \field{R}$ as defined above.  If this program happens to be consistent (it depends on $\boldsymbol{A}$ and $\boldsymbol{b}$), then Theorem \ref{theorem:KKTAllLinear} allows us to use KKT to find the optimal solutions. 
 
 The KKT conditions read as follows: Find $\x \in \field{R}^d$ satisfying $\boldsymbol{A}\transpose{\x} = \transpose{\boldsymbol{b}}$, $\mu_k \in \field{R}$ for $1 \leq k \leq \ell$ so that
 \begin{equation}\label{equation:KKTforLECP}
