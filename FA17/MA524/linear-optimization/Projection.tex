@@ -101,7 +101,7 @@ This gives two possibilities.
 	% If $\gradient{f}(\x_0)\transpose{\v}=\transpose{\boldsymbol{0}}$, then again $\x_0$ happens to be a feasible point satisfying the KKT conditions for $(P)$.
 \end{enumerate}
 
-The solution $\v_0$ of the $(DFP)$ points to a \emph{direction of steepest descent} for the program $(P)$ starting at $\x_0$.  We proceed to restrict $f$ on the half line starting at $\x_0$ in the direction given by $\v_0$, and search for a global minimum:\index{Direction!of steepest descent}
+The solution $\v_0$ of the $(DFP)$ points to a \emph{direction of steepest descent} for the program $(P)$ starting at $\x_0$.  We perform now a line-search\index{Line-search}: We proceed to restrict $f$ on the half line starting at $\x_0$ in the direction given by $\v_0$, and search for a global minimum:\index{Direction!of steepest descent}
 \begin{equation*}
 t_0 = \argmin_{t \geq 0} \varphi_0(t) = \argmin_{t \geq 0} f(\x_0 + t\v_0).
 \end{equation*}

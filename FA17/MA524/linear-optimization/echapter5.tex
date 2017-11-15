@@ -1,0 +1,78 @@
+%!TEX root = main.tex
+
+\section*{Exercises}
+
+\begin{problem}[Basic]
+Solve the following linear program by the simplex method:
+\begin{equation*}
+(LP): \begin{cases}
+\displaystyle{\max_{(x,y,z) \in \field{R}^3} \big( 4x+y-z \big)} \\
+x+3z \leq 6 \\
+3x+y+3z \leq 9 \\
+x \geq 0, y\geq 0, z\geq 0
+\end{cases}
+\end{equation*}
+\end{problem}
+
+\begin{problem}[Basic]
+The following tableaux were obtained in the course of solving linear programs with two non-negative variables $x_1$ and $x_2$, two inequality constraints for which slack or surplus variables $x_3$ and $x_4$ were needed.  In each case, indicate whether the corresponding linear program has a unique optimum solution, has several optimum solutions (and in that case find them all), it is unbounded, or degenerate.
+\begin{enumerate}
+\item $\displaystyle{%
+\begin{bmatrix}
+1 &   0 &   3 &   2 &   0 & 20 \\
+0 &   1 &  -2 &  -1 &   0 &  4 \\
+0 &   0 &  -1 &   0 &   1 &  2 \\ \hline
+z & x_1 & x_2 & x_3 & x_4
+\end{bmatrix}
+}$\smallskip
+\item $\displaystyle{%
+\begin{bmatrix}
+1 &   0 &  -1 &   0 &   2 & 20 \\
+0 &   0 &   0 &   1 &  -2 &  5 \\
+0 &   1 &  -2 &   0 &   3 &  6 \\ \hline
+z & x_1 & x_2 & x_3 & x_4
+\end{bmatrix}
+}$\smallskip
+\item $\displaystyle{%
+\begin{bmatrix}
+1 &   2 &   0 &   0 &   1 &  8 \\
+0 &   3 &   1 &   0 &  -2 &  4 \\
+0 &  -2 &   0 &   1 &   1 &  0 \\ \hline
+z & x_1 & x_2 & x_3 & x_4
+\end{bmatrix}
+}$\smallskip
+\item $\displaystyle{%
+\begin{bmatrix}
+1 &   0 &   0 &   2 &   0 &  5 \\
+0 &   0 &  -1 &   1 &   1 &  4 \\
+0 &   1 &   1 &  -1 &   0 &  4 \\ \hline
+z & x_1 & x_2 & x_3 & x_4
+\end{bmatrix}
+}$
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Intermediate]
+Consider the following linear program
+\begin{equation*}
+(LP): \begin{cases}
+\displaystyle{\max_{(x,y,z) \in \field{R}^3} \big( 5x+3y+z \big)} \\
+x+y+z \leq 6 \\
+5x+3y+6z \leq 15 \\
+x \geq 0, y \geq 0, z \geq 0
+\end{cases}
+\end{equation*}
+Assume the following is an associated tableau:
+\begin{equation*}
+\begin{bmatrix}
+1 &   0 &   0 &    5 &   0 &   1  & 15 \\
+0 &   0 & 0.4 & -0.2 &   1 & -0.2 &  3 \\
+0 &   1 & 0.6 &  1.2 &   0 &  0.2 &  3 \\ \hline
+z & x_1 & x_2 &  x_3 & x_4 &  x_5  
+\end{bmatrix}
+\end{equation*}
+\begin{enumerate}
+\item What basic solution does this tableau represent? Is this solution optimal? Explain why or why not.
+\item Does this tableau represent a unique optimal solution? If not, find at least three alternative optimal solutions.
+\end{enumerate}
+\end{problem}
