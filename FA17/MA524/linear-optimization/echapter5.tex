@@ -3,6 +3,17 @@
 \section*{Exercises}
 
 \begin{problem}[Basic]
+Use a projection method to find the global minimum of the function $f(x,y,z)=x^2+2y^2+3z^2$ over the plane $x+y+z=1$.
+\end{problem}
+
+\begin{problem}[Basic]
+Use a projection method to find the global minimum of the function $f(x,y,z,t)=x^2+2y^2+2z^2+t^2$ over the plane 
+\begin{equation*}
+S = \{ (x,y,z,t) \in \field{R}^4 : x+y+z=t, x+y=4 \}
+\end{equation*}
+\end{problem}
+
+\begin{problem}[Basic]
 Solve the following linear program by the simplex method:
 \begin{equation*}
 (LP): \begin{cases}
@@ -75,4 +86,20 @@ z & x_1 & x_2 &  x_3 & x_4 &  x_5
 \item What basic solution does this tableau represent? Is this solution optimal? Explain why or why not.
 \item Does this tableau represent a unique optimal solution? If not, find at least three alternative optimal solutions.
 \end{enumerate}
+\end{problem}
+
+\begin{problem}[CAS]
+In a computer language or CAS of your choice, design a routine that gathers the following as input:
+\begin{itemize}
+	\item A $d$-dimensional vector $\boldsymbol{c}=[c_1, \dotsc, c_d]$ representing a linear function $f(\x) = \langle \boldsymbol{c}, \x \rangle$.
+	\item A matrix $\boldsymbol{A}$ with dimension $\ell \times d$, and an $\ell$-dimensional vector $\boldsymbol{b} = [b_1, \dotsc, b_\ell]$.  These two objects represent $\ell$ linear inequality constraints of the form $\boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}$. 
+\end{itemize}
+The routine produces the solution of the following linear program:
+\begin{equation*}
+(LP): \begin{cases} \displaystyle{\min_{\x \in S} \langle \boldsymbol{c}, \x \rangle} \\ S = \{ \x \in \field{R}^d : \boldsymbol{A}\transpose{\x}=\transpose{\boldsymbol{b}}, x_k \geq 0, 1 \leq k \leq d \} \end{cases}
+\end{equation*}
+\end{problem}
+
+\begin{problem}[Basic]
+Use the Frank-Wolfe method to find the minimum value of the function $f(x,y)=(x-1)^2+(y+5)^2$ over the square with vertices at $(2,2)$, $(3,3)$, $(4,2)$ and $(3,1)$.
 \end{problem}
