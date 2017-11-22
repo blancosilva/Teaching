@@ -94,10 +94,11 @@ In a computer language or CAS of your choice, design a routine that gathers the 
 	\item A $d$-dimensional vector $\boldsymbol{c}=[c_1, \dotsc, c_d]$ representing a linear function $f(\x) = \langle \boldsymbol{c}, \x \rangle$.
 	\item A matrix $\boldsymbol{A}$ with dimension $\ell \times d$, and an $\ell$-dimensional vector $\boldsymbol{b} = [b_1, \dotsc, b_\ell]$.  These two objects represent $\ell$ linear inequality constraints of the form $\boldsymbol{A}\transpose{\x} \leq \transpose{\boldsymbol{b}}$. 
 \end{itemize}
-The routine produces the solution of the following linear program:
-\begin{equation*}
+The routine attempts to find a solution to the following linear program:
+\begin{equation*}  
 (LP): \begin{cases} \displaystyle{\min_{\x \in S} \langle \boldsymbol{c}, \x \rangle} \\ S = \{ \x \in \field{R}^d : \boldsymbol{A}\transpose{\x} \leq \transpose{\boldsymbol{b}}, x_k \geq 0, 1 \leq k \leq d \} \end{cases}
 \end{equation*}
+If a solution is found, the code outputs it.  If the program is unbounded, the code indicates so.  
 \end{problem}
 
 \begin{problem}[Basic]
