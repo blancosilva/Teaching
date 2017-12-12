@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+% \renewcommand{\theenumi}{(\alph{enumi})} 
+% \renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 524}\hfill{\large\bf Final Exam.}\hfill{\large\bf
+  Fall 2017}\hfill{\large\bf Page 1/1}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+
+% \begin{center}
+% \begin{tikzpicture}
+% \draw (0,0) node[scale=0.8]{%}
+%   \begin{tabular}{|c|c|c|}
+%     \hline
+%     &&\cr
+%     {\large\bf Problem} & {\large\bf Max.~points} & {\large\bf Your points} \cr
+%     &&\cr
+%     \hline
+%     &&\cr
+%     {\Large 1} & \Large 25 & \cr
+%     &&\cr
+%     \hline
+%     &&\cr
+%     {\Large 2} & \Large 25 & \cr
+%     &&\cr
+%     \hline
+%     &&\cr
+%     {\Large 3} & \Large 25 & \cr
+%     &&\cr
+%     \hline
+%     &&\cr
+%     {\Large 4} & \Large 25 & \cr
+%     &&\cr
+%   \hline\hline
+%     &&\cr
+%     {\large\bf Total} & \Large 100 & \cr
+%     &&\cr
+%     \hline
+%   \end{tabular}};
+% \end{tikzpicture}
+% \end{center}
+
+\hrule
+
+% \bigskip
+% Write down your birth-date in the form \texttt{mm/dd/YY}, and set $m$ to be the value of the month, $d$ the value of the day, and $Y$ the value of those two last digits of the year you were born  (for instance, today it would be $m=11$, $d=7$, $Y=17$). 
+
+\begin{enumerate}
+  \item Let $f(x,y) = -\log(1-x-y)-\log x -\log y$.
+  \begin{enumerate}
+    \item Find the domain $D$ of $f$.
+    \item Prove that $D$ is a convex set.
+    \item Prove that $f$ is strictly convex on $D$.
+    \item Find the strict global minimum.
+\end{enumerate}
+% \item Determine the nature of the critical points of $p_4(x,y)=x^4+y^4-x^2-y^2+1$.
+\item Consider the equation $x=\cos x$. 
+\begin{enumerate}
+    \item Show graphically that there is a unique positive root $x^\star$. Indicate approximately its value.
+    \item Show that Newton-Raphson's method applied to $f(x)=x-\cos x$ converges for any initial guess $x_0 \in \big[0, \tfrac{\pi}{2}\big]$
+\end{enumerate}
+\item Compute the first two iterations of Broyden method with initial guess $(1,4)$ to search for the critical points of the function $f(x,y) = 2x^2+y^2-xy$
+\begin{enumerate}
+    \item Using $\boldsymbol{A}_0 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
+    \item Using $\boldsymbol{A}_0 = \operatorname{Hess} f(1,4)$.
+\end{enumerate}
+\item Let $f(x,y) = (x-9/4)^2+(y-2)^2$.  Consider the program $(P)$ to find the global minimum of $f$ on the set $S= \{ (x,y) \in \mathbb{R}^2 : y \geq x^2, x+y \leq 6, x \geq 0, y \geq 0 \}$.
+\begin{enumerate}
+\item Write down the KKT optimality conditions and verify that these conditions are satisfied at the point $(3/2, 9/4)$.
+\item Present a graphical interpretations of the KKT conditions at $(3/2, 9/4)$.
+\item Show that this point is the optimal solution to the program $(P)$.
+\end{enumerate}
+\item Compute one iteration of the Frank-Wolfe method to find the minimum value of the function $f(x,y) = (x-1)^2 + (y+5)^2$ over the square with vertices at $(2,2)$, $(3,3)$, $(4,2)$ and $(3,1)$.  Use the center of the square as initial guess.  Illustrate graphically this step. 
+\end{enumerate}
+
+
+\end{document}
