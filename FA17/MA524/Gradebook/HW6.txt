@@ -1,11 +1,11 @@
    N,   w,  AH,  DP,  DT,  DE,  DJ,  HC,  HR,  HJ,  KE,  LR,  MM,  ME,  MC,  PM,  SC ||  AG
 =====================================================================================||=====
- 3.1,  --,  14,  --,   5,  --,  12,  10,  14,  15,  12,  --,  12,  --,  --,  --,  12 ||  --
+ 3.1,  --,  14,  --,   5,  --,  12,  18,  14,  15,  12,  --,  12,  --,  --,  --,  12 ||  --
  3.2,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
- 3.3,  --,   0,  --,  --,  --,   0,   0,  --,  10,   0,  --,  --,  --,  --,  --,  -- ||  --
- 3.4,  --,  20,  --,  --,  --,  15,  10,  --,   5,  14,  --,  --,  --,  --,  --,  -- ||  --
- 3.5,  --,   5,  --,  --,  --,   5,   5,  --,   5,   5,  --,  --,  --,  --,  --,  -- ||  --
- 3.6,  --,  --,  --,  --,  --,  --,   0,  --,   0,  --,  --,  --,  --,  --,  --,  -- ||  --
+ 3.3,  --,   0,  --,  --,  --,   0,  20,  --,  10,   0,  --,  --,  --,  --,  --,  -- ||  --
+ 3.4,  --,  20,  --,  --,  --,  15,  20,  --,   5,  14,  --,  --,  --,  --,  --,  -- ||  --
+ 3.5,  --,   5,  --,  --,  --,   5,  20,  --,   5,   5,  --,  --,  --,  --,  --,  -- ||  --
+ 3.6,  --,  --,  --,  --,  --,  --,   5,  --,   0,  --,  --,  --,  --,  --,  --,  -- ||  --
  3.7,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
  3.8,  --,  18,  --,  --,  --,   5,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
  3.9,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
@@ -17,7 +17,7 @@
 3.15,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
 3.16,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  --,  -- ||  --
 =====================================================================================||=====
-    ,    ,  57,    ,  83,    ,  37,  25,  94,  35,  31,    ,  72,    ,    ,    ,  12 || 
+    ,    ,  57,    ,  83,    ,  37,  83,  94,  35,  31,    ,  72,    ,    ,    ,  12 || 
 
 
 DT     (83%)
@@ -67,12 +67,20 @@ HC     (25% Go ahead and submit the problems you left out again.  Let me know if
 HC 3.1 (10/20 Nice command of sequences.)
 	     (First one, check if it is logarithmic too.  For all superlinear, find their order and convergence rate)
 	     (sequence d is linear)
+           *** In the second submission, the limits are now correct.  Just some issues with the complex formula to find the order ***
+           (18/20 now)
 HC 3.3 (0/20 Your computations seem to suggest that there is no loop)
+      *** In the resubmission she chose the same function I gave in notes, but written differently.  At least, the computations are correct, which indicates she does understand how it works.  That's good enough *** (20/20)
 HC 3.4 (10/20 Try to plot cos(x) vs x instead.  What you have shown could also pass as a proof that there are no roots outside your graph, though)
        (I need to see an epsilon*M(epsilon)<1 proof to guarantee convergence.  Try that and let me know if it helps)
+       *** It looks like she completely understood the technique in her second attempt (20/20) ***
 HC 3.5 (5/20  Try to plot tan(x) vs all possible lines -lambda*x with 0<lambda<1)
        (as in previous, I need to see an epsilon*M(epsilon)<1 proof.  Spoiler alert: they all work)
+       *** That was a very good second attempt.  All computations correct, and she even chose a smart example with $\lambda = 0.5$ that makes all the corresponding calculations very simple.  (20/20) ***
 HC 3.6 (0/20)
+      *** It's unclear where the computations come from.  The graphs are incorrect (Use 1+x instead of x-1, for example).  The computations for the proof are wrong.  Also, the statement about the smallest point where NR will stop working maybe correct, but the support for that answer is not founded.  Not sure she did that computation herself *** (5/20)
+HC 3.8 (8/20)
+      (The rough interval is correct at [2,3], that's all we needed for (a),  For some reason she tried to compute different intervals using the epsilonM(epsilon) trick, and came up with the same (1.90something, 3.something).  I don't see how she used the convexity of the functions for it, and therefore she missed the opportunity of checking that the second equation is faster/easier.  )
 
 HR      (80% Am I missing one of the 5 problems?)
 HR 3.10 (20/20 That's an amazing use of recursion.  Python doesn't like too many recursions, though. Careful with that)
