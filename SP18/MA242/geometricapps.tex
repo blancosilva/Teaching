@@ -1,3 +1,5 @@
+% !TEX buildOnSave = true
+
 \documentclass{scrartcl}
 \usepackage{multicol}
 \usepackage{enumerate}
@@ -13,8 +15,9 @@
 \renewcommand{\proofname}{Solution:}
 
 \title{Geometric Applications}
-\subtitle{Based on Chapter 7 of Schaum's Outline Series ``Theory and Problems of Differential Equations" by Frank Ayres Jr.}
+\subtitle{Based on Chapter 7 of Schaum's Outline Series ``Theory and Problems of Differential Equations" by Frank Ayres Jr., and Chapter 11 of ``A Treatise on Differential Equations'' by George Boole.}
 \author{F.~J.~Blanco-Silva}
+
 \begin{document}
 \maketitle
 
@@ -22,7 +25,7 @@
 Consider a plane curve given explicitly as $y=f(x)$.  Any point on that curve has coordinates $\big(x,f(x)\big)$.  A few basic questions about tangent lines to this graph:
 \begin{center}
 \begin{tabular}{ccc}
-\begin{tikzpicture}[scale=0.9]
+\begin{tikzpicture}[scale=0.85]
 \draw (-1,0) -- (6,0) node[scale=0.9,above]{$x$};
 \draw (0,-1.25) -- (0,6) node[scale=0.9,right]{$y$};
 \draw (0,0) node[scale=0.9,below left]{$O$};
@@ -38,14 +41,14 @@ Consider a plane curve given explicitly as $y=f(x)$.  Any point on that curve ha
 % center = (1,0)
 % radius = sqrt(10)
 % (1,0) + sqrt(10) * (\cos\theta, \sin\theta) = (1+\sqrt{10}\cos\theta, \sqrt{10}\sin\theta)
-% 1+\sqrt{10}\cos\theta=0.5; \cos\theta=-0.5/\sqrt{10}; 
-% \sin\theta = \sqrt{1-\cos^2\theta} = \sqrt{1-0.5^2/10} = 0.987 
+% 1+\sqrt{10}\cos\theta=0.5; \cos\theta=-0.5/\sqrt{10};
+% \sin\theta = \sqrt{1-\cos^2\theta} = \sqrt{1-0.5^2/10} = 0.987
 % 1+\sqrt{10}\cos\theta=2; \cos\theta=1/\sqrt{10}
 % \sin\theta=\sqrt{1-\cos^2\theta}=\sqrt{1-1/10}=\sqrt{9/10}=3/\sqrt{10} yup
 % 1+\sqrt{10}\cos\theta=4; \cos\theta=3/\sqrt{10}
 % \sin\theta=\sqrt{1-\cos^2\theta}=\sqrt{1-9/10}=1/\sqrt{10}
 \end{tikzpicture} & \hspace{0.15cm} &
-\begin{tikzpicture}[scale=0.9]
+\begin{tikzpicture}[scale=0.85]
 \draw (-1,0) -- (7,0) node[scale=0.9,above]{$x$};
 \draw (0,-1.25) -- (0,6) node[scale=0.9,right]{$y$};
 \draw (0,0) node[scale=0.9,below left]{$O$};
@@ -122,7 +125,7 @@ We are further requiring the solution to an initial value problem with $f(1)=e$.
 
 
 \begin{problem*}
-Find the family of curves for which the length of the part of the tangent between the point of contact $(x,y)$ and the $y$--axis is equal to the $y$--intercept of the tangent.  
+Find the family of curves for which the length of the part of the tangent between the point of contact $(x,y)$ and the $y$--axis is equal to the $y$--intercept of the tangent.
 \end{problem*}
 \begin{proof}
 We need to solve the differential equation
@@ -153,8 +156,11 @@ Integrating this expression, we obtain the family of hyperbolas $y^2-x^2=C$.
 \begin{problem}
 Find the equation of the curve for which
 \begin{enumerate}[(i)]
+	\item Find all curves with constant subnormals.
 	\item The normal at any point $(x,y)$ passes through the origin.
 	\item The slope of the tangent at any point $(x,y)$ is half the slope of the line from the origin to the point.
+	\item The perpendicular from the origin to the tangent line at any point $(x,y)$ is constant.
+	\item Find all curves for which the subtangent at any point $(x,y)$ is equal to the square of the abscissa.
 	\item The normal at any point $(x,y)$ and the line joining the origin to that point form an isosceles triangle having the $x$--axis as base.
 	\item The part of the normal drawn at point $(x,y)$ between this point and the $x$--axis is bisected by the $y$--axis.
 	\item The length of the perpendicular from the origin to a tangent line of the curve is equal to the abscissa of the point of contact $(x,y)$.
@@ -166,7 +172,10 @@ Find the orthogonal trajectories of each of the following families of curves:
 \begin{multicols}{2}
 \begin{enumerate}[(i)]
 	\item $x+2y=k$.
+	\item $y=kx^n$, $n$ a positive integer.
+	\item $y=k/x^n$, $n$ a positive integer.
 	\item $x^2+2y^2=k$
+	\item Confocal ellipses $\tfrac{x^2}{a^2}+\tfrac{y^2}{a^2-h^2}=1$
 	\item $y=Ce^{-2x}$
 	\item $y^2 = x^3/(k-x)$
 	\item $y=x-1+ke^{-x}$
