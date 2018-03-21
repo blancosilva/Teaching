@@ -106,7 +106,7 @@ At each point $(x,y)$ of a curve, the intercept of the tangent on the $y$--axis 
 
 \begin{proof}
 We are looking for a curve $y=f(x)$ that satisfies $y-xy'=2xy^2$.
-This is a Bernoulli equation with solution $x-x^2y=Cy$. 
+This is a Bernoulli equation with solution $x-x^2y=Cy$.
 \end{proof}
 
 \begin{problem*}
@@ -230,39 +230,38 @@ Integrating this expression, we obtain the family of hyperbolas
 $y^2-x^2=C$. 
 \end{proof}
 
-\subsection*{Curves of Pursuit}
-A \emph{curve of pursuit} is the path that a point describes
-when moving with uniform velocity toward another point which also
-moves with uniform velocity on a curve $y=g(x)$.
+% \subsection*{Curves of Pursuit}
+% A \emph{curve of pursuit} is the path that a point describes
+% when moving with uniform velocity toward another point which also
+% moves with uniform velocity on a curve $y=g(x)$.
 
-Assume we have obtained the required curve of pursuit in the form $y=f(x)$, and the point $\big(x,f(x)\big)$ is pursuing a point $\big(X,g(X)\big)$.  Since the point pursued is always in the tangent of the path of the point which pursues, the following equality must be satisfied:
-\begin{equation*}
-	x - X = f'(x)\big(f(x)-g(X)\big)
-\end{equation*}
+% Assume we have obtained the required curve of pursuit in the form $y=f(x)$, and the point $\big(x,f(x)\big)$ is pursuing a point $\big(X,g(X)\big)$.  Since the point pursued is always in the tangent of the path of the point which pursues, the following equality must be satisfied:
+% \begin{equation*}
+% 	x - X = f'(x)\big(f(x)-g(X)\big)
+% \end{equation*}
 
-Now, since both particles travel at a uniform velocity, the arcs they describe should have proportional lengths.  We start by writing both curves in parametric form using the same parameter $t>0$. Assume the pursued particle moves at uniform speed $v_1>0$, and the pursuing particle moves at uniform speed $v_2>0$.  For any $s>0$, we have:
-\begin{align*}
-	\text{pursued curve} &: \big(v_1 t, g(v_1 t)\big) & \text{arc} &: v_1 \int_0^s \sqrt{1 + g'(v_1 t)^2}\, dt \\
-	\text{pursuing curve} &: \big(v_2 t, f(v_2 t)\big) & \text{arc} &: v_2 \int_0^s \sqrt{1 + f'(v_2 t)^2}\, dt \\
-\end{align*}
-Set $\lambda = v_1/v2$.  We may then write
-\begin{equation*}
-	\lambda \int_0^s \sqrt{1 + g'(v_1 t)^2}\, dt = \int_0^s \sqrt{1 + f'(v_2 t)^2}\, dt
-\end{equation*}
-Since this identity is true for all $s>0$, it must be
-\begin{equation*}
-	\lambda \sqrt{1+}
-\end{equation*}
-\begin{problem*}
-A particle sets off from the point $(a,0)$ in the $x$--axis, and moves uniformly in a vertical direction.  This particle is pursued by another particle that sets off at the same moment from the origin, and travels with the same velocity as the previous particle.  Find a function $y=f(x)$ that describes the path of the pursuing particle.
-\end{problem*}
+% Now, since both particles travel at a uniform velocity, the arcs they describe should have proportional lengths.  We start by writing both curves in parametric form using the same parameter $t>0$. Assume the pursued particle moves at uniform speed $v_1>0$, and the pursuing particle moves at uniform speed $v_2>0$.  For any $s>0$, we have:
+% \begin{align*}
+% 	\text{pursued curve} &: \big(v_1 t, g(v_1 t)\big) & \text{arc} &: v_1 \int_0^s \sqrt{1 + g'(v_1 t)^2}\, dt \\
+% 	\text{pursuing curve} &: \big(v_2 t, f(v_2 t)\big) & \text{arc} &: v_2 \int_0^s \sqrt{1 + f'(v_2 t)^2}\, dt \\
+% \end{align*}
+% Set $\lambda = v_1/v2$.  We may then write
+% \begin{equation*}
+% 	\lambda \int_0^s \sqrt{1 + g'(v_1 t)^2}\, dt = \int_0^s \sqrt{1 + f'(v_2 t)^2}\, dt
+% \end{equation*}
+% Since this identity is true for all $s>0$, it must be
+% \begin{equation*}
+% 	\lambda \sqrt{1+}
+% \end{equation*}
+% \begin{problem*}
+% A particle sets off from the point $(a,0)$ in the $x$--axis, and moves uniformly in a vertical direction.  This particle is pursued by another particle that sets off at the same moment from the origin, and travels with the same velocity as the previous particle.  Find a function $y=f(x)$ that describes the path of the pursuing particle.
+% \end{problem*}
 
-\begin{proof}
+% \begin{proof}
 
-\end{proof}
+% \end{proof}
 
-\section*{Solved Problems}
-
+% \section*{Solved Problems}
 
 \section*{Supplementary Problems}
 \begin{problem}
@@ -271,7 +270,7 @@ Find the equation of the curve for which
 	\item Find all curves with constant subnormals.
 	\item The normal at any point $(x,y)$ passes through the origin.
 	\item The slope of the tangent at any point $(x,y)$ is half the slope of the line from the origin to the point.
-	\item The perpendicular from the origin to the tangent line at any point $(x,y)$ is constant.
+	\item The slope of the perpendicular from the origin to the tangent line at any point $(x,y)$ is constant.
 	\item Find all curves for which the subtangent at any point $(x,y)$ is equal to the square of the abscissa.
 	\item The normal at any point $(x,y)$ and the line joining the origin to that point form an isosceles triangle having the $x$--axis as base.
 	\item The part of the normal drawn at point $(x,y)$ between this point and the $x$--axis is bisected by the $y$--axis.
