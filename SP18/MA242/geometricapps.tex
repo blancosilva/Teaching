@@ -34,23 +34,23 @@ considerations about tangent and normal lines to this graph:
 \draw (0,-1.25) -- (0,6) node[scale=0.9,right]{$y$};
 \draw (0,0) node[scale=0.9,below left]{$O$};
 \filldraw (2,3) circle (3pt);
-\draw (0,0) -- (2,3) node[scale=0.8, pos=0.58, sloped, above]{slope $= y_0/x_0$};
+\draw (0,0) -- (2,3) node[scale=0.8, pos=0.58, sloped, above]{slope $= y/x$};
 \draw (2,3) -- (3,6) node[scale=0.8,midway, sloped, above]{slope $=-1/y'$};
 \draw (0.5,3.45) -- (6,1.7) node[scale=0.8,near end, sloped, above]{slope $= y'$};
 \tkzDefPoint(0.5,3.122){A}\tkzDefPoint(4,1){C}
 \tkzDefPoint(1,0){O}
 \tkzDrawArc[ultra thick](O,C)(A)
 \node (P) at (2,3) {};
-\draw[-latex] (2.3,1.95) node[scale=0.8,below]{$(x_0,y_0)$} -- (P);
+\draw[-latex] (2.3,1.95) node[scale=0.8,below]{$(x,y)$} -- (P);
 \end{tikzpicture} & \hspace{0.15cm} &
 \begin{tikzpicture}[scale=0.8]
-\draw (-1,0) -- (7,0) node[scale=0.69,above]{$x$};
-\draw (0,-1.25) -- (0,6) node[scale=0.69,right]{$y$};
-\draw (0,0) node[scale=0.69,below left]{$O$};
+\draw (-1,0) -- (7,0) node[scale=0.9,above]{$x$};
+\draw (0,-1.25) -- (0,6) node[scale=0.9,right]{$y$};
+\draw (0,0) node[scale=0.9,below left]{$O$};
 \draw (0.5,0) node[scale=0.69,below]{$T$} -- (6.5,3.75) node[scale=0.69,near start, above, sloped]{tangent};
 \draw (6.0625,0) node[scale=0.69,below]{$N$} -- (4.5,2.5) node[scale=0.69,midway,sloped,above]{normal};
 \draw (4.5,0) node[scale=0.69,below]{$M$} -- (4.5, 2.5) node[scale=0.69,midway,right]{$y$};
-\filldraw (4.5, 2.5) circle (3pt) node[scale=0.8,above left]{$(x_0,y_0)$};
+\filldraw (4.5, 2.5) circle (3pt) node[scale=0.8,above left]{$(x,y)$};
 \draw (0.5,0) -- (4.5,0) node[scale=0.69,above,pos=0.6]{subtangent};
 \draw (4.5,0) -- (6,0) node[midway, above, scale=0.69]{subnorm.};
 % (6.0625, 0) - (4.5,2.5) = (1.5625, -2.5)
@@ -66,7 +66,7 @@ considerations about tangent and normal lines to this graph:
 \tkzDefPoint(6,2.8831176136){D}
 \tkzDrawArc[ultra thick](Q,B)(D)
 \end{tikzpicture}
-\end{tabular}j
+\end{tabular}
 \end{center}
 
 \begin{itemize}
@@ -231,16 +231,28 @@ $y^2-x^2=C$.
 \end{proof}
 
 \subsection*{Curves of Pursuit}
-A \emph{curve of pursuit} is the path that another point describes
+A \emph{curve of pursuit} is the path that a point describes
 when moving with uniform velocity toward another point which also
-moves with uniform velocity on a curve (given by its implicit equation
-$F(x,y)=0$). 
+moves with uniform velocity on a curve $y=g(x)$.
 
-Assume we have obtained the required curve of pursuit in the form $y=f(x)$, and the point $\big(x_0,f(x_0)\big)$ is pursuing a point $(x,y)$ that satisfies $F(x,y)=0$.  Since the point pursued is always in the tangent of the path of the point which pursues, the following equality must be satisfied:
+Assume we have obtained the required curve of pursuit in the form $y=f(x)$, and the point $\big(x,f(x)\big)$ is pursuing a point $\big(X,g(X)\big)$.  Since the point pursued is always in the tangent of the path of the point which pursues, the following equality must be satisfied:
 \begin{equation*}
-	x_0 - x = f'(x_0)\big(f(x_0)-y\big)
+	x - X = f'(x)\big(f(x)-g(X)\big)
 \end{equation*}
 
+Now, since both particles travel at a uniform velocity, the arcs they describe should have proportional lengths.  We start by writing both curves in parametric form using the same parameter $t>0$. Assume the pursued particle moves at uniform speed $v_1>0$, and the pursuing particle moves at uniform speed $v_2>0$.  For any $s>0$, we have:
+\begin{align*}
+	\text{pursued curve} &: \big(v_1 t, g(v_1 t)\big) & \text{arc} &: v_1 \int_0^s \sqrt{1 + g'(v_1 t)^2}\, dt \\
+	\text{pursuing curve} &: \big(v_2 t, f(v_2 t)\big) & \text{arc} &: v_2 \int_0^s \sqrt{1 + f'(v_2 t)^2}\, dt \\
+\end{align*}
+Set $\lambda = v_1/v2$.  We may then write
+\begin{equation*}
+	\lambda \int_0^s \sqrt{1 + g'(v_1 t)^2}\, dt = \int_0^s \sqrt{1 + f'(v_2 t)^2}\, dt
+\end{equation*}
+Since this identity is true for all $s>0$, it must be
+\begin{equation*}
+	\lambda \sqrt{1+}
+\end{equation*}
 \begin{problem*}
 A particle sets off from the point $(a,0)$ in the $x$--axis, and moves uniformly in a vertical direction.  This particle is pursued by another particle that sets off at the same moment from the origin, and travels with the same velocity as the previous particle.  Find a function $y=f(x)$ that describes the path of the pursuing particle.
 \end{problem*}
