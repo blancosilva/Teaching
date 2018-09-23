@@ -81,31 +81,31 @@
       Sales (million dollars) & 85 & 107 & 116 & 122 & 123
     \end{tabular}
   \end{center}
-  The rate of change of sales over the period 1997 to 2001 is:
+  The average rate of change of sales over the period 1997 to 1999 is:
   \begin{itemize}
-  \item[\radiobutton] 7.5 million dollars/year
-  \item[\radiobutton] 7.5 million dollars
-  \item[\radiobutton] 38 million dollars/year
-  \item[\radiobutton] 38 million dollars
+  \item[\radiobutton] 15.5 million dollars/year
+  \item[\radiobutton] 15.5 million dollars
+  \item[\radiobutton] 31 million dollars/year
+  \item[\radiobutton] 31 million dollars
   \item[\radiobutton] 9.5 million dollars/year
   \item[\radiobutton] 9.5 million dollars
-  \item[\radiobutton] 15 million dollars/year
-  \item[\radiobutton] 15 million dollars
+  \item[\radiobutton] 7.5 million dollars/year
+  \item[\radiobutton] 7.5 million dollars
   \end{itemize}
 \end{problem}
 \hrule
 
 \begin{problem}[5 pts]
-  Find the domain of the function $f(x) = 5\sqrt{x+3}$.
+  Find the domain of the function $f(x) = 3\sqrt{x-2}$
 
-  \vspace{3cm}
+  \vspace{2cm}
 \end{problem}
 \hrule
 
 \begin{problem}[5 pts]
-  We are trying to decide between two plumber companies to fix a sink.  The first company charges \$50 for a service
-  call, plus an additional \$36 per hour for labor.  The second company charges \$35 for a service call, plus an
-  additional \$39 per hour of labor. At how many hours will the two companies charge the same amount of money? 
+  The supply, in thousands of items, for custom phone cases can be modeled by the equation $s(p)=0.5+1.2p$, while the
+  demand can be modeled by $d(p) = 8.7 - 0.7p$, where $p$ is in dollars.  Find the equilibrium price and quantity, the
+  intersection of the supply and demand curves.
 \end{problem}
 
 \newpage
@@ -131,6 +131,7 @@
 \end{problem}
 \hrule
 
+
 \begin{problem}[5 pts]
   It costs a total of $C$ dollars to extract $T$ tons of ore from a copper mine. If $C$ is a linear function of $T$, the
   units of the slope of the line are: 
@@ -144,7 +145,7 @@
 \hrule
 
 \begin{problem}[5 pts]
-  Find the equation of a line with $x$--intercept at $(-2,0)$ and $y$--intercept at $(0.-3)$.
+  Find the equation of a line that passes through $(-2,8)$ and $(4,6)$.
   \begin{itemize}
   \item[\radiobutton] $y=4+3(x-2)$
   \item[\radiobutton] $y=8-\tfrac{1}{3}(x-8)$
@@ -152,6 +153,7 @@
   \item[\radiobutton] $y=4+\tfrac{4}{5}x$
   \end{itemize}
 \end{problem}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
@@ -165,10 +167,10 @@
       \includegraphics{1graph2.png}
     \end{center}
     \begin{itemize}
-    \item[\radiobutton] $y=6x+6$
     \item[\radiobutton] $y=-3x+6$
     \item[\radiobutton] $y=-3x+2$
     \item[\radiobutton] $y=6x-2$
+    \item[\radiobutton] $y=6x+6$
     \end{itemize}
   \end{multicols}
 \end{problem}
@@ -192,7 +194,7 @@
 
 \begin{problem}[5 pts]
   Solve the following inequality:
-  \begin{equation*} (x-4)(x+3)(x+6) < 0 \end{equation*}
+  \begin{equation*} (x-1)(x+2)(x-3) < 0 \end{equation*}
 \end{problem}
 
 \newpage
@@ -206,7 +208,7 @@
   The amount, $A$ (in mg), of a drug in the body is 25 when it first enters the system is decreases by 12\% each hour. A
   possible formula for $A$ as a function of $t$, in hours after the drug enters the system, is: 
   \begin{itemize}
-  \item[\radiobutton] $A=25+12t$
+  \item[\radiobutton] $A= 25+12t$
   \item[\radiobutton] $A=25-12t$
   \item[\radiobutton] $A=25+0.12t$
   \item[\radiobutton] $A=25-0.12t$
@@ -262,7 +264,29 @@
 \bigskip
 
 \begin{problem}[5 pts]
+  Given the graph of the function $f(x)$ below (left), sketch the graph of the function $2-f(2x)$. 
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \draw[step=0.25, help lines] (-2,-2) grid (2,2);
+      \draw[ultra thick](0,-2)--(0,2);
+      \draw[ultra thick](-2,0)--(2,0);
+      \foreach \x in {-2,-1.75,-1.5,...,2}{
+        \draw (-0.1,\x)--(0.1,\x);
+        \draw (\x, -0.1)-- (\x, 0.1);
+      }
+      \draw[blue,ultra thick](-2,0.5)--(-1,1)--(0,0)--(1,1)--(2,1);
 
+      \begin{scope}[xshift=5cm]
+        \draw[step=0.25, help lines] (-2,-2) grid (2,2);
+        \draw[ultra thick](0,-2)--(0,2);
+        \draw[ultra thick](-2,0)--(2,0);
+        \foreach \x in {-2,-1.75,-1.5,...,2}{
+          \draw (-0.1,\x)--(0.1,\x);
+          \draw (\x, -0.1)-- (\x, 0.1);
+        }
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}  
 \end{problem}
 
 \vspace{2cm}
@@ -280,7 +304,14 @@
 \hrule
 
 \begin{problem}[5 pts]
-  
+  The average rate of change of sales of the medicinal herb \textit{saw palmetto} in the US during the period 1997 to 2001
+  is 9.5 million dollars per year. This means that, during the years 1997 to 2001, in the US: 
+  \begin{itemize}
+  \item[\radiobutton] Sales of \textit{saw palmetto} averaged 9.5 million dollars each year.
+  \item[\radiobutton] Sales of \textit{saw palmetto} increased by an average of 9.5 million dollars each year.
+  \item[\radiobutton] Sales of \textit{saw palmetto} were 9.5 million dollars in each of the years.
+  \item[\radiobutton] Sales of \textit{saw palmetto} went up by 9.5 million dollars in each of the years.
+  \end{itemize}
 \end{problem}
 
 \newpage 
@@ -291,13 +322,27 @@
 
 \bigskip
 \begin{problem}[5 pts]
-  
+  Converting the function $P = 100 (1.07)^t$ to the form $P = P_0e^{kt}$ gives
+  \begin{itemize}
+  \item[\radiobutton] $P = 100e^{1.07t}$
+  \item[\radiobutton] $P = 100 e^{0.07t}$
+  \item[\radiobutton] $P = 100 e^{1.0677t}$
+  \item[\radiobutton] $P = 100 e^{0.0677t}$
+  \item[\radiobutton] $P = 100 e^{0.93t}$
+  \end{itemize}
 \end{problem}
 
 \hrule
 
 \begin{problem}[5 pts]
-
+  Converting the function $P = 750e^{0.04t}$ to the form $P = P_0a^t$ gives
+  \begin{itemize}
+  \item[\radiobutton] $P = 750 (1.04)^t$
+  \item[\radiobutton] $P = 750 (0.04)^t$
+  \item[\radiobutton] $P = 750 (1.0408)^t$
+  \item[\radiobutton] $P = 750 (0.0408)^t$
+  \item[\radiobutton] $P = 750 (0.96)^t$
+  \end{itemize}
 \end{problem}
 \hrule
 
