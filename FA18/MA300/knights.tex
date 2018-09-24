@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{multicol}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Sample Problem}
+
+\renewcommand{\proofname}{Solution:}
+
+
+\begin{document}
+\noindent{\large\bf MATH 300}\hfill{\large\bf Exploratory Session \#2.}\hfill{\large\bf  Fall 2018}\hrule
+
+\section*{Rules}
+There are 10 problems assigned in this session, each of them worth 20 points.
+\begin{enumerate}
+\item You must submit \textbf{only five of those problems.}
+\item But beware: if two or more students choose exactly the same five problems, then all those students will receive a
+  50-point penalty.  You must therefore coordinate with every single other student in the class, to avoid penalties.
+
+  For extra credit (10 points): how many possible selections are there?
+\item You are also required not to submit any three consecutive problems. For instance, it is acceptable to submit
+  problems 1, 2, 4, 5 and 9.  It is not acceptable to submit problems 2, 3, 4, 6 and 9 (since problems 2, 3, 4 are
+  consecutive).
+
+  For extra credit (10 points): How many possible selections are there with this extra constraint? 
+\end{enumerate}
+\hrule
+
+\subsection*{The Island of Knights and Knaves\footnote{All problems in this assignment come from Robert Smullian's
+  \emph{What is the Name of this Book?}, Chapter 3.}}
+In the Island of Knights and Knaves, ``knights'' always tell the truth, and ``knaves'' always lie.  Every inhabitant of
+the island is either a knight or a knave.  You are a visitor.
+
+\begin{problem*}
+  Two of the inhabitants, A and B, standing together in a garden.  You ask A, ``Are you a knight or a knave?''  A
+  answered, but rather indistinctly and you cannot make out what he said.  You then ask B, ``What did A say?''  B
+  replies ``A said that he is a knave.''
+  What is B? Can you determine what A is?
+\end{problem*}
+\begin{proof}
+A can never say ``I am a knave.'' (Why?)  This implies that B must be a knave.  We cannot determine whether A is a
+knight or a knave with the given information.
+\end{proof}
+
+\subsubsection*{Three people A, B, C in a garden}
+
+\begin{problem}
+  Three people, A, B, C, each of whom is either a knight or a knave.  A and B make the following statements:
+  \begin{quote}
+    \begin{description}
+    \item[A:] All of us are knaves.
+    \item[B:] Exactly one of us is a knight.
+    \end{description}
+  \end{quote}
+  What are A, B, C?
+\end{problem}
+
+\begin{problem}
+  Suppose instead, A and B say the following:
+  \begin{quote}
+    \begin{description}
+    \item[A:] All of us a knaves.
+    \item[B:] Exactly one of us is a knave.
+    \end{description}
+  \end{quote}
+  Can it be determined what B is?  Can it be determined what C is?
+\end{problem}
+
+\begin{problem}
+  Two people are said to be of the \emph{same type} if they are both knights or both knaves.  A and B make the following
+  statements:
+  \begin{quote}
+    \begin{description}
+    \item[A:] B is a knave.
+    \item[B:] A and C are of the same type.
+    \end{description}
+  \end{quote}
+  What is C?
+\end{problem}
+\newpage
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Exploratory Session \#2.}\hfill{\large\bf  Fall 2018}\hrule
+
+\subsubsection*{Two people A,B in a garden}
+
+\begin{problem}
+  A makes the following statement: ``At least one of us is a knave.''  What are A and B?
+\end{problem}
+
+\begin{remark}
+  Recall the definition of \emph{exclusive OR} (\texttt{XOR}), and the difference with \emph{OR}:
+  \begin{equation*}
+    \begin{array}{c|c|c}
+      \boldsymbol{P} & \boldsymbol{Q} & \boldsymbol{P \lor Q} \\ \hline
+      T & T & T \\
+      T & F & T \\ 
+      F & T & T \\ 
+      F & F & F
+    \end{array}
+    \qquad
+    \begin{array}{c|c|c}
+      \boldsymbol{P} & \boldsymbol{Q} & \boldsymbol{P \oplus Q} \\ \hline
+      T & T & F \\
+      T & F & T \\ 
+      F & T & T \\ 
+      F & F & F
+    \end{array}
+  \end{equation*}
+\end{remark}
+
+\begin{problem}
+  Suppose A says, ``Either I am a knave or B is a knight.''  What are A and B?
+\end{problem}
+
+\begin{problem}
+  Suppose A says, ``Either I am a knave or else two plus two equals five.''  What would you conclude?
+\end{problem}
+
+\subsection*{Knights, Knaves and Normals}
+Three types of people in a new island: knights, who always tell the truth; knaves, who always lie; and normal people,
+who sometimes lie and sometimes tell the truth.  On this island, knaves are said to be of the \emph{lowest rank},
+normals of \emph{middle rank}, and knights of \emph{highest rank}.
+
+\begin{problem}
+  We are given three people, A, B, C, one of whom is a knight, one a knave, and one normal (but not necessarily in that
+  order).  They make the following statements:
+  \begin{quote}
+    \begin{description}
+    \item[A:] I am normal.
+    \item[B:] That is true.
+    \item[C:] I am not normal.
+    \end{description}
+  \end{quote}
+  What are A, B, and C?
+\end{problem}
+
+\begin{problem}
+  Given two people A, B, each of whom is a knight, a knave or a normal, they make the following statements:
+  \begin{quote}
+    \begin{description}
+    \item[A:] I am of lower rank than B.
+    \item[B:] That's not true!
+    \end{description}
+  \end{quote}
+  Can the ranks of either A or B be determined?  Can it be determined of these statements whether it is true or false?
+\end{problem}
+
+\begin{problem}
+  Given three people A, B, C, one of whom is a knight, one a knave, and one normal.  A, B make the following statements:
+  \begin{quote}
+    \begin{description}
+    \item[A:] B is of higher rank than C.
+    \item[B:] C is of higher rank than A.
+    \end{description}
+  \end{quote}
+  Then C is asked: ``Who has a higher rank, A or B?''  What does C answer?
+\end{problem}
+
+\subsection*{The Island of Bahava}
+
+In the island of Bahava women are also called knights, knaves or normal.  A knight can only marry a knave, and a knave
+can only marry a knight.  (Hence a normal can only marry a normal.)
+
+\begin{problem}
+  Consider a married couple, Mr.~and Mrs.~A.  They make the following statements:
+  \begin{quote}
+    \begin{description}
+    \item[Mr.~A:] My wife is not normal.
+    \item[Mrs.~A:] My husband is not normal.
+    \end{description}
+  \end{quote}
+  What are Mr.~and Mrs.~A?
+\end{problem}
+\end{document}
