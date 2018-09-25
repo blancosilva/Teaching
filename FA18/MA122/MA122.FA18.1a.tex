@@ -45,7 +45,7 @@
 
 \begin{document}
 
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 1/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 1/7}\hrule
 
 \bigskip
 \begin{center}
@@ -58,7 +58,7 @@
 \end{center}
 \begin{itemize}
 \item Write your name and VIP ID in the space provided above.
-\item The test has eight (8) pages, including this one.
+\item The test has seven (7) pages, including this one.
 \item Each question is worth 5 points. 
 \item No books, or notes may be used on this test.
 \item An approved calculator may be used on this test.
@@ -68,7 +68,7 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 2/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 2/7}\hrule
 
 \bigskip
 \begin{problem}[5 pts]
@@ -111,16 +111,33 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 3/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 3/7}\hrule
 
 \bigskip
 \begin{problem}[5 pts]
-  
+  Write an equation for the quadratic equation graphed:
+  \begin{multicols}{2}
+    \begin{tikzpicture}[scale=0.75]
+      \draw[gray, ultra thin, step=1] (-4,-4) grid (5,5);
+      \draw[thick,<->] (-4,0) -- (5,0);
+      \draw[thick,<->] (0,-4) -- (0,5);
+      \draw (-0.83,5) parabola bend (2,-3) (4.83,5);
+      \draw[fill=black] (0,1) circle (3pt) node[left]{$(0,1)$};
+      \draw[fill=black] (2,-3) circle (3pt) node[below]{$(2,-3)$};
+    \end{tikzpicture}
+
+    \begin{itemize}
+    \item[\radiobutton] $y=(x-2)^2 - 3$
+    \item[\radiobutton] $y=(x+1)^2 +2$
+    \item[\radiobutton] $y=-2(x-2)^2 + 7$
+    \item[\radiobutton] $y=-3(x+1)^2 + 2$
+    \end{itemize}
+  \end{multicols}
 \end{problem}
 \hrule
 
 \begin{problem}[5 pts]
-  The cost in dollars to produce $q$ tons of an item is given by the cost function $C = 100 + 20q$. What are the units of
+  The cost in dollars to produce $q$ tons of an item is given by the function $C = 100 + 20q$. What are the units of
   the 20? 
   \begin{itemize}
   \item[\radiobutton] Dollars
@@ -155,15 +172,21 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 4/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 4/7}\hrule
 
 \bigskip
 \begin{problem}[5 pts]
-  The graph below is a representation of which of the following functions?
+  The graph below is a representation of which of the following function?
   \begin{multicols}{2}
-    \begin{center}
-      \includegraphics{1graph2.png}
-    \end{center}
+    \begin{tikzpicture}[scale=0.4]
+      \draw[gray, ultra thin, step=1] (-4,-3) grid (11,12);
+      \draw[thick, <->] (-4,0) -- (11,0);
+      \draw[thick, <->] (0,-3) -- (0,12);
+      \draw (-2,12) -- (3,-3);
+      \draw[fill=black] (0,6) circle (5pt) node[left]{$(0,6)$};
+      \draw[fill=black] (2,0) circle (5pt) node[above right]{$(2,0)$};
+    \end{tikzpicture}
+    
     \begin{itemize}
     \item[\radiobutton] $y=6x+6$
     \item[\radiobutton] $y=-3x+6$
@@ -178,7 +201,7 @@
   When a person goes into shock, the cardiac output, in liters of blood per minute, decreases. One person’s cardiac output
   is 12 liters per minute when the person first goes into shock, and decreases by 2 liters per minute every hour that the
   person is in shock. Write a formula for cardiac output $C$ as a function of $t$, the time in hours since a person first
-  went into shock. 
+  went into shock.
   \begin{itemize}
   \item[\radiobutton] $C = 12 - 2t$
   \item[\radiobutton] $t = 12 - 2C$
@@ -198,36 +221,27 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 5/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 5/7}\hrule
 
 \bigskip
 
 \begin{problem}[5 pts]
-  The amount, $A$ (in mg), of a drug in the body is 25 when it first enters the system is decreases by 12\% each hour. A
-  possible formula for $A$ as a function of $t$, in hours after the drug enters the system, is: 
-  \begin{itemize}
-  \item[\radiobutton] $A=25+12t$
-  \item[\radiobutton] $A=25-12t$
-  \item[\radiobutton] $A=25+0.12t$
-  \item[\radiobutton] $A=25-0.12t$
-  \item[\radiobutton] $A=25(0.12)^t$
-  \item[\radiobutton] $A=25(0.88)^t$
-  \item[\radiobutton] $A=25(1.12)^t$
-  \item[\radiobutton] $A=25(1.88)^t$
-  \item[\radiobutton] $A=25(-0.12)^t$
-  \end{itemize}
+  The amount, $A$ (in mg), of a drug in the body is 25 when it first enters the system is decreases by 12\% each
+  hour. How long will it take for the amount of the drug to decrease to 10 mg? (answer in terms of hours)
+
+  \vspace{8cm}
 \end{problem}
 
 \vspace{1cm}
 \hrule
 
 \begin{problem}[5 pts]
-  Indicate whether the following are power functions. In case they are, find a suitable constant of proportionality $k$,
-  and power $p$ so you could write those functions in the form $f(x) = kx^p$. 
+  Indicate whether the following are power functions. In case they are, find a suitable constant of proportionality $C$,
+  and exponent $r$ so you could write those functions in the form $f(x) = Cx^r$. 
   \begin{center}
     \begin{tabular}{|c|c|c|c|}
       \hline
-      $f(x)$ & power function? & $k$ & $p$ \\
+      $f(x)$ & power function? & $C$ & $r$ \\
       \hline
       \hline
              &&& \\
@@ -257,49 +271,71 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 6
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 6/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 6/7}\hrule
 
 \bigskip
-
 \begin{problem}[5 pts]
+  Evaluate $f(-2)$ for $f(x) = 3+\sqrt{x+3}$.
 
-\end{problem}
-
-\vspace{2cm}
-\hrule
-
-\begin{problem}[5 pts]
-  The solution to $200 = 30e^{0.15t}$ is:
-  \begin{itemize}
-  \item[\radiobutton] $t = \dfrac{\ln(200/30)}{\ln(0.15)}$
-  \item[\radiobutton] $t = \dfrac{\ln(200/30)}{0.15}$
-  \item[\radiobutton] $t = \ln \bigg(\dfrac{200}{30 (0.15)} \bigg)$
-  \item[\radiobutton] $t = \frac{200}{30}\ln(0.15)$
-  \end{itemize}
+  \vspace{2cm}
 \end{problem}
 \hrule
 
 \begin{problem}[5 pts]
-  
+  Solve $f(x)=3$ for $f(x) = 3+\sqrt{x+3}$.
+
+  \vspace{2cm}
 \end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  Evaluate $f(8)$ for the function $f$ given as a table below.
+  \begin{equation*}
+    \begin{array}{|l|r|r|r|r|r|r|r|r|r|r|}
+      \hline
+      \boldsymbol{x} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+      \boldsymbol{f(x)} & 62 & 8 & 7 & 38 & 86 & 73 & 70 & 39 & 75 & 34 \\ \hline
+    \end{array}
+  \end{equation*}
+
+  \vspace{1cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  Solve $f(x)=8$ for the function $f$ given as a table below.
+  \begin{equation*}
+    \begin{array}{|l|r|r|r|r|r|r|r|r|r|r|}
+      \hline
+      \boldsymbol{x} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+      \boldsymbol{f(x)} & 62 & 8 & 7 & 38 & 86 & 73 & 70 & 39 & 75 & 34 \\ \hline
+    \end{array}
+  \end{equation*}
+
+  \vspace{1cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  Solve for $t$ in the equation $200 = 30e^{0.15t}$
+
+  \vspace{4cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  Solve for $x$ in the equation $100-100\big( \tfrac{1}{4} \big)^x = 70$
+
+\end{problem}
+
 
 \newpage 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 7
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 7/8}\hrule
+\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 7/7}\hrule
 
 \bigskip
-\begin{problem}[5 pts]
-  
-\end{problem}
-
-\hrule
-
-\begin{problem}[5 pts]
-
-\end{problem}
-\hrule
 
 \begin{problem}[5 pts]
   The concentration of a pollutant in a lake is 85 parts per million (ppm) and is increasing at a rate of 4.6\% each
@@ -317,12 +353,8 @@
   \item[\radiobutton] $C = 46(0.85)^t$
   \end{itemize}
 \end{problem}
-\newpage
+\hrule
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 8
-\noindent{\large\bf MATH 122}\hfill{\large\bf Exam \#1.}\hfill{\large\bf  Fall 2018}\hfill{\large\bf Page 8/8}\hrule
-
-\bigskip
 \begin{problem}[5 pts]
   Sales at a company are changing according to the formula $S = 1000 (0.82)^t$ , where $S$ is sales in thousands of
   dollars and $t$ is measured in years. Sales at this company are: 
@@ -336,22 +368,6 @@
   \item[\radiobutton] Decreasing by 18\% per year
   \item[\radiobutton] Decreasing by 18 thousand dollars per year
   \end{itemize} 
-\end{problem}
-\hrule
-
-\begin{problem}[5 pts]
-  The number $N$ of species of reptiles found on an island is proportional to the fourth root of the area of the island,
-  $A$.  Which of the following represents this statement? 
-  \begin{itemize}
-  \item[\radiobutton] $N=A^{1/4}$
-  \item[\radiobutton] $A=N^{1/4}$
-  \item[\radiobutton] $N=A^{-4}$
-  \item[\radiobutton] $A=N^{-4}$
-  \item[\radiobutton] $N=kA^{1/4}$
-  \item[\radiobutton] $A=kN^{1/4}$
-  \item[\radiobutton] $N=kA^{-4}$
-  \item[\radiobutton] $A=kN^{-4}$
-  \end{itemize}
 \end{problem}
 
 \end{document}
