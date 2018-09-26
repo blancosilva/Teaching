@@ -1,0 +1,41 @@
+* Solutions
+
+** Problem 1. 
+This is problem 31 in WTNOTB
+A is a knave. B is a knight. C is a knave.
+
+** Problem 2.
+This is problem 32.
+C is a knight, B could be anything. A is a knave.
+
+** Problem 3.
+This is problem 34.
+C is a knave.
+
+** Problem 4
+This is problem 28.
+A is a knight, B is a knave.
+
+** Problem 5
+This is problem 29.
+A and B are both knights.
+
+** Problem 6
+This is problem 30.
+This is not possible.
+
+** Problem 7
+This is problem 39.
+A is a knave, B is normal, C is a knight.
+
+** Problem 8
+This is problem 42.
+A and B are both normal.
+
+** Problem 9
+This is problem 43.
+C answers "B is of higher range than A"
+
+** Problem 10
+This is problem 44.
+They are both normal.
