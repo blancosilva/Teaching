@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{multicol}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs, verbatim}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Sample Problem}
+
+%%% Solutions macro 
+% To include solutions, leave the first two lines and comment out the next two.
+% To not include solutions, do the reverse.
+%%%%%%%%%%%%%%%%%%%%%%
+% \renewcommand{\proofname}{Solution:}
+\renewcommand\proof\comment
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Review for Test \#1.}\hfill{\large\bf  Fall 2018}\hrule
+
+\begin{problem}
+  State DeMorgan's Laws for set complements $(A \cup B)^\complement$ and $(A \cap B)^\complement$.
+\end{problem}
+\begin{proof}
+  $(A \cup B)^\complement = A^\complement \cap B^\complement$,   $(A \cap B)^\complement = A^\complement \cup B^\complement$.
+\end{proof}
+
+\begin{problem}
+  Let $A=\{ a, b \}$, $B = \{ b, 1, 2 \}$.  Give the elements of $(A \times B) \setminus ( A \times \{ b \})$ by listing
+  them within braces.
+\end{problem}
+\begin{proof}
+  $(A\times B) \setminus (A\times \{b \}) = \big\{ (a,1), (a,2), (b,1), (b,2) \big\}$
+\end{proof}
+
+\begin{problem}
+  For each $n \in \mathbb{N}$, let $I_n$ be the closed interval $\big[ -1+\tfrac{1}{n}, 1 - \tfrac{1}{n} \big]$.
+  Describe the set $\bigcup_{n \in \mathbb{N}} I_n$ in either interval or set-builder notation.
+\end{problem}
+\begin{proof}
+  $\displaystyle{\bigcup_{n \in \mathbb{N}} I_n = (-1,1)}$.
+\end{proof}
+
+\begin{problem}
+  For each $n \in \mathbb{N}$, let $J_n$ be the closed interval $\big[ 1+\tfrac{1}{n}, 2 - \tfrac{1}{n} \big]$.
+  Describe the set $\bigcup_{n=2}^\infty J_n$ in either interval or set-builder notation.
+\end{problem}
+\begin{proof}
+  $\displaystyle{\bigcup_{n=2}^\infty J_n = (1,2)}$.
+\end{proof}
+
+\begin{problem}
+  Let $X=\{ a, b, c, d\}$ and $S = \big\{ Y \in \mathscr{P}(X) : b \not\in Y, \lvert Y \rvert \leq 2 \big\}$.  Give the
+  elements of $S$.
+\end{problem}
+\begin{proof}
+  $S = \big\{ \emptyset, \{ a \}, \{ c \}, \{ d \}, \{ a,c \}, \{ a, d \}, \{ c, d \} \big\}$.
+\end{proof}
+
+\begin{problem}
+  Let $P$ and $Q$ be statements.  Are the following statements equivalent?  Justify your answers.
+  \begin{enumerate}
+  \item $P \land (Q \lor \lnot Q)$ and $(\lnot P) \implies (Q \land \lnot  Q)$.
+  \item $(\lnot P) \land (P \implies Q)$ and $\lnot (Q \lor P)$.
+  \end{enumerate}
+\end{problem}
+\begin{proof}
+  \begin{enumerate}
+  \item They are equivalent.
+    \begin{equation*}
+      \begin{array}{c|c|c|c|c|c|c}
+        P & Q & Q \lor \lnot Q & \lnot P & Q \land \lnot Q & P \lor (Q \lor \lnot Q) & (\lnot P ) \implies (Q \land
+                                                                                       \lnot Q) \\
+        \hline
+        T & T & T & F & F & T & T \\
+        T & F & T & F & F & T & T \\
+        F & T & T & T & F & F & F \\
+        F & F & T & T & F & F & F
+      \end{array}
+    \end{equation*}
+    \item They are not.  If $P$ is false and $Q$ is true, then $\lnot(Q \lor P)$ is false, and $(\lnot P) \land (P
+      \implies Q)$ is true. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{problem}
+  Consider the following statement $S$:
+  \begin{quote}
+    ``All foreign cars are well made.''
+  \end{quote}
+  Which of the following statements (there may be more than one) correctly negate $S$?
+  \begin{enumerate}
+  \item\label{car:a} ``All foreign cars are badly made.''
+  \item\label{car:b} ``All domestic (non-foreign) cars are well made.''
+  \item\label{car:c} ``There are domestic (non-foreign) cars that are well made.''
+  \item\label{car:d} ``Some foreign cars are badly made.''
+  \item\label{car:e} ``If a car is not foreign, then it is not well made.''
+  \end{enumerate}
+\end{problem}
+\begin{proof}
+  The statement \ref{car:d} is the only one that correctly negates $S$.
+\end{proof}
+
+\begin{problem}
+  Consider the following statement $P$:
+  \begin{equation*} \forall X \subset \mathbb{N}, \exists n \in \mathbb{Z}, \lvert X \rvert = n \end{equation*}
+  \begin{enumerate}
+  \item Rewrite $\lnot P$ as an affirmative statement (i.e.~the symbol $\lnot$ should not appear anywhere)
+  \item What is $\lnot P$ saying in plain English?  Is it true or false?
+  \end{enumerate}
+\end{problem}
+\begin{proof}
+  The negation of $P$ can be written as follows:
+  \begin{equation*} \exists X \subset \mathbb{N}, \forall n \in \mathbb{Z}, \vert X \rvert \neq n \end{equation*}
+  In plain English, this statement indicates that there is a subset of the natural numbers whose cardinality is not an
+  integer (in other words, that there exist infinite subsets of the natural numbers).  This is clearly true.
+\end{proof}
+
+\begin{problem}
+  Consider the following statement $R$:
+  \begin{quote} ``An integer $n$ is divisible by 15 only if it is divisible by 5.'' \end{quote}
+  \begin{enumerate}
+  \item Rewrite $R$ in the form $P \implies Q$.
+  \item Use the word \emph{necessary} or \emph{sufficient} as appropriate:
+    \begin{quote}
+      ``For an integer $n$ to be divisible by 5 it is \makebox[2cm]{\hrulefill} that $n$ be divisible by 15.''
+    \end{quote}
+  \item Use the word \emph{necessary} or \emph{sufficient} as appropriate:
+    \begin{quote}
+      ``For an integer $n$ to be divisible by 15 it is \makebox[2cm]{\hrulefill} that $n$ be divisible by 5.''
+    \end{quote}
+  \item State the converse of $R$.
+  \item State the contrapositive of $R$.
+  \end{enumerate}
+\end{problem}
+\begin{proof}
+  \begin{enumerate}
+  \item $P(n) \implies Q(n)$, where $P(n)$ and $Q(n)$ are respectively ``15 divides $n$'' and ``5 divides $n$.''
+  \item ``For an integer $n$ to be divisible by 5 it is \emph{sufficient} that $n$ be divisible by 15.''
+  \item ``For an integer $n$ to be divisible by 15 it is \emph{necessary} that $n$ be divisible by 5.''
+  \item $Q(n) \implies P(n)$: ``An integer $n$ is divisible by 5 only if it is divisible by 15.''
+  \item $\lnot Q(n) \implies \lnot P(n)$: ``If an integer is not divisible by 5, then it is not divisible by 15.'' \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{problem}
+  Let $A = [-1,0) \cup (0,1]$, and consider $U=\mathbb{R}$ as the universal set. Describe the set $A^\complement$.
+\end{problem}
+\begin{proof}
+  $A^\complement = (-\infty, -1) \cup \{ 0 \} \cup (1, \infty)$.
+\end{proof}
+\end{document}
