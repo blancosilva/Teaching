@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#1}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 1/6}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+    {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and VIP ID in the space provided above.
+\item The test has six (6) pages, including this one.
+\item Credit for each problem is given at the right of each problem number.
+\item Show sufficient work to justify all answers unless otherwise stated in the problem.  Correct answers with
+  inconsistent work may not be given credit.
+\item No books, notes or calculators are allowed.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+       {\large\bf Page} & {\large\bf Max}  & {\large\bf Points} \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 2} & \Large 20 &  \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 3} & \Large 30 & \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 4} & \Large 20 & \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 5} & \Large 20 & \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 6} & \Large 10 & \cr
+    &&\cr
+       \hline\hline
+    &&\cr
+       {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+       \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#1}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 2/6}\hrule
+
+\bigskip
+\begin{problem}[10 pts]
+  Sketch the following set of points in the plane: $\big\{ (x,y) \in \mathbb{R}^2 : (y-x^2)(y+x) = 0 \big\}$.
+
+  \vspace{4cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  Write out the following set by listing its elements between braces: $\{ \emptyset \} \times \{0, \emptyset \} \times
+  \{ 0, 1 \}$.
+
+  \vspace{3cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  List all the subsets of the set $S=\big\{ \{0,1\}, \{ 0,1, \{2\} \}, \{ 0 \} \big\}$.
+
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#1}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 3/6}\hrule
+
+\bigskip
+
+\begin{problem}[10 pts--5 pts each]
+  Suppose $A=\{0,1\}$ and $B=\{1,2\}$.
+  \begin{enumerate}
+  \item Find $(A \times B) \setminus (B \times B)$.
+    \vspace{1.5cm}
+  \item Find $\mathscr{P}(A \cap B)$
+  \end{enumerate}
+  \vspace{1.5cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]
+  Suppose that $\lvert A \rvert = m$.  Compute $\big\lvert \mathscr{P}( \mathscr{P}( \mathscr{P} ( A \times \emptyset ))) \big\rvert$.
+
+  \vspace{3cm}
+\end{problem}
+\hrule
+
+\begin{problem}[5 pts]\label{venn}
+  Write the expression involving sets $A$, $B$ and $C$ given by the following Venn diagram:
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (210:1) circle (1.5);
+      \draw[fill=gray] ([shift=(174.74:1.5)]330:1) arc (174.74:65.26:1.5) -- ([shift=(-5.26:1.5)]90:1) arc (-5.26:-114.74:1.5);
+      \draw[fill=gray] ([shift=(185:1.5)]90:1) arc (185:295:1.5) -- ([shift=(5.264:1.5)]210:1) arc (5.264:114.73:1.5);      
+      \draw (330:1) circle (1.5);
+      \draw (90:1) circle (1.5);
+      \draw (90:2.75) node{$B$};
+      \draw (210:2.75) node{$A$};
+      \draw (330:2.75) node{$C$};
+    \end{tikzpicture}
+  \end{center}
+
+  \vspace{1cm}
+\end{problem}
+\hrule
+
+\begin{problem}[10 pts]
+  Decide whether or not the following two statements are logically equivalent:
+  \begin{equation*}
+    (\lnot P) \land (P \implies Q) \text{ and } \lnot ( Q \implies P)
+  \end{equation*}
+
+  \vspace{3cm}
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#1}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 4/6}\hrule
+
+\bigskip
+
+\begin{problem}[10 pts]
+  Translate the following sentence in symbolic logic, negate it, and translate back to English:
+  \begin{quote}
+    For every prime $p$ there is another prime number $q$ with $q > p$.
+  \end{quote}
+
+  \vspace{4cm}
+\end{problem}
+\hrule
+
+\begin{problem}[10 pts--5 pts each]
+  Write the following sets either in set-builder notation, or by listing its elements.  Draw both sets on the plane.
+  \begin{enumerate}
+  \item $\displaystyle{\bigcup_{\alpha \in [0,2]}[\alpha,2] \times [0,5\alpha^2]=}$
+  \item $\displaystyle{\bigcap_{\alpha \in [0,2]}[\alpha,2] \times [0,5\alpha^2]=}$
+  \end{enumerate}
+
+  \vspace{8cm}
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#1}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 5/6}\hrule
+
+\bigskip
+
+\begin{problem}[10 pts]
+  The \emph{Pierce arrow} $\downarrow$ (also known as the \texttt{NOR} operator or \texttt{NOR} gate) is a logical
+  operator defined as follows: If $P$ and $Q$ are statements, then $P \downarrow Q$ is true precisely when both $P$ and
+  $Q$ are false.  The computer used in the spacecraft that first carried humans to the moon, the Apollo Guidance
+  Computer, was constructed entirely using \texttt{NOR} gates with three inputs.  Answer the following questions:
+  \begin{enumerate}
+  \item Construct a truth table for $P\downarrow Q$.
+    \vspace{2.5cm}
+  \item Show that $P \downarrow P$ is logically equivalent to $\lnot P$.
+    \vspace{2.5cm}
+  \item Show that $(P \downarrow Q) \downarrow (P \downarrow Q)$ is logically equivalent to $P \lor Q$.
+    \vspace{2.5cm}
+  \end{enumerate}
+\end{problem}
+\hrule
+
+\begin{problem}[10 pts]
+  Let $U$ be the set of all students in your class.  Let $C(x)$ be the statement ``$x$ has a cat.'' Let $D(x)$ be the
+  statement ``$x$ has a dog.'' Let $F(x)$ be the statement ``$x$ has a ferret.''  Express each of the statements below
+  in terms of $U$, $C(x)$, $D(x)$, $F(x)$, quantifiers and logical operations.
+  \begin{enumerate}
+  \item A student in your class has a cat, a dog and a ferret.
+    \vspace{1cm}
+  \item All students in your class have a cat, a dog or a ferret.
+    \vspace{1cm}
+  \item Some student in your class has a cat and a ferret, but not a dog.
+    \vspace{1cm}
+  \item No student in your class has a cat, a dog and a ferret.
+    \vspace{1cm}
+  \item For each of the three animals (cat, dog, ferret) there is a student in your class who has one of these animals
+    as a pet.
+  \end{enumerate}
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 6
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#1}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 6/6}\hrule
+
+\bigskip
+
+\begin{problem}[10 pts]
+  Write each of the following statements in the form ``If \makebox[1cm]{\hrulefill}, then \makebox[1cm]{\hrulefill}'' in
+  English.
+  \begin{enumerate}
+  \item I will remember to send you the address only if you send me an e-mail.
+    \vspace{1cm}
+  \item To be a citizen of this country, it is sufficient that you were born in the United States.
+    \vspace{1cm}
+  \item If you keep your textbook, it will be useful reference in your future courses.
+    \vspace{1cm}
+  \item The Red Wings will win the Stanley Cup if their goalie plays well.
+    \vspace{1cm}
+  \item That you get the job implies that you had the best credentials.
+    \vspace{1cm}
+  \item The beach erodes when there is a storm.
+    \vspace{1cm}
+  \item It is necessary to have a valid passport to log on to the server.
+  \end{enumerate}
+\end{problem}
+\end{document}
+
+
