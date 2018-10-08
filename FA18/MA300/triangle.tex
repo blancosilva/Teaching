@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs, verbatim}
+\usepackage{framed}
+
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Sample Problem}
+\theoremstyle{theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition}
+
+%%% Solutions macro 
+% To include solutions, leave the first two lines and comment out the next two.
+% To not include solutions, do the reverse.
+%%%%%%%%%%%%%%%%%%%%%%
+% \renewcommand{\proofname}{Solution:}
+\renewcommand\proof\comment
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Exploratory Session \#3.}\hfill{\large\bf  Fall 2018}\hrule
+
+\section*{Set-up}
+Throughout this session, consider the values of $m$, $d$ given by your birthday (in the form \emph{m/d/Y}).  For
+instance, if you were born today, then $m=10$ and $d=8$.
+
+Consider a triangle $\triangle ABC$ that has angles with degree values $\alpha = 4\max(m,d)-2\min(m,d)+6,$ and
+$\beta, \gamma \in \mathbb{N}$.
+
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate[label = below left:$A$] (A) at (0,0);
+    \coordinate[label = above:$B$] (B) at (45:3.5);
+    \coordinate[label = below right:$C$] (C) at (4, 0);
+    \draw (A) -- (B) -- (C) -- cycle;
+    \tkzMarkAngle[fill= orange, size=15pt, opacity=.4](B,C,A)
+    \tkzLabelAngle[pos = 0.75](B,C,A){$\gamma$}
+
+    \tkzMarkAngle[fill= orange,size=15pt, opacity=.4](C,A,B)
+    \tkzLabelAngle[pos = 0.77](C,A,B){$\alpha$}
+
+    \tkzMarkAngle[fill= orange,size=15pt, opacity=.4](A,B,C)
+    \tkzLabelAngle[pos = 0.75](A,B,C){$\beta$}
+  \end{tikzpicture}
+\end{center}
+
+\subsection*{Exploration Stage}
+\begin{problem}[10 pts---all or nothing] 
+  Describe the set $\mathcal{B}$ that contains all the possible values of $\beta$ (in degrees) for the triangle
+  $\triangle ABC$ that you have just constructed.  Use set-builder notation, rather than listing its elements.
+\end{problem}
+
+\begin{problem}[10 pts---all or nothing]
+  Once an angle $\beta \in \mathcal{B}$ has been chosen, there is only one possible value for the remaining angle
+  $\gamma$.  Find a formula for $\gamma$ in terms of $m, d$ and $\beta$.
+\end{problem}
+
+\subsection*{Planning and Delivery}
+\begin{problem}[20 pts]
+  Prove that in your triangle $\triangle ABC$ with angles (in degrees) with values $\beta, \gamma \in \mathbb{N}$, and
+  $\alpha=4\max(m,d)-2\min(m,d)+6$, if $\underbrace{\beta \text{ is even}}_{P}$, then
+  $\underbrace{\gamma \text{ is also even}}_{Q}$.
+
+  Start by completing the following step-by-step table, before you put your proof into words.
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      \textbf{Statement}                     & \textbf{Reason (Fact)} \\ \hline
+      $P = ``\beta \text{ is even.}"$         & hypothesis \\ \hline
+      $\exists b \in \mathbb{N}, \beta = 2b$ & Definition of even (natural) number \\ \hline
+      &  \\ 
+      \hspace{1cm} $\vdots$ & \hspace{4cm} $\vdots$ \\ 
+      & \\ \hline
+      $\gamma=2c$ for $c=\dotsb$             & $\dotsb$ \\ \hline
+      $Q = ``\gamma \text{ is even.}"$        & Definition of even number \\ \hline
+    \end{tabular}
+  \end{center}
+\end{problem}
+
+\begin{problem}[20 pts]
+  For the same triangle, prove that if $\beta$ is odd, then $\gamma$ is also odd.
+\end{problem}
+
+\begin{problem}[40 pts]
+  Write a proof of the following proposition.
+  \vspace*{-0.75cm}
+  \begin{quote}
+    \begin{proposition*}
+      In any right triangle with integer-valued angles (in degrees), the non-right angles have the same parity.
+    \end{proposition*}
+    \end{quote}
+\end{problem}
+
+\end{document}
