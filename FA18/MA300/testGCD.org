@@ -1,0 +1,103 @@
+* Plan
+
+** Define first divisibility:
+
+Among integer numbers, we say that $a$ /divides/ $b$ (denoted by $a \mid b$) if we can write $b = a \cdot c$ for some $c
+\in \mathbb{Z}$.
+
+In this case, we also say that $a$ is a /divisor/ of $b$, or that $b$ is a /multiple/ of $a$.
+
+** Prime and composite numbers
+
+We say that $a \in \mathbb{Z}$ is a /prime number/ if its only positive divisors are 1 and $a$.  Otherwise, we say that
+$a$ is composite (there exist $b, c \in \mathbb{N}$ so that $\lvert a \rvert = b \cdot c$. 
+
+** GCD, LCM
+
+The /greatest common divisor/ of two natural numbers $a, b \in \mathbb{N}$ (denoted by $\gcd(a,b)$) is the largest
+integer that divides both $a$ and $b$.
+The /least common multiple/ of two natural numbers $a, b \in \mathbb{N}$ (denoted by $\lcm(a,b)$) is the smallest
+positive integer that is a multiple of both $a$ and $b$.
+
+** The Division Algorithm
+
+Given $a \in \mathbb{Z}$, $b \in \mathbb{N}$, there exist unique integers $q, r \in \mathbb{Z}$ with $0 \leq r < b$ (the
+/quotient/ and /remainder/, respectively), so that $a = q \cdot b + r$.
+
+e.g. 127 divided by 5 is 25, with a reminder of 2.
+
+** Factorization into primes, and how to use this to compute GCD, LCM 
+
+Some examples:
+
+| 345 | 5 |
+|  69 | 3 |
+|  23 | 3 |
+
+| 129 |  3 |
+|  43 | 43 |
+|  43 |    |
+
+GCD: 3
+LCM: 3*5*23*43 = 14,835   
+( 14835 = 345 * 43,  14835 = 129 * 5 * 23)
+
+| 125 | 5 |
+|  25 | 5 |
+|   5 | 5 |
+
+| 60 | 2 |
+| 30 | 2 |
+| 15 | 3 |
+|  5 | 5 |
+
+GCD: 5
+LCM: 2^2*3*5^3 = 1500  
+(1500 = 60 * 25, 1500 = 125 * 12)
+
+| 450 | 2 |
+|     | 3 |
+|     | 3 |
+|     | 5 |
+|     | 5 |
+
+| 60 | 2 |
+|    | 2 |
+|    | 3 |
+|    | 5 |
+
+GCD: 2*3*5 = 30
+LCM: 2^2*3^3*5^2 = 2700
+(2700 = 450 * 6, 2700 = 60 * 45)
+
+* Proofs for tomorrow:
+
+** Let $a, b, c \in \mathbb{Z}$.  If $a \mid b$ and $b \mid c$, then $a \mid c$. 
+Sketch of Proof.
+$a \mid b$ implies there exists $d$ so that $b = ad$
+$b \mid c$ implies there exists $e$ so that $c = be$.
+We want to prove that $a \mid c$, so we need to find $x$ so that $c = ax$.
+
+$c = be = (ad)e = a(de)$.  Make $x=de$.
+
+** Prove that, given a, b \in \mathbb{Z}, gcd(a,b) divides ax+by for all x, y \in \mathbb{Z}
+
+(We only need the fact that gcd(a,b) divides both a and b.  The fact that it is the greatest does not matter!)
+d = gcd(a,b)
+d|a and d|b
+a=d*m for some m and a=d*n for some n
+given x, y \in \mathbb{Z},
+ax+by = dmx+dny= d(mx+ny)
+Qed.
+
+
+** If $a, b, c \in \mathbb{N}$, then $\lcm(ca, cb) = c \lcm(a,b)$.  <--  Too hard for tomorrow.  More stuff before they attempt this problem.
+
+Sketch of Proof.  
+
+Goal: Let $x = c \lcm(a,b)$.  Prove that (1) $x$ is a multiple of both $ca$ and $cb$, and (2) if $M$ is another multiple
+of $ca$ and $cb$, then $M \geq x$.
+
+\lcm(a,b) is a multiple of both a and b.  c \lcm(a,b) is also a multiple of both a and b.  This proves (1).
+
+M is a multiple of ca and cb.  M = ca d (for some d) and M = cb e (for some e)

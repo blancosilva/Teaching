@@ -1,0 +1,189 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [11pt, oneside]
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+#+LATEX_HEADER: \pagestyle{empty}
+#+LATEX_HEADER: \setlength{\textwidth}{7in}
+#+LATEX_HEADER: \setlength{\oddsidemargin}{-0.5in}
+#+LATEX_HEADER: \setlength{\topmargin}{-1.0in}
+#+LATEX_HEADER: \setlength{\textheight}{9.5in}
+#+OPTIONS: toc:nil
+
+* Problems in Chapter 4
+** If $x$ is an even integer, then $x^2$ is even.
+    - $x = 2a$
+    - $x^2= 4a^2 = 2(2a^2)$
+
+** If $x$ is odd, then $x^3$ is odd.
+    - $x=2a+1$
+    - $x^3 = (2a+1)^3 = 8a^3 + 3*4a^2 + 3*2a + 1 = 2(4a^3+6a^2+3a)+1$
+
+** If $a$ is odd, then $a^2+3a+5$ is odd
+   - $a=2b+1$
+   - $a^2+3a+5 = (2b+1)^2 + 3(2b+1) + 5 = 4b^2+1+4b+6b+8 = 2(2b^2+5b+4)+1$
+
+** If $x,y$ odd, then $xy$ is odd.
+   - $x=2a+1$
+   - $y=2b+1$
+   - $xy=(2a+1)(2b+1)=4ab+2a+2b+1 = 2(2ab+a+b)+1$
+
+** If $x$ is even $xy$ is even.
+   - $x=2a$
+   - $xy=2ay$
+
+** If $a \mid b$ and $a \mid c$, then $a \mid (b+c)$.
+   - $b=ax$
+   - $c=ay$
+   - $b+c = ax+ay = a(x+y)$
+
+** If $a \mid b$ then $a^2 \mid b^2$.
+   - $b=ax$
+   - $b^2 = a^2x^2$
+
+** If $5 \mid 2a$ then $5 \mid a$.
+   - $2a = 5x$
+   - Note that $a, 2a$ and $5x$ are integers
+   - Also, $a = 5x/2$, so $5x/2$ is an integer.  
+   - This is only possible if $x=2q$ for some $q$.  We can then write $a = 5q$.
+
+** If $7 \mid 4a$ then $7 \mid a$
+   - $4a = 7x$
+   - Since $a, 4a, 7x$ are integers, it must be $a = 7x/4$ an integer too. 
+   - This is only possible if $x = 4q$ for some integer $q$.  We can then write $a=7q$.
+
+** If $a \mid b$ then $a \mid (3b^3-b^2+5b)$
+   - $b=ax$
+   - $3b^2-b^2+5b = b(3b^2-b+5)=ax(3b^2-b+5)$
+
+** If $a \mid b$ and $c \mid d$, then $ac \mid bd$
+   - $b=ax$
+   - $d=cy$
+   - $bd = (ax)(cy)=(ac)(xy)$
+
+** If $x \in \mathbb{R}$ and $0 < x < 4$, then $\frac{4}{x(4-x)} \geq 1$.
+
+*** First attempt, try to find stuff about the function $f(x) = \frac{4}{x(4-x)}$
+    - $f(x) = \frac{4}{x(4-x)} = \frac{4}{4x-x^2} = 4(4x-x^2)^{-1}$
+    - $f'(x) = -4(4x-x^2)^{-2}(4-2x) = -8\frac{2-x}{x^2(4-x)^2}$
+    - $f'(x)=0$ at $x=2$
+    - Between 0 and 2, the function is decreasing ($f'(x)<0$.) It is increasing between 2 and 4.
+    - The minimum is at $x=2$. $f(2)=1$.
+
+*** Second attempt: Start from the bottom.
+#+attr_latex: :align |c|l|
+|----------------------------+----------------------------------------------------------|
+| $x>0$                      |                                                          |
+|----------------------------+----------------------------------------------------------|
+| $4-x>0$                    |                                                          |
+|----------------------------+----------------------------------------------------------|
+| $\vdots$                   |                                                          |
+|----------------------------+----------------------------------------------------------|
+| $4 \geq x(4-x)$            | parabola $x(4-x)$ has a max at $x=2$                     |
+|----------------------------+----------------------------------------------------------|
+| $\dfrac{4}{x(4-x)} \geq 1$ | cause both $x>0$ and $4-x>0$, inequality does not change |
+|----------------------------+----------------------------------------------------------|
+
+So this one gives me a better idea.  Start by considering the parabola $y = f(x) = x(4-x)$.  Draw it, note that the
+function is positive in the interval $0<x<4$.  It also have a maximum at $x=2$, and $f(2) = 4$.
+
+** Suppose $x, y \in \mathbb{R}$.  If $x^2+5y = y^2+5x$, then $x=y$ or $x+y=5$.
+*** First attempt:
+   - $x^2+5y = y^2+5x$
+   - $x^2-5x = y^2-5y$
+   - $x(x-5) = y(y-5)$
+   - Careful now!  Think $4 \cdot 6 = 2 \cdot 12$.
+   - If $x=0$, then $y(y-5)=0$, which gives $y=0$ or $y=5$.  (in this case, $y=0$ gives $x=y$.  If $y=5$, then note that $x+y=5$)
+   - But after that I am stuck... Maybe the last expression is not so useful after all.  Let's try to combine the 5's instead
+*** Second attempt:
+   - $x^2-y^2 = 5x-5y$
+   - $(x-y)(x+y)=5(x-y)$
+   - I like this one more. We could eliminate $x-y$ from that equation, provided $x-y \neq 0$.  In this case, we would have $x+y=5$.
+   - In case we cannot eliminate it, it is $x-y=0$, which is precisely the condition $x=y$.
+
+** If $n \in \mathbb{Z}$, then $5n^2+3n+7$ is odd.
+   - Case 1) $n=2a$: $5n^2+3n+7 = 5(2a)^2+6a+7=20a^2+6a+7 = 2(10a^2+3a+3)+1$
+   - Case 2) $n=2a+1$: $5n^2+3n+7 = 5(2a+1)^2+3(2a+1)+7 = 5(4a^2+1+4a)+6a+10 = 20a^2+26a+15 =2(10a^2+13a+7)+1$
+
+** If $n \in \mathbb{Z}$, then $n^2+3n+4$ is even.
+   - Case 1) $n=2a$: $n^2+3n+4 = (2a)^2+3(2a)+4$ even
+   - Case 2) $n=2a+1$: $(2a+1)^2+3(2a+1)+4 = 4a^2+1+4a+6a+3+4 = 4a^2+10a+8$ even
+
+** If two integers have the same parity, then their sum is even
+   - Case 1) $n=2a, m=2b$: $n+m = 2a+2b$ even
+   - Case 2) $n=2a+1, m=2b+1$: $n+m = 2a+1+2b+1 = 2(a+b)+2$
+
+** If two integers have opposite parity, then their product is even
+   - WLOG $n=2a, m=2b+1$
+   - $n \cdot m = 2a(2b+1) = 4ab+2a$ even
+
+** Suppose $x$ and $y$ are positive real numbers.  If $x<y$, then $x^2<y^2$
+   - This one is cool to start from the bottom
+   - $x>0$ and $y>0 \implies x+y>0$
+   - $x<y \implies x-y<0$
+   - $(x-y)(x+y)<0$
+   - $x^2-y^2<0$
+   - $x^2<y^2$
+
+** Suppose $a, b, c$ are integers.  If $a^2 \mid b$ and $b^3 \mid c$, then $a^6 \mid c$.
+   - $a^2 \mid b \implies b = a^2 x$
+   - $b^3 \mid c \implies c = b^3 y$
+   - $c = b^3 y = (a^2 x)^3 y = a^6 x^3 y$
+
+** If $a$ is an integer and $a^2 \mid a$, then $a \in \{-1, 0 , 1\}$
+   - $a^2 \mid a \implies a = a^2 x$  ($x$ integer!)
+   - If $a \neq 0$, we can divide both sides to get $1/a = x$ is an integer.  It can only be $a=-1$ or $a=1$
+   - $a=0$ is the other option.
+
+** TODO If $p$ is prime and $k$ is an integer for which $0<k<p$, then $p \mid {p \choose k}$
+   - $p$ is prime
+   - $0<k<p$
+   - ${p \choose k} = \frac{p!}{k!(p-k)!}$ is an integer.
+
+** If $n \in \mathbb{N}$, then $n^2 = 2{n \choose 2}+ {n \choose 1}$.
+   - This only makes sense for $n \geq 2$ in my book.
+   - $2{n \choose 2} + {n \choose 1} = \frac{2n!}{2(n-2)!} + n = n(n-1)+n = n^2-n+n$
+
+** TODO If $n \in \mathbb{N}$, then ${2n \choose n}$ is even
+
+   \begin{align*}
+   {2n \choose n} &= \frac{(2n)!}{n!n!} \\ &= \frac{2n \cdot (2n-1) \cdot (2n-2) \dotsb  (n+1)}{ n! } \\ 
+   &= \frac{2n (2n-2) (2n-4) \dotsb (2n-(2n+2)) \cdot \text{stuff}}{n!} 
+   \end{align*}
+
+
+** TODO If $n \in \mathbb{N}$ and $n \geq 2$, then the numbers $n!+2, n!+3, \dotsc, n!+n$ are all composite.
+
+** TODO If $a,b,c \in \mathbb{N}$ and $c \leq b \leq a$, then ${a \choose b} {b \choose c} = {a \choose b-c} {a-b+c \choose c}$.
+
+** DONE Every odd integer is a difference of two squares. 
+   CLOSED: [2018-10-12 Fri 20:21]
+   - $n = 2a+1$
+   - $\vdots$
+   - $n = x^2 - y^2$
+   - Can we use somehow that $(a-b)(a-b)=a^2-b^2$?
+   - $2x+1 = (a-b)(a+b)$ 
+   - This should have an easy solution (do the system) to get $2a = n + 1$, or $a=(n+1)/2$, and thus $b=(n-1)/2$.
+#+attr_latex: :align |c|c|c|c|c|c|
+|-----+--------+-------------+--------------+-------+-------|
+| $n$ | $2n-1$ | $a^2-b^2$   | $(a-b)(a+b)$ | $a+b$ | $a-b$ |
+|-----+--------+-------------+--------------+-------+-------|
+|   1 |      1 | $1^2 - 0^2$ |              |     1 |     1 |
+|   2 |      3 | $2^2 - 1^2$ | $(2-1)(2+1)$ |     3 |     1 |
+|   3 |      5 | $3^2 - 2^2$ | $(3-2)(3+2)$ |     5 |     1 |
+|   4 |      7 | $4^2 - 3^2$ | $(4-3)(4+3)$ |     7 |     1 |
+|   5 |      9 | $5^2 - 4^2$ | $(5-4)(5+4)$ |     9 |     1 |
+|   6 |     11 | $6^2 - 5^2$ | $(6-5)(6+5)$ |    11 |     1 |
+|   7 |     13 | $7^2 - 6^2$ | $(7-6)(7+6)$ |    13 |     1 |
+|-----+--------+-------------+--------------+-------+-------|
+
+** DONE Suppose $a, b \in \mathbb{N}$ If $\gcd(a,b)>1$, then $b \mid a$ or $b$ is not prime.
+   CLOSED: [2018-10-12 Fri 12:45]
+   - $\gcd(a,b) \neq 1$ suggests that $a$ and $b$ have at least one common divisor.
+   - If $b$ is not prime, then there is nothing to prove (it is one of the conclusions!)
+   - If $b$ is prime, then the only possible divisor for both $a$ and $b$ has to be precisely $b$.
+
+** If $a, b, c \in \mathbb{N}$, then $c \gcd(a,b) \leq gcd(ca, cb)$
+   - $\gcd(a,b)$ is the largest divisor of both $a$ and $b$.
+   - In particular, $\gcd(a,b)$ is *a* divisor of both $a$ and $b$
+   - In this case, $c \cdot \gcd(a,b)$ is a divisor of both $ca$ and $cb$.
+   - $c \cdot \gcd(a,b) \leq gcd(ca, cb)$ because $gcd(ca, cb)$ is *the* largest divisor of both $ca$ and $cb$.
+
