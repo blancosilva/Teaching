@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs, verbatim}
+% \usepackage{framed}
+\usepackage{pdfpages}
+\usepackage{pgfornament}
+
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+ 
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Sample Problem}
+\theoremstyle{theorem}
+\newtheorem*{theorem}{Theorem} 
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{fact}{Fact}
+
+\newcommand{\separator}{%
+  \nointerlineskip \vspace{.5\baselineskip}\hspace{\fill}
+  {\resizebox{0.5\linewidth}{0.5ex} 
+    {\pgfornament[color = black]{88}
+    }}%
+  \hspace{\fill}
+  \par\nointerlineskip \vspace{.5\baselineskip}
+}
+
+\makeatletter
+\newcommand\binomialCoefficient[2]{%
+  % Store values 
+  \c@pgf@counta=#1% n
+  \c@pgf@countb=#2% k
+  % 
+  % Take advantage of symmetry if k > n - k
+  \c@pgf@countc=\c@pgf@counta%
+  \advance\c@pgf@countc by-\c@pgf@countb%
+  \ifnum\c@pgf@countb>\c@pgf@countc%
+  \c@pgf@countb=\c@pgf@countc%
+  \fi%
+  % 
+  % Recursively compute the coefficients
+  \c@pgf@countc=1% will hold the result
+  \c@pgf@countd=0% counter
+  \pgfmathloop% c -> c*(n-i)/(i+1) for i=0,...,k-1
+  \ifnum\c@pgf@countd<\c@pgf@countb%
+  \multiply\c@pgf@countc by\c@pgf@counta%
+  \advance\c@pgf@counta by-1%
+  \advance\c@pgf@countd by1%
+  \divide\c@pgf@countc by\c@pgf@countd%
+  \repeatpgfmathloop%
+  \the\c@pgf@countc%
+}
+\makeatother
+
+%%% Solutions macro 
+% To include solutions, leave the first two lines and comment out the next two.
+% To not include solutions, do the reverse.
+%%%%%%%%%%%%%%%%%%%%%%
+% \renewcommand{\proofname}{Solution:}
+\renewcommand\proof\comment
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Exploratory Session \#4.}\hfill{\large\bf  Fall 2018}\hrule
+
+\section*{Set-up}
+Let $\mathcal{S}$ be the set that contains the letters of your complete name (including middle and last name).  For
+example, mine is $\mathcal{S}=\{ F,R,A,N,C,I,S,O,J,V,E,B,L \} = \{ A,B,C,E,F,I,J,L,N,O,R,S,V \}.$
+
+As usual, let $m$ and $d$ from your birthday.  For instance, if you were born today, $m=10$, $d=17$.
+
+\section*{Exploratory phase}
+\begin{definition*}[Binomial Number]
+  In $n$ and $k$ are integers, then the \emph{binomial number} $\binom{n}{k}$ denotes the number of subsets that can be
+  made by choosing $k$ elements from a set with $n$ elements. The symbol $\binom{n}{k}$ is read ``$n$ choose $k$.''
+\end{definition*}
+\separator
+
+\begin{problem}[10 pts]
+  In our second quiz, you had to choose 5 problems out of 10, in a way that no other student in the class would have the
+  same selection as you.  The question now is, how many possible selections of 5 problems out of 10 are there?  Write
+  the solution as a binomial number.
+\end{problem}
+\separator
+
+\begin{fact}[Basic Formula]
+  If $n,k \in \mathbb{Z}$ and $0 \leq k \leq n$, then $\binom{n}{k} = \frac{n!}{k! (n-k)!}$.  Otherwise, $\binom{n}{k}=0$.
+\end{fact}
+\separator
+
+\begin{problem}[10 pts]
+  Let $n=\max(m,d)$ and $k=\min(m,d)$ for your particular values of $m$ and $d$.  Compute $\binom{n}{k}$.
+\end{problem} 
+
+\begin{problem}[20 pts]
+  Show that if $n,k \in \mathbb{Z}$ and $0\leq k \leq n$, then $\binom{n}{k} = \binom{n}{n-k}$.
+\end{problem}
+
+\begin{problem}[10 pts]
+  For your particular values of $m$, $d$ and set $\mathcal{S}$, what is the cardinality of the following set?   
+  \begin{equation*}
+    \big\{ X \in \mathscr{P}(\mathcal{S}) : \lvert X \rvert \leq \min(m,d)+1 \big\}
+  \end{equation*}
+  Write the solution both as a binomial number, and its precise value.
+\end{problem}
+\separator
+
+\begin{fact}[Recursive Formula]
+  If $n,k \in \mathbb{Z}$ and $0\leq k < n$, then
+  \begin{equation*}
+    \binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k} 
+  \end{equation*}
+\end{fact}
+
+\begin{definition*}[Pascal's Triangle]
+  Arranging all binomial numbers in order requires a triangular pattern:
+  \begin{center}
+    \newdimen\R
+    \R=.4cm
+    \newcommand\mycolor{gray}
+    \begin{tabular}{ccc}
+      \begin{minipage}{0.33\linewidth}
+        \begin{tikzpicture}[line width=.8pt]
+          \foreach \k in {0,...,7}{ 
+            \begin{scope}[shift={(-60:{sqrt(3)*\R*\k})}]
+              \pgfmathtruncatemacro\ystart{7-\k}
+              \foreach \n in {0,...,\ystart}{
+                \pgfmathtruncatemacro\newn{\n+\k}
+                \ifthenelse{\k=0}{\def\mycolor{purple}}{}
+                \ifthenelse{\k=1}{\def\mycolor{yellow}}{}
+                \ifthenelse{\k=2}{\def\mycolor{blue}}{}
+                \ifthenelse{\k=3}{\def\mycolor{green}}{}
+                \begin{scope}[shift={(-120:{sqrt(3)*\R*\n})}]
+                  \draw[top color=\mycolor!20,bottom color=\mycolor!60] 
+                  (30:\R) \foreach \x in {90,150,...,330} {
+                    -- (\x:\R)}
+                  --cycle (90:0) node {\tiny $\boldsymbol{\binom{\newn}{\k}}$};
+                \end{scope}
+              }
+            \end{scope}
+          }
+        \end{tikzpicture}
+      \end{minipage}& $=$ &
+                            \begin{minipage}{0.33\linewidth}
+                              \begin{tikzpicture}[line width=.8pt]
+                                \foreach \k in {0,...,7}{ 
+                                  \begin{scope}[shift={(-60:{sqrt(3)*\R*\k})}]
+                                    \pgfmathtruncatemacro\ystart{7-\k}
+                                    \foreach \n in {0,...,\ystart}{
+                                      \pgfmathtruncatemacro\newn{\n+\k}
+                                      \ifthenelse{\k=0}{\def\mycolor{purple}}{}
+                                      \ifthenelse{\k=1}{\def\mycolor{yellow}}{}
+                                      \ifthenelse{\k=2}{\def\mycolor{blue}}{}
+                                      \ifthenelse{\k=3}{\def\mycolor{green}}{}
+                                      \begin{scope}[shift={(-120:{sqrt(3)*\R*\n})}]
+                                        \draw[top color=\mycolor!20,bottom color=\mycolor!60] 
+                                        (30:\R) \foreach \x in {90,150,...,330} {
+                                          -- (\x:\R)}
+                                        --cycle (90:0) node {\tiny $\mathbf{\binomialCoefficient{\newn}{\k}}$};
+                                      \end{scope}
+                                    }
+                                  \end{scope}
+                                }
+                              \end{tikzpicture}
+                            \end{minipage} \\
+    \end{tabular}
+  \end{center} 
+\end{definition*}
+
+\newpage
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Exploratory Session \#4.}\hfill{\large\bf  Fall 2018}\hrule
+
+\begin{theorem}[Binomial Theorem]
+  If $n$ is a non-negative integer, then
+  \begin{equation*}
+    (x+y)^n = \sum_{k=0}^n \tbinom{n}{k} x^{n-k}y^k = \tbinom{n}{0}x^n + \tbinom{n}{1}x^{n-1}y + \tbinom{n}{2} x^{n-2}y^2 +
+    \dotsb + \tbinom{n}{n-1}x y^{n-1} + \tbinom{n}{n}y^n
+  \end{equation*}
+\end{theorem}
+\separator
+
+\begin{problem}[10 pts]
+  Write (an expansion of) the polynomial $(1+x)^5$ using the formula from the Binomial Theorem---but do not leave your
+  answer in terms of binomial numbers.  Compute these numbers before providing your answer.
+\end{problem}
+
+\begin{problem}[20 pts]
+  Show that if $n,k \in \mathbb{Z}$, and $1 \leq k \leq n$, then
+  \begin{equation*}
+    k\binom{n}{k} = n \binom{n-1}{k-1}
+  \end{equation*}
+\end{problem}
+
+\begin{problem}[10 pts]
+  Use the Binomial Theorem to find the numerical value of the coefficient of $x^6 y^3$ in the polynomial $(3x-2y)^9$.
+\end{problem}
+
+\begin{problem}[10 pts]
+  In the Pascal's triangle depicted above, we have highlighted four diagonal sequences:
+  \begin{quote}
+    \begin{description}
+    \item[Purple] $\{ 1, 1, 1, \dotsc \} = \{ 1 \}_{n=0}^\infty$.
+    \item[Yellow] $\{ 1, 2, 3, \dotsc \} = \{ n \}_{n=1}^\infty$.
+    \item[Blue] $\{1, 3, 6, 10, 15, 21, \dotsc \} = \big\{ \tbinom{n}{2} \big\}_{n=2}^\infty$.
+    \item[Green] $\{ 1, 4, 10, 20, 35, \dotsc \} = \big\{ \tbinom{n}{3} \big\}_{n=3}^\infty$.
+    \end{description}
+  \end{quote}
+  Find simplified formulas for the terms of the blue and green sequences without using binomial numbers or factorials in
+  your expressions.
+  
+\end{problem}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End
+

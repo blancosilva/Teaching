@@ -1,0 +1,265 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{tikz,array}
+\usetikzlibrary{arrows}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent{\large\bf MATH 242}\hfill{\large\bf Test \#2}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 1/6}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \cr
+             {\bf Name: } & \makebox[12cm]{\hrulefill}\cr & \cr
+                                                            {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\cr & \cr
+                                                                                                            \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and your VIP ID in the space provided above.
+\item The test has six (6) pages, including this one.
+\item Show sufficient work to justify all answers unless otherwise stated in the problem.  Correct answers with
+  inconsistent work may not be given credit.
+\item Credit for each problem is given at the right of each problem number.
+\item There is an extra-credit problem on the last page, together with a table of Laplace Transforms.  Points obtained
+  in the extra-credit problem will be added to the score of exam \#1.
+\end{itemize}
+\hrule
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    &&\cr
+       {\large\bf Page} & {\large\bf Max} & {\large\bf Points} \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 2} & \Large 40 & \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 3} & \Large 20 & \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 4} & \Large 20 & \cr
+    &&\cr
+       \hline
+    &&\cr
+       {\Large 5} & \Large 20 & \cr
+    &&\cr
+       \hline\hline
+    &&\cr
+       {\large\bf Total} & \Large 100 & \cr
+    &&\cr
+       \hline
+  \end{tabular}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2
+\noindent{\large\bf MATH 242}\hfill{\large\bf Test \#2}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 2/6}\hrule
+
+\bigskip
+\begin{problem}[40 pts---10 pts each]
+  Find the Laplace transform of the following functions:
+  \begin{enumerate}
+  \item $f(x) = 2x^3-7x+4$
+    \vspace{1cm}
+    \begin{flushright}
+      \begin{tikzpicture}
+        \draw (-0.75cm, 0.5cm) node{$F(s) =$};
+        \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+        \draw (4cm, 0cm) node {$(s> \quad)$};
+      \end{tikzpicture}
+    \end{flushright}
+  \item $f(x) = 3e^{2x} - 7e^{-8x} + \cos\big(\tfrac{\pi}{2} x\big)$
+    \vspace{1cm}
+    \begin{flushright}
+      \begin{tikzpicture}
+        \draw (-0.75cm, 0.5cm) node{$F(s) =$};
+        \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+        \draw (4cm, 0cm) node {$(s> \quad)$};
+      \end{tikzpicture}
+    \end{flushright}
+  \item $f(x) = 5x^2\sin (3x)$
+    \vspace{3cm}
+    \begin{flushright}
+      \begin{tikzpicture}
+        \draw (-0.75cm, 0.5cm) node{$F(s) =$};
+        \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+        \draw (4cm, 0cm) node {$(s> \quad)$};
+      \end{tikzpicture}
+    \end{flushright}
+  \item $f(x) = 3xe^{-2x}\sin x$
+    \vspace{5cm}
+    \begin{flushright}
+      \begin{tikzpicture}
+        \draw (-0.75cm, 0.5cm) node{$F(s) =$};
+        \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+        \draw (4cm, 0cm) node {$(s> \quad)$};
+      \end{tikzpicture}
+    \end{flushright}
+  \end{enumerate}
+\end{problem}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3
+\noindent{\large\bf MATH 242}\hfill{\large\bf Test \#2}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 3/6}\hrule
+
+\bigskip
+\begin{problem}[20 pts---10 pts each]
+  Find the inverse Laplace transform of the following functions in the given domains.
+  \begin{enumerate}
+  \item $F(s) = \dfrac{3s-2}{s^2+2s-15}$, $(s>3)$
+    \vspace{8cm}
+    \begin{flushright}
+      \begin{tikzpicture}
+        \draw (-0.75cm, 0.5cm) node{$f(x) =$};
+        \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+      \end{tikzpicture}
+    \end{flushright} 
+  \item $F(s) = \dfrac{4(s-2)}{(s-2)^2+16}$, $(s>2)$
+    \vspace{8cm}
+    \begin{flushright}
+      \begin{tikzpicture}
+        \draw (-0.75cm, 0.5cm) node{$f(x) =$};
+        \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+      \end{tikzpicture}
+    \end{flushright} 
+  \end{enumerate}
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 4
+\noindent{\large\bf MATH 242}\hfill{\large\bf Test \#2}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 4/6}\hrule
+
+\bigskip
+\begin{problem}[20 pts]
+  Use the definition of the Laplace transform to find that 
+  \begin{equation*}
+    \mathcal{L}\{ 5\cos 2x \} = \frac{5s}{s^2 + 4}
+    \text{ for }s>0.
+  \end{equation*}
+
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 5
+\noindent{\large\bf MATH 242}\hfill{\large\bf Test \#2}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 5/6}\hrule
+
+\bigskip
+\begin{problem}[20 pts]
+  Use techniques based on the Laplace transform to solve the initial value problem $y''+y'-2y=e^x$ that satisfies
+  $y(0)=0, y'(0)=\tfrac{4}{3}$.  Compute the numerical value of all relevant constants.
+  \vspace{20cm}
+  \begin{flushright}
+    \begin{tikzpicture}
+      \draw (0cm,-0.2cm) rectangle (5cm,1.2cm);
+    \end{tikzpicture}
+  \end{flushright}
+\end{problem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 6
+\noindent{\large\bf MATH 242}\hfill{\large\bf Test \#2}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page 6/6}\hrule
+
+\bigskip
+\begin{center}
+  % \includegraphics[width=\linewidth]{table.pdf}
+  \begin{tikzpicture}
+    \node[scale=0.97]{
+      \begin{tabular}{|m{1.2cm}|m{4.3cm}l||m{2.1cm}|m{4.3cm}l|}
+        \hline
+        $f(x)$\raisebox{0.5cm} & $\mathcal{L}\{f\}=\int_0^\infty e^{-sx}f(x)\, dx$\raisebox{0.5cm} & & \raisebox{0.5cm} & \raisebox{0.5cm} & \\[0.4cm] 
+        \hline \hline
+        $1$ & $\dfrac{1}{s}$\raisebox{0.6cm} & $s>0$ &
+                                                       $cf(x)\pm g(x)$ & $cF(s) \pm G(s)$\raisebox{0.4cm} & $s>max(a,b)$ \\[0.4cm]
+        \hline
+        $x^n$ & $\dfrac{n!}{s^{n+1}}$\raisebox{0.6cm} & $s>0$ & $e^{\alpha x}f(x)$ & $F(s-\alpha)$\raisebox{0.4cm} & $s>a+\alpha$ \\[0.4cm]
+        \hline
+        $e^{\alpha x}$ & $\dfrac{1}{s-\alpha}$\raisebox{0.6cm} & $s>\alpha$ &
+                                                                              $x^n f(x)$ & $(-1)^n F^{(n)}(s)$\raisebox{0.4cm} & $s>a$ \\[0.4cm]
+        \hline
+        $\sin \beta x$ & $\dfrac{\beta}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$ & $f'(x)$ & $s F(s) -f(0)$\raisebox{0.4cm} & \\[0.4cm]
+        \hline
+        $\cos \beta x$ & $\dfrac{s}{s^2+\beta^2}$\raisebox{0.6cm} & $s>0$ &$f''(x)$\raisebox{0.4cm} & $s^2F(s) - sf(0)  - f'(0)$ & \\[0.4cm]
+        \hline
+      \end{tabular} };
+  \end{tikzpicture}
+\end{center}
+\hrule
+\begin{problem}[20 pts--extra credit for exam \#1]
+Solve the previous problem using either the method of \emph{variation of parameters}, or \emph{undetermined
+  coefficients}.  Do compute the value of all relevant constants.
+\end{problem}
+
+
+
+\end{document}
+
+y''+y'-2y=e^x
+r^2+r-2=0
+r=1,-2
+y_1 = e^x        y'_1 = e^x          y''_1 = e^x
+y_2 = e^{-2x}    y'_2 = -2e^{-2x}    y''_2 = 4e^{-2x}
+y = Ae^x + Be^{-2x} + y_p(x)
+y_p(x) = Cxe^x because s=1
+y'_p(x) = Ce^x + Cxe^x
+y''_p(x) = 2Ce^x + Cxe^x
+
+y = Ae^x + Be^{-2x} + Cxe^x
+y' = Ae^x -2Be^{-2x} + Ce^x + Cxe^x
+y'' = Ae^x +4Be^{-2x} + 2Ce^x + Cxe^x
+
+   Ae^x + 4Be^{-2x} + 2Ce^x +  Cxe^x
+   Ae^x - 2Be^{-2x} +  Ce^x +  Cxe^x
+ -2Ae^x - 2Be^{-2x}         - 2Cxe^x
+======================================   
+                      3Ce^x
+
+                      
+It has to be 3Ce^x = e^x; therefore, C=1/3.  The general solution is:
+y = Ae^x + Be^{-2x} + (1/3)xe^x
+
+Now, for the initial conditions:
+y(0)  =   0:     A+B=0
+y'(0) = 4/3:     A-2B+1/3=4/3
+
+Solution: (A=1/3, B=-1/3)
+
+y = \tfrac{1}{3}\big( e^x - e^{-2x} + xe^x \big)
+
+
+With Laplace:
+
+y''+y'-2y = e^x
+s^2 F - 4/3 + sF - 2F = (s-1)^{-1}
+(s^2+s-2)F = (s-1)^{-1} +4/3
+
+F = (s-1)^{-1} (s-1)^{-1} (s+2)^{-1} + (4/3) (s-1)^{-1} (s+2)^{-1}
+Do the PFD, and get the right answers.
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+
