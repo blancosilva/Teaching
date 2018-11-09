@@ -1,0 +1,86 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [11pt, oneside]
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+#+LATEX_HEADER: \pagestyle{empty}
+#+LATEX_HEADER: \setlength{\textwidth}{7in}
+#+LATEX_HEADER: \setlength{\oddsidemargin}{-0.5in}
+#+LATEX_HEADER: \setlength{\topmargin}{-1.0in}
+#+LATEX_HEADER: \setlength{\textheight}{9.5in}
+#+OPTIONS: toc:nil
+
+* Problems in Chapter 7
+
+** Prove the following statements.  These exercises are cumulative, covering all techniques addressed in Chapters 4--7.
+
+*** Suppose \( x \in \mathbb{Z}. \) Then \( x \) is even if and only if \( 3x+5 \) is odd.
+    - Prove \( x \) even implies \( 3x+5 \) odd (easy)
+    - Prove \( 3x+5 \) odd implies \(x\) even. (contrapositive, easy)
+*** Suppose \( x in \mathbb{Z}. \)  Then \( x \) is odd if and only if \( 3x+6 \) is odd.
+    - Similar to previous
+*** Given an integer \( a, \) then \( a^3+a^2+a \) is even if and only if \( a \) is even.
+    - Similar to previous: \( (2n)^3 + (2n)^2 + 2n. \)
+*** Given an integer \( a, \) then \( a^2+4a+5 \) is odd if and only if \( a \) is even.
+    - Similar to previous: \( (2n)^2 + 4(2n)+ 5. \)
+*** An integer \( a \) is odd if and only if \( a^3 \) is odd.
+    - Similar to previous: \( (2n+1)^3 = (2n)^3 + 3(2n)^2 + 3(2n) + 1. \)
+*** Suppose \( x, y \in \mathbb{R}. \)  Then \( x^3+x^2y=y^2+xy \) if and only if \( y=x^2 \) or \( y=-x. \)
+    - \( x^3 + x^2 y - y^2 - x y = x^3 + y x^2 - y^2 - xy = (x+y)(x^2-y). \)
+*** Suppose \( x, y \in \mathbb{R}. \)  Then \( (x+y)^2=x^2+y^2 \) if and only if \( x=0 \) or \( y=0. \)
+    - \( (x+y)^2-x^2-y^2 = 2xy. \)
+*** Suppose \( a, b \in \mathbb{Z}. \) Prove that \( a \equiv b \pmod{10} \) if and only if \( a \equiv b \pmod{2} \) and \( a \equiv b \pmod{5}. \)
+    - \( (a-b)=10q = 2\cdot 5 \cdot q. \)
+*** Suppose \( a \in \mathbb{Z}. \) Prove that \( 14 \vert a \) if and only if \( 7 \vert a \) and \( 2 \vert a. \)
+    - \( a = 14q = 2\cdot 7 \cdot q. \)
+*** If \( a \in \mathbb{Z}, \) then \( a^3 \equiv a \pmod{3}. \)
+    - \( a^3 - a = a(a^2 -1) = a(a-1)(a+1). \)
+    - These are three consecutive numbers!  Do cases: \( a= 3n+k \) for \( k=0,1,2 \).
+    - \( (3n)^3-(3n) \) trivial.
+    - \( (3n+1)^2-(3n+1) = (3n)^3 + 3(3n)^2 + 3(3n) + 1 - 3n - 1. \)
+    - \( (3n+2)^2-(3n+2) = (3n)^3 + 3\cdot 2 (3n)^2 + 3\cdot 2^2 (3n) + 2^3 -3n -2 = 3q + 6. \)
+*** Suppose \( a,b \in \mathbb{Z}. \)  Prove that \( (a-3)b^2 \) is even if and only if \( a \) is odd or \( b \) is even.
+    - 
+*** There exists a positive real number \( x \) for which \( x^2 < \sqrt{x}. \)
+    - Existence. Draw both curves to find any such point.
+*** Suppose \( a, b \in \mathbb{Z}. \) If \( a+b \) is odd, then \( a^2+b^2 \) is odd.
+    - \( a^2 + b^2 = (a+b)^2 - 2ab \) 
+    - \( (a+b) \) odd gives \( (a+b)^2 \) odd, and result follows.
+*** Suppose \( a \in \mathbb{Z}. \) Then \( a^2 \vert a \) if and only if \( a \in \{ -1, 0 1 \} \).
+    - We've done this before.
+*** Suppose \( a, b \in \mathbb{Z}. \)  Prove that \( a+b \) is even if and only if \( a \) and \( b \) have the same parity.
+    - Easy.  Cases.
+    - Do contrapositive for one of the directions.
+*** Suppose \( a, b \in \mathbb{Z}. \) If \( ab \) is odd, then \( a^2+b^2 \) is even.
+    - Similar to a previous problem.
+*** There is a prime number between 90 and 100.
+    - Find one.  Google gives 97.
+*** There is a set \( X \) for which \( \mathbb{N} \in X \) and \( \mathbb{N} \subseteq X \).
+    - Construct one. \( X = \mathbb{N} \cup \{ \mathbb{N} \}. \) 
+*** If \( n \in \mathbb{N}, \) then \( 2^0 + 2^1 + 2^2 + \dotsb + 2^n = 2^{n+1}-1. \)
+    - Direct from the polynomial division \( \dfrac{x^{n+1}-1}{x-1}. \)
+    - Another way: 
+      - Set \( \xi = 1 + r^1 + r^2 + \dotsb + r^n \) for any \( r>0. \)
+      - \( (1-r)\xi = \xi - r\xi = 1 + r^2 + r^3 + \dotsb + r^n - r^2 - r^3 - \dotsb - r^{n+1} = 1 - r^{n+1}. \)
+      - Therefore, \( \xi = \frac{r^{n+1}-1}{r-1}. \) Drop the mic for \( r=2. \)
+*** There exists \( n \in \mathbb{N} \) for which \( 11 \vert (2^n-1). \)
+    - Find one, or prove existence by contradiction.
+#+BEGIN_SRC python
+return [2**n-1 for n in range(1,20) if (2**n-1)%11==0]
+#+END_SRC
+
+
+*** Every real solution of \( x^3+x+3=0 \) is irrational.
+*** If \( n \in \mathbb{Z}, \) then \( 4 \vert n^2 \) or \( 4 \vert (n^2-1). \)
+*** Suppose \( a, b \) and \( c \) are integers.  If \( a \vert b \) and \( a \vert (b^2-c), \) then \( a \vert c. \)
+*** If \( a \in \mathbb{Z}, \) then \( 4 \!\nmid\! (a^2-3). \)
+*** If \( p > 1 \) is an integer and \( n \!\nmid\! p \) for each integer for which \( 2 \leq n \leq \sqrt{p}, \) then \( p \) is prime.
+*** The product of any \( n \) consecutive positive integers is divisible by \( n!. \)
+*** Suppose \( a, b \in \mathbb{Z}. \)  If \( a^2 + b^2 \) is a perfect square, then \( a \) and \( b \) are not both odd.
+*** Prove the division algorithm.  If \( a, b \in \mathbb{N}, \) there exist _unique_ integers \( q, r \) for which \( a = bq + r, \) and \( 0\leq r < b. \) 
+*** If \( a \vert bc \) and \( \gcd(a,b) = 1, \) then \( a \vert c. \) (suggestion: use the proposition in page 126)
+*** Suppose \( a, b, p \in \mathbb{Z} \) and \( p \) is prime.  Prove that if \( p \vert ab \) then \( p \vert a \) or \( p \vert b \).  (suggestion: use the proposition in page 126)
+*** If \( n \in \mathbb{Z}, \) then \( \gcd(n,n+1) = 1 \).
+*** If \( n \in \mathbb{Z}, \) then \( \gcd(n,n+2) \in \{ 1, 2 \}. \)
+*** In \( n \in \mathbb{Z}, \) then \( \gcd(2n+1, 4n^2+1)=1. \)
+*** If \( \gcd(a,c)=\gcd(b,c)=1, \) then \( \gcd(ab,c)=1. \) (suggestion: use the proposition in page 126).
+*** Suppose \( a, b \in \mathbb{N}. \) Then \( a = \gcd(a,b) \) if and only if \( a \vert b. \)
+*** Suppose \( a, b in \mathbb{N}. \)  Then \( a = \lcm(a,b) \) if and only if \( b \vert a. \)
