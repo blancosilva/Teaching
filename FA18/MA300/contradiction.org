@@ -1,0 +1,63 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [11pt, oneside]
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+#+LATEX_HEADER: \pagestyle{empty}
+#+LATEX_HEADER: \setlength{\textwidth}{7in}
+#+LATEX_HEADER: \setlength{\oddsidemargin}{-0.5in}
+#+LATEX_HEADER: \setlength{\topmargin}{-1.0in}
+#+LATEX_HEADER: \setlength{\textheight}{9.5in}
+#+OPTIONS: toc:nil
+
+* Problems in Chapter 6
+** Use the method of proof by contradiction to prove the following statements.
+*** If \(n\in\mathbb{Z}\) is odd, then \(n^2\) is odd.
+    - assume \(n\) odd, \(n^2\) even
+    - \(n^2=2a\) for \( a \in \mathbb{N} \) and \(n=2b+1\) for \( b in \mathbb{N} \)
+    - \(n^2 = (2b+1)^2 = 4b^2 + 1 + 4b\) odd. !!
+*** If \(n^2\) is odd, then \(n\) is odd.
+    - \(n^2\) odd and \(n=2a\).
+    - \(n^2=4a^2\) even.
+*** Prove that \(\sqrt[3]{2}\) is irrational.
+    - \( 2 = a^3/b^3 \), \(a,b \in \mathbb{N} \) with no common denominators.
+    - \( 2b^3 = a^3  \)
+    - \( a^3 \) is even. Either \(a\) even or \(a^2\) even.  In any case, \(a\) must be even.
+    - \(a = 2c\)
+    - \(2b^3=8c^3\) or \(b^3 = 4c^3\).  \(b\) is even...
+*** Prove that \(sqrt{6}\) is irrational.
+    - \( 6b^2 = a^2 \), \(a\) and \(b\) with no common denominator.
+    - \(a\) is even. 
+    - Also, \(a^2\) is a multiple of 3.
+    - \( a \) is a multiple of 3 as well. (why?: k=0,1,2 (3b+k)^2 = 9b^2 + k^2 + 6bk = 3(3b^2+2bk)+k^2 divisible by 3
+      only if k=0)
+    - \( a \) is a multiple of 6:  a=6c
+    - \(6b^2 = (6c)^2 = 36c^2, \) or \(b^2 = 6c^2 \)
+    - \( b \) is even.
+*** TODO Prove that \(\sqrt{3}\) is irrational.
+*** Prove that \(a^2-4b-2 \neq 0\) for \(a,b\in\mathbb{Z}\).
+    - Assume \( a^2 = 2+4b = 2(1+2b).\)
+    - \( a^2 \) and \( a \) are even. \( a = 2c. \)
+    - \( 2+4b = 4c^2 \), or \( 1 = 2(c^2-b). \)  !!
+*** Prove that \(a^2-4b-3 \neq 0\) for \(a,b\in\mathbb{Z}\).
+    - Assume \( a^2 = 4b+3 = 2(2b+1)+1. \)
+    - \( a^2 \) and \( a \) are odd. \( a=2c+1. \)
+    - \( (2c+1)^2 = 4b+3 \) or \( 4c^2 + 1 +4c = 4b + 3 \), or \( 2(c^2 +c -b) = 1. \)
+*** For \(a, b, c\in\mathbb{Z}\), if \(a^2+b^2=c^2\), then \( a\) or \(b\) is even.
+    - Assume \( a^2 + b^2 = c^2 \) but both \(a\) and \(b\) are odd.
+    - \( a=2A+1, b=2B+1 \)
+    - \( a^2 + b^2 = 4A^2 + 1 + 4A + 4B^2 + 1 + 4B = 4(A^2 + B^2 + A + B) + 2\) is even.
+    - 1 = 1^2 is odd, 9=3^2 is odd. !!
+*** TODO Suppose \(a,b\in\mathbb{R}\).  If \(a\) is rational and \(ab\) is irrational, then \(b\) is irrational.
+*** There exist no integers \(a\) and \(b\) for which \( 21a +30b = 1. \)
+    - Assume this is false.  Then \( 3(7a+10b) = 1 \). !!
+*** There exist no integers \(a\) and \(b\) for which \( 18a +6b = 1. \)
+    - Assume this is false. Then \( 6(3a+b)=1 \). !!
+*** TODO For every positive \(x \in \mathbb{Q},\) there is a positive \(y \in \mathbb{Q} \) for which \(y<x\).
+*** TODO For every \( x \in [\pi/2, \pi]\), \(\sin x - \cos x \geq 1.\)
+*** If \(A\) and \(B\) are sets, then \(A\cap(B\setminus A) = \emptyset.\)
+    - Let \(x in A \cap (B \setminus A)\).
+    - \( x \in A \) and \( x \not\in A\). !!
+*** If \(b\in\mathbb{Z}\) and \(b\) does not divide \(k\) for every \( k \in \mathbb{N}, \) then \( b=0.\)
+    - \(b\) does not divide any number. Assume \(b \neq 0\).
+    - But then \(b = b\cdot 1\). \( b \) divides itself. !!
+*** TODO If \(a\) and \(b\) are positive real numbers, then \(a+b\geq 2\sqrt{ab}\).
+

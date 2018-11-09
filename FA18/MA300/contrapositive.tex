@@ -1,0 +1,223 @@
+% Created 2018-11-05 Mon 12:57
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt, oneside]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+\author{Francisco J. Blanco-Silva}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Francisco J. Blanco-Silva},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.0.50 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section{Problems in Chapter 5}
+\label{sec:orge81f431}
+\subsection{Use the method of contrapositive proof to prove the following statements.  (In each case you should also think about how a direct proof would work.  You will find in most cases that contrapositive is easier.)}
+\label{sec:orgf0ff73a}
+\begin{enumerate}
+\item Suppose \(n \in \mathbb{Z}\).  if \(n^2\) is even, then \(n\) is even.
+\label{sec:orgbfde277}
+\begin{proof} (contrapositive) Assume $n$ is odd. \end{proof}
+\item Suppose \(n \in \mathbb{Z}\).  if \(n^2\) is odd, then \(n\) is odd.
+\label{sec:org8305869}
+\begin{proof} (contrapositive)  Assume $n$ is even. \end{proof}
+\item Suppose \(a, b \in \mathbb{Z}\).  If \(a^2(b^2-2b)\) is odd, then \(a\) and \(b\) are odd.
+\label{sec:orgfd6e89c}
+\begin{proof} (Contrapositive) Assume $a$ is an even number. \end{proof} 
+\item Suppose \(a, b, c \in \mathbb{Z}\).  If \(a\) does not divide \(bc\), then \(a\) does not divide \(b\).
+\label{sec:org8c2e6a6}
+\begin{proof} (contrapositive) Assume there exists $q \in \mathbb{Z}$ so that $b=qa$. \end{proof}
+\item Suppose \(x \in \mathbb{R}\).  If \(x^2+5x<0\), then \(x < 0\).
+\label{sec:org50e404d}
+\begin{proof} (contrapositive) Assume $x \geq 0$.  Then $x^2+5x = x(x+5) \geq 0$. \end{proof}
+\item Suppose \(x \in \mathbb{R}\).  If \(x^3-x>0\) then \(x > -1\).
+\label{sec:org1885ee7}
+\begin{proof} (contrapositive) Assume $x \leq -1$.  In that case, $x^3-x =x(x+1)(x-1).$ \end{proof}
+\item Suppose \(a,b \in \mathbb{Z}\).  If both \(ab\) and \(a+b\) are even, then both \(a\) and \(b\) are even.
+\label{sec:org7f72778}
+\begin{proof} (contrapositive) Assume $a$ is odd. \end{proof}
+\item {\bfseries\sffamily TODO} Suppose \(x \in \mathbb{R}\).  If \(x^5-4x^4+3x^3-x^2+3x-4 \geq 0\), then \(x \geq 0\).
+\label{sec:org09c74fe}
+\begin{itemize}
+\item \(x^5-x^2 -4(x^4+1) + 3(x^3+x) = x^2(x^3-1) + 3x(x^2+1) -4(x^4+1)\)
+\item \(x^5 +3x^3 +3x < 4x^4 +x^2 + 4\)
+\item $\backslash$( x(x\(^{\text{4}}\) +3x\(^{\text{2}}\) +3) <
+\end{itemize}
+\item Suppose \(n \in \mathbb{Z}\).  If \(3 \!\nmid\! n^2\), then \(3 \!\nmid\! n\).
+\label{sec:orgb2706ee}
+\begin{proof} (contrapositive) Assume $n$ is a multiple of 3. \end{proof}
+\item Suppose \(x, y, z \in \mathbb{Z}\) and \(x \neq 0\).  If \(x \!\nmid\! yz\), then \(x \!\nmid\! y\) and \(x \!\nmid\! z\).
+\label{sec:org9a84801}
+\begin{proof} (contrapositive) Assume $y$ is a multiple of $x$. \end{proof}
+\item Suppose \(x, y \in \mathbb{Z}\).  If \(x^2(y+3)\) is even, then \(x\) is even or \(y\) is odd.
+\label{sec:orgeca5c18}
+\begin{proof} (contrapositive) Assume $x=2a+1$ and $y-2b$ for some $a,b \in \mathbb{Z}$. \end{proof}
+\item Suppose \(a \in \mathbb{Z}\).  If \(a^2\) is not divisible by 4, then \(a\) is odd.
+\label{sec:org6d282fd}
+\begin{proof} (contrapositive) Assume $a=2x$ for some $x \in \mathbb{Z}$. \end{proof}
+\item {\bfseries\sffamily TODO} Suppose \(x \in \mathbb{R}\).  If \(x^5 + 7x^3 + 5x \geq x^4 + x^2 + 8\), then \(x \geq 0\).
+\label{sec:orgd6b51f5}
+\end{enumerate}
+
+\subsection{Prove the following statements using either direct or contrapositive proof.  Sometimes one approach will be much easier than the other.}
+\label{sec:org88462f4}
+\begin{enumerate}
+\item If \(a, b \in \mathbb{Z}\) and \(a\) and \(b\) have the same parity, then \(3a +7\) and \(7b-4\) do not.
+\label{sec:org80b6ad5}
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Case 1 & Case 2\\
+\hline
+\(a=2x, b=2y\) & \(a=2x+1, b=2y+1\)\\
+\(3a+7 = 6x+7 = 2(3x+3)+1\) & \(3a+7=6x+10=2(3x+5)\)\\
+\(7b-4 = 14x-4 = 2(7x-2)\) & \(7b-4 = 14y-11 = 2(7y-5)-1\)\\
+\hline
+\end{tabular}
+\end{center}
+
+\item Suppose \(x \in \mathbb{Z}\).  If \(x^3-1\) is even, then \(x\) is odd.
+\label{sec:orgabc1db8}
+\begin{proof} (contrapositive) Assume $x$ is even. \end{proof}
+\item Suppose \(x \in \mathbb{Z}\).  If \(x+y\) is even, then \(x\) and \(y\) have the same parity.
+\label{sec:orgcac42dc}
+\begin{proof} (contrapositive) Assume $x=2a$ and $y=2b+1$ for integers $a,b$. \end{proof}
+\item If \(n\) is odd, then \(8 \vert (n^2-1)\).
+\label{sec:org805af23}
+\begin{proof}
+Assume $n=2a+1$ for some integer $a$.  Then $n^2-1 = (2a+1)^2 -1 = 4a^2+4a = 4a(a+1)$.  Notice $a$ and $a+1$ have
+different parity.
+\end{proof}
+\item For any \(a, b \in \mathbb{Z},\) it follows that \((a+b)^3 \equiv a^3 + b^3 \pmod{3}.\)
+\label{sec:org0d1cf59}
+\begin{proof}
+We have to prove that 3 divides $(a+b)^3-a^3-b^3$ for all $a,b\in\mathbb{Z}$.
+\end{proof}
+\item Let \(a, b \in \mathbb{Z}\) and \(n \in \mathbb{N}.\) If \(a \equiv b \pmod{n}\) and \(a \equiv c \pmod{n},\) then \(c \equiv b \pmod{n}.\)
+\label{sec:orgb577aab}
+\begin{itemize}
+\item \(a-b=qn\) for some \(q\). Or \(b=a-qn\).
+\item \(a-c=pn\) for some \(p\). Or \(c=a-pn\).
+\item \(c-b=a-pn-a+qn=(q-p)n\).
+\end{itemize}
+\item If \(a \in \mathbb{Z}\) and \(a \equiv 1 \pmod{5},\) then \(a^2 \equiv 1 \pmod{5}.\)
+\label{sec:org16634d8}
+\begin{itemize}
+\item \(a-1=5q\) for some \(q\). Or \(a=5q+1\)
+\item \(a^2=(5q+1)^2=25q+1+10q\), or \(a^2-1=5\cdot7q\).
+\end{itemize}
+\item Let \(a, b \in \mathbb{Z}\) and \(n \in \mathbb{N}.\)  If \(a \equiv b \pmod{n},\)  then \(a^3 \equiv b^3 \pmod{n}.\)
+\label{sec:org78861f3}
+\begin{proof} Notice $a^3-b^3 = (a-b)(a^2+b^2+ab)$. \end{proof}
+\item Let \(a \in \mathbb{Z}, n \in \mathbb{N}.\) If \(a\) has a remainder \(r\) when divided by \(n,\) then \(a \equiv r \pmod{n}.\)
+\label{sec:org543eff4}
+\begin{proof} $a-r=qn$. \end{proof}
+\item Let \(a, b, c \in \mathbb{Z}\) and \(n \in \mathbb{N}.\)  If \(a \equiv b \pmod{n},\)  then \(ca \equiv cb \pmod{n}.\)
+\label{sec:orgefb18de}
+\begin{proof} $ca-cb=c(a-b)$. \end{proof}
+\item If \(a \equiv b \pmod{n}\) and \(c \equiv d \pmod{n},\) then \(ac \equiv db \pmod{n}.\)
+\label{sec:org6fc9128}
+\begin{itemize}
+\item \(a-b=qn\) and \(c-d=pn\) for some integers \(p,q\).
+\item \(a=b+qn, c=d+pn\), and thus \(ac = (b+qn)(d+n) = bd + bpn + dqn + pqn^2 = bd + n(bp+dq+pqn)\)
+\end{itemize}
+\item If \(n \in \mathbb{N}\) and \(2^n - 1\) is prime, then \(n\) is prime.
+\label{sec:org582459c}
+\begin{proof} (contrapositive) Assume \(n\) is not prime.  We can write it as \(n=pq\) where both \(p,q>1\).  Then \(2^n-1 = 2^{pq}-1\)
+\item {\bfseries\sffamily TODO} If \(n = 2^k -1\) for \(k \in \mathbb{N},\) then every entry in Row \(n\) of Pascal's Triangle is odd.
+\label{sec:org9107eb9}
+\begin{itemize}
+\item \(n=2^k-1\)
+\item \(\binom{n}{j} = (2^k-1)!/j!/(2^k-1-j)! = (2^k-1)(2^k-2)...(2^k-j)/j!\)
+\item Looks like there are exactly the same number of factors in numerator and denominator.  Let's explore around this idea.
+\item \(2^k-1\) are odd numbers.  Same if we substitute 1 with another odd number.
+\item \(\binom{2^k-1}{0}=1.\)
+\item \(\binom{2^k-1}{1} = 2^k-1.\)
+\item \(\binom{2^k-1}{2} = \frac{ (2^k-1)(2^k-2) }{ 2 } = \frac{ 2(2^k-1)(2^{k-1}-1) }{2} = (2^k-1)(2^{k-1}-1).\)
+Product of two odd numbers.
+\item \(\binom{2^k-1}{3} = \frac{ (2^k-1)2(2^{k-1}-1)(2^k-3) }{3\cdot 2} = \tfrac{1}{3}(2^k-1)(2^k-3).\) More odd
+stuff.  No two's. Notice how similar to the previous case.  Also, maybe we could prove on the side that 3 divides
+(2\(^{\text{k}}\)-1)(2\(^{\text{k}}\)-3).
+\item \(\binom{2^k-1}{4} = \frac{ (2^k-1)2(2^{k-1}-1)(2^k-3)(2^k-4) }{4\cdot 3\cdot 2} = \binom{2^k-1}{3} \cdot \frac{
+      2^k-4 }{4} = \binom{2^k-1}{3} (2^{k-2}-1).\)  A bunch of no-two's!  So far, so good.
+\item \(\binom{2^k-1}{5} = \frac{ (2^k-1)\dotsb(2^k-5) }{5\cdot 4! } = \binom{2^k-1}{4} \frac{ 2^k-5 }{5}.\)  Hmmm.
+\item \(\binom{2^k-1}{6} = \binom{2^k-1}{5} \frac{ 2^k-6 }{6} = \binom{2^k-1}{5} \frac{ 2^{k-1}-3 }{3}\). Still can't
+see it through, but almost.
+\item Back to the 5:
+\end{itemize}
+
+\(\begin{equation*} \binom{2^k-1}{5} = (2^k-1) \cdot \frac{ 2^k-2 }{2} \cdot \frac{ 2^k-3 }{3} \Cdot \frac{ 2^k-4 }{4} \cdot \frac{2^k-5 }{5} \\ = \underbrace{(2^k-1) (2^{k-1}-1) (2^{k-2}-1)}_{\text{bunch of odds}} \frac{ 2^k-3 }{3} \cdot \frac{2^k-5 }{5}.  \end{equation*}\)
+\item {\bfseries\sffamily DONE} If \(a \equiv 0 \pmod{4}\) or \(a \equiv 1 \pmod{4},\) then \(\binom{a}{2}\) is even.
+\label{sec:org256b45c}
+\begin{itemize}
+\item \(\binom{a}{2} = (1/2)a!/(a-2)! = a(a-1)/2\)
+\item Case 1: \(a=4b\).
+\item \(\binom{4b}{2}=2b(4b-1),\) even.
+\item Case 2: \(a=4b+1\).
+\item \(\binom{4b+1}{2} = (4b+1)2b.\) even.
+\end{itemize}
+\item If \(n \in \mathbb{Z},\) then 4 does not divide \((n^2-3).\)
+\label{sec:orgb582303}
+\begin{enumerate}
+\item A direct proof with cases:
+\label{sec:orga92ee5e}
+\begin{itemize}
+\item Case 1: If \(n \equiv 0 \pmod{4},\) then \(n^2 \equiv 0 \pmod{4}\) as well.
+\item Case 2: If \(n \equiv 1 \pmod{4},\) then \(n = 4q+1\) and \(n^2 = 16q^2 + 1 + 8q\) for some \(q\). This
+means \(n^2 \equiv 1 \pmod{4}.\)
+\item Case 3: If \(n \equiv 2 \pmod{4},\) then \(n = 4q+2\) and \(n^2 = 16q^2 + 4 + 16q\) for some \(q\).  This
+means \(n^2 \equiv 0 \pmod{4},\)
+\item Case 4: If \(n \equiv 3 \pmod{4},\) then \(n = 4q+3\) and \(n^2 = 16q^2 + 9 + 8q = 8(2q^2+q+1)+1\) for some
+\(q\), This means \(n^2 \equiv 1 \pmod{4}.\)
+\item We've proven a bunch of things, actually, not only what we were given.
+\end{itemize}
+\item A proof by contrapositive/contradiction.
+\label{sec:org90b599f}
+\begin{itemize}
+\item Assume \(n^2 \equiv 3 \pmod{4}\).
+\item There exists \(q\) so that \(n^2 = 4q+3 = 2(2q+1)+1\).
+\item \(n^2\) is odd.
+\item \(n\) is odd. \(n = 2a+1\) for some \(a\)
+\item \(n^2 = (2a+1)^2 = 4a^2+4a+1 = 4(a^2+a)+1\)
+\item We have that \(4(a^2+a)+1 = 4q+3\)
+\item \(4(a^2+a-q) = 2\) Not possible. \(n\) cannot be an integer.
+\end{itemize}
+\end{enumerate}
+\item {\bfseries\sffamily TODO} If integers \(a\) and \(b\) are not both zero, then \(\gcd(a,b) = \gcd(a-b,b).\)
+\label{sec:org3f937cc}
+\item {\bfseries\sffamily TODO} If \(a \equiv b \pmod{n},\) then \(\gcd(a,n) = \gcd(b,n).\)
+\label{sec:org423ffd6}
+\begin{itemize}
+\item Assume WLOG that \(a>b.\) (if they are equal, nothing to prove)
+\item There is \(k\) that divides \(a\) and \(n\) but does not divide \(b\) and \(n\).
+\item Write \(a=kA, n=kN\)
+\item \(a -b = kA - b\).
+\item \(a-b = qn\)
+\end{itemize}
+\item {\bfseries\sffamily TODO} Suppose the division algorithm applied to \(a\) and \(b\) yields \(a = qb+r.\)  Then \(\gcd(a,b) = \gcd(r,b).\)
+\label{sec:org92ec658}
+\end{enumerate}
+\end{document}
