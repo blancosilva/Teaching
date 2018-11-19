@@ -1,0 +1,400 @@
+% Created 2018-11-18 Sun 22:14
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt, oneside]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+\author{Francisco J. Blanco-Silva}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Francisco J. Blanco-Silva},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.0.50 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section{Problems in Chapter 10}
+\label{sec:org1dc036f}
+\subsection{Prove the following statements with either induction, strong induction or proof by small counterexample.}
+\label{sec:org6ba4644}
+\begin{enumerate}
+\item For every integer \(n \in \mathbb{N},\) it follows that \(1+2+3+4+\dotsb +n = \frac{n^2+n}{2}.\)
+\label{sec:org2cf41db}
+\begin{itemize}
+\item Preparation. \((n+1)^2+(n+1) = n^2 + 1 + 2n + n + 1 = n^2+3n+2.\)
+\item Basis step: \(1 = \frac{1^2+1}{2}\)
+\item Inductive step: \(\sum_{k=1}^{n+1} k = (n+1) + \sum_{k=1}^n k = (n+1) + \frac{n^2+n}{2} =
+      \frac{2n+2+n^2+n}{2} = \frac{n^2+3n+2}{2} = \frac{(n+1)^2+(n+1)}{2}.\)
+\end{itemize}
+\item For every integer \(n \in \mathbb{N},\) it follows that \(1^2 + 2^2 + 3^2 + 4^2 + \dotsb + n^2 = \frac{ n(n+1)(2n+1) }{6}.\)
+\label{sec:org93a8054}
+\begin{itemize}
+\item Preparation. \((n+1)(n+2)(2n+3) = (n^2+3n+2)(2n+3) = 2n^3+9n^2+13n+6.\)
+\item Preparation (easier). \((n+2)(2n+3) = 2n^2+7n+6.\)
+\item Basis step: \(1 = \frac{1\cdot 2\cdot 3}{6}.\)
+\item Inductive step: \(\sum_{k=1}^{n+1} k^2 = (n+1)^2 + \sum_{k=1}^n k^2 = (n+1)^2 + \frac{n(n+1)(2n+1)}{6}
+      = \frac{ 6(n+1)^2 + n(n+1)(2n+1)}{6} = (n+1) \frac{ 6(n+1)+ n(2n+1) }{6} = (n+1) \frac{2n^2+7n+6}{6}.\)
+\end{itemize}
+\item For every integer \(n \in \mathbb{N},\) it follows that \(1^3 + 2^3 + 3^3 + 4^3 + \dotsb + n^3 = \frac{n^2(n+1)^2}{4}.\)
+\label{sec:orgfb47b3d}
+\begin{itemize}
+\item Preparation. \((n+2)^2 = n^2 + 4n + 4 = 4(n+1) + n^2.\)
+\item Basis step: \(1^3 = \frac{1^2\cdot 2^2}{4}.\)
+\item Inductive step: \(sum_{k=1}^{n+1} k^3 = (n+1)^3 + \sum_{k=1}^n k^3 = (n+1)^3 + \frac{n^2(n+1)^2}{4} =
+      (n+1)^2 \frac{ 4(n+1) + n^2 }{4} = \frac{(n+1)^2(n+2)^2}{4}.\)
+\end{itemize}
+\item If \(n \in \mathbb{N},\) then \(1\cdot 2 + 2\cdot 3 + 3\cdot 4 + 4\cdot 5 + \dotsb + n(n+1) = \frac{n(n+1)(n+2)}{3}.\)
+\label{sec:orgfdcdb68}
+\begin{itemize}
+\item Direct. \(\sum_{k=1}^n k(k+1) = \sum_{k=1}^n (k^2 + k) = \frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2} =
+      n(n+1)\frac{2n+1+3}{6} = \n(n+1)\frac{n+2}{3}.\)
+\item Basis step: \(1\cdot 2 = \frac{1 \cdot 2 \cdot 3}{3}.\)
+\item Inductive step: \(\sum_{k=1}^{n+1} k(k+1) = (n+1)(n+2) + \sum_{k=1}^n k(k+1) = (n+1)(n+2) +
+      \frac{n(n+1)(n+2)}{3} = (n+1)(n+2) \frac{ 3 + n }{3}.\)
+\end{itemize}
+\item If \(n \in \mathbb{N},\) then \(2^1 + 2^2 + 2^3 + \dotsb + 2^n = 2^{n+1}-2.\)
+\label{sec:org67f2ba8}
+\begin{itemize}
+\item Basis step: \(2^1 = 2^2-2.\)
+\item Inductive step: \(\sum_{k=1}^{n+1} 2^k = 2^{n+1} + \sum_{k=1}^n 2^k = 2^{n+1} + 2^{n+1}-2 =
+      2^{n+2} - 2.\)
+\end{itemize}
+\item For every natural number \(n,\) it follows that \(\sum_{k=1}^n (8k-5) = 4n^2-n.\)
+\label{sec:org5f78cb0}
+\begin{itemize}
+\item Direct. \(\sum_{k=1}^n (8k-5) = 8\sum_{k=1}^n k - 5n = 4n(n+1) - 5n = 4n^2 -n.\)
+\item Preparation. \(4(n+1)^2-(n+1) = 4(n^2+1+2n)-n-1 = 4n^2+7n+3.\)
+\item Basis step: \(3 = 4-1.\)
+\item Inductive step: \(\sum_{k=1}^{n+1} (8k-5) = 8(n+1)-5 + \sum_{k=1}^n (8k-5) = 8n+3 + 4n^2-n =
+      4n^2+7n+3 = 4(n+1)^2-(n+1).\)
+\end{itemize}
+\item If \(n \in \mathbb{N},\) then \(1\cdot 3 + 2\cdot 4 + 3\cdot 5 + 4\cdot 6 + \dotsb + n(n+2) = \frac{n(n+1)(2n+7)}{6}.\)
+\label{sec:org9c92794}
+\begin{itemize}
+\item Similar to previous.
+\end{itemize}
+\item If \(n \in \mathbb{N},\) then \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \dotsb + \frac{n}{(n+1)!} = 1 - \frac{1}{(n+1)!}.\)
+\label{sec:orgbb775d7}
+\begin{itemize}
+\item Basis step: \(\frac{1}{2!} = 1 - \frac{1}{2}.\)
+\item Inductive step: \(\sum_{k=1}^{n+1} \frac{k}{(k+1)!} = \frac{n+1}{(n+2)!} + \sum_{k=1}^n
+      \frac{k}{(k+1)!} = \frac{n+1}{(n+2)!} + 1 - \frac{1}{(n+1)!} = 1 + \frac{n+1}{(n+2)!} - \frac{n+2}{(n+2)!} = 1 -
+      \frac{1}{(n+2)!}.\)
+\end{itemize}
+\item For any integer \(n \geq 0,\) it follows that \(24 \vert (5^{2n}-1).\)
+\label{sec:orgaa5ff7f}
+\begin{itemize}
+\item Basis step: For \(n=0, 5^{2\cdot 0}-1 = 0,\) which is divisible by 24.
+\item Inductive step: \(5^{2(n+1)}-1 = 25\cdot 5^{2n} - 1 = 25 (5^{2n}-1+1) - 1 = 25 (5^{2n}-1) + 24.\)
+\end{itemize}
+\item For any integer \(n \geq 0,\) it follows that \(3 \vert (5^{2n}-1).\)
+\label{sec:org3c39ed5}
+\begin{itemize}
+\item Basis step as in previous problem.
+\item Inductive step: \(5^{2(n+1)}-1 = 25 (5^{2n-1}-1) + 3\cdot 8.\)
+\end{itemize}
+\item For any integer \(n \geq 0,\) it follows that \(3 \vert (n^3+5n+6).\)
+\label{sec:org8c2bfe6}
+\begin{itemize}
+\item Basis step: For \(n=0, 0^3+5\cdot 0 + 6 = 2\cdot 3.\)
+\item Inductive step: \((n+1)^3+5(n+1)+6 = (n^3+3n^2+3n+1) + 5n + 11 = n^3 + 3n^2 + 8n + 12 = (n^3+5n+6) + 3n^2 + 3n +
+      6 = (n^3+5n+6) + 3(n^2+n+2).\)
+\end{itemize}
+\item For any integer \(n \geq 0,\) it follows that \(9 \vert (4^{3n}+8).\)
+\label{sec:org448584f}
+\begin{itemize}
+\item Basis step: For \(n=0, 4^0+8 = 9.\)
+\item Inductive step: \(4^{3(n+1)} + 8 = 4^{3n+3} + 8 = 64\cdot 4^{3n} + 8 = 64 (4^{3n} + 8 - 8) + 8 = 64 (4^{3n}+8) +
+      8 - 64\cdot 8 = 64(4^{3n}+8) - 504 = 64(4^{3n}+8) - 9\cdot 56.\)
+\end{itemize}
+\item For any integer \(n \geq 0.\) it follows that \(6 \vert (n^3-n).\)
+\label{sec:org34a66d5}
+\begin{itemize}
+\item Same thing as previous.
+\end{itemize}
+\item Suppose that \(a \in \mathbb{Z}.\) Prove that \(5 \vert 2^n a\) implies \(5 \vert a\) for any \(n \in \mathbb{N}.\)
+\label{sec:org785f3e2}
+\begin{itemize}
+\item Let's rewrite this one: \(\forall n \in \mathbb{N}, P(a,n),\) where \(P(a,n)\) means "\(5 \vert 2^n a
+      \implies 5 \vert a.\)"
+\item For this one we are going to use \textbf{Strong Induction}, where we assume true all statements \(P(a,k)\) for \(1
+      \leq k \leq n.\)
+\item Basis step: We have to prove that \(5 \vert a \implies 5 \vert a\).  Trivial.
+\item The inductive hypothesis here is that for a particular \(n \in \mathbb{N},\) it is true that \(5 \vert 2^n a
+      \implies 5 \vert a.\)
+\item Inductive step.  We have to prove for \(n+1\) that \(5 \vert 2^{n+1} a \implies 5 \vert a.\)
+\item Let's try using a direct proof:
+\end{itemize}
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\(5 \vert 2^{n+1}a\) & hypothesis\\
+\hline
+\(\exists b \in \mathbb{Z}, 2^{n+1}a = 5b\) & definition\\
+\hline
+\(2^{n}(2a) = 5b\) & rewriting expression\\
+\hline
+\(5 \vert 2^{n} (2a)\) & rewriting as in \(P(2a,n)\)\\
+\hline
+\(5 \vert 2a\) & Induction hypothesis for \(k=n\)\\
+\hline
+\(5 \vert 2^{1}a\) & rewriting\\
+\hline
+\(5 \vert a\) & Induction hypothesis for \(k=1\)\\
+\hline
+\end{tabular}
+\end{center}
+\item If \(n \in \mathbb{N},\) then \(\frac{1}{1\cdot 2} + \frac{1}{2\cdot 3} + \frac{1}{3\cdot 4} + \frac{1}{4\cdot 5} + \dotsb + \frac{1}{n(n+1)} = 1 - \frac{1}{n+1}.\)
+\label{sec:org62b53e5}
+\begin{itemize}
+\item Basis step: \(\frac{1}{1\cdot 2} = 1 - \frac{2}.\)
+\item Inductive step: \(\sum_{k=1}^{n+1} \frac{1}{k(k+1)} = \frac{1}{(n+1)(n+2)} + \sum_{k=1}^n \frac{1}{k(k+1)} =
+      \frac{1}{(n+1)(n+2)} + 1 - \frac{1}{n+1} = 1 + \frac{1}{(n+1)(n+2)} - \frac{n+2}{(n+1)(n+2)} = 1 -
+      \frac{n+1}{(n+1)(n+2)}.\)
+\end{itemize}
+\item For every natural number \(n,\) it follows that \(2^n +1 \leq 3^n.\)
+\label{sec:orgaeb31cc}
+\begin{itemize}
+\item Basis step: \(2+1 = 3.\)
+\item Inductive step: 
+\begin{align*}
+2^{n+1} + 1 &= 2 \cdot 2^n + 1 = 2 (2^n+1-1) + 1 &&         \\
+&= 2 (2^n+1) - 1            &&\text{(rewrite)}              \\
+&\leq 2\cdot 3^n - 1        &&\text{(inductive hypothesis)} \\
+&\leq 2\cdot 3^n            &&\text{(obvious, no?)}         \\
+&\leq 3\cdot 3^n = 3^{n+1}  &&\text{(lol!)}
+\end{align*}
+\end{itemize}
+\item Suppose \(A_1, A_2, \dotsc, A_n\) are sets in some universal set \(U,\) and \(n \geq 2.\)  Prove that
+\label{sec:orgc13d3d5}
+\begin{equation*}
+(A_1 \cap A_2 \cap \dotsb \cap A_n)^\complement = A_1^\complement \cup A_2^\complement \cup \dotsb \cup
+A_n^\complement.
+\end{equation*}
+\begin{itemize}
+\item Basis step: \((A_1 \cap A_2)^\complement = A_1^\complement \cup A_2^\complement\) by de Morgan's Laws.
+\item Inductive step: \(\big( \bigcap_{k=1}^{n+1} A_k \big)^\complement = \big( \bigcap_{k=1}^n A_k
+      \big)^\complement \cup A_{n+1}^\complement.\)
+\end{itemize}
+\item Suppose \(A_1, A_2, \dotsc, A_n\) are sets in some universal set \(U,\) and \(n \geq 2.\)  Prove that
+\label{sec:org4fea14e}
+\begin{equation*}
+\((A_1 \cup A_2 \cup \dotsb \cup A_n)^\complement = A_1^\complement \cap A_2^\complement \cap \dotsb \cap
+A_n^\complement.
+\end{equation*}
+\begin{itemize}
+\item Exactly as the previous problem.
+\end{itemize}
+\item Prove that \(\frac{1}{1} + \frac{1}{4} + \frac{1}{9} + \dotsb + \frac{1}{n^2} \leq 2 - \frac{1}{n}.\)
+\label{sec:org2d1a669}
+\begin{itemize}
+\item Basic step: \(1 = 2 - 1.\)
+\item Inductive step:
+\begin{align*}
+\sum_{k=1}^{n+1} \frac{1}{k^2} &= \frac{1}{(n+1)^2} + \sum_{k=1}^n \frac{1}{k^2} && \\
+&\leq \frac{1}{(n+1)^2} + 2 - \frac{1}{n}  &&\text{(inductive hypothesis)} \\
+&= 2 + \frac{n}{n(n+1)^2} - \frac{(n+1)^2}{n(n+1)^2} && \\
+&= 2 - \frac{n^2+n+1}{n(n+1)^2}  && \\
+&= 2 - \frac{n^2+n}{n(n+1)^2} - \frac{1}{n(n+1)^2} && \\
+&\leq 2 - \frac{n(n+1)}{n(n+1)^2} &&\text{(lol)} \\
+&= 2 - \frac{1}{n+1}  
+\end{align*}
+\end{itemize}
+\item Prove that \((1+2+3+\dotsb+n)^2 = 1^3 + 2^3 + 3^3 + \dotsb + n^3\) for every \(n \in \mathbb{N}.\)
+\label{sec:orga536c01}
+\begin{itemize}
+\item Basis step: \(1^2 = 1^3.\)
+\item Induction step:
+\begin{align*}
+\big( 1+2+3 &+\dotsb+(n+1) \big)^2 && \\
+&= (1+2+3+\dotsb+n)^2 + (n+1)^2 + 2(1+2+3+\dotsb+n)(n+1) && \\
+&= \sum_{k=1}^n k^3 + (n+1)\big( (n+1) + 2(1+2+3+\dotsb+n) \big) &&\text{(inductive hypothesis)} \\
+&= \sum_{k=1}^n k^3 + (n+1)\big( (n+1) + n(n+1) \big)   &&\text{(Gauss ftw)} \\
+&= \sum_{k=1}^n k^3 + (n+1)^3.
+\end{align*}
+\end{itemize}
+\item If \(n \in \mathbb{N},\) then \(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \dotsb + \frac{1}{2^n -1} + \frac{1}{2^n} \geq 1 + \frac{n}{2}.\)
+\label{sec:orgc917cca}
+\begin{itemize}
+\item Basis step: \(1+\frac{1}{2} = 1 + \frac{1}{2}.\)
+\item Inductive step: 
+\begin{align*}
+\sum_{k=1}^{2^{n+1}} &=  \sum_{k=1}^{2^n} \frac{1}{k} + \sum_{k=2^n +1}^{2^{n+1}} \frac{1}{k} && \\
+&\geq  1 + \frac{n}{2} + \sum_{k=2^n +1}^{2^{n+1}} \frac{1}{k} &&\text{(inductive hypothesis)} \\
+&= 1 + \frac{n}{2} + \left( \frac{1}{2^n+1} + \frac{1}{2^n+2} + \dotsb + \frac{1}{2^n+2^n} \right) && \\
+&\geq 1 + \frac{n}{2} + \left( \frac{1}{2^{n+1}} + \frac{1}{2^{n+1}} + \dotsb + \frac{1}{2^{n+1}} \right) &&\text{(lol)} \\
+&= 1+ \frac{n}{2}+ \frac{1}{2}
+\end{align*}
+\end{itemize}
+\item If \(n \in \mathbb{N},\) then \(\big( 1-\frac{1}{2} \big) \big( 1-\frac{1}{4} \big) \big( 1-\frac{1}{8} \big) \big( 1-\frac{1}{16} \big) \dotsb \big( 1-\frac{1}{2^n} \big) \geq \frac{1}{4} + \frac{1}{2^{n+1}}.\)
+\label{sec:orgd62cd52}
+\begin{itemize}
+\item Basis step: \(\big( 1 - \tfrac{1}{2} \big) = \tfrac{1}{4} + \tfrac{1}{4}.\)
+\item Inductive step: 
+\begin{align*}
+\prod_{k=1}^{n+1} \big( 1 - \tfrac{1}{2^k} \big) &= \big( 1 - \tfrac{1}{2^{n+1}} \big) \prod_{k=1}^n \big( 1 -
+\tfrac{1}{2^k} \big) && \\
+&\geq \big( 1 - \tfrac{1}{2^{n+1}} \big) \big( \tfrac{1}{4} + \tfrac{1}{2^{n+1}} \big) &&\text{(inductive hypothesis)} \\
+&= \tfrac{1}{4} + \tfrac{1}{2^{n+1}} - \tfrac{1}{2^{n+3}} - \tfrac{1}{2^{2n+2}} && \\
+&= \tfrac{1}{4} + \tfrac{2^{n+1}-1}{2^{2n+2}} - \tfrac{1}{2^{n+3}} &&\text{(gather terms 2 and 4 together)} \\
+&\geq \tfrac{1}{4} - \tfrac{1}{2^{n+3}} = \tfrac{1}{4} - \tfrac{1}{2} \cdot \tfrac{1}{2^{n+2}} &&\text{(lol)} \\
+&\geq \tfrac{1}{4} - \tfrac{1}{2^{n+2}} &&\text{(more lol)}
+\end{align*}
+\end{itemize}
+\item {\bfseries\sffamily TODO} Use mathematical induction to prove the binomial theorem (use equation (3.2) on page 78.)
+\label{sec:org3a155cb}
+\item Prove that \(\sum_{k=1}^n k \binom{n}{k} = n 2^{n-1}\) for each natural number \(n.\)
+\label{sec:org486350b}
+\begin{itemize}
+\item Basis step: \(1\cdot \binom{1}{1} = 1 = 1\cdot 2^{1-1}.\)
+\item Without using the inductive hypothesis, but trying for something similar to the approach of the inductive step.
+\begin{align*}
+\sum_{k=1}^{n+1} k \binom{n+1}{k} &= \sum_{k=1}^{n+1} k \frac{(n+1)!}{k! (n+1-k)!} &&\text{(formula)} \\
+&= (n+1) \sum_{k=1}^{n+1} \frac{n!}{(k-1)!(n+1-k)!} &&\text{(factor out one }(n+1)\text{ there)} \\
+&= (n+1) \sum_{k=1}^{n+1} \binom{n}{k-1} &&\text{(formula again)} \\
+&= (n+1) \sum_{j=0}^n \binom{n}{j} &&\text{(change the index)} \\
+&= (n+1) 2^n &&\text{(since }2^n = (1+1)^n = \sum_{j=0}^n \tbinom{n}{j} \text{ trivially)}
+\end{align*}
+\item Using the obvious trick with the derivative.  Set \(f(x) = (1+x)^n = \sum_{k=0}^n \tbinom{n}{k}x^k\).  The
+derivative gives \(n(1+x)^{n-1} = \sum_{k=1}^n k\tbinom{n}{k}x^{k-1}.\)  Evaluate the latter at \(x = 1\) to
+get the desired result.
+\item Matt indicated that the only way to get the inductive step is by using the recursive formula
+\begin{equation*}
+\sum_{k=1}^{n+1} k \binom{n+1}{k} = \sum_{k=1}^{n+1} k\binom{n}{k} + k\binom{n}{k-1} 
+= \underbrace{\sum_{k=1}^{n+1} k\binom{n}{k}}_{I} + \underbrace{\sum_{k=1}^{n+1} k\binom{n}{k-1}}_{II}
+\end{equation*}
+Let's check both of those terms:
+\begin{align*}
+I &= (n+1)\binom{n}{n+1} + \sum_{k=1}^n k\binom{n}{k} = n2^{n-1} \\
+II &= \sum_{j=0}^{n} (j+1)\binom{n}{j} = \sum_{j=0}^n j \binom{n}{j} + \sum_{j=0}^n \binom{n}{j} = n2^{n-1} + 2^n
+\end{align*}
+This gives then \(\sum_{k=1}^{n+1} k\tbinom{n}{k} = (2n+2)2^{n-1} = (n+1)2^n.\)
+\end{itemize}
+\item Concerning the Fibonacci sequence, prove that \(F_1 + F_2 + F_3 + F_4 + \dotsb + F_n = F_{n+2}-1.\)
+\label{sec:org920f201}
+\begin{itemize}
+\item Some Fibonacci terms for the next problems
+\end{itemize}
+
+\begin{verbatim}
+from sympy import fibonacci
+return [(k,fibonacci(k)) for k in range(20)]
+\end{verbatim}
+
+\begin{itemize}
+\item Basis step: \(F_1 = 1, F_3-1 = 2-1.\)
+\item Inductive step:
+\begin{equation*}
+\sum_{k=1}^{n+1} F_k = F_{n+1} + \sum_{k=1}^n F_k
+= F_{n+1} + \underbrace{F_{n+2} - 1}_{\text{inductive hyp.}}
+= \underbrace{F_{n+3}}_{F_{n+1}+F_{n+2}} - 1 
+\end{equation*}
+\end{itemize}
+\item Concerning the Fibonacci sequence, prove that \(\sum_{k=1}^n F_k^2 = F_n F_{n+1}.\)
+\label{sec:org7319c0a}
+\begin{itemize}
+\item Basis step: \(F_1 = 1, F_1 F_2 = 1.\)
+\item Inductive step:
+\begin{equation*}
+\sum_{k=1}^{n+1} F_k^2 = F_{n+1}^2 + \sum_{k=1}^n F_n^2 = F_{n+1}^2 + F_n F_{n+1} = F_{n+1}\big( F_{n+1} + F_n
+\big) = F_{n+1} F_{n+2}.
+\end{equation*}
+\end{itemize}
+\item Concerning the Fibonacci sequence, prove that \(F_1 + F_3 + F_5 + F_7 + \dotsb + F_{2n-1} = F_{2n}.\)
+\label{sec:org3e6cdce}
+\begin{itemize}
+\item Basis step: \(F_2 = F_1 = 1.\)
+\item Inductive step:
+\begin{equation*}
+\(\sum_{\text{k=1}}^{\text{n+1}}\) F\(_{\text{2k-1}}\) = F\(_{\text{2n+1}}\) + \(\sum_{\text{k=1}}^{\text{n}}\) F\(_{\text{2k-1}}\) = F\(_{\text{2n+1}}\) + F\(_{\text{2n}}\) = F\(_{\text{2n+2}}\).
+\end{itemize}
+\end{equation}
+\item Concerning the Fibonacci sequence, prove that \(F_2 + F_4 + F_6 + F_8 + \dotsb + F_{2n} = F_{2n+1}-1.\)
+\label{sec:orgc33f414}
+\begin{itemize}
+\item Basis step: \(F_2 = 1, F_3-1=2-1=1.\)
+\item Inductive step: 
+\begin{equation*}
+\sum_{k=1}^{n+1} F_{2k} = F_{2n+2} + \sum_{k=1}^n F_{2k} = F_{2n+2} + F_{2n+1} - 1 = F_{2n+3} - 1
+\end{equation*}
+\end{itemize}
+\item {\bfseries\sffamily TODO} In this problem \(n \in \mathbb{N}\) and \(F_n\) is the \(n\)th Fibonacci number.  Prove that
+\label{sec:orgbd4d5f2}
+\begin{equation*}
+\binom{n}{0} + \binom{n-1}{1} + \binom{n-2}{2} + \binom{n-3}{3} + \dotsb + \binom{0}{n} = F_{n+1}.
+\end{equation*}
+\begin{itemize}
+\item Basis step: For \(n = 1, \binom{1}{0} + \binom{0}{1} = 1 = F_2.\)
+\item For reference, the inductive hypothesis could be written in compact form as \(\sum{k=0}^n \binom{n-k}{k} =
+      F_{n+1}.\)
+\item Inductive step:
+\begin{align*}
+\sum_{k=0}^{n+1} \binom{n+1-k}{k} &= \sum_{k=0}^{n+1} \binom{n-k}{k} + \binom{n-k}{k-1}  \\
+&= \left( \binom{-1}{n+1} + \sum_{k=0}^n \binom{n-k}{k} \right) + \left( \dotsb \right) \\
+\end{align*}
+\end{itemize}
+\item Here \(F_n\) is the \(n\)th Fibonacci number.  Prove that
+\label{sec:orgd265aa0}
+\begin{equation*}
+F_n = \frac{\phi_1^n - \phi_2^n}{\sqrt{5}}, \text{ where } \phi_1 = \frac{1+\sqrt{5}}{2} \text{ and } \phi_2 =
+\frac{1-\sqrt{5}}{2}.
+\end{equation*}
+\item {\bfseries\sffamily TODO} Prove that \(\sum_{k=0}^n \binom{k}{r} = \binom{n+1}{r+1},\) where \(1 \leq r \leq n.\)
+\label{sec:org2fb5b90}
+\item {\bfseries\sffamily TODO} Prove that the number of \(n\)-digit binary numbers that have no consecutive 1's is the Fibonacci number \(F_{n+2}.\)
+\label{sec:org61435c9}
+\begin{itemize}
+\item Basis step: The number of 1-digit binary numbers that have no consecutive 1's is 2 (0 and 1). \(F_3=2.\)
+\item Assume that the number of n-digit binary numbers that have no consecutive 1's is \(F_{n+2}\).
+\item Induction step: Consider (n+1)-digit binary numbers.  We can construct them from the previous n-digit binary
+numbers by appending an extra 1 at the beginning.  How many can we add?  All of the previous ones that start with
+a zero:\ldots{}
+\end{itemize}
+\item Suppose \(n\) straight lines lie on a plane in such a way that no two of the lines are parallel, and no three of the lines intersect at a single point.  Show that this arrangement divides the plane into \(\frac{n^2+n+2}{2}\) regions.
+\label{sec:org4517067}
+\item Prove that \(3^1 + 3^2 + 3^3 + 3^4 + \dotsb + 3^n = \frac{3^{n+1}-3}{2}\) for every \(n \in \mathbb{N}.\)
+\label{sec:org51e706c}
+\begin{itemize}
+\item Basis step: \(3^1 = 3. \tfrac{3^2-3}{2}=\tfrac{6}{2}=3.\)
+\item Inductive step:
+\begin{equation*}
+\sum_{k=1}^{n+1} 3^k = 3^{n+1} + \sum_{k=1}^n 3^k = 3^{n+1} + \frac{3^{n+1}-3}{2} = \frac{2\cdot 3^{n+1} +
+3^{n+1} - 3}{2} = \frac{3^{n+2}-3}{2}.
+\end{equation*}
+\end{itemize}
+\item Prove that if \(n,k \in \mathbb{N},\) and \(n\) is even and \(k\) is odd, then \(\binom{n}{k}\) is even.
+\label{sec:orgbc60f72}
+\item Prove that if \(n = 2^k-1\) for some \(k \in \mathbb{N},\) then every entry in the \(n\)th row of Pascal's triangle is odd.
+\label{sec:org4e024f3}
+\item Prove that if \(m,n \in \mathbb{N},\) then \(\sum_{k=0}^n k \binom{m+k}{m} = n \binom{m+n+1}{m+1} - \binom{m+n+1}{m+2}.\)
+\label{sec:org6fa626b}
+\item Prove that if \(n\) is a positive integer, then \(\binom{n}{0}^2 + \binom{n}{1}^2 + \binom{n}{2}^2 + \dotsb + \binom{n}{n}^2 = \binom{2n}{n}.\)
+\label{sec:org2275f0f}
+\item Prove that if \(n\) is a positive integer, then \(\binom{n+0}{0} + \binom{n+1}{1} + \binom{n+2}{2} + \dotsb + \binom{n+k}{n} = \binom{n+k+1}{k}.\)
+\label{sec:org481d295}
+\item Prove that \(\sum_{k=0}^p \binom{m}{k} \binom{n}{p-k} = \binom{m+n}{p}\) for positive integers \(m, n\) and \(p.\).
+\label{sec:org6b356f8}
+\item Prove that \(\sum_{k=0}^m \binom{m}{k} \binom{n}{p+k} = \binom{m+n}{m+p}\) for positive integers \(m, n\) and \(p.\).
+\label{sec:orgf932909}
+\end{enumerate}
+\end{document}
