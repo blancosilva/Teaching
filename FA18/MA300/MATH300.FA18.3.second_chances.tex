@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsxtra}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.11}
+\usepackage{mathrsfs}
+\renewcommand{\theenumi}{(\alph{enumi})} 
+\renewcommand{\labelenumi}{\theenumi}
+
+\pagestyle{empty}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\topmargin}{-1.0in}
+\setlength{\textheight}{9.5in}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{theorem}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\noindent{\large\bf MATH 300}\hfill{\large\bf Test \#3 (second chances)}\hfill{\large\bf Fall 2018}\hfill{\large\bf Page
+  1/1}\hrule
+
+\bigskip
+\begin{center}
+  \begin{tabular}{|ll|}
+    \hline & \\
+    {\bf Name: } & \makebox[12cm]{\hrulefill}\\ & \\
+    {\bf VIP ID:} & \makebox[12cm]{\hrulefill}\\ & \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item Write your name and VIP ID in the space provided above.
+\item Each of the propositions below is worth 20 points.
+\item If in your previous exam there are \textbf{\textcolor{red}{-20}} comments associated to a specific kind of proof
+  technique on the front page, choose a proposition below with the same characteristics, and give a proof.  You may
+  choose one proposition for each such instance.
+  \begin{description}
+  \item[Proof by Contrapositive:] Instead of proving $P \implies Q$, try $\lnot Q \implies \lnot P$.  
+  \item[Proof by Contradiction:] To prove $P \implies Q$, start with the assumption that $P$ and $\lnot Q$ are true.
+  \item[If and only if statement:] To prove $P \iff Q$, prove both $P \implies Q$ and $Q \implies P$.
+  \item[Existence statement:] List, construct, or prove by contradiction.
+  \item[Proof by Induction:] $\forall n\geq n_0, P(n)$.  Prove the \emph{basis step} $P(n_0),$ and use the \emph{inductive
+      hypothesis} to prove the \emph{inductive step} $P(n) \implies P(n+1).$
+  \end{description}
+\item Make sure to \textbf{box} your proofs, to differentiate them from your exploration and planning.  I will only grade
+  for boxed content on each submission.
+\item Books, and calculators are allowed, but not notes.
+\end{itemize}
+
+\hrule
+
+\begin{proposition}%%% 1
+  For every $n\in\mathbb{N}$, it follows that
+  \begin{equation*}
+    (1+2+3+\dotsb+n)^2 = 1^3 + 2^3 + 3^3 + \dotsb + n^3.
+  \end{equation*}
+\end{proposition}
+
+\begin{proposition}%%% 2
+  For every $n \in \mathbb{N},$ it follows that 
+  \begin{equation*}
+    \frac{1}{n} + \frac{1}{n+1} + \dotsb + \frac{1}{2n} \geq \frac{1}{2}.
+  \end{equation*}
+\end{proposition}
+
+\begin{proposition}%%% 3
+  We say that a number $p \in \mathbb{N}$ is \textbf{perfect} if it equals the sum of its positive divisors less than
+  itself.  There is a perfect number less than 10.
+\end{proposition}
+
+\begin{proposition}%%% 4
+  For any $n \in \mathbb{N}$, the product of any $n$ consecutive positive integers is divisible by $n!.$
+\end{proposition}
+
+\begin{proposition}%%% 5
+  Suppose $a, b \in \mathbb{Z}.$ If $ab$ is odd, then $a^2+b^2$ is even.
+\end{proposition}
+
+\begin{proposition}%%% 6
+  There exists a real number $x \in \mathbb{R}$ such that $x^3-4x^2=7.$
+\end{proposition}
+
+\begin{proposition}%%% 7
+  If $n \in \mathbb{Z}$, then $4 \vert n^2$ or $4 \vert (n^2-1).$
+\end{proposition}
+
+\begin{proposition}%%% 8
+  Suppose $x \in \mathbb{R}.$  If $x^3-x>0$ then $x>-1.$
+\end{proposition}
+
+\begin{proposition}%%% 9
+  Suppose $a, b \in \mathbb{Z}$.  Then $a \equiv b \pmod{10}$ if and only if $a \equiv b \pmod{2}$ and $a \equiv b \pmod{5}$.
+\end{proposition}
+
+\begin{proposition}%%% 10
+  The number $\log_2(1) + \log_2(2) + \log_2(3)$ is irrational.
+\end{proposition}
+
+\begin{proposition}%%% 11
+   If $a, b \in \mathbb{R}$ are positive real numbers, then $a+b \geq 2\sqrt{ab}$.
+\end{proposition}
+
+\begin{proposition}%%% 12
+   If $p, q \in \mathbb{Q}$ are rational numbers with $p < q$, then there exists another rational number $x \in \mathbb{Q}$ that
+  satisfies $p < x <  q$.
+\end{proposition}
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
