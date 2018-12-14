@@ -1,12 +1,12 @@
 (TeX-add-style-hook
- "MATH300.FA18.3"
+ "MA122.FA18.F1"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
-                     '(("article" "11pt")))
+                     '(("article" "12pt")))
    (TeX-run-style-hooks
     "latex2e"
     "article"
-    "art11"
+    "art12"
     "amsmath"
     "amsthm"
     "amsfonts"
@@ -14,11 +14,10 @@
     "amsxtra"
     "pgf"
     "tikz"
-    "pgfplots"
-    "mathrsfs")
+    "multicol")
+   (TeX-add-symbols
+    "radiobutton")
    (LaTeX-add-amsthm-newtheorems
-    "problem"
-    "theorem"
-    "proposition"))
+    "problem"))
  :latex)
 

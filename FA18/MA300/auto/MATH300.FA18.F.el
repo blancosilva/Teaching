@@ -1,5 +1,5 @@
 (TeX-add-style-hook
- "MATH300.FA18.3"
+ "MATH300.FA18.F"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("article" "11pt")))
@@ -14,11 +14,11 @@
     "amsxtra"
     "pgf"
     "tikz"
-    "pgfplots"
     "mathrsfs")
-   (LaTeX-add-amsthm-newtheorems
+   (LaTeX-add-labels
+    "venn")
+   (LaTeX-add-environments
     "problem"
-    "theorem"
     "proposition"))
  :latex)
 
